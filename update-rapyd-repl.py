@@ -11,5 +11,5 @@ tuple(map(os.remove, glob.glob(os.path.join(repl_dir, '*'))))
 subprocess.check_call([os.path.join(rapyd_path, 'bin', 'web-repl-export'), repl_dir])
 if subprocess.check_output(['git', 'status', '--porcelain', repl_dir]):
     subprocess.check_call(['git', 'add', repl_dir])
-    subprocess.check_call(['git', 'commit', '-am', 'Update RapydScript REPL'])
+    subprocess.check_call(['git', 'commit', '-m', 'Update RapydScript REPL'])
     subprocess.check_call(['git', 'push'])
