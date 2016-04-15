@@ -5,6 +5,7 @@
 import os, subprocess, glob
 
 base = os.path.dirname(os.path.abspath(__file__))
+os.chdir(base)
 repl_dir = os.path.join(base, 'rapydscript', 'repl')
 rapyd_path = os.path.join(os.path.dirname(base), 'rapydscript')
 tuple(map(os.remove, glob.glob(os.path.join(repl_dir, '*'))))
