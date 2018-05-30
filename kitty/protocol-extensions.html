@@ -14,6 +14,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Controlling kitty from scripts or the shell" href="remote-control.html" />
@@ -46,11 +47,17 @@
 
 
 
+<div id="support" style="text-align: center">
+    <form class="support-form" action="support.html" title="Donate to support kitty development">
+        <input type="submit" value="Support kitty">
+    </form>
+</div>
+
 <div id="searchbox" style="display: none" role="search">
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" placeholder="Search" />
-      <input type="submit" value="🔍" style="cursor: pointer" />
+      <input type="submit" value="Go" style="cursor: pointer" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -115,7 +122,7 @@ please do so by opening issues in the github bug tracker.</p>
 <p><em>kitty</em> supports colored and styled (wavy) underlines. This is of particular
 use in terminal editors such as vim and emacs to display red, wavy underlines
 under mis-spelled words and/or syntax errors. This is done by re-purposing some
-SGR escape codes that are not used in modern terminals (<a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#CSI_codes">CSI codes</a>)</p>
+SGR escape codes that are not used in modern terminals (<a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#CSI_sequences">CSI codes</a>)</p>
 <p>To set the underline style:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="n">m</span>  <span class="c1"># this is no underline</span>
 <span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">1</span><span class="n">m</span>  <span class="c1"># this is a straight underline</span>
@@ -175,7 +182,7 @@ mode DECSET escape sequence:</p>
 </div>
 <p>The number <code class="docutils literal notranslate"><span class="pre">2017</span></code> above is not used for any existing modes, as far as I know.
 Client programs can query if the terminal emulator is in <em>full mode</em> by using
-the standard <a class="reference external" href="http://vt100.net/docs/vt510-rm/DECRQM">DECRQM</a> escape sequence.</p>
+the standard <a class="reference external" href="https://vt100.net/docs/vt510-rm/DECRQM.html">DECRQM</a> escape sequence.</p>
 <p>The new mode works as follows:</p>
 <blockquote>
 <div><ul class="simple">
@@ -220,7 +227,7 @@ mapping is defined in <a class="reference internal" href="key-encoding.html"><sp
 only bytes, for maximum robustness.</p>
 </div>
 <div class="section" id="setting-text-styles-colors-in-arbitrary-regions-of-the-screen">
-<h2><a class="toc-backref" href="#id5">Setting text styles/colors in arbitrary regions of the screen</a><a class="headerlink" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" title="Permalink to this headline">¶</a></h2>
+<span id="ext-styles"></span><h2><a class="toc-backref" href="#id5">Setting text styles/colors in arbitrary regions of the screen</a><a class="headerlink" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" title="Permalink to this headline">¶</a></h2>
 <p>There already exists an escape code to set <em>some</em> text attributes in arbitrary
 regions of the screen, <a class="reference external" href="https://vt100.net/docs/vt510-rm/DECCARA.html">DECCARA</a>.  However, it is limited to
 only a few attributes. <em>kitty</em> extends this to work with <em>all</em> SGR attributes.
