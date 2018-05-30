@@ -89,11 +89,14 @@
             
   <div class="section" id="building-kitty-from-source">
 <h1>Building kitty from source<a class="headerlink" href="#building-kitty-from-source" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://travis-ci.org/kovidgoyal/kitty"><img alt="Build status" src="https://travis-ci.org/kovidgoyal/kitty.svg?branch=master" /></a>
 <p><em>kitty</em> is designed to run from source, for easy hackability. Make sure
 the following dependencies are installed first.</p>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<p>Run-time dependencies:</p>
+<blockquote>
+<div><ul class="simple">
 <li>python &gt;= 3.5</li>
 <li>harfbuzz &gt;= 1.5.0</li>
 <li>zlib</li>
@@ -102,10 +105,16 @@ the following dependencies are installed first.</p>
 <li>fontconfig (not needed on macOS)</li>
 <li>ImageMagick (optional, needed to use the <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">icat</span></code> tool to display images in the terminal)</li>
 <li>pygments (optional, need for syntax highlighting in <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">diff</span></code>)</li>
-<li>gcc or clang (required only for building)</li>
-<li>pkg-config (required only for building)</li>
+</ul>
+</div></blockquote>
+<p>Build-time dependencies:</p>
+<blockquote>
+<div><ul class="simple">
+<li>gcc or clang</li>
+<li>pkg-config</li>
 <li>For building on Linux in addition to the above dependencies you might also need to install the <code class="docutils literal notranslate"><span class="pre">-dev</span></code> packages for <code class="docutils literal notranslate"><span class="pre">xcursor</span></code>, <code class="docutils literal notranslate"><span class="pre">xrandr</span></code>, <code class="docutils literal notranslate"><span class="pre">libxi</span></code>, <code class="docutils literal notranslate"><span class="pre">xinerama</span></code>, <code class="docutils literal notranslate"><span class="pre">libgl1-mesa</span></code> and <code class="docutils literal notranslate"><span class="pre">xkbcommon-x11</span></code>, if they are not already installed by your distro.</li>
 </ul>
+</div></blockquote>
 </div>
 <div class="section" id="install-and-run-from-source">
 <h2>Install and run from source<a class="headerlink" href="#install-and-run-from-source" title="Permalink to this headline">¶</a></h2>
