@@ -1,0 +1,692 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Configuring kitty &#8212; kitty  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Frequently Asked Questions" href="faq.html" />
+    <link rel="prev" title="Building kitty from source" href="build.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/kitty.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" placeholder="Search" />
+      <input type="submit" value="🔍" style="cursor: pointer" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="build.html" title="previous chapter">Building kitty from source</a></li>
+      <li>Next: <a href="faq.html" title="next chapter">Frequently Asked Questions</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="configuring-kitty">
+<h1>Configuring kitty<a class="headerlink" href="#configuring-kitty" title="Permalink to this headline">¶</a></h1>
+<p><em>kitty</em> is highly customizable, everything from keyboard shortcuts, to painting
+frames-per-second. See the heavily commented default config file below for an
+overview of all customization possibilities.</p>
+<p>You can open the config file within kitty by pressing <kbd class="kbd docutils literal notranslate">ctrl+shift+f2</kbd>.
+You can also display the current configuration by running <code class="docutils literal notranslate"><span class="pre">kitty</span>
+<span class="pre">--debug-config</span></code>.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># vim:fileencoding=utf-8:ft=conf</span>
+
+<span class="c1"># You can include secondary config files via the &quot;include&quot; directive.</span>
+<span class="c1"># If you use a relative path for include, it is resolved with respect to the</span>
+<span class="c1"># location of the current config file. Note that environment variables</span>
+<span class="c1"># are expanded, so ${USER}.conf becomes name.conf if USER=name</span>
+<span class="c1"># For example:</span>
+<span class="c1"># include other.conf</span>
+
+<span class="c1"># Fonts {{{</span>
+<span class="c1"># Font family. You can also specify different fonts for the</span>
+<span class="c1"># bold/italic/bold-italic variants. By default they are derived automatically,</span>
+<span class="c1"># by the OSes font system. Setting them manually is useful for font families</span>
+<span class="c1"># that have many weight variants like Book, Medium, Thick, etc. For example:</span>
+<span class="c1"># font_family Operator Mono Book</span>
+<span class="c1"># bold_font Operator Mono Medium</span>
+<span class="c1"># italic_font Operator Mono Book Italic</span>
+<span class="c1"># bold_italic_font Operator Mono Medium Italic</span>
+<span class="c1">#</span>
+<span class="c1"># You can get a list of full family names available on your computer by running</span>
+<span class="c1"># kitty list-fonts</span>
+<span class="c1"># The default values shown below rely on your OS to choose an appropriate monospace font family.</span>
+<span class="na">font_family      monospace</span>
+<span class="na">italic_font      auto</span>
+<span class="na">bold_font        auto</span>
+<span class="na">bold_italic_font auto</span>
+
+<span class="c1"># Font size (in pts)</span>
+<span class="na">font_size        11.0</span>
+
+<span class="c1"># Adjust the cell dimensions.</span>
+<span class="c1"># You can use either numbers, which are interpreted as pixels or percentages</span>
+<span class="c1"># (number followed by %), which are interpreted as percentages of the</span>
+<span class="c1"># unmodified values. You can use negative pixels or percentages less than</span>
+<span class="c1"># 100% to reduce sizes (but this might cause rendering artifacts).</span>
+<span class="na">adjust_line_height 0</span>
+<span class="na">adjust_column_width 0</span>
+
+<span class="c1"># Symbol mapping (special font for specified unicode code points). Map the</span>
+<span class="c1"># specified unicode codepoints to a particular font. Useful if you need special</span>
+<span class="c1"># rendering for some symbols, such as for Powerline. Avoids the need for</span>
+<span class="c1"># patched fonts. Each unicode code point is specified in the form U+&lt;code point</span>
+<span class="c1"># in hexadecimal&gt;. You can specify multiple code points, separated by commas</span>
+<span class="c1"># and ranges separated by hyphens. symbol_map itself can be specified multiple times.</span>
+<span class="c1"># Syntax is:</span>
+<span class="c1">#</span>
+<span class="c1"># symbol_map codepoints Font Family Name</span>
+<span class="c1">#</span>
+<span class="c1"># For example:</span>
+<span class="c1">#</span>
+<span class="c1"># symbol_map U+E0A0-U+E0A2,U+E0B0-U+E0B3 PowerlineSymbols</span>
+
+<span class="c1"># Change the sizes of the lines used for the box drawing unicode characters</span>
+<span class="c1"># These values are in pts. They will be scaled by the monitor DPI to arrive at</span>
+<span class="c1"># a pixel value. There must be four values corresponding to thin, normal, thick,</span>
+<span class="c1"># and very thick lines;</span>
+<span class="na">box_drawing_scale 0.001, 1, 1.5, 2</span>
+<span class="c1"># }}}</span>
+
+
+<span class="c1"># Cursor customization {{{</span>
+<span class="c1"># The cursor color</span>
+<span class="na">cursor           #cccccc</span>
+
+<span class="c1"># The cursor shape can be one of (block, beam, underline)</span>
+<span class="na">cursor_shape     block</span>
+
+<span class="c1"># The interval (in seconds) at which to blink the cursor. Set to zero to</span>
+<span class="c1"># disable blinking. Note that numbers smaller than repaint_delay will be</span>
+<span class="c1"># limited to repaint_delay.</span>
+<span class="na">cursor_blink_interval     0.5</span>
+
+<span class="c1"># Stop blinking cursor after the specified number of seconds of keyboard inactivity. Set to</span>
+<span class="c1"># zero to never stop blinking.</span>
+<span class="na">cursor_stop_blinking_after 15.0</span>
+<span class="c1"># }}}</span>
+
+
+<span class="c1"># Scrollback {{{</span>
+<span class="c1"># Number of lines of history to keep in memory for scrolling back</span>
+<span class="na">scrollback_lines 2000</span>
+
+<span class="c1"># Program with which to view scrollback in a new window. The scrollback buffer is passed as</span>
+<span class="c1"># STDIN to this program. If you change it, make sure the program you use can</span>
+<span class="c1"># handle ANSI escape sequences for colors and text formatting.</span>
+<span class="na">scrollback_pager less +G -R</span>
+
+<span class="c1"># Wheel scroll multiplier (modify the amount scrolled by the mouse wheel). Use negative</span>
+<span class="c1"># numbers to change scroll direction.</span>
+<span class="na">wheel_scroll_multiplier 5.0</span>
+<span class="c1"># }}}</span>
+
+
+<span class="c1"># Mouse {{{</span>
+<span class="c1"># The color and style for highlighting URLs on mouse-over. url_style can be one of:</span>
+<span class="c1"># none, single, double, curly</span>
+<span class="na">url_color #0087BD</span>
+<span class="na">url_style curly</span>
+
+<span class="c1"># The modifier keys to press when clicking with the mouse on URLs to open the URL</span>
+<span class="na">open_url_modifiers kitty_mod</span>
+
+<span class="c1"># The program with which to open URLs that are clicked on. The special value &quot;default&quot; means to</span>
+<span class="c1"># use the operating system&#39;s default URL handler.</span>
+<span class="na">open_url_with default</span>
+
+<span class="c1"># Copy to clipboard on select. With this enabled, simply selecting text with</span>
+<span class="c1"># the mouse will cause the text to be copied to clipboard. Useful on platforms</span>
+<span class="c1"># such as macOS/Wayland that do not have the concept of primary selections. Note</span>
+<span class="c1"># that this is a security risk, as all programs, including websites open in your</span>
+<span class="c1"># browser can read the contents of the clipboard.</span>
+<span class="na">copy_on_select no</span>
+
+<span class="c1"># The modifiers to use rectangular selection (i.e. to select text in a</span>
+<span class="c1"># rectangular block with the mouse)</span>
+<span class="na">rectangle_select_modifiers ctrl+alt</span>
+
+<span class="c1"># Characters considered part of a word when double clicking. In addition to these characters</span>
+<span class="c1"># any character that is marked as an alpha-numeric character in the unicode</span>
+<span class="c1"># database will be matched.</span>
+<span class="na">select_by_word_characters :@-./_~?&amp;</span><span class="o">=</span><span class="s">%+#</span>
+
+<span class="c1"># The interval between successive clicks to detect double/triple clicks (in seconds)</span>
+<span class="na">click_interval 0.5</span>
+
+<span class="c1"># Hide mouse cursor after the specified number of seconds of the mouse not being used. Set to</span>
+<span class="c1"># zero to disable mouse cursor hiding.</span>
+<span class="na">mouse_hide_wait 3.0</span>
+
+<span class="c1"># Set the active window to the window under the mouse when moving the mouse around</span>
+<span class="na">focus_follows_mouse no</span>
+<span class="c1"># }}}</span>
+
+
+<span class="c1"># Performance tuning {{{</span>
+<span class="c1"># Delay (in milliseconds) between screen updates. Decreasing it, increases</span>
+<span class="c1"># frames-per-second (FPS) at the cost of more CPU usage. The default value</span>
+<span class="c1"># yields ~100 FPS which is more than sufficient for most uses. Note that to</span>
+<span class="c1"># actually achieve 100FPS you have to either set sync_to_monitor to no or use a</span>
+<span class="c1"># monitor with a high refresh rate.</span>
+<span class="na">repaint_delay    10</span>
+
+<span class="c1"># Delay (in milliseconds) before input from the program running in the terminal</span>
+<span class="c1"># is processed. Note that decreasing it will increase responsiveness, but also</span>
+<span class="c1"># increase CPU usage and might cause flicker in full screen programs that</span>
+<span class="c1"># redraw the entire screen on each loop, because kitty is so fast that partial</span>
+<span class="c1"># screen updates will be drawn.</span>
+<span class="na">input_delay 3</span>
+
+<span class="c1"># Sync screen updates to the refresh rate of the monitor. This prevents</span>
+<span class="c1"># tearing (https://en.wikipedia.org/wiki/Screen_tearing) when scrolling. However,</span>
+<span class="c1"># it limits the rendering speed to the refresh rate of your monitor. With a</span>
+<span class="c1"># very high speed mouse/high keyboard repeat rate, you may notice some slight input latency.</span>
+<span class="c1"># If so, set this to no.</span>
+<span class="na">sync_to_monitor yes</span>
+<span class="c1"># }}}</span>
+
+
+<span class="c1"># Audio/visual bell {{{</span>
+<span class="c1"># Visual bell duration. Flash the screen when a bell occurs for the specified number of</span>
+<span class="c1"># seconds. Set to zero to disable.</span>
+<span class="na">visual_bell_duration 0.0</span>
+
+<span class="c1"># Enable/disable the audio bell. Useful in environments that require silence.</span>
+<span class="na">enable_audio_bell yes</span>
+
+<span class="c1"># Request window attention on bell.</span>
+<span class="c1"># Makes the dock icon bounce on macOS or the taskbar flash on linux.</span>
+<span class="na">window_alert_on_bell yes</span>
+
+<span class="c1"># Show a bell symbol on the tab if a bell occurs in one of the windows in the</span>
+<span class="c1"># tab and the window is not the currently focused window</span>
+<span class="na">bell_on_tab yes</span>
+<span class="c1"># }}}</span>
+
+
+<span class="c1"># Window layout {{{</span>
+<span class="c1"># If enabled, the window size will be remembered so that new instances of kitty will have the same</span>
+<span class="c1"># size as the previous instance. If disabled, the window will initially have size configured</span>
+<span class="c1"># by initial_window_width/height, in pixels. You can use a suffix of &quot;c&quot; on the width/height values</span>
+<span class="c1"># to have them interpreted as number of cells instead of pixels.</span>
+<span class="na">remember_window_size   yes</span>
+<span class="na">initial_window_width   640</span>
+<span class="na">initial_window_height  400</span>
+
+<span class="c1"># The enabled window layouts. A comma separated list of layout names. The special value * means</span>
+<span class="c1"># all layouts. The first listed layout will be used as the startup layout.</span>
+<span class="c1"># For a list of available layouts, see the README.</span>
+<span class="na">enabled_layouts *</span>
+
+<span class="c1"># The step size (in units of cell width/cell height) to use when resizing</span>
+<span class="c1"># windows. The cells value is used for horizontal resizing and the lines value</span>
+<span class="c1"># for vertical resizing.</span>
+<span class="na">window_resize_step_cells 2</span>
+<span class="na">window_resize_step_lines 2</span>
+
+<span class="c1"># The width (in pts) of window borders. Will be rounded to the nearest number of pixels based on screen resolution.</span>
+<span class="c1"># Note that borders are displayed only when more than one window is visible. They are meant to separate multiple windows.</span>
+<span class="na">window_border_width 1</span>
+
+<span class="c1"># The window margin (in pts) (blank area outside the border)</span>
+<span class="na">window_margin_width 0</span>
+
+<span class="c1"># The window padding (in pts) (blank area between the text and the window border)</span>
+<span class="na">window_padding_width 0</span>
+
+<span class="c1"># The color for the border of the active window</span>
+<span class="na">active_border_color #00ff00</span>
+
+<span class="c1"># The color for the border of inactive windows</span>
+<span class="na">inactive_border_color #cccccc</span>
+
+<span class="c1"># The color for the border of inactive windows in which a bell has occurred</span>
+<span class="na">bell_border_color #ff5a00</span>
+
+<span class="c1"># Fade the text in inactive windows by the specified amount (a number between</span>
+<span class="c1"># zero and one, with 0 being fully faded).</span>
+<span class="na">inactive_text_alpha 1.0</span>
+<span class="c1"># }}}</span>
+
+
+<span class="c1"># Tab bar {{{</span>
+<span class="c1"># Which edge to show the tab bar on, top or bottom</span>
+<span class="na">tab_bar_edge bottom</span>
+
+<span class="c1"># The margin to the left and right of the tab bar (in pts)</span>
+<span class="na">tab_bar_margin_width 0</span>
+
+<span class="c1"># The separator between tabs in the tab bar</span>
+<span class="na">tab_separator &quot; ┇&quot;</span>
+
+<span class="c1"># Tab bar colors and styles</span>
+<span class="na">active_tab_foreground #000</span>
+<span class="na">active_tab_background #eee</span>
+<span class="na">active_tab_font_style bold-italic</span>
+<span class="na">inactive_tab_foreground #444</span>
+<span class="na">inactive_tab_background #999</span>
+<span class="na">inactive_tab_font_style normal</span>
+<span class="c1"># }}}</span>
+
+
+<span class="c1"># Color scheme {{{</span>
+<span class="c1"># The foreground color</span>
+<span class="na">foreground       #dddddd</span>
+
+<span class="c1"># The background color</span>
+<span class="na">background       #000000</span>
+
+<span class="c1"># The opacity of the background. A number between 0 and 1, where 1 is opaque and 0 is fully transparent.</span>
+<span class="c1"># This will only work if supported by the OS (for instance, when using a compositor under X11). Note</span>
+<span class="c1"># that it only sets the default background color&#39;s opacity. This is so that</span>
+<span class="c1"># things like the status bar in vim, powerline prompts, etc. still look good.</span>
+<span class="c1"># But it means that if you use a color theme with a background color in your</span>
+<span class="c1"># editor, it will not be rendered as transparent.  Instead you should change the</span>
+<span class="c1"># default background color in your kitty config and not use a background color</span>
+<span class="c1"># in the editor color scheme. Or use the escape codes to set the terminals</span>
+<span class="c1"># default colors in a shell script to launch your editor.</span>
+<span class="c1"># Be aware that using a value less than 1.0 is a (possibly significant) performance hit.</span>
+<span class="na">background_opacity 1.0</span>
+<span class="c1"># If you want to dynamically change transparency of windows set dynamic_background_opacity to yes</span>
+<span class="c1"># (this is off by default as it has a performance cost)</span>
+<span class="na">dynamic_background_opacity no</span>
+
+<span class="c1"># How much to dim text that has the DIM/FAINT attribute set. 1.0 means no dimming and</span>
+<span class="c1"># 0.0 means fully dimmed (i.e. invisible).</span>
+<span class="na">dim_opacity 0.75</span>
+
+<span class="c1"># The foreground for selections</span>
+<span class="na">selection_foreground #000000</span>
+
+<span class="c1"># The background for selections</span>
+<span class="na">selection_background #FFFACD</span>
+
+<span class="c1"># The 16 terminal colors. There are 8 basic colors, each color has a dull and</span>
+<span class="c1"># bright version. You can also set the remaining colors from the 256 color table</span>
+<span class="c1"># as color16 to color256.</span>
+
+<span class="c1"># black</span>
+<span class="na">color0   #000000</span>
+<span class="na">color8   #767676</span>
+
+<span class="c1"># red</span>
+<span class="na">color1   #cc0403</span>
+<span class="na">color9   #f2201f</span>
+
+<span class="c1"># green</span>
+<span class="na">color2   #19cb00</span>
+<span class="na">color10  #23fd00</span>
+
+<span class="c1"># yellow</span>
+<span class="na">color3   #cecb00</span>
+<span class="na">color11  #fffd00</span>
+
+<span class="c1"># blue</span>
+<span class="na">color4  #0d73cc</span>
+<span class="na">color12 #1a8fff</span>
+
+<span class="c1"># magenta</span>
+<span class="na">color5   #cb1ed1</span>
+<span class="na">color13  #fd28ff</span>
+
+<span class="c1"># cyan</span>
+<span class="na">color6   #0dcdcd</span>
+<span class="na">color14  #14ffff</span>
+
+<span class="c1"># white</span>
+<span class="na">color7   #dddddd</span>
+<span class="na">color15  #ffffff</span>
+<span class="c1"># }}}</span>
+
+
+<span class="c1"># Advanced {{{</span>
+
+<span class="c1"># The shell program to execute. The default value of . means</span>
+<span class="c1"># to use whatever shell is set as the default shell for the current user.</span>
+<span class="c1"># Note that on macOS if you change this, you might need to add --login to</span>
+<span class="c1"># ensure that the shell starts in interactive mode and reads its startup rc files.</span>
+<span class="na">shell .</span>
+
+<span class="c1"># The console editor to use when editing the kitty config file or similar</span>
+<span class="c1"># tasks. A value of . means to use the environment variable EDITOR. Note that</span>
+<span class="c1"># this environment variable has to be set not just in your shell startup</span>
+<span class="c1"># scripts but system-wide, otherwise kitty will not see it.</span>
+<span class="na">editor .</span>
+
+<span class="c1">#</span>
+<span class="c1"># Close the window when the child process (shell) exits. If no (the default),</span>
+<span class="c1"># the terminal will remain open when the child exits as long as there are still</span>
+<span class="c1"># processes outputting to the terminal (for example disowned or backgrounded</span>
+<span class="c1"># processes). If yes, the window will close as soon as the child process exits.</span>
+<span class="c1"># Note that setting it to yes means that any background processes still using</span>
+<span class="c1"># the terminal can fail silently because their stdout/stderr/stdin no longer</span>
+<span class="c1"># work.</span>
+<span class="na">close_on_child_death no</span>
+
+<span class="c1"># Allow other programs to control kitty. If you turn this on other programs can</span>
+<span class="c1"># control all aspects of kitty, including sending text to kitty windows,</span>
+<span class="c1"># opening new windows, closing windows, reading the content of windows, etc.</span>
+<span class="c1"># Note that this even works over ssh connections.</span>
+<span class="na">allow_remote_control no</span>
+
+<span class="c1"># Allow programs running in kitty to read and write from the clipboard. You can</span>
+<span class="c1"># control exactly which actions are allowed. The set of possible actions is:</span>
+<span class="c1"># write-clipboard read-clipboard write-primary read-primary</span>
+<span class="c1"># The default is to allow writing to the clipboard and primary selection. Note</span>
+<span class="c1"># that enabling the read functionality is a security risk as it means that any</span>
+<span class="c1"># program, even one running on a remote server via SSH can read your clipboard.</span>
+<span class="na">clipboard_control write-clipboard write-primary</span>
+
+<span class="c1"># The value of the TERM environment variable to set. Changing this can break</span>
+<span class="c1"># many terminal programs, only change it if you know what you are doing, not</span>
+<span class="c1"># because you read some advice on Stack Overflow to change it.</span>
+<span class="na">term xterm-kitty</span>
+
+
+<span class="c1"># }}}</span>
+
+
+<span class="c1"># Keyboard shortcuts {{{</span>
+<span class="c1"># For a list of key names, see: http://www.glfw.org/docs/latest/group__keys.html</span>
+<span class="c1"># For a list of modifier names, see: http://www.glfw.org/docs/latest/group__mods.html</span>
+
+<span class="c1"># The value of kitty_mod is used as the modifier for all default shortcuts, you</span>
+<span class="c1"># can change it in your kitty.conf to change the modifiers for all the default</span>
+<span class="c1"># shortcuts.</span>
+<span class="na">kitty_mod ctrl+shift</span>
+<span class="c1">#</span>
+<span class="c1"># You can use the special action no_op to unmap a keyboard shortcut that is</span>
+<span class="c1"># assigned in the default configuration.</span>
+<span class="c1">#</span>
+<span class="c1"># You can combine multiple actions to be triggered by a single shortcut, using the</span>
+<span class="c1"># syntax below:</span>
+<span class="c1"># map key combine &lt;separator&gt; action1 &lt;separator&gt; action2 &lt;separator&gt; action3 ...</span>
+<span class="c1"># For example:</span>
+<span class="c1"># map kitty_mod+e combine : new_window : next_layout</span>
+<span class="c1"># this will create a new window and switch to the next available layout</span>
+<span class="c1">#</span>
+<span class="c1"># You can use multi-key shortcuts using the syntax shown below:</span>
+<span class="c1"># map key1&gt;key2&gt;key3 action</span>
+<span class="c1"># For example:</span>
+<span class="c1"># map ctrl+f&gt;2 set_font_size 20</span>
+<span class="c1"># this will change the font size to 20 points when you press ctrl+f and then 2</span>
+
+<span class="c1"># Clipboard {{{</span>
+<span class="na">map kitty_mod+c        copy_to_clipboard</span>
+<span class="na">map kitty_mod+v        paste_from_clipboard</span>
+<span class="na">map kitty_mod+s        paste_from_selection</span>
+<span class="na">map shift+insert       paste_from_selection</span>
+<span class="c1"># You can also pass the contents of the current selection to any program using</span>
+<span class="c1"># pass_selection_to_program. By default, the system&#39;s open program is used, but</span>
+<span class="c1"># you can specify your own, for example:</span>
+<span class="c1"># map kitty_mod+o      pass_selection_to_program firefox</span>
+<span class="na">map kitty_mod+o        pass_selection_to_program</span>
+<span class="c1"># }}}</span>
+
+<span class="c1"># Scrolling {{{</span>
+<span class="na">map kitty_mod+up        scroll_line_up</span>
+<span class="na">map kitty_mod+down      scroll_line_down</span>
+<span class="na">map kitty_mod+k         scroll_line_up</span>
+<span class="na">map kitty_mod+j         scroll_line_down</span>
+<span class="na">map kitty_mod+page_up   scroll_page_up</span>
+<span class="na">map kitty_mod+page_down scroll_page_down</span>
+<span class="na">map kitty_mod+home      scroll_home</span>
+<span class="na">map kitty_mod+end       scroll_end</span>
+<span class="na">map kitty_mod+h         show_scrollback</span>
+<span class="c1"># }}}</span>
+
+<span class="c1"># Window management {{{</span>
+<span class="na">map kitty_mod+enter    new_window</span>
+<span class="na">map kitty_mod+n        new_os_window</span>
+<span class="na">map kitty_mod+w        close_window</span>
+<span class="na">map kitty_mod+]        next_window</span>
+<span class="na">map kitty_mod+[        previous_window</span>
+<span class="na">map kitty_mod+f        move_window_forward</span>
+<span class="na">map kitty_mod+b        move_window_backward</span>
+<span class="na">map kitty_mod+`        move_window_to_top</span>
+<span class="na">map kitty_mod+r        start_resizing_window</span>
+<span class="c1"># Switching to a particular window</span>
+<span class="na">map kitty_mod+1        first_window</span>
+<span class="na">map kitty_mod+2        second_window</span>
+<span class="na">map kitty_mod+3        third_window</span>
+<span class="na">map kitty_mod+4        fourth_window</span>
+<span class="na">map kitty_mod+5        fifth_window</span>
+<span class="na">map kitty_mod+6        sixth_window</span>
+<span class="na">map kitty_mod+7        seventh_window</span>
+<span class="na">map kitty_mod+8        eighth_window</span>
+<span class="na">map kitty_mod+9        ninth_window</span>
+<span class="na">map kitty_mod+0        tenth_window</span>
+<span class="c1"># You can open a new window running an arbitrary program, for example:</span>
+<span class="c1"># map kitty_mod+y      new_window mutt</span>
+<span class="c1">#</span>
+<span class="c1"># You can pass the current selection to the new program by using the @selection placeholder</span>
+<span class="c1"># map kitty_mod+y      new_window less @selection</span>
+<span class="c1">#</span>
+<span class="c1"># You can even send the contents of the current screen + history buffer as stdin using</span>
+<span class="c1"># the placeholders @text (which is the plain text) and @ansi (which includes text styling escape codes).</span>
+<span class="c1"># For only the current screen, use @screen or @ansi_screen.</span>
+<span class="c1"># For example, the following command opens the scrollback buffer in less in a new window.</span>
+<span class="c1"># map kitty_mod+y      new_window @ansi less +G -R</span>
+<span class="c1">#</span>
+<span class="c1"># You can open a new window with the current working directory set to the</span>
+<span class="c1"># working directory of the current window using</span>
+<span class="c1"># map ctrl+alt+enter    new_window_with_cwd</span>
+<span class="c1"># }}}</span>
+
+<span class="c1"># Tab management {{{</span>
+<span class="na">map kitty_mod+right    next_tab</span>
+<span class="na">map kitty_mod+left     previous_tab</span>
+<span class="na">map kitty_mod+t        new_tab</span>
+<span class="na">map kitty_mod+q        close_tab</span>
+<span class="na">map kitty_mod+l        next_layout</span>
+<span class="na">map kitty_mod+.        move_tab_forward</span>
+<span class="na">map kitty_mod+,        move_tab_backward</span>
+<span class="na">map kitty_mod+alt+t    set_tab_title</span>
+<span class="c1"># You can also create shortcuts to go to specific tabs, with 1 being the first tab</span>
+<span class="c1"># map ctrl+alt+1          goto_tab 1</span>
+<span class="c1"># map ctrl+alt+2          goto_tab 2</span>
+
+<span class="c1"># Just as with new_window above, you can also pass the name of arbitrary</span>
+<span class="c1"># commands to run when using new_tab and use new_tab_with_cwd.</span>
+<span class="c1"># }}}</span>
+
+<span class="c1"># Layout management {{{</span>
+<span class="c1"># You can create shortcuts to switch to specific layouts</span>
+<span class="c1"># map ctrl+alt+1          goto_layout tall</span>
+<span class="c1"># map ctrl+alt+2          goto_layout stack</span>
+<span class="c1"># }}}</span>
+
+<span class="c1"># Font sizes {{{</span>
+<span class="c1"># You can change the font size for all top-level kitty windows at a time</span>
+<span class="c1"># or only the current one.</span>
+<span class="na">map kitty_mod+equal    change_font_size all +2.0</span>
+<span class="na">map kitty_mod+minus    change_font_size all -2.0</span>
+<span class="na">map kitty_mod+backspace change_font_size all 0</span>
+<span class="c1"># To setup shortcuts for specific font sizes:</span>
+<span class="c1"># map kitty_mod+f6     change_font_size all 10.0</span>
+<span class="c1"># To setup shortcuts to change only the current window&#39;s font size:</span>
+<span class="c1"># map kitty_mod+f6     change_font_size current 10.0</span>
+<span class="c1"># }}}</span>
+
+<span class="c1"># Select and act on visible text {{{</span>
+<span class="c1"># Use the hints kitten to select text and either pass it to an external program or</span>
+<span class="c1"># insert it into the terminal or copy it to the clipboard.</span>
+<span class="c1">#</span>
+<span class="c1"># Open a currently visible URL using the keyboard. The program used to open the</span>
+<span class="c1"># URL is specified in open_url_with.</span>
+<span class="na">map kitty_mod+e         kitten hints</span>
+
+<span class="c1"># Select a path/filename and insert it into the terminal. Useful, for instance to</span>
+<span class="c1"># run git commands on a filename output from a previous git command.</span>
+<span class="na">map kitty_mod+p&gt;f       kitten hints --type path --program -</span>
+
+<span class="c1"># Select a path/filename and open it with the default open program.</span>
+<span class="na">map kitty_mod+p&gt;shift+f kitten hints --type path</span>
+
+<span class="c1"># Select a line of text and insert it into the terminal. Use for the</span>
+<span class="c1"># output of things like: ls -1</span>
+<span class="na">map kitty_mod+p&gt;l       kitten hints --type line --program -</span>
+
+<span class="c1"># Select words and insert into terminal.</span>
+<span class="na">map kitty_mod+p&gt;w       kitten hints --type word --program -</span>
+
+<span class="c1"># The hints kitten has many more modes of operation that you can map to different</span>
+<span class="c1"># shortcuts. For a full description run: kitty +kitten hints --help</span>
+<span class="c1"># }}}</span>
+
+<span class="c1"># Miscellaneous {{{</span>
+<span class="na">map kitty_mod+f11      toggle_fullscreen</span>
+<span class="na">map kitty_mod+u        input_unicode_character</span>
+<span class="na">map kitty_mod+f2       edit_config_file</span>
+<span class="c1"># Open the kitty shell in a new window/tab/overlay/os_window to control kitty using commands.</span>
+<span class="na">map kitty_mod+escape   kitty_shell window</span>
+<span class="na">map kitty_mod+a&gt;m set_background_opacity +0.1</span>
+<span class="na">map kitty_mod+a&gt;l set_background_opacity -0.1</span>
+<span class="na">map kitty_mod+a&gt;1 set_background_opacity 1</span>
+<span class="na">map kitty_mod+a&gt;d set_background_opacity default</span>
+
+<span class="c1"># Sending arbitrary text on shortcut key presses</span>
+<span class="c1"># You can tell kitty to send arbitrary (UTF-8) encoded text to</span>
+<span class="c1"># the client program when pressing specified shortcut keys. For example:</span>
+<span class="c1"># map ctrl+alt+a send_text all Special text</span>
+<span class="c1"># This will send &quot;Special text&quot; when you press the Ctrl+Alt+a key combination.</span>
+<span class="c1"># The text to be sent is a python string literal so you can use escapes like</span>
+<span class="c1"># \x1b to send control codes or \u21fb to send unicode characters (or you can</span>
+<span class="c1"># just input the unicode characters directly as UTF-8 text). The first argument</span>
+<span class="c1"># to send_text is the keyboard modes in which to activate the shortcut. The possible</span>
+<span class="c1"># values are normal or application or kitty or a comma separated combination of them.</span>
+<span class="c1"># The special keyword all means all modes. The modes normal and application refer to</span>
+<span class="c1"># the DECCKM cursor key mode for terminals, and kitty refers to the special kitty</span>
+<span class="c1"># extended keyboard protocol. Another example, that outputs a word and then moves the cursor</span>
+<span class="c1"># to the start of the line (same as pressing the Home key):</span>
+<span class="c1"># map ctrl+alt+a send_text normal Word\x1b[H</span>
+<span class="c1"># map ctrl+alt+a send_text application Word\x1bOH</span>
+<span class="c1"># }}}</span>
+
+<span class="c1"># You can have kitty remove all shortcut definition seen up to this point. Useful, for</span>
+<span class="c1"># instance, to remove the default shortcuts.</span>
+<span class="na">clear_all_shortcuts no</span>
+<span class="c1"># }}}</span>
+
+
+<span class="c1"># OS specific tweaks {{{</span>
+
+<span class="c1"># Change the color of the kitty window&#39;s titlebar on macOS. A value of &quot;system&quot;</span>
+<span class="c1"># means to use the default system color, a value of &quot;background&quot; means to use</span>
+<span class="c1"># the background color of the currently active window and finally you can use</span>
+<span class="c1"># an arbitrary color, such as #12af59 or &quot;red&quot;. WARNING: This option works by</span>
+<span class="c1"># using a hack, as there is no proper Cocoa API for it. It sets the background</span>
+<span class="c1"># color of the entire window and makes the titlebar transparent. As such it is</span>
+<span class="c1"># incompatible with background_opacity. If you want to use both, you are</span>
+<span class="c1"># probably better off just hiding the titlebar with macos_hide_titlebar.</span>
+<span class="na">macos_titlebar_color system</span>
+
+<span class="c1"># Hide the kitty window&#39;s title bar on macOS.</span>
+<span class="na">macos_hide_titlebar no</span>
+
+<span class="c1"># Use the option key as an alt key. With this set to no, kitty will use</span>
+<span class="c1"># the macOS native Option+Key = unicode character behavior. This will</span>
+<span class="c1"># break any Alt+key keyboard shortcuts in your terminal programs, but you</span>
+<span class="c1"># can use the macOS unicode input technique.</span>
+<span class="na">macos_option_as_alt yes</span>
+
+<span class="c1"># Hide the kitty window from running tasks (alt-tab) on macOS.</span>
+<span class="na">macos_hide_from_tasks no</span>
+<span class="c1"># }}}</span>
+</pre></div>
+</div>
+<p><em>kitty</em> looks for a config file in the OS config directories (usually
+<code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/kitty.conf</span></code> and additionally
+<code class="file docutils literal notranslate"><span class="pre">~/Library/Preferences/kitty/kitty.conf</span></code> on macOS) but you can pass a
+specific path via the <code class="docutils literal notranslate"><span class="pre">--config</span></code> option or use the <code class="docutils literal notranslate"><span class="pre">KITTY_CONFIG_DIRECTORY</span></code>
+environment variable. See the help for the <code class="xref std std-option docutils literal notranslate"><span class="pre">--config</span></code> option in <code class="docutils literal notranslate"><span class="pre">kitty</span>
+<span class="pre">--help</span></code> for full details.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2018, Kovid Goyal.
+      
+    </div>
+
+    
+    <a href="https://github.com/kovidgoyal/kitty" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,278 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Extensions to the xterm protocol &#8212; kitty  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Controlling kitty from scripts or the shell" href="remote-control.html" />
+    <link rel="prev" title="kitty Performance" href="performance.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/kitty.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" placeholder="Search" />
+      <input type="submit" value="🔍" style="cursor: pointer" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Extensions to the xterm protocol</a><ul>
+<li><a class="reference internal" href="#colored-and-styled-underlines">Colored and styled underlines</a></li>
+<li><a class="reference internal" href="#graphics-rendering">Graphics rendering</a></li>
+<li><a class="reference internal" href="#keyboard-handling">Keyboard handling</a></li>
+<li><a class="reference internal" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen">Setting text styles/colors in arbitrary regions of the screen</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="performance.html" title="previous chapter"><em>kitty</em> Performance</a></li>
+      <li>Next: <a href="remote-control.html" title="next chapter">Controlling kitty from scripts or the shell</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="extensions-to-the-xterm-protocol">
+<h1><a class="toc-backref" href="#id1">Extensions to the xterm protocol</a><a class="headerlink" href="#extensions-to-the-xterm-protocol" title="Permalink to this headline">¶</a></h1>
+<p><em>kitty</em> has a few extensions to the xterm protocol, to enable advanced features.
+These are typically in the form of new or re-purposed escape codes. While these
+extensions are currently <em>kitty</em> specific, it would be nice to get some of them
+adopted more broadly, to push the state of terminal emulators forward.</p>
+<p>The goal of these extensions is to be as small an unobtrusive as possible,
+while filling in some gaps in the existing xterm protocol. In particular, one
+of the goals of this specification is explicitly not to “re-imagine” the tty.
+The tty should remain what it is – a device for efficiently processing text
+received as a simple byte stream. Another objective is to only move the minimum
+possible amount of extra functionality into the terminal program itself. This
+is to make it as easy to implement these protocol extensions as possible,
+thereby hopefully encouraging their widespread adoption.</p>
+<p>If you wish to discuss these extensions, propose additions/changes to them
+please do so by opening issues in the github bug tracker.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#extensions-to-the-xterm-protocol" id="id1">Extensions to the xterm protocol</a><ul>
+<li><a class="reference internal" href="#colored-and-styled-underlines" id="id2">Colored and styled underlines</a></li>
+<li><a class="reference internal" href="#graphics-rendering" id="id3">Graphics rendering</a></li>
+<li><a class="reference internal" href="#keyboard-handling" id="id4">Keyboard handling</a></li>
+<li><a class="reference internal" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" id="id5">Setting text styles/colors in arbitrary regions of the screen</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="colored-and-styled-underlines">
+<h2><a class="toc-backref" href="#id2">Colored and styled underlines</a><a class="headerlink" href="#colored-and-styled-underlines" title="Permalink to this headline">¶</a></h2>
+<p><em>kitty</em> supports colored and styled (wavy) underlines. This is of particular
+use in terminal editors such as vim and emacs to display red, wavy underlines
+under mis-spelled words and/or syntax errors. This is done by re-purposing some
+SGR escape codes that are not used in modern terminals (<a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#CSI_codes">CSI codes</a>)</p>
+<p>To set the underline style:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="n">m</span>  <span class="c1"># this is no underline</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">1</span><span class="n">m</span>  <span class="c1"># this is a straight underline</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="n">m</span>  <span class="c1"># this is a double underline</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">3</span><span class="n">m</span>  <span class="c1"># this is a curly underline</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">4</span><span class="n">m</span>  <span class="c1"># this is a dotted underline (not implemented in kitty)</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="n">m</span>  <span class="c1"># this is a dashed underline (not implemented in kitty)</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="n">m</span>    <span class="c1"># this is a straight underline (for backwards compat)</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">24</span><span class="n">m</span>   <span class="c1"># this is no underline (for backwards compat)</span>
+</pre></div>
+</div>
+<p>To set the underline color (this is reserved and as far as I can tell not actually used for anything):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mf">58.</span><span class="o">..</span><span class="n">m</span>
+</pre></div>
+</div>
+<p>This works exactly like the codes <code class="docutils literal notranslate"><span class="pre">38,</span> <span class="pre">48</span></code> that are used to set foreground and
+background color respectively.</p>
+<p>To reset the underline color (also previously reserved and unused):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">59</span><span class="n">m</span>
+</pre></div>
+</div>
+<p>To detect support for this feature in a terminal emulator, query the terminfo database
+for the <code class="docutils literal notranslate"><span class="pre">Su</span></code> boolean capability.</p>
+</div>
+<div class="section" id="graphics-rendering">
+<h2><a class="toc-backref" href="#id3">Graphics rendering</a><a class="headerlink" href="#graphics-rendering" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="graphics-protocol.html"><span class="doc">The terminal graphics protocol</span></a> for a description
+of this protocol to enable drawing of arbitrary raster images in the terminal.</p>
+</div>
+<div class="section" id="keyboard-handling">
+<span id="extended-key-protocol"></span><h2><a class="toc-backref" href="#id4">Keyboard handling</a><a class="headerlink" href="#keyboard-handling" title="Permalink to this headline">¶</a></h2>
+<p>There are various problems with the current state of keyboard handling. They
+include:</p>
+<ul class="simple">
+<li>No way to use modifiers other than <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> and <code class="docutils literal notranslate"><span class="pre">Alt</span></code></li>
+<li>No way to use multiple modifier keys, other than, <code class="docutils literal notranslate"><span class="pre">Shift+Alt</span></code>.</li>
+<li>No way to handle different types of keyboard events, such as press, release or repeat</li>
+<li>No reliable way to distinguish single <code class="docutils literal notranslate"><span class="pre">Esc</span></code> keypresses from the start of a
+escape sequence. Currently, client programs use fragile timing related hacks
+for this, leading to bugs, for example:
+<a class="reference external" href="https://github.com/neovim/neovim/issues/2035">neovim #2035</a>.</li>
+</ul>
+<p>There are already two distinct keyboard handling modes, <em>normal mode</em> and
+<em>application mode</em>. These modes generate different escape sequences for the
+various special keys (arrow keys, function keys, home/end etc.) Most terminals
+start out in normal mode, however, most shell programs like <code class="docutils literal notranslate"><span class="pre">bash</span></code> switch them to
+application mode. We propose adding a third mode, named <em>full mode</em> that addresses
+the shortcomings listed above.</p>
+<p>Switching to the new <em>full mode</em> is accomplished using the standard private
+mode DECSET escape sequence:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;ESC&gt;[?2017h
+</pre></div>
+</div>
+<p>and to leave <em>full mode</em>, use DECRST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;ESC&gt;[?2017l
+</pre></div>
+</div>
+<p>The number <code class="docutils literal notranslate"><span class="pre">2017</span></code> above is not used for any existing modes, as far as I know.
+Client programs can query if the terminal emulator is in <em>full mode</em> by using
+the standard <a class="reference external" href="http://vt100.net/docs/vt510-rm/DECRQM">DECRQM</a> escape sequence.</p>
+<p>The new mode works as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li>All printable key presses without modifier keys are sent just as in the
+<em>normal mode</em>. This means all printable ASCII characters and in addition,
+<code class="docutils literal notranslate"><span class="pre">Enter</span></code>, <code class="docutils literal notranslate"><span class="pre">Space</span></code> and <code class="docutils literal notranslate"><span class="pre">Backspace</span></code>. Also any unicode characters generated by
+platform specific extended input modes, such as using the <code class="docutils literal notranslate"><span class="pre">AltGr</span></code> key. This
+is done so that client programs that are not aware of this mode can still
+handle basic text entry, so if a <em>full mode</em> using program crashes and does
+not reset, the user can still issue a <code class="docutils literal notranslate"><span class="pre">reset</span></code> command in the shell to restore
+normal key handling. Note that this includes pressing the <code class="docutils literal notranslate"><span class="pre">Shift</span></code> modifier
+and printable keys. Note that this means there are no repeat and release
+events for these keys and also for the left and right shift keys.</li>
+<li>For non printable keys and key combinations including one or more modifiers,
+an escape sequence encoding the key event is sent. For details on the
+escape sequence, see below.</li>
+</ul>
+</div></blockquote>
+<p>The escape sequence encodes the following properties:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Type of event: <code class="docutils literal notranslate"><span class="pre">press,repeat,release</span></code></li>
+<li>Modifiers pressed at the time of the event</li>
+<li>The actual key being pressed</li>
+</ul>
+</div></blockquote>
+<p>Schematically:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_K</span><span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;&lt;</span><span class="n">modifiers</span><span class="o">&gt;&lt;</span><span class="n">key</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;type&gt;</span></code> is one of <code class="docutils literal notranslate"><span class="pre">p</span></code> – press, <code class="docutils literal notranslate"><span class="pre">r</span></code> – release and <code class="docutils literal notranslate"><span class="pre">t</span></code> – repeat.
+Modifiers is a bitmask represented as a single base64 digit.  Shift – <code class="docutils literal notranslate"><span class="pre">0x1</span></code>,
+Alt – <code class="docutils literal notranslate"><span class="pre">0x2</span></code>, Control – <code class="docutils literal notranslate"><span class="pre">0x4</span></code> and Super – <code class="docutils literal notranslate"><span class="pre">0x8</span></code>.  <code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span></code> is a number
+(encoded in base85) corresponding to the key pressed. The key name to number
+mapping is defined in <a class="reference internal" href="key-encoding.html"><span class="doc">this table</span></a>.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_KpGp</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\  <span class="ow">is</span>  <span class="o">&lt;</span><span class="n">Ctrl</span><span class="o">&gt;+&lt;</span><span class="n">Alt</span><span class="o">&gt;+</span><span class="n">x</span> <span class="p">(</span><span class="n">press</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_KrP8</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\  <span class="ow">is</span>  <span class="o">&lt;</span><span class="n">Ctrl</span><span class="o">&gt;+&lt;</span><span class="n">Alt</span><span class="o">&gt;+&lt;</span><span class="n">Shift</span><span class="o">&gt;+&lt;</span><span class="n">Super</span><span class="o">&gt;+</span><span class="n">PageUp</span> <span class="p">(</span><span class="n">release</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This encoding means each key event is represented by 8 or 9 printable ascii
+only bytes, for maximum robustness.</p>
+</div>
+<div class="section" id="setting-text-styles-colors-in-arbitrary-regions-of-the-screen">
+<h2><a class="toc-backref" href="#id5">Setting text styles/colors in arbitrary regions of the screen</a><a class="headerlink" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" title="Permalink to this headline">¶</a></h2>
+<p>There already exists an escape code to set <em>some</em> text attributes in arbitrary
+regions of the screen, <a class="reference external" href="https://vt100.net/docs/vt510-rm/DECCARA.html">DECCARA</a>.  However, it is limited to
+only a few attributes. <em>kitty</em> extends this to work with <em>all</em> SGR attributes.
+So, for example, this can be used to set the background color in an arbitrary
+region of the screen.</p>
+<p>The motivation for this extension is the various problems with the existing
+solution for erasing to background color, namely the <em>background color erase
+(bce)</em> capability. See
+<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/160#issuecomment-346470545">this discussion</a>
+and <a class="reference external" href="http://invisible-island.net/ncurses/ncurses.faq.html#bce_mismatches">this FAQ</a>
+for a summary of problems with <em>bce</em>.</p>
+<p>For example, to set the background color to blue in a
+rectangular region of the screen from (3, 4) to (10, 11), you use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;ESC&gt;[2*x&lt;ESC&gt;[4;3;11;10;44$r&lt;ESC&gt;[*x
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2018, Kovid Goyal.
+      
+    </div>
+
+    
+    <a href="https://github.com/kovidgoyal/kitty" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,170 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>kitty Performance &#8212; kitty  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Extensions to the xterm protocol" href="protocol-extensions.html" />
+    <link rel="prev" title="Key encoding for extended keyboard protocol" href="key-encoding.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/kitty.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" placeholder="Search" />
+      <input type="submit" value="🔍" style="cursor: pointer" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="key-encoding.html" title="previous chapter">Key encoding for extended keyboard protocol</a></li>
+      <li>Next: <a href="protocol-extensions.html" title="next chapter">Extensions to the xterm protocol</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="kitty-performance">
+<h1><em>kitty</em> Performance<a class="headerlink" href="#kitty-performance" title="Permalink to this headline">¶</a></h1>
+<p>The main goals for <em>kitty</em> performance are user perceived latency while typing
+and “smoothness” while scrolling as well as CPU usage. <em>kitty</em> tries hard to find
+an optimum balance for these. To that end it keeps a cache of each rendered
+glyph in video RAM so that font rendering is not a bottleneck.  Interaction
+with child programs takes place in a separate thread from rendering, to improve
+smoothness.</p>
+<p>There are two parameters you can tune to adjust the performance. <code class="docutils literal notranslate"><span class="pre">repaint_delay</span></code>
+and <code class="docutils literal notranslate"><span class="pre">input_delay</span></code>. These control the artificial delays introduced into the
+render loop to reduce CPU usage. See <a class="reference internal" href="conf.html"><span class="doc">kitty.conf</span></a> for details.
+See also the <code class="docutils literal notranslate"><span class="pre">sync_to_monitor</span></code> option to further decrease latency at the cost
+of some <a class="reference external" href="https://en.wikipedia.org/wiki/Screen_tearing">tearing</a> while scrolling.</p>
+<p>You can generate detailed per-function performance data using
+<a class="reference external" href="https://github.com/gperftools/gperftools">gperftools</a>. Build <em>kitty</em> with
+<cite>make profile</cite> which will create an executable called <cite>kitty-profile</cite>.  Run
+that and perform the task you want to analyse, for example, scrolling a large
+file with <cite>less</cite>. After you quit, function call statistics will be printed to
+<cite>stdout</cite> and you can use tools like <em>kcachegrind</em> for more detailed analysis.</p>
+<p>Here are some CPU usage numbers for the task of scrolling a file continuously
+in less.  The CPU usage is for the terminal process and X together and is
+measured using htop.  The measurements are taken at the same font and window
+size for all terminals on a <code class="docutils literal notranslate"><span class="pre">Intel(R)</span> <span class="pre">Core(TM)</span> <span class="pre">i7-4820K</span> <span class="pre">CPU</span> <span class="pre">&#64;</span> <span class="pre">3.70GHz</span></code> CPU
+with a <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">Micro</span> <span class="pre">Devices,</span> <span class="pre">Inc.</span> <span class="pre">[AMD/ATI]</span> <span class="pre">Cape</span> <span class="pre">Verde</span> <span class="pre">XT</span> <span class="pre">[Radeon</span> <span class="pre">HD</span>
+<span class="pre">7770/8760</span> <span class="pre">/</span> <span class="pre">R7</span> <span class="pre">250X]</span></code> GPU.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Terminal</th>
+<th class="head">CPU usage (X + terminal)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><em>kitty</em></td>
+<td>6 - 8%</td>
+</tr>
+<tr class="row-odd"><td>xterm</td>
+<td>5 - 7% (but scrolling was extremely janky)</td>
+</tr>
+<tr class="row-even"><td>termite</td>
+<td>10 - 13%</td>
+</tr>
+<tr class="row-odd"><td>urxvt</td>
+<td>12 - 14%</td>
+</tr>
+<tr class="row-even"><td>gnome-terminal</td>
+<td>15 - 17%</td>
+</tr>
+<tr class="row-odd"><td>konsole</td>
+<td>29 - 31%</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, <em>kitty</em> uses much less CPU than all terminals, except xterm, but
+its scrolling “smoothness” is much better than that of xterm (at least to my,
+admittedly biased, eyes).</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2018, Kovid Goyal.
+      
+    </div>
+
+    
+    <a href="https://github.com/kovidgoyal/kitty" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>

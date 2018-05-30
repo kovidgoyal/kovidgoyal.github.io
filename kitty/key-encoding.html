@@ -1,0 +1,483 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Key encoding for extended keyboard protocol &#8212; kitty  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="kitty Performance" href="performance.html" />
+    <link rel="prev" title="The terminal graphics protocol" href="graphics-protocol.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/kitty.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" placeholder="Search" />
+      <input type="submit" value="🔍" style="cursor: pointer" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="graphics-protocol.html" title="previous chapter">The terminal graphics protocol</a></li>
+      <li>Next: <a href="performance.html" title="next chapter"><em>kitty</em> Performance</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="key-encoding-for-extended-keyboard-protocol">
+<h1>Key encoding for extended keyboard protocol<a class="headerlink" href="#key-encoding-for-extended-keyboard-protocol" title="Permalink to this headline">¶</a></h1>
+<p>See <a class="reference internal" href="protocol-extensions.html#extended-key-protocol"><span class="std std-ref">Keyboard handling</span></a> for more information and <a class="reference external" href="https://github.com/kovidgoyal/kitty/blob/master/key_encoding.json">this table in JSON
+format</a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Name</td>
+<td>Encoded representation (base64)</td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td><code class="docutils literal notranslate"><span class="pre">G</span></code></td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td><code class="docutils literal notranslate"><span class="pre">H</span></code></td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td><code class="docutils literal notranslate"><span class="pre">I</span></code></td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td><code class="docutils literal notranslate"><span class="pre">J</span></code></td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td><code class="docutils literal notranslate"><span class="pre">K</span></code></td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td><code class="docutils literal notranslate"><span class="pre">L</span></code></td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td><code class="docutils literal notranslate"><span class="pre">M</span></code></td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td><code class="docutils literal notranslate"><span class="pre">N</span></code></td>
+</tr>
+<tr class="row-even"><td>8</td>
+<td><code class="docutils literal notranslate"><span class="pre">O</span></code></td>
+</tr>
+<tr class="row-odd"><td>9</td>
+<td><code class="docutils literal notranslate"><span class="pre">P</span></code></td>
+</tr>
+<tr class="row-even"><td>A</td>
+<td><code class="docutils literal notranslate"><span class="pre">S</span></code></td>
+</tr>
+<tr class="row-odd"><td>APOSTROPHE</td>
+<td><code class="docutils literal notranslate"><span class="pre">B</span></code></td>
+</tr>
+<tr class="row-even"><td>B</td>
+<td><code class="docutils literal notranslate"><span class="pre">T</span></code></td>
+</tr>
+<tr class="row-odd"><td>BACKSLASH</td>
+<td><code class="docutils literal notranslate"><span class="pre">t</span></code></td>
+</tr>
+<tr class="row-even"><td>BACKSPACE</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span></code></td>
+</tr>
+<tr class="row-odd"><td>C</td>
+<td><code class="docutils literal notranslate"><span class="pre">U</span></code></td>
+</tr>
+<tr class="row-even"><td>CAPS LOCK</td>
+<td><code class="docutils literal notranslate"><span class="pre">:</span></code></td>
+</tr>
+<tr class="row-odd"><td>COMMA</td>
+<td><code class="docutils literal notranslate"><span class="pre">C</span></code></td>
+</tr>
+<tr class="row-even"><td>D</td>
+<td><code class="docutils literal notranslate"><span class="pre">V</span></code></td>
+</tr>
+<tr class="row-odd"><td>DELETE</td>
+<td><code class="docutils literal notranslate"><span class="pre">3</span></code></td>
+</tr>
+<tr class="row-even"><td>DOWN</td>
+<td><code class="docutils literal notranslate"><span class="pre">6</span></code></td>
+</tr>
+<tr class="row-odd"><td>E</td>
+<td><code class="docutils literal notranslate"><span class="pre">W</span></code></td>
+</tr>
+<tr class="row-even"><td>END</td>
+<td><code class="docutils literal notranslate"><span class="pre">-</span></code></td>
+</tr>
+<tr class="row-odd"><td>ENTER</td>
+<td><code class="docutils literal notranslate"><span class="pre">z</span></code></td>
+</tr>
+<tr class="row-even"><td>EQUAL</td>
+<td><code class="docutils literal notranslate"><span class="pre">R</span></code></td>
+</tr>
+<tr class="row-odd"><td>ESCAPE</td>
+<td><code class="docutils literal notranslate"><span class="pre">y</span></code></td>
+</tr>
+<tr class="row-even"><td>F</td>
+<td><code class="docutils literal notranslate"><span class="pre">X</span></code></td>
+</tr>
+<tr class="row-odd"><td>F1</td>
+<td><code class="docutils literal notranslate"><span class="pre">/</span></code></td>
+</tr>
+<tr class="row-even"><td>F10</td>
+<td><code class="docutils literal notranslate"><span class="pre">]</span></code></td>
+</tr>
+<tr class="row-odd"><td>F11</td>
+<td><code class="docutils literal notranslate"><span class="pre">{</span></code></td>
+</tr>
+<tr class="row-even"><td>F12</td>
+<td><code class="docutils literal notranslate"><span class="pre">}</span></code></td>
+</tr>
+<tr class="row-odd"><td>F13</td>
+<td><code class="docutils literal notranslate"><span class="pre">&#64;</span></code></td>
+</tr>
+<tr class="row-even"><td>F14</td>
+<td><code class="docutils literal notranslate"><span class="pre">%</span></code></td>
+</tr>
+<tr class="row-odd"><td>F15</td>
+<td><code class="docutils literal notranslate"><span class="pre">$</span></code></td>
+</tr>
+<tr class="row-even"><td>F16</td>
+<td><code class="docutils literal notranslate"><span class="pre">#</span></code></td>
+</tr>
+<tr class="row-odd"><td>F17</td>
+<td><code class="docutils literal notranslate"><span class="pre">BA</span></code></td>
+</tr>
+<tr class="row-even"><td>F18</td>
+<td><code class="docutils literal notranslate"><span class="pre">BB</span></code></td>
+</tr>
+<tr class="row-odd"><td>F19</td>
+<td><code class="docutils literal notranslate"><span class="pre">BC</span></code></td>
+</tr>
+<tr class="row-even"><td>F2</td>
+<td><code class="docutils literal notranslate"><span class="pre">*</span></code></td>
+</tr>
+<tr class="row-odd"><td>F20</td>
+<td><code class="docutils literal notranslate"><span class="pre">BD</span></code></td>
+</tr>
+<tr class="row-even"><td>F21</td>
+<td><code class="docutils literal notranslate"><span class="pre">BE</span></code></td>
+</tr>
+<tr class="row-odd"><td>F22</td>
+<td><code class="docutils literal notranslate"><span class="pre">BF</span></code></td>
+</tr>
+<tr class="row-even"><td>F23</td>
+<td><code class="docutils literal notranslate"><span class="pre">BG</span></code></td>
+</tr>
+<tr class="row-odd"><td>F24</td>
+<td><code class="docutils literal notranslate"><span class="pre">BH</span></code></td>
+</tr>
+<tr class="row-even"><td>F25</td>
+<td><code class="docutils literal notranslate"><span class="pre">BI</span></code></td>
+</tr>
+<tr class="row-odd"><td>F3</td>
+<td><code class="docutils literal notranslate"><span class="pre">?</span></code></td>
+</tr>
+<tr class="row-even"><td>F4</td>
+<td><code class="docutils literal notranslate"><span class="pre">&amp;</span></code></td>
+</tr>
+<tr class="row-odd"><td>F5</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></td>
+</tr>
+<tr class="row-even"><td>F6</td>
+<td><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></td>
+</tr>
+<tr class="row-odd"><td>F7</td>
+<td><code class="docutils literal notranslate"><span class="pre">(</span></code></td>
+</tr>
+<tr class="row-even"><td>F8</td>
+<td><code class="docutils literal notranslate"><span class="pre">)</span></code></td>
+</tr>
+<tr class="row-odd"><td>F9</td>
+<td><code class="docutils literal notranslate"><span class="pre">[</span></code></td>
+</tr>
+<tr class="row-even"><td>G</td>
+<td><code class="docutils literal notranslate"><span class="pre">Y</span></code></td>
+</tr>
+<tr class="row-odd"><td>GRAVE ACCENT</td>
+<td><code class="docutils literal notranslate"><span class="pre">v</span></code></td>
+</tr>
+<tr class="row-even"><td>H</td>
+<td><code class="docutils literal notranslate"><span class="pre">Z</span></code></td>
+</tr>
+<tr class="row-odd"><td>HOME</td>
+<td><code class="docutils literal notranslate"><span class="pre">.</span></code></td>
+</tr>
+<tr class="row-even"><td>I</td>
+<td><code class="docutils literal notranslate"><span class="pre">a</span></code></td>
+</tr>
+<tr class="row-odd"><td>INSERT</td>
+<td><code class="docutils literal notranslate"><span class="pre">2</span></code></td>
+</tr>
+<tr class="row-even"><td>J</td>
+<td><code class="docutils literal notranslate"><span class="pre">b</span></code></td>
+</tr>
+<tr class="row-odd"><td>K</td>
+<td><code class="docutils literal notranslate"><span class="pre">c</span></code></td>
+</tr>
+<tr class="row-even"><td>KP 0</td>
+<td><code class="docutils literal notranslate"><span class="pre">BJ</span></code></td>
+</tr>
+<tr class="row-odd"><td>KP 1</td>
+<td><code class="docutils literal notranslate"><span class="pre">BK</span></code></td>
+</tr>
+<tr class="row-even"><td>KP 2</td>
+<td><code class="docutils literal notranslate"><span class="pre">BL</span></code></td>
+</tr>
+<tr class="row-odd"><td>KP 3</td>
+<td><code class="docutils literal notranslate"><span class="pre">BM</span></code></td>
+</tr>
+<tr class="row-even"><td>KP 4</td>
+<td><code class="docutils literal notranslate"><span class="pre">BN</span></code></td>
+</tr>
+<tr class="row-odd"><td>KP 5</td>
+<td><code class="docutils literal notranslate"><span class="pre">BO</span></code></td>
+</tr>
+<tr class="row-even"><td>KP 6</td>
+<td><code class="docutils literal notranslate"><span class="pre">BP</span></code></td>
+</tr>
+<tr class="row-odd"><td>KP 7</td>
+<td><code class="docutils literal notranslate"><span class="pre">BQ</span></code></td>
+</tr>
+<tr class="row-even"><td>KP 8</td>
+<td><code class="docutils literal notranslate"><span class="pre">BR</span></code></td>
+</tr>
+<tr class="row-odd"><td>KP 9</td>
+<td><code class="docutils literal notranslate"><span class="pre">BS</span></code></td>
+</tr>
+<tr class="row-even"><td>KP ADD</td>
+<td><code class="docutils literal notranslate"><span class="pre">BX</span></code></td>
+</tr>
+<tr class="row-odd"><td>KP DECIMAL</td>
+<td><code class="docutils literal notranslate"><span class="pre">BT</span></code></td>
+</tr>
+<tr class="row-even"><td>KP DIVIDE</td>
+<td><code class="docutils literal notranslate"><span class="pre">BU</span></code></td>
+</tr>
+<tr class="row-odd"><td>KP ENTER</td>
+<td><code class="docutils literal notranslate"><span class="pre">BY</span></code></td>
+</tr>
+<tr class="row-even"><td>KP EQUAL</td>
+<td><code class="docutils literal notranslate"><span class="pre">BZ</span></code></td>
+</tr>
+<tr class="row-odd"><td>KP MULTIPLY</td>
+<td><code class="docutils literal notranslate"><span class="pre">BV</span></code></td>
+</tr>
+<tr class="row-even"><td>KP SUBTRACT</td>
+<td><code class="docutils literal notranslate"><span class="pre">BW</span></code></td>
+</tr>
+<tr class="row-odd"><td>L</td>
+<td><code class="docutils literal notranslate"><span class="pre">d</span></code></td>
+</tr>
+<tr class="row-even"><td>LEFT</td>
+<td><code class="docutils literal notranslate"><span class="pre">5</span></code></td>
+</tr>
+<tr class="row-odd"><td>LEFT ALT</td>
+<td><code class="docutils literal notranslate"><span class="pre">Bc</span></code></td>
+</tr>
+<tr class="row-even"><td>LEFT BRACKET</td>
+<td><code class="docutils literal notranslate"><span class="pre">s</span></code></td>
+</tr>
+<tr class="row-odd"><td>LEFT CONTROL</td>
+<td><code class="docutils literal notranslate"><span class="pre">Bb</span></code></td>
+</tr>
+<tr class="row-even"><td>LEFT SHIFT</td>
+<td><code class="docutils literal notranslate"><span class="pre">Ba</span></code></td>
+</tr>
+<tr class="row-odd"><td>LEFT SUPER</td>
+<td><code class="docutils literal notranslate"><span class="pre">Bd</span></code></td>
+</tr>
+<tr class="row-even"><td>M</td>
+<td><code class="docutils literal notranslate"><span class="pre">e</span></code></td>
+</tr>
+<tr class="row-odd"><td>MINUS</td>
+<td><code class="docutils literal notranslate"><span class="pre">D</span></code></td>
+</tr>
+<tr class="row-even"><td>N</td>
+<td><code class="docutils literal notranslate"><span class="pre">f</span></code></td>
+</tr>
+<tr class="row-odd"><td>NUM LOCK</td>
+<td><code class="docutils literal notranslate"><span class="pre">=</span></code></td>
+</tr>
+<tr class="row-even"><td>O</td>
+<td><code class="docutils literal notranslate"><span class="pre">g</span></code></td>
+</tr>
+<tr class="row-odd"><td>P</td>
+<td><code class="docutils literal notranslate"><span class="pre">h</span></code></td>
+</tr>
+<tr class="row-even"><td>PAGE DOWN</td>
+<td><code class="docutils literal notranslate"><span class="pre">9</span></code></td>
+</tr>
+<tr class="row-odd"><td>PAGE UP</td>
+<td><code class="docutils literal notranslate"><span class="pre">8</span></code></td>
+</tr>
+<tr class="row-even"><td>PAUSE</td>
+<td><code class="docutils literal notranslate"><span class="pre">!</span></code></td>
+</tr>
+<tr class="row-odd"><td>PERIOD</td>
+<td><code class="docutils literal notranslate"><span class="pre">E</span></code></td>
+</tr>
+<tr class="row-even"><td>PRINT SCREEN</td>
+<td><code class="docutils literal notranslate"><span class="pre">^</span></code></td>
+</tr>
+<tr class="row-odd"><td>Q</td>
+<td><code class="docutils literal notranslate"><span class="pre">i</span></code></td>
+</tr>
+<tr class="row-even"><td>R</td>
+<td><code class="docutils literal notranslate"><span class="pre">j</span></code></td>
+</tr>
+<tr class="row-odd"><td>RIGHT</td>
+<td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
+</tr>
+<tr class="row-even"><td>RIGHT ALT</td>
+<td><code class="docutils literal notranslate"><span class="pre">Bg</span></code></td>
+</tr>
+<tr class="row-odd"><td>RIGHT BRACKET</td>
+<td><code class="docutils literal notranslate"><span class="pre">u</span></code></td>
+</tr>
+<tr class="row-even"><td>RIGHT CONTROL</td>
+<td><code class="docutils literal notranslate"><span class="pre">Bf</span></code></td>
+</tr>
+<tr class="row-odd"><td>RIGHT SHIFT</td>
+<td><code class="docutils literal notranslate"><span class="pre">Be</span></code></td>
+</tr>
+<tr class="row-even"><td>RIGHT SUPER</td>
+<td><code class="docutils literal notranslate"><span class="pre">Bh</span></code></td>
+</tr>
+<tr class="row-odd"><td>S</td>
+<td><code class="docutils literal notranslate"><span class="pre">k</span></code></td>
+</tr>
+<tr class="row-even"><td>SCROLL LOCK</td>
+<td><code class="docutils literal notranslate"><span class="pre">+</span></code></td>
+</tr>
+<tr class="row-odd"><td>SEMICOLON</td>
+<td><code class="docutils literal notranslate"><span class="pre">Q</span></code></td>
+</tr>
+<tr class="row-even"><td>SLASH</td>
+<td><code class="docutils literal notranslate"><span class="pre">F</span></code></td>
+</tr>
+<tr class="row-odd"><td>SPACE</td>
+<td><code class="docutils literal notranslate"><span class="pre">A</span></code></td>
+</tr>
+<tr class="row-even"><td>T</td>
+<td><code class="docutils literal notranslate"><span class="pre">l</span></code></td>
+</tr>
+<tr class="row-odd"><td>TAB</td>
+<td><code class="docutils literal notranslate"><span class="pre">0</span></code></td>
+</tr>
+<tr class="row-even"><td>U</td>
+<td><code class="docutils literal notranslate"><span class="pre">m</span></code></td>
+</tr>
+<tr class="row-odd"><td>UP</td>
+<td><code class="docutils literal notranslate"><span class="pre">7</span></code></td>
+</tr>
+<tr class="row-even"><td>V</td>
+<td><code class="docutils literal notranslate"><span class="pre">n</span></code></td>
+</tr>
+<tr class="row-odd"><td>W</td>
+<td><code class="docutils literal notranslate"><span class="pre">o</span></code></td>
+</tr>
+<tr class="row-even"><td>WORLD 1</td>
+<td><code class="docutils literal notranslate"><span class="pre">w</span></code></td>
+</tr>
+<tr class="row-odd"><td>WORLD 2</td>
+<td><code class="docutils literal notranslate"><span class="pre">x</span></code></td>
+</tr>
+<tr class="row-even"><td>X</td>
+<td><code class="docutils literal notranslate"><span class="pre">p</span></code></td>
+</tr>
+<tr class="row-odd"><td>Y</td>
+<td><code class="docutils literal notranslate"><span class="pre">q</span></code></td>
+</tr>
+<tr class="row-even"><td>Z</td>
+<td><code class="docutils literal notranslate"><span class="pre">r</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2018, Kovid Goyal.
+      
+    </div>
+
+    
+    <a href="https://github.com/kovidgoyal/kitty" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>

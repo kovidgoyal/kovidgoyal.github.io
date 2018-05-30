@@ -1,0 +1,219 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Controlling kitty from scripts or the shell &#8212; kitty  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="kitty-diff - A side-by-side diff tool with syntax highlighting and images" href="kittens/diff.html" />
+    <link rel="prev" title="Extensions to the xterm protocol" href="protocol-extensions.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/kitty.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" placeholder="Search" />
+      <input type="submit" value="🔍" style="cursor: pointer" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Controlling kitty from scripts or the shell</a><ul>
+<li><a class="reference internal" href="#the-builtin-kitty-shell">The builtin kitty shell</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="protocol-extensions.html" title="previous chapter">Extensions to the xterm protocol</a></li>
+      <li>Next: <a href="kittens/diff.html" title="next chapter">kitty-diff - A side-by-side diff tool with syntax highlighting and images</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="controlling-kitty-from-scripts-or-the-shell">
+<h1>Controlling kitty from scripts or the shell<a class="headerlink" href="#controlling-kitty-from-scripts-or-the-shell" title="Permalink to this headline">¶</a></h1>
+<p><em>kitty</em> can be controlled from scripts or the shell prompt. You can open new
+windows, send arbitrary text input to any window, name windows and tabs, etc.
+Let’s walk through a few examples of controlling <em>kitty</em>.</p>
+<p>Start by running <em>kitty</em> as:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty -o <span class="nv">allow_remote_control</span><span class="o">=</span>yes --window-layout tall
+</pre></div>
+</div>
+<p>In order for control to work, <code class="docutils literal notranslate"><span class="pre">allow_remote_control</span></code> must be enabled in
+<a class="reference internal" href="conf.html"><span class="doc">kitty.conf</span></a>. Here we turn it on explicitly at the command line.</p>
+<p>Now, in the new <em>kitty</em> window, enter the command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ new-window --title Output --keep-focus cat
+</pre></div>
+</div>
+<p>This will open a new window, running the <code class="docutils literal notranslate"><span class="pre">cat</span></code> program that will appear next
+to the current window.</p>
+<p>Let’s send some text to this new window:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ send-text --match cmdline:cat Hello, World
+</pre></div>
+</div>
+<p>This will make <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">World</span></code> show up in the window running the <code class="docutils literal notranslate"><span class="pre">cat</span></code> program.
+The <code class="xref std std-option docutils literal notranslate"><span class="pre">--match</span></code> option is very powerful, it allows selecting windows by their
+titles, the command line of the program running in the window, the working
+directory of the program running in the window, etc.  See <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">send-text</span>
+<span class="pre">--help</span></code> for details.</p>
+<p>More usefully, you can pipe the output of a command running in one window to
+another window, for example:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ls <span class="p">|</span> kitty @ send-text --match title:Output --stdin
+</pre></div>
+</div>
+<p>This will show the output of ls in the output window instead of the current
+window. You can use this technique to, for example, show the output of running
+<code class="docutils literal notranslate"><span class="pre">make</span></code> in your editor in a different window. The possibilities are endless.</p>
+<p>You can even have things you type show up in a different window. Run:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ send-text --match title:Output --stdin
+</pre></div>
+</div>
+<p>And type some text, it will show up in the output window, instead of the current
+window. Type <code class="docutils literal notranslate"><span class="pre">Ctrl+D</span></code> when you are ready to stop.</p>
+<p>Now, let’s open a new tab:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ new-window --new-tab --tab-title <span class="s2">&quot;My Tab&quot;</span> --keep-focus bash
+</pre></div>
+</div>
+<p>This will open a new tab running the bash shell with the title “My Tab”.
+We can change the title of the tab with:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ set-tab-title --match title:My  New Title
+</pre></div>
+</div>
+<p>Let’s change the title of the current tab:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ set-tab-title Master Tab
+</pre></div>
+</div>
+<p>Now lets switch to the newly opened tab:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ focus-tab --match title:New
+</pre></div>
+</div>
+<p>Similarly, to focus the previously opened output window (which will also switch
+back to the old tab, automatically):</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ focus-window --match title:Output
+</pre></div>
+</div>
+<p>You can get a listing of available tabs and windows, by running:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ ls
+</pre></div>
+</div>
+<p>This outputs a tree of data in JSON format. The top level of the tree is all
+operating system kitty windows. Each OS window has an id and a list of tabs.
+Each tab has its own id, a title and a list of windows. Each window has an id,
+title, current working directory, process id (PID) and command-line of the
+process running in the window. You can use this information with <code class="xref std std-option docutils literal notranslate"><span class="pre">--match</span></code>
+to control individual windows.</p>
+<p>As you can see, it is very easy to control <em>kitty</em> using the
+<code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span></code> messaging system. This tutorial touches only the
+surface of what is possible. See <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">--help</span></code> for more details.</p>
+<p>Note that in the example’s above, <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span></code> messaging works only when run inside a <em>kitty</em> window,
+not anywhere. But, within a <em>kitty</em> window it even works over SSH. If you want to control
+<em>kitty</em> from programs/scripts not running inside a <em>kitty</em> window, you have to implement a couple of
+extra steps. First start <em>kitty</em> as:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty -o <span class="nv">allow_remote_control</span><span class="o">=</span>yes --listen-on unix:/tmp/mykitty
+</pre></div>
+</div>
+<p>The <code class="xref std std-option docutils literal notranslate"><span class="pre">--listen-on</span></code> option tells <em>kitty</em> to listen for control messages at the
+specified path. See <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--help</span></code> for details. Now you can control this
+instance of <em>kitty</em> using the <code class="xref std std-option docutils literal notranslate"><span class="pre">--to</span></code> command line argument to <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span></code>. For example:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ --to unix:/tmp/mykitty ls
+</pre></div>
+</div>
+<p>Note that is all you want to do is run a single <em>kitty</em> “daemon” and have subsequent
+<em>kitty</em> invocations appear as new top-level windows, you can use the simpler <code class="xref std std-option docutils literal notranslate"><span class="pre">--single-instance</span></code>
+option, see <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--help</span></code> for that.</p>
+<div class="section" id="the-builtin-kitty-shell">
+<h2>The builtin kitty shell<a class="headerlink" href="#the-builtin-kitty-shell" title="Permalink to this headline">¶</a></h2>
+<p>You can explore the <em>kitty</em> command language more easily using the builtin <em>kitty</em>
+shell. Run <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span></code> with no arguments and you will be dropped into the <em>kitty</em>
+shell with completion for <em>kitty</em> command names and options.</p>
+<p>You can even open the <em>kitty</em> shell inside a running <em>kitty</em> using a simple
+keyboard shortcut (<kbd class="kbd docutils literal notranslate">ctrl+shift+escape</kbd> by default). This has the added
+advantage that you dont need to use <code class="docutils literal notranslate"><span class="pre">allow_remote_control</span></code> to make it work.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2018, Kovid Goyal.
+      
+    </div>
+
+    
+    <a href="https://github.com/kovidgoyal/kitty" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>
