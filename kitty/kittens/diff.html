@@ -64,9 +64,9 @@
     </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../index.html">Table Of Contents</a></h3>
+<div>&nbsp;</div>
+<div id="sidebartoc">
   <ul>
-<li><a class="reference internal" href="#">kitty-diff - A side-by-side diff tool with syntax highlighting and images</a><ul>
 <li><a class="reference internal" href="#major-features">Major Features</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#usage">Usage</a></li>
@@ -75,9 +75,8 @@
 <li><a class="reference internal" href="#integrating-with-git">Integrating with git</a></li>
 <li><a class="reference internal" href="#why-does-this-work-only-in-kitty">Why does this work only in kitty?</a></li>
 </ul>
-</li>
-</ul>
-<div class="relations">
+
+</div><div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
@@ -93,34 +92,37 @@
           <div class="body" role="main">
             
   <div class="section" id="kitty-diff-a-side-by-side-diff-tool-with-syntax-highlighting-and-images">
-<h1><a class="toc-backref" href="#id1">kitty-diff - A side-by-side diff tool with syntax highlighting and images</a><a class="headerlink" href="#kitty-diff-a-side-by-side-diff-tool-with-syntax-highlighting-and-images" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id2">kitty-diff - A side-by-side diff tool with syntax highlighting and images</a><a class="headerlink" href="#kitty-diff-a-side-by-side-diff-tool-with-syntax-highlighting-and-images" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="major-features">
-<h2><a class="toc-backref" href="#id2">Major Features</a><a class="headerlink" href="#major-features" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Major Features</a><a class="headerlink" href="#major-features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Displays diffs side-by-side in the kitty terminal.</li>
 <li>Does syntax highlighting of displayed diffs</li>
 <li>Displays images as well as text diffs, even over SSH</li>
 <li>Does recursive directory diffing</li>
 </ul>
+<div class="figure align-center" id="id1">
 <img alt="Screenshot, showing a sample diff" src="../_images/diff.png" />
+<p class="caption"><span class="caption-text">Screenshot, showing a sample diff</span></p>
+</div>
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#kitty-diff-a-side-by-side-diff-tool-with-syntax-highlighting-and-images" id="id1">kitty-diff - A side-by-side diff tool with syntax highlighting and images</a><ul>
-<li><a class="reference internal" href="#major-features" id="id2">Major Features</a></li>
-<li><a class="reference internal" href="#installation" id="id3">Installation</a></li>
-<li><a class="reference internal" href="#usage" id="id4">Usage</a></li>
-<li><a class="reference internal" href="#keyboard-controls" id="id5">Keyboard controls</a></li>
-<li><a class="reference internal" href="#configuring-kitty-diff" id="id6">Configuring kitty-diff</a></li>
-<li><a class="reference internal" href="#integrating-with-git" id="id7">Integrating with git</a></li>
-<li><a class="reference internal" href="#why-does-this-work-only-in-kitty" id="id8">Why does this work only in kitty?</a></li>
+<li><a class="reference internal" href="#kitty-diff-a-side-by-side-diff-tool-with-syntax-highlighting-and-images" id="id2">kitty-diff - A side-by-side diff tool with syntax highlighting and images</a><ul>
+<li><a class="reference internal" href="#major-features" id="id3">Major Features</a></li>
+<li><a class="reference internal" href="#installation" id="id4">Installation</a></li>
+<li><a class="reference internal" href="#usage" id="id5">Usage</a></li>
+<li><a class="reference internal" href="#keyboard-controls" id="id6">Keyboard controls</a></li>
+<li><a class="reference internal" href="#configuring-kitty-diff" id="id7">Configuring kitty-diff</a></li>
+<li><a class="reference internal" href="#integrating-with-git" id="id8">Integrating with git</a></li>
+<li><a class="reference internal" href="#why-does-this-work-only-in-kitty" id="id9">Why does this work only in kitty?</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div class="section" id="installation">
-<h2><a class="toc-backref" href="#id3">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>Simply install <a class="reference external" href="https://github.com/kovidgoyal/kitty">kitty</a>.  You also need
 to have either the <a class="reference external" href="https://git-scm.com/">git</a> program or the <code class="docutils literal notranslate"><span class="pre">diff</span></code> program
 installed. Additionally, for syntax highlighting to work,
@@ -128,7 +130,7 @@ installed. Additionally, for syntax highlighting to work,
 included in the macOS kitty app).</p>
 </div>
 <div class="section" id="usage">
-<h2><a class="toc-backref" href="#id4">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>In the kitty terminal, run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitty</span> <span class="o">+</span><span class="n">kitten</span> <span class="n">diff</span> <span class="n">file1</span> <span class="n">file2</span>
 </pre></div>
@@ -146,7 +148,7 @@ included in the macOS kitty app).</p>
 directory contents.</p>
 </div>
 <div class="section" id="keyboard-controls">
-<h2><a class="toc-backref" href="#id5">Keyboard controls</a><a class="headerlink" href="#keyboard-controls" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">Keyboard controls</a><a class="headerlink" href="#keyboard-controls" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="48%" />
@@ -207,7 +209,7 @@ directory contents.</p>
 </table>
 </div>
 <div class="section" id="configuring-kitty-diff">
-<h2><a class="toc-backref" href="#id6">Configuring kitty-diff</a><a class="headerlink" href="#configuring-kitty-diff" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">Configuring kitty-diff</a><a class="headerlink" href="#configuring-kitty-diff" title="Permalink to this headline">¶</a></h2>
 <p>You can configure the colors used, keyboard shortcut, the diff implementation,
 the default lines of context, etc.  by creating a diff.conf in your kitty
 config folder. The default diff.conf is below.</p>
@@ -273,7 +275,7 @@ config folder. The default diff.conf is below.</p>
 </div>
 </div>
 <div class="section" id="integrating-with-git">
-<h2><a class="toc-backref" href="#id7">Integrating with git</a><a class="headerlink" href="#integrating-with-git" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">Integrating with git</a><a class="headerlink" href="#integrating-with-git" title="Permalink to this headline">¶</a></h2>
 <p>Add the following to <cite>~/.gitconfig</cite>:</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[diff]</span>
     <span class="na">tool</span> <span class="o">=</span> <span class="s">kitty</span>
@@ -294,7 +296,7 @@ config folder. The default diff.conf is below.</p>
 <p>Once again, creating an alias for this command is useful.</p>
 </div>
 <div class="section" id="why-does-this-work-only-in-kitty">
-<h2><a class="toc-backref" href="#id8">Why does this work only in kitty?</a><a class="headerlink" href="#why-does-this-work-only-in-kitty" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">Why does this work only in kitty?</a><a class="headerlink" href="#why-does-this-work-only-in-kitty" title="Permalink to this headline">¶</a></h2>
 <p>The diff kitten makes use of various features that are
 <a class="reference internal" href="../protocol-extensions.html"><span class="doc">kitty only</span></a>,  such as the
 <a class="reference internal" href="../graphics-protocol.html"><span class="doc">kitty graphics protocol</span></a>,

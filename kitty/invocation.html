@@ -1,0 +1,256 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>The kitty command line interface &#8212; kitty  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/kitty.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Key encoding for extended keyboard protocol" href="key-encoding.html" />
+    <link rel="prev" title="The terminal graphics protocol" href="graphics-protocol.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/kitty.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+<div id="support" style="text-align: center">
+    <form class="support-form" action="support.html" title="Donate to support kitty development">
+        <input type="submit" value="Support kitty">
+    </form>
+</div>
+
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" placeholder="Search" />
+      <input type="submit" value="Go" style="cursor: pointer" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div>&nbsp;</div>
+<div id="sidebartoc">
+  <ul>
+<li><a class="reference internal" href="#options">Options</a><ul>
+<li><a class="reference internal" href="#debugging-options">Debugging options</a></li>
+</ul>
+</li>
+</ul>
+
+</div><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="graphics-protocol.html" title="previous chapter">The terminal graphics protocol</a></li>
+      <li>Next: <a href="key-encoding.html" title="next chapter">Key encoding for extended keyboard protocol</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-kitty-command-line-interface">
+<h1>The kitty command line interface<a class="headerlink" href="#the-kitty-command-line-interface" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>program-to-run ...<span class="o">]</span>
+</pre></div>
+</div>
+<p>Run the <span class="italic">kitty</span> terminal emulator. You can also specify the <span class="italic">program</span> to run inside <span class="italic">kitty</span> as normal arguments following the <span class="italic">options</span>. For example: kitty /bin/sh</p>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<dl class="option">
+<dt id="cmdoption-kitty-class">
+<code class="descname">--class</code><code class="descclassname"> &lt;CLS&gt;</code><a class="headerlink" href="#cmdoption-kitty-class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the class part of the <span class="italic">WM_CLASS</span> window property
+Default: kitty</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-name">
+<code class="descname">--name</code><code class="descclassname"> &lt;NAME&gt;</code><a class="headerlink" href="#cmdoption-kitty-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the name part of the <span class="italic">WM_CLASS</span> property (defaults to using the value from <a class="reference internal" href="#cmdoption-kitty-class"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--class</span></code></a>)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-title">
+<code class="descname">--title</code><code class="descclassname"> &lt;TITLE&gt;</code><a class="headerlink" href="#cmdoption-kitty-title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the window title. This will override any title set by the program running inside kitty. So only use this if you are running a program that does not set titles.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-config">
+<code class="descname">--config</code><code class="descclassname"> &lt;CONFIG&gt;</code><code class="descclassname">, </code><code class="descname">-c</code><code class="descclassname"> &lt;CONFIG&gt;</code><a class="headerlink" href="#cmdoption-kitty-config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify a path to the configuration file(s) to use. All configuration files are merged onto the builtin kitty.conf, overriding the builtin values. This option can be specified multiple times to read multiple configuration files in sequence, which are merged. Use the special value NONE to not load a config file.</p>
+<p>If this option is not specified, config files are searched for in the order: <code class="file docutils literal notranslate"><span class="pre">$XDG_CONFIG_HOME/kitty/kitty.conf</span></code>, <code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/kitty.conf</span></code>, <code class="file docutils literal notranslate"><span class="pre">$XDG_CONFIG_DIRS/kitty/kitty.conf</span></code>. The first one that exists is used as the config file.</p>
+<p>If the environment variable <span class="env">KITTY_CONFIG_DIRECTORY</span> is specified, that directory is always used and the above searching does not happen.</p>
+<p>If <code class="file docutils literal notranslate"><span class="pre">/etc/xdg/kitty/kitty.conf</span></code> exists it is merged before (i.e. with lower priority) than any user config files. It can be used to specify system-wide defaults for all users.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-override">
+<code class="descname">--override</code><code class="descclassname"> &lt;OVERRIDE&gt;</code><code class="descclassname">, </code><code class="descname">-o</code><code class="descclassname"> &lt;OVERRIDE&gt;</code><a class="headerlink" href="#cmdoption-kitty-override" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override individual configuration options, can be specified multiple times. Syntax: <span class="italic">name=value</span>. For example: <a class="reference internal" href="#cmdoption-kitty-override"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">-o</span></code></a> font_size=20</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-directory">
+<code class="descname">--directory</code><code class="descclassname"> &lt;DIRECTORY&gt;</code><code class="descclassname">, </code><code class="descname">-d</code><code class="descclassname"> &lt;DIRECTORY&gt;</code><a class="headerlink" href="#cmdoption-kitty-directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change to the specified directory when launching
+Default: .</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-detach">
+<code class="descname">--detach</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-detach" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detach from the controlling terminal, if any</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-session">
+<code class="descname">--session</code><code class="descclassname"> &lt;SESSION&gt;</code><a class="headerlink" href="#cmdoption-kitty-session" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to a file containing the startup <span class="italic">session</span> (tabs, windows, layout, programs). See the README file for details and an example.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-single-instance">
+<code class="descname">--single-instance</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">-1</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-single-instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>If specified only a single instance of <span class="italic">kitty</span> will run. New invocations will instead create a new top-level window in the existing <span class="italic">kitty</span> instance. This allows <span class="italic">kitty</span> to share a single sprite cache on the GPU and also reduces startup time. You can also have separate groups of <span class="italic">kitty</span> instances by using the <a class="reference internal" href="#cmdoption-kitty-instance-group"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--instance-group</span></code></a> option</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-instance-group">
+<code class="descname">--instance-group</code><code class="descclassname"> &lt;INSTANCE_GROUP&gt;</code><a class="headerlink" href="#cmdoption-kitty-instance-group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used in combination with the <a class="reference internal" href="#cmdoption-kitty-single-instance"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--single-instance</span></code></a> option. All <span class="italic">kitty</span> invocations with the same <a class="reference internal" href="#cmdoption-kitty-instance-group"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--instance-group</span></code></a> will result in new windows being created in the first <span class="italic">kitty</span> instance within that group</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-listen-on">
+<code class="descname">--listen-on</code><code class="descclassname"> &lt;LISTEN_ON&gt;</code><a class="headerlink" href="#cmdoption-kitty-listen-on" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell kitty to listen on the specified address for control messages. For example, <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a> unix:/tmp/mykitty or <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a> <a class="reference external" href="tcp:localhost:12345">tcp:localhost:12345</a>. On Linux systems, you can also use abstract UNIX sockets, not associated with a file, like this: <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a> unix:&#64;mykitty. To control kitty, you can send it commands with <span class="italic">kitty &#64;</span> using the <a class="reference internal" href="remote-control.html#cmdoption-kitty-to"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">--to</span></code></a> option to specify this address. Note that this option will be ignored, unless you set <span class="italic">allow_remote_control</span> to yes in <a class="reference internal" href="conf.html"><span class="doc">kitty.conf</span></a>.</p>
+</dd></dl>
+
+<div class="section" id="debugging-options">
+<h3>Debugging options<a class="headerlink" href="#debugging-options" title="Permalink to this headline">¶</a></h3>
+<dl class="option">
+<dt id="cmdoption-kitty-version">
+<code class="descname">--version</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">-v</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-version" title="Permalink to this definition">¶</a></dt>
+<dd><p>The current kitty version</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-dump-commands">
+<code class="descname">--dump-commands</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-dump-commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output commands received from child process to stdout</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-replay-commands">
+<code class="descname">--replay-commands</code><code class="descclassname"> &lt;REPLAY_COMMANDS&gt;</code><a class="headerlink" href="#cmdoption-kitty-replay-commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replay previously dumped commands. Specify the path to a dump file previously created by –dump-commands. You can open a new kitty window to replay the commands with:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty sh -c <span class="s2">&quot;kitty --replay-commands /path/to/dump/file; read&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-dump-bytes">
+<code class="descname">--dump-bytes</code><code class="descclassname"> &lt;DUMP_BYTES&gt;</code><a class="headerlink" href="#cmdoption-kitty-dump-bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to file in which to store the raw bytes received from the child process</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-debug-gl">
+<code class="descname">--debug-gl</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-debug-gl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Debug OpenGL commands. This will cause all OpenGL calls to check for errors instead of ignoring them. Useful when debugging rendering problems</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-debug-font-fallback">
+<code class="descname">--debug-font-fallback</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-debug-font-fallback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print out information about the selection of fallback fonts for characters not present in the main font.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-debug-config">
+<code class="descname">--debug-config</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-debug-config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print out information about the system and kitty configuration.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2018, Kovid Goyal.
+      
+    </div>
+
+    
+    <a href="https://github.com/kovidgoyal/kitty" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>
