@@ -1,0 +1,167 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>kitty - Binary install &#8212; kitty  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/kitty.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Building kitty from source" href="build.html" />
+    <link rel="prev" title="kitty - the fast, featureful, GPU based, terminal emulator" href="index.html" />
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-20736318-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async="async" src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+  
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/kitty.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+<div id="support" style="text-align: center">
+    <form class="support-form" action="support.html" title="Donate to support kitty development">
+        <input type="submit" value="Support kitty">
+    </form>
+</div>
+
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" placeholder="Search" />
+      <input type="submit" value="Go" style="cursor: pointer" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div>&nbsp;</div>
+<div id="sidebartoc">
+  <ul>
+<li><a class="reference internal" href="#customizing-the-installation">Customizing the installation</a></li>
+<li><a class="reference internal" href="#manually-installing">Manually installing</a></li>
+<li><a class="reference internal" href="#building-from-source">Building from source</a></li>
+</ul>
+
+</div><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">kitty - the fast, featureful, GPU based, terminal emulator</a></li>
+      <li>Next: <a href="build.html" title="next chapter">Building kitty from source</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="kitty-binary-install">
+<h1>kitty - Binary install<a class="headerlink" href="#kitty-binary-install" title="Permalink to this headline">¶</a></h1>
+<p>You can install pre-built binaries of <em>kitty</em> if you are on macOS or Linux using
+the following simple command:</p>
+<pre class="pre literal-block">
+curl -L <code class="file docutils literal notranslate"><span class="pre">https://sw.kovidgoyal.net/kitty/installer.sh</span></code> | sh /dev/stdin
+</pre>
+<p>The binaries will be installed in the standard location for your OS,
+<code class="file docutils literal notranslate"><span class="pre">/Applications/kitty.app</span></code> on macOS and <code class="file docutils literal notranslate"><span class="pre">~/.local/kitty.app</span></code> on
+Linux. The installer only touches files in that directory.</p>
+<div class="section" id="customizing-the-installation">
+<h2>Customizing the installation<a class="headerlink" href="#customizing-the-installation" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">You can specify a different install location, with <code class="docutils literal notranslate"><span class="pre">dest</span></code>:</p>
+<pre class="pre literal-block">
+curl -L <code class="file docutils literal notranslate"><span class="pre">https://sw.kovidgoyal.net/kitty/installer.sh</span></code> | sh /dev/stdin \
+    dest=/some/other/location
+</pre>
+</li>
+<li><p class="first">You can tell the installer not to launch <em>kitty</em> after installing it with
+<code class="docutils literal notranslate"><span class="pre">launch=n</span></code>:</p>
+<pre class="pre literal-block">
+curl -L <code class="file docutils literal notranslate"><span class="pre">https://sw.kovidgoyal.net/kitty/installer.sh</span></code> | sh /dev/stdin \
+    launch=n
+</pre>
+</li>
+<li><p class="first">You can use a previously downloaded dmg/tarball, with <code class="docutils literal notranslate"><span class="pre">installer</span></code>:</p>
+<pre class="pre literal-block">
+curl -L <code class="file docutils literal notranslate"><span class="pre">https://sw.kovidgoyal.net/kitty/installer.sh</span></code> | sh /dev/stdin \
+    installer=/path/to/dmg or tarball
+</pre>
+</li>
+</ul>
+</div>
+<div class="section" id="manually-installing">
+<h2>Manually installing<a class="headerlink" href="#manually-installing" title="Permalink to this headline">¶</a></h2>
+<p>If something goes wrong or you simply do not want to run the installer, you can
+manually download and install <em>kitty</em> from the <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases">GitHub releases page</a>. If you are on macOS, download
+the <code class="file docutils literal notranslate"><span class="pre">.dmg</span></code> and install as normal. If you are on Linux, download the tarball
+and extract it into a directory. The <em>kitty</em> executable will be in the
+<code class="file docutils literal notranslate"><span class="pre">bin</span></code> sub-directory.</p>
+</div>
+<div class="section" id="building-from-source">
+<h2>Building from source<a class="headerlink" href="#building-from-source" title="Permalink to this headline">¶</a></h2>
+<p><em>kitty</em> is easy to build from source, follow the <a class="reference internal" href="build.html"><span class="doc">instructions</span></a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2018, Kovid Goyal.
+      
+    </div>
+
+    
+    <a href="https://github.com/kovidgoyal/kitty" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
