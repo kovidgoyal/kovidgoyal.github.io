@@ -77,6 +77,7 @@ ga('send', 'pageview');
 <div>&nbsp;</div>
 <div id="sidebartoc">
   <ul>
+<li><a class="reference internal" href="#future">0.11.0 [future]</a></li>
 <li><a class="reference internal" href="#id1">0.10.1 [2018-05-24]</a></li>
 <li><a class="reference internal" href="#id2">0.10.0 [2018-05-21]</a></li>
 <li><a class="reference internal" href="#id3">0.9.1 [2018-05-05]</a></li>
@@ -114,6 +115,38 @@ ga('send', 'pageview');
   <div class="section" id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
 <p><em>kitty</em> is a feature full, cross-platform, <em>fast</em>, GPU based terminal emulator.</p>
+<div class="section" id="future">
+<h2>0.11.0 [future]<a class="headerlink" href="#future" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="binary.html"><span class="doc">Pre-compiled binaries</span></a> with all bundled dependencies for Linux</li>
+<li>A <a class="reference internal" href="kittens/panel.html"><span class="doc">new kitten</span></a> to create dock panels on X11 desktops showing the output from
+arbitrary terminal programs.</li>
+<li>Reduce data sent to the GPU per render by 30% (<a class="reference external" href="https://github.com/kovidgoyal/kitty/commit/8dea5b3e3ec1db8597f3a3649b5cefd52f41e409">commit: 8dea5b3e</a>)</li>
+<li>Implement changing the font size for individual top level (OS) windows
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/408">#408</a>)</li>
+<li>ssh kitten: Support all SSH options. It can now be aliased directly to ssh for convenience. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/591">#591</a>)</li>
+<li>kitty icat: Add <a class="reference internal" href="kittens/icat.html#cmdoption-kitty-kitten-icat-print-window-size"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">icat</span> <span class="pre">--print-window-size</span></code></a> to easily
+detect the window size in pixels from scripting languages (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/581">#581</a>)</li>
+<li>Allow specifying initial window size in number of cells in addition to pixels
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/436">#436</a>)</li>
+<li>Add a setting to control the margins to the left and right of the tab-bar
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/584">#584</a>)</li>
+<li>When closing a tab switch to the last active tab instead of the right-most
+tab (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/585">#585</a>)</li>
+<li>Wayland: Fix kitty not starting when using wl_roots based compositors
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/157">#157</a>)</li>
+<li>Wayland: Fix mouse wheel/touchpad scrolling in opposite direction to other apps (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/594">#594</a>)</li>
+<li>Add a config option to set the EDITOR kitty uses (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/580">#580</a>)</li>
+<li>Add an option to &#64;set-window-title to make the title change non-permanent
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/592">#592</a>)</li>
+<li>Add support for the CSI t escape code to query window and cell sizes
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/581">#581</a>)</li>
+<li>Linux: Fix fonts not being correctly read from TrueType Collection
+(.ttc) files (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/577">#577</a>)</li>
+<li><a class="reference internal" href="kittens/hints.html"><span class="doc">hints kitten</span></a>: Fix a regression that caused some blank lines to be not
+be displayed.</li>
+</ul>
+</div>
 <div class="section" id="id1">
 <h2>0.10.1 [2018-05-24]<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -142,7 +175,7 @@ for images. See <a class="reference internal" href="kittens/diff.html"><span cla
 <a class="reference internal" href="index.html#layouts"><span class="std std-ref">Layouts</span></a> for details.</li>
 <li>Implement support for the SGR <em>faint</em> escape code to make text blend
 into the background (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/446">#446</a>).</li>
-<li>Make the hints kitten a little smarter <a class="reference external" href="https://github.com/kovidgoyal/kitty/commit/ad1109b6fe0a6802ca4f77182a7a0b36086b3e9f">(commit:ad1109b6)</a>
+<li>Make the hints kitten a little smarter (<a class="reference external" href="https://github.com/kovidgoyal/kitty/commit/ad1109b6fe0a6802ca4f77182a7a0b36086b3e9f">commit: ad1109b6</a>)
 so that URLs that stretch over multiple lines are detected. Also improve
 detection of surrounding brackets/quotes.</li>
 <li>Make the kitty window id available as the environment variable
@@ -150,7 +183,7 @@ detection of surrounding brackets/quotes.</li>
 <li>Add a “fat” layout that is similar to the “tall” layout but vertically
 oriented.</li>
 <li>Expand environment variables in config file include directives</li>
-<li>Allow programs running in kitty to read/write from the clipboard <a class="reference external" href="https://github.com/kovidgoyal/kitty/commit/889ca7791244253cb08fbc3eca8883a87fb943a7">(commit:889ca779)</a>.
+<li>Allow programs running in kitty to read/write from the clipboard (<a class="reference external" href="https://github.com/kovidgoyal/kitty/commit/889ca7791244253cb08fbc3eca8883a87fb943a7">commit: 889ca779</a>).
 By default only writing is allowed. This feature is supported in many
 terminals, search for <cite>OSC 52 clipboard</cite> to find out more about using it.</li>
 <li>Fix moving cursor outside a defined page area incorrectly causing the cursor
