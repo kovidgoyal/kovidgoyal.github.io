@@ -122,8 +122,8 @@ Let’s walk through a few examples of controlling <em>kitty</em>.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty -o <span class="nv">allow_remote_control</span><span class="o">=</span>yes --window-layout tall
 </pre></div>
 </div>
-<p>In order for control to work, <code class="docutils literal notranslate"><span class="pre">allow_remote_control</span></code> must be enabled in
-<a class="reference internal" href="conf.html"><span class="doc">kitty.conf</span></a>. Here we turn it on explicitly at the command line.</p>
+<p>In order for control to work, <a class="reference internal" href="conf.html#opt-kitty.allow_remote_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">allow_remote_control</span></code></a> must be enabled in
+<code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>. Here we turn it on explicitly at the command line.</p>
 <p>Now, in the new <em>kitty</em> window, enter the command:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ new-window --title Output --keep-focus cat
 </pre></div>
@@ -211,7 +211,7 @@ option, see <code class="docutils literal notranslate"><span class="pre">kitty</
 shell. Run <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span></code> with no arguments and you will be dropped into the <em>kitty</em>
 shell with completion for <em>kitty</em> command names and options.</p>
 <p>You can even open the <em>kitty</em> shell inside a running <em>kitty</em> using a simple
-keyboard shortcut (<kbd class="kbd docutils literal notranslate">ctrl+shift+escape</kbd> by default). This has the added
+keyboard shortcut (<a class="reference internal" href="conf.html#shortcut-kitty.Open the kitty command shell"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+escape</span></code></a> by default). This has the added
 advantage that you dont need to use <code class="docutils literal notranslate"><span class="pre">allow_remote_control</span></code> to make it work.</p>
 </div>
 <div class="section" id="kitty">
@@ -219,7 +219,7 @@ advantage that you dont need to use <code class="docutils literal notranslate"><
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ <span class="o">[</span>options<span class="o">]</span> <span class="nb">command</span> ...
 </pre></div>
 </div>
-<p>Control kitty by sending it commands. Add <span class="italic">allow_remote_control yes</span> to <a class="reference internal" href="conf.html"><span class="doc">kitty.conf</span></a> for this to work.</p>
+<p>Control kitty by sending it commands. Set the <a class="reference internal" href="conf.html#opt-kitty.allow_remote_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">allow_remote_control</span></code></a> option to yes in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> for this to work.</p>
 <div class="section" id="options">
 <h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
 <dl class="option">
@@ -325,7 +325,7 @@ advantage that you dont need to use <code class="docutils literal notranslate"><
 <code class="descname">--extent</code><code class="descclassname"> &lt;EXTENT&gt;</code><a class="headerlink" href="#cmdoption-kitty-get-text-extent" title="Permalink to this definition">¶</a></dt>
 <dd><p>What text to get. The default of screen means all text currently on the screen. all means all the screen+scrollback and selection means currently selected text.
 Default: <code class="code docutils literal notranslate"><span class="pre">screen</span></code>
-Choices: <code class="code docutils literal notranslate"><span class="pre">all,</span> <span class="pre">screen,</span> <span class="pre">selection</span></code></p>
+Choices: <code class="code docutils literal notranslate"><span class="pre">all,</span> <span class="pre">selection,</span> <span class="pre">screen</span></code></p>
 </dd></dl>
 
 <dl class="option">
@@ -423,7 +423,7 @@ Default: <code class="code docutils literal notranslate"><span class="pre">2</sp
 <code class="descname">--axis</code><code class="descclassname"> &lt;AXIS&gt;</code><code class="descclassname">, </code><code class="descname">-a</code><code class="descclassname"> &lt;AXIS&gt;</code><a class="headerlink" href="#cmdoption-kitty-resize-window-axis" title="Permalink to this definition">¶</a></dt>
 <dd><p>The axis along which to resize. If <span class="italic">horizontal</span>, it will make the window wider or narrower by the specified increment. If <span class="italic">vertical</span>, it will make the window taller or shorter by the specified increment. The special value <span class="italic">reset</span> will reset the layout to its default configuration.
 Default: <code class="code docutils literal notranslate"><span class="pre">horizontal</span></code>
-Choices: <code class="code docutils literal notranslate"><span class="pre">reset,</span> <span class="pre">vertical,</span> <span class="pre">horizontal</span></code></p>
+Choices: <code class="code docutils literal notranslate"><span class="pre">horizontal,</span> <span class="pre">vertical,</span> <span class="pre">reset</span></code></p>
 </dd></dl>
 
 <dl class="option">
@@ -467,7 +467,7 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">reset
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ set-background-opacity <span class="o">[</span>options<span class="o">]</span> OPACITY
 </pre></div>
 </div>
-<p>Set the background opacity for the specified windows. This will only work if you have turned on dynamic_background_opacity in kitty.conf. The background opacity affects all kitty windows in a single os_window. For example: kitty &#64; set-background-opacity 0.5</p>
+<p>Set the background opacity for the specified windows. This will only work if you have turned on <a class="reference internal" href="conf.html#opt-kitty.background_opacity"><code class="xref std std-opt docutils literal notranslate"><span class="pre">dynamic_background_opacity</span></code></a> in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>. The background opacity affects all kitty windows in a single os_window. For example: kitty &#64; set-background-opacity 0.5</p>
 <div class="section" id="id9">
 <h3>Options<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <dl class="option">

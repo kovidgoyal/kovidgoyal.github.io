@@ -73,7 +73,25 @@ ga('send', 'pageview');
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script><div class="relations">
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div>&nbsp;</div>
+<div id="sidebartoc">
+  <ul>
+<li><a class="reference internal" href="#fonts">Fonts</a></li>
+<li><a class="reference internal" href="#cursor-customization">Cursor customization</a></li>
+<li><a class="reference internal" href="#scrollback">Scrollback</a></li>
+<li><a class="reference internal" href="#mouse">Mouse</a></li>
+<li><a class="reference internal" href="#performance-tuning">Performance tuning</a></li>
+<li><a class="reference internal" href="#terminal-bell">Terminal bell</a></li>
+<li><a class="reference internal" href="#window-layout">Window layout</a></li>
+<li><a class="reference internal" href="#tab-bar">Tab bar</a></li>
+<li><a class="reference internal" href="#color-scheme">Color scheme</a></li>
+<li><a class="reference internal" href="#advanced">Advanced</a></li>
+<li><a class="reference internal" href="#os-specific-tweaks">OS specific tweaks</a></li>
+<li><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+</ul>
+
+</div><div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
@@ -91,584 +109,1372 @@ ga('send', 'pageview');
   <div class="section" id="configuring-kitty">
 <h1>Configuring kitty<a class="headerlink" href="#configuring-kitty" title="Permalink to this headline">¶</a></h1>
 <p><em>kitty</em> is highly customizable, everything from keyboard shortcuts, to painting
-frames-per-second. See the heavily commented default config file below for an
-overview of all customization possibilities.</p>
-<p>You can open the config file within kitty by pressing <kbd class="kbd docutils literal notranslate">ctrl+shift+f2</kbd>.
+frames-per-second. See below for an overview of all customization
+possibilities.</p>
+<p>You can open the config file within kitty by pressing <a class="reference internal" href="#shortcut-kitty.Edit config file"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f2</span></code></a>.
 You can also display the current configuration by running <code class="docutils literal notranslate"><span class="pre">kitty</span>
 <span class="pre">--debug-config</span></code>.</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># vim:fileencoding=utf-8:ft=conf</span>
+<p id="confloc"><em>kitty</em> looks for a config file in the OS config directories (usually
+<code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/kitty.conf</span></code>) but you can pass a specific path via the
+<a class="reference internal" href="invocation.html#cmdoption-kitty-config"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--config</span></code></a> option or use the <code class="docutils literal notranslate"><span class="pre">KITTY_CONFIG_DIRECTORY</span></code>
+environment variable. See the <a class="reference internal" href="invocation.html#cmdoption-kitty-config"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--config</span></code></a> option for full details.</p>
+<p>You can include secondary config files via the <code class="code docutils literal notranslate"><span class="pre">include</span></code> directive.  If
+you use a relative path for include, it is resolved with respect to the
+location of the current config file. Note that environment variables are
+expanded, so <code class="code docutils literal notranslate"><span class="pre">${USER}.conf</span></code> becomes <code class="file docutils literal notranslate"><span class="pre">name.conf</span></code> if
+<code class="code docutils literal notranslate"><span class="pre">USER=name</span></code>.  For example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">include other.conf</span>
+</pre></div>
+</div>
+<div class="section" id="fonts">
+<span id="conf-kitty-fonts"></span><h2>Fonts<a class="headerlink" href="#fonts" title="Permalink to this headline">¶</a></h2>
+<p>kitty has very powerful font management. You can configure individual
+font faces and even specify special fonts for particular characters.</p>
+<dl class="opt">
+<dt id="opt-kitty.font_family">
+<code class="descname">font_family</code><code class="descclassname">, </code><code class="descname">bold_font</code><code class="descclassname">, </code><code class="descname">italic_font</code><code class="descclassname">, </code><code class="descname">bold_italic_font</code><a class="headerlink" href="#opt-kitty.font_family" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># You can include secondary config files via the &quot;include&quot; directive.</span>
-<span class="c1"># If you use a relative path for include, it is resolved with respect to the</span>
-<span class="c1"># location of the current config file. Note that environment variables</span>
-<span class="c1"># are expanded, so ${USER}.conf becomes name.conf if USER=name</span>
-<span class="c1"># For example:</span>
-<span class="c1"># include other.conf</span>
-
-<span class="c1"># Fonts {{{</span>
-<span class="c1"># Font family. You can also specify different fonts for the</span>
-<span class="c1"># bold/italic/bold-italic variants. By default they are derived automatically,</span>
-<span class="c1"># by the OSes font system. Setting them manually is useful for font families</span>
-<span class="c1"># that have many weight variants like Book, Medium, Thick, etc. For example:</span>
-<span class="c1"># font_family Operator Mono Book</span>
-<span class="c1"># bold_font Operator Mono Medium</span>
-<span class="c1"># italic_font Operator Mono Book Italic</span>
-<span class="c1"># bold_italic_font Operator Mono Medium Italic</span>
-<span class="c1">#</span>
-<span class="c1"># You can get a list of full family names available on your computer by running</span>
-<span class="c1"># kitty list-fonts</span>
-<span class="c1"># The default values shown below rely on your OS to choose an appropriate monospace font family.</span>
-<span class="na">font_family      monospace</span>
-<span class="na">italic_font      auto</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">font_family      monospace</span>
 <span class="na">bold_font        auto</span>
+<span class="na">italic_font      auto</span>
 <span class="na">bold_italic_font auto</span>
+</pre></div>
+</div>
+<p>You can specify different fonts for the bold/italic/bold-italic variants.
+By default they are derived automatically, by the OSes font system. Setting
+them manually is useful for font families that have many weight variants like
+Book, Medium, Thick, etc. For example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">font_family      Operator Mono Book</span>
+<span class="na">bold_font        Operator Mono Medium</span>
+<span class="na">italic_font      Operator Mono Book Italic</span>
+<span class="na">bold_italic_font Operator Mono Medium Italic</span>
+</pre></div>
+</div>
+<dl class="opt">
+<dt id="opt-kitty.font_size">
+<code class="descname">font_size</code><a class="headerlink" href="#opt-kitty.font_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Font size (in pts)</span>
-<span class="na">font_size        11.0</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">font_size 11.0</span>
+</pre></div>
+</div>
+<p>Font size (in pts)</p>
+<dl class="opt">
+<dt id="opt-kitty.adjust_line_height">
+<code class="descname">adjust_line_height</code><code class="descclassname">, </code><code class="descname">adjust_column_width</code><a class="headerlink" href="#opt-kitty.adjust_line_height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Adjust the cell dimensions.</span>
-<span class="c1"># You can use either numbers, which are interpreted as pixels or percentages</span>
-<span class="c1"># (number followed by %), which are interpreted as percentages of the</span>
-<span class="c1"># unmodified values. You can use negative pixels or percentages less than</span>
-<span class="c1"># 100% to reduce sizes (but this might cause rendering artifacts).</span>
-<span class="na">adjust_line_height 0</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">adjust_line_height  0</span>
 <span class="na">adjust_column_width 0</span>
+</pre></div>
+</div>
+<p>Change the size of each character cell kitty renders. You can use either numbers,
+which are interpreted as pixels or percentages (number followed by %), which
+are interpreted as percentages of the unmodified values. You can use negative
+pixels or percentages less than 100% to reduce sizes (but this might cause
+rendering artifacts).</p>
+<dl class="opt">
+<dt id="opt-kitty.symbol_map">
+<code class="descname">symbol_map</code><a class="headerlink" href="#opt-kitty.symbol_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Symbol mapping (special font for specified unicode code points). Map the</span>
-<span class="c1"># specified unicode codepoints to a particular font. Useful if you need special</span>
-<span class="c1"># rendering for some symbols, such as for Powerline. Avoids the need for</span>
-<span class="c1"># patched fonts. Each unicode code point is specified in the form U+&lt;code point</span>
-<span class="c1"># in hexadecimal&gt;. You can specify multiple code points, separated by commas</span>
-<span class="c1"># and ranges separated by hyphens. symbol_map itself can be specified multiple times.</span>
-<span class="c1"># Syntax is:</span>
-<span class="c1">#</span>
-<span class="c1"># symbol_map codepoints Font Family Name</span>
-<span class="c1">#</span>
-<span class="c1"># For example:</span>
-<span class="c1">#</span>
-<span class="c1"># symbol_map U+E0A0-U+E0A2,U+E0B0-U+E0B3 PowerlineSymbols</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">symbol_map U+E0A0-U+E0A2,U+E0B0-U+E0B3 PowerlineSymbols</span>
+</pre></div>
+</div>
+<p>Map the specified unicode codepoints to a particular font. Useful if you need
+special rendering for some symbols, such as for Powerline. Avoids the need for
+patched fonts. Each unicode code point is specified in the form <code class="code docutils literal notranslate"><span class="pre">U+&lt;code</span> <span class="pre">point</span>
+<span class="pre">in</span> <span class="pre">hexadecimal&gt;</span></code>. You can specify multiple code points, separated by commas and
+ranges separated by hyphens. <code class="code docutils literal notranslate"><span class="pre">symbol_map</span></code> itself can be specified multiple times.
+Syntax is:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">symbol_map codepoints Font Family Name</span>
+</pre></div>
+</div>
+<dl class="opt">
+<dt id="opt-kitty.box_drawing_scale">
+<code class="descname">box_drawing_scale</code><a class="headerlink" href="#opt-kitty.box_drawing_scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Change the sizes of the lines used for the box drawing unicode characters</span>
-<span class="c1"># These values are in pts. They will be scaled by the monitor DPI to arrive at</span>
-<span class="c1"># a pixel value. There must be four values corresponding to thin, normal, thick,</span>
-<span class="c1"># and very thick lines;</span>
-<span class="na">box_drawing_scale 0.001, 1, 1.5, 2</span>
-<span class="c1"># }}}</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">box_drawing_scale 0.001, 1, 1.5, 2</span>
+</pre></div>
+</div>
+<p>Change the sizes of the lines used for the box drawing unicode characters
+These values are in pts. They will be scaled by the monitor DPI to arrive at
+a pixel value. There must be four values corresponding to thin, normal, thick,
+and very thick lines.</p>
+</div>
+<div class="section" id="cursor-customization">
+<span id="conf-kitty-cursor"></span><h2>Cursor customization<a class="headerlink" href="#cursor-customization" title="Permalink to this headline">¶</a></h2>
+<dl class="opt">
+<dt id="opt-kitty.cursor">
+<code class="descname">cursor</code><a class="headerlink" href="#opt-kitty.cursor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">cursor #cccccc</span>
+</pre></div>
+</div>
+<p>Default cursor color</p>
+<dl class="opt">
+<dt id="opt-kitty.cursor_shape">
+<code class="descname">cursor_shape</code><a class="headerlink" href="#opt-kitty.cursor_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Cursor customization {{{</span>
-<span class="c1"># The cursor color</span>
-<span class="na">cursor           #cccccc</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">cursor_shape block</span>
+</pre></div>
+</div>
+<p>The cursor shape can be one of (block, beam, underline)</p>
+<dl class="opt">
+<dt id="opt-kitty.cursor_blink_interval">
+<code class="descname">cursor_blink_interval</code><code class="descclassname">, </code><code class="descname">cursor_stop_blinking_after</code><a class="headerlink" href="#opt-kitty.cursor_blink_interval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># The cursor shape can be one of (block, beam, underline)</span>
-<span class="na">cursor_shape     block</span>
-
-<span class="c1"># The interval (in seconds) at which to blink the cursor. Set to zero to</span>
-<span class="c1"># disable blinking. Note that numbers smaller than repaint_delay will be</span>
-<span class="c1"># limited to repaint_delay.</span>
-<span class="na">cursor_blink_interval     0.5</span>
-
-<span class="c1"># Stop blinking cursor after the specified number of seconds of keyboard inactivity. Set to</span>
-<span class="c1"># zero to never stop blinking.</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">cursor_blink_interval      0.5</span>
 <span class="na">cursor_stop_blinking_after 15.0</span>
-<span class="c1"># }}}</span>
+</pre></div>
+</div>
+<p>The interval (in seconds) at which to blink the cursor. Set to zero to disable
+blinking. Note that numbers smaller than <a class="reference internal" href="#opt-kitty.repaint_delay"><code class="xref std std-opt docutils literal notranslate"><span class="pre">repaint_delay</span></code></a> will be limited
+to <a class="reference internal" href="#opt-kitty.repaint_delay"><code class="xref std std-opt docutils literal notranslate"><span class="pre">repaint_delay</span></code></a>. Stop blinking cursor after the specified number of
+seconds of keyboard inactivity. Set to zero to never stop blinking.</p>
+</div>
+<div class="section" id="scrollback">
+<span id="conf-kitty-scrollback"></span><h2>Scrollback<a class="headerlink" href="#scrollback" title="Permalink to this headline">¶</a></h2>
+<dl class="opt">
+<dt id="opt-kitty.scrollback_lines">
+<code class="descname">scrollback_lines</code><a class="headerlink" href="#opt-kitty.scrollback_lines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">scrollback_lines 2000</span>
+</pre></div>
+</div>
+<p>Number of lines of history to keep in memory for scrolling back. Memory is allocated
+on demand.</p>
+<dl class="opt">
+<dt id="opt-kitty.scrollback_pager">
+<code class="descname">scrollback_pager</code><a class="headerlink" href="#opt-kitty.scrollback_pager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Scrollback {{{</span>
-<span class="c1"># Number of lines of history to keep in memory for scrolling back</span>
-<span class="na">scrollback_lines 2000</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">scrollback_pager less +G -R</span>
+</pre></div>
+</div>
+<p>Program with which to view scrollback in a new window. The scrollback buffer is
+passed as STDIN to this program. If you change it, make sure the program you
+use can handle ANSI escape sequences for colors and text formatting.</p>
+<dl class="opt">
+<dt id="opt-kitty.wheel_scroll_multiplier">
+<code class="descname">wheel_scroll_multiplier</code><a class="headerlink" href="#opt-kitty.wheel_scroll_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Program with which to view scrollback in a new window. The scrollback buffer is passed as</span>
-<span class="c1"># STDIN to this program. If you change it, make sure the program you use can</span>
-<span class="c1"># handle ANSI escape sequences for colors and text formatting.</span>
-<span class="na">scrollback_pager less +G -R</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">wheel_scroll_multiplier 5.0</span>
+</pre></div>
+</div>
+<p>Modify the amount scrolled by the mouse wheel or touchpad. Use
+negative numbers to change scroll direction.</p>
+</div>
+<div class="section" id="mouse">
+<span id="conf-kitty-mouse"></span><h2>Mouse<a class="headerlink" href="#mouse" title="Permalink to this headline">¶</a></h2>
+<dl class="opt">
+<dt id="opt-kitty.url_color">
+<code class="descname">url_color</code><code class="descclassname">, </code><code class="descname">url_style</code><a class="headerlink" href="#opt-kitty.url_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Wheel scroll multiplier (modify the amount scrolled by the mouse wheel). Use negative</span>
-<span class="c1"># numbers to change scroll direction.</span>
-<span class="na">wheel_scroll_multiplier 5.0</span>
-<span class="c1"># }}}</span>
-
-
-<span class="c1"># Mouse {{{</span>
-<span class="c1"># The color and style for highlighting URLs on mouse-over. url_style can be one of:</span>
-<span class="c1"># none, single, double, curly</span>
-<span class="na">url_color #0087BD</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">url_color #0087BD</span>
 <span class="na">url_style curly</span>
+</pre></div>
+</div>
+<p>The color and style for highlighting URLs on mouse-over.
+<code class="code docutils literal notranslate"><span class="pre">url_style</span></code> can be one of: none, single, double, curly</p>
+<dl class="opt">
+<dt id="opt-kitty.open_url_modifiers">
+<code class="descname">open_url_modifiers</code><a class="headerlink" href="#opt-kitty.open_url_modifiers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># The modifier keys to press when clicking with the mouse on URLs to open the URL</span>
-<span class="na">open_url_modifiers kitty_mod</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">open_url_modifiers kitty_mod</span>
+</pre></div>
+</div>
+<p>The modifier keys to press when clicking with the
+mouse on URLs to open the URL</p>
+<dl class="opt">
+<dt id="opt-kitty.open_url_with">
+<code class="descname">open_url_with</code><a class="headerlink" href="#opt-kitty.open_url_with" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># The program with which to open URLs that are clicked on. The special value &quot;default&quot; means to</span>
-<span class="c1"># use the operating system&#39;s default URL handler.</span>
-<span class="na">open_url_with default</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">open_url_with default</span>
+</pre></div>
+</div>
+<p>The program with which to open URLs that are clicked on.
+The special value <code class="code docutils literal notranslate"><span class="pre">default</span></code> means to use the
+operating system’s default URL handler.</p>
+<dl class="opt">
+<dt id="opt-kitty.copy_on_select">
+<code class="descname">copy_on_select</code><a class="headerlink" href="#opt-kitty.copy_on_select" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Copy to clipboard on select. With this enabled, simply selecting text with</span>
-<span class="c1"># the mouse will cause the text to be copied to clipboard. Useful on platforms</span>
-<span class="c1"># such as macOS/Wayland that do not have the concept of primary selections. Note</span>
-<span class="c1"># that this is a security risk, as all programs, including websites open in your</span>
-<span class="c1"># browser can read the contents of the clipboard.</span>
-<span class="na">copy_on_select no</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">copy_on_select no</span>
+</pre></div>
+</div>
+<p>Copy to clipboard on select. With this enabled, simply selecting text with
+the mouse will cause the text to be copied to clipboard. Useful on platforms
+such as macOS/Wayland that do not have the concept of primary selections. Note
+that this is a security risk, as all programs, including websites open in your
+browser can read the contents of the clipboard.</p>
+<dl class="opt">
+<dt id="opt-kitty.rectangle_select_modifiers">
+<code class="descname">rectangle_select_modifiers</code><a class="headerlink" href="#opt-kitty.rectangle_select_modifiers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># The modifiers to use rectangular selection (i.e. to select text in a</span>
-<span class="c1"># rectangular block with the mouse)</span>
-<span class="na">rectangle_select_modifiers ctrl+alt</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">rectangle_select_modifiers ctrl+alt</span>
+</pre></div>
+</div>
+<p>The modifiers to use rectangular selection (i.e. to select text in a
+rectangular block with the mouse)</p>
+<dl class="opt">
+<dt id="opt-kitty.select_by_word_characters">
+<code class="descname">select_by_word_characters</code><a class="headerlink" href="#opt-kitty.select_by_word_characters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Characters considered part of a word when double clicking. In addition to these characters</span>
-<span class="c1"># any character that is marked as an alpha-numeric character in the unicode</span>
-<span class="c1"># database will be matched.</span>
-<span class="na">select_by_word_characters :@-./_~?&amp;</span><span class="o">=</span><span class="s">%+#</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">select_by_word_characters :@-./_~?&amp;</span><span class="o">=</span><span class="s">%+#</span>
+</pre></div>
+</div>
+<p>Characters considered part of a word when double clicking. In addition to these characters
+any character that is marked as an alpha-numeric character in the unicode
+database will be matched.</p>
+<dl class="opt">
+<dt id="opt-kitty.click_interval">
+<code class="descname">click_interval</code><a class="headerlink" href="#opt-kitty.click_interval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># The interval between successive clicks to detect double/triple clicks (in seconds)</span>
-<span class="na">click_interval 0.5</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">click_interval 0.5</span>
+</pre></div>
+</div>
+<p>The interval between successive clicks to detect
+double/triple clicks (in seconds)</p>
+<dl class="opt">
+<dt id="opt-kitty.mouse_hide_wait">
+<code class="descname">mouse_hide_wait</code><a class="headerlink" href="#opt-kitty.mouse_hide_wait" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Hide mouse cursor after the specified number of seconds of the mouse not being used. Set to</span>
-<span class="c1"># zero to disable mouse cursor hiding.</span>
-<span class="na">mouse_hide_wait 3.0</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">mouse_hide_wait 3.0</span>
+</pre></div>
+</div>
+<p>Hide mouse cursor after the specified number of seconds
+of the mouse not being used. Set to zero to disable mouse cursor hiding.</p>
+<dl class="opt">
+<dt id="opt-kitty.focus_follows_mouse">
+<code class="descname">focus_follows_mouse</code><a class="headerlink" href="#opt-kitty.focus_follows_mouse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Set the active window to the window under the mouse when moving the mouse around</span>
-<span class="na">focus_follows_mouse no</span>
-<span class="c1"># }}}</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">focus_follows_mouse no</span>
+</pre></div>
+</div>
+<p>Set the active window to the window under the mouse when
+moving the mouse around</p>
+</div>
+<div class="section" id="performance-tuning">
+<span id="conf-kitty-performance"></span><h2>Performance tuning<a class="headerlink" href="#performance-tuning" title="Permalink to this headline">¶</a></h2>
+<dl class="opt">
+<dt id="opt-kitty.repaint_delay">
+<code class="descname">repaint_delay</code><a class="headerlink" href="#opt-kitty.repaint_delay" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">repaint_delay 10</span>
+</pre></div>
+</div>
+<p>Delay (in milliseconds) between screen updates. Decreasing it, increases
+frames-per-second (FPS) at the cost of more CPU usage. The default value
+yields ~100 FPS which is more than sufficient for most uses. Note that to
+actually achieve 100 FPS you have to either set <a class="reference internal" href="#opt-kitty.sync_to_monitor"><code class="xref std std-opt docutils literal notranslate"><span class="pre">sync_to_monitor</span></code></a> to no
+or use a monitor with a high refresh rate.</p>
+<dl class="opt">
+<dt id="opt-kitty.input_delay">
+<code class="descname">input_delay</code><a class="headerlink" href="#opt-kitty.input_delay" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Performance tuning {{{</span>
-<span class="c1"># Delay (in milliseconds) between screen updates. Decreasing it, increases</span>
-<span class="c1"># frames-per-second (FPS) at the cost of more CPU usage. The default value</span>
-<span class="c1"># yields ~100 FPS which is more than sufficient for most uses. Note that to</span>
-<span class="c1"># actually achieve 100FPS you have to either set sync_to_monitor to no or use a</span>
-<span class="c1"># monitor with a high refresh rate.</span>
-<span class="na">repaint_delay    10</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">input_delay 3</span>
+</pre></div>
+</div>
+<p>Delay (in milliseconds) before input from the program running in the terminal
+is processed. Note that decreasing it will increase responsiveness, but also
+increase CPU usage and might cause flicker in full screen programs that
+redraw the entire screen on each loop, because kitty is so fast that partial
+screen updates will be drawn.</p>
+<dl class="opt">
+<dt id="opt-kitty.sync_to_monitor">
+<code class="descname">sync_to_monitor</code><a class="headerlink" href="#opt-kitty.sync_to_monitor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Delay (in milliseconds) before input from the program running in the terminal</span>
-<span class="c1"># is processed. Note that decreasing it will increase responsiveness, but also</span>
-<span class="c1"># increase CPU usage and might cause flicker in full screen programs that</span>
-<span class="c1"># redraw the entire screen on each loop, because kitty is so fast that partial</span>
-<span class="c1"># screen updates will be drawn.</span>
-<span class="na">input_delay 3</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">sync_to_monitor yes</span>
+</pre></div>
+</div>
+<p>Sync screen updates to the refresh rate of the monitor. This prevents
+tearing (<a class="reference external" href="https://en.wikipedia.org/wiki/Screen_tearing">https://en.wikipedia.org/wiki/Screen_tearing</a>) when scrolling. However,
+it limits the rendering speed to the refresh rate of your monitor. With a
+very high speed mouse/high keyboard repeat rate, you may notice some slight input latency.
+If so, set this to no.</p>
+</div>
+<div class="section" id="terminal-bell">
+<span id="conf-kitty-bell"></span><h2>Terminal bell<a class="headerlink" href="#terminal-bell" title="Permalink to this headline">¶</a></h2>
+<dl class="opt">
+<dt id="opt-kitty.enable_audio_bell">
+<code class="descname">enable_audio_bell</code><a class="headerlink" href="#opt-kitty.enable_audio_bell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Sync screen updates to the refresh rate of the monitor. This prevents</span>
-<span class="c1"># tearing (https://en.wikipedia.org/wiki/Screen_tearing) when scrolling. However,</span>
-<span class="c1"># it limits the rendering speed to the refresh rate of your monitor. With a</span>
-<span class="c1"># very high speed mouse/high keyboard repeat rate, you may notice some slight input latency.</span>
-<span class="c1"># If so, set this to no.</span>
-<span class="na">sync_to_monitor yes</span>
-<span class="c1"># }}}</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">enable_audio_bell yes</span>
+</pre></div>
+</div>
+<p>Enable/disable the audio bell. Useful in environments that require silence.</p>
+<dl class="opt">
+<dt id="opt-kitty.visual_bell_duration">
+<code class="descname">visual_bell_duration</code><a class="headerlink" href="#opt-kitty.visual_bell_duration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">visual_bell_duration 0.0</span>
+</pre></div>
+</div>
+<p>Visual bell duration. Flash the screen when a bell occurs for the specified number of
+seconds. Set to zero to disable.</p>
+<dl class="opt">
+<dt id="opt-kitty.window_alert_on_bell">
+<code class="descname">window_alert_on_bell</code><a class="headerlink" href="#opt-kitty.window_alert_on_bell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Audio/visual bell {{{</span>
-<span class="c1"># Visual bell duration. Flash the screen when a bell occurs for the specified number of</span>
-<span class="c1"># seconds. Set to zero to disable.</span>
-<span class="na">visual_bell_duration 0.0</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">window_alert_on_bell yes</span>
+</pre></div>
+</div>
+<p>Request window attention on bell.
+Makes the dock icon bounce on macOS or the taskbar flash on linux.</p>
+<dl class="opt">
+<dt id="opt-kitty.bell_on_tab">
+<code class="descname">bell_on_tab</code><a class="headerlink" href="#opt-kitty.bell_on_tab" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Enable/disable the audio bell. Useful in environments that require silence.</span>
-<span class="na">enable_audio_bell yes</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">bell_on_tab yes</span>
+</pre></div>
+</div>
+<p>Show a bell symbol on the tab if a bell occurs in one of the windows in the
+tab and the window is not the currently focused window</p>
+</div>
+<div class="section" id="window-layout">
+<span id="conf-kitty-window"></span><h2>Window layout<a class="headerlink" href="#window-layout" title="Permalink to this headline">¶</a></h2>
+<dl class="opt">
+<dt id="opt-kitty.remember_window_size">
+<code class="descname">remember_window_size</code><code class="descclassname">, </code><code class="descname">initial_window_width</code><code class="descclassname">, </code><code class="descname">initial_window_height</code><a class="headerlink" href="#opt-kitty.remember_window_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Request window attention on bell.</span>
-<span class="c1"># Makes the dock icon bounce on macOS or the taskbar flash on linux.</span>
-<span class="na">window_alert_on_bell yes</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">remember_window_size  yes</span>
+<span class="na">initial_window_width  640</span>
+<span class="na">initial_window_height 400</span>
+</pre></div>
+</div>
+<p>If enabled, the window size will be remembered so that new instances of kitty
+will have the same size as the previous instance. If disabled, the window will
+initially have size configured by initial_window_width/height, in pixels. You
+can use a suffix of “c” on the width/height values to have them interpreted as
+number of cells instead of pixels.</p>
+<dl class="opt">
+<dt id="opt-kitty.enabled_layouts">
+<code class="descname">enabled_layouts</code><a class="headerlink" href="#opt-kitty.enabled_layouts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Show a bell symbol on the tab if a bell occurs in one of the windows in the</span>
-<span class="c1"># tab and the window is not the currently focused window</span>
-<span class="na">bell_on_tab yes</span>
-<span class="c1"># }}}</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">enabled_layouts *</span>
+</pre></div>
+</div>
+<p>The enabled window layouts. A comma separated list of layout names. The special
+value <code class="code docutils literal notranslate"><span class="pre">*</span></code> means all layouts. The first listed layout will be used as the
+startup layout. For a list of available layouts, see the <a class="reference internal" href="index.html#layouts"><span class="std std-ref">Layouts</span></a>.</p>
+<dl class="opt">
+<dt id="opt-kitty.window_resize_step_cells">
+<code class="descname">window_resize_step_cells</code><code class="descclassname">, </code><code class="descname">window_resize_step_lines</code><a class="headerlink" href="#opt-kitty.window_resize_step_cells" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-
-<span class="c1"># Window layout {{{</span>
-<span class="c1"># If enabled, the window size will be remembered so that new instances of kitty will have the same</span>
-<span class="c1"># size as the previous instance. If disabled, the window will initially have size configured</span>
-<span class="c1"># by initial_window_width/height, in pixels. You can use a suffix of &quot;c&quot; on the width/height values</span>
-<span class="c1"># to have them interpreted as number of cells instead of pixels.</span>
-<span class="na">remember_window_size   yes</span>
-<span class="na">initial_window_width   640</span>
-<span class="na">initial_window_height  400</span>
-
-<span class="c1"># The enabled window layouts. A comma separated list of layout names. The special value * means</span>
-<span class="c1"># all layouts. The first listed layout will be used as the startup layout.</span>
-<span class="c1"># For a list of available layouts, see the README.</span>
-<span class="na">enabled_layouts *</span>
-
-<span class="c1"># The step size (in units of cell width/cell height) to use when resizing</span>
-<span class="c1"># windows. The cells value is used for horizontal resizing and the lines value</span>
-<span class="c1"># for vertical resizing.</span>
-<span class="na">window_resize_step_cells 2</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">window_resize_step_cells 2</span>
 <span class="na">window_resize_step_lines 2</span>
+</pre></div>
+</div>
+<p>The step size (in units of cell width/cell height) to use when resizing
+windows. The cells value is used for horizontal resizing and the lines value
+for vertical resizing.</p>
+<dl class="opt">
+<dt id="opt-kitty.window_border_width">
+<code class="descname">window_border_width</code><a class="headerlink" href="#opt-kitty.window_border_width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># The width (in pts) of window borders. Will be rounded to the nearest number of pixels based on screen resolution.</span>
-<span class="c1"># Note that borders are displayed only when more than one window is visible. They are meant to separate multiple windows.</span>
-<span class="na">window_border_width 1</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">window_border_width 1.0</span>
+</pre></div>
+</div>
+<p>The width (in pts) of window borders. Will be rounded to the nearest number of pixels based on screen resolution.
+Note that borders are displayed only when more than one window is visible. They are meant to separate multiple windows.</p>
+<dl class="opt">
+<dt id="opt-kitty.window_margin_width">
+<code class="descname">window_margin_width</code><a class="headerlink" href="#opt-kitty.window_margin_width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># The window margin (in pts) (blank area outside the border)</span>
-<span class="na">window_margin_width 0</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">window_margin_width 0.0</span>
+</pre></div>
+</div>
+<p>The window margin (in pts) (blank area outside the border)</p>
+<dl class="opt">
+<dt id="opt-kitty.window_padding_width">
+<code class="descname">window_padding_width</code><a class="headerlink" href="#opt-kitty.window_padding_width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># The window padding (in pts) (blank area between the text and the window border)</span>
-<span class="na">window_padding_width 0</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">window_padding_width 0.0</span>
+</pre></div>
+</div>
+<p>The window padding (in pts) (blank area between the text and the window border)</p>
+<dl class="opt">
+<dt id="opt-kitty.active_border_color">
+<code class="descname">active_border_color</code><a class="headerlink" href="#opt-kitty.active_border_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># The color for the border of the active window</span>
-<span class="na">active_border_color #00ff00</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">active_border_color #00ff00</span>
+</pre></div>
+</div>
+<p>The color for the border of the active window</p>
+<dl class="opt">
+<dt id="opt-kitty.inactive_border_color">
+<code class="descname">inactive_border_color</code><a class="headerlink" href="#opt-kitty.inactive_border_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># The color for the border of inactive windows</span>
-<span class="na">inactive_border_color #cccccc</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">inactive_border_color #cccccc</span>
+</pre></div>
+</div>
+<p>The color for the border of inactive windows</p>
+<dl class="opt">
+<dt id="opt-kitty.bell_border_color">
+<code class="descname">bell_border_color</code><a class="headerlink" href="#opt-kitty.bell_border_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># The color for the border of inactive windows in which a bell has occurred</span>
-<span class="na">bell_border_color #ff5a00</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">bell_border_color #ff5a00</span>
+</pre></div>
+</div>
+<p>The color for the border of inactive windows in which a bell has occurred</p>
+<dl class="opt">
+<dt id="opt-kitty.inactive_text_alpha">
+<code class="descname">inactive_text_alpha</code><a class="headerlink" href="#opt-kitty.inactive_text_alpha" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Fade the text in inactive windows by the specified amount (a number between</span>
-<span class="c1"># zero and one, with 0 being fully faded).</span>
-<span class="na">inactive_text_alpha 1.0</span>
-<span class="c1"># }}}</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">inactive_text_alpha 1.0</span>
+</pre></div>
+</div>
+<p>Fade the text in inactive windows by the specified amount (a number between
+zero and one, with zero being fully faded).</p>
+</div>
+<div class="section" id="tab-bar">
+<span id="conf-kitty-tabbar"></span><h2>Tab bar<a class="headerlink" href="#tab-bar" title="Permalink to this headline">¶</a></h2>
+<dl class="opt">
+<dt id="opt-kitty.tab_bar_edge">
+<code class="descname">tab_bar_edge</code><a class="headerlink" href="#opt-kitty.tab_bar_edge" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">tab_bar_edge bottom</span>
+</pre></div>
+</div>
+<p>Which edge to show the tab bar on, top or bottom</p>
+<dl class="opt">
+<dt id="opt-kitty.tab_bar_margin_width">
+<code class="descname">tab_bar_margin_width</code><a class="headerlink" href="#opt-kitty.tab_bar_margin_width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># Tab bar {{{</span>
-<span class="c1"># Which edge to show the tab bar on, top or bottom</span>
-<span class="na">tab_bar_edge bottom</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">tab_bar_margin_width 0.0</span>
+</pre></div>
+</div>
+<p>The margin to the left and right of the tab bar (in pts)</p>
+<dl class="opt">
+<dt id="opt-kitty.tab_separator">
+<code class="descname">tab_separator</code><a class="headerlink" href="#opt-kitty.tab_separator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># The margin to the left and right of the tab bar (in pts)</span>
-<span class="na">tab_bar_margin_width 0</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">tab_separator &quot; ┇&quot;</span>
+</pre></div>
+</div>
+<p>The separator between tabs in the tab bar</p>
+<dl class="opt">
+<dt id="opt-kitty.active_tab_foreground">
+<code class="descname">active_tab_foreground</code><code class="descclassname">, </code><code class="descname">active_tab_background</code><code class="descclassname">, </code><code class="descname">active_tab_font_style</code><code class="descclassname">, </code><code class="descname">inactive_tab_foreground</code><code class="descclassname">, </code><code class="descname">inactive_tab_background</code><code class="descclassname">, </code><code class="descname">inactive_tab_font_style</code><a class="headerlink" href="#opt-kitty.active_tab_foreground" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<span class="c1"># The separator between tabs in the tab bar</span>
-<span class="na">tab_separator &quot; ┇&quot;</span>
-
-<span class="c1"># Tab bar colors and styles</span>
-<span class="na">active_tab_foreground #000</span>
-<span class="na">active_tab_background #eee</span>
-<span class="na">active_tab_font_style bold-italic</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">active_tab_foreground   #000</span>
+<span class="na">active_tab_background   #eee</span>
+<span class="na">active_tab_font_style   bold-italic</span>
 <span class="na">inactive_tab_foreground #444</span>
 <span class="na">inactive_tab_background #999</span>
 <span class="na">inactive_tab_font_style normal</span>
-<span class="c1"># }}}</span>
-
-
-<span class="c1"># Color scheme {{{</span>
-<span class="c1"># The foreground color</span>
-<span class="na">foreground       #dddddd</span>
-
-<span class="c1"># The background color</span>
-<span class="na">background       #000000</span>
-
-<span class="c1"># The opacity of the background. A number between 0 and 1, where 1 is opaque and 0 is fully transparent.</span>
-<span class="c1"># This will only work if supported by the OS (for instance, when using a compositor under X11). Note</span>
-<span class="c1"># that it only sets the default background color&#39;s opacity. This is so that</span>
-<span class="c1"># things like the status bar in vim, powerline prompts, etc. still look good.</span>
-<span class="c1"># But it means that if you use a color theme with a background color in your</span>
-<span class="c1"># editor, it will not be rendered as transparent.  Instead you should change the</span>
-<span class="c1"># default background color in your kitty config and not use a background color</span>
-<span class="c1"># in the editor color scheme. Or use the escape codes to set the terminals</span>
-<span class="c1"># default colors in a shell script to launch your editor.</span>
-<span class="c1"># Be aware that using a value less than 1.0 is a (possibly significant) performance hit.</span>
-<span class="na">background_opacity 1.0</span>
-<span class="c1"># If you want to dynamically change transparency of windows set dynamic_background_opacity to yes</span>
-<span class="c1"># (this is off by default as it has a performance cost)</span>
-<span class="na">dynamic_background_opacity no</span>
-
-<span class="c1"># How much to dim text that has the DIM/FAINT attribute set. 1.0 means no dimming and</span>
-<span class="c1"># 0.0 means fully dimmed (i.e. invisible).</span>
-<span class="na">dim_opacity 0.75</span>
-
-<span class="c1"># The foreground for selections</span>
-<span class="na">selection_foreground #000000</span>
-
-<span class="c1"># The background for selections</span>
-<span class="na">selection_background #FFFACD</span>
-
-<span class="c1"># The 16 terminal colors. There are 8 basic colors, each color has a dull and</span>
-<span class="c1"># bright version. You can also set the remaining colors from the 256 color table</span>
-<span class="c1"># as color16 to color256.</span>
-
-<span class="c1"># black</span>
-<span class="na">color0   #000000</span>
-<span class="na">color8   #767676</span>
-
-<span class="c1"># red</span>
-<span class="na">color1   #cc0403</span>
-<span class="na">color9   #f2201f</span>
-
-<span class="c1"># green</span>
-<span class="na">color2   #19cb00</span>
-<span class="na">color10  #23fd00</span>
-
-<span class="c1"># yellow</span>
-<span class="na">color3   #cecb00</span>
-<span class="na">color11  #fffd00</span>
-
-<span class="c1"># blue</span>
-<span class="na">color4  #0d73cc</span>
-<span class="na">color12 #1a8fff</span>
-
-<span class="c1"># magenta</span>
-<span class="na">color5   #cb1ed1</span>
-<span class="na">color13  #fd28ff</span>
-
-<span class="c1"># cyan</span>
-<span class="na">color6   #0dcdcd</span>
-<span class="na">color14  #14ffff</span>
-
-<span class="c1"># white</span>
-<span class="na">color7   #dddddd</span>
-<span class="na">color15  #ffffff</span>
-<span class="c1"># }}}</span>
-
-
-<span class="c1"># Advanced {{{</span>
-
-<span class="c1"># The shell program to execute. The default value of . means</span>
-<span class="c1"># to use whatever shell is set as the default shell for the current user.</span>
-<span class="c1"># Note that on macOS if you change this, you might need to add --login to</span>
-<span class="c1"># ensure that the shell starts in interactive mode and reads its startup rc files.</span>
-<span class="na">shell .</span>
-
-<span class="c1"># The console editor to use when editing the kitty config file or similar</span>
-<span class="c1"># tasks. A value of . means to use the environment variable EDITOR. Note that</span>
-<span class="c1"># this environment variable has to be set not just in your shell startup</span>
-<span class="c1"># scripts but system-wide, otherwise kitty will not see it.</span>
-<span class="na">editor .</span>
-
-<span class="c1">#</span>
-<span class="c1"># Close the window when the child process (shell) exits. If no (the default),</span>
-<span class="c1"># the terminal will remain open when the child exits as long as there are still</span>
-<span class="c1"># processes outputting to the terminal (for example disowned or backgrounded</span>
-<span class="c1"># processes). If yes, the window will close as soon as the child process exits.</span>
-<span class="c1"># Note that setting it to yes means that any background processes still using</span>
-<span class="c1"># the terminal can fail silently because their stdout/stderr/stdin no longer</span>
-<span class="c1"># work.</span>
-<span class="na">close_on_child_death no</span>
-
-<span class="c1"># Allow other programs to control kitty. If you turn this on other programs can</span>
-<span class="c1"># control all aspects of kitty, including sending text to kitty windows,</span>
-<span class="c1"># opening new windows, closing windows, reading the content of windows, etc.</span>
-<span class="c1"># Note that this even works over ssh connections.</span>
-<span class="na">allow_remote_control no</span>
-
-<span class="c1"># Allow programs running in kitty to read and write from the clipboard. You can</span>
-<span class="c1"># control exactly which actions are allowed. The set of possible actions is:</span>
-<span class="c1"># write-clipboard read-clipboard write-primary read-primary</span>
-<span class="c1"># The default is to allow writing to the clipboard and primary selection. Note</span>
-<span class="c1"># that enabling the read functionality is a security risk as it means that any</span>
-<span class="c1"># program, even one running on a remote server via SSH can read your clipboard.</span>
-<span class="na">clipboard_control write-clipboard write-primary</span>
-
-<span class="c1"># The value of the TERM environment variable to set. Changing this can break</span>
-<span class="c1"># many terminal programs, only change it if you know what you are doing, not</span>
-<span class="c1"># because you read some advice on Stack Overflow to change it.</span>
-<span class="na">term xterm-kitty</span>
-
-
-<span class="c1"># }}}</span>
-
-
-<span class="c1"># Keyboard shortcuts {{{</span>
-<span class="c1"># For a list of key names, see: http://www.glfw.org/docs/latest/group__keys.html</span>
-<span class="c1"># For a list of modifier names, see: http://www.glfw.org/docs/latest/group__mods.html</span>
-
-<span class="c1"># The value of kitty_mod is used as the modifier for all default shortcuts, you</span>
-<span class="c1"># can change it in your kitty.conf to change the modifiers for all the default</span>
-<span class="c1"># shortcuts.</span>
-<span class="na">kitty_mod ctrl+shift</span>
-<span class="c1">#</span>
-<span class="c1"># You can use the special action no_op to unmap a keyboard shortcut that is</span>
-<span class="c1"># assigned in the default configuration.</span>
-<span class="c1">#</span>
-<span class="c1"># You can combine multiple actions to be triggered by a single shortcut, using the</span>
-<span class="c1"># syntax below:</span>
-<span class="c1"># map key combine &lt;separator&gt; action1 &lt;separator&gt; action2 &lt;separator&gt; action3 ...</span>
-<span class="c1"># For example:</span>
-<span class="c1"># map kitty_mod+e combine : new_window : next_layout</span>
-<span class="c1"># this will create a new window and switch to the next available layout</span>
-<span class="c1">#</span>
-<span class="c1"># You can use multi-key shortcuts using the syntax shown below:</span>
-<span class="c1"># map key1&gt;key2&gt;key3 action</span>
-<span class="c1"># For example:</span>
-<span class="c1"># map ctrl+f&gt;2 set_font_size 20</span>
-<span class="c1"># this will change the font size to 20 points when you press ctrl+f and then 2</span>
-
-<span class="c1"># Clipboard {{{</span>
-<span class="na">map kitty_mod+c        copy_to_clipboard</span>
-<span class="na">map kitty_mod+v        paste_from_clipboard</span>
-<span class="na">map kitty_mod+s        paste_from_selection</span>
-<span class="na">map shift+insert       paste_from_selection</span>
-<span class="c1"># You can also pass the contents of the current selection to any program using</span>
-<span class="c1"># pass_selection_to_program. By default, the system&#39;s open program is used, but</span>
-<span class="c1"># you can specify your own, for example:</span>
-<span class="c1"># map kitty_mod+o      pass_selection_to_program firefox</span>
-<span class="na">map kitty_mod+o        pass_selection_to_program</span>
-<span class="c1"># }}}</span>
-
-<span class="c1"># Scrolling {{{</span>
-<span class="na">map kitty_mod+up        scroll_line_up</span>
-<span class="na">map kitty_mod+down      scroll_line_down</span>
-<span class="na">map kitty_mod+k         scroll_line_up</span>
-<span class="na">map kitty_mod+j         scroll_line_down</span>
-<span class="na">map kitty_mod+page_up   scroll_page_up</span>
-<span class="na">map kitty_mod+page_down scroll_page_down</span>
-<span class="na">map kitty_mod+home      scroll_home</span>
-<span class="na">map kitty_mod+end       scroll_end</span>
-<span class="na">map kitty_mod+h         show_scrollback</span>
-<span class="c1"># }}}</span>
-
-<span class="c1"># Window management {{{</span>
-<span class="na">map kitty_mod+enter    new_window</span>
-<span class="na">map kitty_mod+n        new_os_window</span>
-<span class="na">map kitty_mod+w        close_window</span>
-<span class="na">map kitty_mod+]        next_window</span>
-<span class="na">map kitty_mod+[        previous_window</span>
-<span class="na">map kitty_mod+f        move_window_forward</span>
-<span class="na">map kitty_mod+b        move_window_backward</span>
-<span class="na">map kitty_mod+`        move_window_to_top</span>
-<span class="na">map kitty_mod+r        start_resizing_window</span>
-<span class="c1"># Switching to a particular window</span>
-<span class="na">map kitty_mod+1        first_window</span>
-<span class="na">map kitty_mod+2        second_window</span>
-<span class="na">map kitty_mod+3        third_window</span>
-<span class="na">map kitty_mod+4        fourth_window</span>
-<span class="na">map kitty_mod+5        fifth_window</span>
-<span class="na">map kitty_mod+6        sixth_window</span>
-<span class="na">map kitty_mod+7        seventh_window</span>
-<span class="na">map kitty_mod+8        eighth_window</span>
-<span class="na">map kitty_mod+9        ninth_window</span>
-<span class="na">map kitty_mod+0        tenth_window</span>
-<span class="c1"># You can open a new window running an arbitrary program, for example:</span>
-<span class="c1"># map kitty_mod+y      new_window mutt</span>
-<span class="c1">#</span>
-<span class="c1"># You can pass the current selection to the new program by using the @selection placeholder</span>
-<span class="c1"># map kitty_mod+y      new_window less @selection</span>
-<span class="c1">#</span>
-<span class="c1"># You can even send the contents of the current screen + history buffer as stdin using</span>
-<span class="c1"># the placeholders @text (which is the plain text) and @ansi (which includes text styling escape codes).</span>
-<span class="c1"># For only the current screen, use @screen or @ansi_screen.</span>
-<span class="c1"># For example, the following command opens the scrollback buffer in less in a new window.</span>
-<span class="c1"># map kitty_mod+y      new_window @ansi less +G -R</span>
-<span class="c1">#</span>
-<span class="c1"># You can open a new window with the current working directory set to the</span>
-<span class="c1"># working directory of the current window using</span>
-<span class="c1"># map ctrl+alt+enter    new_window_with_cwd</span>
-<span class="c1"># }}}</span>
-
-<span class="c1"># Tab management {{{</span>
-<span class="na">map kitty_mod+right    next_tab</span>
-<span class="na">map kitty_mod+left     previous_tab</span>
-<span class="na">map kitty_mod+t        new_tab</span>
-<span class="na">map kitty_mod+q        close_tab</span>
-<span class="na">map kitty_mod+l        next_layout</span>
-<span class="na">map kitty_mod+.        move_tab_forward</span>
-<span class="na">map kitty_mod+,        move_tab_backward</span>
-<span class="na">map kitty_mod+alt+t    set_tab_title</span>
-<span class="c1"># You can also create shortcuts to go to specific tabs, with 1 being the first tab</span>
-<span class="c1"># map ctrl+alt+1          goto_tab 1</span>
-<span class="c1"># map ctrl+alt+2          goto_tab 2</span>
-
-<span class="c1"># Just as with new_window above, you can also pass the name of arbitrary</span>
-<span class="c1"># commands to run when using new_tab and use new_tab_with_cwd.</span>
-<span class="c1"># }}}</span>
-
-<span class="c1"># Layout management {{{</span>
-<span class="c1"># You can create shortcuts to switch to specific layouts</span>
-<span class="c1"># map ctrl+alt+1          goto_layout tall</span>
-<span class="c1"># map ctrl+alt+2          goto_layout stack</span>
-<span class="c1"># }}}</span>
-
-<span class="c1"># Font sizes {{{</span>
-<span class="c1"># You can change the font size for all top-level kitty windows at a time</span>
-<span class="c1"># or only the current one.</span>
-<span class="na">map kitty_mod+equal    change_font_size all +2.0</span>
-<span class="na">map kitty_mod+minus    change_font_size all -2.0</span>
-<span class="na">map kitty_mod+backspace change_font_size all 0</span>
-<span class="c1"># To setup shortcuts for specific font sizes:</span>
-<span class="c1"># map kitty_mod+f6     change_font_size all 10.0</span>
-<span class="c1"># To setup shortcuts to change only the current window&#39;s font size:</span>
-<span class="c1"># map kitty_mod+f6     change_font_size current 10.0</span>
-<span class="c1"># }}}</span>
-
-<span class="c1"># Select and act on visible text {{{</span>
-<span class="c1"># Use the hints kitten to select text and either pass it to an external program or</span>
-<span class="c1"># insert it into the terminal or copy it to the clipboard.</span>
-<span class="c1">#</span>
-<span class="c1"># Open a currently visible URL using the keyboard. The program used to open the</span>
-<span class="c1"># URL is specified in open_url_with.</span>
-<span class="na">map kitty_mod+e         kitten hints</span>
-
-<span class="c1"># Select a path/filename and insert it into the terminal. Useful, for instance to</span>
-<span class="c1"># run git commands on a filename output from a previous git command.</span>
-<span class="na">map kitty_mod+p&gt;f       kitten hints --type path --program -</span>
-
-<span class="c1"># Select a path/filename and open it with the default open program.</span>
-<span class="na">map kitty_mod+p&gt;shift+f kitten hints --type path</span>
-
-<span class="c1"># Select a line of text and insert it into the terminal. Use for the</span>
-<span class="c1"># output of things like: ls -1</span>
-<span class="na">map kitty_mod+p&gt;l       kitten hints --type line --program -</span>
-
-<span class="c1"># Select words and insert into terminal.</span>
-<span class="na">map kitty_mod+p&gt;w       kitten hints --type word --program -</span>
-
-<span class="c1"># The hints kitten has many more modes of operation that you can map to different</span>
-<span class="c1"># shortcuts. For a full description run: kitty +kitten hints --help</span>
-<span class="c1"># }}}</span>
-
-<span class="c1"># Miscellaneous {{{</span>
-<span class="na">map kitty_mod+f11      toggle_fullscreen</span>
-<span class="na">map kitty_mod+u        input_unicode_character</span>
-<span class="na">map kitty_mod+f2       edit_config_file</span>
-<span class="c1"># Open the kitty shell in a new window/tab/overlay/os_window to control kitty using commands.</span>
-<span class="na">map kitty_mod+escape   kitty_shell window</span>
-<span class="na">map kitty_mod+a&gt;m set_background_opacity +0.1</span>
-<span class="na">map kitty_mod+a&gt;l set_background_opacity -0.1</span>
-<span class="na">map kitty_mod+a&gt;1 set_background_opacity 1</span>
-<span class="na">map kitty_mod+a&gt;d set_background_opacity default</span>
-
-<span class="c1"># Sending arbitrary text on shortcut key presses</span>
-<span class="c1"># You can tell kitty to send arbitrary (UTF-8) encoded text to</span>
-<span class="c1"># the client program when pressing specified shortcut keys. For example:</span>
-<span class="c1"># map ctrl+alt+a send_text all Special text</span>
-<span class="c1"># This will send &quot;Special text&quot; when you press the Ctrl+Alt+a key combination.</span>
-<span class="c1"># The text to be sent is a python string literal so you can use escapes like</span>
-<span class="c1"># \x1b to send control codes or \u21fb to send unicode characters (or you can</span>
-<span class="c1"># just input the unicode characters directly as UTF-8 text). The first argument</span>
-<span class="c1"># to send_text is the keyboard modes in which to activate the shortcut. The possible</span>
-<span class="c1"># values are normal or application or kitty or a comma separated combination of them.</span>
-<span class="c1"># The special keyword all means all modes. The modes normal and application refer to</span>
-<span class="c1"># the DECCKM cursor key mode for terminals, and kitty refers to the special kitty</span>
-<span class="c1"># extended keyboard protocol. Another example, that outputs a word and then moves the cursor</span>
-<span class="c1"># to the start of the line (same as pressing the Home key):</span>
-<span class="c1"># map ctrl+alt+a send_text normal Word\x1b[H</span>
-<span class="c1"># map ctrl+alt+a send_text application Word\x1bOH</span>
-<span class="c1"># }}}</span>
-
-<span class="c1"># You can have kitty remove all shortcut definition seen up to this point. Useful, for</span>
-<span class="c1"># instance, to remove the default shortcuts.</span>
-<span class="na">clear_all_shortcuts no</span>
-<span class="c1"># }}}</span>
-
-
-<span class="c1"># OS specific tweaks {{{</span>
-
-<span class="c1"># Change the color of the kitty window&#39;s titlebar on macOS. A value of &quot;system&quot;</span>
-<span class="c1"># means to use the default system color, a value of &quot;background&quot; means to use</span>
-<span class="c1"># the background color of the currently active window and finally you can use</span>
-<span class="c1"># an arbitrary color, such as #12af59 or &quot;red&quot;. WARNING: This option works by</span>
-<span class="c1"># using a hack, as there is no proper Cocoa API for it. It sets the background</span>
-<span class="c1"># color of the entire window and makes the titlebar transparent. As such it is</span>
-<span class="c1"># incompatible with background_opacity. If you want to use both, you are</span>
-<span class="c1"># probably better off just hiding the titlebar with macos_hide_titlebar.</span>
-<span class="na">macos_titlebar_color system</span>
-
-<span class="c1"># Hide the kitty window&#39;s title bar on macOS.</span>
-<span class="na">macos_hide_titlebar no</span>
-
-<span class="c1"># Use the option key as an alt key. With this set to no, kitty will use</span>
-<span class="c1"># the macOS native Option+Key = unicode character behavior. This will</span>
-<span class="c1"># break any Alt+key keyboard shortcuts in your terminal programs, but you</span>
-<span class="c1"># can use the macOS unicode input technique.</span>
-<span class="na">macos_option_as_alt yes</span>
-
-<span class="c1"># Hide the kitty window from running tasks (alt-tab) on macOS.</span>
-<span class="na">macos_hide_from_tasks no</span>
-<span class="c1"># }}}</span>
 </pre></div>
 </div>
-<p id="confloc"><em>kitty</em> looks for a config file in the OS config directories (usually
-<code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/kitty.conf</span></code> and additionally
-<code class="file docutils literal notranslate"><span class="pre">~/Library/Preferences/kitty/kitty.conf</span></code> on macOS) but you can pass a
-specific path via the <a class="reference internal" href="invocation.html#cmdoption-kitty-config"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--config</span></code></a> option or use the <code class="docutils literal notranslate"><span class="pre">KITTY_CONFIG_DIRECTORY</span></code>
-environment variable. See the <a class="reference internal" href="invocation.html#cmdoption-kitty-config"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--config</span></code></a> option
-for full details.</p>
+<p>Tab bar colors and styles</p>
+</div>
+<div class="section" id="color-scheme">
+<span id="conf-kitty-colors"></span><h2>Color scheme<a class="headerlink" href="#color-scheme" title="Permalink to this headline">¶</a></h2>
+<dl class="opt">
+<dt id="opt-kitty.foreground">
+<code class="descname">foreground</code><code class="descclassname">, </code><code class="descname">background</code><a class="headerlink" href="#opt-kitty.foreground" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">foreground #dddddd</span>
+<span class="na">background #000000</span>
+</pre></div>
+</div>
+<p>The foreground and background colors</p>
+<dl class="opt">
+<dt id="opt-kitty.background_opacity">
+<code class="descname">background_opacity</code><code class="descclassname">, </code><code class="descname">dynamic_background_opacity</code><a class="headerlink" href="#opt-kitty.background_opacity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">background_opacity         1.0</span>
+<span class="na">dynamic_background_opacity no</span>
+</pre></div>
+</div>
+<p>The opacity of the background. A number between 0 and 1, where 1 is opaque and
+0 is fully transparent.  This will only work if supported by the OS (for
+instance, when using a compositor under X11). Note that it only sets the
+default background color’s opacity. This is so that things like the status bar
+in vim, powerline prompts, etc. still look good.  But it means that if you use
+a color theme with a background color in your editor, it will not be rendered
+as transparent.  Instead you should change the default background color in your
+kitty config and not use a background color in the editor color scheme. Or use
+the escape codes to set the terminals default colors in a shell script to
+launch your editor.  Be aware that using a value less than 1.0 is a (possibly
+significant) performance hit.  If you want to dynamically change transparency
+of windows set dynamic_background_opacity to yes (this is off by default as it
+has a performance cost)</p>
+<dl class="opt">
+<dt id="opt-kitty.dim_opacity">
+<code class="descname">dim_opacity</code><a class="headerlink" href="#opt-kitty.dim_opacity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">dim_opacity 0.75</span>
+</pre></div>
+</div>
+<p>How much to dim text that has the DIM/FAINT attribute set. One means no dimming and
+zero means fully dimmed (i.e. invisible).</p>
+<dl class="opt">
+<dt id="opt-kitty.selection_foreground">
+<code class="descname">selection_foreground</code><code class="descclassname">, </code><code class="descname">selection_background</code><a class="headerlink" href="#opt-kitty.selection_foreground" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">selection_foreground #000000</span>
+<span class="na">selection_background #FFFACD</span>
+</pre></div>
+</div>
+<p>The foreground and background for text selected with the mouse</p>
+<div class="section" id="the-color-table">
+<span id="conf-kitty-colors-table"></span><h3>The color table<a class="headerlink" href="#the-color-table" title="Permalink to this headline">¶</a></h3>
+<p>The 16 terminal colors. There are 8 basic colors, each color has a dull and
+bright version. You can also set the remaining colors from the 256 color table
+as color16 to color255.</p>
+<dl class="opt">
+<dt id="opt-kitty.color0">
+<code class="descname">color0</code><code class="descclassname">, </code><code class="descname">color8</code><a class="headerlink" href="#opt-kitty.color0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">color0 #000000</span>
+<span class="na">color8 #767676</span>
+</pre></div>
+</div>
+<p>black</p>
+<dl class="opt">
+<dt id="opt-kitty.color1">
+<code class="descname">color1</code><code class="descclassname">, </code><code class="descname">color9</code><a class="headerlink" href="#opt-kitty.color1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">color1 #cc0403</span>
+<span class="na">color9 #f2201f</span>
+</pre></div>
+</div>
+<p>red</p>
+<dl class="opt">
+<dt id="opt-kitty.color2">
+<code class="descname">color2</code><code class="descclassname">, </code><code class="descname">color10</code><a class="headerlink" href="#opt-kitty.color2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">color2  #19cb00</span>
+<span class="na">color10 #23fd00</span>
+</pre></div>
+</div>
+<p>green</p>
+<dl class="opt">
+<dt id="opt-kitty.color3">
+<code class="descname">color3</code><code class="descclassname">, </code><code class="descname">color11</code><a class="headerlink" href="#opt-kitty.color3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">color3  #cecb00</span>
+<span class="na">color11 #fffd00</span>
+</pre></div>
+</div>
+<p>yellow</p>
+<dl class="opt">
+<dt id="opt-kitty.color4">
+<code class="descname">color4</code><code class="descclassname">, </code><code class="descname">color12</code><a class="headerlink" href="#opt-kitty.color4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">color4  #0d73cc</span>
+<span class="na">color12 #1a8fff</span>
+</pre></div>
+</div>
+<p>blue</p>
+<dl class="opt">
+<dt id="opt-kitty.color5">
+<code class="descname">color5</code><code class="descclassname">, </code><code class="descname">color13</code><a class="headerlink" href="#opt-kitty.color5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">color5  #cb1ed1</span>
+<span class="na">color13 #fd28ff</span>
+</pre></div>
+</div>
+<p>magenta</p>
+<dl class="opt">
+<dt id="opt-kitty.color6">
+<code class="descname">color6</code><code class="descclassname">, </code><code class="descname">color14</code><a class="headerlink" href="#opt-kitty.color6" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">color6  #0dcdcd</span>
+<span class="na">color14 #14ffff</span>
+</pre></div>
+</div>
+<p>cyan</p>
+<dl class="opt">
+<dt id="opt-kitty.color7">
+<code class="descname">color7</code><code class="descclassname">, </code><code class="descname">color15</code><a class="headerlink" href="#opt-kitty.color7" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">color7  #dddddd</span>
+<span class="na">color15 #ffffff</span>
+</pre></div>
+</div>
+<p>white</p>
+</div>
+</div>
+<div class="section" id="advanced">
+<span id="conf-kitty-advanced"></span><h2>Advanced<a class="headerlink" href="#advanced" title="Permalink to this headline">¶</a></h2>
+<dl class="opt">
+<dt id="opt-kitty.shell">
+<code class="descname">shell</code><a class="headerlink" href="#opt-kitty.shell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">shell .</span>
+</pre></div>
+</div>
+<p>The shell program to execute. The default value of . means
+to use whatever shell is set as the default shell for the current user.
+Note that on macOS if you change this, you might need to add <code class="code docutils literal notranslate"><span class="pre">--login</span></code> to
+ensure that the shell starts in interactive mode and reads its startup rc files.</p>
+<dl class="opt">
+<dt id="opt-kitty.editor">
+<code class="descname">editor</code><a class="headerlink" href="#opt-kitty.editor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">editor .</span>
+</pre></div>
+</div>
+<p>The console editor to use when editing the kitty config file or similar tasks.
+A value of . means to use the environment variable EDITOR. Note that this
+environment variable has to be set not just in your shell startup scripts but
+system-wide, otherwise kitty will not see it.</p>
+<dl class="opt">
+<dt id="opt-kitty.close_on_child_death">
+<code class="descname">close_on_child_death</code><a class="headerlink" href="#opt-kitty.close_on_child_death" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">close_on_child_death no</span>
+</pre></div>
+</div>
+<p>Close the window when the child process (shell) exits. If no (the default), the
+terminal will remain open when the child exits as long as there are still
+processes outputting to the terminal (for example disowned or backgrounded
+processes). If yes, the window will close as soon as the child process exits.
+Note that setting it to yes means that any background processes still using the
+terminal can fail silently because their stdout/stderr/stdin no longer work.</p>
+<dl class="opt">
+<dt id="opt-kitty.allow_remote_control">
+<code class="descname">allow_remote_control</code><a class="headerlink" href="#opt-kitty.allow_remote_control" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">allow_remote_control no</span>
+</pre></div>
+</div>
+<p>Allow other programs to control kitty. If you turn this on other programs can
+control all aspects of kitty, including sending text to kitty windows,
+opening new windows, closing windows, reading the content of windows, etc.
+Note that this even works over ssh connections.</p>
+<dl class="opt">
+<dt id="opt-kitty.clipboard_control">
+<code class="descname">clipboard_control</code><a class="headerlink" href="#opt-kitty.clipboard_control" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">clipboard_control write-clipboard write-primary</span>
+</pre></div>
+</div>
+<p>Allow programs running in kitty to read and write from the clipboard. You can
+control exactly which actions are allowed. The set of possible actions is:
+write-clipboard read-clipboard write-primary read-primary
+The default is to allow writing to the clipboard and primary selection. Note
+that enabling the read functionality is a security risk as it means that any
+program, even one running on a remote server via SSH can read your clipboard.</p>
+<dl class="opt">
+<dt id="opt-kitty.term">
+<code class="descname">term</code><a class="headerlink" href="#opt-kitty.term" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">term xterm-kitty</span>
+</pre></div>
+</div>
+<p>The value of the TERM environment variable to set. Changing this can break
+many terminal programs, only change it if you know what you are doing, not
+because you read some advice on Stack Overflow to change it.</p>
+</div>
+<div class="section" id="os-specific-tweaks">
+<span id="conf-kitty-os"></span><h2>OS specific tweaks<a class="headerlink" href="#os-specific-tweaks" title="Permalink to this headline">¶</a></h2>
+<dl class="opt">
+<dt id="opt-kitty.macos_titlebar_color">
+<code class="descname">macos_titlebar_color</code><a class="headerlink" href="#opt-kitty.macos_titlebar_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">macos_titlebar_color system</span>
+</pre></div>
+</div>
+<p>Change the color of the kitty window’s titlebar on macOS. A value of <code class="code docutils literal notranslate"><span class="pre">system</span></code>
+means to use the default system color, a value of <code class="code docutils literal notranslate"><span class="pre">background</span></code> means to use
+the background color of the currently active window and finally you can use
+an arbitrary color, such as <code class="code docutils literal notranslate"><span class="pre">#12af59</span></code> or <code class="code docutils literal notranslate"><span class="pre">red</span></code>. WARNING: This option works by
+using a hack, as there is no proper Cocoa API for it. It sets the background
+color of the entire window and makes the titlebar transparent. As such it is
+incompatible with <a class="reference internal" href="#opt-kitty.background_opacity"><code class="xref std std-opt docutils literal notranslate"><span class="pre">background_opacity</span></code></a>. If you want to use both, you are
+probably better off just hiding the titlebar with <a class="reference internal" href="#opt-kitty.macos_hide_titlebar"><code class="xref std std-opt docutils literal notranslate"><span class="pre">macos_hide_titlebar</span></code></a>.</p>
+<dl class="opt">
+<dt id="opt-kitty.macos_hide_titlebar">
+<code class="descname">macos_hide_titlebar</code><a class="headerlink" href="#opt-kitty.macos_hide_titlebar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">macos_hide_titlebar no</span>
+</pre></div>
+</div>
+<p># Hide the kitty window’s title bar on macOS.</p>
+<dl class="opt">
+<dt id="opt-kitty.macos_option_as_alt">
+<code class="descname">macos_option_as_alt</code><a class="headerlink" href="#opt-kitty.macos_option_as_alt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">macos_option_as_alt yes</span>
+</pre></div>
+</div>
+<p>Use the option key as an alt key. With this set to no, kitty will use
+the macOS native <kbd class="kbd docutils literal notranslate">Option+Key</kbd> = unicode character behavior. This will
+break any <kbd class="kbd docutils literal notranslate">Alt+key</kbd> keyboard shortcuts in your terminal programs, but you
+can use the macOS unicode input technique.</p>
+<dl class="opt">
+<dt id="opt-kitty.macos_hide_from_tasks">
+<code class="descname">macos_hide_from_tasks</code><a class="headerlink" href="#opt-kitty.macos_hide_from_tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">macos_hide_from_tasks no</span>
+</pre></div>
+</div>
+<p>Hide the kitty window from running tasks (<kbd class="kbd docutils literal notranslate">Option+Tab</kbd>) on macOS.</p>
+</div>
+<div class="section" id="keyboard-shortcuts">
+<span id="conf-kitty-shortcuts"></span><h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
+<p>For a list of key names, see: <a class="reference external" href="http://www.glfw.org/docs/latest/group__keys.html">GLFW keys</a>
+For a list of modifier names, see: <a class="reference external" href="http://www.glfw.org/docs/latest/group__mods.html">GLFW mods</a></p>
+<p>You can use the special action <code class="code docutils literal notranslate"><span class="pre">no_op</span></code> to unmap a keyboard shortcut that is
+assigned in the default configuration.</p>
+<p>You can combine multiple actions to be triggered by a single shortcut, using the
+syntax below:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map key combine &lt;separator&gt; action1 &lt;separator&gt; action2 &lt;separator&gt; action3 ...</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map kitty_mod+e combine : new_window : next_layout</span>
+</pre></div>
+</div>
+<p>this will create a new window and switch to the next available layout</p>
+<p>You can use multi-key shortcuts using the syntax shown below:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map key1&gt;key2&gt;key3 action</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map ctrl+f&gt;2 set_font_size 20</span>
+</pre></div>
+</div>
+<dl class="opt">
+<dt id="opt-kitty.kitty_mod">
+<code class="descname">kitty_mod</code><a class="headerlink" href="#opt-kitty.kitty_mod" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">kitty_mod ctrl+shift</span>
+</pre></div>
+</div>
+<p>The value of <code class="code docutils literal notranslate"><span class="pre">kitty_mod</span></code> is used as the modifier for all default shortcuts, you
+can change it in your kitty.conf to change the modifiers for all the default
+shortcuts.</p>
+<dl class="opt">
+<dt id="opt-kitty.clear_all_shortcuts">
+<code class="descname">clear_all_shortcuts</code><a class="headerlink" href="#opt-kitty.clear_all_shortcuts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">clear_all_shortcuts no</span>
+</pre></div>
+</div>
+<p>You can have kitty remove all shortcut definition seen up to this point. Useful, for
+instance, to remove the default shortcuts.</p>
+<div class="section" id="clipboard">
+<span id="conf-kitty-shortcuts-clipboard"></span><h3>Clipboard<a class="headerlink" href="#clipboard" title="Permalink to this headline">¶</a></h3>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Copy to clipboard">
+<code class="descname">Copy to clipboard</code><a class="headerlink" href="#shortcut-kitty.Copy to clipboard" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+c</span> copy_to_clipboard
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Paste from clipboard">
+<code class="descname">Paste from clipboard</code><a class="headerlink" href="#shortcut-kitty.Paste from clipboard" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+v</span> paste_from_clipboard
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Paste from selection">
+<code class="descname">Paste from selection</code><a class="headerlink" href="#shortcut-kitty.Paste from selection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+s</span> paste_from_selection
+map <span class="green">shift+insert</span> paste_from_selection
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Pass selection to program">
+<code class="descname">Pass selection to program</code><a class="headerlink" href="#shortcut-kitty.Pass selection to program" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+o</span> pass_selection_to_program
+</pre>
+<p>You can also pass the contents of the current selection to any program using
+<code class="code docutils literal notranslate"><span class="pre">pass_selection_to_program</span></code>. By default, the system’s open program is used, but
+you can specify your own, for example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map kitty_mod+o pass_selection_to_program firefox</span>
+</pre></div>
+</div>
+<p>You can pass the current selection to a terminal program running in a new kitty
+window, by using the &#64;selection placeholder:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map kitty_mod+y      new_window less @selection</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scrolling">
+<span id="conf-kitty-shortcuts-scrolling"></span><h3>Scrolling<a class="headerlink" href="#scrolling" title="Permalink to this headline">¶</a></h3>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Scroll line up">
+<code class="descname">Scroll line up</code><a class="headerlink" href="#shortcut-kitty.Scroll line up" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+up</span> scroll_line_up
+map <span class="green">ctrl+shift+k</span> scroll_line_up
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Scroll line down">
+<code class="descname">Scroll line down</code><a class="headerlink" href="#shortcut-kitty.Scroll line down" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+down</span> scroll_line_down
+map <span class="green">ctrl+shift+j</span> scroll_line_down
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Scroll page up">
+<code class="descname">Scroll page up</code><a class="headerlink" href="#shortcut-kitty.Scroll page up" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+page_up</span> scroll_page_up
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Scroll page down">
+<code class="descname">Scroll page down</code><a class="headerlink" href="#shortcut-kitty.Scroll page down" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+page_down</span> scroll_page_down
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Scroll to top">
+<code class="descname">Scroll to top</code><a class="headerlink" href="#shortcut-kitty.Scroll to top" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+home</span> scroll_home
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Scroll to bottom">
+<code class="descname">Scroll to bottom</code><a class="headerlink" href="#shortcut-kitty.Scroll to bottom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+end</span> scroll_end
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Browse scrollback buffer in less">
+<code class="descname">Browse scrollback buffer in less</code><a class="headerlink" href="#shortcut-kitty.Browse scrollback buffer in less" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+h</span> show_scrollback
+</pre>
+<p>You can send the contents of the current screen + history buffer as stdin to an arbitrary program using
+the placeholders &#64;text (which is the plain text) and &#64;ansi (which includes text styling escape codes).
+For only the current screen, use &#64;screen or &#64;ansi_screen.
+For example, the following command opens the scrollback buffer in less in a new window:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map kitty_mod+y      new_window @ansi less +G -R</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="window-management">
+<span id="conf-kitty-shortcuts-window"></span><h3>Window management<a class="headerlink" href="#window-management" title="Permalink to this headline">¶</a></h3>
+<dl class="shortcut">
+<dt id="shortcut-kitty.">
+<code class="descname"></code><a class="headerlink" href="#shortcut-kitty." title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+enter</span> new_window
+</pre>
+<p>You can open a new window running an arbitrary program, for example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map kitty_mod+y      new_window mutt</span>
+</pre></div>
+</div>
+<p>You can open a new window with the current working directory set to the
+working directory of the current window using:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map ctrl+alt+enter    new_window_with_cwd</span>
+</pre></div>
+</div>
+<dl class="shortcut">
+<dt id="shortcut-kitty.New OS window">
+<code class="descname">New OS window</code><a class="headerlink" href="#shortcut-kitty.New OS window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+n</span> new_os_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Close window">
+<code class="descname">Close window</code><a class="headerlink" href="#shortcut-kitty.Close window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+w</span> close_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Next window">
+<code class="descname">Next window</code><a class="headerlink" href="#shortcut-kitty.Next window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+]</span> next_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Previous window">
+<code class="descname">Previous window</code><a class="headerlink" href="#shortcut-kitty.Previous window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+[</span> previous_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Move window forward">
+<code class="descname">Move window forward</code><a class="headerlink" href="#shortcut-kitty.Move window forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+f</span> move_window_forward
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Move window backward">
+<code class="descname">Move window backward</code><a class="headerlink" href="#shortcut-kitty.Move window backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+b</span> move_window_backward
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Move window to top">
+<code class="descname">Move window to top</code><a class="headerlink" href="#shortcut-kitty.Move window to top" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+`</span> move_window_to_top
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Start resizing window">
+<code class="descname">Start resizing window</code><a class="headerlink" href="#shortcut-kitty.Start resizing window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+r</span> start_resizing_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.First window">
+<code class="descname">First window</code><a class="headerlink" href="#shortcut-kitty.First window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+1</span> first_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Second window">
+<code class="descname">Second window</code><a class="headerlink" href="#shortcut-kitty.Second window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+2</span> second_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Third window">
+<code class="descname">Third window</code><a class="headerlink" href="#shortcut-kitty.Third window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+3</span> third_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Fourth window">
+<code class="descname">Fourth window</code><a class="headerlink" href="#shortcut-kitty.Fourth window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+4</span> fourth_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Fifth window">
+<code class="descname">Fifth window</code><a class="headerlink" href="#shortcut-kitty.Fifth window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+5</span> fifth_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Sixth window">
+<code class="descname">Sixth window</code><a class="headerlink" href="#shortcut-kitty.Sixth window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+6</span> sixth_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Seventh window">
+<code class="descname">Seventh window</code><a class="headerlink" href="#shortcut-kitty.Seventh window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+7</span> seventh_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Eight window">
+<code class="descname">Eight window</code><a class="headerlink" href="#shortcut-kitty.Eight window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+8</span> eighth_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Ninth window">
+<code class="descname">Ninth window</code><a class="headerlink" href="#shortcut-kitty.Ninth window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+9</span> ninth_window
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Tenth window">
+<code class="descname">Tenth window</code><a class="headerlink" href="#shortcut-kitty.Tenth window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+0</span> tenth_window
+</pre>
+</div>
+<div class="section" id="tab-management">
+<span id="conf-kitty-shortcuts-tab"></span><h3>Tab management<a class="headerlink" href="#tab-management" title="Permalink to this headline">¶</a></h3>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Next tab">
+<code class="descname">Next tab</code><a class="headerlink" href="#shortcut-kitty.Next tab" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+right</span> next_tab
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Previous tab">
+<code class="descname">Previous tab</code><a class="headerlink" href="#shortcut-kitty.Previous tab" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+left</span> previous_tab
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.New tab">
+<code class="descname">New tab</code><a class="headerlink" href="#shortcut-kitty.New tab" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+t</span> new_tab
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Close tab">
+<code class="descname">Close tab</code><a class="headerlink" href="#shortcut-kitty.Close tab" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+q</span> close_tab
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Move tab forward">
+<code class="descname">Move tab forward</code><a class="headerlink" href="#shortcut-kitty.Move tab forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+.</span> move_tab_forward
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Move tab backward">
+<code class="descname">Move tab backward</code><a class="headerlink" href="#shortcut-kitty.Move tab backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+,</span> move_tab_backward
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Set tab title">
+<code class="descname">Set tab title</code><a class="headerlink" href="#shortcut-kitty.Set tab title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+alt+t</span> set_tab_title
+</pre>
+<p>You can also create shortcuts to go to specific tabs, with 1 being the first tab:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map ctrl+alt+1          goto_tab 1</span>
+<span class="na">map ctrl+alt+2          goto_tab 2</span>
+</pre></div>
+</div>
+<p>Just as with <code class="code docutils literal notranslate"><span class="pre">new_window</span></code> above, you can also pass the name of arbitrary
+commands to run when using new_tab and use <code class="code docutils literal notranslate"><span class="pre">new_tab_with_cwd</span></code>.</p>
+</div>
+<div class="section" id="layout-management">
+<span id="conf-kitty-shortcuts-layout"></span><h3>Layout management<a class="headerlink" href="#layout-management" title="Permalink to this headline">¶</a></h3>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Next layout">
+<code class="descname">Next layout</code><a class="headerlink" href="#shortcut-kitty.Next layout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+l</span> next_layout
+</pre>
+<p>You can also create shortcuts to switch to specific layouts:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map ctrl+alt+t          goto_layout tall</span>
+<span class="na">map ctrl+alt+s          goto_layout stack</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="font-sizes">
+<span id="conf-kitty-shortcuts-fonts"></span><h3>Font sizes<a class="headerlink" href="#font-sizes" title="Permalink to this headline">¶</a></h3>
+<p>You can change the font size for all top-level kitty windows at a time
+or only the current one.</p>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Increase font size">
+<code class="descname">Increase font size</code><a class="headerlink" href="#shortcut-kitty.Increase font size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+equal</span> change_font_size all +2.0
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Decrease font size">
+<code class="descname">Decrease font size</code><a class="headerlink" href="#shortcut-kitty.Decrease font size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+minus</span> change_font_size all -2.0
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Reset font size">
+<code class="descname">Reset font size</code><a class="headerlink" href="#shortcut-kitty.Reset font size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+backspace</span> change_font_size all 0
+</pre>
+<p>To setup shortcuts for specific font sizes:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map kitty_mod+f6     change_font_size all 10.0</span>
+</pre></div>
+</div>
+<p>To setup shortcuts to change only the current window’s font size:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map kitty_mod+f6     change_font_size current 10.0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-and-act-on-visible-text">
+<span id="conf-kitty-shortcuts-selection"></span><h3>Select and act on visible text<a class="headerlink" href="#select-and-act-on-visible-text" title="Permalink to this headline">¶</a></h3>
+<p>Use the hints kitten to select text and either pass it to an external program or
+insert it into the terminal or copy it to the clipboard.</p>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Open URL">
+<code class="descname">Open URL</code><a class="headerlink" href="#shortcut-kitty.Open URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+e</span> kitten hints
+</pre>
+<p>Open a currently visible URL using the keyboard. The program used to open the
+URL is specified in <a class="reference internal" href="#opt-kitty.open_url_with"><code class="xref std std-opt docutils literal notranslate"><span class="pre">open_url_with</span></code></a>.</p>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Insert selected path">
+<code class="descname">Insert selected path</code><a class="headerlink" href="#shortcut-kitty.Insert selected path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+p&gt;f</span> kitten hints --type path --program -
+</pre>
+<p>Select a path/filename and insert it into the terminal. Useful, for instance to
+run git commands on a filename output from a previous git command.</p>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Open selected path">
+<code class="descname">Open selected path</code><a class="headerlink" href="#shortcut-kitty.Open selected path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+p&gt;shift+f</span> kitten hints --type path
+</pre>
+<p>Select a path/filename and open it with the default open program.</p>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Insert selected line">
+<code class="descname">Insert selected line</code><a class="headerlink" href="#shortcut-kitty.Insert selected line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+p&gt;l</span> kitten hints --type line --program -
+</pre>
+<p>Select a line of text and insert it into the terminal. Use for the
+output of things like: ls -1</p>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Insert selected word">
+<code class="descname">Insert selected word</code><a class="headerlink" href="#shortcut-kitty.Insert selected word" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+p&gt;w</span> kitten hints --type word --program -
+</pre>
+<p>Select words and insert into terminal.</p>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Insert selected hash">
+<code class="descname">Insert selected hash</code><a class="headerlink" href="#shortcut-kitty.Insert selected hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+p&gt;h</span> kitten hints --type hash --program -
+</pre>
+<p>Select something that looks like a hash and insert it into the terminal.
+Useful with git, which uses sha1 hashes to identify commits</p>
+<p>The hints kitten has many more modes of operation that you can map to different
+shortcuts. For a full description see <a class="reference internal" href="kittens/hints.html"><span class="doc">Hints</span></a>.</p>
+</div>
+<div class="section" id="miscellaneous">
+<span id="conf-kitty-shortcuts-misc"></span><h3>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h3>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Toggle fullscreen">
+<code class="descname">Toggle fullscreen</code><a class="headerlink" href="#shortcut-kitty.Toggle fullscreen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+f11</span> toggle_fullscreen
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Unicode input">
+<code class="descname">Unicode input</code><a class="headerlink" href="#shortcut-kitty.Unicode input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+u</span> input_unicode_character
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Edit config file">
+<code class="descname">Edit config file</code><a class="headerlink" href="#shortcut-kitty.Edit config file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+f2</span> edit_config_file
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Open the kitty command shell">
+<code class="descname">Open the kitty command shell</code><a class="headerlink" href="#shortcut-kitty.Open the kitty command shell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+escape</span> kitty_shell window
+</pre>
+<p># Open the kitty shell in a new window/tab/overlay/os_window to control kitty using commands.</p>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Increase background opacity">
+<code class="descname">Increase background opacity</code><a class="headerlink" href="#shortcut-kitty.Increase background opacity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+a&gt;m</span> set_background_opacity +0.1
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Decrease background opacity">
+<code class="descname">Decrease background opacity</code><a class="headerlink" href="#shortcut-kitty.Decrease background opacity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+a&gt;l</span> set_background_opacity -0.1
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Make background fully opaque">
+<code class="descname">Make background fully opaque</code><a class="headerlink" href="#shortcut-kitty.Make background fully opaque" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+a&gt;1</span> set_background_opacity 1
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Reset background opacity">
+<code class="descname">Reset background opacity</code><a class="headerlink" href="#shortcut-kitty.Reset background opacity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<pre class="literal-block">
+map <span class="green">ctrl+shift+a&gt;d</span> set_background_opacity default
+</pre>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Send arbitrary text on key presses">
+<code class="descname">Send arbitrary text on key presses</code><a class="headerlink" href="#shortcut-kitty.Send arbitrary text on key presses" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>You can tell kitty to send arbitrary (UTF-8) encoded text to
+the client program when pressing specified shortcut keys. For example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map ctrl+alt+a send_text all Special text</span>
+</pre></div>
+</div>
+<p>This will send “Special text” when you press the <kbd class="kbd docutils literal notranslate">ctrl+alt+a</kbd> key
+combination.  The text to be sent is a python string literal so you can use
+escapes like <code class="code docutils literal notranslate"><span class="pre">\x1b</span></code> to send control codes or <code class="code docutils literal notranslate"><span class="pre">\u21fb</span></code> to send
+unicode characters (or you can just input the unicode characters directly as
+UTF-8 text). The first argument to <code class="code docutils literal notranslate"><span class="pre">send_text</span></code> is the keyboard modes in which to
+activate the shortcut. The possible values are <code class="code docutils literal notranslate"><span class="pre">normal</span></code> or <code class="code docutils literal notranslate"><span class="pre">application</span></code> or <code class="code docutils literal notranslate"><span class="pre">kitty</span></code>
+or a comma separated combination of them.  The special keyword <code class="code docutils literal notranslate"><span class="pre">all</span></code> means all
+modes. The modes <code class="code docutils literal notranslate"><span class="pre">normal</span></code> and <code class="code docutils literal notranslate"><span class="pre">application</span></code> refer to the DECCKM cursor key mode for
+terminals, and <code class="code docutils literal notranslate"><span class="pre">kitty</span></code> refers to the special kitty extended keyboard protocol.</p>
+<p>Another example, that outputs a word and then moves the cursor to the start of
+the line (same as pressing the Home key):</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">map ctrl+alt+a send_text normal Word\x1b[H</span>
+<span class="na">map ctrl+alt+a send_text application Word\x1bOH</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
