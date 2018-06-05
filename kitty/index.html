@@ -443,31 +443,32 @@ from an arbitrary terminal program.</dd>
 <p>You can control the tabs, window layout, working directory, startup
 programs, etc. by creating a “session” file and using the <a class="reference internal" href="invocation.html#cmdoption-kitty-session"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--session</span></code></a>
 command line flag. For example:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the window layout for the current tab</span>
-<span class="na">layout tall</span>
+<div class="highlight-session notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the window layout for the current tab</span>
+<span class="nf">layout</span><span class="l"> tall</span>
 <span class="c1"># Set the working directory for windows in the current tab</span>
-<span class="na">cd ~</span>
+<span class="nf">cd</span><span class="l"> ~</span>
 <span class="c1"># Create a window and run the specified command in it</span>
-<span class="na">launch zsh</span>
-<span class="c1"># Create a window with some environment variables set and run vim in it</span>
-<span class="na">launch env FOO</span><span class="o">=</span><span class="s">BAR vim</span>
+<span class="nf">launch</span><span class="l"> zsh</span>
+<span class="c1"># Create a window with some environment variables set and run</span>
+<span class="c1"># vim in it</span>
+<span class="nf">launch</span><span class="l"> env FOO=BAR vim</span>
 <span class="c1"># Set the title for the next window</span>
-<span class="na">title Chat with x</span>
-<span class="na">launch irssi --profile x</span>
+<span class="nf">title</span><span class="l"> Chat with x</span>
+<span class="nf">launch</span><span class="l"> irssi --profile x</span>
 
-<span class="c1"># Create a new tab (the part after new_tab is the optional tab name which will</span>
-<span class="c1"># be displayed in the tab bar, if omitted, the title of the active window will</span>
-<span class="c1"># be used instead)</span>
-<span class="na">new_tab my tab</span>
-<span class="na">cd ~/somewhere</span>
+<span class="c1"># Create a new tab (the part after new_tab is the optional tab</span>
+<span class="c1"># name which will be displayed in the tab bar, if omitted, the</span>
+<span class="c1"># title of the active window will be used instead)</span>
+<span class="nf">new_tab</span><span class="l"> my tab</span>
+<span class="nf">cd</span><span class="l"> ~/somewhere</span>
 <span class="c1"># Set the layouts allowed in this tab</span>
-<span class="na">enabled_layouts tall, stack</span>
+<span class="nf">enabled_layouts</span><span class="l"> tall, stack</span>
 <span class="c1"># Set the current layout</span>
-<span class="na">layout stack</span>
-<span class="na">launch zsh</span>
+<span class="nf">layout</span><span class="l"> stack</span>
+<span class="nf">launch</span><span class="l"> zsh</span>
 <span class="c1"># Make the current window the active (focused) window</span>
-<span class="na">focus</span>
-<span class="na">launch emacs</span>
+<span class="nf">focus</span>
+<span class="nf">launch</span><span class="l"> emacs</span>
 </pre></div>
 </div>
 </div>
