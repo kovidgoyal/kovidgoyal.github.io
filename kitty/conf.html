@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -583,6 +583,30 @@ zero and one, with zero being fully faded).</p>
 </div>
 <p>The margin to the left and right of the tab bar (in pts)</p>
 <dl class="opt">
+<dt id="opt-kitty.tab_bar_style">
+<code class="descname">tab_bar_style</code><a class="headerlink" href="#opt-kitty.tab_bar_style" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_bar_style</span><span class="w"> </span><span class="s">fade</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The tab bar style, can be one of: <code class="code docutils literal notranslate"><span class="pre">fade</span></code> or <code class="code docutils literal notranslate"><span class="pre">separator</span></code>. In the fade style,
+each tab’s edges fade into the background color, in the separator style, tabs are
+separated by a configurable separator.</p>
+<dl class="opt">
+<dt id="opt-kitty.tab_fade">
+<code class="descname">tab_fade</code><a class="headerlink" href="#opt-kitty.tab_fade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_fade</span><span class="w"> </span><span class="mi">0</span><span class="mf">.25</span><span class="w"> </span><span class="mi">0</span><span class="mf">.5</span><span class="w"> </span><span class="mi">0</span><span class="mf">.75</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Control how each tab fades into the background when using <code class="code docutils literal notranslate"><span class="pre">fade</span></code> for the
+<a class="reference internal" href="#opt-kitty.tab_bar_style"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_bar_style</span></code></a>. Each number is an alpha (between zero and one) that controls
+how much the corresponding cell fades into the background, with zero being no fade
+and one being full fade. You can change the number of cells used by adding/removing
+entries to this list.</p>
+<dl class="opt">
 <dt id="opt-kitty.tab_separator">
 <code class="descname">tab_separator</code><a class="headerlink" href="#opt-kitty.tab_separator" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -590,7 +614,7 @@ zero and one, with zero being fully faded).</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_separator</span><span class="w"> </span><span class="s">&quot; ┇&quot;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The separator between tabs in the tab bar</p>
+<p>The separator between tabs in the tab bar when using <code class="code docutils literal notranslate"><span class="pre">separator</span></code> as the <a class="reference internal" href="#opt-kitty.tab_bar_style"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_bar_style</span></code></a>.</p>
 <dl class="opt">
 <dt id="opt-kitty.active_tab_foreground">
 <code class="descname">active_tab_foreground</code><code class="descclassname">, </code><code class="descname">active_tab_background</code><code class="descclassname">, </code><code class="descname">active_tab_font_style</code><code class="descclassname">, </code><code class="descname">inactive_tab_foreground</code><code class="descclassname">, </code><code class="descname">inactive_tab_background</code><code class="descclassname">, </code><code class="descname">inactive_tab_font_style</code><a class="headerlink" href="#opt-kitty.active_tab_foreground" title="Permalink to this definition">¶</a></dt>
@@ -1764,9 +1788,25 @@ the line (same as pressing the Home key):</p>
 
 <span class="c1">#: The margin to the left and right of the tab bar (in pts)</span><span class="w"></span>
 
+<span class="nv">tab_bar_style</span><span class="w"> </span><span class="s">fade</span><span class="w"></span>
+
+<span class="c1">#: The tab bar style, can be one of: fade or separator. In the fade</span><span class="w"></span>
+<span class="c1">#: style, each tab&#39;s edges fade into the background color, in the</span><span class="w"></span>
+<span class="c1">#: separator style, tabs are separated by a configurable separator.</span><span class="w"></span>
+
+<span class="nv">tab_fade</span><span class="w"> </span><span class="mi">0</span><span class="mf">.25</span><span class="w"> </span><span class="mi">0</span><span class="mf">.5</span><span class="w"> </span><span class="mi">0</span><span class="mf">.75</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="c1">#: Control how each tab fades into the background when using fade for</span><span class="w"></span>
+<span class="c1">#: the tab_bar_style. Each number is an alpha (between zero and one)</span><span class="w"></span>
+<span class="c1">#: that controls how much the corresponding cell fades into the</span><span class="w"></span>
+<span class="c1">#: background, with zero being no fade and one being full fade. You</span><span class="w"></span>
+<span class="c1">#: can change the number of cells used by adding/removing entries to</span><span class="w"></span>
+<span class="c1">#: this list.</span><span class="w"></span>
+
 <span class="nv">tab_separator</span><span class="w"> </span><span class="s">&quot; ┇&quot;</span><span class="w"></span>
 
-<span class="c1">#: The separator between tabs in the tab bar</span><span class="w"></span>
+<span class="c1">#: The separator between tabs in the tab bar when using separator as</span><span class="w"></span>
+<span class="c1">#: the tab_bar_style.</span><span class="w"></span>
 
 <span class="nv">active_tab_foreground</span><span class="w">   </span><span class="s">#000</span><span class="w"></span>
 <span class="nv">active_tab_background</span><span class="w">   </span><span class="s">#eee</span><span class="w"></span>

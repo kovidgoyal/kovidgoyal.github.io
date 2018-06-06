@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -118,14 +118,18 @@ ga('send', 'pageview');
 <div class="section" id="future">
 <h2>0.11.0 [future]<a class="headerlink" href="#future" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li>A new tab bar style “fade” in which each tab’s edges fade into the background.
+See <a class="reference internal" href="conf.html#opt-kitty.tab_bar_style"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_bar_style</span></code></a> and <a class="reference internal" href="conf.html#opt-kitty.tab_fade"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_fade</span></code></a> for details. The old look can be
+restored by setting <a class="reference internal" href="conf.html#opt-kitty.tab_bar_style"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_bar_style</span></code></a> to <code class="code docutils literal notranslate"><span class="pre">separator</span></code>.</li>
 <li><a class="reference internal" href="binary.html"><span class="doc">Pre-compiled binaries</span></a> with all bundled dependencies for Linux
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/595">#595</a>)</li>
-<li>A <a class="reference internal" href="kittens/panel.html"><span class="doc">new kitten</span></a> to create dock panels on X11 desktops showing the output from
-arbitrary terminal programs.</li>
+<li>A <a class="reference internal" href="kittens/panel.html"><span class="doc">new kitten</span></a> to create dock panels on X11 desktops
+showing the output from arbitrary terminal programs.</li>
 <li>Reduce data sent to the GPU per render by 30% (<a class="reference external" href="https://github.com/kovidgoyal/kitty/commit/8dea5b3e3ec1db8597f3a3649b5cefd52f41e409">commit: 8dea5b3e</a>)</li>
 <li>Implement changing the font size for individual top level (OS) windows
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/408">#408</a>)</li>
-<li>ssh kitten: Support all SSH options. It can now be aliased directly to ssh for convenience. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/591">#591</a>)</li>
+<li>ssh kitten: Support all SSH options. It can now be aliased directly to ssh
+for convenience. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/591">#591</a>)</li>
 <li>icat kitten: Add <a class="reference internal" href="kittens/icat.html#cmdoption-kitty-kitten-icat-print-window-size"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">icat</span> <span class="pre">--print-window-size</span></code></a> to easily
 detect the window size in pixels from scripting languages (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/581">#581</a>)</li>
 <li>hints kitten: Allow selecting hashes from the terminal with
