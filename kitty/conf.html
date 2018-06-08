@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Configuring kitty &#8212; kitty  documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.10.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -256,12 +256,14 @@ on demand.</p>
 <code class="descname">scrollback_pager</code><a class="headerlink" href="#opt-kitty.scrollback_pager" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">scrollback_pager</span><span class="w"> </span><span class="s">less +G -R</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">scrollback_pager</span><span class="w"> </span><span class="s">less --chop-long-lines --RAW-CONTROL-CHARS +INPUT_LINE_NUMBER</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Program with which to view scrollback in a new window. The scrollback buffer is
 passed as STDIN to this program. If you change it, make sure the program you
-use can handle ANSI escape sequences for colors and text formatting.</p>
+use can handle ANSI escape sequences for colors and text formatting.
+INPUT_LINE_NUMBER in the command line above will be replaced by an integer
+representing which line should be at the top of the screen.</p>
 <dl class="opt">
 <dt id="opt-kitty.wheel_scroll_multiplier">
 <code class="descname">wheel_scroll_multiplier</code><a class="headerlink" href="#opt-kitty.wheel_scroll_multiplier" title="Permalink to this definition">¶</a></dt>
@@ -877,6 +879,18 @@ probably better off just hiding the titlebar with <a class="reference internal" 
 </div>
 <p>Hide the kitty window’s title bar on macOS.</p>
 <dl class="opt">
+<dt id="opt-kitty.x11_hide_window_decorations">
+<code class="descname">x11_hide_window_decorations</code><a class="headerlink" href="#opt-kitty.x11_hide_window_decorations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">x11_hide_window_decorations</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Hide the window decorations (title bar and window borders) on X11 and Wayland.
+Whether this works and exactly what effect it has depends on the window
+manager, as it is the job of the window manager/compositor to draw window
+decorations.</p>
+<dl class="opt">
 <dt id="opt-kitty.macos_option_as_alt">
 <code class="descname">macos_option_as_alt</code><a class="headerlink" href="#opt-kitty.macos_option_as_alt" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -897,6 +911,17 @@ can use the macOS unicode input technique.</p>
 </pre></div>
 </div>
 <p>Hide the kitty window from running tasks (<kbd class="kbd docutils literal notranslate">Option+Tab</kbd>) on macOS.</p>
+<dl class="opt">
+<dt id="opt-kitty.macos_quit_when_last_window_closed">
+<code class="descname">macos_quit_when_last_window_closed</code><a class="headerlink" href="#opt-kitty.macos_quit_when_last_window_closed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_quit_when_last_window_closed</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Have kitty quit when all the top-level windows are closed. By default,
+kitty will stay running, even with no open windows, as is the expected
+behavior on macOS.</p>
 </div>
 <div class="section" id="keyboard-shortcuts">
 <span id="conf-kitty-shortcuts"></span><h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
@@ -1590,12 +1615,14 @@ the line (same as pressing the Home key):</p>
 <span class="c1">#: Number of lines of history to keep in memory for scrolling back.</span><span class="w"></span>
 <span class="c1">#: Memory is allocated on demand.</span><span class="w"></span>
 
-<span class="nv">scrollback_pager</span><span class="w"> </span><span class="s">less +G -R</span><span class="w"></span>
+<span class="nv">scrollback_pager</span><span class="w"> </span><span class="s">less --chop-long-lines --RAW-CONTROL-CHARS +INPUT_LINE_NUMBER</span><span class="w"></span>
 
 <span class="c1">#: Program with which to view scrollback in a new window. The</span><span class="w"></span>
 <span class="c1">#: scrollback buffer is passed as STDIN to this program. If you change</span><span class="w"></span>
 <span class="c1">#: it, make sure the program you use can handle ANSI escape sequences</span><span class="w"></span>
-<span class="c1">#: for colors and text formatting.</span><span class="w"></span>
+<span class="c1">#: for colors and text formatting. INPUT_LINE_NUMBER in the command</span><span class="w"></span>
+<span class="c1">#: line above will be replaced by an integer representing which line</span><span class="w"></span>
+<span class="c1">#: should be at the top of the screen.</span><span class="w"></span>
 
 <span class="nv">wheel_scroll_multiplier</span><span class="w"> </span><span class="mf">5.0</span>
 
@@ -1976,6 +2003,13 @@ the line (same as pressing the Home key):</p>
 
 <span class="c1">#: Hide the kitty window&#39;s title bar on macOS.</span><span class="w"></span>
 
+<span class="nv">x11_hide_window_decorations</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
+
+<span class="c1">#: Hide the window decorations (title bar and window borders) on X11</span><span class="w"></span>
+<span class="c1">#: and Wayland. Whether this works and exactly what effect it has</span><span class="w"></span>
+<span class="c1">#: depends on the window manager, as it is the job of the window</span><span class="w"></span>
+<span class="c1">#: manager/compositor to draw window decorations.</span><span class="w"></span>
+
 <span class="nv">macos_option_as_alt</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
 
 <span class="c1">#: Use the option key as an alt key. With this set to no, kitty will</span><span class="w"></span>
@@ -1986,6 +2020,12 @@ the line (same as pressing the Home key):</p>
 <span class="nv">macos_hide_from_tasks</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 
 <span class="c1">#: Hide the kitty window from running tasks (Option+Tab) on macOS.</span><span class="w"></span>
+
+<span class="nv">macos_quit_when_last_window_closed</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
+
+<span class="c1">#: Have kitty quit when all the top-level windows are closed. By</span><span class="w"></span>
+<span class="c1">#: default, kitty will stay running, even with no open windows, as is</span><span class="w"></span>
+<span class="c1">#: the expected behavior on macOS.</span><span class="w"></span>
 
 <span class="c1">#: }}}</span><span class="w"></span>
 

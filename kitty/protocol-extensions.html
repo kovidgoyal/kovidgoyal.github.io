@@ -6,11 +6,11 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Extensions to the xterm protocol &#8212; kitty  documentation</title>
+    <title>Extensions to the xterm protocol &#8212; kitty 0.10.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -106,8 +106,8 @@ extensions are currently <em>kitty</em> specific, it would be nice to get some o
 adopted more broadly, to push the state of terminal emulators forward.</p>
 <p>The goal of these extensions is to be as small an unobtrusive as possible,
 while filling in some gaps in the existing xterm protocol. In particular, one
-of the goals of this specification is explicitly not to “re-imagine” the tty.
-The tty should remain what it is – a device for efficiently processing text
+of the goals of this specification is explicitly not to &quot;re-imagine&quot; the tty.
+The tty should remain what it is -- a device for efficiently processing text
 received as a simple byte stream. Another objective is to only move the minimum
 possible amount of extra functionality into the terminal program itself. This
 is to make it as easy to implement these protocol extensions as possible,
@@ -222,9 +222,9 @@ escape sequence, see below.</li>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_K</span><span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;&lt;</span><span class="n">modifiers</span><span class="o">&gt;&lt;</span><span class="n">key</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
 </pre></div>
 </div>
-<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;type&gt;</span></code> is one of <code class="docutils literal notranslate"><span class="pre">p</span></code> – press, <code class="docutils literal notranslate"><span class="pre">r</span></code> – release and <code class="docutils literal notranslate"><span class="pre">t</span></code> – repeat.
-Modifiers is a bitmask represented as a single base64 digit.  Shift – <code class="docutils literal notranslate"><span class="pre">0x1</span></code>,
-Alt – <code class="docutils literal notranslate"><span class="pre">0x2</span></code>, Control – <code class="docutils literal notranslate"><span class="pre">0x4</span></code> and Super – <code class="docutils literal notranslate"><span class="pre">0x8</span></code>.  <code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span></code> is a number
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;type&gt;</span></code> is one of <code class="docutils literal notranslate"><span class="pre">p</span></code> -- press, <code class="docutils literal notranslate"><span class="pre">r</span></code> -- release and <code class="docutils literal notranslate"><span class="pre">t</span></code> -- repeat.
+Modifiers is a bitmask represented as a single base64 digit.  Shift -- <code class="docutils literal notranslate"><span class="pre">0x1</span></code>,
+Alt -- <code class="docutils literal notranslate"><span class="pre">0x2</span></code>, Control -- <code class="docutils literal notranslate"><span class="pre">0x4</span></code> and Super -- <code class="docutils literal notranslate"><span class="pre">0x8</span></code>.  <code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span></code> is a number
 (encoded in base85) corresponding to the key pressed. The key name to number
 mapping is defined in <a class="reference internal" href="key-encoding.html"><span class="doc">this table</span></a>.</p>
 <p>For example:</p>
