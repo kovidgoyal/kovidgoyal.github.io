@@ -169,8 +169,13 @@ argument to <code class="file docutils literal notranslate"><span class="pre">se
 installs the terminfo file and <code class="file docutils literal notranslate"><span class="pre">kitty</span></code> that installs the main program.
 This allows users to install the terminfo file on servers into which they ssh,
 without needing to install all of kitty.</p>
-<p>You also need <code class="file docutils literal notranslate"><span class="pre">tic</span></code> to compile the terminfo files, it is usually found in
-the development package of <code class="file docutils literal notranslate"><span class="pre">ncurses</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You need a couple of extra dependencies to build linux-package.
+<code class="file docutils literal notranslate"><span class="pre">tic</span></code> to compile terminfo files, usually found in the
+development package of <code class="file docutils literal notranslate"><span class="pre">ncurses</span></code>. Also, <code class="file docutils literal notranslate"><span class="pre">sphinx-build</span></code>
+from the <a class="reference external" href="http://www.sphinx-doc.org/">Sphinx documentation generator</a>.</p>
+</div>
 <p>This applies to creating packages for kitty for macOS package managers such as
 brew or MacPorts as well.</p>
 </div>

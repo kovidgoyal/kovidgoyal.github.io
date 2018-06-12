@@ -118,7 +118,7 @@ ga('send', 'pageview');
 <div class="section" id="future">
 <h2>0.11.0 [future]<a class="headerlink" href="#future" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>A new tab bar style “fade” in which each tab’s edges fade into the background.
+<li>A new tab bar style &quot;fade&quot; in which each tab's edges fade into the background.
 See <a class="reference internal" href="conf.html#opt-kitty.tab_bar_style"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_bar_style</span></code></a> and <a class="reference internal" href="conf.html#opt-kitty.tab_fade"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_fade</span></code></a> for details. The old look can be
 restored by setting <a class="reference internal" href="conf.html#opt-kitty.tab_bar_style"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_bar_style</span></code></a> to <code class="code docutils literal notranslate"><span class="pre">separator</span></code>.</li>
 <li><a class="reference internal" href="binary.html"><span class="doc">Pre-compiled binaries</span></a> with all bundled dependencies for Linux
@@ -129,7 +129,7 @@ showing the output from arbitrary terminal programs.</li>
 <li>Implement changing the font size for individual top level (OS) windows
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/408">#408</a>)</li>
 <li>When viewing the scrollback in less using <a class="reference internal" href="conf.html#shortcut-kitty.Browse scrollback buffer in less"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+h</span></code></a> and kitty
-is currently scrolled, position the scrollback in less to match kitty’s
+is currently scrolled, position the scrollback in less to match kitty's
 scroll position. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/148">#148</a>)</li>
 <li>ssh kitten: Support all SSH options. It can now be aliased directly to ssh
 for convenience. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/591">#591</a>)</li>
@@ -169,6 +169,8 @@ be displayed.</li>
 <li>Linux: Include a man page and the HTML docs when building the linux-package</li>
 <li>Remote control: Fix kitty &#64; sometimes failing to read the response from
 kitty. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/614">#614</a>)</li>
+<li>Fix <cite>kitty &#64; set-colors</cite> not working with the window border colors.
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/623">#623</a>)</li>
 </ul>
 </div>
 <div class="section" id="id1">
@@ -204,7 +206,7 @@ so that URLs that stretch over multiple lines are detected. Also improve
 detection of surrounding brackets/quotes.</li>
 <li>Make the kitty window id available as the environment variable
 <code class="docutils literal notranslate"><span class="pre">KITTY_WINDOW_ID</span></code> (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/532">#532</a>).</li>
-<li>Add a “fat” layout that is similar to the “tall” layout but vertically
+<li>Add a &quot;fat&quot; layout that is similar to the &quot;tall&quot; layout but vertically
 oriented.</li>
 <li>Expand environment variables in config file include directives</li>
 <li>Allow programs running in kitty to read/write from the clipboard (<a class="reference external" href="https://github.com/kovidgoyal/kitty/commit/889ca7791244253cb08fbc3eca8883a87fb943a7">commit: 889ca779</a>).
@@ -256,7 +258,7 @@ file(s)</li>
 kitty shortcuts, globally</li>
 <li>Fix Shift+function key not working</li>
 <li>Support the F13 to F25 function keys</li>
-<li>Don’t fail to start if the user deletes the hintstyle key from their
+<li>Don't fail to start if the user deletes the hintstyle key from their
 fontconfig configuration.</li>
 <li>When rendering a private use unicode codepoint and a space as a two cell
 ligature, set the foreground colors of the space cell to match the colors of
@@ -293,11 +295,11 @@ next/prev line as well.</li>
 <li>Improve mouse selection for windows with padding. Moving the mouse into the
 padding area now acts as if the mouse is over the nearest cell.</li>
 <li>Allow setting all 256 terminal colors in the config file</li>
-<li>Fix using <cite>kitty –single-instance</cite> to open a new window in a running kitty
-instance, not respecting the <cite>–directory</cite> flag</li>
+<li>Fix using <cite>kitty --single-instance</cite> to open a new window in a running kitty
+instance, not respecting the <cite>--directory</cite> flag</li>
 <li>URL hints: Exclude trailing punctuation from URLs</li>
 <li>URL hints: Launch the browser from the kitty parent process rather than the
-hints kitten. Fixes launching on some systems where xdg-open doesn’t like
+hints kitten. Fixes launching on some systems where xdg-open doesn't like
 being run from a kitten.</li>
 <li>Allow using rectangle select mode by pressing shift in addition to the
 rectangle select modifiers even when the terminal program has grabbed the
@@ -326,7 +328,7 @@ time or line at a time</li>
 now calculated by actually rendering bitmaps, which is slower but more
 accurate)</li>
 <li>Allow specifying a system wide kitty config file, for all users</li>
-<li>Add a –debug-config command line flag to output data about the system and
+<li>Add a --debug-config command line flag to output data about the system and
 kitty configuration.</li>
 <li>Wayland: Fix auto-repeat of keys not working</li>
 </ul>
@@ -349,7 +351,7 @@ kitty configuration.</li>
 <div class="section" id="id8">
 <h2>0.8.1 [2018-03-09]<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Extend kitty’s remote control feature to work over both UNIX and TCP sockets,
+<li>Extend kitty's remote control feature to work over both UNIX and TCP sockets,
 so now you can control kitty from across the internet, if you want to.</li>
 <li>Render private use unicode characters that are followed by a space as a two
 character ligature. This fixes rendering for applications that misuse
@@ -359,7 +361,7 @@ instance to be created</li>
 <li>Fix a rare error that prevented the Unicode input kitten from working
 sometimes</li>
 <li>Allow using Ctrl+Alt+letter in legacy keyboard modes by outputting them as Ctrl+letter and Alt+letter.
-This matches other terminals’ behavior.</li>
+This matches other terminals' behavior.</li>
 <li>Fix cursor position off-by-one on horizontal axis when resizing the terminal</li>
 <li>Wayland: Fix auto-repeat of keys not working</li>
 <li>Wayland: Add support for window decorations provided by the Wayland shell</li>
@@ -377,7 +379,7 @@ selecting URLs with the keyboard.</li>
 <li>Input arbitrary unicode characters by pressing Ctrl+Shift+u. You can choose
 characters by name, by hex code, by recently used, etc. There is even and
 editable Favorites list.</li>
-<li>Open URLs using only the keyboard. kitty has a new “hints mode”. Press
+<li>Open URLs using only the keyboard. kitty has a new &quot;hints mode&quot;. Press
 Ctrl+Shift+e and all detected URLs on the screen are highlighted with a key
 to press to open them. The facility is customizable so you can change
 what is detected as a URL and which program is used to open it.</li>
@@ -386,7 +388,7 @@ what is detected as a URL and which program is used to open it.</li>
 cells wide. This matches the standard. Also add support for the Unicode Emoji
 variation presentation selector.</li>
 <li>Prevent video tearing during high speed scrolling by syncing draws
-to the monitor’s refresh rate. There is a new configuration option to
+to the monitor's refresh rate. There is a new configuration option to
 control this <code class="docutils literal notranslate"><span class="pre">sync_to_monitor</span></code>.</li>
 <li>When displaying only a single window, use the default background color of the
 window (which can be changed via escape codes) as the color for the margin
@@ -420,7 +422,7 @@ open/close/rename windows and tabs and even send input to specific windows.
 See the README for details.</li>
 <li>Add option to put tab bar at the top instead of the bottom</li>
 <li>Add option to override the default shell</li>
-<li>Add “Horizontal” and “Vertical” window layouts</li>
+<li>Add &quot;Horizontal&quot; and &quot;Vertical&quot; window layouts</li>
 <li>Sessions: Allow setting titles and working directories for individual windows</li>
 <li>Option to copy to clipboard on mouse select</li>
 <li>Fix incorrect reporting of mouse move events when using the SGR protocol</li>
@@ -470,20 +472,20 @@ semi-transparent.</li>
 <li>Support multiple top level (OS) windows. These windows all share the sprite
 texture cache on the GPU, further reducing overall resource usage. Use
 the shortcut <cite>ctrl+shift+n</cite> to open a new top-level window.</li>
-<li>Add support for a <em>daemon</em> mode using the <cite>–single-instance</cite> command line
+<li>Add support for a <em>daemon</em> mode using the <cite>--single-instance</cite> command line
 option. With this option you can have only a single kitty instance running.
 All future invocations simply open new top-level windows in the existing
 instance.</li>
 <li>Support colored emoji</li>
 <li>Use CoreText instead of FreeType to render text on macOS</li>
-<li>Support running on the “low power” GPU on dual GPU macOS machines</li>
-<li>Add a new “grid” window layout</li>
+<li>Support running on the &quot;low power&quot; GPU on dual GPU macOS machines</li>
+<li>Add a new &quot;grid&quot; window layout</li>
 <li>Drop the dependency on glfw (kitty now uses a modified, bundled copy of glfw)</li>
 <li>Add an option to control the audio bell volume on X11 systems</li>
 <li>Add a command line switch to set the name part of the WM_CLASS window
 property independently.</li>
 <li>Add a command line switch to set the window title.</li>
-<li>Add more options to customize the tab-bar’s appearance (font styles and
+<li>Add more options to customize the tab-bar's appearance (font styles and
 separator)</li>
 <li>Allow drag and drop of files into kitty. On drop kitty will paste the
 file path to the running program.</li>
@@ -549,11 +551,11 @@ ssh connections and files/shared memory (when available) for better
 performance. The drawing primitives support alpha blending and z-index.
 Images can be drawn both above and below text. See <a class="reference internal" href="graphics-protocol.html"><span class="doc">The terminal graphics protocol</span></a>.
 for details.</li>
-<li>Refactor kitty’s internals to make it even faster and more efficient. The CPU
+<li>Refactor kitty's internals to make it even faster and more efficient. The CPU
 usage of kitty + X server while doing intensive tasks such as scrolling a
 file continuously in less has been reduced by 50%. There are now two
 configuration options <code class="docutils literal notranslate"><span class="pre">repaint_delay</span></code> and <code class="docutils literal notranslate"><span class="pre">input_delay</span></code> you can use to
-fine tune kitty’s performance vs CPU usage profile. The CPU usage of kitty +
+fine tune kitty's performance vs CPU usage profile. The CPU usage of kitty +
 X when scrolling in less is now significantly better than most (all?) other
 terminals. See <a class="reference internal" href="performance.html"><span class="doc">kitty Performance</span></a>.</li>
 <li>Hovering over URLs with the mouse now underlines them to indicate they
