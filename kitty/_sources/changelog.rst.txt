@@ -3,7 +3,7 @@ Changelog
 
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 
-0.11.0 [future]
+0.11.0 [2018-06-12]
 ------------------------------
 
 - A new tab bar style "fade" in which each tab's edges fade into the background.
@@ -70,6 +70,10 @@ Changelog
 - Add support for the CSI t escape code to query window and cell sizes
   (:iss:`581`)
 
+- Linux: When using layouts that map the keys to non-ascii characters,
+  map shortcuts using the ascii equivalents, from the default layout.
+  (:iss:`606`)
+
 - Linux: Fix fonts not being correctly read from TrueType Collection
   (.ttc) files (:iss:`577`)
 
@@ -85,6 +89,9 @@ Changelog
 
 - Fix `kitty @ set-colors` not working with the window border colors.
   (:iss:`623`)
+
+- Fix a regression in 0.10 that caused incorrect rendering of the status bar in
+  irssi when used inside screen. (:iss:`621`)
 
 
 0.10.1 [2018-05-24]

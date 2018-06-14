@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>The kitty command line interface &#8212; kitty 0.10.1 documentation</title>
+    <title>The kitty command line interface &#8212; kitty 0.11.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -172,6 +172,12 @@ Default: <code class="code docutils literal notranslate"><span class="pre">.</sp
 <dt id="cmdoption-kitty-instance-group">
 <code class="descname">--instance-group</code><code class="descclassname"> &lt;INSTANCE_GROUP&gt;</code><a class="headerlink" href="#cmdoption-kitty-instance-group" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used in combination with the <a class="reference internal" href="#cmdoption-kitty-single-instance"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--single-instance</span></code></a> option. All <span class="italic">kitty</span> invocations with the same <a class="reference internal" href="#cmdoption-kitty-instance-group"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--instance-group</span></code></a> will result in new windows being created in the first <span class="italic">kitty</span> instance within that group</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-wait-for-single-instance-window-close">
+<code class="descname">--wait-for-single-instance-window-close</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-wait-for-single-instance-window-close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normally, when using <a class="reference internal" href="#cmdoption-kitty-single-instance"><code class="xref std std-option docutils literal notranslate"><span class="pre">--single-instance</span></code></a>, <span class="italic">kitty</span> will open a new window in an existing instance and quit immediately. With this option, it will not quit till the newly opened window is closed. Note that if no previous instance is found, then <span class="italic">kitty</span> will wait anyway, regardless of this option.</p>
 </dd></dl>
 
 <dl class="option">
