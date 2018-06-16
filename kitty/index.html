@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>kitty - the fast, featureful, GPU based, terminal emulator &#8212; kitty 0.11.0 documentation</title>
+    <title>kitty - the fast, featureful, GPU based terminal emulator &#8212; kitty 0.11.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -82,6 +82,7 @@ ga('send', 'pageview');
 <li><a class="reference internal" href="#other-keyboard-shortcuts">Other keyboard shortcuts</a></li>
 <li><a class="reference internal" href="#layouts">Layouts</a></li>
 <li><a class="reference internal" href="#kittens">Kittens</a></li>
+<li><a class="reference internal" href="#configuring-kitty">Configuring kitty</a></li>
 <li><a class="reference internal" href="#startup-sessions">Startup Sessions</a></li>
 <li><a class="reference internal" href="#mouse-features">Mouse features</a></li>
 <li><a class="reference internal" href="#font-control">Font control</a></li>
@@ -105,7 +106,7 @@ ga('send', 'pageview');
           <div class="body" role="main">
             
   <div class="section" id="kitty-the-fast-featureful-gpu-based-terminal-emulator">
-<h1><a class="toc-backref" href="#id5">kitty - the fast, featureful, GPU based, terminal emulator</a><a class="headerlink" href="#kitty-the-fast-featureful-gpu-based-terminal-emulator" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id5">kitty - the fast, featureful, GPU based terminal emulator</a><a class="headerlink" href="#kitty-the-fast-featureful-gpu-based-terminal-emulator" title="Permalink to this headline">¶</a></h1>
 <div class="major-features docutils container">
 <ul class="simple">
 <li>Offloads rendering to the GPU for <a class="reference internal" href="performance.html"><span class="doc">lower system load</span></a> and
@@ -118,7 +119,7 @@ protocol extensions</span></a>.</li>
 <li>Can be <a class="reference internal" href="remote-control.html"><span class="doc">controlled from scripts or the shell prompt</span></a>,
 even over SSH.</li>
 <li>Has a framework for <a class="reference internal" href="#kittens"><span class="std std-ref">Kittens</span></a>, small terminal programs that can be used to
-extend <em>kitty</em>'s functionality.  For example, they are used for
+extend <em>kitty</em>’s functionality.  For example, they are used for
 <a class="reference internal" href="kittens/unicode-input.html"><span class="doc">Unicode input</span></a>, <a class="reference internal" href="kittens/hints.html"><span class="doc">Hints</span></a> and
 <a class="reference internal" href="kittens/diff.html"><span class="doc">Side-by-side diff</span></a>.</li>
 <li>Supports <a class="reference internal" href="#sessions"><span class="std std-ref">startup sessions</span></a> which allow you to specify
@@ -132,13 +133,13 @@ browsing the history comfortably in a pager or editor.</li>
 </div>
 <div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="_images/screenshot.png"><img alt="Screenshot, showing three programs in the 'Tall' layout" src="_images/screenshot.png" style="width: 3880.0px; height: 2168.0px;" /></a>
-<p class="caption"><span class="caption-text">Screenshot, showing vim, tig and git running in <em>kitty</em> with the 'Tall' layout</span></p>
+<p class="caption"><span class="caption-text">Screenshot, showing vim, tig and git running in <em>kitty</em> with the ‘Tall’ layout</span></p>
 </div>
 <div class="section" id="quickstart">
 <span id="id1"></span><h2><a class="toc-backref" href="#id6">Quickstart</a><a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
 <p>Pre-built binaries of <em>kitty</em> are available for both macOS and Linux.
 See the <a class="reference internal" href="binary.html"><span class="doc">binary install instructions</span></a>.</p>
-<p>If you are on Linux, you can also use your distribution's <em>kitty</em> package.
+<p>If you are on Linux, you can also use your distribution’s <em>kitty</em> package.
 <em>kitty</em> packages are available for:
 <a class="reference external" href="https://packages.debian.org/buster/kitty">Debian</a>,
 <a class="reference external" href="https://build.opensuse.org/package/show/X11:terminals/kitty">openSUSE</a>,
@@ -151,7 +152,7 @@ See the <a class="reference internal" href="binary.html"><span class="doc">binar
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#kitty-the-fast-featureful-gpu-based-terminal-emulator" id="id5">kitty - the fast, featureful, GPU based, terminal emulator</a><ul>
+<li><a class="reference internal" href="#kitty-the-fast-featureful-gpu-based-terminal-emulator" id="id5">kitty - the fast, featureful, GPU based terminal emulator</a><ul>
 <li><a class="reference internal" href="#quickstart" id="id6">Quickstart</a></li>
 <li><a class="reference internal" href="#design-philosophy" id="id7">Design philosophy</a></li>
 <li><a class="reference internal" href="#tabs-and-windows" id="id8">Tabs and Windows</a><ul>
@@ -163,12 +164,13 @@ See the <a class="reference internal" href="binary.html"><span class="doc">binar
 <li><a class="reference internal" href="#other-keyboard-shortcuts" id="id12">Other keyboard shortcuts</a></li>
 <li><a class="reference internal" href="#layouts" id="id13">Layouts</a></li>
 <li><a class="reference internal" href="#kittens" id="id14">Kittens</a></li>
-<li><a class="reference internal" href="#startup-sessions" id="id15">Startup Sessions</a></li>
-<li><a class="reference internal" href="#mouse-features" id="id16">Mouse features</a></li>
-<li><a class="reference internal" href="#font-control" id="id17">Font control</a></li>
-<li><a class="reference internal" href="#the-scrollback-buffer" id="id18">The scrollback buffer</a></li>
-<li><a class="reference internal" href="#frequently-asked-questions" id="id19">Frequently Asked Questions</a></li>
-<li><a class="reference internal" href="#changelog" id="id20">Changelog</a></li>
+<li><a class="reference internal" href="#configuring-kitty" id="id15">Configuring kitty</a></li>
+<li><a class="reference internal" href="#startup-sessions" id="id16">Startup Sessions</a></li>
+<li><a class="reference internal" href="#mouse-features" id="id17">Mouse features</a></li>
+<li><a class="reference internal" href="#font-control" id="id18">Font control</a></li>
+<li><a class="reference internal" href="#the-scrollback-buffer" id="id19">The scrollback buffer</a></li>
+<li><a class="reference internal" href="#frequently-asked-questions" id="id20">Frequently Asked Questions</a></li>
+<li><a class="reference internal" href="#changelog" id="id21">Changelog</a></li>
 </ul>
 </li>
 </ul>
@@ -312,7 +314,7 @@ windows are:</p>
 <td><a class="reference internal" href="conf.html#shortcut-kitty.Move window to top"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+`</span></code></a></td>
 </tr>
 <tr class="row-even"><td>Focus specific window</td>
-<td><a class="reference internal" href="conf.html#shortcut-kitty.First window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+1</span></code></a>, <a class="reference internal" href="conf.html#shortcut-kitty.Second window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+2</span></code></a> ... <a class="reference internal" href="conf.html#shortcut-kitty.Tenth window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+0</span></code></a>
+<td><a class="reference internal" href="conf.html#shortcut-kitty.First window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+1</span></code></a>, <a class="reference internal" href="conf.html#shortcut-kitty.Second window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+2</span></code></a> … <a class="reference internal" href="conf.html#shortcut-kitty.Tenth window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+0</span></code></a>
 (clockwise from the top-left)</td>
 </tr>
 </tbody>
@@ -387,12 +389,12 @@ windows are:</p>
 <span id="id2"></span><h2><a class="toc-backref" href="#id13">Layouts</a><a class="headerlink" href="#layouts" title="Permalink to this headline">¶</a></h2>
 <p>Currently, there are five layouts available,</p>
 <ul class="simple">
-<li><strong>Stack</strong> -- Only a single maximized window is shown at a time</li>
-<li><strong>Tall</strong> -- One window is shown full height on the left, the rest of the windows are shown one below the other on the right</li>
-<li><strong>Fat</strong> -- One window is shown full width on the top, the rest of the windows are shown side-by-side on the bottom</li>
-<li><strong>Grid</strong> -- All windows are shown in a grid</li>
-<li><strong>Horizontal</strong> -- All windows are shown side-by-side</li>
-<li><strong>Vertical</strong> -- All windows are shown one below the other</li>
+<li><strong>Stack</strong> – Only a single maximized window is shown at a time</li>
+<li><strong>Tall</strong> – One window is shown full height on the left, the rest of the windows are shown one below the other on the right</li>
+<li><strong>Fat</strong> – One window is shown full width on the top, the rest of the windows are shown side-by-side on the bottom</li>
+<li><strong>Grid</strong> – All windows are shown in a grid</li>
+<li><strong>Horizontal</strong> – All windows are shown side-by-side</li>
+<li><strong>Vertical</strong> – All windows are shown one below the other</li>
 </ul>
 <p>You can switch between layouts using the <a class="reference internal" href="conf.html#shortcut-kitty.Next layout"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+l</span></code></a> key combination. You can
 also create shortcuts to select particular layouts, and choose which layouts
@@ -439,11 +441,18 @@ from an arbitrary terminal program.</dd>
 <dd>Copy/paste to the clipboard from shell scripts, even over SSH.</dd>
 </dl>
 </div>
+<div class="section" id="configuring-kitty">
+<h2><a class="toc-backref" href="#id15">Configuring kitty</a><a class="headerlink" href="#configuring-kitty" title="Permalink to this headline">¶</a></h2>
+<p><em>kitty</em> is highly configurable, everything from keyboard shortcuts to
+painting frames-per-second. For details and a sample <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>,
+see the <a class="reference internal" href="conf.html"><span class="doc">configuration docs</span></a>.</p>
+</div>
 <div class="section" id="startup-sessions">
-<span id="sessions"></span><h2><a class="toc-backref" href="#id15">Startup Sessions</a><a class="headerlink" href="#startup-sessions" title="Permalink to this headline">¶</a></h2>
-<p>You can control the tabs, window layout, working directory, startup
-programs, etc. by creating a &quot;session&quot; file and using the <a class="reference internal" href="invocation.html#cmdoption-kitty-session"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--session</span></code></a>
-command line flag. For example:</p>
+<span id="sessions"></span><h2><a class="toc-backref" href="#id16">Startup Sessions</a><a class="headerlink" href="#startup-sessions" title="Permalink to this headline">¶</a></h2>
+<p>You can control the tabs, window layout, working directory, startup programs,
+etc. by creating a “session” file and using the <a class="reference internal" href="invocation.html#cmdoption-kitty-session"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--session</span></code></a>
+command line flag or the <a class="reference internal" href="conf.html#opt-kitty.startup_session"><code class="xref std std-opt docutils literal notranslate"><span class="pre">startup_session</span></code></a> option in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.
+For example:</p>
 <div class="highlight-session notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the window layout for the current tab</span>
 <span class="nf">layout</span><span class="l"> tall</span>
 <span class="c1"># Set the working directory for windows in the current tab</span>
@@ -474,7 +483,7 @@ command line flag. For example:</p>
 </div>
 </div>
 <div class="section" id="mouse-features">
-<h2><a class="toc-backref" href="#id16">Mouse features</a><a class="headerlink" href="#mouse-features" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">Mouse features</a><a class="headerlink" href="#mouse-features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>You can also hold down <kbd class="kbd docutils literal notranslate">ctrl+shift</kbd> and click on a URL to open it in a browser.</li>
 <li>You can double click to select a word and triple click to select a line.</li>
@@ -482,7 +491,7 @@ command line flag. For example:</p>
 </ul>
 </div>
 <div class="section" id="font-control">
-<h2><a class="toc-backref" href="#id17">Font control</a><a class="headerlink" href="#font-control" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">Font control</a><a class="headerlink" href="#font-control" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> has extremely flexible and powerful font selection features. You can
 specify individual families for the regular, bold, italic and bold+italic
 fonts. You can even specify specific font families for specific ranges of
@@ -492,7 +501,7 @@ fonts. See the various font related configuration directives in
 <a class="reference internal" href="conf.html#conf-kitty-fonts"><span class="std std-ref">Fonts</span></a>.</p>
 </div>
 <div class="section" id="the-scrollback-buffer">
-<span id="scrollback"></span><h2><a class="toc-backref" href="#id18">The scrollback buffer</a><a class="headerlink" href="#the-scrollback-buffer" title="Permalink to this headline">¶</a></h2>
+<span id="scrollback"></span><h2><a class="toc-backref" href="#id19">The scrollback buffer</a><a class="headerlink" href="#the-scrollback-buffer" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> supports scrolling back to view history, just like most terminals. You
 can use either keyboard shortcuts or the mouse scroll wheel to do so.  However,
 <em>kitty</em> has an extra, neat feature. Sometimes you need to explore the
@@ -504,11 +513,11 @@ Colors and text formatting are preserved. You can explore the scrollback buffer
 comfortably within the pager.</p>
 </div>
 <div class="section" id="frequently-asked-questions">
-<h2><a class="toc-backref" href="#id19">Frequently Asked Questions</a><a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">Frequently Asked Questions</a><a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h2>
 <p>The list of Frequently Asked Questions (<em>FAQ</em>) is <a class="reference internal" href="faq.html"><span class="doc">available here</span></a>.</p>
 </div>
 <div class="section" id="changelog">
-<h2><a class="toc-backref" href="#id20">Changelog</a><a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id21">Changelog</a><a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
 <p>See <a class="reference internal" href="changelog.html"><span class="doc">Changelog</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>

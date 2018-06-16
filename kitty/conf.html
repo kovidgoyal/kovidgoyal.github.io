@@ -826,6 +826,17 @@ control all aspects of kitty, including sending text to kitty windows,
 opening new windows, closing windows, reading the content of windows, etc.
 Note that this even works over ssh connections.</p>
 <dl class="opt">
+<dt id="opt-kitty.startup_session">
+<code class="descname">startup_session</code><a class="headerlink" href="#opt-kitty.startup_session" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">startup_session</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Path to a session file to use for all kitty instances. Can be overridden
+by using the <a class="reference internal" href="invocation.html#cmdoption-kitty-session"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--session</span></code></a> command line option for individual
+instances. See <a class="reference internal" href="index.html#sessions"><span class="std std-ref">Startup Sessions</span></a> in the kitty documentation for details.</p>
+<dl class="opt">
 <dt id="opt-kitty.clipboard_control">
 <code class="descname">clipboard_control</code><a class="headerlink" href="#opt-kitty.clipboard_control" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1964,6 +1975,13 @@ the line (same as pressing the Home key):</p>
 <span class="c1">#: to kitty windows, opening new windows, closing windows, reading the</span><span class="w"></span>
 <span class="c1">#: content of windows, etc. Note that this even works over ssh</span><span class="w"></span>
 <span class="c1">#: connections.</span><span class="w"></span>
+
+<span class="nv">startup_session</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
+
+<span class="c1">#: Path to a session file to use for all kitty instances. Can be</span><span class="w"></span>
+<span class="c1">#: overridden by using the kitty --session command line option for</span><span class="w"></span>
+<span class="c1">#: individual instances. See sessions in the kitty documentation for</span><span class="w"></span>
+<span class="c1">#: details.</span><span class="w"></span>
 
 <span class="nv">clipboard_control</span><span class="w"> </span><span class="s">write-clipboard write-primary</span><span class="w"></span>
 
