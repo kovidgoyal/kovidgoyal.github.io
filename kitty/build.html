@@ -95,6 +95,8 @@ ga('send', 'pageview');
       </div>
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="building-kitty-from-source">
@@ -152,23 +154,25 @@ just <code class="docutils literal notranslate"><span class="pre">kitty</span></
 </div>
 <div class="section" id="note-for-linux-macos-packagers">
 <h2>Note for Linux/macOS packagers<a class="headerlink" href="#note-for-linux-macos-packagers" title="Permalink to this headline">¶</a></h2>
-<p>While kitty does use python, it is not a traditional python package, so please
+<p>The released <em>kitty</em> source code is available as a <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases/download/v0.11.1/kitty-0.11.1.tar.xz">tarball</a> from
+<a class="reference external" href="https://github.com/kovidgoyal/kitty/releases">the GitHub releases page</a>.</p>
+<p>While <em>kitty</em> does use python, it is not a traditional python package, so please
 do not install it in site-packages.
 Instead run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">linux</span><span class="o">-</span><span class="n">package</span>
 </pre></div>
 </div>
-<p>This will install kitty into the directory <code class="file docutils literal notranslate"><span class="pre">linux-package</span></code>. You can run kitty
+<p>This will install <em>kitty</em> into the directory <code class="file docutils literal notranslate"><span class="pre">linux-package</span></code>. You can run <em>kitty</em>
 with <code class="file docutils literal notranslate"><span class="pre">linux-package/bin/kitty</span></code>.  All the files needed to run kitty will be in
 <code class="file docutils literal notranslate"><span class="pre">linux-package/lib/kitty</span></code>. The terminfo file will be installed into
 <code class="file docutils literal notranslate"><span class="pre">linux-package/share/terminfo</span></code>. Simply copy these files into <code class="file docutils literal notranslate"><span class="pre">/usr</span></code> to install
-kitty. In other words, <code class="file docutils literal notranslate"><span class="pre">linux-package</span></code> is the staging area into which kitty is
+<em>kitty</em>. In other words, <code class="file docutils literal notranslate"><span class="pre">linux-package</span></code> is the staging area into which <em>kitty</em> is
 installed. You can choose a different staging area, by passing the <code class="docutils literal notranslate"><span class="pre">--prefix</span></code>
 argument to <code class="file docutils literal notranslate"><span class="pre">setup.py</span></code>.</p>
-<p>You should probably split kitty into two packages, <code class="file docutils literal notranslate"><span class="pre">kitty-terminfo</span></code> that
+<p>You should probably split <em>kitty</em> into two packages, <code class="file docutils literal notranslate"><span class="pre">kitty-terminfo</span></code> that
 installs the terminfo file and <code class="file docutils literal notranslate"><span class="pre">kitty</span></code> that installs the main program.
 This allows users to install the terminfo file on servers into which they ssh,
-without needing to install all of kitty.</p>
+without needing to install all of <em>kitty</em>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">You need a couple of extra dependencies to build linux-package.
@@ -177,13 +181,14 @@ development package of <code class="file docutils literal notranslate"><span cla
 a git checkout instead of the released source code tarball, you will
 need <code class="file docutils literal notranslate"><span class="pre">sphinx-build</span></code> from the <a class="reference external" href="http://www.sphinx-doc.org/">Sphinx documentation generator</a>.</p>
 </div>
-<p>This applies to creating packages for kitty for macOS package managers such as
+<p>This applies to creating packages for <em>kitty</em> for macOS package managers such as
 brew or MacPorts as well.</p>
 </div>
 </div>
 
 
           </div>
+          
         </div>
       </div>
     <div class="clearer"></div>

@@ -105,6 +105,8 @@ ga('send', 'pageview');
       </div>
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="configuring-kitty">
@@ -517,6 +519,16 @@ Note that borders are displayed only when more than one window is visible. They 
 </pre></div>
 </div>
 <p>The window margin (in pts) (blank area outside the border)</p>
+<dl class="opt">
+<dt id="opt-kitty.single_window_margin_width">
+<code class="descname">single_window_margin_width</code><a class="headerlink" href="#opt-kitty.single_window_margin_width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">single_window_margin_width</span><span class="w"> </span><span class="mf">-1000.0</span>
+</pre></div>
+</div>
+<p>The window margin (in pts) to use when only a single window is visible.
+Negative values will cause the value of <a class="reference internal" href="#opt-kitty.window_margin_width"><code class="xref std std-opt docutils literal notranslate"><span class="pre">window_margin_width</span></code></a> to be used instead.</p>
 <dl class="opt">
 <dt id="opt-kitty.window_padding_width">
 <code class="descname">window_padding_width</code><a class="headerlink" href="#opt-kitty.window_padding_width" title="Permalink to this definition">¶</a></dt>
@@ -938,8 +950,14 @@ behavior on macOS.</p>
 </div>
 <div class="section" id="keyboard-shortcuts">
 <span id="conf-kitty-shortcuts"></span><h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
-<p>For a list of key names, see: <a class="reference external" href="http://www.glfw.org/docs/latest/group__keys.html">GLFW keys</a>
-For a list of modifier names, see: <a class="reference external" href="http://www.glfw.org/docs/latest/group__mods.html">GLFW mods</a></p>
+<p>For a list of key names, see: <a class="reference external" href="http://www.glfw.org/docs/latest/group__keys.html">GLFW keys</a>. The name to use is the part
+after the <code class="code docutils literal notranslate"><span class="pre">GLFW_KEY_</span></code> prefix. For a list of modifier names, see:
+<a class="reference external" href="http://www.glfw.org/docs/latest/group__mods.html">GLFW mods</a></p>
+<p>On Linux you can also use XKB key names to bind keys that are not supported by
+GLFW. See <a class="reference external" href="https://github.com/xkbcommon/libxkbcommon/blob/master/xkbcommon/xkbcommon-keysyms.h">XKB keys</a>
+for a list of key names. The name to use is the part after the <code class="code docutils literal notranslate"><span class="pre">XKB_KEY_</span></code>
+prefix. Note that you should only use an XKB key name for keys that are not present
+in the list of GLFW keys.</p>
 <p>You can use the special action <code class="code docutils literal notranslate"><span class="pre">no_op</span></code> to unmap a keyboard shortcut that is
 assigned in the default configuration.</p>
 <p>You can combine multiple actions to be triggered by a single shortcut, using the
@@ -1547,6 +1565,7 @@ comments describing each setting by clicking: <a class="reference download inter
 
 
           </div>
+          
         </div>
       </div>
     <div class="clearer"></div>
