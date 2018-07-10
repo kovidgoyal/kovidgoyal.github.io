@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Configuring kitty &#8212; kitty 0.11.1 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.11.3 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -511,6 +511,18 @@ for vertical resizing.</p>
 <p>The width (in pts) of window borders. Will be rounded to the nearest number of pixels based on screen resolution.
 Note that borders are displayed only when more than one window is visible. They are meant to separate multiple windows.</p>
 <dl class="opt">
+<dt id="opt-kitty.draw_minimal_borders">
+<code class="descname">draw_minimal_borders</code><a class="headerlink" href="#opt-kitty.draw_minimal_borders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">draw_minimal_borders</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Draw only the minimum borders needed. This means that only the minimum
+needed borders for inactive windows are drawn. That is only the borders
+that separate the inactive window from a neighbor. Note that setting
+a non-zero window margin overrides this and causes all borders to be drawn.</p>
+<dl class="opt">
 <dt id="opt-kitty.window_margin_width">
 <code class="descname">window_margin_width</code><a class="headerlink" href="#opt-kitty.window_margin_width" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -947,6 +959,16 @@ can use the macOS unicode input technique.</p>
 <p>Have kitty quit when all the top-level windows are closed. By default,
 kitty will stay running, even with no open windows, as is the expected
 behavior on macOS.</p>
+<dl class="opt">
+<dt id="opt-kitty.macos_window_resizable">
+<code class="descname">macos_window_resizable</code><a class="headerlink" href="#opt-kitty.macos_window_resizable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_window_resizable</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Disable this if you want kitty top-level (OS) windows to not be resizable
+on macOS.</p>
 </div>
 <div class="section" id="keyboard-shortcuts">
 <span id="conf-kitty-shortcuts"></span><h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
