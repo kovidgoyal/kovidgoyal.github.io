@@ -122,7 +122,7 @@ Action                      Shortcut
 ========================    =======================
 New tab                     :sc:`new_tab`
 Close tab                   :sc:`close_tab`
-Next tab                    :sc:`next_tab`
+Next tab                    :sc:`next_tab` (also :kbd:`control+tab` on macOS)
 Previous tab                :sc:`previous_tab`
 Next layout                 :sc:`next_layout`
 Move tab forward            :sc:`move_tab_forward`
@@ -165,6 +165,7 @@ Restore font size                   :sc:`reset_font_size`
 Toggle fullscreen                   :sc:`toggle_fullscreen`
 Input unicode character             :sc:`input_unicode_character`
 Click URL using the keyboard        :sc:`open_url`
+Reset the terminal                  :sc:`reset_terminal`
 Pass current selection to program   :sc:`pass_selection_to_program`
 Edit |kitty| config file            :sc:`edit_config_file`
 Open a |kitty| shell                :sc:`kitty_shell`
@@ -259,6 +260,15 @@ see the :doc:`configuration docs <conf>`.
 
 .. _sessions:
 
+Remote control
+------------------
+
+|kitty| has a very powerful system that allows you to control it from the
+:doc:`shell prompt, even over SSH <remote-control>`. You can change colors,
+fonts, open new windows, tabs, set their titles, change window layout, get text
+from one window and send text to another, etc, etc. The possibilities are
+endless. See the :doc:`tutorial <remote-control>` to get started.
+
 Startup Sessions
 ------------------
 
@@ -303,6 +313,8 @@ Mouse features
 * You can also hold down :kbd:`ctrl+shift` and click on a URL to open it in a browser.
 * You can double click to select a word and triple click to select a line.
 * You can right click to extend a previous selection
+* You can hold down :kbd:`ctrl+alt` and drag with the mouse to select in
+  columns
 
 
 Font control
@@ -337,6 +349,39 @@ Frequently Asked Questions
 ---------------------------------
 
 The list of Frequently Asked Questions (*FAQ*) is :doc:`available here <faq>`.
+
+.. _completion:
+
+Completion for kitty
+---------------------------------
+
+|kitty| comes with completion for the ``kitty`` command for popular shells.
+
+
+bash
+~~~~~~~~
+
+Add the following to your :file:`~/.bashrc`
+
+.. code-block:: sh
+
+   source <(kitty + complete setup bash)
+
+
+zsh
+~~~~~~~~~
+
+Add the following to your :file:`~/.zshrc`
+
+.. code-block:: sh
+
+    autoload -Uz compinit
+    compinit
+    # Completion for kitty
+    kitty + complete setup zsh | source /dev/stdin
+
+The important thing above is to make sure the call to |kitty| to load the zsh
+completions happens after the call to :file:`compinit`.
 
 
 Changelog

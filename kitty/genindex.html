@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Index &#8212; kitty 0.11.3 documentation</title>
+    <title>Index &#8212; kitty 0.12.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -345,6 +345,10 @@ ga('send', 'pageview');
 </li>
         <li><a href="remote-control.html#cmdoption-kitty-get-text-match">kitty-@-get-text command line option</a>
 </li>
+        <li><a href="remote-control.html#cmdoption-kitty-goto-layout-match">kitty-@-goto-layout command line option</a>
+</li>
+        <li><a href="remote-control.html#cmdoption-kitty-kitten-match">kitty-@-kitten command line option</a>
+</li>
         <li><a href="remote-control.html#cmdoption-kitty-new-window-match">kitty-@-new-window command line option</a>
 </li>
         <li><a href="remote-control.html#cmdoption-kitty-resize-window-match">kitty-@-resize-window command line option</a>
@@ -397,6 +401,15 @@ ga('send', 'pageview');
 
       <ul>
         <li><a href="remote-control.html#cmdoption-kitty-new-window-new-tab">kitty-@-new-window command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --no-response
+
+      <ul>
+        <li><a href="remote-control.html#cmdoption-kitty-focus-window-no-response">kitty-@-focus-window command line option</a>
+</li>
+        <li><a href="remote-control.html#cmdoption-kitty-new-window-no-response">kitty-@-new-window command line option</a>
 </li>
       </ul></li>
       <li>
@@ -571,6 +584,13 @@ ga('send', 'pageview');
 </li>
       </ul></li>
       <li>
+    --window-type &lt;WINDOW_TYPE&gt;
+
+      <ul>
+        <li><a href="remote-control.html#cmdoption-kitty-new-window-window-type">kitty-@-new-window command line option</a>
+</li>
+      </ul></li>
+      <li>
     --word-characters &lt;WORD_CHARACTERS&gt;
 
       <ul>
@@ -661,6 +681,8 @@ ga('send', 'pageview');
 </li>
         <li><a href="conf.html#opt-kitty.cursor_shape">kitty.cursor_shape</a>
 </li>
+        <li><a href="conf.html#opt-kitty.cursor_text_color">kitty.cursor_text_color</a>
+</li>
         <li><a href="conf.html#opt-kitty.dim_opacity">kitty.dim_opacity</a>
 </li>
         <li><a href="conf.html#opt-kitty.draw_minimal_borders">kitty.draw_minimal_borders</a>
@@ -670,6 +692,8 @@ ga('send', 'pageview');
         <li><a href="conf.html#opt-kitty.enable_audio_bell">kitty.enable_audio_bell</a>
 </li>
         <li><a href="conf.html#opt-kitty.enabled_layouts">kitty.enabled_layouts</a>
+</li>
+        <li><a href="conf.html#opt-kitty.env">kitty.env</a>
 </li>
         <li><a href="conf.html#opt-kitty.focus_follows_mouse">kitty.focus_follows_mouse</a>
 </li>
@@ -887,6 +911,8 @@ ga('send', 'pageview');
         <li><a href="conf.html#shortcut-kitty.Reset background opacity">kitty.Reset background opacity</a>
 </li>
         <li><a href="conf.html#shortcut-kitty.Reset font size">kitty.Reset font size</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Reset the terminal">kitty.Reset the terminal</a>
 </li>
         <li><a href="conf.html#shortcut-kitty.Scroll line down">kitty.Scroll line down</a>
 </li>
@@ -1305,6 +1331,8 @@ ga('send', 'pageview');
       <ul>
         <li><a href="remote-control.html#cmdoption-kitty-focus-window-match">--match &lt;MATCH&gt;, -m &lt;MATCH&gt;</a>
 </li>
+        <li><a href="remote-control.html#cmdoption-kitty-focus-window-no-response">--no-response</a>
+</li>
       </ul></li>
       <li>
     kitty-@-get-colors command line option
@@ -1329,6 +1357,20 @@ ga('send', 'pageview');
 </li>
       </ul></li>
       <li>
+    kitty-@-goto-layout command line option
+
+      <ul>
+        <li><a href="remote-control.html#cmdoption-kitty-goto-layout-match">--match &lt;MATCH&gt;, -m &lt;MATCH&gt;</a>
+</li>
+      </ul></li>
+      <li>
+    kitty-@-kitten command line option
+
+      <ul>
+        <li><a href="remote-control.html#cmdoption-kitty-kitten-match">--match &lt;MATCH&gt;, -m &lt;MATCH&gt;</a>
+</li>
+      </ul></li>
+      <li>
     kitty-@-new-window command line option
 
       <ul>
@@ -1340,9 +1382,13 @@ ga('send', 'pageview');
 </li>
         <li><a href="remote-control.html#cmdoption-kitty-new-window-new-tab">--new-tab</a>
 </li>
+        <li><a href="remote-control.html#cmdoption-kitty-new-window-no-response">--no-response</a>
+</li>
         <li><a href="remote-control.html#cmdoption-kitty-new-window-tab-title">--tab-title &lt;TAB_TITLE&gt;</a>
 </li>
         <li><a href="remote-control.html#cmdoption-kitty-new-window-title">--title &lt;TITLE&gt;</a>
+</li>
+        <li><a href="remote-control.html#cmdoption-kitty-new-window-window-type">--window-type &lt;WINDOW_TYPE&gt;</a>
 </li>
       </ul></li>
       <li>
@@ -1432,6 +1478,8 @@ ga('send', 'pageview');
         <li><a href="conf.html#opt-kitty.active_tab_foreground">Config Setting</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     kitty.adjust_line_height
 
@@ -1439,8 +1487,6 @@ ga('send', 'pageview');
         <li><a href="conf.html#opt-kitty.adjust_line_height">Config Setting</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     kitty.allow_remote_control
 
@@ -1617,6 +1663,13 @@ ga('send', 'pageview');
 </li>
       </ul></li>
       <li>
+    kitty.cursor_text_color
+
+      <ul>
+        <li><a href="conf.html#opt-kitty.cursor_text_color">Config Setting</a>
+</li>
+      </ul></li>
+      <li>
     kitty.Decrease background opacity
 
       <ul>
@@ -1677,6 +1730,13 @@ ga('send', 'pageview');
 
       <ul>
         <li><a href="conf.html#opt-kitty.enabled_layouts">Config Setting</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.env
+
+      <ul>
+        <li><a href="conf.html#opt-kitty.env">Config Setting</a>
 </li>
       </ul></li>
       <li>
@@ -2034,6 +2094,13 @@ ga('send', 'pageview');
 
       <ul>
         <li><a href="conf.html#shortcut-kitty.Reset font size">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Reset the terminal
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Reset the terminal">Keyboard Shortcut</a>
 </li>
       </ul></li>
       <li>

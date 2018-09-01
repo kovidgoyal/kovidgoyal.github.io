@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Controlling kitty from scripts or the shell &#8212; kitty 0.11.3 documentation</title>
+    <title>Controlling kitty from scripts or the shell &#8212; kitty 0.12.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -79,6 +79,7 @@ ga('send', 'pageview');
   <ul>
 <li><a class="reference internal" href="#tutorial">Tutorial</a></li>
 <li><a class="reference internal" href="#the-builtin-kitty-shell">The builtin kitty shell</a></li>
+<li><a class="reference internal" href="#allowing-only-some-windows-to-control-kitty">Allowing only some windows to control kitty</a></li>
 <li><a class="reference internal" href="#kitty">kitty &#64;</a></li>
 <li><a class="reference internal" href="#kitty-close-tab">kitty &#64; close-tab</a></li>
 <li><a class="reference internal" href="#kitty-close-window">kitty &#64; close-window</a></li>
@@ -86,6 +87,8 @@ ga('send', 'pageview');
 <li><a class="reference internal" href="#kitty-focus-window">kitty &#64; focus-window</a></li>
 <li><a class="reference internal" href="#kitty-get-colors">kitty &#64; get-colors</a></li>
 <li><a class="reference internal" href="#kitty-get-text">kitty &#64; get-text</a></li>
+<li><a class="reference internal" href="#kitty-goto-layout">kitty &#64; goto-layout</a></li>
+<li><a class="reference internal" href="#kitty-kitten">kitty &#64; kitten</a></li>
 <li><a class="reference internal" href="#kitty-ls">kitty &#64; ls</a></li>
 <li><a class="reference internal" href="#kitty-new-window">kitty &#64; new-window</a></li>
 <li><a class="reference internal" href="#kitty-resize-window">kitty &#64; resize-window</a></li>
@@ -204,7 +207,7 @@ instance of <em>kitty</em> using the <a class="reference internal" href="#cmdopt
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ --to unix:/tmp/mykitty ls
 </pre></div>
 </div>
-<p>Note that is all you want to do is run a single <em>kitty</em> “daemon” and have subsequent
+<p>Note that if all you want to do is run a single <em>kitty</em> “daemon” and have subsequent
 <em>kitty</em> invocations appear as new top-level windows, you can use the simpler <a class="reference internal" href="invocation.html#cmdoption-kitty-single-instance"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--single-instance</span></code></a>
 option, see <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--help</span></code> for that.</p>
 </div>
@@ -215,7 +218,21 @@ shell. Run <code class="docutils literal notranslate"><span class="pre">kitty</s
 shell with completion for <em>kitty</em> command names and options.</p>
 <p>You can even open the <em>kitty</em> shell inside a running <em>kitty</em> using a simple
 keyboard shortcut (<a class="reference internal" href="conf.html#shortcut-kitty.Open the kitty command shell"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+escape</span></code></a> by default). This has the added
-advantage that you dont need to use <code class="docutils literal notranslate"><span class="pre">allow_remote_control</span></code> to make it work.</p>
+advantage that you don’t need to use <code class="docutils literal notranslate"><span class="pre">allow_remote_control</span></code> to make it work.</p>
+</div>
+<div class="section" id="allowing-only-some-windows-to-control-kitty">
+<h2>Allowing only some windows to control kitty<a class="headerlink" href="#allowing-only-some-windows-to-control-kitty" title="Permalink to this headline">¶</a></h2>
+<p>If you do not want to allow all programs running in <em>kitty</em> to control it, you can selectively
+enable remote control for only some <em>kitty</em> windows. Simply create a shortcut
+such as:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>map ctrl+k new_window @ some_program
+</pre></div>
+</div>
+<p>Then programs running in windows created with that shortcut can use <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span></code>
+to control kitty. Note that any program with the right level of permissions can
+still write to the pipes of any other program on the same computer and
+therefore can control <em>kitty</em>. It can, however, be useful to block programs
+running on other computers (for example, over ssh) or as other users.</p>
 </div>
 <div class="section" id="kitty">
 <h2>kitty &#64;<a class="headerlink" href="#kitty" title="Permalink to this headline">¶</a></h2>
@@ -244,7 +261,7 @@ advantage that you dont need to use <code class="docutils literal notranslate"><
 <dl class="option">
 <dt id="cmdoption-kitty-close-tab-match">
 <code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-close-tab-match" title="Permalink to this definition">¶</a></dt>
-<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used.</p>
+<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used.</p>
 </dd></dl>
 
 <dl class="option">
@@ -266,7 +283,7 @@ advantage that you dont need to use <code class="docutils literal notranslate"><
 <dl class="option">
 <dt id="cmdoption-kitty-close-window-match">
 <code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-close-window-match" title="Permalink to this definition">¶</a></dt>
-<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable.</p>
+<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
 <dl class="option">
@@ -288,7 +305,7 @@ advantage that you dont need to use <code class="docutils literal notranslate"><
 <dl class="option">
 <dt id="cmdoption-kitty-focus-tab-match">
 <code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-focus-tab-match" title="Permalink to this definition">¶</a></dt>
-<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used.</p>
+<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used.</p>
 </dd></dl>
 
 </div>
@@ -304,7 +321,14 @@ advantage that you dont need to use <code class="docutils literal notranslate"><
 <dl class="option">
 <dt id="cmdoption-kitty-focus-window-match">
 <code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-focus-window-match" title="Permalink to this definition">¶</a></dt>
-<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable.</p>
+<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-focus-window-no-response">
+<code class="descname">--no-response</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-focus-window-no-response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Don’t wait for a response from kitty. This means that even if no matching window is found, the command will exit with a success code.
+Default: <code class="code docutils literal notranslate"><span class="pre">false</span></code></p>
 </dd></dl>
 
 </div>
@@ -326,7 +350,7 @@ advantage that you dont need to use <code class="docutils literal notranslate"><
 <dl class="option">
 <dt id="cmdoption-kitty-get-colors-match">
 <code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-get-colors-match" title="Permalink to this definition">¶</a></dt>
-<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable.</p>
+<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
 </div>
@@ -342,7 +366,7 @@ advantage that you dont need to use <code class="docutils literal notranslate"><
 <dl class="option">
 <dt id="cmdoption-kitty-get-text-match">
 <code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-get-text-match" title="Permalink to this definition">¶</a></dt>
-<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable.</p>
+<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
 <dl class="option">
@@ -367,12 +391,44 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">all,<
 
 </div>
 </div>
+<div class="section" id="kitty-goto-layout">
+<span id="at-goto-layout"></span><h2>kitty &#64; goto-layout<a class="headerlink" href="#kitty-goto-layout" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ goto-layout <span class="o">[</span>options<span class="o">]</span> LAYOUT_NAME
+</pre></div>
+</div>
+<p>Set the window layout in the specified tab (or the active tab if not specified). You can use special match value <span class="italic">all</span> to set the layout in all tabs.</p>
+<div class="section" id="id7">
+<h3>Options<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<dl class="option">
+<dt id="cmdoption-kitty-goto-layout-match">
+<code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-goto-layout-match" title="Permalink to this definition">¶</a></dt>
+<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used.</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="kitty-kitten">
+<span id="at-kitten"></span><h2>kitty &#64; kitten<a class="headerlink" href="#kitty-kitten" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ kitten <span class="o">[</span>options<span class="o">]</span> kitten_name
+</pre></div>
+</div>
+<p>Run a kitten over the specified window (active window by default). The <span class="italic">kitten_name</span> can be either the name of a builtin kitten or the path to a python file containing a custom kitten. If a relative path is used it is searched for in the kitty config directory.</p>
+<div class="section" id="id8">
+<h3>Options<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<dl class="option">
+<dt id="cmdoption-kitty-kitten-match">
+<code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-match" title="Permalink to this definition">¶</a></dt>
+<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
+</dd></dl>
+
+</div>
+</div>
 <div class="section" id="kitty-ls">
 <span id="at-ls"></span><h2>kitty &#64; ls<a class="headerlink" href="#kitty-ls" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ ls
 </pre></div>
 </div>
-<p>List all windows. The list is returned as JSON tree. The top-level is a list of operating system kitty windows. Each OS window has an <span class="italic">id</span> and a list of <span class="italic">tabs</span>. Each tab has its own <span class="italic">id</span>, a <span class="italic">title</span> and a list of <span class="italic">windows</span>. Each window has an <span class="italic">id</span>, <span class="italic">title</span>, <span class="italic">current working directory</span>, <span class="italic">process id (PID)</span> and <span class="italic">command-line</span> of the process running in the window.</p>
+<p>List all windows. The list is returned as JSON tree. The top-level is a list of operating system kitty windows. Each OS window has an <span class="italic">id</span> and a list of <span class="italic">tabs</span>. Each tab has its own <span class="italic">id</span>, a <span class="italic">title</span> and a list of <span class="italic">windows</span>. Each window has an <span class="italic">id</span>, <span class="italic">title</span>, <span class="italic">current working directory</span>, <span class="italic">process id (PID)</span>,  <span class="italic">command-line</span> and <span class="italic">environment</span> of the process running in the window.</p>
 <p>You can use these criteria to select windows/tabs for the other commands.</p>
 </div>
 <div class="section" id="kitty-new-window">
@@ -380,14 +436,14 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">all,<
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ new-window <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>CMD ...<span class="o">]</span>
 </pre></div>
 </div>
-<p>Open a new window in the specified tab. If you use the <a class="reference internal" href="#cmdoption-kitty-new-window-match"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">new-window</span> <span class="pre">--match</span></code></a> option the first matching tab is used. Otherwise the currently active tab is used. Prints out the id of the newly opened window. Any command line arguments are assumed to be the command line used to run in the new window, if none are provided, the default shell is run. For example:
+<p>Open a new window in the specified tab. If you use the <a class="reference internal" href="#cmdoption-kitty-new-window-match"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">new-window</span> <span class="pre">--match</span></code></a> option the first matching tab is used. Otherwise the currently active tab is used. Prints out the id of the newly opened window (unless <a class="reference internal" href="#cmdoption-kitty-new-window-no-response"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-response</span></code></a> is used). Any command line arguments are assumed to be the command line used to run in the new window, if none are provided, the default shell is run. For example:
 <span class="italic">kitty &#64; new-window –title Email mutt</span></p>
-<div class="section" id="id7">
-<h3>Options<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>Options<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <dl class="option">
 <dt id="cmdoption-kitty-new-window-match">
 <code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-new-window-match" title="Permalink to this definition">¶</a></dt>
-<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used.</p>
+<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used.</p>
 </dd></dl>
 
 <dl class="option">
@@ -409,6 +465,14 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">all,<
 </dd></dl>
 
 <dl class="option">
+<dt id="cmdoption-kitty-new-window-window-type">
+<code class="descname">--window-type</code><code class="descclassname"> &lt;WINDOW_TYPE&gt;</code><a class="headerlink" href="#cmdoption-kitty-new-window-window-type" title="Permalink to this definition">¶</a></dt>
+<dd><p>What kind of window to open. A kitty window or a top-level OS window.
+Default: <code class="code docutils literal notranslate"><span class="pre">kitty</span></code>
+Choices: <code class="code docutils literal notranslate"><span class="pre">kitty,</span> <span class="pre">os</span></code></p>
+</dd></dl>
+
+<dl class="option">
 <dt id="cmdoption-kitty-new-window-new-tab">
 <code class="descname">--new-tab</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-new-window-new-tab" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open a new tab</p>
@@ -420,6 +484,13 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">all,<
 <dd><p>When using –new-tab set the title of the tab.</p>
 </dd></dl>
 
+<dl class="option">
+<dt id="cmdoption-kitty-new-window-no-response">
+<code class="descname">--no-response</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-new-window-no-response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Don’t wait for a response giving the id of the newly opened window. Note that using this option means that you will not be notified of failures and that the id of the new window will not be printed out.
+Default: <code class="code docutils literal notranslate"><span class="pre">false</span></code></p>
+</dd></dl>
+
 </div>
 </div>
 <div class="section" id="kitty-resize-window">
@@ -428,12 +499,12 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">all,<
 </pre></div>
 </div>
 <p>Resize the specified window in the current layout. Note that not all layouts can resize all windows in all directions.</p>
-<div class="section" id="id8">
-<h3>Options<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Options<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <dl class="option">
 <dt id="cmdoption-kitty-resize-window-match">
 <code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-resize-window-match" title="Permalink to this definition">¶</a></dt>
-<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable.</p>
+<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
 <dl class="option">
@@ -465,12 +536,12 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 </pre></div>
 </div>
 <p>Send arbitrary text to specified windows. The text follows Python escaping rules. So you can use escapes like <span class="italic">x1b</span> to send control codes and <span class="italic">u21fa</span> to send unicode characters. If you use the <a class="reference internal" href="#cmdoption-kitty-send-text-match"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">send-text</span> <span class="pre">--match</span></code></a> option the text will be sent to all matched windows. By default, text is sent to only the currently active window.</p>
-<div class="section" id="id9">
-<h3>Options<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>Options<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <dl class="option">
 <dt id="cmdoption-kitty-send-text-match">
 <code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-send-text-match" title="Permalink to this definition">¶</a></dt>
-<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable.</p>
+<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
 <dl class="option">
@@ -493,8 +564,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 </pre></div>
 </div>
 <p>Set the background opacity for the specified windows. This will only work if you have turned on <a class="reference internal" href="conf.html#opt-kitty.background_opacity"><code class="xref std std-opt docutils literal notranslate"><span class="pre">dynamic_background_opacity</span></code></a> in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>. The background opacity affects all kitty windows in a single os_window. For example: kitty &#64; set-background-opacity 0.5</p>
-<div class="section" id="id10">
-<h3>Options<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>Options<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <dl class="option">
 <dt id="cmdoption-kitty-set-background-opacity-all">
 <code class="descname">--all</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">-a</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-set-background-opacity-all" title="Permalink to this definition">¶</a></dt>
@@ -504,13 +575,13 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 <dl class="option">
 <dt id="cmdoption-kitty-set-background-opacity-match">
 <code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-set-background-opacity-match" title="Permalink to this definition">¶</a></dt>
-<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable.</p>
+<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-kitty-set-background-opacity-match-tab">
 <code class="descname">--match-tab</code><code class="descclassname"> &lt;MATCH_TAB&gt;</code><code class="descclassname">, </code><code class="descname">-t</code><code class="descclassname"> &lt;MATCH_TAB&gt;</code><a class="headerlink" href="#cmdoption-kitty-set-background-opacity-match-tab" title="Permalink to this definition">¶</a></dt>
-<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used.</p>
+<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used.</p>
 </dd></dl>
 
 </div>
@@ -521,8 +592,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 </pre></div>
 </div>
 <p>Set the terminal colors for the specified windows/tabs (defaults to active window). You can either specify the path to a conf file (in the same format as kitty.conf) to read the colors from or you can specify individual colors, for example: kitty &#64; set-colors foreground=red background=white</p>
-<div class="section" id="id11">
-<h3>Options<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>Options<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <dl class="option">
 <dt id="cmdoption-kitty-set-colors-all">
 <code class="descname">--all</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">-a</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-set-colors-all" title="Permalink to this definition">¶</a></dt>
@@ -544,13 +615,13 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 <dl class="option">
 <dt id="cmdoption-kitty-set-colors-match">
 <code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-set-colors-match" title="Permalink to this definition">¶</a></dt>
-<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable.</p>
+<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-kitty-set-colors-match-tab">
 <code class="descname">--match-tab</code><code class="descclassname"> &lt;MATCH_TAB&gt;</code><code class="descclassname">, </code><code class="descname">-t</code><code class="descclassname"> &lt;MATCH_TAB&gt;</code><a class="headerlink" href="#cmdoption-kitty-set-colors-match-tab" title="Permalink to this definition">¶</a></dt>
-<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used.</p>
+<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used.</p>
 </dd></dl>
 
 </div>
@@ -568,12 +639,12 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 </pre></div>
 </div>
 <p>Set the title for the specified tab(s). If you use the <a class="reference internal" href="#cmdoption-kitty-set-tab-title-match"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">set-tab-title</span> <span class="pre">--match</span></code></a> option the title will be set for all matched tabs. By default, only the tab in which the command is run is affected. If you do not specify a title, the title of the currently active window in the tab is used.</p>
-<div class="section" id="id12">
-<h3>Options<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>Options<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <dl class="option">
 <dt id="cmdoption-kitty-set-tab-title-match">
 <code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-set-tab-title-match" title="Permalink to this definition">¶</a></dt>
-<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used.</p>
+<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used.</p>
 </dd></dl>
 
 </div>
@@ -584,8 +655,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 </pre></div>
 </div>
 <p>Set the title for the specified window(s). If you use the <a class="reference internal" href="#cmdoption-kitty-set-window-title-match"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">set-window-title</span> <span class="pre">--match</span></code></a> option the title will be set for all matched windows. By default, only the window in which the command is run is affected. If you do not specify a title, the last title set by the child process running in the window will be used.</p>
-<div class="section" id="id13">
-<h3>Options<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>Options<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <dl class="option">
 <dt id="cmdoption-kitty-set-window-title-temporary">
 <code class="descname">--temporary</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-set-window-title-temporary" title="Permalink to this definition">¶</a></dt>
@@ -595,7 +666,7 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 <dl class="option">
 <dt id="cmdoption-kitty-set-window-title-match">
 <code class="descname">--match</code><code class="descclassname"> &lt;MATCH&gt;</code><code class="descclassname">, </code><code class="descname">-m</code><code class="descclassname"> &lt;MATCH&gt;</code><a class="headerlink" href="#cmdoption-kitty-set-window-title-match" title="Permalink to this definition">¶</a></dt>
-<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable.</p>
+<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
 </div>

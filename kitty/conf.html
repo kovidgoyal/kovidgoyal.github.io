@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Configuring kitty &#8212; kitty 0.11.3 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.12.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -219,6 +219,16 @@ and very thick lines.</p>
 </div>
 <p>Default cursor color</p>
 <dl class="opt">
+<dt id="opt-kitty.cursor_text_color">
+<code class="descname">cursor_text_color</code><a class="headerlink" href="#opt-kitty.cursor_text_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">cursor_text_color</span><span class="w"> </span><span class="s">#111111</span>
+</pre></div>
+</div>
+<p>Choose the color of text under the cursor. If you want it rendered with the
+background color of the cell underneath instead, use the special keyword: background</p>
+<dl class="opt">
 <dt id="opt-kitty.cursor_shape">
 <code class="descname">cursor_shape</code><a class="headerlink" href="#opt-kitty.cursor_shape" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -274,8 +284,9 @@ representing which line should be at the top of the screen.</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">wheel_scroll_multiplier</span><span class="w"> </span><span class="mf">5.0</span>
 </pre></div>
 </div>
-<p>Modify the amount scrolled by the mouse wheel or touchpad. Use
-negative numbers to change scroll direction.</p>
+<p>Modify the amount scrolled by the mouse wheel. Note this is only used for low
+precision scrolling devices, not for high precision scrolling on platforms such
+as macOS and Wayland. Use negative numbers to change scroll direction.</p>
 </div>
 <div class="section" id="mouse">
 <span id="conf-kitty-mouse"></span><h2>Mouse<a class="headerlink" href="#mouse" title="Permalink to this headline">¶</a></h2>
@@ -850,6 +861,21 @@ control all aspects of kitty, including sending text to kitty windows,
 opening new windows, closing windows, reading the content of windows, etc.
 Note that this even works over ssh connections.</p>
 <dl class="opt">
+<dt id="opt-kitty.env">
+<code class="descname">env</code><a class="headerlink" href="#opt-kitty.env" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">env</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Specify environment variables to set in all child processes. Note that
+environment variables are expanded recursively, so if you use:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">env</span><span class="w"> </span><span class="s">MYVAR1=a</span><span class="w"></span>
+<span class="nv">env</span><span class="w"> </span><span class="s">MYVAR2=${MYVAR}/${HOME}/b</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The value of MYVAR2 will be <code class="code docutils literal notranslate"><span class="pre">a/&lt;path</span> <span class="pre">to</span> <span class="pre">home</span> <span class="pre">directory&gt;/b</span></code>.</p>
+<dl class="opt">
 <dt id="opt-kitty.startup_session">
 <code class="descname">startup_session</code><a class="headerlink" href="#opt-kitty.startup_session" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -859,7 +885,7 @@ Note that this even works over ssh connections.</p>
 </div>
 <p>Path to a session file to use for all kitty instances. Can be overridden
 by using the <a class="reference internal" href="invocation.html#cmdoption-kitty-session"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--session</span></code></a> command line option for individual
-instances. See <a class="reference internal" href="index.html#sessions"><span class="std std-ref">Startup Sessions</span></a> in the kitty documentation for details. Note
+instances. See <a class="reference internal" href="index.html#sessions"><span class="std std-ref">Remote control</span></a> in the kitty documentation for details. Note
 that relative paths are interpreted with respect to the kitty config directory.
 Environment variables in the path are expanded.</p>
 <dl class="opt">
@@ -1153,6 +1179,13 @@ For example, the following command opens the scrollback buffer in less in a new 
 <p>You can open a new window with the current working directory set to the
 working directory of the current window using:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+alt+enter</span><span class="w">    </span><span class="nf">new_window_with_cwd</span><span class="w"></span>
+</pre></div>
+</div>
+<p>You can open a new window that is allowed to control kitty via
+the kitty remote control facility by prefixing the command line with &#64;.
+Any programs running in that window will be allowed to control kitty.
+For example:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+enter</span><span class="w"> </span><span class="nf">new_window</span><span class="w"> </span><span class="s">@ some_program</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="shortcut">
@@ -1499,7 +1532,7 @@ shortcuts. For a full description see <a class="reference internal" href="kitten
 <code class="descname">Unicode input</code><a class="headerlink" href="#shortcut-kitty.Unicode input" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+u</span><span class="w"> </span><span class="nf">input_unicode_character</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+u</span><span class="w"> </span><span class="nf">kitten</span><span class="w"> </span><span class="s">unicode_input</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="shortcut">
@@ -1551,6 +1584,22 @@ shortcuts. For a full description see <a class="reference internal" href="kitten
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+a&gt;d</span><span class="w"> </span><span class="nf">set_background_opacity</span><span class="w"> </span><span class="s">default</span><span class="w"></span>
 </pre></div>
 </div>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Reset the terminal">
+<code class="descname">Reset the terminal</code><a class="headerlink" href="#shortcut-kitty.Reset the terminal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+delete</span><span class="w"> </span><span class="nf">clear_terminal</span><span class="w"> </span><span class="s">reset active</span><span class="w"></span>
+</pre></div>
+</div>
+<p>You can create shortcuts to clear/reset the terminal. For example:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">kitty_mod+f9</span><span class="w"> </span><span class="nf">clear_terminal</span><span class="w"> </span><span class="s">reset active</span><span class="w"></span>
+<span class="kd">map</span><span class="w"> </span><span class="s">kitty_mod+f10</span><span class="w"> </span><span class="nf">clear_terminal</span><span class="w"> </span><span class="s">clear active</span><span class="w"></span>
+<span class="kd">map</span><span class="w"> </span><span class="s">kitty_mod+f11</span><span class="w"> </span><span class="nf">clear_terminal</span><span class="w"> </span><span class="s">scrollback active</span><span class="w"></span>
+</pre></div>
+</div>
+<p>These will reset screen/clear screen/clear screen+scrollback respectively. If you want to
+operate on all windows instead of just the current one, use <span class="italic">all</span> instead of :italic`active`.</p>
 <dl class="shortcut">
 <dt id="shortcut-kitty.Send arbitrary text on key presses">
 <code class="descname">Send arbitrary text on key presses</code><a class="headerlink" href="#shortcut-kitty.Send arbitrary text on key presses" title="Permalink to this definition">¶</a></dt>
