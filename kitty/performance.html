@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>kitty Performance &#8212; kitty 0.12.0 documentation</title>
+    <title>kitty Performance &#8212; kitty 0.12.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -98,10 +98,10 @@ an optimum balance for these. To that end it keeps a cache of each rendered
 glyph in video RAM so that font rendering is not a bottleneck.  Interaction
 with child programs takes place in a separate thread from rendering, to improve
 smoothness.</p>
-<p>There are two parameters you can tune to adjust the performance. <code class="docutils literal notranslate"><span class="pre">repaint_delay</span></code>
-and <code class="docutils literal notranslate"><span class="pre">input_delay</span></code>. These control the artificial delays introduced into the
+<p>There are two parameters you can tune to adjust the performance. <a class="reference internal" href="conf.html#opt-kitty.repaint_delay"><code class="xref std std-opt docutils literal notranslate"><span class="pre">repaint_delay</span></code></a>
+and <a class="reference internal" href="conf.html#opt-kitty.input_delay"><code class="xref std std-opt docutils literal notranslate"><span class="pre">input_delay</span></code></a>. These control the artificial delays introduced into the
 render loop to reduce CPU usage. See <a class="reference internal" href="conf.html#conf-kitty-performance"><span class="std std-ref">Performance tuning</span></a> for details.
-See also the <code class="docutils literal notranslate"><span class="pre">sync_to_monitor</span></code> option to further decrease latency at the cost
+See also the <a class="reference internal" href="conf.html#opt-kitty.sync_to_monitor"><code class="xref std std-opt docutils literal notranslate"><span class="pre">sync_to_monitor</span></code></a> option to further decrease latency at the cost
 of some <a class="reference external" href="https://en.wikipedia.org/wiki/Screen_tearing">tearing</a> while scrolling.</p>
 <p>You can generate detailed per-function performance data using
 <a class="reference external" href="https://github.com/gperftools/gperftools">gperftools</a>. Build <em>kitty</em> with

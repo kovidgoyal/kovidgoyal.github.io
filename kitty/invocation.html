@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>The kitty command line interface &#8212; kitty 0.12.0 documentation</title>
+    <title>The kitty command line interface &#8212; kitty 0.12.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -114,7 +114,7 @@ For example: kitty /bin/sh</p>
 <dl class="option">
 <dt id="cmdoption-kitty-class">
 <code class="descname">--class</code><code class="descclassname"> &lt;CLS&gt;</code><a class="headerlink" href="#cmdoption-kitty-class" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the class part of the <span class="italic">WM_CLASS</span> window property
+<dd><p>Set the class part of the <span class="italic">WM_CLASS</span> window property. On Wayland, it sets the app id.
 Default: <code class="code docutils literal notranslate"><span class="pre">kitty</span></code></p>
 </dd></dl>
 
@@ -192,6 +192,12 @@ Default: <code class="code docutils literal notranslate"><span class="pre">.</sp
 <dt id="cmdoption-kitty-listen-on">
 <code class="descname">--listen-on</code><code class="descclassname"> &lt;LISTEN_ON&gt;</code><a class="headerlink" href="#cmdoption-kitty-listen-on" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tell kitty to listen on the specified address for control messages. For example, <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a><code class="code docutils literal notranslate"><span class="pre">=unix:/tmp/mykitty</span></code> or <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a><code class="code docutils literal notranslate"><span class="pre">=tcp:localhost:12345</span></code>. On Linux systems, you can also use abstract UNIX sockets, not associated with a file, like this: <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a><code class="code docutils literal notranslate"><span class="pre">=unix:&#64;mykitty</span></code>.  To control kitty, you can send it commands with <span class="italic">kitty &#64;</span> using the <a class="reference internal" href="remote-control.html#cmdoption-kitty-to"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">--to</span></code></a> option to specify this address. This option will be ignored, unless you set <a class="reference internal" href="conf.html#opt-kitty.allow_remote_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">allow_remote_control</span></code></a> to yes in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>. Note that if you run <span class="italic">kitty &#64;</span> within a kitty window, there is no need to specify the <span class="italic">–to</span> option as it is read automatically from the environment.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-start-in-fullscreen">
+<code class="descname">--start-in-fullscreen</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-start-in-fullscreen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make the initial kitty window fullscreen on startup</p>
 </dd></dl>
 
 <div class="section" id="debugging-options">
