@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>kitty - the fast, featureful, GPU based terminal emulator &#8212; kitty 0.12.1 documentation</title>
+    <title>kitty - the fast, featureful, GPU based terminal emulator &#8212; kitty 0.12.2 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -14,6 +14,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -332,6 +333,15 @@ windows are:</p>
 </tr>
 </tbody>
 </table>
+<p>Additionally, you can define shortcuts in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> to focus neighboring
+windows and move windows around (similar to window movement in vim):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">left</span> <span class="n">neighboring_window</span> <span class="n">left</span>
+<span class="nb">map</span> <span class="n">shift</span><span class="o">+</span><span class="n">left</span> <span class="n">move_window</span> <span class="n">right</span>
+<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">down</span> <span class="n">neighboring_window</span> <span class="n">down</span>
+<span class="nb">map</span> <span class="n">shift</span><span class="o">+</span><span class="n">down</span> <span class="n">move_window</span> <span class="n">up</span>
+<span class="o">...</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="other-keyboard-shortcuts">
@@ -366,36 +376,39 @@ windows are:</p>
 <td><a class="reference internal" href="conf.html#shortcut-kitty.Reset font size"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+backspace</span></code></a></td>
 </tr>
 <tr class="row-even"><td>Toggle fullscreen</td>
-<td><a class="reference internal" href="conf.html#shortcut-kitty.Toggle fullscreen"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f11</span></code></a></td>
+<td><a class="reference internal" href="conf.html#shortcut-kitty.Toggle fullscreen"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f11</span></code></a> (also <kbd class="kbd docutils literal notranslate">^⌘+f</kbd> on macOS)</td>
 </tr>
-<tr class="row-odd"><td>Input unicode character</td>
+<tr class="row-odd"><td>on</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Input unicode character</td>
 <td><a class="reference internal" href="conf.html#shortcut-kitty.Unicode input"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+u</span></code></a></td>
 </tr>
-<tr class="row-even"><td>Click URL using the keyboard</td>
+<tr class="row-odd"><td>Click URL using the keyboard</td>
 <td><a class="reference internal" href="conf.html#shortcut-kitty.Open URL"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+e</span></code></a></td>
 </tr>
-<tr class="row-odd"><td>Reset the terminal</td>
+<tr class="row-even"><td>Reset the terminal</td>
 <td><a class="reference internal" href="conf.html#shortcut-kitty.Reset the terminal"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+delete</span></code></a></td>
 </tr>
-<tr class="row-even"><td>Pass current selection to program</td>
+<tr class="row-odd"><td>Pass current selection to program</td>
 <td><a class="reference internal" href="conf.html#shortcut-kitty.Pass selection to program"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+o</span></code></a></td>
 </tr>
-<tr class="row-odd"><td>Edit <em>kitty</em> config file</td>
+<tr class="row-even"><td>Edit <em>kitty</em> config file</td>
 <td><a class="reference internal" href="conf.html#shortcut-kitty.Edit config file"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f2</span></code></a></td>
 </tr>
-<tr class="row-even"><td>Open a <em>kitty</em> shell</td>
+<tr class="row-odd"><td>Open a <em>kitty</em> shell</td>
 <td><a class="reference internal" href="conf.html#shortcut-kitty.Open the kitty command shell"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+escape</span></code></a></td>
 </tr>
-<tr class="row-odd"><td>Increase background opacity</td>
+<tr class="row-even"><td>Increase background opacity</td>
 <td><a class="reference internal" href="conf.html#shortcut-kitty.Increase background opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;m</span></code></a></td>
 </tr>
-<tr class="row-even"><td>Decrease background opacity</td>
+<tr class="row-odd"><td>Decrease background opacity</td>
 <td><a class="reference internal" href="conf.html#shortcut-kitty.Decrease background opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;l</span></code></a></td>
 </tr>
-<tr class="row-odd"><td>Full background opacity</td>
+<tr class="row-even"><td>Full background opacity</td>
 <td><a class="reference internal" href="conf.html#shortcut-kitty.Make background fully opaque"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;1</span></code></a></td>
 </tr>
-<tr class="row-even"><td>Reset background opacity</td>
+<tr class="row-odd"><td>Reset background opacity</td>
 <td><a class="reference internal" href="conf.html#shortcut-kitty.Reset background opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;d</span></code></a></td>
 </tr>
 </tbody>
@@ -458,6 +471,7 @@ from an arbitrary terminal program.</dd>
 <dt><a class="reference internal" href="kittens/clipboard.html"><span class="doc">Clipboard</span></a></dt>
 <dd>Copy/paste to the clipboard from shell scripts, even over SSH.</dd>
 </dl>
+<p>You can also <a class="reference internal" href="kittens/custom.html"><span class="doc">Learn to create your own kittens</span></a>.</p>
 </div>
 <div class="section" id="configuring-kitty">
 <h2><a class="toc-backref" href="#id15">Configuring kitty</a><a class="headerlink" href="#configuring-kitty" title="Permalink to this headline">¶</a></h2>
@@ -466,7 +480,7 @@ painting frames-per-second. For details and a sample <code class="file docutils 
 see the <a class="reference internal" href="conf.html"><span class="doc">configuration docs</span></a>.</p>
 </div>
 <div class="section" id="remote-control">
-<span id="sessions"></span><h2><a class="toc-backref" href="#id16">Remote control</a><a class="headerlink" href="#remote-control" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">Remote control</a><a class="headerlink" href="#remote-control" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> has a very powerful system that allows you to control it from the
 <a class="reference internal" href="remote-control.html"><span class="doc">shell prompt, even over SSH</span></a>. You can change colors,
 fonts, open new windows, tabs, set their titles, change window layout, get text
@@ -474,7 +488,7 @@ from one window and send text to another, etc, etc. The possibilities are
 endless. See the <a class="reference internal" href="remote-control.html"><span class="doc">tutorial</span></a> to get started.</p>
 </div>
 <div class="section" id="startup-sessions">
-<h2><a class="toc-backref" href="#id17">Startup Sessions</a><a class="headerlink" href="#startup-sessions" title="Permalink to this headline">¶</a></h2>
+<span id="sessions"></span><h2><a class="toc-backref" href="#id17">Startup Sessions</a><a class="headerlink" href="#startup-sessions" title="Permalink to this headline">¶</a></h2>
 <p>You can control the tabs, window layout, working directory, startup programs,
 etc. by creating a &quot;session&quot; file and using the <a class="reference internal" href="invocation.html#cmdoption-kitty-session"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--session</span></code></a>
 command line flag or the <a class="reference internal" href="conf.html#opt-kitty.startup_session"><code class="xref std std-opt docutils literal notranslate"><span class="pre">startup_session</span></code></a> option in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.
@@ -539,6 +553,13 @@ by pressing the <a class="reference internal" href="conf.html#shortcut-kitty.Bro
 scrollback buffer in your favorite pager program (which is <code class="docutils literal notranslate"><span class="pre">less</span></code> by default).
 Colors and text formatting are preserved. You can explore the scrollback buffer
 comfortably within the pager.</p>
+<p>Additionally, you can pipe the contents of the scrollback buffer to an
+arbitrary, command running in a new window, tab or overlay, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f1</span> <span class="n">pipe</span> <span class="nd">@ansi</span> <span class="n">window</span> <span class="n">less</span> <span class="o">+</span><span class="n">G</span> <span class="o">-</span><span class="n">R</span>
+</pre></div>
+</div>
+<p>Would open the scrollback buffer in a new window when you press the <kbd class="kbd docutils literal notranslate">F1</kbd>
+key. See <a class="reference internal" href="conf.html#shortcut-kitty.Browse scrollback buffer in less"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+h</span></code></a> for details.</p>
 </div>
 <div class="section" id="frequently-asked-questions">
 <h2><a class="toc-backref" href="#id21">Frequently Asked Questions</a><a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h2>

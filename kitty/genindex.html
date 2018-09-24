@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Index &#8212; kitty 0.12.1 documentation</title>
+    <title>Index &#8212; kitty 0.12.2 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -15,6 +15,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
@@ -349,6 +350,8 @@ ga('send', 'pageview');
 </li>
         <li><a href="remote-control.html#cmdoption-kitty-kitten-match">kitty-@-kitten command line option</a>
 </li>
+        <li><a href="remote-control.html#cmdoption-kitty-last-used-layout-match">kitty-@-last-used-layout command line option</a>
+</li>
         <li><a href="remote-control.html#cmdoption-kitty-new-window-match">kitty-@-new-window command line option</a>
 </li>
         <li><a href="remote-control.html#cmdoption-kitty-resize-window-match">kitty-@-resize-window command line option</a>
@@ -407,6 +410,8 @@ ga('send', 'pageview');
     --no-response
 
       <ul>
+        <li><a href="remote-control.html#cmdoption-kitty-focus-tab-no-response">kitty-@-focus-tab command line option</a>
+</li>
         <li><a href="remote-control.html#cmdoption-kitty-focus-window-no-response">kitty-@-focus-window command line option</a>
 </li>
         <li><a href="remote-control.html#cmdoption-kitty-new-window-no-response">kitty-@-new-window command line option</a>
@@ -500,10 +505,10 @@ ga('send', 'pageview');
 </li>
       </ul></li>
       <li>
-    --start-in-fullscreen
+    --start-as &lt;START_AS&gt;
 
       <ul>
-        <li><a href="invocation.html#cmdoption-kitty-start-in-fullscreen">kitty command line option</a>
+        <li><a href="invocation.html#cmdoption-kitty-start-as">kitty command line option</a>
 </li>
       </ul></li>
       <li>
@@ -718,6 +723,8 @@ ga('send', 'pageview');
 </li>
         <li><a href="conf.html#opt-kitty.kitty_mod">kitty.kitty_mod</a>
 </li>
+        <li><a href="conf.html#opt-kitty.macos_custom_beam_cursor">kitty.macos_custom_beam_cursor</a>
+</li>
         <li><a href="conf.html#opt-kitty.macos_hide_from_tasks">kitty.macos_hide_from_tasks</a>
 </li>
         <li><a href="conf.html#opt-kitty.macos_hide_titlebar">kitty.macos_hide_titlebar</a>
@@ -726,7 +733,11 @@ ga('send', 'pageview');
 </li>
         <li><a href="conf.html#opt-kitty.macos_quit_when_last_window_closed">kitty.macos_quit_when_last_window_closed</a>
 </li>
+        <li><a href="conf.html#opt-kitty.macos_thicken_font">kitty.macos_thicken_font</a>
+</li>
         <li><a href="conf.html#opt-kitty.macos_titlebar_color">kitty.macos_titlebar_color</a>
+</li>
+        <li><a href="conf.html#opt-kitty.macos_traditional_fullscreen">kitty.macos_traditional_fullscreen</a>
 </li>
         <li><a href="conf.html#opt-kitty.macos_window_resizable">kitty.macos_window_resizable</a>
 </li>
@@ -1218,7 +1229,7 @@ ga('send', 'pageview');
 </li>
         <li><a href="invocation.html#cmdoption-kitty-single-instance">--single-instance, -1</a>
 </li>
-        <li><a href="invocation.html#cmdoption-kitty-start-in-fullscreen">--start-in-fullscreen</a>
+        <li><a href="invocation.html#cmdoption-kitty-start-as">--start-as &lt;START_AS&gt;</a>
 </li>
         <li><a href="invocation.html#cmdoption-kitty-title">--title &lt;TITLE&gt;, -T &lt;TITLE&gt;</a>
 </li>
@@ -1333,6 +1344,8 @@ ga('send', 'pageview');
       <ul>
         <li><a href="remote-control.html#cmdoption-kitty-focus-tab-match">--match &lt;MATCH&gt;, -m &lt;MATCH&gt;</a>
 </li>
+        <li><a href="remote-control.html#cmdoption-kitty-focus-tab-no-response">--no-response</a>
+</li>
       </ul></li>
       <li>
     kitty-@-focus-window command line option
@@ -1377,6 +1390,13 @@ ga('send', 'pageview');
 
       <ul>
         <li><a href="remote-control.html#cmdoption-kitty-kitten-match">--match &lt;MATCH&gt;, -m &lt;MATCH&gt;</a>
+</li>
+      </ul></li>
+      <li>
+    kitty-@-last-used-layout command line option
+
+      <ul>
+        <li><a href="remote-control.html#cmdoption-kitty-last-used-layout-match">--match &lt;MATCH&gt;, -m &lt;MATCH&gt;</a>
 </li>
       </ul></li>
       <li>
@@ -1487,8 +1507,6 @@ ga('send', 'pageview');
         <li><a href="conf.html#opt-kitty.active_tab_foreground">Config Setting</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     kitty.adjust_line_height
 
@@ -1496,6 +1514,8 @@ ga('send', 'pageview');
         <li><a href="conf.html#opt-kitty.adjust_line_height">Config Setting</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     kitty.allow_remote_control
 
@@ -1868,6 +1888,13 @@ ga('send', 'pageview');
 </li>
       </ul></li>
       <li>
+    kitty.macos_custom_beam_cursor
+
+      <ul>
+        <li><a href="conf.html#opt-kitty.macos_custom_beam_cursor">Config Setting</a>
+</li>
+      </ul></li>
+      <li>
     kitty.macos_hide_from_tasks
 
       <ul>
@@ -1896,10 +1923,24 @@ ga('send', 'pageview');
 </li>
       </ul></li>
       <li>
+    kitty.macos_thicken_font
+
+      <ul>
+        <li><a href="conf.html#opt-kitty.macos_thicken_font">Config Setting</a>
+</li>
+      </ul></li>
+      <li>
     kitty.macos_titlebar_color
 
       <ul>
         <li><a href="conf.html#opt-kitty.macos_titlebar_color">Config Setting</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.macos_traditional_fullscreen
+
+      <ul>
+        <li><a href="conf.html#opt-kitty.macos_traditional_fullscreen">Config Setting</a>
 </li>
       </ul></li>
       <li>

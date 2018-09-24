@@ -151,6 +151,15 @@ Focus specific window       :sc:`first_window`, :sc:`second_window` ... :sc:`ten
                             (clockwise from the top-left)
 ========================    =======================
 
+Additionally, you can define shortcuts in :file:`kitty.conf` to focus neighboring
+windows and move windows around (similar to window movement in vim)::
+
+   map ctrl+left neighboring_window left
+   map shift+left move_window right
+   map ctrl+down neighboring_window down
+   map shift+down move_window up
+   ...
+
 
 Other keyboard shortcuts
 ----------------------------------
@@ -164,7 +173,8 @@ Paste from selection                :sc:`paste_from_selection`
 Increase font size                  :sc:`increase_font_size`
 Decrease font size                  :sc:`decrease_font_size`
 Restore font size                   :sc:`reset_font_size`
-Toggle fullscreen                   :sc:`toggle_fullscreen`
+Toggle fullscreen                   :sc:`toggle_fullscreen` (also :kbd:`^⌘+f` on macOS)
+on
 Input unicode character             :sc:`input_unicode_character`
 Click URL using the keyboard        :sc:`open_url`
 Reset the terminal                  :sc:`reset_terminal`
@@ -255,6 +265,8 @@ Some prominent kittens:
 :doc:`Clipboard <kittens/clipboard>`
     Copy/paste to the clipboard from shell scripts, even over SSH.
 
+You can also :doc:`Learn to create your own kittens <kittens/custom>`.
+
 
 Configuring kitty
 -------------------
@@ -263,7 +275,6 @@ Configuring kitty
 painting frames-per-second. For details and a sample :file:`kitty.conf`,
 see the :doc:`configuration docs <conf>`.
 
-.. _sessions:
 
 Remote control
 ------------------
@@ -273,6 +284,8 @@ Remote control
 fonts, open new windows, tabs, set their titles, change window layout, get text
 from one window and send text to another, etc, etc. The possibilities are
 endless. See the :doc:`tutorial <remote-control>` to get started.
+
+.. _sessions:
 
 Startup Sessions
 ------------------
@@ -348,6 +361,14 @@ by pressing the :sc:`show_scrollback` key-combination, which will open the
 scrollback buffer in your favorite pager program (which is ``less`` by default).
 Colors and text formatting are preserved. You can explore the scrollback buffer
 comfortably within the pager.
+
+Additionally, you can pipe the contents of the scrollback buffer to an
+arbitrary, command running in a new window, tab or overlay, for example::
+
+   map f1 pipe @ansi window less +G -R
+
+Would open the scrollback buffer in a new window when you press the :kbd:`F1`
+key. See :sc:`show_scrollback` for details.
 
 
 Frequently Asked Questions

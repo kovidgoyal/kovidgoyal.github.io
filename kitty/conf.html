@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Configuring kitty &#8212; kitty 0.12.1 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.12.2 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -14,6 +14,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -499,7 +500,7 @@ number of cells instead of pixels.</p>
 </pre></div>
 </div>
 <p>The enabled window layouts. A comma separated list of layout names. The special
-value <code class="code docutils literal notranslate"><span class="pre">*</span></code> means all layouts. The first listed layout will be used as the
+value <code class="code docutils literal notranslate"><span class="pre">all</span></code> means all layouts. The first listed layout will be used as the
 startup layout. For a list of available layouts, see the <a class="reference internal" href="index.html#layouts"><span class="std std-ref">Layouts</span></a>.</p>
 <dl class="opt">
 <dt id="opt-kitty.window_resize_step_cells">
@@ -887,7 +888,7 @@ environment variables are expanded recursively, so if you use:</p>
 </div>
 <p>Path to a session file to use for all kitty instances. Can be overridden
 by using the <a class="reference internal" href="invocation.html#cmdoption-kitty-session"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--session</span></code></a> command line option for individual
-instances. See <a class="reference internal" href="index.html#sessions"><span class="std std-ref">Remote control</span></a> in the kitty documentation for details. Note
+instances. See <a class="reference internal" href="index.html#sessions"><span class="std std-ref">Startup Sessions</span></a> in the kitty documentation for details. Note
 that relative paths are interpreted with respect to the kitty config directory.
 Environment variables in the path are expanded.</p>
 <dl class="opt">
@@ -997,6 +998,38 @@ behavior on macOS.</p>
 </div>
 <p>Disable this if you want kitty top-level (OS) windows to not be resizable
 on macOS.</p>
+<dl class="opt">
+<dt id="opt-kitty.macos_thicken_font">
+<code class="descname">macos_thicken_font</code><a class="headerlink" href="#opt-kitty.macos_thicken_font" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_thicken_font</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>Draw an extra border around the font with the given width, to increase
+legibility at small font sizes. For example, a value of 0.75 will
+result in rendering that looks similar to sub-pixel antialiasing at
+common font sizes.</p>
+<dl class="opt">
+<dt id="opt-kitty.macos_traditional_fullscreen">
+<code class="descname">macos_traditional_fullscreen</code><a class="headerlink" href="#opt-kitty.macos_traditional_fullscreen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_traditional_fullscreen</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Use the traditional full-screen transition, that is faster, but less pretty.</p>
+<dl class="opt">
+<dt id="opt-kitty.macos_custom_beam_cursor">
+<code class="descname">macos_custom_beam_cursor</code><a class="headerlink" href="#opt-kitty.macos_custom_beam_cursor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_custom_beam_cursor</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Enable/disable custom mouse cursor for macOS that is easier to see on both
+light and dark backgrounds. WARNING: this might make your mouse cursor
+invisible on dual GPU machines.</p>
 </div>
 <div class="section" id="keyboard-shortcuts">
 <span id="conf-kitty-shortcuts"></span><h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
@@ -1168,13 +1201,23 @@ window, by using the &#64;selection placeholder:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+h</span><span class="w"> </span><span class="nf">show_scrollback</span><span class="w"></span>
 </pre></div>
 </div>
-<p>You can send the contents of the current screen + history buffer as stdin to an arbitrary program using
-the placeholders &#64;text (which is the plain text) and &#64;ansi (which includes text styling escape codes).
-For only the current screen, use &#64;screen or &#64;ansi_screen.
-For example, the following command opens the scrollback buffer in less in a new window:</p>
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">kitty_mod+y</span><span class="w"> </span><span class="nf">new_window</span><span class="w"> </span><span class="s">@ansi less +G -R</span><span class="w"></span>
+<p>You can pipe the contents of the current screen + history buffer as
+<code class="file docutils literal notranslate"><span class="pre">STDIN</span></code> to an arbitrary program using the <code class="docutils literal notranslate"><span class="pre">pipe</span></code> function. For example,
+the following opens the scrollback buffer in less in an overlay window:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f1</span><span class="w"> </span><span class="nf">pipe</span><span class="w"> </span><span class="s">@ansi overlay less +G -R</span><span class="w"></span>
 </pre></div>
 </div>
+<p>Placeholders available are: &#64;text (which is plain text) and &#64;ansi (which
+includes text styling escape codes). For only the current screen, use &#64;screen
+or &#64;ansi_screen. For the secondary screen, use &#64;alternate and &#64;ansi_alternate.
+The secondary screen is the screen not currently displayed. For
+example if you run a fullscreen terminal application, the secondary screen will
+be the screen you return to when quitting the application. You can also use
+<code class="docutils literal notranslate"><span class="pre">none</span></code> for no <code class="file docutils literal notranslate"><span class="pre">STDIN</span></code> input.</p>
+<p>To open in a new window, tab or new OS window, use <code class="docutils literal notranslate"><span class="pre">window</span></code>, <code class="docutils literal notranslate"><span class="pre">tab</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">os_window</span></code> respectively. You can also use <code class="docutils literal notranslate"><span class="pre">none</span></code> in which case the data
+will be piped into the program without creating any windows, useful if the
+program is a GUI program that creates its own windows.</p>
 </div>
 <div class="section" id="window-management">
 <span id="conf-kitty-shortcuts-window"></span><h3>Window management<a class="headerlink" href="#window-management" title="Permalink to this headline">¶</a></h3>
@@ -1411,7 +1454,12 @@ For example:</p>
 </pre></div>
 </div>
 <p>Just as with <code class="code docutils literal notranslate"><span class="pre">new_window</span></code> above, you can also pass the name of arbitrary
-commands to run when using new_tab and use <code class="code docutils literal notranslate"><span class="pre">new_tab_with_cwd</span></code>.</p>
+commands to run when using new_tab and use <code class="code docutils literal notranslate"><span class="pre">new_tab_with_cwd</span></code>. Finally,
+if you want the new tab to open next to the current tab rather than at the
+end of the tabs list, use:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+t</span><span class="w"> </span><span class="nf">new_tab</span><span class="w"> </span><span class="s">!neighbor [optional cmd to run]</span><span class="w"></span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="layout-management">
 <span id="conf-kitty-shortcuts-layout"></span><h3>Layout management<a class="headerlink" href="#layout-management" title="Permalink to this headline">¶</a></h3>
@@ -1426,6 +1474,10 @@ commands to run when using new_tab and use <code class="code docutils literal no
 <p>You can also create shortcuts to switch to specific layouts:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+alt+t</span><span class="w"> </span><span class="nf">goto_layout</span><span class="w"> </span><span class="s">tall</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">ctrl+alt+s</span><span class="w"> </span><span class="nf">goto_layout</span><span class="w"> </span><span class="s">stack</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Similarly, to switch back to the previous layout:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+alt+p</span><span class="w"> </span><span class="nf">last_used_layout</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1644,7 +1696,7 @@ the line (same as pressing the Home key):</p>
 <div class="section" id="sample-kitty-conf">
 <h2>Sample kitty.conf<a class="headerlink" href="#sample-kitty-conf" title="Permalink to this headline">¶</a></h2>
 <p>You can download a sample <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> file with all default settings and
-comments describing each setting by clicking: <a class="reference download internal" href="_downloads/kitty.conf" download=""><code class="xref download docutils literal notranslate"><span class="pre">sample</span> <span class="pre">kitty.conf</span></code></a>.</p>
+comments describing each setting by clicking: <a class="reference download internal" download="" href="_downloads/fdd5fc58492b70fe2188716f86e7ff87/kitty.conf"><code class="xref download docutils literal notranslate"><span class="pre">sample</span> <span class="pre">kitty.conf</span></code></a>.</p>
 </div>
 </div>
 

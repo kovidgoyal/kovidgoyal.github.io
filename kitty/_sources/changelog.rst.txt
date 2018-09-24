@@ -3,10 +3,77 @@ Changelog
 
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 
+0.12.2 [2018-09-24]
+------------------------------
+
+- A new ``last_used_layout`` function that can be mapped to a shortcut to
+  switch to the previously used window layout (:iss:`870`)
+
+- New ``neighboring_window`` and ``move_window`` functions to switch to
+  neighboring windows in the current layout, and move them around, similar to
+  window movement in vim (:iss:`916`)
+
+- A new ``pipe`` function that can be used to pipe the contents of the screen
+  and scrollback buffer to any desired program running in a new window, tab or
+  overlay window. (:iss:`933`)
+
+- Add a new :option:`kitty --start-as` command line flag to start kitty
+  full-screen/maximized/minimized. This replaces the ``--start-in-fullscreen``
+  flag introduced in the previous release (:iss:`935`)
+
+- When mapping the ``new_tab`` action allow specifying that the tab should open
+  next to the current tab instead of at the end of the tabs list (:iss:`979`)
+
+- macOS: Add a new :opt:`macos_thicken_font` to make text rendering
+  on macs thicker, which makes it similar to the result of
+  sub-pixel antialiasing (:pull:`950`)
+
+- macOS: Add an option :opt:`macos_traditional_fullscreen` to make
+  full-screening of kitty windows much faster, but less pretty. (:iss:`911`)
+
+- Fix a bug causing incorrect line ordering when viewing the scrollback buffer
+  if the scrollback buffer is full (:iss:`960`)
+
+- Fix drag-scrolling not working when the mouse leaves the window confines
+  (:iss:`917`)
+
+- Workaround for broken editors like nano that cannot handle newlines in pasted text
+  (:iss:`994`)
+
+- Linux: Ensure that the python embedded in the kitty binary build uses
+  UTF-8 mode to process command-line arguments (:iss:`924`)
+
+- Linux: Handle fonts that contain monochrome bitmaps (such as the Terminus TTF
+  font) (:pull:`934`)
+
+- Have the :option:`kitty --title` flag apply to all windows created
+  using :option:`kitty --session` (:iss:`921`)
+
+- Revert change for backspacing of wide characters in the previous release,
+  as it breaks backspacing in some wide character aware programs (:iss:`875`)
+
+- Fix kitty @set-colors not working for tab backgrounds when using the `fade` tabbar style
+  (:iss:`937`)
+
+- macOS: Fix resizing semi-transparent windows causing the windows to be
+  invisible during the resize (:iss:`941`)
+
+- Linux: Fix window icon not set on X11 for the first OS window (:iss:`961`)
+
+- macOS: Add an :opt:`macos_custom_beam_cursor` option to use a special
+  mouse cursor image that can be seen on both light and dark backgrounds
+  (:iss:`359`)
+
+- Remote control: Fix the ``focus_window`` command not focusing the
+  top-level OS window of the specified kitty window (:iss:`1003`)
+
+- Fix using :opt:`focus_follows_mouse` causing text selection with the
+  mouse to malfunction when using multiple kitty windows (:iss:`1002`)
+
 0.12.1 [2018-09-08]
 ------------------------------
 
-- Add a new :option:`kitty --start-in-fullscreen` command line flag to start
+- Add a new ``--start-in-fullscreen`` command line flag to start
   kitty in full screen mode (:iss:`856`)
 
 - macOS: Fix a character that cannot be rendered in any font causing
