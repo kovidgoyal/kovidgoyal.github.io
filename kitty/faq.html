@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Frequently Asked Questions &#8212; kitty 0.12.2 documentation</title>
+    <title>Frequently Asked Questions &#8212; kitty 0.12.3 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -79,7 +79,6 @@ ga('send', 'pageview');
 <div id="sidebartoc">
   <ul>
 <li><a class="reference internal" href="#some-special-symbols-are-rendered-small-truncated-in-kitty">Some special symbols are rendered small/truncated in kitty?</a></li>
-<li><a class="reference internal" href="#how-do-i-build-kitty-app-on-macos">How do I build kitty.app on macOS?</a></li>
 <li><a class="reference internal" href="#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim">Using a color theme with a background color does not work well in vim?</a></li>
 <li><a class="reference internal" href="#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer">I get errors about the terminal being unknown or opening the terminal failing when SSHing into a different computer?</a></li>
 <li><a class="reference internal" href="#how-do-i-change-the-colors-in-a-running-kitty-instance">How do I change the colors in a running kitty instance?</a></li>
@@ -112,13 +111,12 @@ ga('send', 'pageview');
 <ul class="simple">
 <li><a class="reference internal" href="#frequently-asked-questions" id="id1">Frequently Asked Questions</a><ul>
 <li><a class="reference internal" href="#some-special-symbols-are-rendered-small-truncated-in-kitty" id="id2">Some special symbols are rendered small/truncated in kitty?</a></li>
-<li><a class="reference internal" href="#how-do-i-build-kitty-app-on-macos" id="id3">How do I build kitty.app on macOS?</a></li>
-<li><a class="reference internal" href="#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim" id="id4">Using a color theme with a background color does not work well in vim?</a></li>
-<li><a class="reference internal" href="#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer" id="id5">I get errors about the terminal being unknown or opening the terminal failing when SSHing into a different computer?</a></li>
-<li><a class="reference internal" href="#how-do-i-change-the-colors-in-a-running-kitty-instance" id="id6">How do I change the colors in a running kitty instance?</a></li>
-<li><a class="reference internal" href="#how-do-i-specify-command-line-options-for-kitty-on-macos" id="id7">How do I specify command line options for kitty on macOS?</a></li>
-<li><a class="reference internal" href="#kitty-is-not-able-to-use-my-favorite-font" id="id8">kitty is not able to use my favorite font?</a></li>
-<li><a class="reference internal" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal" id="id9">How can I assign a single global shortcut to bring up the kitty terminal?</a></li>
+<li><a class="reference internal" href="#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim" id="id3">Using a color theme with a background color does not work well in vim?</a></li>
+<li><a class="reference internal" href="#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer" id="id4">I get errors about the terminal being unknown or opening the terminal failing when SSHing into a different computer?</a></li>
+<li><a class="reference internal" href="#how-do-i-change-the-colors-in-a-running-kitty-instance" id="id5">How do I change the colors in a running kitty instance?</a></li>
+<li><a class="reference internal" href="#how-do-i-specify-command-line-options-for-kitty-on-macos" id="id6">How do I specify command line options for kitty on macOS?</a></li>
+<li><a class="reference internal" href="#kitty-is-not-able-to-use-my-favorite-font" id="id7">kitty is not able to use my favorite font?</a></li>
+<li><a class="reference internal" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal" id="id8">How can I assign a single global shortcut to bring up the kitty terminal?</a></li>
 </ul>
 </li>
 </ul>
@@ -140,23 +138,8 @@ standard, <em>kitty</em> renders them either smaller or truncated. The exception
 these characters are followed by a space or empty cell in which case kitty
 makes use of the extra cell to render them in two cells.</p>
 </div>
-<div class="section" id="how-do-i-build-kitty-app-on-macos">
-<h2><a class="toc-backref" href="#id3">How do I build kitty.app on macOS?</a><a class="headerlink" href="#how-do-i-build-kitty-app-on-macos" title="Permalink to this headline">¶</a></h2>
-<p>Install <cite>imagemagick</cite>, <cite>optipng</cite> and <cite>librsvg</cite> using <cite>brew</cite> or similar (needed
-for the logo generation step). And run:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>make app
-</pre></div>
-</div>
-<p>This <code class="file docutils literal notranslate"><span class="pre">kitty.app</span></code> unlike the released one does not include its own copy of
-python and the other dependencies. So if you ever un-install/upgrade those dependencies
-you might have to rebuild the app.</p>
-<p>Note that the released <code class="file docutils literal notranslate"><span class="pre">kitty.dmg</span></code> includes all dependencies, unlike the
-<code class="file docutils literal notranslate"><span class="pre">kitty.app</span></code> built above and is built automatically by using the <code class="file docutils literal notranslate"><span class="pre">kitty</span></code> branch of
-<a class="reference external" href="https://github.com/kovidgoyal/build-calibre">build-calibre</a> however, that
-is designed to run on Linux and is not for the faint of heart.</p>
-</div>
 <div class="section" id="using-a-color-theme-with-a-background-color-does-not-work-well-in-vim">
-<h2><a class="toc-backref" href="#id4">Using a color theme with a background color does not work well in vim?</a><a class="headerlink" href="#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Using a color theme with a background color does not work well in vim?</a><a class="headerlink" href="#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim" title="Permalink to this headline">¶</a></h2>
 <p>First make sure you have not changed the TERM environment variable, it should
 be <code class="docutils literal notranslate"><span class="pre">xterm-kitty</span></code>. vim uses <em>background color erase</em> even if the terminfo file
 does not contain the <code class="docutils literal notranslate"><span class="pre">bce</span></code> capability. This is a bug in vim. You can work around
@@ -167,7 +150,7 @@ it by adding the following to your vimrc:</p>
 <p>See <a class="reference internal" href="protocol-extensions.html#ext-styles"><span class="std std-ref">here</span></a> for why <em>kitty</em> does not support background color erase.</p>
 </div>
 <div class="section" id="i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer">
-<h2><a class="toc-backref" href="#id5">I get errors about the terminal being unknown or opening the terminal failing when SSHing into a different computer?</a><a class="headerlink" href="#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">I get errors about the terminal being unknown or opening the terminal failing when SSHing into a different computer?</a><a class="headerlink" href="#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer" title="Permalink to this headline">¶</a></h2>
 <p>This happens because the <em>kitty</em> terminfo files are not available on the server.
 You can ssh in using the following command which will automatically copy the
 terminfo files to the server:</p>
@@ -186,14 +169,14 @@ have ssh do this automatically when connecting to a server, so that all
 terminals work transparently.</p>
 </div>
 <div class="section" id="how-do-i-change-the-colors-in-a-running-kitty-instance">
-<h2><a class="toc-backref" href="#id6">How do I change the colors in a running kitty instance?</a><a class="headerlink" href="#how-do-i-change-the-colors-in-a-running-kitty-instance" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">How do I change the colors in a running kitty instance?</a><a class="headerlink" href="#how-do-i-change-the-colors-in-a-running-kitty-instance" title="Permalink to this headline">¶</a></h2>
 <p>You can either use the
 <a class="reference external" href="http://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Operating-System-Commands">OSC terminal escape codes</a>
 to set colors or you can enable <a class="reference internal" href="remote-control.html"><span class="doc">remote control</span></a>
 for <em>kitty</em> and use <a class="reference internal" href="remote-control.html#at-set-colors"><span class="std std-ref">kitty &#64; set-colors</span></a>.</p>
 </div>
 <div class="section" id="how-do-i-specify-command-line-options-for-kitty-on-macos">
-<h2><a class="toc-backref" href="#id7">How do I specify command line options for kitty on macOS?</a><a class="headerlink" href="#how-do-i-specify-command-line-options-for-kitty-on-macos" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">How do I specify command line options for kitty on macOS?</a><a class="headerlink" href="#how-do-i-specify-command-line-options-for-kitty-on-macos" title="Permalink to this headline">¶</a></h2>
 <p>Apple does not want you to use command line options with GUI applications. To
 workaround that limitation, <em>kitty</em> will read command line options from the file
 <code class="file docutils literal notranslate"><span class="pre">&lt;kitty</span> <span class="pre">config</span> <span class="pre">dir&gt;/macos-launch-services-cmdline</span></code> when it is launched
@@ -205,7 +188,7 @@ Note that this file is <em>only read</em> when running via the GUI.</p>
 cleverly adds itself to the <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p>
 </div>
 <div class="section" id="kitty-is-not-able-to-use-my-favorite-font">
-<h2><a class="toc-backref" href="#id8">kitty is not able to use my favorite font?</a><a class="headerlink" href="#kitty-is-not-able-to-use-my-favorite-font" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">kitty is not able to use my favorite font?</a><a class="headerlink" href="#kitty-is-not-able-to-use-my-favorite-font" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> achieves its stellar performance by caching alpha masks of each rendered
 character on the GPU, so that every character needs to be rendered only once.
 This means it is a strictly character cell based display.  As such it can use
@@ -217,7 +200,7 @@ monospace. On Linux you can list all monospace fonts with:</p>
 </div>
 </div>
 <div class="section" id="how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal">
-<h2><a class="toc-backref" href="#id9">How can I assign a single global shortcut to bring up the kitty terminal?</a><a class="headerlink" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">How can I assign a single global shortcut to bring up the kitty terminal?</a><a class="headerlink" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal" title="Permalink to this headline">¶</a></h2>
 <p>Bringing up applications on a single key press is the job of the window
 manager/desktop environment. For ways to do it with kitty (or indeed any
 terminal) in different environments,

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Configuring kitty &#8212; kitty 0.12.2 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.12.3 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -913,9 +913,13 @@ program, even one running on a remote server via SSH can read your clipboard.</p
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">term</span><span class="w"> </span><span class="s">xterm-kitty</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The value of the TERM environment variable to set. Changing this can break
-many terminal programs, only change it if you know what you are doing, not
-because you read some advice on Stack Overflow to change it.</p>
+<p>The value of the TERM environment variable to set. Changing this can break many
+terminal programs, only change it if you know what you are doing, not because
+you read some advice on Stack Overflow to change it. The TERM variable if used
+by various programs to get information about the capabilities and behavior of
+the terminal. If you change it, depending on what programs you run, and how
+different the terminal you are changing it to is, various things from
+key-presses, to colors, to various advanced features may not work.</p>
 </div>
 <div class="section" id="os-specific-tweaks">
 <span id="conf-kitty-os"></span><h2>OS specific tweaks<a class="headerlink" href="#os-specific-tweaks" title="Permalink to this headline">¶</a></h2>
