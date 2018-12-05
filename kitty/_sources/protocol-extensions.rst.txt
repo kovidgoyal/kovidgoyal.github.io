@@ -6,7 +6,7 @@ These are typically in the form of new or re-purposed escape codes. While these
 extensions are currently |kitty| specific, it would be nice to get some of them
 adopted more broadly, to push the state of terminal emulators forward.
 
-The goal of these extensions is to be as small an unobtrusive as possible,
+The goal of these extensions is to be as small and unobtrusive as possible,
 while filling in some gaps in the existing xterm protocol. In particular, one
 of the goals of this specification is explicitly not to "re-imagine" the tty.
 The tty should remain what it is -- a device for efficiently processing text
@@ -141,6 +141,8 @@ For example::
 This encoding means each key event is represented by 8 or 9 printable ascii
 only bytes, for maximum robustness.
 
+Support for this mode is indicated by the ``fullkbd`` boolean capability
+in the terminfo database, in case querying for it via DECQRM is inconvenient.
 
 .. _ext_styles:
 

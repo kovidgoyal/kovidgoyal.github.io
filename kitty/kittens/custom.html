@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Custom kittens &#8212; kitty 0.12.3 documentation</title>
+    <title>Custom kittens &#8212; kitty 0.13.0 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -80,6 +80,7 @@ ga('send', 'pageview');
   <ul>
 <li><a class="reference internal" href="#passing-arguments-to-kittens">Passing arguments to kittens</a></li>
 <li><a class="reference internal" href="#passing-the-contents-of-the-screen-to-the-kitten">Passing the contents of the screen to the kitten</a></li>
+<li><a class="reference internal" href="#using-kittens-to-script-kitty-without-any-terminal-ui">Using kittens to script kitty, without any terminal UI</a></li>
 </ul>
 
 </div><div class="relations">
@@ -164,6 +165,40 @@ function, telling kitty what kind of input your kitten would like. For example:<
 instead. If you want line wrap markers as well, use <code class="docutils literal notranslate"><span class="pre">screen-ansi</span></code>
 or just <code class="docutils literal notranslate"><span class="pre">screen</span></code>. For the scrollback buffer as well, use
 <code class="docutils literal notranslate"><span class="pre">history</span></code>, <code class="docutils literal notranslate"><span class="pre">ansi-history</span></code> or <code class="docutils literal notranslate"><span class="pre">screen-history</span></code>.</p>
+</div>
+<div class="section" id="using-kittens-to-script-kitty-without-any-terminal-ui">
+<h2>Using kittens to script kitty, without any terminal UI<a class="headerlink" href="#using-kittens-to-script-kitty-without-any-terminal-ui" title="Permalink to this headline">¶</a></h2>
+<p>If you would like your kitten to script kitty, without bothering to write a
+terminal program, you can tell the kittens system to run the
+<code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> function without first running the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function.</p>
+<p>For example, here is a kitten that &quot;zooms/unzooms&quot; the current terminal window
+by switching to the stack layout or back to the previous layout.</p>
+<p>Create a file in the kitty config folder, <code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/zoom_toggle.py</span></code></p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+   <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">handle_result</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">answer</span><span class="p">,</span> <span class="n">target_window_id</span><span class="p">,</span> <span class="n">boss</span><span class="p">):</span>
+   <span class="n">tab</span> <span class="o">=</span> <span class="n">boss</span><span class="o">.</span><span class="n">active_tab</span>
+   <span class="k">if</span> <span class="n">tab</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">tab</span><span class="o">.</span><span class="n">current_layout</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;stack&#39;</span><span class="p">:</span>
+         <span class="n">tab</span><span class="o">.</span><span class="n">last_used_layout</span><span class="p">()</span>
+      <span class="k">else</span><span class="p">:</span>
+         <span class="n">tab</span><span class="o">.</span><span class="n">goto_layout</span><span class="p">(</span><span class="s1">&#39;stack&#39;</span><span class="p">)</span>
+
+<span class="n">handle_result</span><span class="o">.</span><span class="n">no_ui</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>Now in kitty.conf add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f11</span> <span class="n">kitten</span> <span class="n">zoom_toggle</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Pressing <kbd class="kbd docutils literal notranslate">F11</kbd> will now act as a zoom toggle function. You can get even
+more fancy, switching the kitty OS window to fullscreen as well as changing the
+layout, by simply adding the line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boss</span><span class="o">.</span><span class="n">toggle_fullscreen</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>to the <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> function, above.</p>
 </div>
 </div>
 

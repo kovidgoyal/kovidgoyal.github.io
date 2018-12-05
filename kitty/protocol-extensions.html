@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Extensions to the xterm protocol &#8212; kitty 0.12.3 documentation</title>
+    <title>Extensions to the xterm protocol &#8212; kitty 0.13.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Controlling kitty from scripts or the shell" href="remote-control.html" />
-    <link rel="prev" title="kitty Performance" href="performance.html" />
+    <link rel="prev" title="Working with the screen and history buffer contents" href="pipe.html" />
 <!-- Google Analytics -->
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -90,7 +90,7 @@ ga('send', 'pageview');
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="performance.html" title="previous chapter"><em>kitty</em> Performance</a></li>
+      <li>Previous: <a href="pipe.html" title="previous chapter">Working with the screen and history buffer contents</a></li>
       <li>Next: <a href="remote-control.html" title="next chapter">Controlling kitty from scripts or the shell</a></li>
   </ul></li>
 </ul>
@@ -109,7 +109,7 @@ ga('send', 'pageview');
 These are typically in the form of new or re-purposed escape codes. While these
 extensions are currently <em>kitty</em> specific, it would be nice to get some of them
 adopted more broadly, to push the state of terminal emulators forward.</p>
-<p>The goal of these extensions is to be as small an unobtrusive as possible,
+<p>The goal of these extensions is to be as small and unobtrusive as possible,
 while filling in some gaps in the existing xterm protocol. In particular, one
 of the goals of this specification is explicitly not to &quot;re-imagine&quot; the tty.
 The tty should remain what it is -- a device for efficiently processing text
@@ -241,6 +241,8 @@ mapping is defined in <a class="reference internal" href="key-encoding.html"><sp
 </div>
 <p>This encoding means each key event is represented by 8 or 9 printable ascii
 only bytes, for maximum robustness.</p>
+<p>Support for this mode is indicated by the <code class="docutils literal notranslate"><span class="pre">fullkbd</span></code> boolean capability
+in the terminfo database, in case querying for it via DECQRM is inconvenient.</p>
 </div>
 <div class="section" id="setting-text-styles-colors-in-arbitrary-regions-of-the-screen">
 <span id="ext-styles"></span><h2><a class="toc-backref" href="#id5">Setting text styles/colors in arbitrary regions of the screen</a><a class="headerlink" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" title="Permalink to this headline">¶</a></h2>

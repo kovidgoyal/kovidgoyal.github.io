@@ -3,6 +3,103 @@ Changelog
 
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 
+0.13.0 [2018-12-05]
+------------------------------
+
+- Add an option :opt:`scrollback_pager_history_size` to tell kitty to store
+  extended scrollback to use when viewing the scrollback buffer in a pager
+  (:iss:`970`)
+
+- Modify the kittens sub-system to allow creating custom kittens without any
+  user interface. This is useful for creating more complex actions that can
+  be bound to key presses in :file:`kitty.conf`. See
+  doc:`kittens/custom`. (:iss:`870`)
+
+- Add a new ``nth_window`` action that can be used to go to the nth window and
+  also previously active windows, using negative numbers. Similarly,
+  ``goto_tab`` now accepts negative numbers to go to previously active tabs
+  (:iss:`1040`)
+
+- Allow hiding the tab bar completely, by setting :opt:`tab_bar_style` to
+  ``hidden``. (:iss:`1014`)
+
+- Allow private use unicode characters to stretch over more than a single
+  neighboring space (:pull:`1036`)
+
+- Add a new :opt:`touch_scroll_multiplier` option to modify the amount
+  scrolled by high precision scrolling devices such as touchpads (:pull:`1129`)
+
+- icat kitten: Implement reading image data from STDIN, if STDIN is not
+  connected to a terminal (:iss:`1130`)
+
+- hints kitten: Insert trailing spaces after matches when using the
+  ``--multiple`` option. Also add a separate ``--add-trailing-space``
+  option to control this behavior (:pull:`1132`)
+
+- Fix the ``*_with_cwd`` actions using the cwd of the overlay window rather
+  than the underlying window's cwd (:iss:`1045`)
+
+- Fix incorrect key repeat rate on wayland (:pull:`1055`)
+
+- macOS: Fix drag and drop of files not working on Mojave (:iss:`1058`)
+
+- macOS: Fix IME input for East Asian languages (:iss:`910`)
+
+- macOS: Fix rendering frames-per-second very low when processing
+  large amounts of input in small chunks (:pull:`1082`)
+
+- macOS: Fix incorrect text sizes calculated when using an external display
+  that is set to mirror the main display (:iss:`1056`)
+
+- macOS: Use the system default double click interval (:pull:`1090`)
+
+- macOS: Fix touch scrolling sensitivity low on retina screens (:iss:`1112`)
+
+- Linux: Fix incorrect rendering of some fonts when hinting is disabled at
+  small sizes (:iss:`1173`)
+
+- Linux: Fix match rules used as aliases in Fontconfig configuration not being
+  respected (:iss:`1085`)
+
+- Linux: Fix a crash when using the GNU Unifont as a fallback font
+  (:iss:`1087`)
+
+- Wayland: Fix copying from hidden kitty windows hanging (:iss:`1051`)
+
+- Wayland: Add support for the primary selection protocol
+  implemented by some compositors (:pull:`1095`)
+
+- Fix expansion of env vars not working in the :opt:`env` directive
+  (:iss:`1075`)
+
+- Fix :opt:`mouse_hide_wait` only taking effect after an event such as cursor
+  blink or key press (:iss:`1073`)
+
+- Fix the ``set_background_opacity`` action not working correctly
+  (:pull:`1147`)
+
+- Fix second cell of emoji created using variation selectors not having
+  the same attributes as the first cell (:iss:`1109`)
+
+- Fix focusing neighboring windows in the grid layout with less than 4 windows
+  not working (:iss:`1115`)
+
+- Fix :kbd:`ctrl+shift+special` key not working in normal and application keyboard
+  modes (:iss:`1114`)
+
+- Add a terminfo entry for full keyboard mode.
+
+- Fix incorrect text-antialiasing when using very low background opacity
+  (:iss:`1005`)
+
+- When double or triple clicking ignore clicks if they are "far" from each
+  other (:iss:`1093`)
+
+- Follow xterm's behavior for the menu key (:iss:`597`)
+
+- Fix hover detection of URLs not working when hovering over the first colon
+  and slash characters in short URLs (:iss:`1201`)
+
 0.12.3 [2018-09-29]
 ------------------------------
 
@@ -141,6 +238,9 @@ Changelog
 
 - Add an option :opt:`env` to set environment variables in child processes
   from kitty.conf
+
+- Add an action to the ``clear_terminal`` function to scroll the screen
+  contents into the scrollback buffer (:iss:`1113`)
 
 - Implement high precision scrolling with the trackpad on platforms such as
   macOS and Wayland that implement it. (:pull:`819`)
@@ -351,7 +451,7 @@ Changelog
 
 - Add a config option (:opt:`editor`) to set the EDITOR kitty uses (:iss:`580`)
 
-- Add a config option (:opt:`x11_hide_window_decorations`) to hide window
+- Add a config option (``x11_hide_window_decorations``) to hide window
   decorations under X11/Wayland (:iss:`607`)
 
 - Add an option to @set-window-title to make the title change non-permanent
