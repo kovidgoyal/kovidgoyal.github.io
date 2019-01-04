@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Configuring kitty &#8212; kitty 0.13.1 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.13.2 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -692,6 +692,18 @@ entries to this list.</p>
 </div>
 <p>The separator between tabs in the tab bar when using <code class="code docutils literal notranslate"><span class="pre">separator</span></code> as the <a class="reference internal" href="#opt-kitty.tab_bar_style"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_bar_style</span></code></a>.</p>
 <dl class="opt">
+<dt id="opt-kitty.tab_title_template">
+<code class="descname">tab_title_template</code><a class="headerlink" href="#opt-kitty.tab_title_template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_title_template</span><span class="w"> </span><span class="s">{title}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A template to render the tab title. The default just renders
+the title. If you wish to include the tab-index as well,
+use something like: <code class="code docutils literal notranslate"><span class="pre">{index}:</span> <span class="pre">{title}</span></code>. Useful
+if you have shortcuts mapped for <code class="code docutils literal notranslate"><span class="pre">goto_tab</span> <span class="pre">N</span></code>.</p>
+<dl class="opt">
 <dt id="opt-kitty.active_tab_foreground">
 <code class="descname">active_tab_foreground</code><code class="descclassname">, </code><code class="descname">active_tab_background</code><code class="descclassname">, </code><code class="descname">active_tab_font_style</code><code class="descclassname">, </code><code class="descname">inactive_tab_foreground</code><code class="descclassname">, </code><code class="descname">inactive_tab_background</code><code class="descclassname">, </code><code class="descname">inactive_tab_font_style</code><a class="headerlink" href="#opt-kitty.active_tab_foreground" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1123,6 +1135,8 @@ instance, to remove the default shortcuts.</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+c</span><span class="w"> </span><span class="nf">copy_to_clipboard</span><span class="w"></span>
 </pre></div>
 </div>
+<p>There is also a <code class="code docutils literal notranslate"><span class="pre">copy_or_interrupt</span></code> action that can be optionally mapped to <kbd class="kbd docutils literal notranslate">Ctrl+c</kbd>.
+It will copy only if there is a selection and send an interrupt otherwise.</p>
 <dl class="shortcut">
 <dt id="shortcut-kitty.Paste from clipboard">
 <code class="descname">Paste from clipboard</code><a class="headerlink" href="#shortcut-kitty.Paste from clipboard" title="Permalink to this definition">¶</a></dt>
@@ -1494,7 +1508,7 @@ end of the tabs list, use:</p>
 </div>
 <div class="section" id="font-sizes">
 <span id="conf-kitty-shortcuts-fonts"></span><h3>Font sizes<a class="headerlink" href="#font-sizes" title="Permalink to this headline">¶</a></h3>
-<p>You can change the font size for all top-level kitty windows at a time
+<p>You can change the font size for all top-level kitty OS windows at a time
 or only the current one.</p>
 <dl class="shortcut">
 <dt id="shortcut-kitty.Increase font size">
@@ -1524,7 +1538,7 @@ or only the current one.</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">kitty_mod+f6</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all 10.0</span><span class="w"></span>
 </pre></div>
 </div>
-<p>To setup shortcuts to change only the current window’s font size:</p>
+<p>To setup shortcuts to change only the current OS window’s font size:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">kitty_mod+f6</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">current 10.0</span><span class="w"></span>
 </pre></div>
 </div>

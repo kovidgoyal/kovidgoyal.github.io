@@ -3,6 +3,48 @@ Changelog
 
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 
+0.13.2 [2019-01-04]
+------------------------------
+
+- Add a new option :opt:`tab_title_template` to control how tab titles
+  are formatted. In particular the template can be used to display
+  the tab number next to the title (:iss:`1223`)
+
+- Report the current foreground processes as well as the original child process,
+  when using `kitty @ ls`
+
+- Use the current working directory of the foreground process for the
+  `*_with_cwd` actions that open a new window with the current working
+  directory.
+
+- Add a new ``copy_or_interrupt`` action that can be mapped to kbd:`ctrl+c`. It
+  will copy if there is a selection and interrupt otherwise (:iss:`1286`)
+
+- Fix setting :opt:`background_opacity` causing window margins/padding to be slightly
+  different shade from background (:iss:`1221`)
+
+- Handle keyboards with a "+" key (:iss:`1224`)
+
+- Fix Private use Unicode area characters followed by spaces at the end of text
+  not being rendered correctly (:iss:`1210`)
+
+- macOS: Add an entry to the dock menu to open a new OS window (:iss:`1242`)
+
+- macOS: Fix scrolling very slowly with wheel mice not working (:iss:`1238`)
+
+- Fix changing :opt:`cursor_text_color` via remote control not working
+  (:iss:`1229`)
+
+- Add an action to resize windows that can be mapped to shortcuts in :file:`kitty.conf`
+  (:pull:`1245`)
+
+- Fix using the ``new_tab !neighbor`` action changing the order of the
+  non-neighboring tabs (:iss:`1256`)
+
+- macOS: Fix momentum scrolling continuing when changing the active window/tab
+  (:iss:`1267`)
+
+
 0.13.1 [2018-12-06]
 ------------------------------
 

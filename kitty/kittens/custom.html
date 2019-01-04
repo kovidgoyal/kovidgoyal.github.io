@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Custom kittens &#8212; kitty 0.13.1 documentation</title>
+    <title>Custom kittens &#8212; kitty 0.13.2 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -154,7 +154,14 @@ running in the active kitty window.</p>
 <p>If you would like your kitten to have access to the contents of the screen
 and/or the scrollback buffer, you just need to add an annotation to the <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code>
 function, telling kitty what kind of input your kitten would like. For example:</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">handle_result</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># in main, STDIN is for the kitten process and will contain</span>
+<span class="c1"># the contents of the screen</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># in handle_result, STDIN is for the kitty process itself, rather</span>
+<span class="c1"># than the kitten process and should not be read from.</span>
+<span class="k">def</span> <span class="nf">handle_result</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">stdin_data</span><span class="p">,</span> <span class="n">target_window_id</span><span class="p">,</span> <span class="n">boss</span><span class="p">):</span>
    <span class="k">pass</span>
 
 <span class="n">handle_result</span><span class="o">.</span><span class="n">type_of_input</span> <span class="o">=</span> <span class="s1">&#39;text&#39;</span>

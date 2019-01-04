@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>The terminal graphics protocol &#8212; kitty 0.13.1 documentation</title>
+    <title>The terminal graphics protocol &#8212; kitty 0.13.2 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -318,8 +318,8 @@ emulator will decompress before interpreting the pixel data.</p>
 and can take the values:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="17%" />
-<col width="83%" />
+<col width="14%" />
+<col width="86%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Value of <cite>t</cite></th>
@@ -334,7 +334,11 @@ and can take the values:</p>
 <td>A simple file</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">t</span></code></td>
-<td>A temporary file, the terminal emulator will delete the file after reading the pixel data</td>
+<td>A temporary file, the terminal emulator will delete the file after reading the pixel data. For security reasons
+the terminal emulator should only delete the file if it
+is in a known temporary directory, such as <code class="file docutils literal notranslate"><span class="pre">/tmp</span></code>,
+<code class="file docutils literal notranslate"><span class="pre">/dev/shm</span></code>, <code class="file docutils literal notranslate"><span class="pre">TMPDIR</span> <span class="pre">env</span> <span class="pre">var</span> <span class="pre">if</span> <span class="pre">present</span></code> and any platform
+specific temporary directories.</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">s</span></code></td>
 <td>A <a class="reference external" href="http://man7.org/linux/man-pages/man7/shm_overview.7.html">POSIX shared memory object</a>.
