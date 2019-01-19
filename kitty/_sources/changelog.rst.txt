@@ -3,6 +3,44 @@ Changelog
 
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 
+0.13.3 [2019-01-19]
+------------------------------
+
+- icat kitten: Add a ``--stdin`` option to control if image data is read from
+  STDIN (:iss:`1308`)
+
+- hints kitten: Start hints numbering at one instead of zero by default. Added
+  an option ``--hints-offset`` to control it. (:iss:`1289`)
+
+- Fix a regression in the previous release that broke using ``background`` for
+  :opt:`cursor_text_color` (:iss:`1288`)
+
+- macOS: Fix dragging kitty window tabs in traditional full screen mode causing
+  crashes (:iss:`1296`)
+
+- macOS: Ensure that when running from a bundle, the bundle kitty exe is
+  preferred over any kitty in PATH (:iss:`1280`)
+
+- macOS: Fix a regression that broke mapping of :kbd:`ctrl+tab` (:iss:`1304`)
+
+- Add a list of user-created kittens to the docs
+
+- Fix a regression that broke changing mouse wheel scroll direction with
+  negative :opt:`wheel_scroll_multiplier` values in full-screen applications
+  like vim (:iss:`1299`)
+
+- Fix :opt:`background_opacity` not working with pure white backgrounds
+  (:iss:`1285`)
+
+- macOS: Fix "New OS Window" dock action not working when kitty is not focused
+  (:iss:`1312`)
+
+- macOS: Add aliases for close window and new tab actions that conform to common
+  Apple shortcuts for these actions (:iss:`1313`)
+
+- macOS: Fix some kittens causing 100% CPU usage
+
+
 0.13.2 [2019-01-04]
 ------------------------------
 
