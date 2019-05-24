@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>icat - Display images in the terminal &#8212; kitty 0.13.3 documentation</title>
+    <title>icat - Display images in the terminal &#8212; kitty 0.14.0 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -20,6 +20,7 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Draw a GPU accelerated dock panel on your desktop" href="panel.html" />
     <link rel="prev" title="Hints" href="hints.html" />
+
 <!-- Google Analytics -->
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -125,10 +126,10 @@ from inside other programs to display images. In particular, <a class="reference
 <a class="reference internal" href="#cmdoption-kitty-kitten-icat-detect-support"><code class="xref std std-option docutils literal notranslate"><span class="pre">--detect-support</span></code></a> and <a class="reference internal" href="#cmdoption-kitty-kitten-icat-print-window-size"><code class="xref std std-option docutils literal notranslate"><span class="pre">--print-window-size</span></code></a>.</p>
 <div class="section" id="command-line-interface">
 <h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten icat <span class="o">[</span>options<span class="o">]</span> image-file ...
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten icat <span class="o">[</span>options<span class="o">]</span> image-file-or-url-or-directory ...
 </pre></div>
 </div>
-<p>A cat like utility to display images in the terminal. You can specify multiple image files and/or directories. Directories are scanned recursively for image files. If STDIN is not a terminal, image data will be read from it as well.</p>
+<p>A cat like utility to display images in the terminal. You can specify multiple image files and/or directories. Directories are scanned recursively for image files. If STDIN is not a terminal, image data will be read from it as well. You can also specify HTTP(S) or FTP URLs which will be automatically downloaded and displayed.</p>
 <div class="section" id="options">
 <h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
 <dl class="option">
@@ -190,6 +191,12 @@ Default: <code class="code docutils literal notranslate"><span class="pre">10</s
 <dd><p>Read image data from stdin. The default is to do it automatically, when STDIN is not a terminal, but you can turn it off or on explicitly, if needed.
 Default: <code class="code docutils literal notranslate"><span class="pre">detect</span></code>
 Choices: <code class="code docutils literal notranslate"><span class="pre">detect,</span> <span class="pre">no,</span> <span class="pre">yes</span></code></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-kitten-icat-silent">
+<code class="descname">--silent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-silent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not print out anything to stdout during operation.</p>
 </dd></dl>
 
 </div>

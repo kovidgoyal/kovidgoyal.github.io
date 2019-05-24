@@ -51,6 +51,9 @@ To reset the underline color (also previously reserved and unused)::
 
     <ESC>[59m
 
+The underline color must remain the same under reverse video, if it has a
+color, if not, it should follow the foreground color.
+
 To detect support for this feature in a terminal emulator, query the terminfo database
 for the ``Su`` boolean capability.
 
@@ -133,6 +136,10 @@ Alt -- ``0x2``, Control -- ``0x4`` and Super -- ``0x8``.  ``<key>`` is a number
 (encoded in base85) corresponding to the key pressed. The key name to number
 mapping is defined in :doc:`this table <key-encoding>`.
 
+Client programs must ignore events for keys they do not know. The mapping in
+the above table is stable and will never change, however, new codes might be
+added to it in the future, for new keys.
+
 For example::
 
     <ESC>_KpGp<ESC>\  is  <Ctrl>+<Alt>+x (press)
@@ -140,6 +147,10 @@ For example::
 
 This encoding means each key event is represented by 8 or 9 printable ascii
 only bytes, for maximum robustness.
+
+To see the full mode in action, run::
+
+   kitty +kitten key_demo
 
 Support for this mode is indicated by the ``fullkbd`` boolean capability
 in the terminfo database, in case querying for it via DECQRM is inconvenient.
@@ -160,7 +171,7 @@ The motivation for this extension is the various problems with the existing
 solution for erasing to background color, namely the *background color erase
 (bce)* capability. See
 `this discussion <https://github.com/kovidgoyal/kitty/issues/160#issuecomment-346470545>`_
-and `this FAQ <http://invisible-island.net/ncurses/ncurses.faq.html#bce_mismatches>`_
+and `this FAQ <https://invisible-island.net/ncurses/ncurses.faq.html#bce_mismatches>`_
 for a summary of problems with *bce*.
 
 For example, to set the background color to blue in a
@@ -208,3 +219,7 @@ first, for example::
     <ESC>]52;c;!<ESC>\
 
 Here ``!`` is not valid base64 encoded text, so it clears the clipboard.
+
+In case you're using software that can't be easily adapted to this
+protocol extension, it can be disabled by specifying ``no-append`` to the
+:opt:`clipboard_control` setting.

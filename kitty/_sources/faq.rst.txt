@@ -81,6 +81,11 @@ Shell providing the right terminfo path::
     sudo … env TERMINFO=$HOME/.terminfo bash -i
     TERMINFO=/home/ORIGINALUSER/.terminfo exec bash -i
 
+You can configure sudo to preserve TERMINFO by running ``sudo
+visudo`` and adding the following line::
+
+    Defaults env_keep += "TERM TERMINFO"
+
 If you have double width characters in your prompt, you may also need to
 explicitly set a UTF-8 locale, like::
 
@@ -91,9 +96,12 @@ How do I change the colors in a running kitty instance?
 ------------------------------------------------------------
 
 You can either use the
-`OSC terminal escape codes <http://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Operating-System-Commands>`_
+`OSC terminal escape codes <https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Operating-System-Commands>`_
 to set colors or you can enable :doc:`remote control <remote-control>`
 for |kitty| and use :ref:`at_set-colors`.
+
+A list of pre-made color themes for kitty is available at:
+`kitty-themes <https://github.com/dexpota/kitty-themes>`_
 
 
 How do I specify command line options for kitty on macOS?

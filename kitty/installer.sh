@@ -25,7 +25,7 @@ echo Using python executable: $python
 $python -c "import sys; script_launch=lambda:sys.exit('Download of installer failed!'); exec(sys.stdin.read()); script_launch()" "$@" <<'INSTALLER_HEREDOC'
 # {{{
 # HEREDOC_START
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # vim:fileencoding=utf-8
 # License: GPL v3 Copyright: 2018, Kovid Goyal <kovid at kovidgoyal.net>
 
@@ -99,7 +99,10 @@ class Reporter:  # {{{
 def get_latest_release_data():
     print('Checking for latest release on GitHub...')
     req = urllib.Request('https://api.github.com/repos/kovidgoyal/kitty/releases/latest', headers={'Accept': 'application/vnd.github.v3+json'})
-    res = urllib.urlopen(req).read().decode('utf-8')
+    try:
+        res = urllib.urlopen(req).read().decode('utf-8')
+    except Exception as err:
+        raise SystemExit('Failed to contact {} with error: {}'.format(req.get_full_url(), err))
     data = json.loads(res)
     html_url = data['html_url'].replace('/tag/', '/download/').rstrip('/')
     for asset in data.get('assets', ()):

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Configuring kitty &#8212; kitty 0.13.3 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.14.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -20,6 +20,7 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Frequently Asked Questions" href="faq.html" />
     <link rel="prev" title="Changelog" href="changelog.html" />
+
 <!-- Google Analytics -->
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -122,6 +123,9 @@ You can also display the current configuration by running <code class="docutils 
 <code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/kitty.conf</span></code>) but you can pass a specific path via the
 <a class="reference internal" href="invocation.html#cmdoption-kitty-config"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--config</span></code></a> option or use the <code class="docutils literal notranslate"><span class="pre">KITTY_CONFIG_DIRECTORY</span></code>
 environment variable. See the <a class="reference internal" href="invocation.html#cmdoption-kitty-config"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--config</span></code></a> option for full details.</p>
+<p>Comments can be added to the config file as lines starting with the <code class="docutils literal notranslate"><span class="pre">#</span></code>
+character. This works only if the <code class="docutils literal notranslate"><span class="pre">#</span></code> character is the first character
+in the line.</p>
 <p>You can include secondary config files via the <code class="code docutils literal notranslate"><span class="pre">include</span></code> directive.  If
 you use a relative path for include, it is resolved with respect to the
 location of the current config file. Note that environment variables are
@@ -146,6 +150,7 @@ font faces and even specify special fonts for particular characters.</p>
 </pre></div>
 </div>
 <p>You can specify different fonts for the bold/italic/bold-italic variants.
+To get a full list of supported fonts use the <cite>kitty list-fonts</cite> command.
 By default they are derived automatically, by the OSes font system. Setting
 them manually is useful for font families that have many weight variants like
 Book, Medium, Thick, etc. For example:</p>
@@ -196,6 +201,25 @@ Syntax is:</p>
 </pre></div>
 </div>
 <dl class="opt">
+<dt id="opt-kitty.disable_ligatures">
+<code class="descname">disable_ligatures</code><a class="headerlink" href="#opt-kitty.disable_ligatures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">disable_ligatures</span><span class="w"> </span><span class="s">never</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Choose how you want to handle multi-character ligatures. The default is to
+always render them.  You can tell kitty to not render them when the cursor is
+over them by using <code class="code docutils literal notranslate"><span class="pre">cursor</span></code> to make editing easier, or have kitty never
+render them at all by using <code class="code docutils literal notranslate"><span class="pre">always</span></code>, if you don’t like them. The ligature
+strategy can be set per-window either using the kitty remote control facility
+or by defining shortcuts for it in kitty.conf, for example:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">alt+1</span><span class="w"> </span><span class="nf">disable_ligatures_in</span><span class="w"> </span><span class="s">active always</span><span class="w"></span>
+<span class="kd">map</span><span class="w"> </span><span class="s">alt+2</span><span class="w"> </span><span class="nf">disable_ligatures_in</span><span class="w"> </span><span class="s">all never</span><span class="w"></span>
+<span class="kd">map</span><span class="w"> </span><span class="s">alt+3</span><span class="w"> </span><span class="nf">disable_ligatures_in</span><span class="w"> </span><span class="s">tab cursor</span><span class="w"></span>
+</pre></div>
+</div>
+<dl class="opt">
 <dt id="opt-kitty.box_drawing_scale">
 <code class="descname">box_drawing_scale</code><a class="headerlink" href="#opt-kitty.box_drawing_scale" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -240,17 +264,25 @@ background color of the cell underneath instead, use the special keyword: backgr
 <p>The cursor shape can be one of (block, beam, underline)</p>
 <dl class="opt">
 <dt id="opt-kitty.cursor_blink_interval">
-<code class="descname">cursor_blink_interval</code><code class="descclassname">, </code><code class="descname">cursor_stop_blinking_after</code><a class="headerlink" href="#opt-kitty.cursor_blink_interval" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cursor_blink_interval</code><a class="headerlink" href="#opt-kitty.cursor_blink_interval" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">cursor_blink_interval</span><span class="w">      </span><span class="mf">0.5</span><span class="w"></span>
-<span class="nv">cursor_stop_blinking_after</span><span class="w"> </span><span class="mf">15.0</span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">cursor_blink_interval</span><span class="w"> </span><span class="mi">-1</span>
 </pre></div>
 </div>
 <p>The interval (in seconds) at which to blink the cursor. Set to zero to disable
-blinking. Note that numbers smaller than <a class="reference internal" href="#opt-kitty.repaint_delay"><code class="xref std std-opt docutils literal notranslate"><span class="pre">repaint_delay</span></code></a> will be limited
-to <a class="reference internal" href="#opt-kitty.repaint_delay"><code class="xref std std-opt docutils literal notranslate"><span class="pre">repaint_delay</span></code></a>. Stop blinking cursor after the specified number of
-seconds of keyboard inactivity. Set to zero to never stop blinking.</p>
+blinking. Negative values mean use system default. Note that numbers smaller
+than <a class="reference internal" href="#opt-kitty.repaint_delay"><code class="xref std std-opt docutils literal notranslate"><span class="pre">repaint_delay</span></code></a> will be limited to <a class="reference internal" href="#opt-kitty.repaint_delay"><code class="xref std std-opt docutils literal notranslate"><span class="pre">repaint_delay</span></code></a>.</p>
+<dl class="opt">
+<dt id="opt-kitty.cursor_stop_blinking_after">
+<code class="descname">cursor_stop_blinking_after</code><a class="headerlink" href="#opt-kitty.cursor_stop_blinking_after" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">cursor_stop_blinking_after</span><span class="w"> </span><span class="mf">15.0</span>
+</pre></div>
+</div>
+<p>Stop blinking cursor after the specified number of seconds of keyboard
+inactivity.  Set to zero to never stop blinking.</p>
 </div>
 <div class="section" id="scrollback">
 <span id="conf-kitty-scrollback"></span><h2>Scrollback<a class="headerlink" href="#scrollback" title="Permalink to this headline">¶</a></h2>
@@ -319,11 +351,22 @@ Use negative numbers to change scroll direction.</p>
 <div class="section" id="mouse">
 <span id="conf-kitty-mouse"></span><h2>Mouse<a class="headerlink" href="#mouse" title="Permalink to this headline">¶</a></h2>
 <dl class="opt">
+<dt id="opt-kitty.mouse_hide_wait">
+<code class="descname">mouse_hide_wait</code><a class="headerlink" href="#opt-kitty.mouse_hide_wait" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_hide_wait</span><span class="w"> </span><span class="mf">3.0</span>
+</pre></div>
+</div>
+<p>Hide mouse cursor after the specified number of seconds
+of the mouse not being used. Set to zero to disable mouse cursor hiding.
+Set to a negative value to hide the mouse cursor immediately when typing text.</p>
+<dl class="opt">
 <dt id="opt-kitty.url_color">
 <code class="descname">url_color</code><code class="descclassname">, </code><code class="descname">url_style</code><a class="headerlink" href="#opt-kitty.url_color" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">url_color</span><span class="w"> </span><span class="s">#0087BD</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">url_color</span><span class="w"> </span><span class="s">#0087bd</span><span class="w"></span>
 <span class="nv">url_style</span><span class="w"> </span><span class="s">curly</span><span class="w"></span>
 </pre></div>
 </div>
@@ -358,11 +401,30 @@ operating system’s default URL handler.</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">copy_on_select</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Copy to clipboard on select. With this enabled, simply selecting text with
-the mouse will cause the text to be copied to clipboard. Useful on platforms
-such as macOS that do not have the concept of primary selections. Note
-that this is a security risk, as all programs, including websites open in your
-browser can read the contents of the clipboard.</p>
+<p>Copy to clipboard or a private buffer on select. With this set to
+<code class="code docutils literal notranslate"><span class="pre">clipboard</span></code>, simply selecting text with the mouse will cause the text to
+be copied to clipboard. Useful on platforms such as macOS that do not have the
+concept of primary selections. You can instead specify a name such as <code class="code docutils literal notranslate"><span class="pre">a1</span></code> to
+copy to a private kitty buffer instead. Map a shortcut with the
+<code class="code docutils literal notranslate"><span class="pre">paste_from_buffer</span></code> action to paste from this private buffer.
+For example:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">cmd+shift+v</span><span class="w"> </span><span class="nf">paste_from_buffer</span><span class="w"> </span><span class="s">a1</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note that copying to the clipboard is a security risk, as all programs,
+including websites open in your browser can read the contents of the
+system clipboard.</p>
+<dl class="opt">
+<dt id="opt-kitty.strip_trailing_spaces">
+<code class="descname">strip_trailing_spaces</code><a class="headerlink" href="#opt-kitty.strip_trailing_spaces" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">strip_trailing_spaces</span><span class="w"> </span><span class="s">never</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Remove spaces at the end of lines when copying to clipboard.
+A value of <code class="code docutils literal notranslate"><span class="pre">smart</span></code> will do it when using normal selections, but not rectangle
+selections. <code class="code docutils literal notranslate"><span class="pre">always</span></code> will always do it.</p>
 <dl class="opt">
 <dt id="opt-kitty.rectangle_select_modifiers">
 <code class="descname">rectangle_select_modifiers</code><a class="headerlink" href="#opt-kitty.rectangle_select_modifiers" title="Permalink to this definition">¶</a></dt>
@@ -394,16 +456,6 @@ database will be matched.</p>
 </div>
 <p>The interval between successive clicks to detect double/triple clicks (in seconds).
 Negative numbers will use the system default instead, if available, or fallback to 0.5.</p>
-<dl class="opt">
-<dt id="opt-kitty.mouse_hide_wait">
-<code class="descname">mouse_hide_wait</code><a class="headerlink" href="#opt-kitty.mouse_hide_wait" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_hide_wait</span><span class="w"> </span><span class="mf">3.0</span>
-</pre></div>
-</div>
-<p>Hide mouse cursor after the specified number of seconds
-of the mouse not being used. Set to zero to disable mouse cursor hiding.</p>
 <dl class="opt">
 <dt id="opt-kitty.focus_follows_mouse">
 <code class="descname">focus_follows_mouse</code><a class="headerlink" href="#opt-kitty.focus_follows_mouse" title="Permalink to this definition">¶</a></dt>
@@ -597,7 +649,8 @@ Negative values will cause the value of <a class="reference internal" href="#opt
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">active_border_color</span><span class="w"> </span><span class="s">#00ff00</span>
 </pre></div>
 </div>
-<p>The color for the border of the active window</p>
+<p>The color for the border of the active window. Set this to none to not draw borders
+around the active window.</p>
 <dl class="opt">
 <dt id="opt-kitty.inactive_border_color">
 <code class="descname">inactive_border_color</code><a class="headerlink" href="#opt-kitty.inactive_border_color" title="Permalink to this definition">¶</a></dt>
@@ -637,6 +690,31 @@ zero and one, with zero being fully faded).</p>
 <p>Hide the window decorations (title-bar and window borders).
 Whether this works and exactly what effect it has depends on the
 window manager/operating system.</p>
+<dl class="opt">
+<dt id="opt-kitty.resize_debounce_time">
+<code class="descname">resize_debounce_time</code><a class="headerlink" href="#opt-kitty.resize_debounce_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">resize_debounce_time</span><span class="w"> </span><span class="mf">0.1</span>
+</pre></div>
+</div>
+<p>The time (in seconds) to wait before redrawing the screen when a
+resize event is received. On platforms such as macOS, where the
+operating system sends event corresponding to the start and end
+of a resize, this number is ignored.</p>
+<dl class="opt">
+<dt id="opt-kitty.resize_draw_strategy">
+<code class="descname">resize_draw_strategy</code><a class="headerlink" href="#opt-kitty.resize_draw_strategy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">resize_draw_strategy</span><span class="w"> </span><span class="s">static</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Choose how kitty draws a window while a resize is in progress.
+A value of <code class="code docutils literal notranslate"><span class="pre">static</span></code> means draw the current window contents, mostly unchanged.
+A value of <code class="code docutils literal notranslate"><span class="pre">scale</span></code> means draw the current window contents scaled.
+A value of <code class="code docutils literal notranslate"><span class="pre">blank</span></code> means draw a blank window.
+A value of <code class="code docutils literal notranslate"><span class="pre">size</span></code> means show the window size in cells.</p>
 </div>
 <div class="section" id="tab-bar">
 <span id="conf-kitty-tabbar"></span><h2>Tab bar<a class="headerlink" href="#tab-bar" title="Permalink to this headline">¶</a></h2>
@@ -669,6 +747,27 @@ window manager/operating system.</p>
 <p>The tab bar style, can be one of: <code class="code docutils literal notranslate"><span class="pre">fade</span></code>, <code class="code docutils literal notranslate"><span class="pre">separator</span></code> or <code class="code docutils literal notranslate"><span class="pre">hidden</span></code>. In the fade style,
 each tab’s edges fade into the background color, in the separator style, tabs are
 separated by a configurable separator.</p>
+<dl class="opt">
+<dt id="opt-kitty.tab_bar_min_tabs">
+<code class="descname">tab_bar_min_tabs</code><a class="headerlink" href="#opt-kitty.tab_bar_min_tabs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_bar_min_tabs</span><span class="w"> </span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>The minimum number of tabs that must exist before the tab bar is shown</p>
+<dl class="opt">
+<dt id="opt-kitty.tab_switch_strategy">
+<code class="descname">tab_switch_strategy</code><a class="headerlink" href="#opt-kitty.tab_switch_strategy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_switch_strategy</span><span class="w"> </span><span class="s">previous</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The algorithm to use when switching to a tab when the current tab is closed.
+The default of <code class="code docutils literal notranslate"><span class="pre">previous</span></code> will switch to the last used tab. A value of
+<code class="code docutils literal notranslate"><span class="pre">left</span></code> will switch to the tab to the left of the closed tab. A value
+of <code class="code docutils literal notranslate"><span class="pre">last</span></code> will switch to the right-most tab.</p>
 <dl class="opt">
 <dt id="opt-kitty.tab_fade">
 <code class="descname">tab_fade</code><a class="headerlink" href="#opt-kitty.tab_fade" title="Permalink to this definition">¶</a></dt>
@@ -732,11 +831,10 @@ if you have shortcuts mapped for <code class="code docutils literal notranslate"
 <p>The foreground and background colors</p>
 <dl class="opt">
 <dt id="opt-kitty.background_opacity">
-<code class="descname">background_opacity</code><code class="descclassname">, </code><code class="descname">dynamic_background_opacity</code><a class="headerlink" href="#opt-kitty.background_opacity" title="Permalink to this definition">¶</a></dt>
+<code class="descname">background_opacity</code><a class="headerlink" href="#opt-kitty.background_opacity" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">background_opacity</span><span class="w">         </span><span class="mf">1.0</span><span class="w"></span>
-<span class="nv">dynamic_background_opacity</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">background_opacity</span><span class="w"> </span><span class="mf">1.0</span>
 </pre></div>
 </div>
 <p>The opacity of the background. A number between 0 and 1, where 1 is opaque and
@@ -750,8 +848,19 @@ kitty config and not use a background color in the editor color scheme. Or use
 the escape codes to set the terminals default colors in a shell script to
 launch your editor.  Be aware that using a value less than 1.0 is a (possibly
 significant) performance hit.  If you want to dynamically change transparency
-of windows set dynamic_background_opacity to yes (this is off by default as it
-has a performance cost)</p>
+of windows set <a class="reference internal" href="#opt-kitty.dynamic_background_opacity"><code class="xref std std-opt docutils literal notranslate"><span class="pre">dynamic_background_opacity</span></code></a> to <code class="code docutils literal notranslate"><span class="pre">yes</span></code> (this is off by
+default as it has a performance cost)</p>
+<dl class="opt">
+<dt id="opt-kitty.dynamic_background_opacity">
+<code class="descname">dynamic_background_opacity</code><a class="headerlink" href="#opt-kitty.dynamic_background_opacity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">dynamic_background_opacity</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Allow changing of the <a class="reference internal" href="#opt-kitty.background_opacity"><code class="xref std std-opt docutils literal notranslate"><span class="pre">background_opacity</span></code></a> dynamically, using either keyboard
+shortcuts (<a class="reference internal" href="#shortcut-kitty.Increase background opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;m</span></code></a> and <a class="reference internal" href="#shortcut-kitty.Decrease background opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;l</span></code></a>)
+or the remote control facility.</p>
 <dl class="opt">
 <dt id="opt-kitty.dim_opacity">
 <code class="descname">dim_opacity</code><a class="headerlink" href="#opt-kitty.dim_opacity" title="Permalink to this definition">¶</a></dt>
@@ -764,14 +873,22 @@ has a performance cost)</p>
 zero means fully dimmed (i.e. invisible).</p>
 <dl class="opt">
 <dt id="opt-kitty.selection_foreground">
-<code class="descname">selection_foreground</code><code class="descclassname">, </code><code class="descname">selection_background</code><a class="headerlink" href="#opt-kitty.selection_foreground" title="Permalink to this definition">¶</a></dt>
+<code class="descname">selection_foreground</code><a class="headerlink" href="#opt-kitty.selection_foreground" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">selection_foreground</span><span class="w"> </span><span class="s">#000000</span><span class="w"></span>
-<span class="nv">selection_background</span><span class="w"> </span><span class="s">#FFFACD</span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">selection_foreground</span><span class="w"> </span><span class="s">#000000</span>
 </pre></div>
 </div>
-<p>The foreground and background for text selected with the mouse</p>
+<p>The foreground for text selected with the mouse. A value of none means to leave the color unchanged.</p>
+<dl class="opt">
+<dt id="opt-kitty.selection_background">
+<code class="descname">selection_background</code><a class="headerlink" href="#opt-kitty.selection_background" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">selection_background</span><span class="w"> </span><span class="s">#fffacd</span>
+</pre></div>
+</div>
+<p>The background for text selected with the mouse.</p>
 <div class="section" id="the-color-table">
 <span id="conf-kitty-colors-table"></span><h3>The color table<a class="headerlink" href="#the-color-table" title="Permalink to this headline">¶</a></h3>
 <p>The 16 terminal colors. There are 8 basic colors, each color has a dull and
@@ -927,6 +1044,17 @@ environment variables are expanded recursively, so if you use:</p>
 </div>
 <p>The value of MYVAR2 will be <code class="code docutils literal notranslate"><span class="pre">a/&lt;path</span> <span class="pre">to</span> <span class="pre">home</span> <span class="pre">directory&gt;/b</span></code>.</p>
 <dl class="opt">
+<dt id="opt-kitty.update_check_interval">
+<code class="descname">update_check_interval</code><a class="headerlink" href="#opt-kitty.update_check_interval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">update_check_interval</span><span class="w"> </span><span class="mi">24</span>
+</pre></div>
+</div>
+<p>Periodically check if an update to kitty is available. If an update is found
+a system notification is displayed informing you of the available update.
+The default is to check every 24 hrs, set to zero to disable.</p>
+<dl class="opt">
 <dt id="opt-kitty.startup_session">
 <code class="descname">startup_session</code><a class="headerlink" href="#opt-kitty.startup_session" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -949,8 +1077,10 @@ Environment variables in the path are expanded.</p>
 </div>
 <p>Allow programs running in kitty to read and write from the clipboard. You can
 control exactly which actions are allowed. The set of possible actions is:
-write-clipboard read-clipboard write-primary read-primary
-The default is to allow writing to the clipboard and primary selection. Note
+write-clipboard read-clipboard write-primary read-primary. You can
+additionally specify no-append to disable kitty’s protocol extension
+for clipboard concatenation. The default is to allow writing to the
+clipboard and primary selection with concatenation enabled. Note
 that enabling the read functionality is a security risk as it means that any
 program, even one running on a remote server via SSH can read your clipboard.</p>
 <dl class="opt">
@@ -963,7 +1093,7 @@ program, even one running on a remote server via SSH can read your clipboard.</p
 </div>
 <p>The value of the TERM environment variable to set. Changing this can break many
 terminal programs, only change it if you know what you are doing, not because
-you read some advice on Stack Overflow to change it. The TERM variable if used
+you read some advice on Stack Overflow to change it. The TERM variable is used
 by various programs to get information about the capabilities and behavior of
 the terminal. If you change it, depending on what programs you run, and how
 different the terminal you are changing it to is, various things from
@@ -992,13 +1122,15 @@ probably better off just hiding the titlebar with <a class="reference internal" 
 <code class="descname">macos_option_as_alt</code><a class="headerlink" href="#opt-kitty.macos_option_as_alt" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_option_as_alt</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_option_as_alt</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Use the option key as an alt key. With this set to no, kitty will use
+<p>Use the option key as an alt key. With this set to <code class="code docutils literal notranslate"><span class="pre">no</span></code>, kitty will use
 the macOS native <kbd class="kbd docutils literal notranslate">Option+Key</kbd> = unicode character behavior. This will
 break any <kbd class="kbd docutils literal notranslate">Alt+key</kbd> keyboard shortcuts in your terminal programs, but you
-can use the macOS unicode input technique.</p>
+can use the macOS unicode input technique. You can use the values:
+<code class="code docutils literal notranslate"><span class="pre">left</span></code>, <code class="code docutils literal notranslate"><span class="pre">right</span></code>, or <code class="code docutils literal notranslate"><span class="pre">both</span></code> to use only the left, right or
+both Option keys as Alt, instead.</p>
 <dl class="opt">
 <dt id="opt-kitty.macos_hide_from_tasks">
 <code class="descname">macos_hide_from_tasks</code><a class="headerlink" href="#opt-kitty.macos_hide_from_tasks" title="Permalink to this definition">¶</a></dt>
@@ -1051,6 +1183,16 @@ common font sizes.</p>
 </div>
 <p>Use the traditional full-screen transition, that is faster, but less pretty.</p>
 <dl class="opt">
+<dt id="opt-kitty.macos_show_window_title_in_menubar">
+<code class="descname">macos_show_window_title_in_menubar</code><a class="headerlink" href="#opt-kitty.macos_show_window_title_in_menubar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_show_window_title_in_menubar</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Show the title of the currently active window in the macOS
+menu-bar, making use of otherwise wasted space.</p>
+<dl class="opt">
 <dt id="opt-kitty.macos_custom_beam_cursor">
 <code class="descname">macos_custom_beam_cursor</code><a class="headerlink" href="#opt-kitty.macos_custom_beam_cursor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1064,9 +1206,9 @@ invisible on dual GPU machines.</p>
 </div>
 <div class="section" id="keyboard-shortcuts">
 <span id="conf-kitty-shortcuts"></span><h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
-<p>For a list of key names, see: <a class="reference external" href="http://www.glfw.org/docs/latest/group__keys.html">GLFW keys</a>. The name to use is the part
+<p>For a list of key names, see: <a class="reference external" href="https://www.glfw.org/docs/latest/group__keys.html">GLFW keys</a>. The name to use is the part
 after the <code class="code docutils literal notranslate"><span class="pre">GLFW_KEY_</span></code> prefix. For a list of modifier names, see:
-<a class="reference external" href="http://www.glfw.org/docs/latest/group__mods.html">GLFW mods</a></p>
+<a class="reference external" href="https://www.glfw.org/docs/latest/group__mods.html">GLFW mods</a></p>
 <p>On Linux you can also use XKB key names to bind keys that are not supported by
 GLFW. See <a class="reference external" href="https://github.com/xkbcommon/libxkbcommon/blob/master/xkbcommon/xkbcommon-keysyms.h">XKB keys</a>
 for a list of key names. The name to use is the part after the <code class="code docutils literal notranslate"><span class="pre">XKB_KEY_</span></code>
@@ -1697,7 +1839,7 @@ shortcuts. For a full description see <a class="reference internal" href="kitten
 <p>If you want to operate on all windows instead of just the current one, use <span class="italic">all</span> instead of :italic`active`.</p>
 <p>It is also possible to remap Ctrl+L to both scroll the current screen contents into the scrollback buffer
 and clear the screen, instead of just clearing the screen:</p>
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+l</span><span class="w"> </span><span class="nf">combine</span><span class="w"> </span><span class="s">: clear_terminal scroll active : send_text normal,application</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+l</span><span class="w"> </span><span class="nf">combine</span><span class="w"> </span><span class="s">: clear_terminal scroll active : send_text normal,application \x0c</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="shortcut">
