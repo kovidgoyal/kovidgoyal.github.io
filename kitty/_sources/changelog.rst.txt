@@ -4,6 +4,41 @@ Changelog
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 To update |kitty|, :doc:`follow the instructions <binary>`.
 
+0.14.1 [2019-05-29]
+---------------------
+
+- Add an option :opt:`command_on_bell` to run an arbitrary command when
+  a bell occurs (:iss:`1660`)
+
+- Add a shortcut to toggle maximized window state :sc:`toggle_maximized`
+
+- Add support for the underscore key found in some keyboard layouts
+  (:iss:`1639`)
+
+- Fix a missing newline when using the pipe command between the
+  scrollback and screen contents (:iss:`1642`)
+
+- Fix colors not being preserved when using the pipe command with
+  the pager history buffer (:pull:`1657`)
+
+- macOS: Fix a regression that could cause rendering of a kitty window
+  to occasionally freeze in certain situations, such as moving it between
+  monitors or transitioning from/to fullscreen (:iss:`1641`)
+
+- macOS: Fix a regression that caused :kbd:`cmd+v` to double up in the dvorak
+  keyboard layout (:iss:`1652`)
+
+- When resizing and only a single window is present in the current layout,
+  use that window's background color to fill in the blank areas.
+
+- Linux: Automatically increase cell height if the font being used is broken
+  and draws the underscore outside the bounding box (:iss:`690`)
+
+- Wayland: Fix maximizing the window on a compositor that does not provide
+  server side window decorations, such a GNOME or Weston not working
+  (:iss:`1662`)
+
+
 0.14.0 [2019-05-24]
 ---------------------
 

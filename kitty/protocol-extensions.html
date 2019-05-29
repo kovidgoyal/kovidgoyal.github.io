@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Extensions to the xterm protocol &#8212; kitty 0.14.0 documentation</title>
+    <meta charset="utf-8" />
+    <title>Extensions to the xterm protocol &#8212; kitty 0.14.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -123,13 +121,14 @@ please do so by opening issues in the github bug tracker.</p>
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#extensions-to-the-xterm-protocol" id="id1">Extensions to the xterm protocol</a><ul>
-<li><a class="reference internal" href="#colored-and-styled-underlines" id="id2">Colored and styled underlines</a></li>
-<li><a class="reference internal" href="#graphics-rendering" id="id3">Graphics rendering</a></li>
-<li><a class="reference internal" href="#keyboard-handling" id="id4">Keyboard handling</a></li>
-<li><a class="reference internal" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" id="id5">Setting text styles/colors in arbitrary regions of the screen</a></li>
-<li><a class="reference internal" href="#saving-and-restoring-the-default-foreground-background-selection-cursor-colors" id="id6">Saving and restoring the default foreground/background/selection/cursor colors</a></li>
-<li><a class="reference internal" href="#pasting-to-clipboard" id="id7">Pasting to clipboard</a></li>
+<li><p><a class="reference internal" href="#extensions-to-the-xterm-protocol" id="id1">Extensions to the xterm protocol</a></p>
+<ul>
+<li><p><a class="reference internal" href="#colored-and-styled-underlines" id="id2">Colored and styled underlines</a></p></li>
+<li><p><a class="reference internal" href="#graphics-rendering" id="id3">Graphics rendering</a></p></li>
+<li><p><a class="reference internal" href="#keyboard-handling" id="id4">Keyboard handling</a></p></li>
+<li><p><a class="reference internal" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" id="id5">Setting text styles/colors in arbitrary regions of the screen</a></p></li>
+<li><p><a class="reference internal" href="#saving-and-restoring-the-default-foreground-background-selection-cursor-colors" id="id6">Saving and restoring the default foreground/background/selection/cursor colors</a></p></li>
+<li><p><a class="reference internal" href="#pasting-to-clipboard" id="id7">Pasting to clipboard</a></p></li>
 </ul>
 </li>
 </ul>
@@ -176,13 +175,13 @@ of this protocol to enable drawing of arbitrary raster images in the terminal.</
 <p>There are various problems with the current state of keyboard handling. They
 include:</p>
 <ul class="simple">
-<li>No way to use modifiers other than <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> and <code class="docutils literal notranslate"><span class="pre">Alt</span></code></li>
-<li>No way to reliably use multiple modifier keys, other than, <code class="docutils literal notranslate"><span class="pre">Shift+Alt</span></code>.</li>
-<li>No way to handle different types of keyboard events, such as press, release or repeat</li>
-<li>No reliable way to distinguish single <code class="docutils literal notranslate"><span class="pre">Esc</span></code> keypresses from the start of a
+<li><p>No way to use modifiers other than <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> and <code class="docutils literal notranslate"><span class="pre">Alt</span></code></p></li>
+<li><p>No way to reliably use multiple modifier keys, other than, <code class="docutils literal notranslate"><span class="pre">Shift+Alt</span></code>.</p></li>
+<li><p>No way to handle different types of keyboard events, such as press, release or repeat</p></li>
+<li><p>No reliable way to distinguish single <code class="docutils literal notranslate"><span class="pre">Esc</span></code> keypresses from the start of a
 escape sequence. Currently, client programs use fragile timing related hacks
 for this, leading to bugs, for example:
-<a class="reference external" href="https://github.com/neovim/neovim/issues/2035">neovim #2035</a>.</li>
+<a class="reference external" href="https://github.com/neovim/neovim/issues/2035">neovim #2035</a>.</p></li>
 </ul>
 <p>There are already two distinct keyboard handling modes, <em>normal mode</em> and
 <em>application mode</em>. These modes generate different escape sequences for the
@@ -205,7 +204,7 @@ the standard <a class="reference external" href="https://vt100.net/docs/vt510-rm
 <p>The new mode works as follows:</p>
 <blockquote>
 <div><ul class="simple">
-<li>All printable key presses without modifier keys are sent just as in the
+<li><p>All printable key presses without modifier keys are sent just as in the
 <em>normal mode</em>. This means all printable ASCII characters and in addition,
 <code class="docutils literal notranslate"><span class="pre">Enter</span></code>, <code class="docutils literal notranslate"><span class="pre">Space</span></code> and <code class="docutils literal notranslate"><span class="pre">Backspace</span></code>. Also any unicode characters generated by
 platform specific extended input modes, such as using the <code class="docutils literal notranslate"><span class="pre">AltGr</span></code> key. This
@@ -214,18 +213,18 @@ handle basic text entry, so if a <em>full mode</em> using program crashes and do
 not reset, the user can still issue a <code class="docutils literal notranslate"><span class="pre">reset</span></code> command in the shell to restore
 normal key handling. Note that this includes pressing the <code class="docutils literal notranslate"><span class="pre">Shift</span></code> modifier
 and printable keys. Note that this means there are no repeat and release
-events for these keys and also for the left and right shift keys.</li>
-<li>For non printable keys and key combinations including one or more modifiers,
+events for these keys and also for the left and right shift keys.</p></li>
+<li><p>For non printable keys and key combinations including one or more modifiers,
 an escape sequence encoding the key event is sent. For details on the
-escape sequence, see below.</li>
+escape sequence, see below.</p></li>
 </ul>
 </div></blockquote>
 <p>The escape sequence encodes the following properties:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Type of event: <code class="docutils literal notranslate"><span class="pre">press,repeat,release</span></code></li>
-<li>Modifiers pressed at the time of the event</li>
-<li>The actual key being pressed</li>
+<li><p>Type of event: <code class="docutils literal notranslate"><span class="pre">press,repeat,release</span></code></p></li>
+<li><p>Modifiers pressed at the time of the event</p></li>
+<li><p>The actual key being pressed</p></li>
 </ul>
 </div></blockquote>
 <p>Schematically:</p>
@@ -323,7 +322,7 @@ protocol extension, it can be disabled by specifying <code class="docutils liter
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2018, Kovid Goyal.
+      &copy;2019, Kovid Goyal.
       
     </div>
 

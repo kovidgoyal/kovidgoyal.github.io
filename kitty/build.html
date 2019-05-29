@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Building kitty from source &#8212; kitty 0.14.0 documentation</title>
+    <meta charset="utf-8" />
+    <title>Building kitty from source &#8212; kitty 0.14.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -112,24 +110,24 @@ the following dependencies are installed first.</p>
 <p>Run-time dependencies:</p>
 <blockquote>
 <div><ul class="simple">
-<li>python &gt;= 3.5</li>
-<li>harfbuzz &gt;= 1.5.0</li>
-<li>zlib</li>
-<li>libpng</li>
-<li>freetype (not needed on macOS)</li>
-<li>fontconfig (not needed on macOS)</li>
-<li>ImageMagick (optional, needed to use the <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">icat</span></code> tool to display images in the terminal)</li>
-<li>pygments (optional, need for syntax highlighting in <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">diff</span></code>)</li>
+<li><p>python &gt;= 3.5</p></li>
+<li><p>harfbuzz &gt;= 1.5.0</p></li>
+<li><p>zlib</p></li>
+<li><p>libpng</p></li>
+<li><p>freetype (not needed on macOS)</p></li>
+<li><p>fontconfig (not needed on macOS)</p></li>
+<li><p>ImageMagick (optional, needed to use the <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">icat</span></code> tool to display images in the terminal)</p></li>
+<li><p>pygments (optional, need for syntax highlighting in <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">diff</span></code>)</p></li>
 </ul>
 </div></blockquote>
 <p>Build-time dependencies:</p>
 <blockquote>
 <div><ul class="simple">
-<li>gcc or clang</li>
-<li>pkg-config</li>
-<li>For building on Linux in addition to the above dependencies you might also need to install the <code class="docutils literal notranslate"><span class="pre">-dev</span></code> packages for:
+<li><p>gcc or clang</p></li>
+<li><p>pkg-config</p></li>
+<li><p>For building on Linux in addition to the above dependencies you might also need to install the <code class="docutils literal notranslate"><span class="pre">-dev</span></code> packages for:
 <code class="docutils literal notranslate"><span class="pre">libdbus-1-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxcursor-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxrandr-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxi-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxinerama-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libgl1-mesa-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxkbcommon-x11-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libfontconfig-dev</span></code> and <code class="docutils literal notranslate"><span class="pre">libpython-dev</span></code>.
-if they are not already installed by your distro.</li>
+if they are not already installed by your distro.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -172,7 +170,7 @@ is designed to run on Linux and is not for the faint of heart.</p>
 </div>
 <div class="section" id="note-for-linux-macos-packagers">
 <h2>Note for Linux/macOS packagers<a class="headerlink" href="#note-for-linux-macos-packagers" title="Permalink to this headline">¶</a></h2>
-<p>The released <em>kitty</em> source code is available as a <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases/download/v0.14.0/kitty-0.14.0.tar.xz">tarball</a> from
+<p>The released <em>kitty</em> source code is available as a <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases/download/v0.14.1/kitty-0.14.1.tar.xz">tarball</a> from
 <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases">the GitHub releases page</a>.</p>
 <p>While <em>kitty</em> does use python, it is not a traditional python package, so please
 do not install it in site-packages.
@@ -192,8 +190,8 @@ installs the terminfo file and <code class="file docutils literal notranslate"><
 This allows users to install the terminfo file on servers into which they ssh,
 without needing to install all of <em>kitty</em>.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You need a couple of extra dependencies to build linux-package.
+<p class="admonition-title">Note</p>
+<p>You need a couple of extra dependencies to build linux-package.
 <code class="file docutils literal notranslate"><span class="pre">tic</span></code> to compile terminfo files, usually found in the
 development package of <code class="file docutils literal notranslate"><span class="pre">ncurses</span></code>. Also, if you are building from
 a git checkout instead of the released source code tarball, you will
@@ -212,7 +210,7 @@ brew or MacPorts as well.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2018, Kovid Goyal.
+      &copy;2019, Kovid Goyal.
       
     </div>
 

@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Working with the screen and history buffer contents &#8212; kitty 0.14.0 documentation</title>
+    <meta charset="utf-8" />
+    <title>Working with the screen and history buffer contents &#8212; kitty 0.14.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -126,43 +124,43 @@ declared, <code class="docutils literal notranslate"><span class="pre">KITTY_PIP
 being the top left corner and <code class="docutils literal notranslate"><span class="pre">{lines},{columns}</span></code> being the number of rows
 and columns of the screen.</p>
 <p>You can choose where to run the pipe program:</p>
-<dl class="docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">overlay</span></code></dt>
-<dd>An overlay window over the current kitty window</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">window</span></code></dt>
-<dd>A new kitty window</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">os_window</span></code></dt>
-<dd>A new top-level window</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">tab</span></code></dt>
-<dd>A new window in a new tab</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">none</span></code></dt>
-<dd>Run it in the background</dd>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">overlay</span></code></dt><dd><p>An overlay window over the current kitty window</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">window</span></code></dt><dd><p>A new kitty window</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">os_window</span></code></dt><dd><p>A new top-level window</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tab</span></code></dt><dd><p>A new window in a new tab</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">none</span></code></dt><dd><p>Run it in the background</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="input-placeholders">
 <h2>Input placeholders<a class="headerlink" href="#input-placeholders" title="Permalink to this headline">¶</a></h2>
 <p>There are various different kinds of placeholders</p>
-<dl class="docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">&#64;text</span></code></dt>
-<dd>Plain text, current screen + scrollback buffer</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&#64;ansi</span></code></dt>
-<dd>Text with formatting, current screen + scrollback buffer</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&#64;screen</span></code></dt>
-<dd>Plain text, only current screen</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&#64;ansi_screen</span></code></dt>
-<dd>Text with formatting, only current screen</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&#64;alternate</span></code></dt>
-<dd>Plain text, secondary screen. The secondary screen is the screen not currently displayed. For
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;text</span></code></dt><dd><p>Plain text, current screen + scrollback buffer</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;ansi</span></code></dt><dd><p>Text with formatting, current screen + scrollback buffer</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;screen</span></code></dt><dd><p>Plain text, only current screen</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;ansi_screen</span></code></dt><dd><p>Text with formatting, only current screen</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;alternate</span></code></dt><dd><p>Plain text, secondary screen. The secondary screen is the screen not currently displayed. For
 example if you run a fullscreen terminal application, the secondary screen will
-be the screen you return to when quitting the application.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&#64;ansi_alternate</span></code></dt>
-<dd>Text with formatting, secondary screen.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&#64;alternate_scrollback</span></code></dt>
-<dd>Plain text, secondary screen + scrollback, if any.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&#64;ansi_alternate_scrollback</span></code></dt>
-<dd>Text with formatting, secondary screen + scrollback, if any.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">none</span></code></dt>
-<dd>No input</dd>
+be the screen you return to when quitting the application.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;ansi_alternate</span></code></dt><dd><p>Text with formatting, secondary screen.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;alternate_scrollback</span></code></dt><dd><p>Plain text, secondary screen + scrollback, if any.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;ansi_alternate_scrollback</span></code></dt><dd><p>Text with formatting, secondary screen + scrollback, if any.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">none</span></code></dt><dd><p>No input</p>
+</dd>
 </dl>
 <p>You can also add the suffix <code class="docutils literal notranslate"><span class="pre">_wrap</span></code> to the placeholder, in which case kitty
 will insert the carriage return at every line wrap location (where long lines
@@ -179,7 +177,7 @@ that wants to duplicate the screen layout of the screen.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2018, Kovid Goyal.
+      &copy;2019, Kovid Goyal.
       
     </div>
 
