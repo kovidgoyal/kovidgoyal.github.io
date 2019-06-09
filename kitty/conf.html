@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Configuring kitty &#8212; kitty 0.14.1 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.14.2 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -649,6 +649,19 @@ Negative values will cause the value of <a class="reference internal" href="#opt
 </div>
 <p>The window padding (in pts) (blank area between the text and the window border)</p>
 <dl class="opt">
+<dt id="opt-kitty.placement_strategy">
+<code class="descname">placement_strategy</code><a class="headerlink" href="#opt-kitty.placement_strategy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">placement_strategy</span><span class="w"> </span><span class="s">center</span><span class="w"></span>
+</pre></div>
+</div>
+<p>When the window size is not an exact multiple of the cell size, the cell area of the terminal
+window will have some extra padding on the sides. You can control how that padding is
+distributed with this option. Using a value of <code class="code docutils literal notranslate"><span class="pre">center</span></code> means the cell area will
+be placed centrally. A value of <code class="code docutils literal notranslate"><span class="pre">top-left</span></code> means the padding will be on only
+the bottom and right edges.</p>
+<dl class="opt">
 <dt id="opt-kitty.active_border_color">
 <code class="descname">active_border_color</code><a class="headerlink" href="#opt-kitty.active_border_color" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -707,7 +720,7 @@ window manager/operating system.</p>
 </div>
 <p>The time (in seconds) to wait before redrawing the screen when a
 resize event is received. On platforms such as macOS, where the
-operating system sends event corresponding to the start and end
+operating system sends events corresponding to the start and end
 of a resize, this number is ignored.</p>
 <dl class="opt">
 <dt id="opt-kitty.resize_draw_strategy">
@@ -1210,6 +1223,18 @@ menu-bar, making use of otherwise wasted space.</p>
 <p>Enable/disable custom mouse cursor for macOS that is easier to see on both
 light and dark backgrounds. WARNING: this might make your mouse cursor
 invisible on dual GPU machines.</p>
+<dl class="opt">
+<dt id="opt-kitty.linux_display_server">
+<code class="descname">linux_display_server</code><a class="headerlink" href="#opt-kitty.linux_display_server" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">linux_display_server</span><span class="w"> </span><span class="s">auto</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Choose between Wayland and X11 backends. By default, an
+appropriate backend based on the system state is chosen
+automatically. Set it to <code class="code docutils literal notranslate"><span class="pre">x11</span></code> or <code class="code docutils literal notranslate"><span class="pre">wayland</span></code>
+to force the choice.</p>
 </div>
 <div class="section" id="keyboard-shortcuts">
 <span id="conf-kitty-shortcuts"></span><h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
@@ -1313,7 +1338,8 @@ It will copy only if there is a selection and send an interrupt otherwise.</p>
 </div>
 <p>You can also pass the contents of the current selection to any program using
 <code class="code docutils literal notranslate"><span class="pre">pass_selection_to_program</span></code>. By default, the system’s open program is used, but
-you can specify your own, for example:</p>
+you can specify your own, the selection will be passed as a command line argument to the program,
+for example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">kitty_mod+o</span><span class="w"> </span><span class="nf">pass_selection_to_program</span><span class="w"> </span><span class="s">firefox</span><span class="w"></span>
 </pre></div>
 </div>

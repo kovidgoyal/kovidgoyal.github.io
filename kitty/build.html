@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Building kitty from source &#8212; kitty 0.14.1 documentation</title>
+    <title>Building kitty from source &#8212; kitty 0.14.2 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -170,7 +170,7 @@ is designed to run on Linux and is not for the faint of heart.</p>
 </div>
 <div class="section" id="note-for-linux-macos-packagers">
 <h2>Note for Linux/macOS packagers<a class="headerlink" href="#note-for-linux-macos-packagers" title="Permalink to this headline">¶</a></h2>
-<p>The released <em>kitty</em> source code is available as a <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases/download/v0.14.1/kitty-0.14.1.tar.xz">tarball</a> from
+<p>The released <em>kitty</em> source code is available as a <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases/download/v0.14.2/kitty-0.14.2.tar.xz">tarball</a> from
 <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases">the GitHub releases page</a>.</p>
 <p>While <em>kitty</em> does use python, it is not a traditional python package, so please
 do not install it in site-packages.
@@ -199,6 +199,12 @@ need <code class="file docutils literal notranslate"><span class="pre">sphinx-bu
 </div>
 <p>This applies to creating packages for <em>kitty</em> for macOS package managers such as
 brew or MacPorts as well.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>kitty</em> has its own update check mechanism, if you would like to turn
+it off for your package, use
+<code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">setup.py</span> <span class="pre">linux-package</span> <span class="pre">--update-check-interval=0</span></code></p>
+</div>
 </div>
 </div>
 

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Hints &#8212; kitty 0.14.1 documentation</title>
+    <title>Hints &#8212; kitty 0.14.2 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -172,6 +172,13 @@ Default: <code class="code docutils literal notranslate"><span class="pre">3</sp
 <dt id="cmdoption-kitty-kitten-hints-multiple">
 <code class="descname">--multiple</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-multiple" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select multiple matches and perform the action on all of them together at the end. In this mode, press <kbd class="kbd docutils literal notranslate">Esc</kbd> to finish selecting.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-kitten-hints-multiple-joiner">
+<code class="descname">--multiple-joiner</code><code class="descclassname"> &lt;MULTIPLE_JOINER&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-multiple-joiner" title="Permalink to this definition">¶</a></dt>
+<dd><p>String to use to join multiple selections when copying to the clipboard or inserting into the terminal. The special strings: “space”, “newline”, “empty”, “json” and “auto” are interpreted as a space character, a newline an empty joiner, a JSON serialized list and an automatic choice, based on the type of text being selected. In addition, integers are interpreted as zero-based indices into the list of selections. You can use 0 for the first selection and -1 for the last.
+Default: <code class="code docutils literal notranslate"><span class="pre">auto</span></code></p>
 </dd></dl>
 
 <dl class="option">
