@@ -446,7 +446,9 @@ Add the following to your :file:`~/.bashrc`
 
 .. code-block:: sh
 
-   source /dev/stdin <<<"$(kitty + complete setup bash)"
+   source <(kitty + complete setup bash)
+   # Above will not work in bash v3.2, try
+   # source /dev/stdin <<<"$(kitty + complete setup bash)"
 
 
 zsh
