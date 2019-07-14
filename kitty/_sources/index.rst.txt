@@ -448,6 +448,11 @@ Add the following to your :file:`~/.bashrc`
 
    source <(kitty + complete setup bash)
 
+   # Important! Bash v3.2 doesn't support process substition w/ source command
+   # In Bash v3.2 use this instead:
+
+   # source /dev/stdin <<<"$(kitty + complete setup bash)"
+
 
 zsh
 ~~~~~~~~~
