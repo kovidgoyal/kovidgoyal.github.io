@@ -1,0 +1,312 @@
+close-tab
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`match (default: None)`
+  Which tab to close
+
+:code:`self (default: False)`
+  Boolean indicating whether to close the window the command is run in
+
+
+
+close-window
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`match (default: None)`
+  Which window to close
+
+:code:`self (default: False)`
+  Boolean indicating whether to close the window the command is run in
+
+
+
+disable-ligatures
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`strategy (required)`
+  One of :code:`never`, :code:`always` or :code:`cursor`
+
+:code:`match_window (optional)`
+  Window to change opacity in
+
+:code:`match_tab (default: None)`
+  Tab to change opacity in
+
+:code:`all (default: False)`
+  Boolean indicating operate on all windows
+
+
+
+focus-tab
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`match (default: None)`
+  The tab to focus
+
+
+
+focus-window
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`match (default: None)`
+  The window to focus
+
+
+
+get-colors
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`match (default: None)`
+  The window to get the colors for
+
+:code:`configured (default: False)`
+  Boolean indicating whether to get configured or current colors
+
+
+
+get-text
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`match (default: None)`
+  The tab to focus
+
+:code:`extent (default: screen)`
+  One of :code:`screen`, :code:`all`, or :code:`selection`
+
+:code:`ansi (default: False)`
+  Boolean, if True send ANSI formatting codes
+
+:code:`self (default: False)`
+  Boolean, if True use window command was run in
+
+
+
+goto-layout
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`layout (required)`
+  The new layout name
+
+:code:`match (default: None)`
+  Which tab to change the layout of
+
+
+
+kitten
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`kitten (required)`
+  The name of the kitten to run
+
+:code:`args (optional)`
+  Arguments to pass to the kitten as a list
+
+:code:`match (default: None)`
+  The window to run the kitten over
+
+
+
+last-used-layout
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`match (default: None)`
+  Which tab to change the layout of
+
+
+
+ls
+--------------------------------------------------------------------------------
+No payload
+
+
+new-window
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`args (required)`
+  The command line to run in the new window, as a list, use an empty list to run the default shell
+
+:code:`match (default: None)`
+  The tab to open the new window in
+
+:code:`title (default: None)`
+  Title for the new window
+
+:code:`cwd (default: None)`
+  Working directory for the new window
+
+:code:`tab_title (default: None)`
+  Title for the new tab
+
+:code:`window_type (default: kitty)`
+  One of :code:`kitty` or :code:`os`
+
+:code:`keep_focus (default: False)`
+  Boolean indicating whether the current window should retain focus or not
+
+
+
+resize-window
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`match (default: None)`
+  Which window to resize
+
+:code:`self (default: False)`
+  Boolean indicating whether to close the window the command is run in
+
+:code:`increment (default: 2)`
+  Integer specifying the resize increment
+
+:code:`axis (default: horizontal)`
+  One of :code:`horizontal, vertical` or :code:`reset`
+
+
+
+scroll-window
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`amount (required)`
+  The amount to scroll, a two item list with the first item being              either a number or the keywords, start and end.              And the second item being either 'p' for pages or 'l' for lines.
+
+:code:`match (default: None)`
+  The window to scroll
+
+
+
+send-text
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`text (required)`
+  The text being sent
+
+:code:`is_binary (required)`
+  If False text is interpreted as a python string literal instead of plain text
+
+:code:`match (default: None)`
+  A string indicating the window to send text to
+
+:code:`match_tab (default: None)`
+  A string indicating the tab to send text to
+
+
+
+set-background-opacity
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`opacity (required)`
+  A number between 0.1 and 1
+
+:code:`match_window (optional)`
+  Window to change opacity in
+
+:code:`match_tab (default: None)`
+  Tab to change opacity in
+
+:code:`all (default: False)`
+  Boolean indicating operate on all windows
+
+
+
+set-colors
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`colors (required)`
+  An object mapping names to colors as 24-bit RGB integers
+
+:code:`cursor_text_color (optional)`
+  A 24-bit clor for text under the cursor
+
+:code:`match_window (optional)`
+  Window to change colors in
+
+:code:`match_tab (default: None)`
+  Tab to change colors in
+
+:code:`all (default: False)`
+  Boolean indicating change colors everywhere or not
+
+:code:`configured (default: False)`
+  Boolean indicating whether to change the configured colors. Must be True if reset is True
+
+:code:`reset (default: False)`
+  Boolean indicating colors should be reset to startup values
+
+
+
+set-font-size
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`size (required)`
+  The new font size in pts (a positive number)
+
+:code:`all (default: False)`
+  Boolean whether to change font size in the current window or all windows
+
+:code:`increment_op (optional)`
+  The string ``+`` or ``-`` to interpret size as an increment
+
+
+
+set-tab-title
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`title (required)`
+  The new title
+
+:code:`match (default: None)`
+  Which tab to change the title of
+
+
+
+set-window-title
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`title (required)`
+  The new title
+
+:code:`match (default: None)`
+  Which windows to change the title in
+
+:code:`temporary (default: False)`
+  Boolean indicating if the change is temporary or permanent
+
+
+

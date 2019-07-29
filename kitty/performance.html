@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>kitty Performance &#8212; kitty 0.14.2 documentation</title>
+    <title>kitty Performance &#8212; kitty 0.14.3 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -103,19 +103,18 @@ and <a class="reference internal" href="conf.html#opt-kitty.input_delay"><code c
 render loop to reduce CPU usage. See <a class="reference internal" href="conf.html#conf-kitty-performance"><span class="std std-ref">Performance tuning</span></a> for details.
 See also the <a class="reference internal" href="conf.html#opt-kitty.sync_to_monitor"><code class="xref std std-opt docutils literal notranslate"><span class="pre">sync_to_monitor</span></code></a> option to further decrease latency at the cost
 of some <a class="reference external" href="https://en.wikipedia.org/wiki/Screen_tearing">tearing</a> while scrolling.</p>
-<p>You can generate detailed per-function performance data using
-<a class="reference external" href="https://github.com/gperftools/gperftools">gperftools</a>. Build <em>kitty</em> with
-<cite>make profile</cite> which will create an executable called <cite>kitty-profile</cite>.  Run
-that and perform the task you want to analyse, for example, scrolling a large
-file with <cite>less</cite>. After you quit, function call statistics will be printed to
-<cite>stdout</cite> and you can use tools like <em>kcachegrind</em> for more detailed analysis.</p>
+<p>You can generate detailed per-function performance data using <a class="reference external" href="https://github.com/gperftools/gperftools">gperftools</a>. Build <em>kitty</em> with <cite>make
+profile</cite>. Run kitty and perform the task you want to analyse, for example,
+scrolling a large file with <cite>less</cite>. After you quit, function call statistics
+will be printed to <cite>stdout</cite> and you can use tools like <em>kcachegrind</em> for more
+detailed analysis.</p>
 <p>Here are some CPU usage numbers for the task of scrolling a file continuously
 in less.  The CPU usage is for the terminal process and X together and is
 measured using htop.  The measurements are taken at the same font and window
 size for all terminals on a <code class="docutils literal notranslate"><span class="pre">Intel(R)</span> <span class="pre">Core(TM)</span> <span class="pre">i7-4820K</span> <span class="pre">CPU</span> <span class="pre">&#64;</span> <span class="pre">3.70GHz</span></code> CPU
 with a <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">Micro</span> <span class="pre">Devices,</span> <span class="pre">Inc.</span> <span class="pre">[AMD/ATI]</span> <span class="pre">Cape</span> <span class="pre">Verde</span> <span class="pre">XT</span> <span class="pre">[Radeon</span> <span class="pre">HD</span>
 <span class="pre">7770/8760</span> <span class="pre">/</span> <span class="pre">R7</span> <span class="pre">250X]</span></code> GPU.</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />

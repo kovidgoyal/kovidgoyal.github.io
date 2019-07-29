@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Hints &#8212; kitty 0.14.2 documentation</title>
+    <title>Hints &#8212; kitty 0.14.3 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -128,14 +128,14 @@ snippets. See <a class="reference internal" href="../conf.html#shortcut-kitty.In
 <h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
 <dl class="option">
 <dt id="cmdoption-kitty-kitten-hints-program">
-<code class="descname">--program</code><code class="descclassname"> &lt;PROGRAM&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-program" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">--program</code><code class="sig-prename descclassname"> &lt;PROGRAM&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-program" title="Permalink to this definition">¶</a></dt>
 <dd><p>What program to use to open matched text. Defaults to the default open program for the operating system.  Use a value of <code class="file docutils literal notranslate"><span class="pre">-</span></code> to paste the match into the terminal window instead. A value of <code class="file docutils literal notranslate"><span class="pre">&#64;</span></code> will copy the match to the clipboard.
 Default: <code class="code docutils literal notranslate"><span class="pre">default</span></code></p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-kitty-kitten-hints-type">
-<code class="descname">--type</code><code class="descclassname"> &lt;TYPE&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-type" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">--type</code><code class="sig-prename descclassname"> &lt;TYPE&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-type" title="Permalink to this definition">¶</a></dt>
 <dd><p>The type of text to search for.
 Default: <code class="code docutils literal notranslate"><span class="pre">url</span></code>
 Choices: <code class="code docutils literal notranslate"><span class="pre">hash,</span> <span class="pre">line,</span> <span class="pre">path,</span> <span class="pre">regex,</span> <span class="pre">url,</span> <span class="pre">word</span></code></p>
@@ -143,47 +143,47 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">hash,
 
 <dl class="option">
 <dt id="cmdoption-kitty-kitten-hints-regex">
-<code class="descname">--regex</code><code class="descclassname"> &lt;REGEX&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-regex" title="Permalink to this definition">¶</a></dt>
-<dd><p>The regular expression to use when <a class="reference internal" href="#cmdoption-kitty-kitten-hints-type"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">hints</span> <span class="pre">--type</span></code></a><code class="code docutils literal notranslate"><span class="pre">=regex</span></code>. If you specify a group in the regular expression only the group will be matched. This allow you to match text ignoring a prefix/suffix, as needed. The default expression matches lines.
+<code class="sig-name descname">--regex</code><code class="sig-prename descclassname"> &lt;REGEX&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-regex" title="Permalink to this definition">¶</a></dt>
+<dd><p>The regular expression to use when <a class="reference internal" href="#cmdoption-kitty-kitten-hints-type"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">hints</span> <span class="pre">--type</span></code></a><code class="code docutils literal notranslate"><span class="pre">=regex</span></code>. If you specify a group in the regular expression only the group will be matched. This allow you to match text ignoring a prefix/suffix, as needed. The default expression matches lines. To match text over multiple lines you should prefix the regular expression with <code class="code docutils literal notranslate"><span class="pre">(?ms)</span></code>, which turns on MULTILINE and DOTALL modes for the regex engine.
 Default: <code class="code docutils literal notranslate"><span class="pre">(?m)^\s*(.+)\s*$</span></code></p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-kitty-kitten-hints-url-prefixes">
-<code class="descname">--url-prefixes</code><code class="descclassname"> &lt;URL_PREFIXES&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-url-prefixes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">--url-prefixes</code><code class="sig-prename descclassname"> &lt;URL_PREFIXES&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-url-prefixes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Comma separated list of recognized URL prefixes.
 Default: <code class="code docutils literal notranslate"><span class="pre">file,ftp,http,https</span></code></p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-kitty-kitten-hints-word-characters">
-<code class="descname">--word-characters</code><code class="descclassname"> &lt;WORD_CHARACTERS&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-word-characters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">--word-characters</code><code class="sig-prename descclassname"> &lt;WORD_CHARACTERS&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-word-characters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Characters to consider as part of a word. In addition, all characters marked as alpha-numeric in the unicode database will be considered as word characters. Defaults to the select_by_word_characters setting from kitty.conf.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-kitty-kitten-hints-minimum-match-length">
-<code class="descname">--minimum-match-length</code><code class="descclassname"> &lt;MINIMUM_MATCH_LENGTH&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-minimum-match-length" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">--minimum-match-length</code><code class="sig-prename descclassname"> &lt;MINIMUM_MATCH_LENGTH&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-minimum-match-length" title="Permalink to this definition">¶</a></dt>
 <dd><p>The minimum number of characters to consider a match.
 Default: <code class="code docutils literal notranslate"><span class="pre">3</span></code></p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-kitty-kitten-hints-multiple">
-<code class="descname">--multiple</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-multiple" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">--multiple</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-multiple" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select multiple matches and perform the action on all of them together at the end. In this mode, press <kbd class="kbd docutils literal notranslate">Esc</kbd> to finish selecting.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-kitty-kitten-hints-multiple-joiner">
-<code class="descname">--multiple-joiner</code><code class="descclassname"> &lt;MULTIPLE_JOINER&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-multiple-joiner" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">--multiple-joiner</code><code class="sig-prename descclassname"> &lt;MULTIPLE_JOINER&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-multiple-joiner" title="Permalink to this definition">¶</a></dt>
 <dd><p>String to use to join multiple selections when copying to the clipboard or inserting into the terminal. The special strings: “space”, “newline”, “empty”, “json” and “auto” are interpreted as a space character, a newline an empty joiner, a JSON serialized list and an automatic choice, based on the type of text being selected. In addition, integers are interpreted as zero-based indices into the list of selections. You can use 0 for the first selection and -1 for the last.
 Default: <code class="code docutils literal notranslate"><span class="pre">auto</span></code></p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-kitty-kitten-hints-add-trailing-space">
-<code class="descname">--add-trailing-space</code><code class="descclassname"> &lt;ADD_TRAILING_SPACE&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-add-trailing-space" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">--add-trailing-space</code><code class="sig-prename descclassname"> &lt;ADD_TRAILING_SPACE&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-add-trailing-space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add trailing space after matched text. Defaults to auto, which adds the space when used together with –multiple.
 Default: <code class="code docutils literal notranslate"><span class="pre">auto</span></code>
 Choices: <code class="code docutils literal notranslate"><span class="pre">always,</span> <span class="pre">auto,</span> <span class="pre">never</span></code></p>
@@ -191,7 +191,7 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">alway
 
 <dl class="option">
 <dt id="cmdoption-kitty-kitten-hints-hints-offset">
-<code class="descname">--hints-offset</code><code class="descclassname"> &lt;HINTS_OFFSET&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-hints-offset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">--hints-offset</code><code class="sig-prename descclassname"> &lt;HINTS_OFFSET&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-hints-offset" title="Permalink to this definition">¶</a></dt>
 <dd><p>The offset (from zero) at which to start hint numbering. Note that only numbers greater than or equal to zero are respected.
 Default: <code class="code docutils literal notranslate"><span class="pre">1</span></code></p>
 </dd></dl>

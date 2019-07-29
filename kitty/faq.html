@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Frequently Asked Questions &#8212; kitty 0.14.2 documentation</title>
+    <title>Frequently Asked Questions &#8212; kitty 0.14.3 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -85,6 +85,7 @@ ga('send', 'pageview');
 <li><a class="reference internal" href="#how-do-i-specify-command-line-options-for-kitty-on-macos">How do I specify command line options for kitty on macOS?</a></li>
 <li><a class="reference internal" href="#kitty-is-not-able-to-use-my-favorite-font">kitty is not able to use my favorite font?</a></li>
 <li><a class="reference internal" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal">How can I assign a single global shortcut to bring up the kitty terminal?</a></li>
+<li><a class="reference internal" href="#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program">How do I map key presses in kitty to different keys in the terminal program?</a></li>
 </ul>
 
 </div><div class="relations">
@@ -119,6 +120,7 @@ ga('send', 'pageview');
 <li><p><a class="reference internal" href="#how-do-i-specify-command-line-options-for-kitty-on-macos" id="id7">How do I specify command line options for kitty on macOS?</a></p></li>
 <li><p><a class="reference internal" href="#kitty-is-not-able-to-use-my-favorite-font" id="id8">kitty is not able to use my favorite font?</a></p></li>
 <li><p><a class="reference internal" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal" id="id9">How can I assign a single global shortcut to bring up the kitty terminal?</a></p></li>
+<li><p><a class="reference internal" href="#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program" id="id10">How do I map key presses in kitty to different keys in the terminal program?</a></p></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +210,26 @@ to set colors or you can enable <a class="reference internal" href="remote-contr
 for <em>kitty</em> and use <a class="reference internal" href="remote-control.html#at-set-colors"><span class="std std-ref">kitty &#64; set-colors</span></a>.</p>
 <p>A list of pre-made color themes for kitty is available at:
 <a class="reference external" href="https://github.com/dexpota/kitty-themes">kitty-themes</a></p>
+<p>Examples of using OSC escape codes to set colors:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Change the default foreground color:
+<span class="nb">printf</span> <span class="s1">&#39;\x1b]10;#ff0000\x1b\\&#39;</span>
+Change the default background color:
+<span class="nb">printf</span> <span class="s1">&#39;\x1b]11;blue\x1b\\&#39;</span>
+Change the cursor color:
+<span class="nb">printf</span> <span class="s1">&#39;\x1b]12;blue\x1b\\&#39;</span>
+Change the selection background color:
+<span class="nb">printf</span> <span class="s1">&#39;\x1b]17;blue\x1b\\&#39;</span>
+Change the selection foreground color:
+<span class="nb">printf</span> <span class="s1">&#39;\x1b]19;blue\x1b\\&#39;</span>
+Change the nth color <span class="o">(</span><span class="m">0</span> - <span class="m">255</span><span class="o">)</span>:
+<span class="nb">printf</span> <span class="s1">&#39;\x1b]4;n;green\x1b\\&#39;</span>
+</pre></div>
+</div>
+<p>You can use various syntaxes/names for color specifications in the above
+examples. See <a class="reference external" href="https://linux.die.net/man/3/xparsecolor">XParseColor</a>
+for full details.</p>
+<p>If a <code class="docutils literal notranslate"><span class="pre">?</span></code> is given rather than a color specification, kitty will respond
+with the current value for the specified color.</p>
 </div>
 <div class="section" id="how-do-i-specify-command-line-options-for-kitty-on-macos">
 <h2><a class="toc-backref" href="#id7">How do I specify command line options for kitty on macOS?</a><a class="headerlink" href="#how-do-i-specify-command-line-options-for-kitty-on-macos" title="Permalink to this headline">¶</a></h2>
@@ -239,6 +261,33 @@ monospace. On Linux you can list all monospace fonts with:</p>
 manager/desktop environment. For ways to do it with kitty (or indeed any
 terminal) in different environments,
 see <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/45">here</a>.</p>
+</div>
+<div class="section" id="how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program">
+<h2><a class="toc-backref" href="#id10">How do I map key presses in kitty to different keys in the terminal program?</a><a class="headerlink" href="#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program" title="Permalink to this headline">¶</a></h2>
+<p>This is accomplished by using <code class="docutils literal notranslate"><span class="pre">map</span></code> with <a class="reference internal" href="conf.html#shortcut-kitty.Send arbitrary text on key presses"><code class="xref std std-sc docutils literal notranslate"><span class="pre">send_text</span></code></a> in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.
+For example:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>map alt+s send_text all <span class="se">\x</span><span class="m">13</span>
+</pre></div>
+</div>
+<p>This maps <kbd class="kbd docutils literal notranslate">alt+s`</kbd> to <kbd class="kbd docutils literal notranslate">ctrl+s</kbd>. To figure out what bytes to use for
+the <a class="reference internal" href="conf.html#shortcut-kitty.Send arbitrary text on key presses"><code class="xref std std-sc docutils literal notranslate"><span class="pre">send_text</span></code></a> you can use the <code class="docutils literal notranslate"><span class="pre">showkey</span></code> utility. Run:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>showkey -a
+</pre></div>
+</div>
+<p>Then press the key you want to emulate. On macOS, this utility is currently not
+available. The manual way to figure it out is:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Look up your key's decimal value in the table at the bottom of <a class="reference external" href="http://ascii-table.com/ansi-escape-sequences.php">this
+page</a> or any
+ANSI escape sequence table. There are different modifiers for <kbd class="kbd docutils literal notranslate">ctrl</kbd>,
+<kbd class="kbd docutils literal notranslate">alt</kbd>, etc. For e.g., for <kbd class="kbd docutils literal notranslate">ctrl+s</kbd>, find the <code class="docutils literal notranslate"><span class="pre">S</span></code> row and look at
+the third column value, <code class="docutils literal notranslate"><span class="pre">19</span></code>.</p></li>
+<li><p>Convert the decimal value to hex with <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+runpy</span> <span class="pre">&quot;print(hex(19))&quot;</span></code>.
+This shows the hex value, <code class="docutils literal notranslate"><span class="pre">13</span></code> in this case.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">\x(hexval)</span></code> in your <code class="docutils literal notranslate"><span class="pre">send_text</span></code> command in kitty. So in this example, <code class="docutils literal notranslate"><span class="pre">\x13</span></code></p></li>
+</ol>
+</div></blockquote>
 </div>
 </div>
 

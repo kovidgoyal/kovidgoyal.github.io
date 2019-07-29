@@ -103,6 +103,28 @@ for |kitty| and use :ref:`at_set-colors`.
 A list of pre-made color themes for kitty is available at:
 `kitty-themes <https://github.com/dexpota/kitty-themes>`_
 
+Examples of using OSC escape codes to set colors::
+
+    Change the default foreground color:
+    printf '\x1b]10;#ff0000\x1b\\'
+    Change the default background color:
+    printf '\x1b]11;blue\x1b\\'
+    Change the cursor color:
+    printf '\x1b]12;blue\x1b\\'
+    Change the selection background color:
+    printf '\x1b]17;blue\x1b\\'
+    Change the selection foreground color:
+    printf '\x1b]19;blue\x1b\\'
+    Change the nth color (0 - 255):
+    printf '\x1b]4;n;green\x1b\\'
+
+You can use various syntaxes/names for color specifications in the above
+examples. See `XParseColor <https://linux.die.net/man/3/xparsecolor>`_
+for full details.
+
+If a ``?`` is given rather than a color specification, kitty will respond
+with the current value for the specified color.
+
 
 How do I specify command line options for kitty on macOS?
 ---------------------------------------------------------------
@@ -140,3 +162,31 @@ Bringing up applications on a single key press is the job of the window
 manager/desktop environment. For ways to do it with kitty (or indeed any
 terminal) in different environments,
 see `here <https://github.com/kovidgoyal/kitty/issues/45>`_.
+
+
+How do I map key presses in kitty to different keys in the terminal program?
+--------------------------------------------------------------------------------------
+
+This is accomplished by using ``map`` with :sc:`send_text <send_text>` in :file:`kitty.conf`.
+For example::
+
+    map alt+s send_text all \x13
+
+This maps :kbd:`alt+s`` to :kbd:`ctrl+s`. To figure out what bytes to use for
+the :sc:`send_text <send_text>` you can use the ``showkey`` utility. Run::
+
+    showkey -a
+
+Then press the key you want to emulate. On macOS, this utility is currently not
+available. The manual way to figure it out is:
+
+    1. Look up your key's decimal value in the table at the bottom of `this
+       page <http://ascii-table.com/ansi-escape-sequences.php>`_ or any
+       ANSI escape sequence table. There are different modifiers for :kbd:`ctrl`,
+       :kbd:`alt`, etc. For e.g., for :kbd:`ctrl+s`, find the ``S`` row and look at
+       the third column value, ``19``.
+
+    2. Convert the decimal value to hex with ``kitty +runpy "print(hex(19))"``.
+       This shows the hex value, ``13`` in this case.
+
+    3. Use ``\x(hexval)`` in your ``send_text`` command in kitty. So in this example, ``\x13``

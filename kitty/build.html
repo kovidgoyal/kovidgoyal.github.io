@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Building kitty from source &#8212; kitty 0.14.2 documentation</title>
+    <title>Building kitty from source &#8212; kitty 0.14.3 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -116,6 +116,7 @@ the following dependencies are installed first.</p>
 <li><p>libpng</p></li>
 <li><p>freetype (not needed on macOS)</p></li>
 <li><p>fontconfig (not needed on macOS)</p></li>
+<li><p>libcanberra (not needed on macOS)</p></li>
 <li><p>ImageMagick (optional, needed to use the <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">icat</span></code> tool to display images in the terminal)</p></li>
 <li><p>pygments (optional, need for syntax highlighting in <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">diff</span></code>)</p></li>
 </ul>
@@ -126,7 +127,7 @@ the following dependencies are installed first.</p>
 <li><p>gcc or clang</p></li>
 <li><p>pkg-config</p></li>
 <li><p>For building on Linux in addition to the above dependencies you might also need to install the <code class="docutils literal notranslate"><span class="pre">-dev</span></code> packages for:
-<code class="docutils literal notranslate"><span class="pre">libdbus-1-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxcursor-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxrandr-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxi-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxinerama-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libgl1-mesa-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxkbcommon-x11-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libfontconfig-dev</span></code> and <code class="docutils literal notranslate"><span class="pre">libpython-dev</span></code>.
+<code class="docutils literal notranslate"><span class="pre">libdbus-1-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxcursor-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxrandr-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxi-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxinerama-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libgl1-mesa-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxkbcommon-x11-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libfontconfig-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libcanberra-dev</span></code> and <code class="docutils literal notranslate"><span class="pre">libpython-dev</span></code>.
 if they are not already installed by your distro.</p></li>
 </ul>
 </div></blockquote>
@@ -141,22 +142,16 @@ if they are not already installed by your distro.</p></li>
 </pre></div>
 </div>
 <p>You can run <em>kitty</em>, as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">kitty</span><span class="o">/</span><span class="n">launcher</span><span class="o">/</span><span class="n">kitty</span>
 </pre></div>
 </div>
-<p>If that works, you can create a script to launch <em>kitty</em>:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-import runpy
-runpy.run_path<span class="o">(</span><span class="s1">&#39;/path/to/kitty/dir&#39;</span>, <span class="nv">run_name</span><span class="o">=</span><span class="s1">&#39;__main__&#39;</span><span class="o">)</span>
-</pre></div>
-</div>
-<p>And place it in <code class="file docutils literal notranslate"><span class="pre">~/bin</span></code> or <code class="file docutils literal notranslate"><span class="pre">/usr/bin</span></code> so that you can run <em>kitty</em> using
+<p>If that works, you can create a symlink to the launcher in <code class="file docutils literal notranslate"><span class="pre">~/bin</span></code> or
+some other directory on your PATH so that you can run <em>kitty</em> using
 just <code class="docutils literal notranslate"><span class="pre">kitty</span></code>.</p>
 </div>
 <div class="section" id="building-kitty-app-on-macos-from-source">
 <h2>Building kitty.app on macOS from source<a class="headerlink" href="#building-kitty-app-on-macos-from-source" title="Permalink to this headline">¶</a></h2>
-<p>Install <cite>imagemagick</cite>, <cite>optipng</cite> and <cite>librsvg</cite> using <cite>brew</cite> or similar (needed
-for the logo generation step). And run:</p>
+<p>Run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">app</span>
 </pre></div>
 </div>
@@ -170,7 +165,7 @@ is designed to run on Linux and is not for the faint of heart.</p>
 </div>
 <div class="section" id="note-for-linux-macos-packagers">
 <h2>Note for Linux/macOS packagers<a class="headerlink" href="#note-for-linux-macos-packagers" title="Permalink to this headline">¶</a></h2>
-<p>The released <em>kitty</em> source code is available as a <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases/download/v0.14.2/kitty-0.14.2.tar.xz">tarball</a> from
+<p>The released <em>kitty</em> source code is available as a <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases/download/v0.14.3/kitty-0.14.3.tar.xz">tarball</a> from
 <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases">the GitHub releases page</a>.</p>
 <p>While <em>kitty</em> does use python, it is not a traditional python package, so please
 do not install it in site-packages.
