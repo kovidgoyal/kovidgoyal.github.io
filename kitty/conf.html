@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Configuring kitty &#8212; kitty 0.14.3 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.14.4 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -451,7 +451,7 @@ rectangular block with the mouse)</p>
 </pre></div>
 </div>
 <p>Characters considered part of a word when double clicking. In addition to these characters
-any character that is marked as an alpha-numeric character in the unicode
+any character that is marked as an alphanumeric character in the unicode
 database will be matched.</p>
 <dl class="opt">
 <dt id="opt-kitty.click_interval">
@@ -1222,15 +1222,20 @@ common font sizes.</p>
 </div>
 <p>Use the traditional full-screen transition, that is faster, but less pretty.</p>
 <dl class="opt">
-<dt id="opt-kitty.macos_show_window_title_in_menubar">
-<code class="sig-name descname">macos_show_window_title_in_menubar</code><a class="headerlink" href="#opt-kitty.macos_show_window_title_in_menubar" title="Permalink to this definition">¶</a></dt>
+<dt id="opt-kitty.macos_show_window_title_in">
+<code class="sig-name descname">macos_show_window_title_in</code><a class="headerlink" href="#opt-kitty.macos_show_window_title_in" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_show_window_title_in_menubar</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_show_window_title_in</span><span class="w"> </span><span class="s">all</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Show the title of the currently active window in the macOS
-menu-bar, making use of otherwise wasted space.</p>
+<p>Show or hide the window title in the macOS window or menu-bar.
+A value of <code class="code docutils literal notranslate"><span class="pre">window</span></code> will show the title of the currently
+active window at the top of the macOS window. A value of
+<code class="code docutils literal notranslate"><span class="pre">menubar</span></code> will show the title of the currently active window
+in the macOS menu-bar, making use of otherwise wasted space.
+<code class="code docutils literal notranslate"><span class="pre">all</span></code> will show the title everywhere and <code class="code docutils literal notranslate"><span class="pre">none</span></code>
+hides the title in the window and the menu-bar.</p>
 <dl class="opt">
 <dt id="opt-kitty.macos_custom_beam_cursor">
 <code class="sig-name descname">macos_custom_beam_cursor</code><a class="headerlink" href="#opt-kitty.macos_custom_beam_cursor" title="Permalink to this definition">¶</a></dt>
@@ -1278,7 +1283,10 @@ the value of that becomes the key name in the shortcut. For example:</p>
 </div>
 <p>to map <kbd class="kbd docutils literal notranslate">ctrl+a</kbd> to something.</p>
 <p>You can use the special action <code class="code docutils literal notranslate"><span class="pre">no_op</span></code> to unmap a keyboard shortcut that is
-assigned in the default configuration.</p>
+assigned in the default configuration:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">kitty_mod+space</span><span class="w"> </span><span class="nf">no_op</span><span class="w"></span>
+</pre></div>
+</div>
 <p>You can combine multiple actions to be triggered by a single shortcut, using the
 syntax below:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">key</span><span class="w"> </span><span class="nf">combine</span><span class="w"> </span><span class="s">&lt;separator&gt; action1 &lt;separator&gt; action2 &lt;separator&gt; action3 ...</span><span class="w"></span>
@@ -1318,6 +1326,19 @@ shortcuts.</p>
 </div>
 <p>You can have kitty remove all shortcut definition seen up to this point. Useful, for
 instance, to remove the default shortcuts.</p>
+<dl class="opt">
+<dt id="opt-kitty.kitten_alias">
+<code class="sig-name descname">kitten_alias</code><a class="headerlink" href="#opt-kitty.kitten_alias" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">kitten_alias</span><span class="w"> </span><span class="s">hints hints --hints-offset=0</span><span class="w"></span>
+</pre></div>
+</div>
+<p>You can create aliases for kitten names, this allows overriding the defaults
+for kitten options and can also be used to shorten repeated mappings of the same
+kitten with a specific group of options. For example, the above alias
+changes the default value of <a class="reference internal" href="kittens/hints.html#cmdoption-kitty-kitten-hints-hints-offset"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">hints</span> <span class="pre">--hints-offset</span></code></a>
+to zero for all mappings, including the builtin ones.</p>
 <div class="section" id="clipboard">
 <span id="conf-kitty-shortcuts-clipboard"></span><h3>Clipboard<a class="headerlink" href="#clipboard" title="Permalink to this headline">¶</a></h3>
 <dl class="shortcut">
@@ -1938,7 +1959,7 @@ the line (same as pressing the Home key):</p>
 <div class="section" id="sample-kitty-conf">
 <h2>Sample kitty.conf<a class="headerlink" href="#sample-kitty-conf" title="Permalink to this headline">¶</a></h2>
 <p>You can download a sample <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> file with all default settings and
-comments describing each setting by clicking: <a class="reference download internal" download="" href="_downloads/fdd5fc58492b70fe2188716f86e7ff87/kitty.conf"><code class="xref download docutils literal notranslate"><span class="pre">sample</span> <span class="pre">kitty.conf</span></code></a>.</p>
+comments describing each setting by clicking: <a class="reference download internal" download="" href="_downloads/433dadebd0bf504f8b008985378086ce/kitty.conf"><code class="xref download docutils literal notranslate"><span class="pre">sample</span> <span class="pre">kitty.conf</span></code></a>.</p>
 </div>
 </div>
 

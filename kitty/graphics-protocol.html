@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>The terminal graphics protocol &#8212; kitty 0.14.3 documentation</title>
+    <title>The terminal graphics protocol &#8212; kitty 0.14.4 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -244,7 +244,8 @@ features of the graphics protocol:</p>
       <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
       <span class="n">cmd</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
-<span class="n">write_chunked</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+   <span class="n">write_chunked</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>Save this script as <code class="file docutils literal notranslate"><span class="pre">png.py</span></code>, then you can use it to display any PNG
@@ -391,7 +392,10 @@ sequence of escape codes to the terminal emulator:</p>
 <p>Note that only the first escape code needs to have the full set of control
 codes such as width, height, format etc. Subsequent chunks must have
 only the <code class="docutils literal notranslate"><span class="pre">m</span></code> key. The client <strong>must</strong> finish sending all chunks for a single image
-before sending any other graphics related escape codes.</p>
+before sending any other graphics related escape codes. Note that the cursor
+position used to display the image <strong>must</strong> be the position when the final chunk is
+received. Finally, terminals must not display anything, until the entire sequence is
+received and validated.</p>
 </div>
 </div>
 <div class="section" id="detecting-available-transmission-mediums">

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Documentation for the kitty remote control protocol &#8212; kitty 0.14.3 documentation</title>
+    <title>Documentation for the kitty remote control protocol &#8212; kitty 0.14.4 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -119,7 +119,7 @@ ga('send', 'pageview');
   <div class="section" id="documentation-for-the-kitty-remote-control-protocol">
 <h1>Documentation for the kitty remote control protocol<a class="headerlink" href="#documentation-for-the-kitty-remote-control-protocol" title="Permalink to this headline">¶</a></h1>
 <p>The kitty remote control protocol is a simple protocol that involves sending
-data to kitty in the form of JSON. Any individual command ot kitty has the
+data to kitty in the form of JSON. Any individual command of kitty has the
 form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">P</span><span class="nd">@kitty</span><span class="o">-</span><span class="n">cmd</span><span class="o">&lt;</span><span class="n">JSON</span> <span class="nb">object</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
 </pre></div>
@@ -137,7 +137,7 @@ form:</p>
 standalone client, use the kitty version that you are developing against. Using
 a version greater than the version of the kitty instance you are talking to,
 will cause a failure.</p>
-<p>Set <code class="docutils literal notranslate"><span class="pre">no_response</span></code> to True if you dont want a response from kitty.</p>
+<p>Set <code class="docutils literal notranslate"><span class="pre">no_response</span></code> to True if you don’t want a response from kitty.</p>
 <p>The optional payload is a JSON object that is specific to the actual command being sent.
 The fields in the object for every command are documented below.</p>
 <div class="section" id="close-tab">

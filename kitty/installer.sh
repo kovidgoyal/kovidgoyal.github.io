@@ -47,6 +47,10 @@ import tempfile
 py3 = sys.version_info[0] > 2
 is64bit = platform.architecture()[0] == '64bit'
 is_macos = 'darwin' in sys.platform.lower()
+if is_macos:
+    mac_ver = tuple(map(int, platform.mac_ver()[0].split('.')))
+    if mac_ver[:2] < (10, 12):
+        raise SystemExit('Your version of macOS is too old, at least 10.12 is required')
 
 try:
     __file__
@@ -252,7 +256,8 @@ def script_launch():
 
 def update_intaller_wrapper():
     # To run: python3 -c "import runpy; runpy.run_path('installer.py', run_name='update_wrapper')" installer.sh
-    src = open(__file__, 'rb').read().decode('utf-8')
+    with open(__file__, 'rb') as f:
+        src = f.read().decode('utf-8')
     wrapper = sys.argv[-1]
     with open(wrapper, 'r+b') as f:
         raw = f.read().decode('utf-8')

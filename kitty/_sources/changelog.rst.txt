@@ -4,6 +4,45 @@ Changelog
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 To update |kitty|, :doc:`follow the instructions <binary>`.
 
+0.14.4 [2019-08-31]
+---------------------
+
+- hints kitten: Add a :option:`kitty +kitten hints --alphabet` option to
+  control what alphabets are used for hints (:iss:`1879`)
+
+- hints kitten: Allow specifying :option:`kitty +kitten hints --program`
+  multiple times to run multiple programs  (:iss:`1879`)
+
+- Add a :opt:`kitten_alias` option that can be used to alias kitten invocation
+  for brevity and to change kitten option defaults globally (:iss:`1879`)
+
+- macOS: Add an option :opt:`macos_show_window_title_in` to control
+  showing the window title in the menubar/titlebar (:pull:`1837`)
+
+- macOS: Allow drag and drop of text from other applications into kitty
+  (:pull:`1921`)
+
+- When running kittens, use the colorscheme of the current window
+  rather than the configured colorscheme (:iss:`1906`)
+
+- Don't fail to start if running the shell to read the EDITOR env var fails
+  (:iss:`1869`)
+
+- Disable the ``liga`` and ``dlig`` OpenType features for broken fonts
+  such as Nimbus Mono.
+
+- Fix a regression that broke setting background_opacity via remote control
+  (:iss:`1895`)
+
+- Fix piping PNG images into the icat kitten not working (:iss:`1920`)
+
+- When the OS returns a fallback font that does not actually contain glyphs
+  for the text, do not exhaust the list of fallback fonts (:iss:`1918`)
+
+- Fix formatting attributes not reset across line boundaries when passing
+  buffer as ANSI (:iss:`1924`)
+
+
 0.14.3 [2019-07-29]
 ---------------------
 
@@ -192,7 +231,7 @@ To update |kitty|, :doc:`follow the instructions <binary>`.
 
 - macOS: Fix :kbd:`cmd+period` key not working (:iss:`1318`)
 
-- macOS: Add an option :opt:`macos_show_window_title_in_menubar` to not
+- macOS: Add an option `macos_show_window_title_in_menubar` to not
   show the current window title in the menu-bar (:iss:`1066`)
 
 - macOS: Workaround for cocoa bug that could cause the mouse cursor to become
