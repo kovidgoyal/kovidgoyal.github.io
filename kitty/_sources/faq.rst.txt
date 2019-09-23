@@ -63,6 +63,18 @@ Really, the correct solution for this is to convince the OpenSSH maintainers to
 have ssh do this automatically, if possible, when connecting to a server, so that
 all terminals work transparently.
 
+If the server is running FreeBSD, or another system that relies on termcap
+rather than terminfo, you will need to convert the terminfo file on your local
+machine by running (on local machine with |kitty|)::
+
+    infocmp -C xterm-kitty
+
+The output of this command is the termcap description, which should be appended
+to :file:`/usr/share/misc/termcap` on the remote server. Then run the following
+command to apply your change (on the server)::
+
+    cap_mkdb /usr/share/misc/termcap
+
 
 Keys such as arrow keys, backspace, delete, home/end, etc. do not work when using su or sudo?
 -------------------------------------------------------------------------------------------------
@@ -152,7 +164,27 @@ only monospace fonts, since every cell in the grid has to be the same size. If
 your font is not listed in ``kitty list-fonts`` it means that it is not
 monospace. On Linux you can list all monospace fonts with::
 
-    fc-list : family spacing | grep spacing=100
+    fc-list : family spacing | grep -e spacing=100 -e spacing=90
+
+Note that the spacing property is calculated by fontconfig based on actual
+glyph widths in the font. If for some reason fontconfig concludes your favorite
+monospace font does not have ``spacing=100`` you can override it by using the
+following :file:`~/.config/fontconfig/fonts.conf`::
+
+    <?xml version="1.0"?>
+    <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+    <fontconfig>
+    <match target="scan">
+        <test name="family">
+            <string>Your Font Family Name</string>
+        </test>
+        <edit name="spacing">
+            <int>100</int>
+        </edit>
+    </match>
+    </fontconfig>
+
+Then, the font will be available in ``kitty list-fonts``.
 
 
 How can I assign a single global shortcut to bring up the kitty terminal?
@@ -172,7 +204,7 @@ For example::
 
     map alt+s send_text all \x13
 
-This maps :kbd:`alt+s`` to :kbd:`ctrl+s`. To figure out what bytes to use for
+This maps :kbd:`alt+s` to :kbd:`ctrl+s`. To figure out what bytes to use for
 the :sc:`send_text <send_text>` you can use the ``showkey`` utility. Run::
 
     showkey -a
