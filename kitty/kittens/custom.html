@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Custom kittens &#8212; kitty 0.14.6 documentation</title>
+    <title>Custom kittens &#8212; kitty 0.15.0 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -80,6 +80,7 @@ ga('send', 'pageview');
 <li><a class="reference internal" href="#passing-arguments-to-kittens">Passing arguments to kittens</a></li>
 <li><a class="reference internal" href="#passing-the-contents-of-the-screen-to-the-kitten">Passing the contents of the screen to the kitten</a></li>
 <li><a class="reference internal" href="#using-kittens-to-script-kitty-without-any-terminal-ui">Using kittens to script kitty, without any terminal UI</a></li>
+<li><a class="reference internal" href="#debugging-kittens">Debugging kittens</a></li>
 <li><a class="reference internal" href="#kittens-created-by-kitty-users">Kittens created by kitty users</a></li>
 </ul>
 
@@ -207,7 +208,24 @@ layout, by simply adding the line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boss</span><span class="o">.</span><span class="n">toggle_fullscreen</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>to the <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> function, above.</p>
+<p>To the <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> function, above.</p>
+</div>
+<div class="section" id="debugging-kittens">
+<h2>Debugging kittens<a class="headerlink" href="#debugging-kittens" title="Permalink to this headline">¶</a></h2>
+<p>The part of the kitten that runs in <code class="docutils literal notranslate"><span class="pre">main()</span></code> is just a normal program and
+the output of print statements will be visible in the kitten window. Or
+alternately, you can use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kittens.tui.loop</span> <span class="k">import</span> <span class="n">debug</span>
+<span class="n">debug</span><span class="p">(</span><span class="s1">&#39;whatever&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">debug()</span></code> function is just like <code class="docutils literal notranslate"><span class="pre">print()</span></code> except that the output
+will appear in the <code class="docutils literal notranslate"><span class="pre">STDOUT</span></code> of the kitty process inside which the kitten is
+running.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> part of the kitten runs inside the kitty process.
+The output of print statements will go to the <code class="docutils literal notranslate"><span class="pre">STDOUT</span></code> of the kitty process.
+So if you run kitty from another kitty instance, the output will be visible
+in the first kitty instance.</p>
 </div>
 <div class="section" id="kittens-created-by-kitty-users">
 <span id="external-kittens"></span><h2>Kittens created by kitty users<a class="headerlink" href="#kittens-created-by-kitty-users" title="Permalink to this headline">¶</a></h2>

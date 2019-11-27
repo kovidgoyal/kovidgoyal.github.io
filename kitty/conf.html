@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Configuring kitty &#8212; kitty 0.14.6 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.15.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -358,7 +358,9 @@ Use negative numbers to change scroll direction.</p>
 </div>
 <p>Hide mouse cursor after the specified number of seconds
 of the mouse not being used. Set to zero to disable mouse cursor hiding.
-Set to a negative value to hide the mouse cursor immediately when typing text.</p>
+Set to a negative value to hide the mouse cursor immediately when typing text.
+Disabled by default on macOS as getting it to work robustly with
+the ever-changing sea of bugs that is Cocoa is too much effort.</p>
 <dl class="opt">
 <dt id="opt-kitty.url_color">
 <code class="sig-name descname">url_color</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">url_style</code><a class="headerlink" href="#opt-kitty.url_color" title="Permalink to this definition">¶</a></dt>
@@ -783,9 +785,9 @@ A value of <code class="code docutils literal notranslate"><span class="pre">siz
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_bar_style</span><span class="w"> </span><span class="s">fade</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The tab bar style, can be one of: <code class="code docutils literal notranslate"><span class="pre">fade</span></code>, <code class="code docutils literal notranslate"><span class="pre">separator</span></code> or <code class="code docutils literal notranslate"><span class="pre">hidden</span></code>. In the fade style,
-each tab’s edges fade into the background color, in the separator style, tabs are
-separated by a configurable separator.</p>
+<p>The tab bar style, can be one of: <code class="code docutils literal notranslate"><span class="pre">fade</span></code>, <code class="code docutils literal notranslate"><span class="pre">separator</span></code>, <code class="code docutils literal notranslate"><span class="pre">powerline</span></code>, or <code class="code docutils literal notranslate"><span class="pre">hidden</span></code>.
+In the fade style, each tab’s edges fade into the background color, in the separator style, tabs are
+separated by a configurable separator, and the powerline shows the tabs as a continuous line.</p>
 <dl class="opt">
 <dt id="opt-kitty.tab_bar_min_tabs">
 <code class="sig-name descname">tab_bar_min_tabs</code><a class="headerlink" href="#opt-kitty.tab_bar_min_tabs" title="Permalink to this definition">¶</a></dt>
@@ -1038,9 +1040,9 @@ ensure that the shell starts in interactive mode and reads its startup rc files.
 </pre></div>
 </div>
 <p>The console editor to use when editing the kitty config file or similar tasks.
-A value of . means to use the environment variable EDITOR. Note that this
-environment variable has to be set not just in your shell startup scripts but
-system-wide, otherwise kitty will not see it.</p>
+A value of . means to use the environment variables VISUAL and EDITOR in that
+order. Note that this environment variable has to be set not just in your shell
+startup scripts but system-wide, otherwise kitty will not see it.</p>
 <dl class="opt">
 <dt id="opt-kitty.close_on_child_death">
 <code class="sig-name descname">close_on_child_death</code><a class="headerlink" href="#opt-kitty.close_on_child_death" title="Permalink to this definition">¶</a></dt>
@@ -1064,9 +1066,14 @@ terminal can fail silently because their stdout/stderr/stdin no longer work.</p>
 </pre></div>
 </div>
 <p>Allow other programs to control kitty. If you turn this on other programs can
-control all aspects of kitty, including sending text to kitty windows,
-opening new windows, closing windows, reading the content of windows, etc.
-Note that this even works over ssh connections.</p>
+control all aspects of kitty, including sending text to kitty windows, opening
+new windows, closing windows, reading the content of windows, etc.  Note that
+this even works over ssh connections. You can chose to either allow any program
+running within kitty to control it, with <code class="code docutils literal notranslate"><span class="pre">yes</span></code> or only programs that
+connect to the socket specified with the <a class="reference internal" href="invocation.html#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a> command
+line option, if you use the value <code class="code docutils literal notranslate"><span class="pre">socket-only</span></code>. The latter is useful if
+you want to prevent programs running on a remote computer over ssh from
+controlling kitty.</p>
 <dl class="opt">
 <dt id="opt-kitty.env">
 <code class="sig-name descname">env</code><a class="headerlink" href="#opt-kitty.env" title="Permalink to this definition">¶</a></dt>
@@ -1450,13 +1457,13 @@ window, by using the &#64;selection placeholder:</p>
 </pre></div>
 </div>
 <p>You can pipe the contents of the current screen + history buffer as
-<code class="file docutils literal notranslate"><span class="pre">STDIN</span></code> to an arbitrary program using the <code class="docutils literal notranslate"><span class="pre">pipe</span></code> function. For example,
+<code class="file docutils literal notranslate"><span class="pre">STDIN</span></code> to an arbitrary program using the <code class="docutils literal notranslate"><span class="pre">launch</span></code> function. For example,
 the following opens the scrollback buffer in less in an overlay window:</p>
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f1</span><span class="w"> </span><span class="nf">pipe</span><span class="w"> </span><span class="s">@ansi overlay less +G -R</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f1</span><span class="w"> </span><span class="nf">launch</span><span class="w"> </span><span class="s">--stdin-source=@screen_scrollback --stdin-add-formatting --type=overlay less +G -R</span><span class="w"></span>
 </pre></div>
 </div>
 <p>For more details on piping screen and buffer contents to external programs,
-see <a class="reference internal" href="pipe.html"><span class="doc">Working with the screen and history buffer contents</span></a>.</p>
+see <a class="reference internal" href="launch.html"><span class="doc">Launching programs in new windows/tabs</span></a>.</p>
 </div>
 <div class="section" id="window-management">
 <span id="conf-kitty-shortcuts-window"></span><h3>Window management<a class="headerlink" href="#window-management" title="Permalink to this headline">¶</a></h3>
@@ -1469,27 +1476,28 @@ see <a class="reference internal" href="pipe.html"><span class="doc">Working wit
 </pre></div>
 </div>
 <p>You can open a new window running an arbitrary program, for example:</p>
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">kitty_mod+y</span><span class="w">      </span><span class="nf">new_window</span><span class="w"> </span><span class="s">mutt</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">kitty_mod+y</span><span class="w">      </span><span class="nf">launch</span><span class="w"> </span><span class="s">mutt</span><span class="w"></span>
 </pre></div>
 </div>
 <p>You can open a new window with the current working directory set to the
 working directory of the current window using:</p>
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+alt+enter</span><span class="w">    </span><span class="nf">new_window_with_cwd</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+alt+enter</span><span class="w">    </span><span class="nf">launch</span><span class="w"> </span><span class="s">--cwd=current</span><span class="w"></span>
 </pre></div>
 </div>
 <p>You can open a new window that is allowed to control kitty via
 the kitty remote control facility by prefixing the command line with &#64;.
 Any programs running in that window will be allowed to control kitty.
 For example:</p>
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+enter</span><span class="w"> </span><span class="nf">new_window</span><span class="w"> </span><span class="s">@ some_program</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+enter</span><span class="w"> </span><span class="nf">launch</span><span class="w"> </span><span class="s">--allow-remote-control some_program</span><span class="w"></span>
 </pre></div>
 </div>
 <p>You can open a new window next to the currently active window or as the first window,
 with:</p>
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+n</span><span class="w"> </span><span class="nf">new_window</span><span class="w"> </span><span class="s">!neighbor some_program</span><span class="w"></span>
-<span class="kd">map</span><span class="w"> </span><span class="s">ctrl+f</span><span class="w"> </span><span class="nf">new_window</span><span class="w"> </span><span class="s">!first some_program</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+n</span><span class="w"> </span><span class="nf">launch</span><span class="w"> </span><span class="s">--location=neighbor some_program</span><span class="w"></span>
+<span class="kd">map</span><span class="w"> </span><span class="s">ctrl+f</span><span class="w"> </span><span class="nf">launch</span><span class="w"> </span><span class="s">--location=first some_program</span><span class="w"></span>
 </pre></div>
 </div>
+<p>For more details, see <a class="reference internal" href="launch.html"><span class="doc">Launching programs in new windows/tabs</span></a>.</p>
 <dl class="shortcut">
 <dt id="shortcut-kitty.New OS window">
 <code class="sig-name descname">New OS window</code><a class="headerlink" href="#shortcut-kitty.New OS window" title="Permalink to this definition">¶</a></dt>

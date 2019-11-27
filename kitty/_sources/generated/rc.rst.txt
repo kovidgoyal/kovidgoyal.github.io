@@ -24,6 +24,38 @@ Fields are:
 
 
 
+detach-tab
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`match (default: None)`
+  Which tab to detach
+
+:code:`target (optional)`
+  Which OS Window to move the detached tab to
+
+:code:`self (default: False)`
+  Boolean indicating whether to detach the tab the command is run in
+
+
+
+detach-window
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`match (default: None)`
+  Which window to detach
+
+:code:`target (optional)`
+  Which tab to move the detached window to
+
+:code:`self (default: False)`
+  Boolean indicating whether to detach the window the command is run in
+
+
+
 disable-ligatures
 --------------------------------------------------------------------------------
 
@@ -131,6 +163,64 @@ Fields are:
 
 :code:`match (default: None)`
   Which tab to change the layout of
+
+
+
+launch
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`args (required)`
+  The command line to run in the new window, as a list, use an empty list to run the default shell
+
+:code:`match (default: None)`
+  The tab to open the new window in
+
+:code:`window_title (default: None)`
+  Title for the new window
+
+:code:`cwd (default: None)`
+  Working directory for the new window
+
+:code:`env (default: [])`
+  List of environment varibles of the form NAME=VALUE
+
+:code:`tab_title (default: None)`
+  Title for the new tab
+
+:code:`type (default: window)`
+  The type of window to open
+
+:code:`keep_focus (default: False)`
+  Boolean indicating whether the current window should retain focus or not
+
+:code:`copy_colors (default: False)`
+  Boolean indicating whether to copy the colors from the current window
+
+:code:`copy_cmdline (default: False)`
+  Boolean indicating whether to copy the cmdline from the current window
+
+:code:`copy_env (default: False)`
+  Boolean indicating whether to copy the environ from the current window
+
+:code:`location (default: last)`
+  Where in the tab to open the new window
+
+:code:`allow_remote_control (default: False)`
+  Boolean indicating whether to allow remote control from the new window
+
+:code:`stdin_source (default: none)`
+  Where to get stdin for thew process from
+
+:code:`stdin_add_formatting (default: False)`
+  Boolean indicating whether to add formatting codes to stdin
+
+:code:`stdin_add_line_wrap_markers (default: False)`
+  Boolean indicating whether to add line wrap markers to stdin
+
+:code:`no_response (default: False)`
+  Boolean indicating whether to send back the window id
 
 
 
@@ -246,7 +336,7 @@ Fields are:
   An object mapping names to colors as 24-bit RGB integers
 
 :code:`cursor_text_color (optional)`
-  A 24-bit clor for text under the cursor
+  A 24-bit color for text under the cursor
 
 :code:`match_window (optional)`
   Window to change colors in

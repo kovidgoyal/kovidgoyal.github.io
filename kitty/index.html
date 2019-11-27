@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>kitty - the fast, featureful, GPU based terminal emulator &#8212; kitty 0.14.6 documentation</title>
+    <title>kitty - the fast, featureful, GPU based terminal emulator &#8212; kitty 0.15.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -149,7 +149,7 @@ See the <a class="reference internal" href="binary.html"><span class="doc">binar
 <p>You can also use your favorite package manager to install the <em>kitty</em> package.
 <em>kitty</em> packages are available for:
 <a class="reference external" href="https://formulae.brew.sh/cask/kitty">macOS with Homebrew (Cask)</a>,
-<a class="reference external" href="https://nixos.org/nixos/packages.html#kitty">macOS and Linux with Nix</a>,
+<a class="reference external" href="https://nixos.org/nixos/packages.html?channel=nixpkgs-unstable&amp;query=kitty">macOS and Linux with Nix</a>,
 <a class="reference external" href="https://launchpad.net/ubuntu/+source/kitty">Ubuntu</a>,
 <a class="reference external" href="https://packages.debian.org/buster/kitty">Debian</a>,
 <a class="reference external" href="https://build.opensuse.org/package/show/X11:terminals/kitty">openSUSE</a>,
@@ -357,6 +357,18 @@ windows and move windows around (similar to window movement in vim):</p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">nth_window</span></code> will focus the nth window for positive numbers and the
 previously active windows for negative numbers.</p>
+<p id="detach-window">You can define shortcuts to detach the current window and
+move it to another tab or another OS window:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">f2</span> <span class="n">detach_window</span>         <span class="c1"># moves the window into a new OS window</span>
+<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">f3</span> <span class="n">detach_window</span> <span class="n">new</span><span class="o">-</span><span class="n">tab</span> <span class="c1"># moves the window into a new Tab</span>
+<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">f4</span> <span class="n">detach_window</span> <span class="n">ask</span>     <span class="c1"># asks which tab to move the window into</span>
+</pre></div>
+</div>
+<p>Similarly, you can detach the current tab, with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">f2</span> <span class="n">detach_tab</span>         <span class="c1"># moves the tab into a new OS window</span>
+<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">f4</span> <span class="n">detach_tab</span> <span class="n">ask</span>     <span class="c1"># asks which OS Window to move the tab into</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="other-keyboard-shortcuts">
@@ -592,7 +604,7 @@ Colors and text formatting are preserved. You can explore the scrollback buffer
 comfortably within the pager.</p>
 <p>Additionally, you can pipe the contents of the scrollback buffer to an
 arbitrary, command running in a new window, tab or overlay, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f1</span> <span class="n">pipe</span> <span class="nd">@ansi</span> <span class="n">window</span> <span class="n">less</span> <span class="o">+</span><span class="n">G</span> <span class="o">-</span><span class="n">R</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f1</span> <span class="n">launch</span> <span class="o">--</span><span class="n">stdin</span><span class="o">-</span><span class="n">source</span><span class="o">=</span><span class="nd">@screen_scrollback</span> <span class="o">--</span><span class="n">stdin</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">formatting</span> <span class="n">less</span> <span class="o">+</span><span class="n">G</span> <span class="o">-</span><span class="n">R</span>
 </pre></div>
 </div>
 <p>Would open the scrollback buffer in a new window when you press the <kbd class="kbd docutils literal notranslate">F1</kbd>
@@ -649,7 +661,8 @@ completions happens after the call to <code class="file docutils literal notrans
 </div>
 <div class="section" id="fish">
 <h3><a class="toc-backref" href="#id26">fish</a><a class="headerlink" href="#fish" title="Permalink to this headline">¶</a></h3>
-<p>Add the following to your <code class="file docutils literal notranslate"><span class="pre">~/.config/fish/config.fish</span></code></p>
+<p>For versions of fish earlier than 3.0.0, add the following to your
+<code class="file docutils literal notranslate"><span class="pre">~/.config/fish/config.fish</span></code>. Later versions source completions by default.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty + <span class="nb">complete</span> setup fish <span class="p">|</span> <span class="nb">source</span>
 </pre></div>
 </div>

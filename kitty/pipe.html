@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Working with the screen and history buffer contents &#8212; kitty 0.14.6 documentation</title>
+    <title>Working with the screen and history buffer contents &#8212; kitty 0.15.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -100,6 +100,11 @@ ga('send', 'pageview');
             
   <div class="section" id="working-with-the-screen-and-history-buffer-contents">
 <h1>Working with the screen and history buffer contents<a class="headerlink" href="#working-with-the-screen-and-history-buffer-contents" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The pipe action has been deprecated in favor of the
+<a class="reference internal" href="launch.html"><span class="doc">launch</span></a> action which is more powerful.</p>
+</div>
 <p>You can pipe the contents of the current screen and history buffer as
 <code class="file docutils literal notranslate"><span class="pre">STDIN</span></code> to an arbitrary program using the <code class="docutils literal notranslate"><span class="pre">pipe</span></code> function. The program
 can be displayed in a kitty window or overlay.</p>
@@ -144,6 +149,8 @@ is not run, so use some dummy program name for it.</p>
 <h2>Input placeholders<a class="headerlink" href="#input-placeholders" title="Permalink to this headline">¶</a></h2>
 <p>There are various different kinds of placeholders</p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;selection</span></code></dt><dd><p>Plain text, currently selected text</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">&#64;text</span></code></dt><dd><p>Plain text, current screen + scrollback buffer</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">&#64;ansi</span></code></dt><dd><p>Text with formatting, current screen + scrollback buffer</p>

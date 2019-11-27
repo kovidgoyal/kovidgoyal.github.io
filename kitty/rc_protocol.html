@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Documentation for the kitty remote control protocol &#8212; kitty 0.14.6 documentation</title>
+    <title>Documentation for the kitty remote control protocol &#8212; kitty 0.15.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -79,6 +79,8 @@ ga('send', 'pageview');
   <ul>
 <li><a class="reference internal" href="#close-tab">close-tab</a></li>
 <li><a class="reference internal" href="#close-window">close-window</a></li>
+<li><a class="reference internal" href="#detach-tab">detach-tab</a></li>
+<li><a class="reference internal" href="#detach-window">detach-window</a></li>
 <li><a class="reference internal" href="#disable-ligatures">disable-ligatures</a></li>
 <li><a class="reference internal" href="#focus-tab">focus-tab</a></li>
 <li><a class="reference internal" href="#focus-window">focus-window</a></li>
@@ -87,6 +89,7 @@ ga('send', 'pageview');
 <li><a class="reference internal" href="#goto-layout">goto-layout</a></li>
 <li><a class="reference internal" href="#kitten">kitten</a></li>
 <li><a class="reference internal" href="#last-used-layout">last-used-layout</a></li>
+<li><a class="reference internal" href="#launch">launch</a></li>
 <li><a class="reference internal" href="#ls">ls</a></li>
 <li><a class="reference internal" href="#new-window">new-window</a></li>
 <li><a class="reference internal" href="#resize-window">resize-window</a></li>
@@ -157,6 +160,30 @@ The fields in the object for every command are documented below.</p>
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to close</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to close the window the command is run in</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="detach-tab">
+<h2>detach-tab<a class="headerlink" href="#detach-tab" title="Permalink to this headline">¶</a></h2>
+<p>Fields are:</p>
+<dl class="simple">
+<dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which tab to detach</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">target</span> <span class="pre">(optional)</span></code></dt><dd><p>Which OS Window to move the detached tab to</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to detach the tab the command is run in</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="detach-window">
+<h2>detach-window<a class="headerlink" href="#detach-window" title="Permalink to this headline">¶</a></h2>
+<p>Fields are:</p>
+<dl class="simple">
+<dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to detach</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">target</span> <span class="pre">(optional)</span></code></dt><dd><p>Which tab to move the detached window to</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to detach the window the command is run in</p>
 </dd>
 </dl>
 </div>
@@ -244,6 +271,46 @@ The fields in the object for every command are documented below.</p>
 </dd>
 </dl>
 </div>
+<div class="section" id="launch">
+<h2>launch<a class="headerlink" href="#launch" title="Permalink to this headline">¶</a></h2>
+<p>Fields are:</p>
+<dl class="simple">
+<dt><code class="code docutils literal notranslate"><span class="pre">args</span> <span class="pre">(required)</span></code></dt><dd><p>The command line to run in the new window, as a list, use an empty list to run the default shell</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>The tab to open the new window in</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">window_title</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Title for the new window</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">cwd</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Working directory for the new window</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">env</span> <span class="pre">(default:</span> <span class="pre">[])</span></code></dt><dd><p>List of environment varibles of the form NAME=VALUE</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">tab_title</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Title for the new tab</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">type</span> <span class="pre">(default:</span> <span class="pre">window)</span></code></dt><dd><p>The type of window to open</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">keep_focus</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether the current window should retain focus or not</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">copy_colors</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to copy the colors from the current window</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">copy_cmdline</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to copy the cmdline from the current window</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">copy_env</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to copy the environ from the current window</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">location</span> <span class="pre">(default:</span> <span class="pre">last)</span></code></dt><dd><p>Where in the tab to open the new window</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">allow_remote_control</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to allow remote control from the new window</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">stdin_source</span> <span class="pre">(default:</span> <span class="pre">none)</span></code></dt><dd><p>Where to get stdin for thew process from</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">stdin_add_formatting</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to add formatting codes to stdin</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">stdin_add_line_wrap_markers</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to add line wrap markers to stdin</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">no_response</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to send back the window id</p>
+</dd>
+</dl>
+</div>
 <div class="section" id="ls">
 <h2>ls<a class="headerlink" href="#ls" title="Permalink to this headline">¶</a></h2>
 <p>No payload</p>
@@ -326,7 +393,7 @@ The fields in the object for every command are documented below.</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">colors</span> <span class="pre">(required)</span></code></dt><dd><p>An object mapping names to colors as 24-bit RGB integers</p>
 </dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">cursor_text_color</span> <span class="pre">(optional)</span></code></dt><dd><p>A 24-bit clor for text under the cursor</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">cursor_text_color</span> <span class="pre">(optional)</span></code></dt><dd><p>A 24-bit color for text under the cursor</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">match_window</span> <span class="pre">(optional)</span></code></dt><dd><p>Window to change colors in</p>
 </dd>

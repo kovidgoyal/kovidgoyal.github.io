@@ -4,6 +4,56 @@ Changelog
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 To update |kitty|, :doc:`follow the instructions <binary>`.
 
+0.15.0 [2019-11-27]
+--------------------
+
+- Add a new action :ref:`detach_window <detach_window>` that can be used to move the current
+  window into a different tab (:iss:`1310`)
+
+- Add a new action :doc:`launch <launch>` that unifies launching of processes
+  in new kitty windows/tabs.
+
+- Add a new style ``powerline`` for tab bar rendering, see :opt:`tab_bar_style` (:pull:`2021`)
+
+- Allow changing colors by mapping a keyboard shortcut to read a kitty config
+  file with color definitions. See the :doc:`FAQ <faq>` for details
+  (:iss:`2083`)
+
+- hints kitten: Allow completely customizing the matching and actions performed
+  by the kitten using your own script (:iss:`2124`)
+
+- Wayland: Fix key repeat not being stopped when focus leaves window. This is
+  expected behavior on Wayland, apparently (:iss:`2014`)
+
+- When drawing unicode symbols that are followed by spaces, use multiple cells
+  to avoid resized or cut-off glyphs (:iss:`1452`)
+
+- diff kitten: Allow diffing remote files easily via ssh (:iss:`727`)
+
+- unicode input kitten: Add an option :option:`kitty +kitten unicode_input
+  --emoji-variation` to control the presentation variant of selected emojis
+  (:iss:`2139`)
+
+- Add specialised rendering for a few more box powerline and unicode symbols
+  (:pull:`2074` and :pull:`2021`)
+
+- Add a new socket only mode for :opt:`allow_remote_control`. This makes
+  it possible for programs running on the local machine to control kitty
+  but not programs running over ssh.
+
+- hints kitten: Allow using named groups in the regular expression. The named
+  groups are passed to the invoked program for further processing.
+
+- Fix a regression in 0.14.5 that caused rendering of private use glyphs
+  with and without spaces to be identical (:iss:`2117`)
+
+- Wayland: Fix incorrect scale used when first creating an OS window
+  (:iss:`2133`)
+
+- macOS: Disable mouse hiding by default as getting it to work robustly
+  on Cocoa is too much effort (:iss:`2158`)
+
+
 0.14.6 [2019-09-25]
 ---------------------
 
