@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Configuring kitty &#8212; kitty 0.15.0 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.15.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -483,7 +483,8 @@ moving the mouse around</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">pointer_shape_when_grabbed</span><span class="w"> </span><span class="s">arrow</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The shape of the mouse pointer when the program running in the terminal grabs the mouse.</p>
+<p>The shape of the mouse pointer when the program running in the terminal grabs the mouse.
+Valid values are: <code class="code docutils literal notranslate"><span class="pre">arrow</span></code>, <code class="code docutils literal notranslate"><span class="pre">beam</span></code> and <code class="code docutils literal notranslate"><span class="pre">hand</span></code></p>
 </div>
 <div class="section" id="performance-tuning">
 <span id="conf-kitty-performance"></span><h2>Performance tuning<a class="headerlink" href="#performance-tuning" title="Permalink to this headline">¶</a></h2>
@@ -844,6 +845,16 @@ the title. If you wish to include the tab-index as well,
 use something like: <code class="code docutils literal notranslate"><span class="pre">{index}:</span> <span class="pre">{title}</span></code>. Useful
 if you have shortcuts mapped for <code class="code docutils literal notranslate"><span class="pre">goto_tab</span> <span class="pre">N</span></code>.</p>
 <dl class="opt">
+<dt id="opt-kitty.active_tab_title_template">
+<code class="sig-name descname">active_tab_title_template</code><a class="headerlink" href="#opt-kitty.active_tab_title_template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">active_tab_title_template</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Template to use for active tabs, if not specified falls back
+to <a class="reference internal" href="#opt-kitty.tab_title_template"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_title_template</span></code></a>.</p>
+<dl class="opt">
 <dt id="opt-kitty.active_tab_foreground">
 <code class="sig-name descname">active_tab_foreground</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">active_tab_background</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">active_tab_font_style</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">inactive_tab_foreground</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">inactive_tab_background</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">inactive_tab_font_style</code><a class="headerlink" href="#opt-kitty.active_tab_foreground" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -857,6 +868,15 @@ if you have shortcuts mapped for <code class="code docutils literal notranslate"
 </pre></div>
 </div>
 <p>Tab bar colors and styles</p>
+<dl class="opt">
+<dt id="opt-kitty.tab_bar_background">
+<code class="sig-name descname">tab_bar_background</code><a class="headerlink" href="#opt-kitty.tab_bar_background" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_bar_background</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Background color for the tab bar. Defaults to using the terminal background color.</p>
 </div>
 <div class="section" id="color-scheme">
 <span id="conf-kitty-colors"></span><h2>Color scheme<a class="headerlink" href="#color-scheme" title="Permalink to this headline">¶</a></h2>

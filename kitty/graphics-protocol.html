@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>The terminal graphics protocol &#8212; kitty 0.15.0 documentation</title>
+    <title>The terminal graphics protocol &#8212; kitty 0.15.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -205,7 +205,7 @@ code to demonstrate its use</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">array</span><span class="o">,</span> <span class="nn">fcntl</span><span class="o">,</span> <span class="nn">termios</span>
 <span class="n">buf</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 <span class="n">fcntl</span><span class="o">.</span><span class="n">ioctl</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TIOCGWINSZ</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;number of columns: {}, number of rows: {}, screen width: {}, screen height: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">buf</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of columns: </span><span class="si">{}</span><span class="s1">, number of rows: </span><span class="si">{}</span><span class="s1">, screen width: </span><span class="si">{}</span><span class="s1">, screen height: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">buf</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Note that some terminals return <code class="docutils literal notranslate"><span class="pre">0</span></code> for the width and height values. Such
@@ -223,8 +223,8 @@ features of the graphics protocol:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">standard_b64encode</span>
 
-<span class="k">def</span> <span class="nf">serialize_gr_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-   <span class="n">cmd</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;{}={}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cmd</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">serialize_gr_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+   <span class="n">cmd</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cmd</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
    <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
    <span class="n">w</span> <span class="o">=</span> <span class="n">ans</span><span class="o">.</span><span class="n">append</span>
    <span class="n">w</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">_G&#39;</span><span class="p">),</span> <span class="n">w</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">))</span>

@@ -4,6 +4,31 @@ Changelog
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 To update |kitty|, :doc:`follow the instructions <binary>`.
 
+0.15.1 [2019-12-21]
+--------------------
+
+- Fix a crash/incorrect rendering when detaching a window in some circumstances
+  (:iss:`2173`)
+
+- hints kitten: Add an option :option:`kitty +kitten hints --ascending` to
+  control if the hints numbers increase or decrease from top to bottom
+
+- Fix :opt:`background_opacity` incorrectly applying to selected text and
+  reverse video text (:iss:`2177`)
+
+- Add a new option :opt:`tab_bar_background` to specify a different color
+  for the tab bar (:iss:`2198`)
+
+- Add a new option :opt:`active_tab_title_template` to specify a different
+  template for active tab titles (:iss:`2198`)
+
+- Fix lines at the edge of the window at certain windows sizes when drawing
+  images on a transparent window (:iss:`2079`)
+
+- Fix window not being rendered for the first time until some input has been
+  received from child process (:iss:`2216`)
+
+
 0.15.0 [2019-11-27]
 --------------------
 
