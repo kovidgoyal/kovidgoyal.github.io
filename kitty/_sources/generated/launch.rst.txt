@@ -16,7 +16,7 @@ ______________________________
 
 .. option:: --tab-title <TAB_TITLE>
 
-    The title for the new tab if launching in a new tab. By default, the title of the actie window in the tab is used as the tab title.
+    The title for the new tab if launching in a new tab. By default, the title of the active window in the tab is used as the tab title.
 
 .. option:: --type <TYPE>
 
@@ -50,9 +50,9 @@ ______________________________
 
 .. option:: --location <LOCATION>
 
-    Where to place the newly created window when it is added to a tab which already has existing windows in it. Also applies to creating a new tab, where the value of neighbor will cause the new tab to be placed next to the current tab instead of at the end.
+    Where to place the newly created window when it is added to a tab which already has existing windows in it. :code:`after` and :code:`before` place the new window before or after the active window. :code:`neighbor` is a synonym for :code:`after`. Also applies to creating a new tab, where the value of :code:`after` will cause the new tab to be placed next to the current tab instead of at the end.
     Default: :code:`last`
-    Choices: :code:`first, last, neighbor`
+    Choices: :code:`after, before, first, last, neighbor`
 
 .. option:: --allow-remote-control
 
@@ -71,3 +71,7 @@ ______________________________
 .. option:: --stdin-add-line-wrap-markers
 
     When using :option:`launch --stdin-source` add a carriage return at every line wrap location (where long lines are wrapped at screen edges). This is useful if you want to pipe to program that wants to duplicate the screen layout of the screen.
+
+.. option:: --marker <MARKER>
+
+    Create a marker that highlights text in the newly created window. The syntax is the same as for the :code:`toggle_marker` map action (see :doc:`/marks`).

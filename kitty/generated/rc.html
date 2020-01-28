@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>close-tab &#8212; kitty 0.15.1 documentation</title>
+    <title>close-tab &#8212; kitty 0.16.0 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -78,6 +78,7 @@ ga('send', 'pageview');
   <ul>
 <li><a class="reference internal" href="#">close-tab</a></li>
 <li><a class="reference internal" href="#close-window">close-window</a></li>
+<li><a class="reference internal" href="#create-marker">create-marker</a></li>
 <li><a class="reference internal" href="#detach-tab">detach-tab</a></li>
 <li><a class="reference internal" href="#detach-window">detach-window</a></li>
 <li><a class="reference internal" href="#disable-ligatures">disable-ligatures</a></li>
@@ -91,6 +92,7 @@ ga('send', 'pageview');
 <li><a class="reference internal" href="#launch">launch</a></li>
 <li><a class="reference internal" href="#ls">ls</a></li>
 <li><a class="reference internal" href="#new-window">new-window</a></li>
+<li><a class="reference internal" href="#remove-marker">remove-marker</a></li>
 <li><a class="reference internal" href="#resize-window">resize-window</a></li>
 <li><a class="reference internal" href="#scroll-window">scroll-window</a></li>
 <li><a class="reference internal" href="#send-text">send-text</a></li>
@@ -134,6 +136,18 @@ ga('send', 'pageview');
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to close</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to close the window the command is run in</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="create-marker">
+<h1>create-marker<a class="headerlink" href="#create-marker" title="Permalink to this headline">¶</a></h1>
+<p>Fields are:</p>
+<dl class="simple">
+<dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to detach</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to detach the window the command is run in</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">marker_spec</span> <span class="pre">(optional)</span></code></dt><dd><p>A list or arguments that define the marker specification, for example: [‘text’, ‘1’, ‘ERROR’]</p>
 </dd>
 </dl>
 </div>
@@ -283,6 +297,8 @@ ga('send', 'pageview');
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">no_response</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to send back the window id</p>
 </dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">marker</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Specification for marker for new window, for example: “text 1 ERROR”</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="ls">
@@ -306,6 +322,16 @@ ga('send', 'pageview');
 <dt><code class="code docutils literal notranslate"><span class="pre">window_type</span> <span class="pre">(default:</span> <span class="pre">kitty)</span></code></dt><dd><p>One of <code class="code docutils literal notranslate"><span class="pre">kitty</span></code> or <code class="code docutils literal notranslate"><span class="pre">os</span></code></p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">keep_focus</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether the current window should retain focus or not</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="remove-marker">
+<h1>remove-marker<a class="headerlink" href="#remove-marker" title="Permalink to this headline">¶</a></h1>
+<p>Fields are:</p>
+<dl class="simple">
+<dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to detach</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to detach the window the command is run in</p>
 </dd>
 </dl>
 </div>
@@ -424,7 +450,7 @@ ga('send', 'pageview');
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2019, Kovid Goyal.
+      &copy;2020, Kovid Goyal.
       
     </div>
 

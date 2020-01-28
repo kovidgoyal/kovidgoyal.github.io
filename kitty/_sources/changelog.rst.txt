@@ -4,6 +4,53 @@ Changelog
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 To update |kitty|, :doc:`follow the instructions <binary>`.
 
+0.16.0 [2020-01-28]
+--------------------
+
+- A new :doc:`marks` feature that allows highlighting and scrolling to arbitrary
+  text in the terminal window.
+
+- hints kitten: Allow pressing :sc:`goto_file_line` to quickly open
+  the selected file at the selected line in vim or a configurable editor (:iss:`2268`)
+
+- Allow having more than one full height window in the :code:`tall` layout
+  (:iss:`2276`)
+
+- Allow choosing OpenType features for individual fonts via the
+  :opt:`font_features` option. (:pull:`2248`)
+
+- Wayland: Fix a freeze in rare circumstances when having multiple OS Windows
+  (:iss:`2307` and :iss:`1722`)
+
+- Wayland: Fix window titles being set to very long strings on the order of 8KB
+  causing a crash (:iss:`1526`)
+
+- Add an option :opt:`force_ltr` to turn off the display of text in RTL scripts
+  in right-to-left order (:pull:`2293`)
+
+- Allow opening new tabs/windows before the current tab/window as well as after
+  it with the :option:`launch --location` option.
+
+- Add a :opt:`resize_in_steps` option that can be used to resize the OS window
+  in steps as large as character cells (:pull:`2131`)
+
+- When triple-click+dragging to select multiple lines, extend the selection
+  of the first line to match the rest on the left (:pull:`2284`)
+
+- macOS: Add a :code:`titlebar-only` setting to
+  :opt:`hide_window_decorations` to only hide the title bar (:pull:`2286`)
+
+- Fix a segfault when using :option:`kitty --debug-config` with maps (:iss:`2270`)
+
+- ``goto_tab`` now maps numbers larger than the last tab to the last tab
+  (:iss:`2291`)
+
+- Fix URL detection not working for urls of the form scheme:///url
+  (:iss:`2292`)
+
+- When windows are semi-transparent and all contain graphics, correctly render
+  them. (:iss:`2310`)
+
 0.15.1 [2019-12-21]
 --------------------
 

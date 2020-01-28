@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>The terminal graphics protocol &#8212; kitty 0.15.1 documentation</title>
+    <title>The terminal graphics protocol &#8212; kitty 0.16.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -462,7 +462,9 @@ added to the number of rows/columns.</p>
 placed in the same location with different z-index values will be blended if
 they are semi-transparent. You can specify z-index values using the <code class="docutils literal notranslate"><span class="pre">z</span></code> key.
 Negative z-index values mean that the images will be drawn under the text. This
-allows rendering of text on top of images.</p>
+allows rendering of text on top of images. Negative z-index values below
+INT32_MIN/2 (-1,073,741,824) will be drawn under cells with non-default background
+colors.</p>
 </div>
 </div>
 <div class="section" id="deleting-images">
@@ -648,7 +650,7 @@ take, and the default value they take when missing. All integers are 32-bit.</p>
 <td><p>The number of rows to display the image over</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">z</span></code></p></td>
-<td><p>Integer</p></td>
+<td><p>32-bit integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The <em>z-index</em> vertical stacking order of the image</p></td>
 </tr>
@@ -691,7 +693,7 @@ they must be clipped.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2019, Kovid Goyal.
+      &copy;2020, Kovid Goyal.
       
     </div>
 

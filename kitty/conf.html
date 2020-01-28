@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Configuring kitty &#8212; kitty 0.15.1 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.16.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -168,6 +168,28 @@ Book, Medium, Thick, etc. For example:</p>
 </div>
 <p>Font size (in pts)</p>
 <dl class="opt">
+<dt id="opt-kitty.force_ltr">
+<code class="sig-name descname">force_ltr</code><a class="headerlink" href="#opt-kitty.force_ltr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">force_ltr</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
+</pre></div>
+</div>
+<p>kitty does not support BIDI (bidirectional text), however, for RTL scripts,
+words are automatically displayed in RTL. That is
+to say, in an RTL script, the words “HELLO WORLD” display in kitty as “WORLD
+HELLO”, and if you try to select a substring of an RTL-shaped string, you will
+get the character that would be there had the the string been LTR. For example,
+assuming the Hebrew word ירושלים, selecting the character that on the screen
+appears to be ם actually writes into the selection buffer the character י.</p>
+<p>kitty’s default behavior is useful in conjunction with a filter to reverse the
+word order, however, if you wish to manipulate RTL glyphs, it can be very
+challenging to work with, so this option is provided to turn it off.
+Furthermore, this option can be used with the command line program
+<a class="reference external" href="https://github.com/fribidi/fribidi#executable">GNU FriBidi</a> to get BIDI
+support, because it will force kitty to always treat the text as LTR, which
+FriBidi expects for terminals.</p>
+<dl class="opt">
 <dt id="opt-kitty.adjust_line_height">
 <code class="sig-name descname">adjust_line_height</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">adjust_column_width</code><a class="headerlink" href="#opt-kitty.adjust_line_height" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -215,6 +237,53 @@ or by defining shortcuts for it in kitty.conf, for example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">alt+1</span><span class="w"> </span><span class="nf">disable_ligatures_in</span><span class="w"> </span><span class="s">active always</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">alt+2</span><span class="w"> </span><span class="nf">disable_ligatures_in</span><span class="w"> </span><span class="s">all never</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">alt+3</span><span class="w"> </span><span class="nf">disable_ligatures_in</span><span class="w"> </span><span class="s">tab cursor</span><span class="w"></span>
+</pre></div>
+</div>
+<dl class="opt">
+<dt id="opt-kitty.font_features">
+<code class="sig-name descname">font_features</code><a class="headerlink" href="#opt-kitty.font_features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">font_features</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Choose exactly which OpenType features to enable or disable. This is useful as
+some fonts might have features worthwhile in a terminal. For example, Fira
+Code Retina includes a discretionary feature, <code class="code docutils literal notranslate"><span class="pre">zero</span></code>, which in that font
+changes the appearance of the zero (0), to make it more easily distinguishable
+from Ø. Fira Code Retina also includes other discretionary features known as
+Stylistic Sets which have the tags <code class="code docutils literal notranslate"><span class="pre">ss01</span></code> through <code class="code docutils literal notranslate"><span class="pre">ss20</span></code>.</p>
+<p>Note that this code is indexed by PostScript name, and not the font
+family. This allows you to define very precise feature settings; e.g. you can
+disable a feature in the italic font but not in the regular font.</p>
+<p>To get the PostScript name for a font, use <code class="code docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+</span> <span class="pre">list-fonts</span> <span class="pre">--psnames</span></code>:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="nv">kitty</span><span class="w"> </span><span class="s">+ list-fonts --psnames | grep Fira</span><span class="w"></span>
+<span class="nv">Fira</span><span class="w"> </span><span class="s">Code</span><span class="w"></span>
+<span class="nv">Fira</span><span class="w"> </span><span class="s">Code Bold (FiraCode-Bold)</span><span class="w"></span>
+<span class="nv">Fira</span><span class="w"> </span><span class="s">Code Light (FiraCode-Light)</span><span class="w"></span>
+<span class="nv">Fira</span><span class="w"> </span><span class="s">Code Medium (FiraCode-Medium)</span><span class="w"></span>
+<span class="nv">Fira</span><span class="w"> </span><span class="s">Code Regular (FiraCode-Regular)</span><span class="w"></span>
+<span class="nv">Fira</span><span class="w"> </span><span class="s">Code Retina (FiraCode-Retina)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The part in brackets is the PostScript name.</p>
+<p>Enable alternate zero and oldstyle numerals:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">font_features</span><span class="w"> </span><span class="s">FiraCode-Retina +zero +onum</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Enable only alternate zero:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">font_features</span><span class="w"> </span><span class="s">FiraCode-Retina +zero</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Disable the normal ligatures, but keep the <code class="code docutils literal notranslate"><span class="pre">calt</span></code> feature which (in this
+font) breaks up monotony:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">font_features</span><span class="w"> </span><span class="s">TT2020StyleB-Regular -liga +calt</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In conjunction with <a class="reference internal" href="#opt-kitty.force_ltr"><code class="xref std std-opt docutils literal notranslate"><span class="pre">force_ltr</span></code></a>, you may want to disable Arabic shaping
+entirely, and only look at their isolated forms if they show up in a document.
+You can do this with e.g.:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">font_features</span><span class="w"> </span><span class="s">UnifontMedium +isol -medi -fina -init</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="opt">
@@ -607,7 +676,8 @@ number of cells instead of pixels.</p>
 </div>
 <p>The enabled window layouts. A comma separated list of layout names. The special
 value <code class="code docutils literal notranslate"><span class="pre">all</span></code> means all layouts. The first listed layout will be used as the
-startup layout. For a list of available layouts, see the <a class="reference internal" href="index.html#layouts"><span class="std std-ref">Layouts</span></a>.</p>
+startup layout. Default configuration is all layouts in alphabetical order.
+For a list of available layouts, see the <a class="reference internal" href="index.html#layouts"><span class="std std-ref">Layouts</span></a>.</p>
 <dl class="opt">
 <dt id="opt-kitty.window_resize_step_cells">
 <code class="sig-name descname">window_resize_step_cells</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">window_resize_step_lines</code><a class="headerlink" href="#opt-kitty.window_resize_step_cells" title="Permalink to this definition">¶</a></dt>
@@ -729,7 +799,8 @@ zero and one, with zero being fully faded).</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">hide_window_decorations</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Hide the window decorations (title-bar and window borders).
+<p>Hide the window decorations (title-bar and window borders) with <code class="code docutils literal notranslate"><span class="pre">yes</span></code>.
+On macOS, <code class="code docutils literal notranslate"><span class="pre">titlebar-only</span></code> can be used to only hide the titlebar.
 Whether this works and exactly what effect it has depends on the
 window manager/operating system.</p>
 <dl class="opt">
@@ -757,6 +828,18 @@ A value of <code class="code docutils literal notranslate"><span class="pre">sta
 A value of <code class="code docutils literal notranslate"><span class="pre">scale</span></code> means draw the current window contents scaled.
 A value of <code class="code docutils literal notranslate"><span class="pre">blank</span></code> means draw a blank window.
 A value of <code class="code docutils literal notranslate"><span class="pre">size</span></code> means show the window size in cells.</p>
+<dl class="opt">
+<dt id="opt-kitty.resize_in_steps">
+<code class="sig-name descname">resize_in_steps</code><a class="headerlink" href="#opt-kitty.resize_in_steps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">resize_in_steps</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Resize the OS window in steps as large as the cells, instead of with the usual pixel accuracy.
+Combined with an <a class="reference internal" href="#opt-kitty.remember_window_size"><code class="xref std std-opt docutils literal notranslate"><span class="pre">initial_window_width</span></code></a> and <a class="reference internal" href="#opt-kitty.remember_window_size"><code class="xref std std-opt docutils literal notranslate"><span class="pre">initial_window_height</span></code></a> in number of cells,
+this option can be used to keep the margins as small as possible when resizing the OS window.
+Note that this does not currently work on Wayland.</p>
 </div>
 <div class="section" id="tab-bar">
 <span id="conf-kitty-tabbar"></span><h2>Tab bar<a class="headerlink" href="#tab-bar" title="Permalink to this headline">¶</a></h2>
@@ -1035,6 +1118,60 @@ as color16 to color255.</p>
 </pre></div>
 </div>
 <p>white</p>
+<dl class="opt">
+<dt id="opt-kitty.mark1_foreground">
+<code class="sig-name descname">mark1_foreground</code><a class="headerlink" href="#opt-kitty.mark1_foreground" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mark1_foreground</span><span class="w"> </span><span class="s">black</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Color for marks of type 1</p>
+<dl class="opt">
+<dt id="opt-kitty.mark1_background">
+<code class="sig-name descname">mark1_background</code><a class="headerlink" href="#opt-kitty.mark1_background" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mark1_background</span><span class="w"> </span><span class="s">#98d3cb</span>
+</pre></div>
+</div>
+<p>Color for marks of type 1 (light steel blue)</p>
+<dl class="opt">
+<dt id="opt-kitty.mark2_foreground">
+<code class="sig-name descname">mark2_foreground</code><a class="headerlink" href="#opt-kitty.mark2_foreground" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mark2_foreground</span><span class="w"> </span><span class="s">black</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Color for marks of type 2</p>
+<dl class="opt">
+<dt id="opt-kitty.mark2_background">
+<code class="sig-name descname">mark2_background</code><a class="headerlink" href="#opt-kitty.mark2_background" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mark2_background</span><span class="w"> </span><span class="s">#f2dcd3</span>
+</pre></div>
+</div>
+<p>Color for marks of type 1 (beige)</p>
+<dl class="opt">
+<dt id="opt-kitty.mark3_foreground">
+<code class="sig-name descname">mark3_foreground</code><a class="headerlink" href="#opt-kitty.mark3_foreground" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mark3_foreground</span><span class="w"> </span><span class="s">black</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Color for marks of type 3</p>
+<dl class="opt">
+<dt id="opt-kitty.mark3_background">
+<code class="sig-name descname">mark3_background</code><a class="headerlink" href="#opt-kitty.mark3_background" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mark3_background</span><span class="w"> </span><span class="s">#f274bc</span>
+</pre></div>
+</div>
+<p>Color for marks of type 1 (violet)</p>
 </div>
 </div>
 <div class="section" id="advanced">
@@ -1723,7 +1860,8 @@ with:</p>
 </pre></div>
 </div>
 <p>You can also create shortcuts to go to specific tabs, with 1 being the first
-tab, 2 the second tab and -1 being the previously active tab:</p>
+tab, 2 the second tab and -1 being the previously active tab, and any number
+larger than the last tab being the last tab:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+alt+1</span><span class="w"> </span><span class="nf">goto_tab</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">ctrl+alt+2</span><span class="w"> </span><span class="nf">goto_tab</span><span class="w"> </span><span class="mi">2</span>
 </pre></div>
@@ -1855,6 +1993,16 @@ output of things like: ls -1</p>
 </div>
 <p>Select something that looks like a hash and insert it into the terminal.
 Useful with git, which uses sha1 hashes to identify commits</p>
+<dl class="shortcut">
+<dt id="shortcut-kitty.Open the selected file at the selected line">
+<code class="sig-name descname">Open the selected file at the selected line</code><a class="headerlink" href="#shortcut-kitty.Open the selected file at the selected line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+p&gt;n</span><span class="w"> </span><span class="nf">kitten</span><span class="w"> </span><span class="s">hints --type linenum</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Select something that looks like <code class="code docutils literal notranslate"><span class="pre">filename:linenum</span></code> and open it in vim at
+the specified line number.</p>
 <p>The hints kitten has many more modes of operation that you can map to different
 shortcuts. For a full description see <a class="reference internal" href="kittens/hints.html"><span class="doc">Hints</span></a>.</p>
 </div>
@@ -2000,7 +2148,7 @@ comments describing each setting by clicking: <a class="reference download inter
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2019, Kovid Goyal.
+      &copy;2020, Kovid Goyal.
       
     </div>
 

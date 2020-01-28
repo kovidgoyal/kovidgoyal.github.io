@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Hints &#8212; kitty 0.15.1 documentation</title>
+    <title>Hints &#8212; kitty 0.16.0 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -115,6 +115,15 @@ browser.</p>
 select anything that looks like a path or filename and then insert it into the
 terminal, very useful for picking files from the output of a <code class="docutils literal notranslate"><span class="pre">git</span></code> or <code class="docutils literal notranslate"><span class="pre">ls</span></code> command and
 adding them to the command line for the next command.</p>
+<p>You can also press <a class="reference internal" href="../conf.html#shortcut-kitty.Open the selected file at the selected line"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;n</span></code></a> to select anything that looks
+like a path or filename followed by a colon and a line number and open
+the file in vim at the specified line number. The patterns and editor
+to be used can be modified using options passed to the kitten. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">g</span> <span class="n">kitten</span> <span class="n">hints</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">linenum</span> <span class="o">--</span><span class="n">linenum</span><span class="o">-</span><span class="n">action</span><span class="o">=</span><span class="n">tab</span> <span class="n">nvim</span> <span class="o">+</span><span class="p">{</span><span class="n">line</span><span class="p">}</span> <span class="o">+</span><span class="p">{</span><span class="n">path</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>will open the selected file in a new tab inside neovim when you press
+<kbd class="kbd docutils literal notranslate">ctrl+g</kbd>.</p>
 <p>The hints kitten is very powerful to see more detailed help on its various
 options and modes of operation, see below. You can use these options to
 create mappings in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> to select various different text
@@ -182,9 +191,9 @@ look it up in the Google dictionary.</p>
 <dl class="option">
 <dt id="cmdoption-kitty-kitten-hints-type">
 <code class="sig-name descname">--type</code><code class="sig-prename descclassname"> &lt;TYPE&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-type" title="Permalink to this definition">¶</a></dt>
-<dd><p>The type of text to search for.
+<dd><p>The type of text to search for. A value of <code class="code docutils literal notranslate"><span class="pre">linenum</span></code> looks for error messages using the pattern specified with <a class="reference internal" href="#cmdoption-kitty-kitten-hints-regex"><code class="xref std std-option docutils literal notranslate"><span class="pre">--regex</span></code></a>, which must have the named groups, path and line. If not specified, will look for <code class="code docutils literal notranslate"><span class="pre">path:line</span></code>. The <a class="reference internal" href="#cmdoption-kitty-kitten-hints-linenum-action"><code class="xref std std-option docutils literal notranslate"><span class="pre">--linenum-action</span></code></a> option controls what to do with the selected error message.
 Default: <code class="code docutils literal notranslate"><span class="pre">url</span></code>
-Choices: <code class="code docutils literal notranslate"><span class="pre">hash,</span> <span class="pre">line,</span> <span class="pre">path,</span> <span class="pre">regex,</span> <span class="pre">url,</span> <span class="pre">word</span></code></p>
+Choices: <code class="code docutils literal notranslate"><span class="pre">hash,</span> <span class="pre">line,</span> <span class="pre">linenum,</span> <span class="pre">path,</span> <span class="pre">regex,</span> <span class="pre">url,</span> <span class="pre">word</span></code></p>
 </dd></dl>
 
 <dl class="option">
@@ -192,6 +201,14 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">hash,
 <code class="sig-name descname">--regex</code><code class="sig-prename descclassname"> &lt;REGEX&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-regex" title="Permalink to this definition">¶</a></dt>
 <dd><p>The regular expression to use when <a class="reference internal" href="#cmdoption-kitty-kitten-hints-type"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">hints</span> <span class="pre">--type</span></code></a><code class="code docutils literal notranslate"><span class="pre">=regex</span></code>. The regular expression is in python syntax. If you specify a numbered group in the regular expression only the group will be matched. This allow you to match text ignoring a prefix/suffix, as needed. The default expression matches lines. To match text over multiple lines you should prefix the regular expression with <code class="code docutils literal notranslate"><span class="pre">(?ms)</span></code>, which turns on MULTILINE and DOTALL modes for the regex engine. If you specify named groups and a <a class="reference internal" href="#cmdoption-kitty-kitten-hints-program"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">hints</span> <span class="pre">--program</span></code></a> then the program will be passed arguments corresponding to each named group of the form key=value.
 Default: <code class="code docutils literal notranslate"><span class="pre">(?m)^\s*(.+)\s*$</span></code></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-kitty-kitten-hints-linenum-action">
+<code class="sig-name descname">--linenum-action</code><code class="sig-prename descclassname"> &lt;LINENUM_ACTION&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-hints-linenum-action" title="Permalink to this definition">¶</a></dt>
+<dd><p>The action to perform on the matched errors. The actual action is whatever arguments are provided to the kitten, for example: <code class="code docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+</span> <span class="pre">kitten</span> <span class="pre">hints</span> <span class="pre">--type=linenum</span> <span class="pre">vim</span> <span class="pre">+{line}</span> <span class="pre">{path}</span></code> will open the matched path at the matched line number in vim. This option controls where the action is executed: <code class="code docutils literal notranslate"><span class="pre">self</span></code> means the current window, <code class="code docutils literal notranslate"><span class="pre">window</span></code> a new kitty window, <code class="code docutils literal notranslate"><span class="pre">tab</span></code> a new tab, <code class="code docutils literal notranslate"><span class="pre">os_window</span></code> a new OS window and <code class="code docutils literal notranslate"><span class="pre">background</span></code> run in the background.
+Default: <code class="code docutils literal notranslate"><span class="pre">self</span></code>
+Choices: <code class="code docutils literal notranslate"><span class="pre">background,</span> <span class="pre">os_window,</span> <span class="pre">self,</span> <span class="pre">tab,</span> <span class="pre">window</span></code></p>
 </dd></dl>
 
 <dl class="option">
@@ -272,7 +289,7 @@ Default: <code class="code docutils literal notranslate"><span class="pre">1</sp
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2019, Kovid Goyal.
+      &copy;2020, Kovid Goyal.
       
     </div>
 
