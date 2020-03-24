@@ -4,10 +4,25 @@ Changelog
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 To update |kitty|, :doc:`follow the instructions <binary>`.
 
+0.17.1 [2020-03-24]
+--------------------
+
+- Fix :opt:`cursor_underline_thickness` not working (:iss:`2465`)
+
+- Fix a regression in 0.17 that caused tab bar background to be rendered after
+  the last tab as well (:iss:`2464`)
+
+- macOS: Fix a regression in 0.17 that caused incorrect variants to be
+  automatically selected for some fonts (:iss:`2462`)
+
+- Fix a regression in 0.17 that caused kitty @ set-colors to require setting
+  cursor_text_color (:iss:`2470`)
+
+
 0.17.0 [2020-03-24]
 --------------------
 
-- A new :ref:`splits_layout` to arrange windows in arbitrary splits
+- :ref:`splits_layout` to arrange windows in arbitrary splits
   (:iss:`2308`)
 
 - Add support for specifying a background image, see :opt:`background_image`
