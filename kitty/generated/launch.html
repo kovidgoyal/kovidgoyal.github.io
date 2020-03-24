@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Options &#8212; kitty 0.16.0 documentation</title>
+    <title>Options &#8212; kitty 0.17.0 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -153,9 +153,9 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">backg
 <dl class="option">
 <dt id="cmdoption-location">
 <code class="sig-name descname">--location</code><code class="sig-prename descclassname"> &lt;LOCATION&gt;</code><a class="headerlink" href="#cmdoption-location" title="Permalink to this definition">¶</a></dt>
-<dd><p>Where to place the newly created window when it is added to a tab which already has existing windows in it. <code class="code docutils literal notranslate"><span class="pre">after</span></code> and <code class="code docutils literal notranslate"><span class="pre">before</span></code> place the new window before or after the active window. <code class="code docutils literal notranslate"><span class="pre">neighbor</span></code> is a synonym for <code class="code docutils literal notranslate"><span class="pre">after</span></code>. Also applies to creating a new tab, where the value of <code class="code docutils literal notranslate"><span class="pre">after</span></code> will cause the new tab to be placed next to the current tab instead of at the end.
+<dd><p>Where to place the newly created window when it is added to a tab which already has existing windows in it. <code class="code docutils literal notranslate"><span class="pre">after</span></code> and <code class="code docutils literal notranslate"><span class="pre">before</span></code> place the new window before or after the active window. <code class="code docutils literal notranslate"><span class="pre">neighbor</span></code> is a synonym for <code class="code docutils literal notranslate"><span class="pre">after</span></code>. Also applies to creating a new tab, where the value of <code class="code docutils literal notranslate"><span class="pre">after</span></code> will cause the new tab to be placed next to the current tab instead of at the end. The values of <code class="code docutils literal notranslate"><span class="pre">vsplit</span></code> and <code class="code docutils literal notranslate"><span class="pre">hsplit</span></code> are only used by the <code class="code docutils literal notranslate"><span class="pre">splits</span></code> layout and control if the new window is placed in a vertical or horizontal split with the currently active window.
 Default: <code class="code docutils literal notranslate"><span class="pre">last</span></code>
-Choices: <code class="code docutils literal notranslate"><span class="pre">after,</span> <span class="pre">before,</span> <span class="pre">first,</span> <span class="pre">last,</span> <span class="pre">neighbor</span></code></p>
+Choices: <code class="code docutils literal notranslate"><span class="pre">after,</span> <span class="pre">before,</span> <span class="pre">first,</span> <span class="pre">hsplit,</span> <span class="pre">last,</span> <span class="pre">neighbor,</span> <span class="pre">vsplit</span></code></p>
 </dd></dl>
 
 <dl class="option">
@@ -188,6 +188,18 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">&#64;
 <dt id="cmdoption-marker">
 <code class="sig-name descname">--marker</code><code class="sig-prename descclassname"> &lt;MARKER&gt;</code><a class="headerlink" href="#cmdoption-marker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a marker that highlights text in the newly created window. The syntax is the same as for the <code class="code docutils literal notranslate"><span class="pre">toggle_marker</span></code> map action (see <a class="reference internal" href="../marks.html"><span class="doc">Marks</span></a>).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-os-window-class">
+<code class="sig-name descname">--os-window-class</code><code class="sig-prename descclassname"> &lt;OS_WINDOW_CLASS&gt;</code><a class="headerlink" href="#cmdoption-os-window-class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the WM_CLASS property on X11 and the application id property on Wayland for the newly created OS Window when using <a class="reference internal" href="../launch.html#cmdoption-launch-type"><code class="xref std std-option docutils literal notranslate"><span class="pre">launch</span> <span class="pre">--type</span></code></a><code class="code docutils literal notranslate"><span class="pre">=os-window</span></code>. Defaults to whatever is used by the parent kitty process, which in turn defaults to <code class="code docutils literal notranslate"><span class="pre">kitty</span></code>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-os-window-name">
+<code class="sig-name descname">--os-window-name</code><code class="sig-prename descclassname"> &lt;OS_WINDOW_NAME&gt;</code><a class="headerlink" href="#cmdoption-os-window-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the WM_NAME property on X11 for the newly created OS Window when using <a class="reference internal" href="../launch.html#cmdoption-launch-type"><code class="xref std std-option docutils literal notranslate"><span class="pre">launch</span> <span class="pre">--type</span></code></a><code class="code docutils literal notranslate"><span class="pre">=os-window</span></code>. Defaults to <a class="reference internal" href="../launch.html#cmdoption-launch-os-window-class"><code class="xref std std-option docutils literal notranslate"><span class="pre">launch</span> <span class="pre">--os-window-class</span></code></a>.</p>
 </dd></dl>
 
 </div>

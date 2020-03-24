@@ -180,6 +180,9 @@ Fields are:
 :code:`match (default: None)`
   Which tab to change the layout of
 
+:code:`all (default: False)`
+  Boolean to match all tabs
+
 
 
 launch
@@ -200,7 +203,7 @@ Fields are:
   Working directory for the new window
 
 :code:`env (default: [])`
-  List of environment varibles of the form NAME=VALUE
+  List of environment variables of the form NAME=VALUE
 
 :code:`tab_title (default: None)`
   Title for the new tab
@@ -282,7 +285,7 @@ remove-marker
 Fields are:
 
 :code:`match (default: None)`
-  Which window to detach
+  Which window to remove the marker from
 
 :code:`self (default: False)`
   Boolean indicating whether to detach the window the command is run in
@@ -326,17 +329,39 @@ send-text
 
 Fields are:
 
-:code:`text (required)`
-  The text being sent
-
-:code:`is_binary (required)`
-  If False text is interpreted as a python string literal instead of plain text
+:code:`data (required)`
+  The data being sent. Can be either: text: followed by text or base64: followed by standard base64 encoded bytes
 
 :code:`match (default: None)`
   A string indicating the window to send text to
 
 :code:`match_tab (default: None)`
   A string indicating the tab to send text to
+
+
+
+set-background-image
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`data (required)`
+  Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value - to indicate image must be removed.
+
+:code:`img_id (required)`
+  Unique uuid (as string) used for chunking
+
+:code:`match (default: None)`
+  Window to change opacity in
+
+:code:`layout (default: None)`
+  The image layout
+
+:code:`all (default: False)`
+  Boolean indicating operate on all windows
+
+:code:`configured (default: False)`
+  Boolean indicating if the configured value should be changed
 
 
 

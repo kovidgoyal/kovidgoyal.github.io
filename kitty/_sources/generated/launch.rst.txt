@@ -50,9 +50,9 @@ ______________________________
 
 .. option:: --location <LOCATION>
 
-    Where to place the newly created window when it is added to a tab which already has existing windows in it. :code:`after` and :code:`before` place the new window before or after the active window. :code:`neighbor` is a synonym for :code:`after`. Also applies to creating a new tab, where the value of :code:`after` will cause the new tab to be placed next to the current tab instead of at the end.
+    Where to place the newly created window when it is added to a tab which already has existing windows in it. :code:`after` and :code:`before` place the new window before or after the active window. :code:`neighbor` is a synonym for :code:`after`. Also applies to creating a new tab, where the value of :code:`after` will cause the new tab to be placed next to the current tab instead of at the end. The values of :code:`vsplit` and :code:`hsplit` are only used by the :code:`splits` layout and control if the new window is placed in a vertical or horizontal split with the currently active window.
     Default: :code:`last`
-    Choices: :code:`after, before, first, last, neighbor`
+    Choices: :code:`after, before, first, hsplit, last, neighbor, vsplit`
 
 .. option:: --allow-remote-control
 
@@ -75,3 +75,11 @@ ______________________________
 .. option:: --marker <MARKER>
 
     Create a marker that highlights text in the newly created window. The syntax is the same as for the :code:`toggle_marker` map action (see :doc:`/marks`).
+
+.. option:: --os-window-class <OS_WINDOW_CLASS>
+
+    Set the WM_CLASS property on X11 and the application id property on Wayland for the newly created OS Window when using :option:`launch --type`:code:`=os-window`. Defaults to whatever is used by the parent kitty process, which in turn defaults to :code:`kitty`.
+
+.. option:: --os-window-name <OS_WINDOW_NAME>
+
+    Set the WM_NAME property on X11 for the newly created OS Window when using :option:`launch --type`:code:`=os-window`. Defaults to :option:`launch --os-window-class`.

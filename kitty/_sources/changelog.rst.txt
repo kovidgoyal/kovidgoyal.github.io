@@ -4,6 +4,97 @@ Changelog
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 To update |kitty|, :doc:`follow the instructions <binary>`.
 
+0.17.0 [2020-03-24]
+--------------------
+
+- A new :ref:`splits_layout` to arrange windows in arbitrary splits
+  (:iss:`2308`)
+
+- Add support for specifying a background image, see :opt:`background_image`
+  (:iss:`163` and :pull:`2326`; thanks to Fredrick Brennan.)
+
+- A new :opt:`background_tint` option to darken the background under the text
+  area when using background images and/or transparent windows.
+
+- Allow selection of single cells with the mouse. Also improve mouse selection
+  to follow semantics common to most programs (:iss:`945`)
+
+- New options :opt:`cursor_beam_thickness` and :opt:`cursor_underline_thickness` to control the thickness of the
+  beam and underline cursors (:iss:`2337` and :pull:`2342`)
+
+- When the application running in the terminal grabs the mouse, pass middle
+  clicks to the application unless :opt:`terminal_select_modifiers` are
+  pressed (:iss:`2368`)
+
+- A new ``copy_and_clear_or_interrupt`` function (:iss:`2403`)
+
+- X11: Fix arrow mouse cursor using right pointing instead of the default left
+  pointing arrow (:iss:`2341`)
+
+- Allow passing the currently active kitty window id in the launch command
+  (:iss:`2391`)
+
+- unicode input kitten: Allow pressing :kbd:`ctrl+tab` to change the input mode
+  (:iss:`2343`)
+
+- Fix a bug that prevented using custom functions with the new marks feature
+  (:iss:`2344`)
+
+- Make the set of URL prefixes that are recognized while hovering with the
+  mouse configurable (:iss:`2416`)
+
+- Fix border/margin/padding sizes not being recalculated on DPI change
+  (:iss:`2346`)
+
+- diff kitten: Fix directory diffing with removed binary files failing
+  (:iss:`2378`)
+
+- macOS: Fix menubar title not updating on OS Window focus change (:iss:`2350`)
+
+- Fix rendering of combining characters with fonts that have glyphs for
+  precomposed characters but not decomposed versions (:iss:`2365`)
+
+- Fix incorrect rendering of selection when using rectangular select and
+  scrolling (:iss:`2351`)
+
+- Allow setting WM_CLASS and WM_NAME when creating new OS windows with the
+  launch command (:option:`launch --os-window-class`)
+
+- macOS: When switching input method while a pending multi-key input is in
+  progress, clear the pending input (:iss:`2358`)
+
+- Fix a regression in the previous release that broke switching to neighboring windows
+  in the Grid layout when there are less than four windows (:iss:`2377`)
+
+- Fix colors in scrollback pager off if the window has redefined terminal
+  colors using escape codes (:iss:`2381`)
+
+- Fix selection not updating properly while scrolling (:iss:`2442`)
+
+- Allow extending selections by dragging with right button pressed
+  (:iss:`2445`)
+
+- Workaround for bug in less that causes colors to reset at wrapped lines
+  (:iss:`2381`)
+
+- X11/Wayland: Allow drag and drop of text/plain in addition to text/uri-list
+  (:iss:`2441`)
+
+- Dont strip :code:`&` and :code:`-` from the end of URLs (:iss:`2436`)
+
+- Fix ``@selection`` placeholder not working with launch command (:iss:`2417`)
+
+- Drop support for python 3.5
+
+- Wayland: Fix a crash when drag and dropping into kitty (:iss:`2432`)
+
+- diff kitten: Fix images lingering as blank rectangles after the kitten quits
+  (:iss:`2449`)
+
+- diff kitten: Fix images losing position when scrolling using mouse
+  wheel/touchpad
+
+
 0.16.0 [2020-01-28]
 --------------------
 

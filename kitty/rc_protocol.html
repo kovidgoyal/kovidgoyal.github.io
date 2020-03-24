@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Documentation for the kitty remote control protocol &#8212; kitty 0.16.0 documentation</title>
+    <title>Documentation for the kitty remote control protocol &#8212; kitty 0.17.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -97,6 +97,7 @@ ga('send', 'pageview');
 <li><a class="reference internal" href="#resize-window">resize-window</a></li>
 <li><a class="reference internal" href="#scroll-window">scroll-window</a></li>
 <li><a class="reference internal" href="#send-text">send-text</a></li>
+<li><a class="reference internal" href="#set-background-image">set-background-image</a></li>
 <li><a class="reference internal" href="#set-background-opacity">set-background-opacity</a></li>
 <li><a class="reference internal" href="#set-colors">set-colors</a></li>
 <li><a class="reference internal" href="#set-font-size">set-font-size</a></li>
@@ -283,6 +284,8 @@ The fields in the object for every command are documented below.</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which tab to change the layout of</p>
 </dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">all</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean to match all tabs</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="launch">
@@ -297,7 +300,7 @@ The fields in the object for every command are documented below.</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">cwd</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Working directory for the new window</p>
 </dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">env</span> <span class="pre">(default:</span> <span class="pre">[])</span></code></dt><dd><p>List of environment varibles of the form NAME=VALUE</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">env</span> <span class="pre">(default:</span> <span class="pre">[])</span></code></dt><dd><p>List of environment variables of the form NAME=VALUE</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">tab_title</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Title for the new tab</p>
 </dd>
@@ -355,7 +358,7 @@ The fields in the object for every command are documented below.</p>
 <h2>remove-marker<a class="headerlink" href="#remove-marker" title="Permalink to this headline">¶</a></h2>
 <p>Fields are:</p>
 <dl class="simple">
-<dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to detach</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to remove the marker from</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to detach the window the command is run in</p>
 </dd>
@@ -389,13 +392,29 @@ The fields in the object for every command are documented below.</p>
 <h2>send-text<a class="headerlink" href="#send-text" title="Permalink to this headline">¶</a></h2>
 <p>Fields are:</p>
 <dl class="simple">
-<dt><code class="code docutils literal notranslate"><span class="pre">text</span> <span class="pre">(required)</span></code></dt><dd><p>The text being sent</p>
-</dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">is_binary</span> <span class="pre">(required)</span></code></dt><dd><p>If False text is interpreted as a python string literal instead of plain text</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">data</span> <span class="pre">(required)</span></code></dt><dd><p>The data being sent. Can be either: text: followed by text or base64: followed by standard base64 encoded bytes</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>A string indicating the window to send text to</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">match_tab</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>A string indicating the tab to send text to</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="set-background-image">
+<h2>set-background-image<a class="headerlink" href="#set-background-image" title="Permalink to this headline">¶</a></h2>
+<p>Fields are:</p>
+<dl class="simple">
+<dt><code class="code docutils literal notranslate"><span class="pre">data</span> <span class="pre">(required)</span></code></dt><dd><p>Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value - to indicate image must be removed.</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">img_id</span> <span class="pre">(required)</span></code></dt><dd><p>Unique uuid (as string) used for chunking</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Window to change opacity in</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">layout</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>The image layout</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">all</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating operate on all windows</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">configured</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating if the configured value should be changed</p>
 </dd>
 </dl>
 </div>
