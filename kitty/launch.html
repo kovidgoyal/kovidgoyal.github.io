@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Launching programs in new windows/tabs &#8212; kitty 0.17.1 documentation</title>
+    <title>Launching programs in new windows/tabs &#8212; kitty 0.17.2 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -79,6 +79,7 @@ ga('send', 'pageview');
   <ul>
 <li><a class="reference internal" href="#the-piping-environment">The piping environment</a></li>
 <li><a class="reference internal" href="#special-arguments">Special arguments</a></li>
+<li><a class="reference internal" href="#watching-launched-windows">Watching launched windows</a></li>
 <li><a class="reference internal" href="#syntax-reference">Syntax reference</a><ul>
 <li><a class="reference internal" href="#options">Options</a></li>
 </ul>
@@ -154,6 +155,30 @@ currently active kitty window. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f1</span> <span class="n">launch</span> <span class="n">my</span><span class="o">-</span><span class="n">program</span> <span class="nd">@active</span><span class="o">-</span><span class="n">kitty</span><span class="o">-</span><span class="n">window</span><span class="o">-</span><span class="nb">id</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="watching-launched-windows">
+<h2>Watching launched windows<a class="headerlink" href="#watching-launched-windows" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#cmdoption-launch-watcher"><code class="xref std std-option docutils literal notranslate"><span class="pre">launch</span> <span class="pre">--watcher</span></code></a> option allows you to specify python functions
+that will be called at specific events, such as when the window is resized or
+closed. Simply specify the path to a python module that specifies callback
+functions for the events you are interested in, for example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="n">boss</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="c1"># Here data will contain old_geometry and new_geometry</span>
+
+<span class="k">def</span> <span class="nf">on_close</span><span class="p">(</span><span class="n">boss</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="c1"># called when window is closed, typically when the program running in</span>
+    <span class="c1"># it exits.</span>
+</pre></div>
+</div>
+<p>Every callback is passed a reference to the global <code class="docutils literal notranslate"><span class="pre">Boss</span></code> object as well as
+the <code class="docutils literal notranslate"><span class="pre">Window</span></code> object the action is occurring on. The <code class="docutils literal notranslate"><span class="pre">data</span></code> object is
+mapping that contains event dependent data. Some useful methods and attributes
+for the <code class="docutils literal notranslate"><span class="pre">Window</span></code> object are: <code class="docutils literal notranslate"><span class="pre">as_text(as_ans=False,</span> <span class="pre">add_history=False,</span>
+<span class="pre">add_wrap_markers=False,</span> <span class="pre">alternate_screen=False)</span></code> with which you can get the
+contents of the window and its scrollback buffer. Similarly,
+<code class="docutils literal notranslate"><span class="pre">window.child.pid</span></code> is the PID of the processes that was launched
+in the window and <code class="docutils literal notranslate"><span class="pre">window.id</span></code> is the internal kitty <code class="docutils literal notranslate"><span class="pre">id</span></code> of the
+window.</p>
 </div>
 <div class="section" id="syntax-reference">
 <h2>Syntax reference<a class="headerlink" href="#syntax-reference" title="Permalink to this headline">¶</a></h2>
@@ -271,6 +296,12 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">&#64;
 <dt id="cmdoption-launch-os-window-name">
 <code class="sig-name descname">--os-window-name</code><code class="sig-prename descclassname"> &lt;OS_WINDOW_NAME&gt;</code><a class="headerlink" href="#cmdoption-launch-os-window-name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the WM_NAME property on X11 for the newly created OS Window when using <a class="reference internal" href="#cmdoption-launch-type"><code class="xref std std-option docutils literal notranslate"><span class="pre">launch</span> <span class="pre">--type</span></code></a><code class="code docutils literal notranslate"><span class="pre">=os-window</span></code>. Defaults to <a class="reference internal" href="#cmdoption-launch-os-window-class"><code class="xref std std-option docutils literal notranslate"><span class="pre">launch</span> <span class="pre">--os-window-class</span></code></a>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-launch-watcher">
+<code class="sig-name descname">--watcher</code><code class="sig-prename descclassname"> &lt;WATCHER&gt;</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">-w</code><code class="sig-prename descclassname"> &lt;WATCHER&gt;</code><a class="headerlink" href="#cmdoption-launch-watcher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to a python file. Appropriately named functions in this file will be called for various events, such as when the window is resized or closed. See the section on watchers in the launch command documentation <a class="reference internal" href="#"><span class="doc">Launching programs in new windows/tabs</span></a>. Relative paths are resolved relative to the kitty config directory.</p>
 </dd></dl>
 
 </div>

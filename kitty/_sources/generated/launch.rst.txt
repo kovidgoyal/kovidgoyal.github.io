@@ -83,3 +83,7 @@ ______________________________
 .. option:: --os-window-name <OS_WINDOW_NAME>
 
     Set the WM_NAME property on X11 for the newly created OS Window when using :option:`launch --type`:code:`=os-window`. Defaults to :option:`launch --os-window-class`.
+
+.. option:: --watcher <WATCHER>, -w <WATCHER>
+
+    Path to a python file. Appropriately named functions in this file will be called for various events, such as when the window is resized or closed. See the section on watchers in the launch command documentation :doc:`launch`. Relative paths are resolved relative to the kitty config directory.
