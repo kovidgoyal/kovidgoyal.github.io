@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Configuring kitty &#8212; kitty 0.17.2 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.17.3 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -744,29 +744,29 @@ a non-zero window margin overrides this and causes all borders to be drawn.</p>
 <code class="sig-name descname">window_margin_width</code><a class="headerlink" href="#opt-kitty.window_margin_width" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">window_margin_width</span><span class="w"> </span><span class="mf">0.0</span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">window_margin_width</span><span class="w"> </span><span class="mi">0</span>
 </pre></div>
 </div>
-<p>The window margin (in pts) (blank area outside the border)</p>
+<p>The window margin (in pts) (blank area outside the border). A single value sets all four sides. Two values set the vertical and horizontal sides. Three values set top, horizontal and bottom. Four values set top, right, bottom and left.</p>
 <dl class="opt">
 <dt id="opt-kitty.single_window_margin_width">
 <code class="sig-name descname">single_window_margin_width</code><a class="headerlink" href="#opt-kitty.single_window_margin_width" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">single_window_margin_width</span><span class="w"> </span><span class="mf">-1000.0</span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">single_window_margin_width</span><span class="w"> </span><span class="mi">-1</span>
 </pre></div>
 </div>
 <p>The window margin (in pts) to use when only a single window is visible.
-Negative values will cause the value of <a class="reference internal" href="#opt-kitty.window_margin_width"><code class="xref std std-opt docutils literal notranslate"><span class="pre">window_margin_width</span></code></a> to be used instead.</p>
+Negative values will cause the value of <a class="reference internal" href="#opt-kitty.window_margin_width"><code class="xref std std-opt docutils literal notranslate"><span class="pre">window_margin_width</span></code></a> to be used instead. A single value sets all four sides. Two values set the vertical and horizontal sides. Three values set top, horizontal and bottom. Four values set top, right, bottom and left.</p>
 <dl class="opt">
 <dt id="opt-kitty.window_padding_width">
 <code class="sig-name descname">window_padding_width</code><a class="headerlink" href="#opt-kitty.window_padding_width" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">window_padding_width</span><span class="w"> </span><span class="mf">0.0</span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">window_padding_width</span><span class="w"> </span><span class="mi">0</span>
 </pre></div>
 </div>
-<p>The window padding (in pts) (blank area between the text and the window border)</p>
+<p>The window padding (in pts) (blank area between the text and the window border). A single value sets all four sides. Two values set the vertical and horizontal sides. Three values set top, horizontal and bottom. Four values set top, right, bottom and left.</p>
 <dl class="opt">
 <dt id="opt-kitty.placement_strategy">
 <code class="sig-name descname">placement_strategy</code><a class="headerlink" href="#opt-kitty.placement_strategy" title="Permalink to this definition">¶</a></dt>
@@ -1299,6 +1299,23 @@ connect to the socket specified with the <a class="reference internal" href="inv
 line option, if you use the value <code class="code docutils literal notranslate"><span class="pre">socket-only</span></code>. The latter is useful if
 you want to prevent programs running on a remote computer over ssh from
 controlling kitty.</p>
+<dl class="opt">
+<dt id="opt-kitty.listen_on">
+<code class="sig-name descname">listen_on</code><a class="headerlink" href="#opt-kitty.listen_on" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">listen_on</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Tell kitty to listen to the specified unix/tcp socket for remote control
+connections. Note that this will apply to all kitty instances. It can be
+overridden by the <a class="reference internal" href="invocation.html#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a> command line flag. This
+option accepts only UNIX sockets, such as unix:${TEMP}/mykitty or (on Linux)
+unix:&#64;mykitty. Environment variables are expanded. If {kitty_pid} is present
+then it is replaced by the PID of the kitty process, otherwise the PID of the kitty
+process is appended to the value, with a hyphen. This option is ignored unless
+you also set <a class="reference internal" href="#opt-kitty.allow_remote_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">allow_remote_control</span></code></a> to enable remote control. See the
+help for <a class="reference internal" href="invocation.html#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a> for more details.</p>
 <dl class="opt">
 <dt id="opt-kitty.env">
 <code class="sig-name descname">env</code><a class="headerlink" href="#opt-kitty.env" title="Permalink to this definition">¶</a></dt>

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Documentation for the kitty remote control protocol &#8212; kitty 0.17.2 documentation</title>
+    <title>Documentation for the kitty remote control protocol &#8212; kitty 0.17.3 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -101,6 +101,7 @@ ga('send', 'pageview');
 <li><a class="reference internal" href="#set-background-opacity">set-background-opacity</a></li>
 <li><a class="reference internal" href="#set-colors">set-colors</a></li>
 <li><a class="reference internal" href="#set-font-size">set-font-size</a></li>
+<li><a class="reference internal" href="#set-spacing">set-spacing</a></li>
 <li><a class="reference internal" href="#set-tab-title">set-tab-title</a></li>
 <li><a class="reference internal" href="#set-window-title">set-window-title</a></li>
 </ul>
@@ -461,6 +462,22 @@ The fields in the object for every command are documented below.</p>
 <dt><code class="code docutils literal notranslate"><span class="pre">all</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean whether to change font size in the current window or all windows</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">increment_op</span> <span class="pre">(optional)</span></code></dt><dd><p>The string <code class="docutils literal notranslate"><span class="pre">+</span></code> or <code class="docutils literal notranslate"><span class="pre">-</span></code> to interpret size as an increment</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="set-spacing">
+<h2>set-spacing<a class="headerlink" href="#set-spacing" title="Permalink to this headline">¶</a></h2>
+<p>Fields are:</p>
+<dl class="simple">
+<dt><code class="code docutils literal notranslate"><span class="pre">settings</span> <span class="pre">(required)</span></code></dt><dd><p>An object mapping margins/paddings using canonical form {‘margin-top’: 50, ‘padding-left’: null} etc</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">match_window</span> <span class="pre">(optional)</span></code></dt><dd><p>Window to change colors in</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">match_tab</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Tab to change colors in</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">all</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating change colors everywhere or not</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">configured</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to change the configured colors. Must be True if reset is True</p>
 </dd>
 </dl>
 </div>
