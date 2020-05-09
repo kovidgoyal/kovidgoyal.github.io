@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Configuring kitty &#8212; kitty 0.17.3 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.17.4 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -545,7 +545,7 @@ rectangular block with the mouse)</p>
 <code class="sig-name descname">select_by_word_characters</code><a class="headerlink" href="#opt-kitty.select_by_word_characters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">select_by_word_characters</span><span class="w"> </span><span class="s">:@-./_~?&amp;=%+#</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">select_by_word_characters</span><span class="w"> </span><span class="s">@-./_~?&amp;=%+#</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Characters considered part of a word when double clicking. In addition to these characters
@@ -953,7 +953,12 @@ entries to this list.</p>
 <p>A template to render the tab title. The default just renders
 the title. If you wish to include the tab-index as well,
 use something like: <code class="code docutils literal notranslate"><span class="pre">{index}:</span> <span class="pre">{title}</span></code>. Useful
-if you have shortcuts mapped for <code class="code docutils literal notranslate"><span class="pre">goto_tab</span> <span class="pre">N</span></code>.</p>
+if you have shortcuts mapped for <code class="code docutils literal notranslate"><span class="pre">goto_tab</span> <span class="pre">N</span></code>.
+In addition you can use <code class="code docutils literal notranslate"><span class="pre">{layout_name}</span></code> for the current
+layout name and <code class="code docutils literal notranslate"><span class="pre">{num_windows}</span></code> for the number of windows
+in the tab. Note that formatting is done by Python’s string formatting
+machinery, so you can use, for instance, <code class="code docutils literal notranslate"><span class="pre">{layout_name[:2].upper()}</span></code> to
+show only the first two letters of the layout name, upper-cased.</p>
 <dl class="opt">
 <dt id="opt-kitty.active_tab_title_template">
 <code class="sig-name descname">active_tab_title_template</code><a class="headerlink" href="#opt-kitty.active_tab_title_template" title="Permalink to this definition">¶</a></dt>
