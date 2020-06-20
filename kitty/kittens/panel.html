@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Draw a GPU accelerated dock panel on your desktop &#8212; kitty 0.17.4 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw a GPU accelerated dock panel on your desktop &#8212; kitty 0.18.0 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="shortcut icon" href="../_static/kitty.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -133,21 +134,21 @@ you like, as demonstrated in the screenshot above.</p>
 <p>Use a command line program to draw a GPU accelerated panel on your X11 desktop</p>
 <div class="section" id="options">
 <h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
-<dl class="option">
+<dl class="std option">
 <dt id="cmdoption-kitty-kitten-panel-lines">
 <code class="sig-name descname">--lines</code><code class="sig-prename descclassname"> &lt;LINES&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-lines" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of lines shown in the panel (the height of the panel). Applies to horizontal panels.
 Default: <code class="code docutils literal notranslate"><span class="pre">1</span></code></p>
 </dd></dl>
 
-<dl class="option">
+<dl class="std option">
 <dt id="cmdoption-kitty-kitten-panel-columns">
 <code class="sig-name descname">--columns</code><code class="sig-prename descclassname"> &lt;COLUMNS&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-columns" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of columns shown in the panel (the width of the panel). Applies to vertical panels.
 Default: <code class="code docutils literal notranslate"><span class="pre">20</span></code></p>
 </dd></dl>
 
-<dl class="option">
+<dl class="std option">
 <dt id="cmdoption-kitty-kitten-panel-edge">
 <code class="sig-name descname">--edge</code><code class="sig-prename descclassname"> &lt;EDGE&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-edge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Which edge of the screen to place the panel on. Note that some window managers (such as i3) do not support placing docked windows on the left and right edges.
@@ -155,15 +156,15 @@ Default: <code class="code docutils literal notranslate"><span class="pre">top</
 Choices: <code class="code docutils literal notranslate"><span class="pre">bottom,</span> <span class="pre">left,</span> <span class="pre">right,</span> <span class="pre">top</span></code></p>
 </dd></dl>
 
-<dl class="option">
+<dl class="std option">
 <dt id="cmdoption-kitty-kitten-panel-config">
-<code class="sig-name descname">--config</code><code class="sig-prename descclassname"> &lt;CONFIG&gt;</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">-c</code><code class="sig-prename descclassname"> &lt;CONFIG&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-config" title="Permalink to this definition">¶</a></dt>
+<span id="cmdoption-kitty-kitten-panel-c"></span><code class="sig-name descname">--config</code><code class="sig-prename descclassname"> &lt;CONFIG&gt;</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">-c</code><code class="sig-prename descclassname"> &lt;CONFIG&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Path to config file to use for kitty when drawing the panel.</p>
 </dd></dl>
 
-<dl class="option">
+<dl class="std option">
 <dt id="cmdoption-kitty-kitten-panel-override">
-<code class="sig-name descname">--override</code><code class="sig-prename descclassname"> &lt;OVERRIDE&gt;</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">-o</code><code class="sig-prename descclassname"> &lt;OVERRIDE&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-override" title="Permalink to this definition">¶</a></dt>
+<span id="cmdoption-kitty-kitten-panel-o"></span><code class="sig-name descname">--override</code><code class="sig-prename descclassname"> &lt;OVERRIDE&gt;</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">-o</code><code class="sig-prename descclassname"> &lt;OVERRIDE&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-override" title="Permalink to this definition">¶</a></dt>
 <dd><p>Override individual kitty configuration options, can be specified multiple times. Syntax: <span class="italic">name=value</span>. For example: <a class="reference internal" href="#cmdoption-kitty-kitten-panel-override"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">panel</span> <span class="pre">-o</span></code></a> font_size=20</p>
 </dd></dl>
 

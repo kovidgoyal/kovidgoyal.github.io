@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Custom kittens &#8212; kitty 0.17.4 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom kittens &#8212; kitty 0.18.0 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="shortcut icon" href="../_static/kitty.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -136,7 +137,7 @@ your machine).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">k</span> <span class="n">kitten</span> <span class="n">mykitten</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>Start kitty and press <kbd class="kbd docutils literal notranslate">ctrl+k</kbd> and you should see the kitten running.
+<p>Start kitty and press <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">k</kbd></kbd> and you should see the kitten running.
 The best way to develop your own kittens is to modify one of the built in
 kittens. Look in the kittens sub-directory of the kitty source code for those.
 Or see below for a list of <a class="reference internal" href="#external-kittens"><span class="std std-ref">third-party kittens</span></a>,
@@ -212,7 +213,7 @@ layout, by simply adding the line:</p>
 <p>To the <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> function, above.</p>
 </div>
 <div class="section" id="sending-mouse-events">
-<h2>Sending mouse events<a class="headerlink" href="#sending-mouse-events" title="Permalink to this headline">¶</a></h2>
+<span id="send-mouse-event"></span><h2>Sending mouse events<a class="headerlink" href="#sending-mouse-events" title="Permalink to this headline">¶</a></h2>
 <p>If the program running in a window is receiving mouse events you can simulate
 those using:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kitty.fast_data_types</span> <span class="kn">import</span> <span class="n">send_mouse_event</span>
@@ -220,12 +221,13 @@ those using:</p>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">screen</span></code> is the <code class="docutils literal notranslate"><span class="pre">screen</span></code> attribute of the window you want to send the event
-to. <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are the 0-indexed coordinates. <code class="docutils literal notranslate"><span class="pre">button</span></code> is
-<code class="docutils literal notranslate"><span class="pre">GLFW_MOUSE_BUTTON_{button}</span></code> where <code class="docutils literal notranslate"><span class="pre">{button}</span></code> is one of <code class="docutils literal notranslate"><span class="pre">LEFT</span></code>,
-<code class="docutils literal notranslate"><span class="pre">RIGHT</span></code>, <code class="docutils literal notranslate"><span class="pre">MIDDLE</span></code> or a digit from <code class="docutils literal notranslate"><span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">8</span></code>. <code class="docutils literal notranslate"><span class="pre">action</span></code> is one of
-<code class="docutils literal notranslate"><span class="pre">PRESS</span></code>, <code class="docutils literal notranslate"><span class="pre">RELEASE</span></code>, <code class="docutils literal notranslate"><span class="pre">DRAG</span></code> or <code class="docutils literal notranslate"><span class="pre">MOVE</span></code>. <code class="docutils literal notranslate"><span class="pre">mods</span></code> is a bitmask of
-<code class="docutils literal notranslate"><span class="pre">GLFW_MOD_{mod}</span></code> where <code class="docutils literal notranslate"><span class="pre">{mod}</span></code> is one of <code class="docutils literal notranslate"><span class="pre">SHIFT</span></code>, <code class="docutils literal notranslate"><span class="pre">CONTROL</span></code> or <code class="docutils literal notranslate"><span class="pre">ALT</span></code>.
-All the mentioned constants are imported from <code class="docutils literal notranslate"><span class="pre">kitty.fast_data_types</span></code>.</p>
+to. <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are the 0-indexed coordinates. <code class="docutils literal notranslate"><span class="pre">button</span></code> is a number using
+the same numbering as X11 (left: <code class="docutils literal notranslate"><span class="pre">1</span></code>, middle: <code class="docutils literal notranslate"><span class="pre">2</span></code>, right: <code class="docutils literal notranslate"><span class="pre">3</span></code>, scroll up:
+<code class="docutils literal notranslate"><span class="pre">4</span></code>, scroll down: <code class="docutils literal notranslate"><span class="pre">5</span></code>, scroll left: <code class="docutils literal notranslate"><span class="pre">6</span></code>, scroll right: <code class="docutils literal notranslate"><span class="pre">7</span></code>, back:
+<code class="docutils literal notranslate"><span class="pre">8</span></code>, forward: <code class="docutils literal notranslate"><span class="pre">9</span></code>). <code class="docutils literal notranslate"><span class="pre">action</span></code> is one of <code class="docutils literal notranslate"><span class="pre">PRESS</span></code>, <code class="docutils literal notranslate"><span class="pre">RELEASE</span></code>, <code class="docutils literal notranslate"><span class="pre">DRAG</span></code>
+or <code class="docutils literal notranslate"><span class="pre">MOVE</span></code>. <code class="docutils literal notranslate"><span class="pre">mods</span></code> is a bitmask of <code class="docutils literal notranslate"><span class="pre">GLFW_MOD_{mod}</span></code> where <code class="docutils literal notranslate"><span class="pre">{mod}</span></code> is one
+of <code class="docutils literal notranslate"><span class="pre">SHIFT</span></code>, <code class="docutils literal notranslate"><span class="pre">CONTROL</span></code> or <code class="docutils literal notranslate"><span class="pre">ALT</span></code>. All the mentioned constants are imported
+from <code class="docutils literal notranslate"><span class="pre">kitty.fast_data_types</span></code>.</p>
 <p>For example, to send a left click at position x: 2, y: 3 to the active window:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kitty.fast_data_types</span> <span class="kn">import</span> <span class="n">send_mouse_event</span><span class="p">,</span> <span class="n">GLFW_MOUSE_BUTTON_LEFT</span><span class="p">,</span> <span class="n">PRESS</span>
 <span class="n">send_mouse_event</span><span class="p">(</span><span class="n">boss</span><span class="o">.</span><span class="n">active_window</span><span class="o">.</span><span class="n">screen</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">GLFW_MOUSE_BUTTON_LEFT</span><span class="p">,</span> <span class="n">PRESS</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>

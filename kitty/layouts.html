@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Layouts &#8212; kitty 0.17.4 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layouts &#8212; kitty 0.18.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -118,11 +119,11 @@ other in arbitrary arrangements, based on <em>Layouts</em>, see below for exampl
 layout</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <p>There are many different layouts available. They are all enabled by default,
-you can switch layouts using <a class="reference internal" href="conf.html#shortcut-kitty.Next layout"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+l</span></code></a>. To control which layouts
+you can switch layouts using <a class="reference internal" href="conf.html#shortcut-kitty.Next-layout"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+l</span></code></a>. To control which layouts
 are available use <a class="reference internal" href="conf.html#opt-kitty.enabled_layouts"><code class="xref std std-opt docutils literal notranslate"><span class="pre">enabled_layouts</span></code></a>, the first listed layout becomes
 the default. Individual layouts and how to use them are described below.</p>
 <div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
+<p class="topic-title">Contents</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#layouts" id="id3">Layouts</a></p>
 <ul>
@@ -152,9 +153,11 @@ space, other windows are hidden behind it. It has no options:</p>
 screen. Remaining windows are tiled vertically on the right half of the screen.
 There are options to control how the screen is split horizontally <code class="docutils literal notranslate"><span class="pre">bias</span></code>
 (an integer between <code class="docutils literal notranslate"><span class="pre">10</span></code> and <code class="docutils literal notranslate"><span class="pre">90</span></code>) and options to control how many
-full-height windows there are <code class="docutils literal notranslate"><span class="pre">full_size</span></code> (a positive integer).  The syntax
+full-height windows there are <code class="docutils literal notranslate"><span class="pre">full_size</span></code> (a positive integer). The
+<code class="docutils literal notranslate"><span class="pre">mirrored</span></code> option when set to <code class="docutils literal notranslate"><span class="pre">true</span></code> will cause the short windows to be
+on the left side of the screen instead of the right. The syntax
 for the options is shown below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enabled_layouts tall:bias=50;full_size=1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enabled_layouts tall:bias=50;full_size=1;mirrored=false
 
 ┌──────────────┬───────────────┐
 │              │               │
@@ -171,6 +174,12 @@ for the options is shown below:</p>
 └──────────────┴───────────────┘
 </pre></div>
 </div>
+<p>In addition, you can map keys to increase or decrease the number of full size
+windows, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="p">[</span> <span class="n">layout_action</span> <span class="n">decrease_num_full_size_windows</span>
+<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="p">]</span> <span class="n">layout_action</span> <span class="n">increase_num_full_size_windows</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="the-fat-layout">
 <h2><a class="toc-backref" href="#id6">The Fat Layout</a><a class="headerlink" href="#the-fat-layout" title="Permalink to this headline">¶</a></h2>
@@ -178,9 +187,11 @@ for the options is shown below:</p>
 screen. Remaining windows are tiled horizontally on the bottom half of the screen.
 There are options to control how the screen is split vertically <code class="docutils literal notranslate"><span class="pre">bias</span></code>
 (an integer between <code class="docutils literal notranslate"><span class="pre">10</span></code> and <code class="docutils literal notranslate"><span class="pre">90</span></code>) and options to control how many
-full-height windows there are <code class="docutils literal notranslate"><span class="pre">full_size</span></code> (a positive integer).  The syntax
-for the options is shown below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enabled_layouts fat:bias=50;full_size=1
+full-height windows there are <code class="docutils literal notranslate"><span class="pre">full_size</span></code> (a positive integer). The
+<code class="docutils literal notranslate"><span class="pre">mirrored</span></code> option when set to <code class="docutils literal notranslate"><span class="pre">true</span></code> will cause the narrow windows to be
+on the top of the screen instead of the bottom. The syntax for the options is
+shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enabled_layouts fat:bias=50;full_size=1;mirrored=false
 
 ┌──────────────────────────────┐
 │                              │
@@ -238,8 +249,8 @@ define a few extra keybindings in <code class="file docutils literal notranslate
 </pre></div>
 </div>
 <p>Now you can create horizontal and vertical splits by using <kbd class="kbd docutils literal notranslate">F5</kbd> and
-<kbd class="kbd docutils literal notranslate">F6</kbd>. You can move them around using <kbd class="kbd docutils literal notranslate">shift+arrow keys</kbd>
-and you can move focus to neighboring windows using <kbd class="kbd docutils literal notranslate">ctrl+arrow keys</kbd>.
+<kbd class="kbd docutils literal notranslate">F6</kbd>. You can move them around using <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">arrow</kbd> <kbd class="kbd docutils literal notranslate">keys</kbd></kbd>
+and you can move focus to neighboring windows using <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">arrow</kbd> <kbd class="kbd docutils literal notranslate">keys</kbd></kbd>.
 You can switch an existing split from horizontal to vertical and vice versa
 using <kbd class="kbd docutils literal notranslate">F7</kbd>. Finally, windows can be resized using <a class="reference internal" href="#window-resizing"><span class="std std-ref">Resizing windows</span></a>.</p>
 <p>This layout takes one option, <code class="docutils literal notranslate"><span class="pre">split_axis</span></code> that controls whether new windows
@@ -304,8 +315,8 @@ are placed into vertical or horizontal splits, by default:</p>
 </div>
 <div class="section" id="resizing-windows">
 <span id="window-resizing"></span><h2><a class="toc-backref" href="#id11">Resizing windows</a><a class="headerlink" href="#resizing-windows" title="Permalink to this headline">¶</a></h2>
-<p>You can resize windows inside layouts. Press <a class="reference internal" href="conf.html#shortcut-kitty.Start resizing window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+r</span></code></a> (also
-<kbd class="kbd docutils literal notranslate">⌘+r</kbd> on macOS) to enter resizing mode and follow the on-screen
+<p>You can resize windows inside layouts. Press <a class="reference internal" href="conf.html#shortcut-kitty.Start-resizing-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+r</span></code></a> (also
+<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⌘</kbd>+<kbd class="kbd docutils literal notranslate">r</kbd></kbd> on macOS) to enter resizing mode and follow the on-screen
 instructions.  In a given window layout only some operations may be possible
 for a particular window. For example, in the Tall layout you can make the first
 window wider/narrower, but not taller/shorter. Note that what you are resizing
@@ -332,9 +343,10 @@ To specify the option, in <a class="reference internal" href="conf.html#opt-kitt
 <p>This will have <code class="docutils literal notranslate"><span class="pre">2</span></code> instead of a single tall window, that occupy <code class="docutils literal notranslate"><span class="pre">70%</span></code>
 instead of <code class="docutils literal notranslate"><span class="pre">50%</span></code> of available width. <code class="docutils literal notranslate"><span class="pre">bias</span></code> can be any number between 10
 and 90.</p>
-<p>Writing a new layout only requires about a hundred lines of code, so if there
-is some layout you want, take a look at <a class="reference external" href="https://github.com/kovidgoyal/kitty/blob/master/kitty/layout.py">layout.py</a>  and submit
-a pull request!</p>
+<p>Writing a new layout only requires about two hundred lines of code, so if there
+is some layout you want, take a look at one of the existing layouts in the
+<a class="reference external" href="https://github.com/kovidgoyal/kitty/tree/master/kitty/layout">layout</a>
+package and submit a pull request!</p>
 </div>
 </div>
 

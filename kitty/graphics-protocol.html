@@ -1,22 +1,23 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>The terminal graphics protocol &#8212; kitty 0.17.4 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The terminal graphics protocol &#8212; kitty 0.18.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The kitty command line interface" href="invocation.html" />
+    <link rel="next" title="Integrations with other tools" href="integrations.html" />
     <link rel="prev" title="Frequently Asked Questions" href="faq.html" />
 
 <!-- Google Analytics -->
@@ -85,7 +86,7 @@ ga('send', 'pageview');
 <li><a class="reference internal" href="#png-data">PNG data</a></li>
 <li><a class="reference internal" href="#compression">Compression</a></li>
 <li><a class="reference internal" href="#the-transmission-medium">The transmission medium</a></li>
-<li><a class="reference internal" href="#detecting-available-transmission-mediums">Detecting available transmission mediums</a></li>
+<li><a class="reference internal" href="#querying-support-and-available-transmission-mediums">Querying support and available transmission mediums</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#display-images-on-screen">Display images on screen</a><ul>
@@ -105,7 +106,7 @@ ga('send', 'pageview');
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="faq.html" title="previous chapter">Frequently Asked Questions</a></li>
-      <li>Next: <a href="invocation.html" title="next chapter">The kitty command line interface</a></li>
+      <li>Next: <a href="integrations.html" title="next chapter">Integrations with other tools</a></li>
   </ul></li>
 </ul>
 </div>
@@ -143,16 +144,17 @@ alpha-blending and text over graphics.</p>
 <p>Some programs that use the kitty graphics protocol:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="https://github.com/dsanson/termpdf">termpdf</a> - a terminal PDF/DJVU/CBR viewer</p></li>
+<li><p><a class="reference external" href="https://github.com/dsanson/termpdf.py">termpdf.py</a> - a terminal PDF/DJVU/CBR viewer</p></li>
 <li><p><a class="reference external" href="https://github.com/ranger/ranger">ranger</a> - a terminal file manager, with
 image previews, see this <a class="reference external" href="https://github.com/ranger/ranger/pull/1077">PR</a></p></li>
 <li><p><a class="reference internal" href="kittens/diff.html"><span class="doc">kitty-diff</span></a> - a side-by-side terminal diff program with support for images</p></li>
+<li><p><a class="reference external" href="https://github.com/mirukana/pixcat">pixcat</a> - a third party CLI and python library that wraps the graphics protocol</p></li>
 <li><p><a class="reference external" href="https://github.com/dylanaraps/neofetch">neofetch</a> - A command line system
 information tool</p></li>
 </ul>
 </div></blockquote>
 <div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
+<p class="topic-title">Contents</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#the-terminal-graphics-protocol" id="id2">The terminal graphics protocol</a></p>
 <ul>
@@ -170,7 +172,7 @@ information tool</p></li>
 <li><p><a class="reference internal" href="#remote-client" id="id12">Remote client</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#detecting-available-transmission-mediums" id="id13">Detecting available transmission mediums</a></p></li>
+<li><p><a class="reference internal" href="#querying-support-and-available-transmission-mediums" id="id13">Querying support and available transmission mediums</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#display-images-on-screen" id="id14">Display images on screen</a></p>
@@ -398,8 +400,8 @@ received. Finally, terminals must not display anything, until the entire sequenc
 received and validated.</p>
 </div>
 </div>
-<div class="section" id="detecting-available-transmission-mediums">
-<h3><a class="toc-backref" href="#id13">Detecting available transmission mediums</a><a class="headerlink" href="#detecting-available-transmission-mediums" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="querying-support-and-available-transmission-mediums">
+<h3><a class="toc-backref" href="#id13">Querying support and available transmission mediums</a><a class="headerlink" href="#querying-support-and-available-transmission-mediums" title="Permalink to this headline">¶</a></h3>
 <p>Since a client has no a-priori knowledge of whether it shares a filesystem/shared memory
 with the terminal emulator, it can send an id with the control data, using the <code class="docutils literal notranslate"><span class="pre">i</span></code> key
 (which can be an arbitrary positive integer up to 4294967295, it must not be zero).
@@ -422,6 +424,24 @@ image and do not want it stored by the terminal emulator. In that case, you can
 use the <em>query action</em>, set <code class="docutils literal notranslate"><span class="pre">a=q</span></code>. Then the terminal emulator will try to load
 the image and respond with either OK or an error, as above, but it will not
 replace an existing image with the same id, nor will it store the image.</p>
+<p>While as of May 2020, kitty is the only terminal emulator to support this
+graphics protocol, we intend that any terminal emulator that wishes to support
+it can. To check if a terminal emulator supports the graphics protocol the best way
+is to send the above <em>query action</em> followed by a request for the
+<cite>primary device attributes &lt;https://vt100.net/docs/vt510-rm/DA1.html&gt;</cite>. If you
+get back an answer for the device attributes without getting back an answer for
+the <em>query action</em> the terminal emulator does not support the graphics
+protocol.</p>
+<p>This means that terminal emulators that support the graphics protocol, <strong>must</strong>
+reply to <em>query actions</em> immediately without processing other input. Most
+terminal emulators handle input in a FIFO manner, anyway.</p>
+<p>So for example, you could send:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Gi</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">q</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">f</span><span class="o">=</span><span class="mi">24</span><span class="p">;</span><span class="o">&lt;</span><span class="n">NUL</span><span class="o">&gt;&lt;</span><span class="n">NUL</span><span class="o">&gt;&lt;</span><span class="n">NUL</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>If you get back a response to the graphics query, the terminal emulator supports
+the protocol, if you get back a response to the device attributes query without
+a response to the graphics query, it does not.</p>
 </div>
 </div>
 <div class="section" id="display-images-on-screen">
@@ -516,10 +536,10 @@ scrollback buffer. The values of the <code class="docutils literal notranslate">
 </tbody>
 </table>
 <p>Some examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\         <span class="c1"># delete all visible images</span>
-<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">10</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\    <span class="c1"># delete the image with id=10</span>
-<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span><span class="n">z</span><span class="o">=-</span><span class="mi">1</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\    <span class="c1"># delete the images with z-index -1, also freeing up image data</span>
-<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">P</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\ <span class="c1"># delete all images that intersect the cell at (3, 4)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\             <span class="c1"># delete all visible images</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">10</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\    <span class="c1"># delete the image with id=10, without freeing data</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span><span class="n">z</span><span class="o">=-</span><span class="mi">1</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\    <span class="c1"># delete the images with z-index -1, also freeing up image data</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\ <span class="c1"># delete all images that intersect the cell at (3, 4), without freeing data</span>
 </pre></div>
 </div>
 <div class="section" id="image-persistence-and-storage-quotas">

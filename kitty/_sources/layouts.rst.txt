@@ -46,10 +46,12 @@ Displays one (or optionally more) full height windows on the left half of the
 screen. Remaining windows are tiled vertically on the right half of the screen.
 There are options to control how the screen is split horizontally ``bias``
 (an integer between ``10`` and ``90``) and options to control how many
-full-height windows there are ``full_size`` (a positive integer).  The syntax
+full-height windows there are ``full_size`` (a positive integer). The
+``mirrored`` option when set to ``true`` will cause the short windows to be
+on the left side of the screen instead of the right. The syntax
 for the options is shown below::
 
-    enabled_layouts tall:bias=50;full_size=1
+    enabled_layouts tall:bias=50;full_size=1;mirrored=false
 
     ┌──────────────┬───────────────┐
     │              │               │
@@ -65,6 +67,13 @@ for the options is shown below::
     │              │               │
     └──────────────┴───────────────┘
 
+In addition, you can map keys to increase or decrease the number of full size
+windows, for example::
+
+   map ctrl+[ layout_action decrease_num_full_size_windows
+   map ctrl+] layout_action increase_num_full_size_windows
+
+
 The Fat Layout
 ----------------
 
@@ -72,10 +81,12 @@ Displays one (or optionally more) full width windows on the top half of the
 screen. Remaining windows are tiled horizontally on the bottom half of the screen.
 There are options to control how the screen is split vertically ``bias``
 (an integer between ``10`` and ``90``) and options to control how many
-full-height windows there are ``full_size`` (a positive integer).  The syntax
-for the options is shown below::
+full-height windows there are ``full_size`` (a positive integer). The
+``mirrored`` option when set to ``true`` will cause the narrow windows to be
+on the top of the screen instead of the bottom. The syntax for the options is
+shown below::
 
-    enabled_layouts fat:bias=50;full_size=1
+    enabled_layouts fat:bias=50;full_size=1;mirrored=false
 
     ┌──────────────────────────────┐
     │                              │
@@ -241,7 +252,7 @@ This will have ``2`` instead of a single tall window, that occupy ``70%``
 instead of ``50%`` of available width. ``bias`` can be any number between 10
 and 90.
 
-Writing a new layout only requires about a hundred lines of code, so if there
-is some layout you want, take a look at `layout.py
-<https://github.com/kovidgoyal/kitty/blob/master/kitty/layout.py>`_  and submit
-a pull request!
+Writing a new layout only requires about two hundred lines of code, so if there
+is some layout you want, take a look at one of the existing layouts in the
+`layout <https://github.com/kovidgoyal/kitty/tree/master/kitty/layout>`_
+package and submit a pull request!

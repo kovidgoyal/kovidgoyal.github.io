@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Documentation for the kitty remote control protocol &#8212; kitty 0.17.4 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation for the kitty remote control protocol &#8212; kitty 0.18.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -104,6 +105,7 @@ ga('send', 'pageview');
 <li><a class="reference internal" href="#set-spacing">set-spacing</a></li>
 <li><a class="reference internal" href="#set-tab-title">set-tab-title</a></li>
 <li><a class="reference internal" href="#set-window-title">set-window-title</a></li>
+<li><a class="reference internal" href="#signal-child">signal-child</a></li>
 </ul>
 
 </div><div class="relations">
@@ -495,11 +497,21 @@ The fields in the object for every command are documented below.</p>
 <h2>set-window-title<a class="headerlink" href="#set-window-title" title="Permalink to this headline">¶</a></h2>
 <p>Fields are:</p>
 <dl class="simple">
-<dt><code class="code docutils literal notranslate"><span class="pre">title</span> <span class="pre">(required)</span></code></dt><dd><p>The new title</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">title</span> <span class="pre">(optional)</span></code></dt><dd><p>The new title</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which windows to change the title in</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">temporary</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating if the change is temporary or permanent</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="signal-child">
+<h2>signal-child<a class="headerlink" href="#signal-child" title="Permalink to this headline">¶</a></h2>
+<p>Fields are:</p>
+<dl class="simple">
+<dt><code class="code docutils literal notranslate"><span class="pre">signals</span> <span class="pre">(optional)</span></code></dt><dd><p>The signals, a list of names, such as SIGTERM, SIGKILL, SIGUSR1, etc.</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which windows to change the title in</p>
 </dd>
 </dl>
 </div>

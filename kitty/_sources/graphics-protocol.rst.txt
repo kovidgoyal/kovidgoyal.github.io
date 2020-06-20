@@ -30,10 +30,11 @@ alpha-blending and text over graphics.
 
 Some programs that use the kitty graphics protocol:
 
- * `termpdf <https://github.com/dsanson/termpdf>`_ - a terminal PDF/DJVU/CBR viewer
+ * `termpdf.py <https://github.com/dsanson/termpdf.py>`_ - a terminal PDF/DJVU/CBR viewer
  * `ranger <https://github.com/ranger/ranger>`_ - a terminal file manager, with
    image previews, see this `PR <https://github.com/ranger/ranger/pull/1077>`_
  * :doc:`kitty-diff <kittens/diff>` - a side-by-side terminal diff program with support for images
+ * `pixcat <https://github.com/mirukana/pixcat>`_ - a third party CLI and python library that wraps the graphics protocol
  * `neofetch <https://github.com/dylanaraps/neofetch>`_ - A command line system
    information tool
 
@@ -262,8 +263,8 @@ received. Finally, terminals must not display anything, until the entire sequenc
 received and validated.
 
 
-Detecting available transmission mediums
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Querying support and available transmission mediums
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Since a client has no a-priori knowledge of whether it shares a filesystem/shared memory
 with the terminal emulator, it can send an id with the control data, using the ``i`` key
@@ -288,6 +289,27 @@ image and do not want it stored by the terminal emulator. In that case, you can
 use the *query action*, set ``a=q``. Then the terminal emulator will try to load
 the image and respond with either OK or an error, as above, but it will not
 replace an existing image with the same id, nor will it store the image.
+
+While as of May 2020, kitty is the only terminal emulator to support this
+graphics protocol, we intend that any terminal emulator that wishes to support
+it can. To check if a terminal emulator supports the graphics protocol the best way
+is to send the above *query action* followed by a request for the
+`primary device attributes <https://vt100.net/docs/vt510-rm/DA1.html>`. If you
+get back an answer for the device attributes without getting back an answer for
+the *query action* the terminal emulator does not support the graphics
+protocol.
+
+This means that terminal emulators that support the graphics protocol, **must**
+reply to *query actions* immediately without processing other input. Most
+terminal emulators handle input in a FIFO manner, anyway.
+
+So for example, you could send::
+
+      <ESC>_Gi=31,s=1,v=1,a=q,t=d,f=24;<NUL><NUL><NUL><ESC>\<ESC>[c
+
+If you get back a response to the graphics query, the terminal emulator supports
+the protocol, if you get back a response to the device attributes query without
+a response to the graphics query, it does not.
 
 
 Display images on screen
@@ -368,10 +390,10 @@ Value of ``d``       Meaning
 
 Some examples::
 
-    <ESC>_Ga=d<ESC>\         # delete all visible images
-    <ESC>_Ga=d,i=10<ESC>\    # delete the image with id=10
-    <ESC>_Ga=Z,z=-1<ESC>\    # delete the images with z-index -1, also freeing up image data
-    <ESC>_Ga=P,x=3,y=4<ESC>\ # delete all images that intersect the cell at (3, 4)
+    <ESC>_Ga=d<ESC>\             # delete all visible images
+    <ESC>_Ga=d,d=i,i=10<ESC>\    # delete the image with id=10, without freeing data
+    <ESC>_Ga=d,d=Z,z=-1<ESC>\    # delete the images with z-index -1, also freeing up image data
+    <ESC>_Ga=d,d=p,x=3,y=4<ESC>\ # delete all images that intersect the cell at (3, 4), without freeing data
 
 Image persistence and storage quotas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

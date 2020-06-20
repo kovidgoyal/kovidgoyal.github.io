@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Frequently Asked Questions &#8212; kitty 0.17.4 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions &#8212; kitty 0.18.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -108,7 +109,7 @@ ga('send', 'pageview');
   <div class="section" id="frequently-asked-questions">
 <h1><a class="toc-backref" href="#id1">Frequently Asked Questions</a><a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
+<p class="topic-title">Contents</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#frequently-asked-questions" id="id1">Frequently Asked Questions</a></p>
 <ul>
@@ -268,7 +269,7 @@ This means it is a strictly character cell based display.  As such it can use
 only monospace fonts, since every cell in the grid has to be the same size. If
 your font is not listed in <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">list-fonts</span></code> it means that it is not
 monospace. On Linux you can list all monospace fonts with:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>fc-list : family spacing <span class="p">|</span> grep -e <span class="nv">spacing</span><span class="o">=</span><span class="m">100</span> -e <span class="nv">spacing</span><span class="o">=</span><span class="m">90</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>fc-list : family spacing outline scalable <span class="p">|</span> grep -e <span class="nv">spacing</span><span class="o">=</span><span class="m">100</span> -e <span class="nv">spacing</span><span class="o">=</span><span class="m">90</span> <span class="p">|</span> grep -e <span class="nv">outline</span><span class="o">=</span>True <span class="p">|</span> grep -e <span class="nv">scalable</span><span class="o">=</span>True
 </pre></div>
 </div>
 <p>Note that the spacing property is calculated by fontconfig based on actual
@@ -305,13 +306,13 @@ see <a class="reference external" href="https://github.com/kovidgoyal/kitty/issu
 </div>
 <div class="section" id="how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program">
 <h2><a class="toc-backref" href="#id10">How do I map key presses in kitty to different keys in the terminal program?</a><a class="headerlink" href="#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program" title="Permalink to this headline">¶</a></h2>
-<p>This is accomplished by using <code class="docutils literal notranslate"><span class="pre">map</span></code> with <a class="reference internal" href="conf.html#shortcut-kitty.Send arbitrary text on key presses"><code class="xref std std-sc docutils literal notranslate"><span class="pre">send_text</span></code></a> in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.
+<p>This is accomplished by using <code class="docutils literal notranslate"><span class="pre">map</span></code> with <a class="reference internal" href="conf.html#shortcut-kitty.Send-arbitrary-text-on-key-presses"><code class="xref std std-sc docutils literal notranslate"><span class="pre">send_text</span></code></a> in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.
 For example:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>map alt+s send_text all <span class="se">\x</span><span class="m">13</span>
 </pre></div>
 </div>
-<p>This maps <kbd class="kbd docutils literal notranslate">alt+s</kbd> to <kbd class="kbd docutils literal notranslate">ctrl+s</kbd>. To figure out what bytes to use for
-the <a class="reference internal" href="conf.html#shortcut-kitty.Send arbitrary text on key presses"><code class="xref std std-sc docutils literal notranslate"><span class="pre">send_text</span></code></a> you can use the <code class="docutils literal notranslate"><span class="pre">showkey</span></code> utility. Run:</p>
+<p>This maps <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd></kbd> to <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd></kbd>. To figure out what bytes to use for
+the <a class="reference internal" href="conf.html#shortcut-kitty.Send-arbitrary-text-on-key-presses"><code class="xref std std-sc docutils literal notranslate"><span class="pre">send_text</span></code></a> you can use the <code class="docutils literal notranslate"><span class="pre">showkey</span></code> utility. Run:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>showkey -a
 </pre></div>
 </div>
@@ -322,7 +323,7 @@ available. The manual way to figure it out is:</p>
 <li><p>Look up your key's decimal value in the table at the bottom of <a class="reference external" href="http://ascii-table.com/ansi-escape-sequences.php">this
 page</a> or any
 ANSI escape sequence table. There are different modifiers for <kbd class="kbd docutils literal notranslate">ctrl</kbd>,
-<kbd class="kbd docutils literal notranslate">alt</kbd>, etc. For e.g., for <kbd class="kbd docutils literal notranslate">ctrl+s</kbd>, find the <code class="docutils literal notranslate"><span class="pre">S</span></code> row and look at
+<kbd class="kbd docutils literal notranslate">alt</kbd>, etc. For e.g., for <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd></kbd>, find the <code class="docutils literal notranslate"><span class="pre">S</span></code> row and look at
 the third column value, <code class="docutils literal notranslate"><span class="pre">19</span></code>.</p></li>
 <li><p>Convert the decimal value to hex with <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+runpy</span> <span class="pre">&quot;print(hex(19))&quot;</span></code>.
 This shows the hex value, <code class="docutils literal notranslate"><span class="pre">13</span></code> in this case.</p></li>
