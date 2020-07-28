@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom kittens &#8212; kitty 0.18.1 documentation</title>
+    <title>Custom kittens &#8212; kitty 0.18.2 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -152,7 +152,8 @@ that other kitty users have created.</p>
 <p>These will be available as the <code class="docutils literal notranslate"><span class="pre">args</span></code> parameter in the <code class="docutils literal notranslate"><span class="pre">main()</span></code> and
 <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> functions. Note also that the current working directory
 of the kitten is set to the working directory of whatever program is
-running in the active kitty window.</p>
+running in the active kitty window. The special argument <code class="docutils literal notranslate"><span class="pre">&#64;selection</span></code>
+is replaced by the currently selected text in the active kitty window.</p>
 </div>
 <div class="section" id="passing-the-contents-of-the-screen-to-the-kitten">
 <h2>Passing the contents of the screen to the kitten<a class="headerlink" href="#passing-the-contents-of-the-screen-to-the-kitten" title="Permalink to this headline">¶</a></h2>
@@ -176,7 +177,8 @@ function, telling kitty what kind of input your kitten would like. For example:<
 <code class="file docutils literal notranslate"><span class="pre">STDIN</span></code>. For text with formatting escape codes, use <code class="docutils literal notranslate"><span class="pre">ansi</span></code>
 instead. If you want line wrap markers as well, use <code class="docutils literal notranslate"><span class="pre">screen-ansi</span></code>
 or just <code class="docutils literal notranslate"><span class="pre">screen</span></code>. For the scrollback buffer as well, use
-<code class="docutils literal notranslate"><span class="pre">history</span></code>, <code class="docutils literal notranslate"><span class="pre">ansi-history</span></code> or <code class="docutils literal notranslate"><span class="pre">screen-history</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">history</span></code>, <code class="docutils literal notranslate"><span class="pre">ansi-history</span></code> or <code class="docutils literal notranslate"><span class="pre">screen-history</span></code>. To get
+the currently selected text, use <code class="docutils literal notranslate"><span class="pre">selection</span></code>.</p>
 </div>
 <div class="section" id="using-kittens-to-script-kitty-without-any-terminal-ui">
 <h2>Using kittens to script kitty, without any terminal UI<a class="headerlink" href="#using-kittens-to-script-kitty-without-any-terminal-ui" title="Permalink to this headline">¶</a></h2>

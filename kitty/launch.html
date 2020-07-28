@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Launching programs in new windows/tabs &#8212; kitty 0.18.1 documentation</title>
+    <title>Launching programs in new windows/tabs &#8212; kitty 0.18.2 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -107,7 +107,7 @@ ga('send', 'pageview');
   <div class="section" id="launching-programs-in-new-windows-tabs">
 <h1>Launching programs in new windows/tabs<a class="headerlink" href="#launching-programs-in-new-windows-tabs" title="Permalink to this headline">¶</a></h1>
 <p><em>kitty</em> has a <code class="code docutils literal notranslate"><span class="pre">launch</span></code> action that can be used to run arbitrary programs
-in news windows/tabs. It can be mapped to user defined shortcuts in kitty.conf.
+in new windows/tabs. It can be mapped to user defined shortcuts in kitty.conf.
 It is very powerful and allows sending the contents of
 the current window to the launched program, as well as many other options.</p>
 <p>In the simplest form, you can use it to open a new kitty window running the
@@ -250,9 +250,9 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">backg
 <dl class="std option">
 <dt id="cmdoption-launch-location">
 <code class="sig-name descname">--location</code><code class="sig-prename descclassname"> &lt;LOCATION&gt;</code><a class="headerlink" href="#cmdoption-launch-location" title="Permalink to this definition">¶</a></dt>
-<dd><p>Where to place the newly created window when it is added to a tab which already has existing windows in it. <code class="code docutils literal notranslate"><span class="pre">after</span></code> and <code class="code docutils literal notranslate"><span class="pre">before</span></code> place the new window before or after the active window. <code class="code docutils literal notranslate"><span class="pre">neighbor</span></code> is a synonym for <code class="code docutils literal notranslate"><span class="pre">after</span></code>. Also applies to creating a new tab, where the value of <code class="code docutils literal notranslate"><span class="pre">after</span></code> will cause the new tab to be placed next to the current tab instead of at the end. The values of <code class="code docutils literal notranslate"><span class="pre">vsplit</span></code> and <code class="code docutils literal notranslate"><span class="pre">hsplit</span></code> are only used by the <code class="code docutils literal notranslate"><span class="pre">splits</span></code> layout and control if the new window is placed in a vertical or horizontal split with the currently active window.
-Default: <code class="code docutils literal notranslate"><span class="pre">last</span></code>
-Choices: <code class="code docutils literal notranslate"><span class="pre">after,</span> <span class="pre">before,</span> <span class="pre">first,</span> <span class="pre">hsplit,</span> <span class="pre">last,</span> <span class="pre">neighbor,</span> <span class="pre">vsplit</span></code></p>
+<dd><p>Where to place the newly created window when it is added to a tab which already has existing windows in it. <code class="code docutils literal notranslate"><span class="pre">after</span></code> and <code class="code docutils literal notranslate"><span class="pre">before</span></code> place the new window before or after the active window. <code class="code docutils literal notranslate"><span class="pre">neighbor</span></code> is a synonym for <code class="code docutils literal notranslate"><span class="pre">after</span></code>. Also applies to creating a new tab, where the value of <code class="code docutils literal notranslate"><span class="pre">after</span></code> will cause the new tab to be placed next to the current tab instead of at the end. The values of <code class="code docutils literal notranslate"><span class="pre">vsplit</span></code> and <code class="code docutils literal notranslate"><span class="pre">hsplit</span></code> are only used by the <code class="code docutils literal notranslate"><span class="pre">splits</span></code> layout and control if the new window is placed in a vertical or horizontal split with the currently active window. The default is to place the window in a layout dependent manner, typically, after the currently active window.
+Default: <code class="code docutils literal notranslate"><span class="pre">default</span></code>
+Choices: <code class="code docutils literal notranslate"><span class="pre">after,</span> <span class="pre">before,</span> <span class="pre">default,</span> <span class="pre">first,</span> <span class="pre">hsplit,</span> <span class="pre">last,</span> <span class="pre">neighbor,</span> <span class="pre">vsplit</span></code></p>
 </dd></dl>
 
 <dl class="std option">
