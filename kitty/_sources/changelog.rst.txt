@@ -4,6 +4,27 @@ Changelog
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 To update |kitty|, :doc:`follow the instructions <binary>`.
 
+0.18.3 [2020-08-11]
+-------------------
+
+- hints kitten: Allow customizing hint colors (:pull:`2894`)
+
+- Wayland: Fix a typo in the previous release that broke reading mouse cursor size (:iss:`2895`)
+
+- Fix a regression in the previous release that could cause an exception during
+  startup in rare circumstances (:iss:`2896`)
+
+- Fix image leaving behind a black rectangle when switch away and back to
+  alternate screen (:iss:`2901`)
+
+- Fix one pixel mis-alignment of rounded corners when either the cell
+  dimensions or the thickness of the line is an odd number of pixels
+  (:iss:`2907`)
+
+- Fix a regression that broke specifying OS window size in the session file
+  (:iss:`2908`)
+
+
 0.18.2 [2020-07-28]
 --------------------
 
@@ -25,7 +46,7 @@ To update |kitty|, :doc:`follow the instructions <binary>`.
 - When a character from the Unicode Dingbat block is followed by a space, use
   the extra space to render a larger version of the character (:iss:`2850`)
 
-- macOS: Fix the LC_TYPE env var being set to UTF-8 on systems in which the
+- macOS: Fix the LC_CTYPE env var being set to UTF-8 on systems in which the
   language and country code do not form a valid locale (:iss:`1233`)
 
 - macOS: Fix :kbd:`cmd+plus` not changing font size (:iss:`2839`)

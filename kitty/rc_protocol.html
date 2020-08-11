@@ -4,8 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation for the kitty remote control protocol &#8212; kitty 0.18.2 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation for the kitty remote control protocol &#8212; kitty 0.18.3 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -135,18 +135,18 @@ form:</p>
 </div>
 <p>Where <code class="docutils literal notranslate"><span class="pre">&lt;ESC&gt;</span></code> is the byte <code class="docutils literal notranslate"><span class="pre">0x1b</span></code>. The JSON object has the form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s1">&#39;cmd&#39;</span><span class="p">:</span> <span class="s2">&quot;command name&quot;</span><span class="p">,</span>
-    <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s2">&quot;kitty version&quot;</span><span class="p">,</span>
-    <span class="s1">&#39;no_response&#39;</span><span class="p">:</span> <span class="n">Optional</span> <span class="n">Boolean</span><span class="p">,</span>
-    <span class="s1">&#39;payload&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Optional</span> <span class="n">JSON</span> <span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;cmd&quot;</span><span class="p">:</span> <span class="s2">&quot;command name&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">kitty</span> <span class="n">version</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;no_response&quot;</span><span class="p">:</span> <span class="n">Optional</span> <span class="n">Boolean</span><span class="p">,</span>
+    <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Optional</span> <span class="n">JSON</span> <span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">version</span></code> above is a string of the form <code class="code docutils literal notranslate"><span class="pre">0.14.2</span></code>. If you are developing a
+<p>The <code class="docutils literal notranslate"><span class="pre">version</span></code> above is an array of the form <code class="code docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">14,</span> <span class="pre">2]</span></code>. If you are developing a
 standalone client, use the kitty version that you are developing against. Using
 a version greater than the version of the kitty instance you are talking to,
 will cause a failure.</p>
-<p>Set <code class="docutils literal notranslate"><span class="pre">no_response</span></code> to True if you don’t want a response from kitty.</p>
+<p>Set <code class="docutils literal notranslate"><span class="pre">no_response</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> if you don’t want a response from kitty.</p>
 <p>The optional payload is a JSON object that is specific to the actual command being sent.
 The fields in the object for every command are documented below.</p>
 <div class="section" id="close-tab">
