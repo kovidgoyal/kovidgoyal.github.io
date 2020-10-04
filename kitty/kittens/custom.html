@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Custom kittens &#8212; kitty 0.18.3 documentation</title>
+    <title>Custom kittens &#8212; kitty 0.19.0 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -231,8 +231,8 @@ or <code class="docutils literal notranslate"><span class="pre">MOVE</span></cod
 of <code class="docutils literal notranslate"><span class="pre">SHIFT</span></code>, <code class="docutils literal notranslate"><span class="pre">CONTROL</span></code> or <code class="docutils literal notranslate"><span class="pre">ALT</span></code>. All the mentioned constants are imported
 from <code class="docutils literal notranslate"><span class="pre">kitty.fast_data_types</span></code>.</p>
 <p>For example, to send a left click at position x: 2, y: 3 to the active window:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kitty.fast_data_types</span> <span class="kn">import</span> <span class="n">send_mouse_event</span><span class="p">,</span> <span class="n">GLFW_MOUSE_BUTTON_LEFT</span><span class="p">,</span> <span class="n">PRESS</span>
-<span class="n">send_mouse_event</span><span class="p">(</span><span class="n">boss</span><span class="o">.</span><span class="n">active_window</span><span class="o">.</span><span class="n">screen</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">GLFW_MOUSE_BUTTON_LEFT</span><span class="p">,</span> <span class="n">PRESS</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kitty.fast_data_types</span> <span class="kn">import</span> <span class="n">send_mouse_event</span><span class="p">,</span> <span class="n">PRESS</span>
+<span class="n">send_mouse_event</span><span class="p">(</span><span class="n">boss</span><span class="o">.</span><span class="n">active_window</span><span class="o">.</span><span class="n">screen</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">PRESS</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The function will only send the event if the program is receiving events of

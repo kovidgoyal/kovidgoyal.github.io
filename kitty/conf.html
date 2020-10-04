@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Configuring kitty &#8212; kitty 0.18.3 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.19.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -261,13 +261,13 @@ Stylistic Sets which have the tags <code class="code docutils literal notranslat
 family. This allows you to define very precise feature settings; e.g. you can
 disable a feature in the italic font but not in the regular font.</p>
 <p>To get the PostScript name for a font, use <code class="code docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+</span> <span class="pre">list-fonts</span> <span class="pre">--psnames</span></code>:</p>
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="nv">kitty</span><span class="w"> </span><span class="s">+ list-fonts --psnames | grep Fira</span><span class="w"></span>
-<span class="nv">Fira</span><span class="w"> </span><span class="s">Code</span><span class="w"></span>
-<span class="nv">Fira</span><span class="w"> </span><span class="s">Code Bold (FiraCode-Bold)</span><span class="w"></span>
-<span class="nv">Fira</span><span class="w"> </span><span class="s">Code Light (FiraCode-Light)</span><span class="w"></span>
-<span class="nv">Fira</span><span class="w"> </span><span class="s">Code Medium (FiraCode-Medium)</span><span class="w"></span>
-<span class="nv">Fira</span><span class="w"> </span><span class="s">Code Regular (FiraCode-Regular)</span><span class="w"></span>
-<span class="nv">Fira</span><span class="w"> </span><span class="s">Code Retina (FiraCode-Retina)</span><span class="w"></span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ kitty + list-fonts --psnames <span class="p">|</span> grep Fira
+Fira Code
+Fira Code Bold <span class="o">(</span>FiraCode-Bold<span class="o">)</span>
+Fira Code Light <span class="o">(</span>FiraCode-Light<span class="o">)</span>
+Fira Code Medium <span class="o">(</span>FiraCode-Medium<span class="o">)</span>
+Fira Code Regular <span class="o">(</span>FiraCode-Regular<span class="o">)</span>
+Fira Code Retina <span class="o">(</span>FiraCode-Retina<span class="o">)</span>
 </pre></div>
 </div>
 <p>The part in brackets is the PostScript name.</p>
@@ -385,8 +385,8 @@ inactivity.  Set to zero to never stop blinking.</p>
 </div>
 <p>Number of lines of history to keep in memory for scrolling back. Memory is allocated
 on demand. Negative numbers are (effectively) infinite scrollback. Note that using
-very large scrollback is not recommended as it can slow down resizing of the terminal
-and also use large amounts of RAM.</p>
+very large scrollback is not recommended as it can slow down performance of the terminal
+and also use large amounts of RAM. Instead, consider using <a class="reference internal" href="#opt-kitty.scrollback_pager_history_size"><code class="xref std std-opt docutils literal notranslate"><span class="pre">scrollback_pager_history_size</span></code></a>.</p>
 <dl class="std opt">
 <dt id="opt-kitty.scrollback_pager">
 <code class="sig-name descname">scrollback_pager</code><a class="headerlink" href="#opt-kitty.scrollback_pager" title="Permalink to this definition">¶</a></dt>
@@ -412,9 +412,9 @@ will be replaced by the current cursor position.</p>
 <p>Separate scrollback history size, used only for browsing the scrollback buffer (in MB).
 This separate buffer is not available for interactive scrolling but will be
 piped to the pager program when viewing scrollback buffer in a separate window.
-The current implementation stores one character in 4 bytes, so approximatively
-2500 lines per megabyte at 100 chars per line. A value of zero or less disables
-this feature. The maximum allowed size is 4GB.</p>
+The current implementation stores the data in UTF-8, so approximatively
+10000 lines per megabyte at 100 chars per line, for pure ASCII text, unformatted text.
+A value of zero or less disables this feature. The maximum allowed size is 4GB.</p>
 <dl class="std opt">
 <dt id="opt-kitty.wheel_scroll_multiplier">
 <code class="sig-name descname">wheel_scroll_multiplier</code><a class="headerlink" href="#opt-kitty.wheel_scroll_multiplier" title="Permalink to this definition">¶</a></dt>
@@ -727,11 +727,14 @@ for vertical resizing.</p>
 <code class="sig-name descname">window_border_width</code><a class="headerlink" href="#opt-kitty.window_border_width" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">window_border_width</span><span class="w"> </span><span class="mf">1.0</span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">window_border_width</span><span class="w"> </span><span class="mi">0</span><span class="mf">.5</span><span class="s">pt</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The width (in pts) of window borders. Will be rounded to the nearest number of pixels based on screen resolution.
-Note that borders are displayed only when more than one window is visible. They are meant to separate multiple windows.</p>
+<p>The width of window borders. Can be either in pixels (px) or pts (pt). Values
+in pts will be rounded to the nearest number of pixels based on screen
+resolution. If not specified the unit is assumed to be pts.
+Note that borders are displayed only when more than one window
+is visible. They are meant to separate multiple windows.</p>
 <dl class="std opt">
 <dt id="opt-kitty.draw_minimal_borders">
 <code class="sig-name descname">draw_minimal_borders</code><a class="headerlink" href="#opt-kitty.draw_minimal_borders" title="Permalink to this definition">¶</a></dt>
@@ -959,6 +962,16 @@ entries to this list.</p>
 </pre></div>
 </div>
 <p>The separator between tabs in the tab bar when using <code class="code docutils literal notranslate"><span class="pre">separator</span></code> as the <a class="reference internal" href="#opt-kitty.tab_bar_style"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_bar_style</span></code></a>.</p>
+<dl class="std opt">
+<dt id="opt-kitty.tab_activity_symbol">
+<code class="sig-name descname">tab_activity_symbol</code><a class="headerlink" href="#opt-kitty.tab_activity_symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_activity_symbol</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Some text or a unicode symbol to show on the tab if a window in the tab that does
+not have focus has some activity.</p>
 <dl class="std opt">
 <dt id="opt-kitty.tab_title_template">
 <code class="sig-name descname">tab_title_template</code><a class="headerlink" href="#opt-kitty.tab_title_template" title="Permalink to this definition">¶</a></dt>
@@ -1393,6 +1406,18 @@ for clipboard concatenation. The default is to allow writing to the
 clipboard and primary selection with concatenation enabled. Note
 that enabling the read functionality is a security risk as it means that any
 program, even one running on a remote server via SSH can read your clipboard.</p>
+<dl class="std opt">
+<dt id="opt-kitty.allow_hyperlinks">
+<code class="sig-name descname">allow_hyperlinks</code><a class="headerlink" href="#opt-kitty.allow_hyperlinks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">allow_hyperlinks</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Process hyperlink (OSC 8) escape sequences. If disabled OSC 8 escape
+sequences are ignored. Otherwise they become clickable links, that you
+can click by holding down ctrl+shift and clicking with the mouse. The special
+value of <code class="docutils literal notranslate"><span class="pre">ask</span></code> means that kitty will ask before opening the link.</p>
 <dl class="std opt">
 <dt id="opt-kitty.term">
 <code class="sig-name descname">term</code><a class="headerlink" href="#opt-kitty.term" title="Permalink to this definition">¶</a></dt>
@@ -2113,6 +2138,15 @@ Useful with git, which uses sha1 hashes to identify commits</p>
 </div>
 <p>Select something that looks like <code class="code docutils literal notranslate"><span class="pre">filename:linenum</span></code> and open it in vim at
 the specified line number.</p>
+<dl class="std shortcut">
+<dt id="shortcut-kitty.Open-the-selected-hyperlink">
+<span id="shortcut-kitty.Open the selected hyperlink"></span><code class="sig-name descname">Open the selected hyperlink</code><a class="headerlink" href="#shortcut-kitty.Open-the-selected-hyperlink" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+p&gt;y</span><span class="w"> </span><span class="nf">kitten</span><span class="w"> </span><span class="s">hints --type hyperlink</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Select a hyperlink (i.e. a URL that has been marked as such by the terminal program, for example, by ls –hyperlink=auto).</p>
 <p>The hints kitten has many more modes of operation that you can map to different
 shortcuts. For a full description see <a class="reference internal" href="kittens/hints.html"><span class="doc">Hints</span></a>.</p>
 </div>

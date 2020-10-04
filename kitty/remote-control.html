@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Controlling kitty from scripts or the shell &#8212; kitty 0.18.3 documentation</title>
+    <title>Controlling kitty from scripts or the shell &#8212; kitty 0.19.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -675,7 +675,7 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">backg
 <dl class="std option">
 <dt id="cmdoption-kitty-launch-copy-env">
 <code class="sig-name descname">--copy-env</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-launch-copy-env" title="Permalink to this definition">¶</a></dt>
-<dd><p>Copy the environment variables from the currently active window into the newly launched child process.</p>
+<dd><p>Copy the environment variables from the currently active window into the newly launched child process. Note that most shells only set environment variables for child processes, so this will only copy the environment variables that the shell process itself has not the environment variables child processes inside the shell see. To copy that enviroment, use the kitty remote control feature with <code class="code docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;launch</span> <span class="pre">--copy-env</span></code>.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -695,7 +695,7 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">after
 <dl class="std option">
 <dt id="cmdoption-kitty-launch-stdin-source">
 <code class="sig-name descname">--stdin-source</code><code class="sig-prename descclassname"> &lt;STDIN_SOURCE&gt;</code><a class="headerlink" href="#cmdoption-kitty-launch-stdin-source" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pass the screen contents as <code class="code docutils literal notranslate"><span class="pre">STDIN</span></code> to the child process. &#64;selection is the currently selected text. &#64;screen is the contents of the currently active window. &#64;screen_scrollback is the same as &#64;screen, but includes the scrollback buffer as well. &#64;alternate is the secondary screen of the current active window. For example if you run a full screen terminal application, the secondary screen will be the screen you return to when quitting the application.
+<dd><p>Pass the screen contents as <code class="code docutils literal notranslate"><span class="pre">STDIN</span></code> to the child process. <code class="code docutils literal notranslate"><span class="pre">&#64;selection</span></code> is the currently selected text. <code class="code docutils literal notranslate"><span class="pre">&#64;screen</span></code> is the contents of the currently active window. <code class="code docutils literal notranslate"><span class="pre">&#64;screen_scrollback</span></code> is the same as <code class="code docutils literal notranslate"><span class="pre">&#64;screen</span></code>, but includes the scrollback buffer as well. <code class="code docutils literal notranslate"><span class="pre">&#64;alternate</span></code> is the secondary screen of the current active window. For example if you run a full screen terminal application, the secondary screen will be the screen you return to when quitting the application.
 Default: <code class="code docutils literal notranslate"><span class="pre">none</span></code>
 Choices: <code class="code docutils literal notranslate"><span class="pre">&#64;alternate,</span> <span class="pre">&#64;alternate_scrollback,</span> <span class="pre">&#64;screen,</span> <span class="pre">&#64;screen_scrollback,</span> <span class="pre">&#64;selection,</span> <span class="pre">none</span></code></p>
 </dd></dl>
@@ -733,7 +733,7 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">&#64;
 <dl class="std option">
 <dt id="cmdoption-kitty-launch-watcher">
 <span id="cmdoption-kitty-launch-w"></span><code class="sig-name descname">--watcher</code><code class="sig-prename descclassname"> &lt;WATCHER&gt;</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">-w</code><code class="sig-prename descclassname"> &lt;WATCHER&gt;</code><a class="headerlink" href="#cmdoption-kitty-launch-watcher" title="Permalink to this definition">¶</a></dt>
-<dd><p>Path to a python file. Appropriately named functions in this file will be called for various events, such as when the window is resized or closed. See the section on watchers in the launch command documentation <a class="reference internal" href="launch.html"><span class="doc">Launching programs in new windows/tabs</span></a>. Relative paths are resolved relative to the kitty config directory.</p>
+<dd><p>Path to a python file. Appropriately named functions in this file will be called for various events, such as when the window is resized, focused or closed. See the section on watchers in the launch command documentation <a class="reference internal" href="launch.html"><span class="doc">Launching programs in new windows/tabs</span></a>. Relative paths are resolved relative to the kitty config directory.</p>
 </dd></dl>
 
 </div>

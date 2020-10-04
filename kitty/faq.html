@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frequently Asked Questions &#8212; kitty 0.18.3 documentation</title>
+    <title>Frequently Asked Questions &#8212; kitty 0.19.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -87,6 +87,7 @@ ga('send', 'pageview');
 <li><a class="reference internal" href="#kitty-is-not-able-to-use-my-favorite-font">kitty is not able to use my favorite font?</a></li>
 <li><a class="reference internal" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal">How can I assign a single global shortcut to bring up the kitty terminal?</a></li>
 <li><a class="reference internal" href="#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program">How do I map key presses in kitty to different keys in the terminal program?</a></li>
+<li><a class="reference internal" href="#i-am-using-tmux-and-have-a-problem">I am using tmux and have a problem</a></li>
 </ul>
 
 </div><div class="relations">
@@ -122,6 +123,7 @@ ga('send', 'pageview');
 <li><p><a class="reference internal" href="#kitty-is-not-able-to-use-my-favorite-font" id="id8">kitty is not able to use my favorite font?</a></p></li>
 <li><p><a class="reference internal" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal" id="id9">How can I assign a single global shortcut to bring up the kitty terminal?</a></p></li>
 <li><p><a class="reference internal" href="#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program" id="id10">How do I map key presses in kitty to different keys in the terminal program?</a></p></li>
+<li><p><a class="reference internal" href="#i-am-using-tmux-and-have-a-problem" id="id11">I am using tmux and have a problem</a></p></li>
 </ul>
 </li>
 </ul>
@@ -330,6 +332,25 @@ This shows the hex value, <code class="docutils literal notranslate"><span class
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">\x(hexval)</span></code> in your <code class="docutils literal notranslate"><span class="pre">send_text</span></code> command in kitty. So in this example, <code class="docutils literal notranslate"><span class="pre">\x13</span></code></p></li>
 </ol>
 </div></blockquote>
+</div>
+<div class="section" id="i-am-using-tmux-and-have-a-problem">
+<h2><a class="toc-backref" href="#id11">I am using tmux and have a problem</a><a class="headerlink" href="#i-am-using-tmux-and-have-a-problem" title="Permalink to this headline">¶</a></h2>
+<p>First, terminal multiplexers are <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/391#issuecomment-638320745">a bad idea</a>, do
+not use them, if at all possible. kitty contains features that do all of what
+tmux does, but better, with the exception of remote persistence (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/391">#391</a>).
+If you still want to use tmux, read on.</p>
+<p>Image display will not work, see <a class="reference external" href="https://github.com/tmux/tmux/issues/1391">tmux issue</a>.</p>
+<p>If you are using tmux with multiple terminals or you start it under one
+terminal and then switch to another and these terminals have different TERM
+variables, tmux will break. You will need to restart it as tmux does not
+support multiple terminfo definitions.</p>
+<p>Copying to clipboard via OSC 52 will not work, because tmux does not support
+the extended version of that protocol, you will need to add <code class="docutils literal notranslate"><span class="pre">no-append</span></code> to
+<a class="reference internal" href="conf.html#opt-kitty.clipboard_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">clipboard_control</span></code></a> in kitty.conf.</p>
+<p>If you use any of the advanced features that kitty has innovated, such as
+styled underlines, desktop notifications, extended keyboard support, etc.
+they may or may not work, depending on the whims of tmux's maintainer, your
+version of tmux, etc.</p>
 </div>
 </div>
 

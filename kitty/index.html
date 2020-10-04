@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>kitty - the fast, featureful, GPU based terminal emulator &#8212; kitty 0.18.3 documentation</title>
+    <title>kitty - the fast, featureful, GPU based terminal emulator &#8212; kitty 0.19.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -119,9 +119,10 @@ ga('send', 'pageview');
 <ul class="simple">
 <li><p>Offloads rendering to the GPU for <a class="reference internal" href="performance.html"><span class="doc">lower system load</span></a> and
 buttery smooth scrolling.  Uses threaded rendering to minimize input latency.</p></li>
-<li><p>Supports all modern terminal features: <a class="reference internal" href="graphics-protocol.html"><span class="doc">graphics (images)</span></a>, unicode, true-color, OpenType ligatures, mouse
-protocol, focus tracking, <a class="reference external" href="https://cirw.in/blog/bracketed-paste">bracketed paste</a> and several <a class="reference internal" href="protocol-extensions.html"><span class="doc">new terminal
-protocol extensions</span></a>.</p></li>
+<li><p>Supports all modern terminal features: <a class="reference internal" href="graphics-protocol.html"><span class="doc">graphics (images)</span></a>, unicode, <a class="reference external" href="https://gist.github.com/XVilka/8346728">true-color</a>,
+OpenType ligatures, mouse protocol, <a class="reference internal" href="open_actions.html"><span class="doc">hyperlinks</span></a>,
+focus tracking, <a class="reference external" href="https://cirw.in/blog/bracketed-paste">bracketed paste</a>
+and several <a class="reference internal" href="protocol-extensions.html"><span class="doc">new terminal protocol extensions</span></a>.</p></li>
 <li><p>Supports tiling multiple terminal windows side by side in different
 <a class="reference internal" href="#layouts"><span class="std std-ref">layouts</span></a> without needing to use an extra program like tmux</p></li>
 <li><p>Can be <a class="reference internal" href="remote-control.html"><span class="doc">controlled from scripts or the shell prompt</span></a>,
@@ -556,6 +557,15 @@ For example:</p>
 <span class="c1"># Make the current window the active (focused) window</span>
 <span class="nf">focus</span>
 <span class="nf">launch</span><span class="l"> emacs</span>
+
+<span class="c1"># Add a watcher that will be called with various events that occur</span>
+<span class="c1"># on all subsequent windows. See the documentation of the launch command</span>
+<span class="c1"># for details on watchers.</span>
+<span class="nf">watcher</span><span class="l"> /some/python/file.py</span>
+<span class="nf">launch</span><span class="l"> mpd</span>
+<span class="nf">launch</span><span class="l"> irssi</span>
+<span class="c1"># Remove the watcher for further windows</span>
+<span class="nf">watcher</span><span class="l"> clear</span>
 </pre></div>
 </div>
 </div>

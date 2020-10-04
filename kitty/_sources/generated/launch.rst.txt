@@ -46,7 +46,7 @@ ______________________________
 
 .. option:: --copy-env
 
-    Copy the environment variables from the currently active window into the newly launched child process.
+    Copy the environment variables from the currently active window into the newly launched child process. Note that most shells only set environment variables for child processes, so this will only copy the environment variables that the shell process itself has not the environment variables child processes inside the shell see. To copy that enviroment, use the kitty remote control feature with :code:`kitty @launch --copy-env`.
 
 .. option:: --location <LOCATION>
 
@@ -60,7 +60,7 @@ ______________________________
 
 .. option:: --stdin-source <STDIN_SOURCE>
 
-    Pass the screen contents as :code:`STDIN` to the child process. @selection is the currently selected text. @screen is the contents of the currently active window. @screen_scrollback is the same as @screen, but includes the scrollback buffer as well. @alternate is the secondary screen of the current active window. For example if you run a full screen terminal application, the secondary screen will be the screen you return to when quitting the application.
+    Pass the screen contents as :code:`STDIN` to the child process. :code:`@selection` is the currently selected text. :code:`@screen` is the contents of the currently active window. :code:`@screen_scrollback` is the same as :code:`@screen`, but includes the scrollback buffer as well. :code:`@alternate` is the secondary screen of the current active window. For example if you run a full screen terminal application, the secondary screen will be the screen you return to when quitting the application.
     Default: :code:`none`
     Choices: :code:`@alternate, @alternate_scrollback, @screen, @screen_scrollback, @selection, none`
 
@@ -86,4 +86,4 @@ ______________________________
 
 .. option:: --watcher <WATCHER>, -w <WATCHER>
 
-    Path to a python file. Appropriately named functions in this file will be called for various events, such as when the window is resized or closed. See the section on watchers in the launch command documentation :doc:`launch`. Relative paths are resolved relative to the kitty config directory.
+    Path to a python file. Appropriately named functions in this file will be called for various events, such as when the window is resized, focused or closed. See the section on watchers in the launch command documentation :doc:`launch`. Relative paths are resolved relative to the kitty config directory.

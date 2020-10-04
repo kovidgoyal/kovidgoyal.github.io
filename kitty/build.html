@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Building kitty from source &#8212; kitty 0.18.3 documentation</title>
+    <title>Building kitty from source &#8212; kitty 0.19.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -115,6 +115,7 @@ the following dependencies are installed first.</p>
 <li><p>harfbuzz &gt;= 1.5.0</p></li>
 <li><p>zlib</p></li>
 <li><p>libpng</p></li>
+<li><p>liblcms2</p></li>
 <li><p>freetype (not needed on macOS)</p></li>
 <li><p>fontconfig (not needed on macOS)</p></li>
 <li><p>libcanberra (not needed on macOS)</p></li>
@@ -159,14 +160,23 @@ just <code class="docutils literal notranslate"><span class="pre">kitty</span></
 <p>This <code class="file docutils literal notranslate"><span class="pre">kitty.app</span></code> unlike the released one does not include its own copy of
 python and the other dependencies. So if you ever un-install/upgrade those dependencies
 you might have to rebuild the app.</p>
-<p>Note that the released <code class="file docutils literal notranslate"><span class="pre">kitty.dmg</span></code> includes all dependencies, unlike the
-<code class="file docutils literal notranslate"><span class="pre">kitty.app</span></code> built above and is built automatically by using the <code class="file docutils literal notranslate"><span class="pre">kitty</span></code> branch of
-<a class="reference external" href="https://github.com/kovidgoyal/build-calibre">build-calibre</a> however, that
-is designed to run on Linux and is not for the faint of heart.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The released <code class="file docutils literal notranslate"><span class="pre">kitty.dmg</span></code> includes all dependencies, unlike the
+<code class="file docutils literal notranslate"><span class="pre">kitty.app</span></code> built above and is built automatically by using the
+<code class="file docutils literal notranslate"><span class="pre">kitty</span></code> branch of <a class="reference external" href="https://github.com/kovidgoyal/build-calibre">build-calibre</a> however, that is designed to
+run on Linux and is not for the faint of heart.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Apple disallows certain functionality, such as notifications for unsigned applications.
+If you need this functionality, you can try signing the built kitty.app with
+a self signed certificate, see for example, <a class="reference external" href="https://stackoverflow.com/questions/27474751/how-can-i-codesign-an-app-without-being-in-the-mac-developer-program/27474942">here</a>.</p>
+</div>
 </div>
 <div class="section" id="note-for-linux-macos-packagers">
 <h2>Note for Linux/macOS packagers<a class="headerlink" href="#note-for-linux-macos-packagers" title="Permalink to this headline">¶</a></h2>
-<p>The released <em>kitty</em> source code is available as a <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases/download/v0.18.3/kitty-0.18.3.tar.xz">tarball</a> from
+<p>The released <em>kitty</em> source code is available as a <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases/download/v0.19.0/kitty-0.19.0.tar.xz">tarball</a> from
 <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases">the GitHub releases page</a>.</p>
 <p>While <em>kitty</em> does use python, it is not a traditional python package, so please
 do not install it in site-packages.
