@@ -20,14 +20,16 @@
     <link rel="next" title="Documentation for the kitty remote control protocol" href="rc_protocol.html" />
     <link rel="prev" title="Working with the screen and history buffer contents" href="pipe.html" />
 
-<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-20736318-2"></script>
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-20736318-2', 'auto');
-ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-20736318-2');
 </script>
-<script async="async" src='https://www.google-analytics.com/analytics.js'></script>
-<!-- End Google Analytics -->
+
   
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -337,7 +339,7 @@ the defunct
 <p>Here <code class="docutils literal notranslate"><span class="pre">&lt;OSC&gt;</span></code> is <code class="code docutils literal notranslate"><span class="pre">&lt;ESC&gt;]</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;terminator&gt;</span></code> is
 <code class="code docutils literal notranslate"><span class="pre">&lt;ESC&gt;&lt;backslash&gt;</span></code>.  The metadata is a section of colon separated
 <code class="code docutils literal notranslate"><span class="pre">key=value</span></code> pairs. Every key must be a single character from the set
-<code class="code docutils literal notranslate"><span class="pre">[a-zA-Z]</span></code> and every value must be a word consisting of characters from
+<code class="code docutils literal notranslate"><span class="pre">a-zA-Z</span></code> and every value must be a word consisting of characters from
 the set <code class="code docutils literal notranslate"><span class="pre">a-zA-Z0-9-_/\+.,(){}[]*&amp;^%$#&#64;!`~</span></code>. The payload must be
 interpreted based on the metadata section. The two semi-colons <em>must</em> always be
 present even when no metadata is present.</p>
