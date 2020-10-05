@@ -334,12 +334,13 @@ the defunct
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">OSC</span><span class="o">&gt;</span> <span class="mi">99</span> <span class="p">;</span> <span class="n">metadata</span> <span class="p">;</span> <span class="n">payload</span> <span class="o">&lt;</span><span class="n">terminator</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Here <code class="docutils literal notranslate"><span class="pre">&lt;OSC&gt;</span></code> is <code class="code docutils literal notranslate"><span class="pre">&lt;ESC&gt;]</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;terminator&gt;</span></code> is <code class="code docutils literal notranslate"><span class="pre">&lt;ESC&gt;&lt;backslash&gt;</span></code>.  The
-metadata is a section of colon separated <code class="code docutils literal notranslate"><span class="pre">key=value</span></code> pairs. Every key
-must be a single character from the set <code class="code docutils literal notranslate"><span class="pre">[a-zA-Z]</span></code> and every value must
-be a character from the set <code class="code docutils literal notranslate"><span class="pre">a-zA-Z0-9-_/\+.,(){}[]*&amp;^%$#&#64;!`~</span></code>. The
-payload must be interpreted based on the metadata section. The two semi-colons
-<em>must</em> always be present even when no metadata is present.</p>
+<p>Here <code class="docutils literal notranslate"><span class="pre">&lt;OSC&gt;</span></code> is <code class="code docutils literal notranslate"><span class="pre">&lt;ESC&gt;]</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;terminator&gt;</span></code> is
+<code class="code docutils literal notranslate"><span class="pre">&lt;ESC&gt;&lt;backslash&gt;</span></code>.  The metadata is a section of colon separated
+<code class="code docutils literal notranslate"><span class="pre">key=value</span></code> pairs. Every key must be a single character from the set
+<code class="code docutils literal notranslate"><span class="pre">[a-zA-Z]</span></code> and every value must be a word consisting of characters from
+the set <code class="code docutils literal notranslate"><span class="pre">a-zA-Z0-9-_/\+.,(){}[]*&amp;^%$#&#64;!`~</span></code>. The payload must be
+interpreted based on the metadata section. The two semi-colons <em>must</em> always be
+present even when no metadata is present.</p>
 <p>Before going into details, lets see how one can display a simple, single line
 notification from a shell script:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span> <span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">]99;;Hello world</span><span class="se">\x1b\\</span><span class="s1">&#39;</span>
@@ -377,7 +378,7 @@ was activated. This is controlled by the <code class="docutils literal notransla
 separated set of values, <code class="docutils literal notranslate"><span class="pre">report</span></code> and <code class="docutils literal notranslate"><span class="pre">focus</span></code>. The value <code class="docutils literal notranslate"><span class="pre">focus</span></code> means
 focus the window from which the notification was issued and is the default.
 <code class="docutils literal notranslate"><span class="pre">report</span></code> means send an escape code back to the application. The format of the
-escape code is:</p>
+returned escape code is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">OSC</span><span class="o">&gt;</span> <span class="mi">99</span> <span class="p">;</span> <span class="n">i</span><span class="o">=</span><span class="n">identifier</span> <span class="p">;</span> <span class="o">&lt;</span><span class="n">terminator</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -401,7 +402,7 @@ to display it based on what it does understand.</p>
 the notification, however, given that some platforms, such as macOS, dont
 allow displaying custom icons on a notification, at all, it was decided to
 leave it out of the spec for the time being.</p>
-<p>Similarly, features such a scheduled notifications could be added in future
+<p>Similarly, features such as scheduled notifications could be added in future
 revisions.</p>
 </div>
 <table class="docutils align-default">
