@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hyperlinked grep &#8212; kitty 0.19.0 documentation</title>
+    <title>Hyperlinked grep &#8212; kitty 0.19.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -129,8 +129,14 @@ you use some editor other than vim, you should adjust the
 </pre></div>
 </div>
 <p>If you want to enable completion, for the kitten, you can delegate completion
-to rg. For ZSH, you do that with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">compdef</span> <span class="n">_rg</span> <span class="n">kitty</span> <span class="o">+</span><span class="n">kitten</span> <span class="n">hyperlinked_grep</span>
+to rg. For that, instead of using an alias create a simple wrapper script named
+<code class="file docutils literal notranslate"><span class="pre">hg</span></code> somewhere in your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<span class="nb">exec</span> kitty +kitten hyperlinked_grep <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Then, for example, for ZSH, add the following to <code class="file docutils literal notranslate"><span class="pre">.zshrc</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">compdef</span> <span class="n">_rg</span> <span class="n">hg</span>
 </pre></div>
 </div>
 <p>To learn more about kitty's powerful framework for customizing URL click
