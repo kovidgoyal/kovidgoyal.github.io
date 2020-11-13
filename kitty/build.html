@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Building kitty from source &#8212; kitty 0.19.1 documentation</title>
+    <title>Building kitty from source &#8212; kitty 0.19.2 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -83,6 +83,7 @@
 <li><a class="reference internal" href="#dependencies">Dependencies</a></li>
 <li><a class="reference internal" href="#install-and-run-from-source">Install and run from source</a></li>
 <li><a class="reference internal" href="#building-kitty-app-on-macos-from-source">Building kitty.app on macOS from source</a></li>
+<li><a class="reference internal" href="#build-and-run-from-source-with-nix">Build and run from source with Nix</a></li>
 <li><a class="reference internal" href="#note-for-linux-macos-packagers">Note for Linux/macOS packagers</a></li>
 </ul>
 
@@ -176,9 +177,19 @@ If you need this functionality, you can try signing the built kitty.app with
 a self signed certificate, see for example, <a class="reference external" href="https://stackoverflow.com/questions/27474751/how-can-i-codesign-an-app-without-being-in-the-mac-developer-program/27474942">here</a>.</p>
 </div>
 </div>
+<div class="section" id="build-and-run-from-source-with-nix">
+<h2>Build and run from source with Nix<a class="headerlink" href="#build-and-run-from-source-with-nix" title="Permalink to this headline">¶</a></h2>
+<p>On NixOS or any other Linux or macOS system with the Nix package manager
+installed, execute <a class="reference external" href="https://nixos.org/guides/nix-pills/developing-with-nix-shell.html">nix-shell</a> to create
+the correct environment to build kitty or use <code class="docutils literal notranslate"><span class="pre">nix-shell</span> <span class="pre">--pure</span></code> instead to
+eliminate most of the influence of the outside system, e.g. globally installed
+packages. <code class="docutils literal notranslate"><span class="pre">nix-shell</span></code> will automatically fetch all required dependencies and
+make them available in the newly spawned shell.</p>
+<p>Then proceed with <code class="docutils literal notranslate"><span class="pre">make</span></code> or <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">app</span></code> according to the platform specific instructions above.</p>
+</div>
 <div class="section" id="note-for-linux-macos-packagers">
 <h2>Note for Linux/macOS packagers<a class="headerlink" href="#note-for-linux-macos-packagers" title="Permalink to this headline">¶</a></h2>
-<p>The released <em>kitty</em> source code is available as a <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases/download/v0.19.1/kitty-0.19.1.tar.xz">tarball</a> from
+<p>The released <em>kitty</em> source code is available as a <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases/download/v0.19.2/kitty-0.19.2.tar.xz">tarball</a> from
 <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases">the GitHub releases page</a>.</p>
 <p>While <em>kitty</em> does use python, it is not a traditional python package, so please
 do not install it in site-packages.

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frequently Asked Questions &#8212; kitty 0.19.1 documentation</title>
+    <title>Frequently Asked Questions &#8212; kitty 0.19.2 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -270,9 +270,11 @@ cleverly adds itself to the <code class="docutils literal notranslate"><span cla
 <p><em>kitty</em> achieves its stellar performance by caching alpha masks of each rendered
 character on the GPU, so that every character needs to be rendered only once.
 This means it is a strictly character cell based display.  As such it can use
-only monospace fonts, since every cell in the grid has to be the same size. If
-your font is not listed in <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">list-fonts</span></code> it means that it is not
-monospace. On Linux you can list all monospace fonts with:</p>
+only monospace fonts, since every cell in the grid has to be the same size.
+Furthermore, it needs fonts to be freely resizable, so it does not support
+bitmapped fonts.</p>
+<p>If your font is not listed in <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">list-fonts</span></code> it means that it is not
+monospace or is a bitmapped font. On Linux you can list all monospace fonts with:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>fc-list : family spacing outline scalable <span class="p">|</span> grep -e <span class="nv">spacing</span><span class="o">=</span><span class="m">100</span> -e <span class="nv">spacing</span><span class="o">=</span><span class="m">90</span> <span class="p">|</span> grep -e <span class="nv">outline</span><span class="o">=</span>True <span class="p">|</span> grep -e <span class="nv">scalable</span><span class="o">=</span>True
 </pre></div>
 </div>

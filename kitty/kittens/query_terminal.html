@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unicode input &#8212; kitty 0.19.2 documentation</title>
+    <title>Query terminal &#8212; kitty 0.19.2 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -17,8 +17,8 @@
     <link rel="shortcut icon" href="../_static/kitty.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="close-tab" href="../generated/rc.html" />
-    <link rel="prev" title="Remote files" href="remote_file.html" />
+    <link rel="next" title="Remote files" href="remote_file.html" />
+    <link rel="prev" title="Draw a GPU accelerated dock panel on your desktop" href="panel.html" />
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20736318-2"></script>
@@ -90,8 +90,8 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="remote_file.html" title="previous chapter">Remote files</a></li>
-      <li>Next: <a href="../generated/rc.html" title="next chapter">close-tab</a></li>
+      <li>Previous: <a href="panel.html" title="previous chapter">Draw a GPU accelerated dock panel on your desktop</a></li>
+      <li>Next: <a href="remote_file.html" title="next chapter">Remote files</a></li>
   </ul></li>
 </ul>
 </div>
@@ -103,40 +103,51 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="unicode-input">
-<h1>Unicode input<a class="headerlink" href="#unicode-input" title="Permalink to this headline">¶</a></h1>
-<p>You can input unicode characters by name, hex code, recently used and even an editable favorites list.
-Press <a class="reference internal" href="../conf.html#shortcut-kitty.Unicode-input"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+u</span></code></a> to start the unicode input widget, shown below.</p>
-<div class="figure align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/unicode.png"><img alt="A screenshot of the unicode input widget" src="../_images/unicode.png" style="width: 1293.0px; height: 444.0px;" /></a>
-<p class="caption"><span class="caption-text">A screenshot of the unicode input widget</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<p>In <span class="guilabel">Code</span> mode, you enter a unicode character by typing in the hex code for the
-character and pressing enter, for example, type in <code class="docutils literal notranslate"><span class="pre">2716</span></code> and press enter to get
-✖. You can also choose a character from the list of recently used characters by
-typing a leading period and then the two character index and pressing Enter.
-The up and down arrow keys can be used to choose the previous and next unicode
-symbol respectively.</p>
-<p>In <span class="guilabel">Name</span> mode you instead type words from the character name and use the arrow
-keys/tab to select the character from the displayed matches. You can also type
-a leading period and the index for the match if you don’t like to use arrow
-keys.</p>
-<p>You can switch between modes using either the function keys or by pressing
-<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">[</kbd></kbd> and <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">]</kbd></kbd>.</p>
+  <div class="section" id="query-terminal">
+<h1>Query terminal<a class="headerlink" href="#query-terminal" title="Permalink to this headline">¶</a></h1>
+<p>Used to query kitty from terminal programs about version, values of various
+runtime options controlling its features, etc.</p>
+<p>The querying is done using the (<em>semi</em>) standard XTGETTCAP escape sequence
+pioneered by XTerm, so it works over SSH as well. The downside is that it
+is slow, since it requires a roundtrip to the terminal emulator and back.</p>
+<p>If you want to do some of the same querying in your terminal program without
+depending on the kitten, you can do so, by processing the same escape codes.
+Search <a class="reference external" href="https://invisible-island.net/xterm/ctlseqs/ctlseqs.html">this page</a>
+for <em>XTGETTCAP</em> to see the syntax for the escape code and read the source
+of this kitten to find the values of the keys for the various queries.</p>
 <div class="section" id="command-line-interface">
 <h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten unicode_input <span class="o">[</span>options<span class="o">]</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten query_terminal <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>query1 query2 ...<span class="o">]</span>
 </pre></div>
 </div>
-<p>Input a unicode character</p>
+<p>Query the terminal this kitten is run in for various
+capabilities. This sends escape codes to the terminal
+and based on its response prints out data about supported
+capabilities. Note that this is a blocking operation, since
+it has to wait for a response from the terminal. You can control
+the maximum wait time via the <code class="docutils literal notranslate"><span class="pre">--wait-for</span></code> option.</p>
+<p>The output is lines of the form:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>query: data
+</pre></div>
+</div>
+<p>If a particular query is unsupported by the running kitty version,
+the data will be blank.</p>
+<p>Note that when calling this from another program, be very
+careful not to perform any I/O on the terminal device
+until the kitten exits.</p>
+<p>Available queries are:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>name: Terminal name <span class="o">(</span>xterm-kitty<span class="o">)</span>
+version: Terminal version, <span class="k">for</span> e.g.: <span class="m">0</span>.19.2
+allow_hyperlinks: yes, no or ask
+</pre></div>
+</div>
 <div class="section" id="options">
 <h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
-<dt id="cmdoption-kitty-kitten-unicode_input-emoji-variation">
-<span id="cmdoption-kitty-kitten-unicode-input-emoji-variation"></span><code class="sig-name descname">--emoji-variation</code><code class="sig-prename descclassname"> &lt;EMOJI_VARIATION&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-unicode_input-emoji-variation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Whether to use the textual or the graphical form for emoji. By default the default form specified in the unicode standard for the symbol is used.
-Default: <code class="code docutils literal notranslate"><span class="pre">none</span></code>
-Choices: <code class="code docutils literal notranslate"><span class="pre">graphic,</span> <span class="pre">none,</span> <span class="pre">text</span></code></p>
+<dt id="cmdoption-kitty-kitten-query_terminal-wait-for">
+<span id="cmdoption-kitty-kitten-query-terminal-wait-for"></span><code class="sig-name descname">--wait-for</code><code class="sig-prename descclassname"> &lt;WAIT_FOR&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-query_terminal-wait-for" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of time (in seconds) to wait for a response from the terminal, after querying it.
+Default: <code class="code docutils literal notranslate"><span class="pre">10</span></code></p>
 </dd></dl>
 
 </div>

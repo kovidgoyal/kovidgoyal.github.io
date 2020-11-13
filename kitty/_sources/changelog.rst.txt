@@ -4,6 +4,49 @@ Changelog
 |kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
 To update |kitty|, :doc:`follow the instructions <binary>`.
 
+0.19.2 [2020-11-13]
+-------------------
+
+- A new :doc:`kittens/query_terminal` kitten to easily query the running kitty
+  via escape codes to detect its version, and the values of
+  configuration options that enable or disable terminal features.
+
+- Options to control mouse pointer shape, :opt:`default_pointer_shape`, and
+  :opt:`pointer_shape_when_dragging` (:pull:`3041`)
+
+- Font independent rendering for braille characters, which ensures they are properly
+  aligned at all font sizes.
+
+- Fix a regression in 0.19.0 that caused borders not to be drawn when setting
+  :opt:`window_margin_width` and keeping :opt:`draw_minimal_borders` on
+  (:iss:`3017`)
+
+- Fix a regression in 0.19.0 that broke rendering of one-eight bar unicode
+  characters at very small font sizes (:iss:`3025`)
+
+- Wayland: Fix a crash under GNOME when using multiple OS windows
+  (:pull:`3066`)
+
+- Fix selections created by dragging upwards not being auto-cleared when
+  screen contents change (:pull:`3028`)
+
+- macOS: Fix kitty not being added to PATH automatically when using pre-built
+  binaries (:iss:`3063`)
+
+- Allow adding MIME definitions to kitty by placing a ``mime.types`` file in
+  the kitty config directory (:iss:`3056`)
+
+- Dont ignore :option:`--title` when using a session file that defines no
+  windows (:iss:`3055`)
+
+- Fix the send_text action not working in URL handlers (:iss:`3081`)
+
+- Fix last character of URL not being detected if it is the only character on a
+  new line (:iss:`3088`)
+
+- Don't restrict the ICH,DCH,REP control codes to only the current scroll region  (:iss:`3090`, :iss:`3096`)
+
+
 0.19.1 [2020-10-06]
 -------------------
 

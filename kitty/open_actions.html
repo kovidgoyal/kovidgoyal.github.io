@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Customizing the actions taken when clicking on links &#8212; kitty 0.19.1 documentation</title>
+    <title>Customizing the actions taken when clicking on links &#8212; kitty 0.19.2 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -163,7 +163,11 @@ absent, there is no constraint on protocol</p>
 the URL</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">mime</span></code></dt><dd><p>A comma separated list of MIME types, for example: <code class="docutils literal notranslate"><span class="pre">text/*,</span> <span class="pre">image/*,</span>
-<span class="pre">application/pdf</span></code></p>
+<span class="pre">application/pdf</span></code>. You can add MIME types to kitty by creating the
+<code class="file docutils literal notranslate"><span class="pre">mime.types</span></code> in the kitty configuration directory. Useful if your
+system MIME database does not have definitions you need. This file is
+in the standard format of one definition per line, like: <code class="docutils literal notranslate"><span class="pre">text/plain</span> <span class="pre">rst</span>
+<span class="pre">md</span></code>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">ext</span></code></dt><dd><p>A comma separated list of file extensions, for example: <code class="docutils literal notranslate"><span class="pre">jpeg,</span> <span class="pre">tar.gz</span></code></p>
 </dd>

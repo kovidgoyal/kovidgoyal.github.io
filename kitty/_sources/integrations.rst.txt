@@ -30,6 +30,10 @@ images and other types of documents directly in your terminal, even over SSH.
 `koneko <https://github.com/twenty5151/koneko>`_
     browse images from the pixiv artist community directly in kitty
 
+`viu <https://github.com/atanunq/viu>`_
+    view images in the terminal, similar to kitty's icat, however also supports
+    displaying animated GIFs
+
 
 System and data visualisation tools
 ---------------------------------------
@@ -62,6 +66,9 @@ System and data visualisation tools
    Add this to bashrc and then to plot a function, simply do::
 
         iplot 'sin(x*3)*exp(x*.2)'
+
+`onefetch <https://github.com/o2sh/onefetch>`_
+    a tool to fetch information about your git repositories
 
 
 Editor integration
