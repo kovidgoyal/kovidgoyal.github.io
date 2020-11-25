@@ -6,8 +6,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Frequently Asked Questions &#8212; kitty 0.19.2 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -89,6 +89,7 @@
 <li><a class="reference internal" href="#kitty-is-not-able-to-use-my-favorite-font">kitty is not able to use my favorite font?</a></li>
 <li><a class="reference internal" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal">How can I assign a single global shortcut to bring up the kitty terminal?</a></li>
 <li><a class="reference internal" href="#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program">How do I map key presses in kitty to different keys in the terminal program?</a></li>
+<li><a class="reference internal" href="#how-do-i-open-a-new-window-or-tab-with-the-same-working-directory-as-the-current-window">How do I open a new window or tab with the same working directory as the current window?</a></li>
 <li><a class="reference internal" href="#i-am-using-tmux-and-have-a-problem">I am using tmux and have a problem</a></li>
 </ul>
 
@@ -125,7 +126,8 @@
 <li><p><a class="reference internal" href="#kitty-is-not-able-to-use-my-favorite-font" id="id8">kitty is not able to use my favorite font?</a></p></li>
 <li><p><a class="reference internal" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal" id="id9">How can I assign a single global shortcut to bring up the kitty terminal?</a></p></li>
 <li><p><a class="reference internal" href="#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program" id="id10">How do I map key presses in kitty to different keys in the terminal program?</a></p></li>
-<li><p><a class="reference internal" href="#i-am-using-tmux-and-have-a-problem" id="id11">I am using tmux and have a problem</a></p></li>
+<li><p><a class="reference internal" href="#how-do-i-open-a-new-window-or-tab-with-the-same-working-directory-as-the-current-window" id="id11">How do I open a new window or tab with the same working directory as the current window?</a></p></li>
+<li><p><a class="reference internal" href="#i-am-using-tmux-and-have-a-problem" id="id12">I am using tmux and have a problem</a></p></li>
 </ul>
 </li>
 </ul>
@@ -337,8 +339,19 @@ This shows the hex value, <code class="docutils literal notranslate"><span class
 </ol>
 </div></blockquote>
 </div>
+<div class="section" id="how-do-i-open-a-new-window-or-tab-with-the-same-working-directory-as-the-current-window">
+<h2><a class="toc-backref" href="#id11">How do I open a new window or tab with the same working directory as the current window?</a><a class="headerlink" href="#how-do-i-open-a-new-window-or-tab-with-the-same-working-directory-as-the-current-window" title="Permalink to this headline">¶</a></h2>
+<p>In <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> add the following:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>map f1 launch --cwd<span class="o">=</span>current
+map f2  launch --cwd<span class="o">=</span>current --type<span class="o">=</span>tab
+</pre></div>
+</div>
+<p>Pressing <kbd class="kbd docutils literal notranslate">F1</kbd> will open a new kitty window with the same working directory
+as the current window. The <a class="reference internal" href="launch.html"><span class="doc">launch command</span></a> is very powerful,
+explore <a class="reference internal" href="launch.html"><span class="doc">its documentation</span></a>.</p>
+</div>
 <div class="section" id="i-am-using-tmux-and-have-a-problem">
-<h2><a class="toc-backref" href="#id11">I am using tmux and have a problem</a><a class="headerlink" href="#i-am-using-tmux-and-have-a-problem" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">I am using tmux and have a problem</a><a class="headerlink" href="#i-am-using-tmux-and-have-a-problem" title="Permalink to this headline">¶</a></h2>
 <p>First, terminal multiplexers are <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/391#issuecomment-638320745">a bad idea</a>, do
 not use them, if at all possible. kitty contains features that do all of what
 tmux does, but better, with the exception of remote persistence (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/391">#391</a>).
