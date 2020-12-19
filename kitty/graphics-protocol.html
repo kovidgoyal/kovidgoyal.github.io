@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The terminal graphics protocol &#8212; kitty 0.19.2 documentation</title>
+    <title>The terminal graphics protocol &#8212; kitty 0.19.3 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -96,6 +96,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#deleting-images">Deleting images</a><ul>
+<li><a class="reference internal" href="#suppressing-responses-from-the-terminal">Suppressing responses from the terminal</a></li>
+<li><a class="reference internal" href="#requesting-image-ids-from-the-terminal">Requesting image ids from the terminal</a></li>
 <li><a class="reference internal" href="#image-persistence-and-storage-quotas">Image persistence and storage quotas</a></li>
 </ul>
 </li>
@@ -154,6 +156,7 @@ image previews, see this <a class="reference external" href="https://github.com/
 <li><p><a class="reference external" href="https://github.com/dylanaraps/neofetch">neofetch</a> - A command line system
 information tool</p></li>
 <li><p><a class="reference external" href="https://github.com/atanunq/viu">viu</a> - a terminal image viewer</p></li>
+<li><p><a class="reference external" href="https://github.com/michaeljclark/glkitty">glkitty</a> - C library to draw OpenGL shaders in the terminal with a glgears demo</p></li>
 </ul>
 </div></blockquote>
 <div class="contents topic" id="contents">
@@ -185,11 +188,13 @@ information tool</p></li>
 </li>
 <li><p><a class="reference internal" href="#deleting-images" id="id16">Deleting images</a></p>
 <ul>
-<li><p><a class="reference internal" href="#image-persistence-and-storage-quotas" id="id17">Image persistence and storage quotas</a></p></li>
+<li><p><a class="reference internal" href="#suppressing-responses-from-the-terminal" id="id17">Suppressing responses from the terminal</a></p></li>
+<li><p><a class="reference internal" href="#requesting-image-ids-from-the-terminal" id="id18">Requesting image ids from the terminal</a></p></li>
+<li><p><a class="reference internal" href="#image-persistence-and-storage-quotas" id="id19">Image persistence and storage quotas</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#control-data-reference" id="id18">Control data reference</a></p></li>
-<li><p><a class="reference internal" href="#interaction-with-other-terminal-actions" id="id19">Interaction with other terminal actions</a></p></li>
+<li><p><a class="reference internal" href="#control-data-reference" id="id20">Control data reference</a></p></li>
+<li><p><a class="reference internal" href="#interaction-with-other-terminal-actions" id="id21">Interaction with other terminal actions</a></p></li>
 </ul>
 </li>
 </ul>
@@ -447,7 +452,7 @@ protocol.</p>
 reply to <em>query actions</em> immediately without processing other input. Most
 terminal emulators handle input in a FIFO manner, anyway.</p>
 <p>So for example, you could send:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Gi</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">q</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">f</span><span class="o">=</span><span class="mi">24</span><span class="p">;</span><span class="o">&lt;</span><span class="n">NUL</span><span class="o">&gt;&lt;</span><span class="n">NUL</span><span class="o">&gt;&lt;</span><span class="n">NUL</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="n">c</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Gi</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">q</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">f</span><span class="o">=</span><span class="mi">24</span><span class="p">;</span><span class="n">AAAA</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="n">c</span>
 </pre></div>
 </div>
 <p>If you get back a response to the graphics query, the terminal emulator supports
@@ -459,11 +464,12 @@ a response to the graphics query, it does not.</p>
 <h2><a class="toc-backref" href="#id14">Display images on screen</a><a class="headerlink" href="#display-images-on-screen" title="Permalink to this headline">¶</a></h2>
 <p>Every transmitted image can be displayed an arbitrary number of times on the
 screen, in different locations, using different parts of the source image, as
-needed. You can either simultaneously transmit and display an image using the
-action <code class="docutils literal notranslate"><span class="pre">a=T</span></code>, or first transmit the image with a id, such as <code class="docutils literal notranslate"><span class="pre">i=10</span></code> and then display
-it with <code class="docutils literal notranslate"><span class="pre">a=p,i=10</span></code> which will display the previously transmitted image at the current
-cursor position. When specifying an image id, the terminal emulator will reply with an
-acknowledgement code, which will be either:</p>
+needed. Each such display of an image is called a <em>placement</em>.  You can either
+simultaneously transmit and display an image using the action <code class="docutils literal notranslate"><span class="pre">a=T</span></code>, or first
+transmit the image with a id, such as <code class="docutils literal notranslate"><span class="pre">i=10</span></code> and then display it with
+<code class="docutils literal notranslate"><span class="pre">a=p,i=10</span></code> which will display the previously transmitted image at the current
+cursor position. When specifying an image id, the terminal emulator will reply
+to the placement request with an acknowledgement code, which will be either:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Gi</span><span class="o">=&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="p">;</span><span class="n">OK</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
 </pre></div>
 </div>
@@ -475,6 +481,21 @@ acknowledgement code, which will be either:</p>
 scheme described above for querying available transmission media, except that
 here we are querying if the image with the specified id is available or needs to
 be re-transmitted.</p>
+<p>Since there can be many placements per image, you can also give placements an
+id. To do so add the <code class="docutils literal notranslate"><span class="pre">p</span></code> key with a number between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>.
+When you specify a placement id, it will be added to the acknowledgement code
+above. Every placement is uniquely identified by the pair of the <code class="docutils literal notranslate"><span class="pre">image</span> <span class="pre">id</span></code>
+and the <code class="docutils literal notranslate"><span class="pre">placement</span> <span class="pre">id</span></code>. If you specify a placement id for an image that does
+not have an id, it will be ignored. An example response:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Gi</span><span class="o">=&lt;</span><span class="n">image</span> <span class="nb">id</span><span class="o">&gt;</span><span class="p">,</span><span class="n">p</span><span class="o">=&lt;</span><span class="n">placement</span> <span class="nb">id</span><span class="o">&gt;</span><span class="p">;</span><span class="n">OK</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
+</pre></div>
+</div>
+<p>If you send two placements with the same <code class="docutils literal notranslate"><span class="pre">image</span> <span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">placement</span> <span class="pre">id</span></code> the
+second one will replace the first. This can be used to resize or move
+placements around the screen, without flicker.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.19.3: </span>Support for specifying placement ids (see <a class="reference internal" href="kittens/query_terminal.html"><span class="doc">Query terminal</span></a> to query kitty version)</p>
+</div>
 <div class="section" id="controlling-displayed-image-layout">
 <h3><a class="toc-backref" href="#id15">Controlling displayed image layout</a><a class="headerlink" href="#controlling-displayed-image-layout" title="Permalink to this headline">¶</a></h3>
 <p>The image is rendered at the current cursor position, from the upper left corner of
@@ -496,6 +517,14 @@ Negative z-index values mean that the images will be drawn under the text. This
 allows rendering of text on top of images. Negative z-index values below
 INT32_MIN/2 (-1,073,741,824) will be drawn under cells with non-default background
 colors.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After placing an image on the screen the cursor must be moved to the
+right by the number of cols in the image placement rectangle and down by the
+number of rows in the image placement rectangle. If either of these cause
+the cursor to leave either the screen or the scroll area, the exact
+positioning of the cursor is undefined, and up to implementations.</p>
+</div>
 </div>
 </div>
 <div class="section" id="deleting-images">
@@ -511,8 +540,8 @@ scrollback buffer. The values of the <code class="docutils literal notranslate">
 <code class="docutils literal notranslate"><span class="pre">x=1,</span> <span class="pre">y=1</span></code> is the top left cell).</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
+<col style="width: 7%" />
+<col style="width: 93%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value of <code class="docutils literal notranslate"><span class="pre">d</span></code></p></th>
@@ -521,40 +550,93 @@ scrollback buffer. The values of the <code class="docutils literal notranslate">
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code> or <code class="docutils literal notranslate"><span class="pre">A</span></code></p></td>
-<td><p>Delete all images visible on screen</p></td>
+<td><p>Delete all placements visible on screen</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">i</span></code> or <code class="docutils literal notranslate"><span class="pre">I</span></code></p></td>
-<td><p>Delete all images with the specified id, specified using the <code class="docutils literal notranslate"><span class="pre">i</span></code> key.</p></td>
+<td><p>Delete all images with the specified id, specified using the <code class="docutils literal notranslate"><span class="pre">i</span></code> key. If you specify a <code class="docutils literal notranslate"><span class="pre">p</span></code> key for the placement                      id as well, then only the placement with the specified image id and placement id will be deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">n</span></code> or <code class="docutils literal notranslate"><span class="pre">N</span></code></p></td>
+<td><p>Delete newest image with the specified number, specified using the <code class="docutils literal notranslate"><span class="pre">I</span></code> key. If you specify a <code class="docutils literal notranslate"><span class="pre">p</span></code> key for the
+placement id as well, then only the placement with the specified number and placement id will be deleted.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code> or <code class="docutils literal notranslate"><span class="pre">C</span></code></p></td>
+<td><p>Delete all placements that intersect with the current cursor position.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code> or <code class="docutils literal notranslate"><span class="pre">C</span></code></p></td>
-<td><p>Delete all images that intersect with the current cursor position.</p></td>
+<td><p>Delete all placements that intersect with the current cursor position.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">p</span></code> or <code class="docutils literal notranslate"><span class="pre">P</span></code></p></td>
-<td><p>Delete all images that intersect a specific cell, the cell is specified using the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> keys</p></td>
+<td><p>Delete all placements that intersect a specific cell, the cell is specified using the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> keys</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">q</span></code> or <code class="docutils literal notranslate"><span class="pre">Q</span></code></p></td>
-<td><p>Delete all images that intersect a specific cell having a specific z-index. The cell and z-index is specified using the <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code> keys.</p></td>
+<td><p>Delete all placements that intersect a specific cell having a specific z-index. The cell and z-index is specified using the <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code> keys.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">X</span></code></p></td>
-<td><p>Delete all images that intersect the specified column, specified using the <code class="docutils literal notranslate"><span class="pre">x</span></code> key.</p></td>
+<td><p>Delete all placements that intersect the specified column, specified using the <code class="docutils literal notranslate"><span class="pre">x</span></code> key.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code> or <code class="docutils literal notranslate"><span class="pre">Y</span></code></p></td>
-<td><p>Delete all images that intersect the specified row, specified using the <code class="docutils literal notranslate"><span class="pre">y</span></code> key.</p></td>
+<td><p>Delete all placements that intersect the specified row, specified using the <code class="docutils literal notranslate"><span class="pre">y</span></code> key.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">z</span></code> or <code class="docutils literal notranslate"><span class="pre">Z</span></code></p></td>
-<td><p>Delete all images that have the specified z-index, specified using the <code class="docutils literal notranslate"><span class="pre">z</span></code> key.</p></td>
+<td><p>Delete all placements that have the specified z-index, specified using the <code class="docutils literal notranslate"><span class="pre">z</span></code> key.</p></td>
 </tr>
 </tbody>
 </table>
+<p>Note when all placements for an image have been deleted, the image is also
+deleted, if the capital letter form above is specified. Also, when the terminal
+is running out of quota space for image, images without placements will be
+preferentially deleted.</p>
 <p>Some examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\             <span class="c1"># delete all visible images</span>
-<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">10</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\    <span class="c1"># delete the image with id=10, without freeing data</span>
-<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span><span class="n">z</span><span class="o">=-</span><span class="mi">1</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\    <span class="c1"># delete the images with z-index -1, also freeing up image data</span>
-<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\ <span class="c1"># delete all images that intersect the cell at (3, 4), without freeing data</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\              <span class="c1"># delete all visible placements</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">10</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\     <span class="c1"># delete the image with id=10, without freeing data</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mi">7</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\ <span class="c1"># delete the image with id=10 and placement id=7, without freeing data</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span><span class="n">z</span><span class="o">=-</span><span class="mi">1</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\     <span class="c1"># delete the placements with z-index -1, also freeing up image data</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\  <span class="c1"># delete all placements that intersect the cell at (3, 4), without freeing data</span>
 </pre></div>
 </div>
+<div class="section" id="suppressing-responses-from-the-terminal">
+<h3><a class="toc-backref" href="#id17">Suppressing responses from the terminal</a><a class="headerlink" href="#suppressing-responses-from-the-terminal" title="Permalink to this headline">¶</a></h3>
+<p>If you are using the graphics protocol from a limited client, such as a shell
+script, it might be useful to avoid having to process responses from the
+terminal. For this, you can use the <code class="docutils literal notranslate"><span class="pre">q</span></code> key. Set it to <code class="docutils literal notranslate"><span class="pre">1</span></code> to suppress
+<code class="docutils literal notranslate"><span class="pre">OK</span></code> responses and to <code class="docutils literal notranslate"><span class="pre">2</span></code> to suppress failure responses.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.19.3: </span>The ability to suppress responses (see <a class="reference internal" href="kittens/query_terminal.html"><span class="doc">Query terminal</span></a> to query kitty version)</p>
+</div>
+</div>
+<div class="section" id="requesting-image-ids-from-the-terminal">
+<h3><a class="toc-backref" href="#id18">Requesting image ids from the terminal</a><a class="headerlink" href="#requesting-image-ids-from-the-terminal" title="Permalink to this headline">¶</a></h3>
+<p>If you are writing a program that is going to share the screen with other
+programs and you still want to use image ids, it is not possible to know
+what image ids are free to use. In this case, instead of using the <code class="docutils literal notranslate"><span class="pre">i</span></code>
+key to specify and image id use the <code class="docutils literal notranslate"><span class="pre">I</span></code> key to specify and image number
+instead. These numbers are not unique.
+When creating a new image, even if an existing image has the same number a new
+one is created. And the terminal will reply with the id of the newly created
+image. For example, when creating an image with <code class="docutils literal notranslate"><span class="pre">I=13</span></code>, the terminal will
+send the response:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Gi</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span><span class="n">I</span><span class="o">=</span><span class="mi">13</span><span class="p">;</span><span class="n">OK</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
+</pre></div>
+</div>
+<p>Here, the value of <code class="docutils literal notranslate"><span class="pre">i</span></code> is the id for the newly created image and the value of
+<code class="docutils literal notranslate"><span class="pre">I</span></code> is the same as was sent in the creation command.</p>
+<p>All future commands that refer to images using the image number, such as
+creating placements or deleting images, will act on only the newest image with
+that number. This allows the client program to send a bunch of commands dealing
+with an image by image number without waiting for a response from the terminal
+with the image id. Once such a response is received, the client program should
+use the <code class="docutils literal notranslate"><span class="pre">i</span></code> key with the image id for all future communication.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Specifying both <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">I</span></code> keys in any command is an error. The
+terminal must reply with an EINVAL error message, unless silenced.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.19.3: </span>The ability to use image numbers (see <a class="reference internal" href="kittens/query_terminal.html"><span class="doc">Query terminal</span></a> to query kitty version)</p>
+</div>
+</div>
 <div class="section" id="image-persistence-and-storage-quotas">
-<h3><a class="toc-backref" href="#id17">Image persistence and storage quotas</a><a class="headerlink" href="#image-persistence-and-storage-quotas" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id19">Image persistence and storage quotas</a><a class="headerlink" href="#image-persistence-and-storage-quotas" title="Permalink to this headline">¶</a></h3>
 <p>In order to avoid <em>Denial-of-Service</em> attacks, terminal emulators should have a
 maximum storage quota for image data. It should allow at least a few full
 screen images.  For example the quota in kitty is 320MB per buffer. When adding
@@ -563,7 +645,7 @@ delete older images to make space for the new one.</p>
 </div>
 </div>
 <div class="section" id="control-data-reference">
-<h2><a class="toc-backref" href="#id18">Control data reference</a><a class="headerlink" href="#control-data-reference" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">Control data reference</a><a class="headerlink" href="#control-data-reference" title="Permalink to this headline">¶</a></h2>
 <p>The table below shows all the control data keys as well as what values they can
 take, and the default value they take when missing. All integers are 32-bit.</p>
 <table class="docutils align-default">
@@ -587,45 +669,56 @@ take, and the default value they take when missing. All integers are 32-bit.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">t</span></code></p></td>
 <td><p>The overall action this graphics command is performing.</p></td>
 </tr>
-<tr class="row-odd"><td colspan="4"><p><strong>Keys for image transmission</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">q</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Suppress responses from the terminal to this graphics command.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">f</span></code></p></td>
+<tr class="row-even"><td colspan="4"><p><strong>Keys for image transmission</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">f</span></code></p></td>
 <td><p>Positive integer.
 <code class="docutils literal notranslate"><span class="pre">(24,</span> <span class="pre">32,</span> <span class="pre">100)</span></code>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">32</span></code></p></td>
 <td><p>The format in which the image data is sent.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">t</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">t</span></code></p></td>
 <td><p>Single character.
 <code class="docutils literal notranslate"><span class="pre">(d,</span> <span class="pre">f,</span> <span class="pre">t,</span> <span class="pre">s)</span></code>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
 <td><p>The transmission medium used.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
 <td><p>Positive integer.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The width of the image being sent.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">v</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">v</span></code></p></td>
 <td><p>Positive integer.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The height of the image being sent.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
 <td><p>Positive integer.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The size of data to read from a file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">O</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">O</span></code></p></td>
 <td><p>Positive integer.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The offset from which to read data from a file.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">i</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">i</span></code></p></td>
 <td><p>Positive integer.
 <code class="docutils literal notranslate"><span class="pre">(0</span> <span class="pre">-</span> <span class="pre">4294967295)</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The image id</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p</span></code></p></td>
+<td><p>Positive integer.
+<code class="docutils literal notranslate"><span class="pre">(0</span> <span class="pre">-</span> <span class="pre">4294967295)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The placement id</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">o</span></code></p></td>
 <td><p>Single character.
@@ -689,9 +782,9 @@ take, and the default value they take when missing. All integers are 32-bit.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
 <td><p>Single character.
-<code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">A,</span> <span class="pre">c,</span> <span class="pre">C,</span> <span class="pre">i,</span>
-<span class="pre">I,</span> <span class="pre">p,</span> <span class="pre">P,</span> <span class="pre">q,</span> <span class="pre">Q,</span> <span class="pre">x,</span> <span class="pre">X,</span>
-<span class="pre">y,</span> <span class="pre">Y,</span> <span class="pre">z,</span> <span class="pre">Z)</span></code>.</p></td>
+<code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">A,</span> <span class="pre">c,</span> <span class="pre">C,</span> <span class="pre">n,</span> <span class="pre">N,</span>
+<span class="pre">i,</span> <span class="pre">I,</span> <span class="pre">p,</span> <span class="pre">P,</span> <span class="pre">q,</span> <span class="pre">Q,</span> <span class="pre">x,</span>
+<span class="pre">X,</span> <span class="pre">y,</span> <span class="pre">Y,</span> <span class="pre">z,</span> <span class="pre">Z)</span></code>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
 <td><p>What to delete.</p></td>
 </tr>
@@ -699,7 +792,7 @@ take, and the default value they take when missing. All integers are 32-bit.</p>
 </table>
 </div>
 <div class="section" id="interaction-with-other-terminal-actions">
-<h2><a class="toc-backref" href="#id19">Interaction with other terminal actions</a><a class="headerlink" href="#interaction-with-other-terminal-actions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id21">Interaction with other terminal actions</a><a class="headerlink" href="#interaction-with-other-terminal-actions" title="Permalink to this headline">¶</a></h2>
 <p>When resetting the terminal, all images that are visible on the screen must be
 cleared.  When switching from the main screen to the alternate screen buffer
 (1049 private mode) all images in the alternate screen must be cleared, just as

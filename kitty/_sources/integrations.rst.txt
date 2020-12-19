@@ -70,6 +70,9 @@ System and data visualisation tools
 `onefetch <https://github.com/o2sh/onefetch>`_
     a tool to fetch information about your git repositories
 
+`wttr <https://github.com/chubin/wttr.in>`_
+    a tool to display weather information in your terminal with curl
+
 
 Editor integration
 -----------------------
@@ -123,3 +126,6 @@ Miscellaneous
 `weechat-hints <https://github.com/GermainZ/kitty-weechat-hints>`_
     URL hints kitten for WeeChat that works without having to use WeeChat's
     raw-mode.
+
+`glkitty <https://github.com/michaeljclark/glkitty>`_
+    C library to draw OpenGL shaders in the terminal with a glgears demo

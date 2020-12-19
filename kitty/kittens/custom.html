@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Custom kittens &#8212; kitty 0.19.2 documentation</title>
+    <title>Custom kittens &#8212; kitty 0.19.3 documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -120,7 +120,10 @@ input and paste it into the terminal window.</p>
 <p>Create a file in the kitty config folder, <code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/mykitten.py</span></code>
 (you might need to adjust the path to wherever the kitty config folder is on
 your machine).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">kitty.boss</span> <span class="kn">import</span> <span class="n">Boss</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="c1"># this is the main entry point of the kitten, it will be executed in</span>
     <span class="c1"># the overlay window when the kitten is launched</span>
     <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter some text: &#39;</span><span class="p">)</span>
@@ -128,7 +131,7 @@ your machine).</p>
     <span class="c1"># handle_result() function</span>
     <span class="k">return</span> <span class="n">answer</span>
 
-<span class="k">def</span> <span class="nf">handle_result</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">answer</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target_window_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">boss</span><span class="p">:</span> <span class="n">kitty</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">Boss</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">handle_result</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">answer</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target_window_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">boss</span><span class="p">:</span> <span class="n">Boss</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="c1"># get the kitty window into which to paste answer</span>
     <span class="n">w</span> <span class="o">=</span> <span class="n">boss</span><span class="o">.</span><span class="n">window_id_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">target_window_id</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">w</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>

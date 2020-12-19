@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Configuring kitty &#8212; kitty 0.19.2 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.19.3 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -262,6 +262,8 @@ Stylistic Sets which have the tags <code class="code docutils literal notranslat
 <p>Note that this code is indexed by PostScript name, and not the font
 family. This allows you to define very precise feature settings; e.g. you can
 disable a feature in the italic font but not in the regular font.</p>
+<p>On Linux, these are read from the FontConfig database first and then this,
+setting is applied, so they can be configured in a single, central place.</p>
 <p>To get the PostScript name for a font, use <code class="code docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+</span> <span class="pre">list-fonts</span> <span class="pre">--psnames</span></code>:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ kitty + list-fonts --psnames <span class="p">|</span> grep Fira
 Fira Code
@@ -974,7 +976,8 @@ presents you with a list of tabs and allows for easy switching to a tab.</p>
 <p>The algorithm to use when switching to a tab when the current tab is closed.
 The default of <code class="code docutils literal notranslate"><span class="pre">previous</span></code> will switch to the last used tab. A value of
 <code class="code docutils literal notranslate"><span class="pre">left</span></code> will switch to the tab to the left of the closed tab. A value
-of <code class="code docutils literal notranslate"><span class="pre">last</span></code> will switch to the right-most tab.</p>
+of <code class="code docutils literal notranslate"><span class="pre">right</span></code> will switch to the tab to the right of the closed tab.
+A value of <code class="code docutils literal notranslate"><span class="pre">last</span></code> will switch to the right-most tab.</p>
 <dl class="std opt">
 <dt id="opt-kitty.tab_fade">
 <code class="sig-name descname">tab_fade</code><a class="headerlink" href="#opt-kitty.tab_fade" title="Permalink to this definition">¶</a></dt>
@@ -1023,7 +1026,11 @@ In addition you can use <code class="code docutils literal notranslate"><span cl
 layout name and <code class="code docutils literal notranslate"><span class="pre">{num_windows}</span></code> for the number of windows
 in the tab. Note that formatting is done by Python’s string formatting
 machinery, so you can use, for instance, <code class="code docutils literal notranslate"><span class="pre">{layout_name[:2].upper()}</span></code> to
-show only the first two letters of the layout name, upper-cased.</p>
+show only the first two letters of the layout name, upper-cased.
+If you want to style the text, you can use styling directives, for example:
+<code class="code docutils literal notranslate"><span class="pre">{fmt.fg.red}red{fmt.fg.default}normal{fmt.bg._00FF00}green</span> <span class="pre">bg{fmt.bg.normal}</span></code>.
+Similarly, for bold and italic:
+<code class="code docutils literal notranslate"><span class="pre">{fmt.bold}bold{fmt.nobold}normal{fmt.italic}italic{fmt.noitalic}</span></code>.</p>
 <dl class="std opt">
 <dt id="opt-kitty.active_tab_title_template">
 <code class="sig-name descname">active_tab_title_template</code><a class="headerlink" href="#opt-kitty.active_tab_title_template" title="Permalink to this definition">¶</a></dt>

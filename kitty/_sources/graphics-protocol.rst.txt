@@ -38,6 +38,7 @@ Some programs that use the kitty graphics protocol:
  * `neofetch <https://github.com/dylanaraps/neofetch>`_ - A command line system
    information tool
  * `viu <https://github.com/atanunq/viu>`_ - a terminal image viewer
+ * `glkitty <https://github.com/michaeljclark/glkitty>`_ - C library to draw OpenGL shaders in the terminal with a glgears demo
 
 
 .. contents::
@@ -314,7 +315,7 @@ terminal emulators handle input in a FIFO manner, anyway.
 
 So for example, you could send::
 
-      <ESC>_Gi=31,s=1,v=1,a=q,t=d,f=24;<NUL><NUL><NUL><ESC>\<ESC>[c
+      <ESC>_Gi=31,s=1,v=1,a=q,t=d,f=24;AAAA<ESC>\<ESC>[c
 
 If you get back a response to the graphics query, the terminal emulator supports
 the protocol, if you get back a response to the device attributes query without
@@ -326,11 +327,12 @@ Display images on screen
 
 Every transmitted image can be displayed an arbitrary number of times on the
 screen, in different locations, using different parts of the source image, as
-needed. You can either simultaneously transmit and display an image using the
-action ``a=T``, or first transmit the image with a id, such as ``i=10`` and then display
-it with ``a=p,i=10`` which will display the previously transmitted image at the current
-cursor position. When specifying an image id, the terminal emulator will reply with an
-acknowledgement code, which will be either::
+needed. Each such display of an image is called a *placement*.  You can either
+simultaneously transmit and display an image using the action ``a=T``, or first
+transmit the image with a id, such as ``i=10`` and then display it with
+``a=p,i=10`` which will display the previously transmitted image at the current
+cursor position. When specifying an image id, the terminal emulator will reply
+to the placement request with an acknowledgement code, which will be either::
 
     <ESC>_Gi=<id>;OK<ESC>\
 
@@ -342,6 +344,24 @@ when the image with the specified id was not found. This is similar to the
 scheme described above for querying available transmission media, except that
 here we are querying if the image with the specified id is available or needs to
 be re-transmitted.
+
+Since there can be many placements per image, you can also give placements an
+id. To do so add the ``p`` key with a number between ``1`` and ``4294967295``.
+When you specify a placement id, it will be added to the acknowledgement code
+above. Every placement is uniquely identified by the pair of the ``image id``
+and the ``placement id``. If you specify a placement id for an image that does
+not have an id, it will be ignored. An example response::
+
+    <ESC>_Gi=<image id>,p=<placement id>;OK<ESC>\
+
+If you send two placements with the same ``image id`` and ``placement id`` the
+second one will replace the first. This can be used to resize or move
+placements around the screen, without flicker.
+
+
+.. versionadded:: 0.19.3
+   Support for specifying placement ids (see :doc:`kittens/query_terminal` to query kitty version)
+
 
 Controlling displayed image layout
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -369,6 +389,13 @@ allows rendering of text on top of images. Negative z-index values below
 INT32_MIN/2 (-1,073,741,824) will be drawn under cells with non-default background
 colors.
 
+.. note:: After placing an image on the screen the cursor must be moved to the
+   right by the number of cols in the image placement rectangle and down by the
+   number of rows in the image placement rectangle. If either of these cause
+   the cursor to leave either the screen or the scroll area, the exact
+   positioning of the cursor is undefined, and up to implementations.
+
+
 Deleting images
 ---------------------
 
@@ -385,24 +412,77 @@ scrollback buffer. The values of the ``x`` and ``y`` keys are the same as cursor
 =================    ============
 Value of ``d``       Meaning
 =================    ============
-``a`` or ``A``       Delete all images visible on screen
-``i`` or ``I``       Delete all images with the specified id, specified using the ``i`` key.
-``c`` or ``C``       Delete all images that intersect with the current cursor position.
-``p`` or ``P``       Delete all images that intersect a specific cell, the cell is specified using the ``x`` and ``y`` keys
-``q`` or ``Q``       Delete all images that intersect a specific cell having a specific z-index. The cell and z-index is specified using the ``x``, ``y`` and ``z`` keys.
-``x`` or ``X``       Delete all images that intersect the specified column, specified using the ``x`` key.
-``y`` or ``Y``       Delete all images that intersect the specified row, specified using the ``y`` key.
-``z`` or ``Z``       Delete all images that have the specified z-index, specified using the ``z`` key.
+``a`` or ``A``       Delete all placements visible on screen
+``i`` or ``I``       Delete all images with the specified id, specified using the ``i`` key. If you specify a ``p`` key for the placement                      id as well, then only the placement with the specified image id and placement id will be deleted.
+``n`` or ``N``       Delete newest image with the specified number, specified using the ``I`` key. If you specify a ``p`` key for the
+                     placement id as well, then only the placement with the specified number and placement id will be deleted.
+``c`` or ``C``       Delete all placements that intersect with the current cursor position.
+``c`` or ``C``       Delete all placements that intersect with the current cursor position.
+``p`` or ``P``       Delete all placements that intersect a specific cell, the cell is specified using the ``x`` and ``y`` keys
+``q`` or ``Q``       Delete all placements that intersect a specific cell having a specific z-index. The cell and z-index is specified using the ``x``, ``y`` and ``z`` keys.
+``x`` or ``X``       Delete all placements that intersect the specified column, specified using the ``x`` key.
+``y`` or ``Y``       Delete all placements that intersect the specified row, specified using the ``y`` key.
+``z`` or ``Z``       Delete all placements that have the specified z-index, specified using the ``z`` key.
 =================    ============
 
 
+Note when all placements for an image have been deleted, the image is also
+deleted, if the capital letter form above is specified. Also, when the terminal
+is running out of quota space for image, images without placements will be
+preferentially deleted.
 
 Some examples::
 
-    <ESC>_Ga=d<ESC>\             # delete all visible images
-    <ESC>_Ga=d,d=i,i=10<ESC>\    # delete the image with id=10, without freeing data
-    <ESC>_Ga=d,d=Z,z=-1<ESC>\    # delete the images with z-index -1, also freeing up image data
-    <ESC>_Ga=d,d=p,x=3,y=4<ESC>\ # delete all images that intersect the cell at (3, 4), without freeing data
+    <ESC>_Ga=d<ESC>\              # delete all visible placements
+    <ESC>_Ga=d,d=i,i=10<ESC>\     # delete the image with id=10, without freeing data
+    <ESC>_Ga=d,d=i,i=10,p=7<ESC>\ # delete the image with id=10 and placement id=7, without freeing data
+    <ESC>_Ga=d,d=Z,z=-1<ESC>\     # delete the placements with z-index -1, also freeing up image data
+    <ESC>_Ga=d,d=p,x=3,y=4<ESC>\  # delete all placements that intersect the cell at (3, 4), without freeing data
+
+
+Suppressing responses from the terminal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you are using the graphics protocol from a limited client, such as a shell
+script, it might be useful to avoid having to process responses from the
+terminal. For this, you can use the ``q`` key. Set it to ``1`` to suppress
+``OK`` responses and to ``2`` to suppress failure responses.
+
+.. versionadded:: 0.19.3
+   The ability to suppress responses (see :doc:`kittens/query_terminal` to query kitty version)
+
+
+Requesting image ids from the terminal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you are writing a program that is going to share the screen with other
+programs and you still want to use image ids, it is not possible to know
+what image ids are free to use. In this case, instead of using the ``i``
+key to specify and image id use the ``I`` key to specify and image number
+instead. These numbers are not unique.
+When creating a new image, even if an existing image has the same number a new
+one is created. And the terminal will reply with the id of the newly created
+image. For example, when creating an image with ``I=13``, the terminal will
+send the response::
+
+    <ESC>_Gi=99,I=13;OK<ESC>\
+
+Here, the value of ``i`` is the id for the newly created image and the value of
+``I`` is the same as was sent in the creation command.
+
+All future commands that refer to images using the image number, such as
+creating placements or deleting images, will act on only the newest image with
+that number. This allows the client program to send a bunch of commands dealing
+with an image by image number without waiting for a response from the terminal
+with the image id. Once such a response is received, the client program should
+use the ``i`` key with the image id for all future communication.
+
+.. note:: Specifying both ``i`` and ``I`` keys in any command is an error. The
+   terminal must reply with an EINVAL error message, unless silenced.
+
+.. versionadded:: 0.19.3
+   The ability to use image numbers (see :doc:`kittens/query_terminal` to query kitty version)
+
 
 Image persistence and storage quotas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -425,6 +505,9 @@ Key      Value                 Default    Description
 =======  ====================  =========  =================
 ``a``    Single character.     ``t``      The overall action this graphics command is performing.
          ``(t, T, q, p, d)``
+
+``q``    ``0, 1, 2``           ``0``      Suppress responses from the terminal to this graphics command.
+
 **Keys for image transmission**
 -----------------------------------------------------------
 ``f``    Positive integer.     ``32``     The format in which the image data is sent.
@@ -437,6 +520,8 @@ Key      Value                 Default    Description
 ``O``    Positive integer.     ``0``      The offset from which to read data from a file.
 ``i``    Positive integer.
          ``(0 - 4294967295)``  ``0``      The image id
+``p``    Positive integer.
+         ``(0 - 4294967295)``  ``0``      The placement id
 ``o``    Single character.     ``null``   The type of data compression.
          ``only z``
 ``m``    zero or one           ``0``      Whether there is more chunked data available.
@@ -454,9 +539,9 @@ Key      Value                 Default    Description
 **Keys for deleting images**
 -----------------------------------------------------------
 ``d``    Single character.     ``a``      What to delete.
-         ``(a, A, c, C, i,
-         I, p, P, q, Q, x, X,
-         y, Y, z, Z)``.
+         ``(a, A, c, C, n, N,
+         i, I, p, P, q, Q, x,
+         X, y, Y, z, Z)``.
 =======  ====================  =========  =================
 
 
