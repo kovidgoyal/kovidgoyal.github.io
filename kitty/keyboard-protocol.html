@@ -158,11 +158,12 @@ issues in that proposal, listed at the <a class="reference internal" href="#fixt
 protocol to make keyboard handling simpler and more robust in your application,
 without too many changes, do the following:</p>
 <ol class="arabic simple">
-<li><p>Emit the escape code <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">&gt;</span> <span class="pre">1</span> <span class="pre">u</span></code> at application startup</p></li>
+<li><p>Emit the escape code <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">&gt;</span> <span class="pre">1</span> <span class="pre">u</span></code> at application startup or when entering
+alternate screen mode</p></li>
 <li><p>All key events will now be sent in only a few forms to your application,
 that are easy to parse unambiguously.</p></li>
-<li><p>Emit the escape sequence <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">&lt;</span> <span class="pre">u</span></code> at application exit to restore the
-previously used keyboard mode.</p></li>
+<li><p>Emit the escape sequence <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">&lt;</span> <span class="pre">u</span></code> at application exit or just before
+leaving alternate screen mode to restore the previously used keyboard mode.</p></li>
 </ol>
 <p>Key events will all be delivered to your application either as plain UTF-8
 text, or using the following escape codes, for those keys that do not produce
@@ -1120,15 +1121,15 @@ Any ASCII keys not in the table must be left untouched by <kbd class="kbd docuti
 </div>
 <div class="section" id="bugs-in-fixterms">
 <span id="fixterms-bugs"></span><h2>Bugs in fixterms<a class="headerlink" href="#bugs-in-fixterms" title="Permalink to this headline">¶</a></h2>
-<p>The following is a list of errata in the <a class="reference external" href="http://www.leonerd.org.uk/hacks/fixterms/">original fixterms proposal</a> , corrected in this
+<p>The following is a list of errata in the <a class="reference external" href="http://www.leonerd.org.uk/hacks/fixterms/">original fixterms proposal</a>, corrected in this
 specification.</p>
 <ul class="simple">
-<li><p>No way to disambiguate <kbd class="kbd docutils literal notranslate">Esc</kbd> keypresses, other than using 8-bit controls
+<li><p>No way to disambiguate <kbd class="kbd docutils literal notranslate">Esc</kbd> key presses, other than using 8-bit controls
 which are undesirable for other reasons</p></li>
 <li><p>Incorrectly claims special keys are sometimes encoded using <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">letter</span></code> encodings when it
 is actually <code class="docutils literal notranslate"><span class="pre">SS3</span> <span class="pre">letter</span></code> in all terminals newer than a VT-52, which is
 pretty much everything.</p></li>
-<li><p><kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">tab`</kbd></kbd> should be <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">9</span> <span class="pre">;</span> <span class="pre">6</span> <span class="pre">u</span></code> not <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">1</span> <span class="pre">;</span> <span class="pre">5</span> <span class="pre">Z</span></code>
+<li><p><kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">tab</kbd></kbd> should be <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">9</span> <span class="pre">;</span> <span class="pre">6</span> <span class="pre">u</span></code> not <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">1</span> <span class="pre">;</span> <span class="pre">5</span> <span class="pre">Z</span></code>
 (shift+tab is not a separate key from tab)</p></li>
 <li><p>No support for the <kbd class="kbd docutils literal notranslate">super</kbd> modifier.</p></li>
 <li><p>Makes no mention of cursor key mode and how it changes encodings</p></li>

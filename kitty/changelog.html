@@ -158,6 +158,9 @@ To update <em>kitty</em>, <a class="reference internal" href="binary.html"><span
 <div class="section" id="future">
 <h2>0.20.0 [future]<a class="headerlink" href="#future" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><p>A new keyboard reporting protocol with various advanced features that can be
+used by full screen terminal programs and even games, see
+<a class="reference internal" href="keyboard-protocol.html"><span class="doc">A protocol for comprehensive keyboard handling in terminals</span></a> (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3248">#3248</a>)</p></li>
 <li><p>Add support for the color settings stack that XTerm copied from us without
 acknowledgement and decided to use incompatible escape codes for.</p></li>
 <li><p>Add entries to the terminfo file for some user capabilities that are shared
@@ -172,6 +175,12 @@ being colored with some fonts (<a class="reference external" href="https://githu
 larger than 16. Also using an index does not filter the list of matches. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3219">#3219</a>)</p></li>
 <li><p>Panel kitten: Allow setting WM_CLASS (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3233">#3233</a>)</p></li>
 <li><p>macOS: Add menu items to close the OS window and the current tab (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3240">#3240</a>, <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3246">#3246</a>)</p></li>
+<li><p>When using a non-US keyboard layout and pressing <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">key</kbd></kbd> when
+the key matches an English key, send that to the program running in the
+terminal automatically (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2000">#2000</a>)</p></li>
+<li><p>When matching shortcuts, also match on shifted keys, so a shortcut defined as
+<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd> will match a keyboard where you have to press
+<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">equal</kbd></kbd> to get the plus key (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2000">#2000</a>)</p></li>
 </ul>
 </div>
 <div class="section" id="id1">

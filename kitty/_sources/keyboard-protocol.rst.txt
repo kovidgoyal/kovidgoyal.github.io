@@ -41,11 +41,12 @@ If you are an application or library developer just interested in using this
 protocol to make keyboard handling simpler and more robust in your application,
 without too many changes, do the following:
 
-#. Emit the escape code ``CSI > 1 u`` at application startup
+#. Emit the escape code ``CSI > 1 u`` at application startup or when entering
+   alternate screen mode
 #. All key events will now be sent in only a few forms to your application,
    that are easy to parse unambiguously.
-#. Emit the escape sequence ``CSI < u`` at application exit to restore the
-   previously used keyboard mode.
+#. Emit the escape sequence ``CSI < u`` at application exit or just before
+   leaving alternate screen mode to restore the previously used keyboard mode.
 
 Key events will all be delivered to your application either as plain UTF-8
 text, or using the following escape codes, for those keys that do not produce
@@ -588,17 +589,17 @@ Bugs in fixterms
 -------------------
 
 The following is a list of errata in the `original fixterms proposal
-<http://www.leonerd.org.uk/hacks/fixterms/>`_ , corrected in this
+<http://www.leonerd.org.uk/hacks/fixterms/>`_, corrected in this
 specification.
 
-* No way to disambiguate :kbd:`Esc` keypresses, other than using 8-bit controls
+* No way to disambiguate :kbd:`Esc` key presses, other than using 8-bit controls
   which are undesirable for other reasons
 
 * Incorrectly claims special keys are sometimes encoded using ``CSI letter`` encodings when it
   is actually ``SS3 letter`` in all terminals newer than a VT-52, which is
   pretty much everything.
 
-* :kbd:`ctrl+shift+tab`` should be ``CSI 9 ; 6 u`` not ``CSI 1 ; 5 Z``
+* :kbd:`ctrl+shift+tab` should be ``CSI 9 ; 6 u`` not ``CSI 1 ; 5 Z``
   (shift+tab is not a separate key from tab)
 
 * No support for the :kbd:`super` modifier.
