@@ -13,7 +13,6 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -84,7 +83,7 @@
 <li><a class="reference internal" href="#graphics-rendering">Graphics rendering</a></li>
 <li><a class="reference internal" href="#keyboard-handling">Keyboard handling</a></li>
 <li><a class="reference internal" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen">Setting text styles/colors in arbitrary regions of the screen</a></li>
-<li><a class="reference internal" href="#saving-and-restoring-the-default-foreground-background-selection-cursor-colors">Saving and restoring the default foreground/background/selection/cursor colors</a></li>
+<li><a class="reference internal" href="#saving-and-restoring-colors">Saving and restoring colors</a></li>
 <li><a class="reference internal" href="#pasting-to-clipboard">Pasting to clipboard</a></li>
 <li><a class="reference internal" href="#desktop-notifications">Desktop notifications</a></li>
 </ul>
@@ -131,7 +130,7 @@ please do so by opening issues in the github bug tracker.</p>
 <li><p><a class="reference internal" href="#graphics-rendering" id="id4">Graphics rendering</a></p></li>
 <li><p><a class="reference internal" href="#keyboard-handling" id="id5">Keyboard handling</a></p></li>
 <li><p><a class="reference internal" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" id="id6">Setting text styles/colors in arbitrary regions of the screen</a></p></li>
-<li><p><a class="reference internal" href="#saving-and-restoring-the-default-foreground-background-selection-cursor-colors" id="id7">Saving and restoring the default foreground/background/selection/cursor colors</a></p></li>
+<li><p><a class="reference internal" href="#saving-and-restoring-colors" id="id7">Saving and restoring colors</a></p></li>
 <li><p><a class="reference internal" href="#pasting-to-clipboard" id="id8">Pasting to clipboard</a></p></li>
 <li><p><a class="reference internal" href="#desktop-notifications" id="id9">Desktop notifications</a></p></li>
 </ul>
@@ -177,86 +176,9 @@ of this protocol to enable drawing of arbitrary raster images in the terminal.</
 </div>
 <div class="section" id="keyboard-handling">
 <span id="extended-key-protocol"></span><h2><a class="toc-backref" href="#id5">Keyboard handling</a><a class="headerlink" href="#keyboard-handling" title="Permalink to this headline">¶</a></h2>
-<p>There are various problems with the current state of keyboard handling. They
-include:</p>
-<ul class="simple">
-<li><p>No way to use modifiers other than <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> and <code class="docutils literal notranslate"><span class="pre">Alt</span></code></p></li>
-<li><p>No way to reliably use multiple modifier keys, other than, <code class="docutils literal notranslate"><span class="pre">Shift+Alt</span></code>.</p></li>
-<li><p>No way to handle different types of keyboard events, such as press, release or repeat</p></li>
-<li><p>No reliable way to distinguish single <code class="docutils literal notranslate"><span class="pre">Esc</span></code> keypresses from the start of a
-escape sequence. Currently, client programs use fragile timing related hacks
-for this, leading to bugs, for example:
-<a class="reference external" href="https://github.com/neovim/neovim/issues/2035">neovim #2035</a>.</p></li>
-</ul>
-<p>There are already two distinct keyboard handling modes, <em>normal mode</em> and
-<em>application mode</em>. These modes generate different escape sequences for the
-various special keys (arrow keys, function keys, home/end etc.) Most terminals
-start out in normal mode, however, most shell programs like <code class="docutils literal notranslate"><span class="pre">bash</span></code> switch them to
-application mode. We propose adding a third mode, named <em>full mode</em> that addresses
-the shortcomings listed above.</p>
-<p>Switching to the new <em>full mode</em> is accomplished using the standard private
-mode DECSET escape sequence:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;ESC&gt;[?2017h
-</pre></div>
-</div>
-<p>and to leave <em>full mode</em>, use DECRST:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;ESC&gt;[?2017l
-</pre></div>
-</div>
-<p>The number <code class="docutils literal notranslate"><span class="pre">2017</span></code> above is not used for any existing modes, as far as I know.
-Client programs can query if the terminal emulator is in <em>full mode</em> by using
-the standard <a class="reference external" href="https://vt100.net/docs/vt510-rm/DECRQM.html">DECRQM</a> escape sequence.</p>
-<p>The new mode works as follows:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>All printable key presses without modifier keys are sent just as in the
-<em>normal mode</em>. This means all printable ASCII characters and in addition,
-<code class="docutils literal notranslate"><span class="pre">Enter</span></code>, <code class="docutils literal notranslate"><span class="pre">Space</span></code> and <code class="docutils literal notranslate"><span class="pre">Backspace</span></code>. Also any unicode characters generated by
-platform specific extended input modes, such as using the <code class="docutils literal notranslate"><span class="pre">AltGr</span></code> key. This
-is done so that client programs that are not aware of this mode can still
-handle basic text entry, so if a <em>full mode</em> using program crashes and does
-not reset, the user can still issue a <code class="docutils literal notranslate"><span class="pre">reset</span></code> command in the shell to restore
-normal key handling. Note that this includes pressing the <code class="docutils literal notranslate"><span class="pre">Shift</span></code> modifier
-and printable keys. Note that this means there are no repeat and release
-events for these keys and also for the left and right shift keys.</p></li>
-<li><p>For non printable keys and key combinations including one or more modifiers,
-an escape sequence encoding the key event is sent. For details on the
-escape sequence, see below.</p></li>
-</ul>
-</div></blockquote>
-<p>The escape sequence encodes the following properties:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Type of event: <code class="docutils literal notranslate"><span class="pre">press,repeat,release</span></code></p></li>
-<li><p>Modifiers pressed at the time of the event</p></li>
-<li><p>The actual key being pressed</p></li>
-</ul>
-</div></blockquote>
-<p>Schematically:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_K</span><span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;&lt;</span><span class="n">modifiers</span><span class="o">&gt;&lt;</span><span class="n">key</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
-</pre></div>
-</div>
-<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;type&gt;</span></code> is one of <code class="docutils literal notranslate"><span class="pre">p</span></code> -- press, <code class="docutils literal notranslate"><span class="pre">r</span></code> -- release and <code class="docutils literal notranslate"><span class="pre">t</span></code> -- repeat.
-Modifiers is a bitmask represented as a single base64 digit.  Shift -- <code class="docutils literal notranslate"><span class="pre">0x1</span></code>,
-Alt -- <code class="docutils literal notranslate"><span class="pre">0x2</span></code>, Control -- <code class="docutils literal notranslate"><span class="pre">0x4</span></code> and Super -- <code class="docutils literal notranslate"><span class="pre">0x8</span></code>.  <code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span></code> is a number
-(encoded in base85) corresponding to the key pressed. The key name to number
-mapping is defined in <a class="reference internal" href="key-encoding.html"><span class="doc">this table</span></a>.</p>
-<p>Client programs must ignore events for keys they do not know. The mapping in
-the above table is stable and will never change, however, new codes might be
-added to it in the future, for new keys.</p>
-<p>For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_KpGp</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\  <span class="ow">is</span>  <span class="o">&lt;</span><span class="n">Ctrl</span><span class="o">&gt;+&lt;</span><span class="n">Alt</span><span class="o">&gt;+</span><span class="n">x</span> <span class="p">(</span><span class="n">press</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_KrP8</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\  <span class="ow">is</span>  <span class="o">&lt;</span><span class="n">Ctrl</span><span class="o">&gt;+&lt;</span><span class="n">Alt</span><span class="o">&gt;+&lt;</span><span class="n">Shift</span><span class="o">&gt;+&lt;</span><span class="n">Super</span><span class="o">&gt;+</span><span class="n">PageUp</span> <span class="p">(</span><span class="n">release</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>This encoding means each key event is represented by 8 or 9 printable ascii
-only bytes, for maximum robustness.</p>
-<p>To see the full mode in action, run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitty</span> <span class="o">+</span><span class="n">kitten</span> <span class="n">key_demo</span>
-</pre></div>
-</div>
-<p>Support for this mode is indicated by the <code class="docutils literal notranslate"><span class="pre">fullkbd</span></code> boolean capability
-in the terminfo database, in case querying for it via DECQRM is inconvenient.</p>
+<p>kitty has a <a class="reference internal" href="keyboard-protocol.html"><span class="doc">keyboard protocol</span></a> for reporting key
+presses to terminal applications that solves all key handling issues in
+terminal applications.</p>
 </div>
 <div class="section" id="setting-text-styles-colors-in-arbitrary-regions-of-the-screen">
 <span id="ext-styles"></span><h2><a class="toc-backref" href="#id6">Setting text styles/colors in arbitrary regions of the screen</a><a class="headerlink" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" title="Permalink to this headline">¶</a></h2>
@@ -277,22 +199,33 @@ rectangular region of the screen from (3, 4) to (10, 11), you use:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="saving-and-restoring-the-default-foreground-background-selection-cursor-colors">
-<h2><a class="toc-backref" href="#id7">Saving and restoring the default foreground/background/selection/cursor colors</a><a class="headerlink" href="#saving-and-restoring-the-default-foreground-background-selection-cursor-colors" title="Permalink to this headline">¶</a></h2>
-<p>It is often useful for a full screen application with its own color themes
-to set the default foreground, background, selection and cursor colors. This
-allows for various performance optimizations when drawing the screen. The
-problem is that if the user previously used the escape codes to change these
-colors herself, then running the full screen application will lose her
-changes even after it exits. To avoid this, kitty introduces a new pair of
-<em>OSC</em> escape codes to push and pop the current color values from a stack:</p>
+<div class="section" id="saving-and-restoring-colors">
+<h2><a class="toc-backref" href="#id7">Saving and restoring colors</a><a class="headerlink" href="#saving-and-restoring-colors" title="Permalink to this headline">¶</a></h2>
+<p>It is often useful for a full screen application with its own color themes to
+set the default foreground, background, selection and cursor colors and the
+ANSI color table. This allows for various performance optimizations when
+drawing the screen. The problem is that if the user previously used the escape
+codes to change these colors herself, then running the full screen application
+will lose her changes even after it exits. To avoid this, kitty introduces a
+new pair of <em>OSC</em> escape codes to push and pop the current color values from a
+stack:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">]</span><span class="mi">30001</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\  <span class="c1"># push onto stack</span>
 <span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">]</span><span class="mi">30101</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\  <span class="c1"># pop from stack</span>
 </pre></div>
 </div>
-<p>These escape codes save/restore the so called <em>dynamic colors</em>, default
+<p>These escape codes save/restore the colors, default
 background, default foreground, selection background, selection foreground and
-cursor color.</p>
+cursor color and the 256 colors of the ANSI color table.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In July 2020, after several years, XTerm copied this protocol
+extension, without acknowledgement, and using incompatible escape codes
+(XTPUSHCOLORS, XTPOPCOLORS, XTREPORTCOLORS). And they decided to save not
+just the dynamic colors but the entire ANSI color table. In the interests of
+promoting interoperability, kitty added support for XTerm's escape codes as
+well, and changed this extension to also save/restore the entire ANSI color
+table.</p>
+</div>
 </div>
 <div class="section" id="pasting-to-clipboard">
 <h2><a class="toc-backref" href="#id8">Pasting to clipboard</a><a class="headerlink" href="#pasting-to-clipboard" title="Permalink to this headline">¶</a></h2>
@@ -474,7 +407,7 @@ desktop notifications.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2020, Kovid Goyal.
+      &copy;2021, Kovid Goyal.
       
     </div>
 

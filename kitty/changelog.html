@@ -13,7 +13,6 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -80,6 +79,7 @@
 <div>&nbsp;</div>
 <div id="sidebartoc">
   <ul>
+<li><a class="reference internal" href="#future">0.20.0 [future]</a></li>
 <li><a class="reference internal" href="#id1">0.19.3 [2020-12-19]</a></li>
 <li><a class="reference internal" href="#id2">0.19.2 [2020-11-13]</a></li>
 <li><a class="reference internal" href="#id3">0.19.1 [2020-10-06]</a></li>
@@ -153,8 +153,27 @@
             
   <div class="section" id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
-<p><em>kitty</em> is a feature full, cross-platform, <em>fast</em>, GPU based terminal emulator.
+<p><em>kitty</em> is a feature-rich, cross-platform, <em>fast</em>, GPU based terminal.
 To update <em>kitty</em>, <a class="reference internal" href="binary.html"><span class="doc">follow the instructions</span></a>.</p>
+<div class="section" id="future">
+<h2>0.20.0 [future]<a class="headerlink" href="#future" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Add support for the color settings stack that XTerm copied from us without
+acknowledgement and decided to use incompatible escape codes for.</p></li>
+<li><p>Add entries to the terminfo file for some user capabilities that are shared
+with XTerm (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3193">#3193</a>)</p></li>
+<li><p>The launch command now does more sophisticated resolving of executables to
+run. The system-wide PATH is used first, then system specific default paths,
+and finally the PATH inside the shell.</p></li>
+<li><p>Double clicking on empty tab bar area now opens a new tab (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3201">#3201</a>)</p></li>
+<li><p>Linux: Fix rendering of emoji followed by the graphics variation selector not
+being colored with some fonts (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3211">#3211</a>)</p></li>
+<li><p>Unicode input: Fix using index in select by name mode not working for indices
+larger than 16. Also using an index does not filter the list of matches. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3219">#3219</a>)</p></li>
+<li><p>Panel kitten: Allow setting WM_CLASS (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3233">#3233</a>)</p></li>
+<li><p>macOS: Add menu items to close the OS window and the current tab (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3240">#3240</a>, <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3246">#3246</a>)</p></li>
+</ul>
+</div>
 <div class="section" id="id1">
 <h2>0.19.3 [2020-12-19]<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -1690,7 +1709,7 @@ contents of the screen + scrollback buffer as stdin to the command.</p></li>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2020, Kovid Goyal.
+      &copy;2021, Kovid Goyal.
       
     </div>
 

@@ -13,7 +13,6 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -170,7 +169,10 @@ terminfo files to the server:</p>
 </div>
 <p>This ssh kitten takes all the same command line arguments
 as ssh, you can alias it to ssh in your shell's rc files to avoid having to
-type it each time.</p>
+type it each time:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> <span class="nv">ssh</span><span class="o">=</span><span class="s2">&quot;kitty +kitten ssh&quot;</span>
+</pre></div>
+</div>
 <p>If for some reason that does not work (typically because the server is using a
 non POSIX compliant shell), you can use the following one-liner instead (it
 is slower as it needs to ssh into the server twice, but will work with most
@@ -382,7 +384,7 @@ version of tmux, etc.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2020, Kovid Goyal.
+      &copy;2021, Kovid Goyal.
       
     </div>
 

@@ -13,7 +13,6 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -1180,8 +1179,8 @@ zero means fully dimmed (i.e. invisible).</p>
 <p>The background for text selected with the mouse.</p>
 <div class="section" id="the-color-table">
 <span id="conf-kitty-colors-table"></span><h3>The color table<a class="headerlink" href="#the-color-table" title="Permalink to this headline">¶</a></h3>
-<p>The 16 terminal colors. There are 8 basic colors, each color has a dull and
-bright version. You can also set the remaining colors from the 256 color table
+<p>The 256 terminal colors. There are 8 basic colors, each color has a dull and
+bright version, for the first 16 colors. You can set the remaining 240 colors
 as color16 to color255.</p>
 <dl class="std opt">
 <dt id="opt-kitty.color0">
@@ -1600,8 +1599,9 @@ to force the choice.</p>
 </div>
 <div class="section" id="keyboard-shortcuts">
 <span id="conf-kitty-shortcuts"></span><h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
-<p>For a list of key names, see: <a class="reference external" href="https://github.com/kovidgoyal/kitty/blob/master/glfw/glfw3.h#L349">the GLFW key macros</a>.
-The name to use is the part after the <code class="code docutils literal notranslate"><span class="pre">GLFW_KEY_</span></code> prefix.
+<p>Keys are identified simply by their lowercase unicode characters. For example:
+<code class="docutils literal notranslate"><span class="pre">a</span></code> for the A key, <code class="docutils literal notranslate"><span class="pre">[</span></code> for the left square bracket key, etc. For functional
+keys, such as <code class="docutils literal notranslate"><span class="pre">Enter</span> <span class="pre">or</span> <span class="pre">Escape</span></code> the names are present at <a class="reference internal" href="keyboard-protocol.html#functional"><span class="std std-ref">Functional key definitions</span></a>.
 For a list of modifier names, see:
 <a class="reference external" href="https://www.glfw.org/docs/latest/group__mods.html">GLFW mods</a></p>
 <p>On Linux you can also use XKB key names to bind keys that are not supported by
@@ -2081,6 +2081,8 @@ or only the current one.</p>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+equal</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all +2.0</span><span class="w"></span>
+<span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+plus</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all +2.0</span><span class="w"></span>
+<span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+kp_add</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all +2.0</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -2089,6 +2091,7 @@ or only the current one.</p>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+minus</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all -2.0</span><span class="w"></span>
+<span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+kp_subtract</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all -2.0</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -2334,7 +2337,7 @@ comments describing each setting by clicking: <a class="reference download inter
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2020, Kovid Goyal.
+      &copy;2021, Kovid Goyal.
       
     </div>
 

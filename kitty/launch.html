@@ -13,12 +13,11 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Layouts" href="layouts.html" />
-    <link rel="prev" title="Key encoding for extended keyboard protocol" href="key-encoding.html" />
+    <link rel="prev" title="A protocol for comprehensive keyboard handling in terminals" href="keyboard-protocol.html" />
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20736318-2"></script>
@@ -83,6 +82,7 @@
 <li><a class="reference internal" href="#the-piping-environment">The piping environment</a></li>
 <li><a class="reference internal" href="#special-arguments">Special arguments</a></li>
 <li><a class="reference internal" href="#watching-launched-windows">Watching launched windows</a></li>
+<li><a class="reference internal" href="#finding-executables">Finding executables</a></li>
 <li><a class="reference internal" href="#syntax-reference">Syntax reference</a><ul>
 <li><a class="reference internal" href="#options">Options</a></li>
 </ul>
@@ -93,7 +93,7 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="key-encoding.html" title="previous chapter">Key encoding for extended keyboard protocol</a></li>
+      <li>Previous: <a href="keyboard-protocol.html" title="previous chapter">A protocol for comprehensive keyboard handling in terminals</a></li>
       <li>Next: <a href="layouts.html" title="next chapter">Layouts</a></li>
   </ul></li>
 </ul>
@@ -185,6 +185,15 @@ contents of the window and its scrollback buffer. Similarly,
 <code class="docutils literal notranslate"><span class="pre">window.child.pid</span></code> is the PID of the processes that was launched
 in the window and <code class="docutils literal notranslate"><span class="pre">window.id</span></code> is the internal kitty <code class="docutils literal notranslate"><span class="pre">id</span></code> of the
 window.</p>
+</div>
+<div class="section" id="finding-executables">
+<h2>Finding executables<a class="headerlink" href="#finding-executables" title="Permalink to this headline">¶</a></h2>
+<p>When you specify a command to run as just a name rather than an absolute path,
+it is searched for in the system-wide <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable. Note that
+this <strong>may not</strong> be the value of <code class="docutils literal notranslate"><span class="pre">PATH</span></code> inside a shell, as shell startup scripts
+often change the value of this variable. If it is not found there, then a
+system specific list of default paths is searched. If it is still not found,
+then your shell is run and the value of <code class="docutils literal notranslate"><span class="pre">PATH</span></code> inside the shell is used.</p>
 </div>
 <div class="section" id="syntax-reference">
 <h2>Syntax reference<a class="headerlink" href="#syntax-reference" title="Permalink to this headline">¶</a></h2>
@@ -322,7 +331,7 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">&#64;
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2020, Kovid Goyal.
+      &copy;2021, Kovid Goyal.
       
     </div>
 

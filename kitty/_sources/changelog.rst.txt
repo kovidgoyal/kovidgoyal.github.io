@@ -1,8 +1,34 @@
 Changelog
 ==============
 
-|kitty| is a feature full, cross-platform, *fast*, GPU based terminal emulator.
+|kitty| is a feature-rich, cross-platform, *fast*, GPU based terminal.
 To update |kitty|, :doc:`follow the instructions <binary>`.
+
+0.20.0 [future]
+----------------------
+
+- Add support for the color settings stack that XTerm copied from us without
+  acknowledgement and decided to use incompatible escape codes for.
+
+- Add entries to the terminfo file for some user capabilities that are shared
+  with XTerm (:pull:`3193`)
+
+- The launch command now does more sophisticated resolving of executables to
+  run. The system-wide PATH is used first, then system specific default paths,
+  and finally the PATH inside the shell.
+
+- Double clicking on empty tab bar area now opens a new tab (:iss:`3201`)
+
+- Linux: Fix rendering of emoji followed by the graphics variation selector not
+  being colored with some fonts (:iss:`3211`)
+
+- Unicode input: Fix using index in select by name mode not working for indices
+  larger than 16. Also using an index does not filter the list of matches. (:pull:`3219`)
+
+- Panel kitten: Allow setting WM_CLASS (:iss:`3233`)
+
+- macOS: Add menu items to close the OS window and the current tab (:pull:`3240`, :iss:`3246`)
+
 
 0.19.3 [2020-12-19]
 -------------------

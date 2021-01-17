@@ -1,0 +1,1179 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A protocol for comprehensive keyboard handling in terminals &#8212; kitty 0.19.3 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/kitty.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Launching programs in new windows/tabs" href="launch.html" />
+    <link rel="prev" title="The kitty command line interface" href="invocation.html" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-20736318-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-20736318-2');
+</script>
+
+  
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/kitty.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+<div id="support" style="text-align: center">
+    <form class="support-form" action="support.html" title="Donate to support kitty development">
+        <input type="submit" value="Support kitty">
+    </form>
+</div>
+
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" placeholder="Search" />
+      <input type="submit" value="Go" style="cursor: pointer" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div>&nbsp;</div>
+<div id="sidebartoc">
+  <ul>
+<li><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li><a class="reference internal" href="#an-overview">An overview</a><ul>
+<li><a class="reference internal" href="#key-codes">Key codes</a></li>
+<li><a class="reference internal" href="#modifiers">Modifiers</a></li>
+<li><a class="reference internal" href="#event-types">Event types</a></li>
+<li><a class="reference internal" href="#text-as-code-points">Text as code points</a></li>
+<li><a class="reference internal" href="#non-unicode-keys">Non-Unicode keys</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#progressive-enhancement">Progressive enhancement</a><ul>
+<li><a class="reference internal" href="#disambiguate-escape-codes">Disambiguate escape codes</a></li>
+<li><a class="reference internal" href="#report-event-types">Report event types</a></li>
+<li><a class="reference internal" href="#report-alternate-keys">Report alternate keys</a></li>
+<li><a class="reference internal" href="#report-all-keys-as-escape-codes">Report all keys as escape codes</a></li>
+<li><a class="reference internal" href="#report-associated-text">Report associated text</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detection-of-support-for-this-protocol">Detection of support for this protocol</a></li>
+<li><a class="reference internal" href="#legacy-key-event-encoding">Legacy key event encoding</a><ul>
+<li><a class="reference internal" href="#legacy-functional-keys">Legacy functional keys</a></li>
+<li><a class="reference internal" href="#legacy-text-keys">Legacy text keys</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functional-key-definitions">Functional key definitions</a></li>
+<li><a class="reference internal" href="#legacy-ctrl-mapping-of-ascii-keys">Legacy <kbd class="kbd docutils literal notranslate">ctrl</kbd> mapping of ASCII keys</a></li>
+<li><a class="reference internal" href="#bugs-in-fixterms">Bugs in fixterms</a></li>
+</ul>
+
+</div><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="invocation.html" title="previous chapter">The kitty command line interface</a></li>
+      <li>Next: <a href="launch.html" title="next chapter">Launching programs in new windows/tabs</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="a-protocol-for-comprehensive-keyboard-handling-in-terminals">
+<h1>A protocol for comprehensive keyboard handling in terminals<a class="headerlink" href="#a-protocol-for-comprehensive-keyboard-handling-in-terminals" title="Permalink to this headline">¶</a></h1>
+<p>There are various problems with the current state of keyboard handling in
+terminals. They include:</p>
+<ul class="simple">
+<li><p>No way to use modifiers other than <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> and <code class="docutils literal notranslate"><span class="pre">alt</span></code></p></li>
+<li><p>No way to reliably use multiple modifier keys, other than, <code class="docutils literal notranslate"><span class="pre">shift+alt</span></code> and
+<code class="docutils literal notranslate"><span class="pre">ctrl+alt</span></code>.</p></li>
+<li><p>Many of the existing escape codes used to encode these events are ambiguous
+with different key presses mapping to the same escape code.</p></li>
+<li><p>No way to handle different types of keyboard events, such as press, release or repeat</p></li>
+<li><p>No reliable way to distinguish single <code class="docutils literal notranslate"><span class="pre">Esc</span></code> keypresses from the start of a
+escape sequence. Currently, client programs use fragile timing related hacks
+for this, leading to bugs, for example:
+<a class="reference external" href="https://github.com/neovim/neovim/issues/2035">neovim #2035</a>.</p></li>
+</ul>
+<p>To solve these issues and others, kitty has created a new keyboard protocol,
+that is backward compatible but allows applications to opt-in to support more
+advanced usages. The protocol is based on initial work in <a class="reference external" href="http://www.leonerd.org.uk/hacks/fixterms/">fixterms</a>, however, it corrects various
+issues in that proposal, listed at the <a class="reference internal" href="#fixterms-bugs"><span class="std std-ref">bottom of this document</span></a>.</p>
+<p>You can see this protocol with all enhancements in action by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitty</span> <span class="o">+</span><span class="n">kitten</span> <span class="n">key_demo</span>
+</pre></div>
+</div>
+<p>inside the kitty terminal to report key events.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.20.0.</span></p>
+</div>
+<div class="section" id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<p>If you are an application or library developer just interested in using this
+protocol to make keyboard handling simpler and more robust in your application,
+without too many changes, do the following:</p>
+<ol class="arabic simple">
+<li><p>Emit the escape code <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">&gt;</span> <span class="pre">1</span> <span class="pre">u</span></code> at application startup</p></li>
+<li><p>All key events will now be sent in only a few forms to your application,
+that are easy to parse unambiguously.</p></li>
+<li><p>Emit the escape sequence <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">&lt;</span> <span class="pre">u</span></code> at application exit to restore the
+previously used keyboard mode.</p></li>
+</ol>
+<p>Key events will all be delivered to your application either as plain UTF-8
+text, or using the following escape codes, for those keys that do not produce
+text (<code class="docutils literal notranslate"><span class="pre">CSI</span></code> is the bytes <code class="docutils literal notranslate"><span class="pre">0x1b</span> <span class="pre">0x5b</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="n">number</span> <span class="p">;</span> <span class="n">modifiers</span> <span class="p">[</span><span class="n">u</span><span class="o">~</span><span class="p">]</span>
+<span class="n">CSI</span> <span class="mi">1</span><span class="p">;</span> <span class="n">modifiers</span> <span class="p">[</span><span class="n">ABCDFHPQRS</span><span class="p">]</span>
+<span class="mh">0x0d</span> <span class="o">-</span> <span class="k">for</span> <span class="n">the</span> <span class="n">Enter</span> <span class="n">key</span>
+<span class="mh">0x7f</span> <span class="ow">or</span> <span class="mh">0x08</span> <span class="o">-</span> <span class="k">for</span> <span class="n">Backspace</span>
+<span class="mh">0x09</span> <span class="o">-</span> <span class="k">for</span> <span class="n">Tab</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">number</span></code> in the first form above will be either the Unicode codepoint for a
+key, such as <code class="docutils literal notranslate"><span class="pre">97</span></code> for the <kbd class="kbd docutils literal notranslate">a</kbd> key, or one of the numbers from the
+<a class="reference internal" href="#functional"><span class="std std-ref">Functional key definitions</span></a> table below. The <code class="docutils literal notranslate"><span class="pre">modifiers</span></code> optional parameter encodes any
+modifiers pressed for the key event. The encoding is described in the
+<a class="reference internal" href="#modifiers"><span class="std std-ref">Modifiers</span></a> section.</p>
+<p>The second form is used for a few functional keys, such as the <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Home,</kbd> <kbd class="kbd docutils literal notranslate">End,</kbd>
+<kbd class="kbd docutils literal notranslate">Arrow</kbd> <kbd class="kbd docutils literal notranslate">keys</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">F1</kbd>-<kbd class="kbd docutils literal notranslate">F4</kbd></kbd>, they are enumerated in the <a class="reference internal" href="#functional"><span class="std std-ref">Functional key definitions</span></a> table below.
+Note that if no modifiers are present the parameters are omitted entirely
+giving an escape code of the form <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">[ABCDFHPQRS]</span></code>.</p>
+<p>If you want support for more advanced features such as repeat and release
+events, alternate keys for shortcut matching et cetera, these can be turned on
+using <a class="reference internal" href="#progressive-enhancement"><span class="std std-ref">Progressive enhancement</span></a> as documented in the rest of this
+specification.</p>
+</div>
+<div class="section" id="an-overview">
+<h2>An overview<a class="headerlink" href="#an-overview" title="Permalink to this headline">¶</a></h2>
+<p>Key events are divided into two types, those that produce text and those that
+do not. When a key event produces text, the text is sent directly as UTF-8
+encoded bytes. This is safe as UTF-8 contains no C0 control codes.
+When the key event does not have text, the key event is encoded as an escape code. In
+legacy compatibility mode (the default) this uses legacy escape codes, so old terminal
+applications continue to work. Key events that could not be represented in
+legacy mode are encoded using a <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> escape code, that most terminal
+programs should just ignore. For more advanced features, such as release/repeat
+reporting etc., applications can tell the terminal they want this information by
+sending an escape code to <a class="reference internal" href="#progressive-enhancement"><span class="std std-ref">progressively enhance</span></a> the data reported for
+key events.</p>
+<p>The central escape code used to encode key events is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="n">unicode</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">code</span><span class="p">:</span><span class="n">alternate</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">codes</span> <span class="p">;</span> <span class="n">modifiers</span><span class="p">:</span><span class="n">event</span><span class="o">-</span><span class="nb">type</span> <span class="p">;</span> <span class="n">text</span><span class="o">-</span><span class="k">as</span><span class="o">-</span><span class="n">codepoints</span> <span class="n">u</span>
+</pre></div>
+</div>
+<p>Spaces in the above definition are present for clarity and should be ignored.
+<code class="docutils literal notranslate"><span class="pre">CSI</span></code> is the bytes <code class="docutils literal notranslate"><span class="pre">0x1b</span> <span class="pre">0x5b</span></code>. All parameters are decimal numbers. Fields
+are separated by the semi-colon and sub-fields by the colon. Only the
+<code class="docutils literal notranslate"><span class="pre">unicode-key-code</span></code> field is mandatory, everything else is optional. The
+escape code is terminated by the <code class="docutils literal notranslate"><span class="pre">u</span></code> character (the byte <code class="docutils literal notranslate"><span class="pre">0x75</span></code>).</p>
+<div class="section" id="key-codes">
+<span id="id1"></span><h3>Key codes<a class="headerlink" href="#key-codes" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">unicode-key-code</span></code> above is the Unicode codepoint representing the key, as a
+decimal number. For example, the <kbd class="kbd docutils literal notranslate">A</kbd> key is represented as <code class="docutils literal notranslate"><span class="pre">97</span></code> which is
+the unicode code for lowercase <code class="docutils literal notranslate"><span class="pre">a</span></code>. Note that the codepoint used is <em>always</em>
+the lower-case (or more technically, un-shifted) version of the key. If the
+user presses, for example, <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">a</kbd></kbd> the escape code would be <code class="docutils literal notranslate"><span class="pre">CSI</span>
+<span class="pre">97;modifiers</span> <span class="pre">u</span></code>. It <em>must not</em> by <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">65;</span> <span class="pre">modifiers</span> <span class="pre">u</span></code>.</p>
+<p>If <em>alternate key reporting</em> is requested by the program running in the
+terminal, the terminal can send two additional Unicode codepoints, the
+<em>shifted key</em> and <em>base layout key</em>, separated by colons.
+The shifted key is simply the upper-case version of <code class="docutils literal notranslate"><span class="pre">unicode-codepoint</span></code>, or
+more technically, the shifted version. So <cite>a</cite> becomes <cite>A</cite> and so on, based on
+the current keyboard layout. This is needed to be able to match against a
+shortcut such as <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd> which depending on the type of keyboard could
+be either <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">equal</kbd></kbd> or <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd>. Note that the shifted
+key must be present only if shift is also present in the modifiers.</p>
+<p>The <em>base layout key</em> is the key corresponding to the physical key in the
+standard PC-101 key layout. So for example, if the user is using a Cyrillic
+keyboard with a Cyrillic keyboard layout pressing the <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">С</kbd></kbd> key will
+be <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">c</kbd></kbd> in the standard layout. So the terminal should send the <em>base
+layout key</em> as <code class="docutils literal notranslate"><span class="pre">99</span></code> corresponding to the <code class="docutils literal notranslate"><span class="pre">c</span></code> key.</p>
+<p>If only one alternate key is present, it is the <em>shifted key</em> if the terminal
+wants to send only a base layout key but no shifted key, it must use an empty
+sub-field for the shifted key, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="n">unicode</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">code</span><span class="p">::</span><span class="n">base</span><span class="o">-</span><span class="n">layout</span><span class="o">-</span><span class="n">key</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="modifiers">
+<span id="id2"></span><h3>Modifiers<a class="headerlink" href="#modifiers" title="Permalink to this headline">¶</a></h3>
+<p>This protocol supports four modifier keys, <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift,</kbd> <kbd class="kbd docutils literal notranslate">alt,</kbd> <kbd class="kbd docutils literal notranslate">ctrl</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">super</kbd></kbd>.
+Here super is either the <em>Windows/Linux</em> key or the <em>Cmd</em> key on mac keyboards.
+Modifiers are encoded as a bit field with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shift</span> <span class="mb">0b1</span>     <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">alt</span>   <span class="mb">0b10</span>    <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ctrl</span>  <span class="mb">0b100</span>   <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">super</span> <span class="mb">0b1000</span>  <span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the escape code, the modifier value is encoded as a decimal number which is
+<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">actual</span> <span class="pre">modifiers</span></code>. So to represent <kbd class="kbd docutils literal notranslate">shift</kbd> only, the value would be <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span>
+<span class="pre">1</span> <span class="pre">=</span> <span class="pre">2</span></code>, to represent <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd></kbd> the value would be <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">0b101</span> <span class="pre">=</span> <span class="pre">5</span></code>
+and so on. If the modifier field is not present in the escape code, its default
+value is <code class="docutils literal notranslate"><span class="pre">1</span></code> which means no modifiers.</p>
+</div>
+<div class="section" id="event-types">
+<span id="id3"></span><h3>Event types<a class="headerlink" href="#event-types" title="Permalink to this headline">¶</a></h3>
+<p>There are three key event types: <code class="docutils literal notranslate"><span class="pre">press,</span> <span class="pre">repeat</span> <span class="pre">and</span> <span class="pre">release</span></code>. They are
+reported (if requested <code class="docutils literal notranslate"><span class="pre">0b10</span></code>) as a sub-field of the modifiers field
+(separated by a colon). If no modifiers are present, the modifiers field must
+have the value <code class="docutils literal notranslate"><span class="pre">1</span></code> and the event type sub-field the type of event. The
+<code class="docutils literal notranslate"><span class="pre">press</span></code> event type has value <code class="docutils literal notranslate"><span class="pre">1</span></code> and is the default if no event type sub
+field is present. The <code class="docutils literal notranslate"><span class="pre">repeat</span></code> type is <code class="docutils literal notranslate"><span class="pre">2</span></code> and the <code class="docutils literal notranslate"><span class="pre">release</span></code> type is
+<code class="docutils literal notranslate"><span class="pre">3</span></code>. So for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="n">key</span><span class="o">-</span><span class="n">code</span>             <span class="c1"># this is a press event</span>
+<span class="n">CSI</span> <span class="n">key</span><span class="o">-</span><span class="n">code</span><span class="p">;</span><span class="n">modifier</span>    <span class="c1"># this is a press event</span>
+<span class="n">CSI</span> <span class="n">key</span><span class="o">-</span><span class="n">code</span><span class="p">;</span><span class="n">modifier</span><span class="p">:</span><span class="mi">1</span>  <span class="c1"># this is a press event</span>
+<span class="n">CSI</span> <span class="n">key</span><span class="o">-</span><span class="n">code</span><span class="p">;</span><span class="n">modifier</span><span class="p">:</span><span class="mi">2</span>  <span class="c1"># this is a repeat event</span>
+<span class="n">CSI</span> <span class="n">key</span><span class="o">-</span><span class="n">code</span><span class="p">:</span><span class="n">modifier</span><span class="p">:</span><span class="mi">3</span>  <span class="c1"># this is a release event</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Key events that result in text are reported as plain UTF-8 text, so
+events are not supported for them, unless the application requests <em>key
+report mode</em>, see below.</p>
+</div>
+</div>
+<div class="section" id="text-as-code-points">
+<span id="text-as-codepoints"></span><h3>Text as code points<a class="headerlink" href="#text-as-code-points" title="Permalink to this headline">¶</a></h3>
+<p>The terminal can optionally send the text associated with key events as a
+sequence of Unicode code points. This behavior is opt-in by the <a class="reference internal" href="#progressive-enhancement"><span class="std std-ref">progressive
+enhancement</span></a> mechanism described below. Some examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shift</span><span class="o">+</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">CSI</span> <span class="mi">97</span> <span class="p">;</span> <span class="mi">2</span> <span class="p">;</span> <span class="mi">65</span> <span class="n">u</span>  <span class="c1"># The text &#39;A&#39; is reported as 65</span>
+<span class="n">option</span><span class="o">+</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">CSI</span> <span class="mi">97</span> <span class="p">;</span> <span class="p">;</span> <span class="mi">229</span> <span class="n">u</span>  <span class="c1"># The text &#39;å&#39; is reported as 229</span>
+</pre></div>
+</div>
+<p>If multiple code points are present, they must be separated by colons.
+If no known key is associated with the text the key number <code class="docutils literal notranslate"><span class="pre">0</span></code> must be used.</p>
+</div>
+<div class="section" id="non-unicode-keys">
+<h3>Non-Unicode keys<a class="headerlink" href="#non-unicode-keys" title="Permalink to this headline">¶</a></h3>
+<p>There are many keys that don't correspond to letters from human languages, and
+thus aren't represented in Unicode. Think of functional keys, such as
+<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Escape,</kbd> <kbd class="kbd docutils literal notranslate">Play,</kbd> <kbd class="kbd docutils literal notranslate">Pause,</kbd> <kbd class="kbd docutils literal notranslate">F1,</kbd> <kbd class="kbd docutils literal notranslate">Home,</kbd> <kbd class="kbd docutils literal notranslate">etc</kbd></kbd>. These are encoded using Unicode code
+points from the Private Use Area (<code class="docutils literal notranslate"><span class="pre">57344</span> <span class="pre">-</span> <span class="pre">63743</span></code>). The mapping of key
+names to code points for these keys is in the
+<a class="reference internal" href="#functional"><span class="std std-ref">Functional key definition table below</span></a>.</p>
+</div>
+</div>
+<div class="section" id="progressive-enhancement">
+<span id="id4"></span><h2>Progressive enhancement<a class="headerlink" href="#progressive-enhancement" title="Permalink to this headline">¶</a></h2>
+<p>While, in theory, every key event could be completely represented by this
+protocol and all would be hunk-dory, in reality there is a vast universe of
+existing terminal programs that expect legacy control codes for key events and
+that are not likely to ever be updated. To support these, in default mode,
+the terminal will emit legacy escape codes for compatibility. If a terminal
+program wants more robust key handling, it can request it from the terminal,
+via the mechanism described here. Each enhancement is described in detail
+below. The escape code for requesting enhancements is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="o">=</span> <span class="n">flags</span> <span class="p">;</span> <span class="n">mode</span> <span class="n">u</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">flags</span></code> is a decimal encoded integer to specify a set of bit-flags. The
+meanings of the flags are given below. The second, <code class="docutils literal notranslate"><span class="pre">mode</span></code> parameter is
+optional (defaulting to <code class="docutils literal notranslate"><span class="pre">1</span></code>) and specifies how the flags are applied.
+The value <code class="docutils literal notranslate"><span class="pre">1</span></code> means all set bits are set and all unset bits are reset.
+The value <code class="docutils literal notranslate"><span class="pre">2</span></code> means all set bits are set, unset bits are left unchanged.
+The value <code class="docutils literal notranslate"><span class="pre">3</span></code> means all set bits are reset, unset bits are left unchanged.</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">The progressive enhancement flags</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bit</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0b1 (1)</p></td>
+<td><p><a class="reference internal" href="#disambiguate"><span class="std std-ref">Disambiguate escape codes</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>0b10 (2)</p></td>
+<td><p><a class="reference internal" href="#report-events"><span class="std std-ref">Report event types</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>0b100 (4)</p></td>
+<td><p><a class="reference internal" href="#report-alternates"><span class="std std-ref">Report alternate keys</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>0b1000 (8)</p></td>
+<td><p><a class="reference internal" href="#report-all-keys"><span class="std std-ref">Report all keys as escape codes</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>0b10000 (16)</p></td>
+<td><p><a class="reference internal" href="#report-text"><span class="std std-ref">Report associated text</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>The program running in the terminal can query the terminal for the
+current values of the flags by sending:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CSI ? u
+</pre></div>
+</div>
+<p>The terminal will reply with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CSI ? flags u
+</pre></div>
+</div>
+<p>The program can also push/pop the current flags onto a stack in the
+terminal with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="o">&gt;</span> <span class="n">flags</span> <span class="n">u</span>  <span class="c1"># for push, if flags ommitted default to zero</span>
+<span class="n">CSI</span> <span class="o">&lt;</span> <span class="n">number</span> <span class="n">u</span> <span class="c1"># to pop number entries, defaulting to 1 if unspecified</span>
+</pre></div>
+</div>
+<p>Terminals should limit the size of the stack as appropriate, to prevent
+Denial-of-Service attacks. Terminals must maintain separate stacks for the main
+and alternate screens. If a pop request is received that empties the stack,
+all flags are reset. If a push request is received and the stack is full, the
+oldest entry from the stack must be evicted.</p>
+<div class="section" id="disambiguate-escape-codes">
+<span id="disambiguate"></span><h3>Disambiguate escape codes<a class="headerlink" href="#disambiguate-escape-codes" title="Permalink to this headline">¶</a></h3>
+<p>This type of progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b1</span></code>) fixes the problem of some legacy key press
+encodings overlapping with other control codes. For instance, pressing the
+<kbd class="kbd docutils literal notranslate">Esc</kbd> key generates the byte <code class="docutils literal notranslate"><span class="pre">0x1b</span></code> which also is used to indicate the
+start of an escape code. Similarly pressing the key <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">[</kbd></kbd> will generate
+the bytes used for CSI control codes.</p>
+<p>Turning on this flag will cause the terminal to report the <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Esc,</kbd> <kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">key,</kbd>
+<kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">key,</kbd> <kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">key,</kbd> <kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">key</kbd></kbd> keys using <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> sequences instead
+of legacy ones. Here key is any ASCII key as described in <a class="reference internal" href="#legacy-text"><span class="std std-ref">Legacy text keys</span></a>.
+Additionally, all keypad keys will be reported as separate keys with <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code>
+encoding, using dedicated numbers from the <a class="reference internal" href="#functional"><span class="std std-ref">table below</span></a>.</p>
+<p>With this flag turned on, all key events that do not generate text are
+represented in one of the following two forms:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="n">number</span><span class="p">;</span> <span class="n">modifier</span> <span class="n">u</span>
+<span class="n">CSI</span> <span class="mi">1</span><span class="p">;</span> <span class="n">modifier</span> <span class="p">[</span><span class="o">~</span><span class="n">ABCDFHPQRS</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This makes it very easy to parse key events in an application. In particular,
+<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">c</kbd></kbd> will no longer generate the <code class="docutils literal notranslate"><span class="pre">SIGINT</span></code> signal, but instead be
+delivers as a <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> escape code. This has the nice side effect of making it
+much easier to integrate into the application event loop. The only exceptions
+are the <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Enter,</kbd> <kbd class="kbd docutils literal notranslate">Tab</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">Backspace</kbd></kbd> keys which still generate the same
+bytes as in legacy mode this is to allow the user to type and execute commands
+in the shell such as <code class="docutils literal notranslate"><span class="pre">reset</span></code> after a program that sets this mode crashes
+without clearing it.</p>
+</div>
+<div class="section" id="report-event-types">
+<span id="report-events"></span><h3>Report event types<a class="headerlink" href="#report-event-types" title="Permalink to this headline">¶</a></h3>
+<p>This progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b10</span></code>) causes the terminal to report key repeat
+and key release events. Normally only key press events are reported and key
+repeat events are treated as key press events. See <a class="reference internal" href="#event-types"><span class="std std-ref">Event types</span></a> for
+details on how these are reported.</p>
+</div>
+<div class="section" id="report-alternate-keys">
+<span id="report-alternates"></span><h3>Report alternate keys<a class="headerlink" href="#report-alternate-keys" title="Permalink to this headline">¶</a></h3>
+<p>This progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b100</span></code>) causes the terminal to report
+alternate key values in addition to the main value, to aid in shortcut
+matching. See <a class="reference internal" href="#key-codes"><span class="std std-ref">Key codes</span></a> for details on how these are reported.</p>
+</div>
+<div class="section" id="report-all-keys-as-escape-codes">
+<span id="report-all-keys"></span><h3>Report all keys as escape codes<a class="headerlink" href="#report-all-keys-as-escape-codes" title="Permalink to this headline">¶</a></h3>
+<p>Key events that generate text, such as plain key presses without modifiers,
+result in just the text being sent, in the legacy protocol. There is no way to
+be notified of key repeat/release events. These types of events are needed for
+some applications, such as games (think of movement using the <code class="docutils literal notranslate"><span class="pre">WASD</span></code> keys).</p>
+<p>This progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b1000</span></code>) turns on key reporting even for key
+events that generate text. When it is enabled, text will not be sent, instead
+only key events are sent. If the text is needed as well, combine with the
+Report associated text enhancement below.</p>
+<p>Additionally, with this mode, events for pressing modifier keys are reported.
+Note that <em>all</em> keys are reported as escape codes, including <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Enter,</kbd> <kbd class="kbd docutils literal notranslate">Tab,</kbd>
+<kbd class="kbd docutils literal notranslate">Backspace</kbd></kbd> etc.</p>
+</div>
+<div class="section" id="report-associated-text">
+<span id="report-text"></span><h3>Report associated text<a class="headerlink" href="#report-associated-text" title="Permalink to this headline">¶</a></h3>
+<p>This progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b10000</span></code>) causes key events that generate text
+to be reported as <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> escape codes with the text embedded in the escape
+code. See <a class="reference internal" href="#text-as-codepoints"><span class="std std-ref">Text as code points</span></a> above for details on the mechanism.</p>
+</div>
+</div>
+<div class="section" id="detection-of-support-for-this-protocol">
+<span id="detection"></span><h2>Detection of support for this protocol<a class="headerlink" href="#detection-of-support-for-this-protocol" title="Permalink to this headline">¶</a></h2>
+<p>An application can query the terminal for support of this protocol by sending
+the escape code querying for the <a class="reference internal" href="#progressive-enhancement"><span class="std std-ref">current progressive enhancement</span></a> status
+followed by request for the <cite>primary device attributes
+&lt;https://vt100.net/docs/vt510-rm/DA1.html&gt;</cite>. If an answer for the device
+attributes is received without getting back an answer for the progressive
+enhancement the terminal does not support this protocol.</p>
+</div>
+<div class="section" id="legacy-key-event-encoding">
+<h2>Legacy key event encoding<a class="headerlink" href="#legacy-key-event-encoding" title="Permalink to this headline">¶</a></h2>
+<p>In the default mode, the terminal uses a legacy encoding for key events. In
+this encoding, only key press and repeat events are sent and there is no
+way to distinguish between them. Text is sent directly as UTF-8 bytes.</p>
+<p>Any key events not described in this section are sent using the standard
+<code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> encoding. This includes keys that are not encodable in the legacy
+encoding, thereby increasing the space of usable key combinations even without
+progressive enhancement.</p>
+<div class="section" id="legacy-functional-keys">
+<h3>Legacy functional keys<a class="headerlink" href="#legacy-functional-keys" title="Permalink to this headline">¶</a></h3>
+<p>These keys are encoded using three schemes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="n">number</span> <span class="p">;</span> <span class="n">modifier</span> <span class="o">~</span>
+<span class="n">CSI</span> <span class="mi">1</span> <span class="p">;</span> <span class="n">modifier</span> <span class="p">{</span><span class="n">ABCDFHPQRS</span><span class="p">}</span>
+<span class="n">SS3</span> <span class="p">{</span><span class="n">ABCDFHPQRS</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above, if there are no modifiers, the modifier parameter is omitted.
+The modifier value is encoded as described in the <a class="reference internal" href="#modifiers"><span class="std std-ref">Modifiers</span></a> section,
+above. When the second form is used, the number is always <code class="docutils literal notranslate"><span class="pre">1</span></code> and must be
+omitted if the modifiers field is also absent. The third form becomes the
+second form when modifiers are present (<code class="docutils literal notranslate"><span class="pre">SS3</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">bytes</span> <span class="pre">0x1b</span> <span class="pre">0x4f</span></code>).</p>
+<p>These sequences must match entries in the terminfo database for maximum
+compatibility. The table below lists the key, its terminfo entry name and
+the escape code used for it by kitty. A different terminal would use whatever
+escape code is present in its terminfo database for the key.
+Some keys have an alternate representation when the terminal is in <em>cursor key
+mode</em> (the <code class="docutils literal notranslate"><span class="pre">smkx/rmkx</span></code> terminfo capabilities). This form is used only in
+<em>cursor key mode</em> and only when no modifiers are present.</p>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">Legacy functional encoding</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Terminfo name</p></th>
+<th class="head"><p>Escape code</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>INSERT</p></td>
+<td><p>kich1</p></td>
+<td><p>CSI 2 ~</p></td>
+</tr>
+<tr class="row-odd"><td><p>DELETE</p></td>
+<td><p>kdch1</p></td>
+<td><p>CSI 3 ~</p></td>
+</tr>
+<tr class="row-even"><td><p>PAGE_UP</p></td>
+<td><p>kpp</p></td>
+<td><p>CSI 5 ~</p></td>
+</tr>
+<tr class="row-odd"><td><p>PAGE_DOWN</p></td>
+<td><p>knp</p></td>
+<td><p>CSI 6 ~</p></td>
+</tr>
+<tr class="row-even"><td><p>UP</p></td>
+<td><p>cuu1,kcuu1</p></td>
+<td><p>CSI A, SS3 A</p></td>
+</tr>
+<tr class="row-odd"><td><p>DOWN</p></td>
+<td><p>cud1,kcud1</p></td>
+<td><p>CSI B, SS3 B</p></td>
+</tr>
+<tr class="row-even"><td><p>RIGHT</p></td>
+<td><p>cuf1,kcuf1</p></td>
+<td><p>CSI C, SS3 C</p></td>
+</tr>
+<tr class="row-odd"><td><p>LEFT</p></td>
+<td><p>cub1,kcub1</p></td>
+<td><p>CSI D, SS3 D</p></td>
+</tr>
+<tr class="row-even"><td><p>HOME</p></td>
+<td><p>home,khome</p></td>
+<td><p>CSI H, SS3 H</p></td>
+</tr>
+<tr class="row-odd"><td><p>END</p></td>
+<td><p>-,kend</p></td>
+<td><p>CSI F, SS3 F</p></td>
+</tr>
+<tr class="row-even"><td><p>F1</p></td>
+<td><p>kf1</p></td>
+<td><p>SS3 P</p></td>
+</tr>
+<tr class="row-odd"><td><p>F2</p></td>
+<td><p>kf2</p></td>
+<td><p>SS3 Q</p></td>
+</tr>
+<tr class="row-even"><td><p>F3</p></td>
+<td><p>kf3</p></td>
+<td><p>SS3 R</p></td>
+</tr>
+<tr class="row-odd"><td><p>F4</p></td>
+<td><p>kf4</p></td>
+<td><p>SS3 S</p></td>
+</tr>
+<tr class="row-even"><td><p>F5</p></td>
+<td><p>kf5</p></td>
+<td><p>CSI 15 ~</p></td>
+</tr>
+<tr class="row-odd"><td><p>F6</p></td>
+<td><p>kf6</p></td>
+<td><p>CSI 17 ~</p></td>
+</tr>
+<tr class="row-even"><td><p>F7</p></td>
+<td><p>kf7</p></td>
+<td><p>CSI 18 ~</p></td>
+</tr>
+<tr class="row-odd"><td><p>F8</p></td>
+<td><p>kf8</p></td>
+<td><p>CSI 19 ~</p></td>
+</tr>
+<tr class="row-even"><td><p>F9</p></td>
+<td><p>kf9</p></td>
+<td><p>CSI 20 ~</p></td>
+</tr>
+<tr class="row-odd"><td><p>F10</p></td>
+<td><p>kf10</p></td>
+<td><p>CSI 21 ~</p></td>
+</tr>
+<tr class="row-even"><td><p>F11</p></td>
+<td><p>kf11</p></td>
+<td><p>CSI 23 ~</p></td>
+</tr>
+<tr class="row-odd"><td><p>F12</p></td>
+<td><p>kf12</p></td>
+<td><p>CSI 24 ~</p></td>
+</tr>
+</tbody>
+</table>
+<p>There are a few more functional keys that have special cased legacy
+encodings:</p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">C0 controls</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Encodings</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Enter</p></td>
+<td><p>Plain - 0xd,  alt+Enter - 0x1b 0x1d</p></td>
+</tr>
+<tr class="row-odd"><td><p>Escape</p></td>
+<td><p>Plain - 0x1b, alt+Esc - 0x1b 0x1b</p></td>
+</tr>
+<tr class="row-even"><td><p>Backspace</p></td>
+<td><p>Plain - 0x7f, alt+Backspace - 0x1b 0x7f, ctrl+Backspace - 0x08</p></td>
+</tr>
+<tr class="row-odd"><td><p>Space</p></td>
+<td><p>Plain - 0x20, ctrl+Space - 0x0, alt+space - 0x1b 0x20</p></td>
+</tr>
+<tr class="row-even"><td><p>Tab</p></td>
+<td><p>Plain - 0x09, shift+Tab - CSI Z</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that <kbd class="kbd docutils literal notranslate">Backspace</kbd> and <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">backspace</kbd></kbd> are swapped in some
+terminals.</p>
+<p>All keypad keys are reported as there equivalent non-keypad keys. To
+distinguish these, use the <a class="reference internal" href="#disambiguate"><span class="std std-ref">disambiguate</span></a> flag.</p>
+</div>
+<div class="section" id="legacy-text-keys">
+<span id="legacy-text"></span><h3>Legacy text keys<a class="headerlink" href="#legacy-text-keys" title="Permalink to this headline">¶</a></h3>
+<p>For legacy compatibility, the keys
+<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">a</kbd>-<kbd class="kbd docutils literal notranslate">z</kbd> <kbd class="kbd docutils literal notranslate">0</kbd>-<kbd class="kbd docutils literal notranslate">9</kbd> <kbd class="kbd docutils literal notranslate">`</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">=</kbd> <kbd class="kbd docutils literal notranslate">[</kbd> <kbd class="kbd docutils literal notranslate">]</kbd> <kbd class="kbd docutils literal notranslate">;</kbd> <kbd class="kbd docutils literal notranslate">'</kbd> <kbd class="kbd docutils literal notranslate">,</kbd> <kbd class="kbd docutils literal notranslate">.</kbd> <kbd class="kbd docutils literal notranslate">/</kbd></kbd> with the modifiers
+<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift,</kbd> <kbd class="kbd docutils literal notranslate">alt,</kbd> <kbd class="kbd docutils literal notranslate">ctrl,</kbd> <kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">alt,</kbd> <kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">alt</kbd></kbd> are output using the
+following algorithm:</p>
+<ol class="arabic simple">
+<li><p>If the <kbd class="kbd docutils literal notranslate">alt</kbd> key is pressed output the byte for <code class="docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">(0x1b)</span></code></p></li>
+<li><p>If the <kbd class="kbd docutils literal notranslate">ctrl</kbd> modifier is pressed map the key using the table
+in <a class="reference internal" href="#ctrl-mapping"><span class="std std-ref">Legacy ctrl mapping of ASCII keys</span></a>.</p></li>
+<li><p>Otherwise, if the <kbd class="kbd docutils literal notranslate">shift</kbd> modifier is pressed, output the shifted key,
+for example, <code class="docutils literal notranslate"><span class="pre">A</span></code> for <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">$</span></code> for <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p></li>
+<li><p>Otherwise, output the key unmodified</p></li>
+</ol>
+<p>Additionally, <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">space</kbd></kbd> is output as the NULL byte <code class="docutils literal notranslate"><span class="pre">(0x0)</span></code>.</p>
+<p>Any other combination of modifiers with these keys is output as the appropriate
+<code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> escape code.</p>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Example encodings</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Plain</p></th>
+<th class="head"><p>shift</p></th>
+<th class="head"><p>alt</p></th>
+<th class="head"><p>ctrl</p></th>
+<th class="head"><p>shift+alt</p></th>
+<th class="head"><p>alt+ctrl</p></th>
+<th class="head"><p>ctrl+shift</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>i</p></td>
+<td><p>i (105)</p></td>
+<td><p>I (73)</p></td>
+<td><p>ESC i</p></td>
+<td><p>) (41)</p></td>
+<td><p>ESC I</p></td>
+<td><p>ESC )</p></td>
+<td><p>CSI 105; 6 u</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>3 (51)</p></td>
+<td><p># (35)</p></td>
+<td><p>ESC 3</p></td>
+<td><p>3 (51)</p></td>
+<td><p>ESC #</p></td>
+<td><p>ESC 3</p></td>
+<td><p>CSI 51; 6 u</p></td>
+</tr>
+<tr class="row-even"><td><p>;</p></td>
+<td><p>; (59)</p></td>
+<td><p>: (58)</p></td>
+<td><p>ESC ;</p></td>
+<td><p>; (59)</p></td>
+<td><p>ESC :</p></td>
+<td><p>ESC ;</p></td>
+<td><p>CSI 59; 6 u</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Many of the legacy escape codes are ambiguous with multiple different key
+presses yielding the same escape code(s), for example, <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">i</kbd></kbd> is the
+same as <kbd class="kbd docutils literal notranslate">tab</kbd>, <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">m</kbd></kbd> is the same as <kbd class="kbd docutils literal notranslate">Enter</kbd>, <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">r</kbd></kbd>
+is the same <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">r</kbd></kbd>, etc. To resolve these use the
+<a class="reference internal" href="#disambiguate"><span class="std std-ref">disambiguate progressive enhancement</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="functional-key-definitions">
+<span id="functional"></span><h2>Functional key definitions<a class="headerlink" href="#functional-key-definitions" title="Permalink to this headline">¶</a></h2>
+<p>All numbers are in the Unicode Private Use Area (<code class="docutils literal notranslate"><span class="pre">57344</span> <span class="pre">-</span> <span class="pre">63743</span></code>) except
+for a handful of keys that use numbers under 32 and 127 (C0 control codes) for legacy
+compatibility reasons.</p>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text">Functional key codes</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>CSI</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>CSI</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ESCAPE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">27 u</span></code></p></td>
+<td><p>ENTER</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">13 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TAB</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">9 u</span></code></p></td>
+<td><p>BACKSPACE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">127 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>INSERT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2 ~</span></code></p></td>
+<td><p>DELETE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3 ~</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>LEFT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1 D</span></code></p></td>
+<td><p>RIGHT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1 C</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>UP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1 A</span></code></p></td>
+<td><p>DOWN</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1 B</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PAGE_UP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5 ~</span></code></p></td>
+<td><p>PAGE_DOWN</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">6 ~</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>HOME</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1 H</span> <span class="pre">or</span> <span class="pre">7</span> <span class="pre">~</span></code></p></td>
+<td><p>END</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1 F</span> <span class="pre">or</span> <span class="pre">8</span> <span class="pre">~</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>CAPS_LOCK</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57358 u</span></code></p></td>
+<td><p>SCROLL_LOCK</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57359 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>NUM_LOCK</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57360 u</span></code></p></td>
+<td><p>PRINT_SCREEN</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57361 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PAUSE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57362 u</span></code></p></td>
+<td><p>MENU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57363 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>F1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1 P</span> <span class="pre">or</span> <span class="pre">11</span> <span class="pre">~</span></code></p></td>
+<td><p>F2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1 Q</span> <span class="pre">or</span> <span class="pre">12</span> <span class="pre">~</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>F3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1 R</span> <span class="pre">or</span> <span class="pre">13</span> <span class="pre">~</span></code></p></td>
+<td><p>F4</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1 S</span> <span class="pre">or</span> <span class="pre">14</span> <span class="pre">~</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>F5</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">15 ~</span></code></p></td>
+<td><p>F6</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">17 ~</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>F7</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">18 ~</span></code></p></td>
+<td><p>F8</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">19 ~</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>F9</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">20 ~</span></code></p></td>
+<td><p>F10</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">21 ~</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>F11</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">23 ~</span></code></p></td>
+<td><p>F12</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">24 ~</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>F13</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57376 u</span></code></p></td>
+<td><p>F14</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57377 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>F15</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57378 u</span></code></p></td>
+<td><p>F16</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57379 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>F17</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57380 u</span></code></p></td>
+<td><p>F18</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57381 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>F19</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57382 u</span></code></p></td>
+<td><p>F20</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57383 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>F21</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57384 u</span></code></p></td>
+<td><p>F22</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57385 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>F23</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57386 u</span></code></p></td>
+<td><p>F24</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57387 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>F25</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57388 u</span></code></p></td>
+<td><p>F26</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57389 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>F27</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57390 u</span></code></p></td>
+<td><p>F28</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57391 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>F29</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57392 u</span></code></p></td>
+<td><p>F30</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57393 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>F31</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57394 u</span></code></p></td>
+<td><p>F32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57395 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>F33</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57396 u</span></code></p></td>
+<td><p>F34</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57397 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>F35</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57398 u</span></code></p></td>
+<td><p>KP_0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57399 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>KP_1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57400 u</span></code></p></td>
+<td><p>KP_2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57401 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>KP_3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57402 u</span></code></p></td>
+<td><p>KP_4</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57403 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>KP_5</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57404 u</span></code></p></td>
+<td><p>KP_6</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57405 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>KP_7</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57406 u</span></code></p></td>
+<td><p>KP_8</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57407 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>KP_9</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57408 u</span></code></p></td>
+<td><p>KP_DECIMAL</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57409 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>KP_DIVIDE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57410 u</span></code></p></td>
+<td><p>KP_MULTIPLY</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57411 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>KP_SUBTRACT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57412 u</span></code></p></td>
+<td><p>KP_ADD</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57413 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>KP_ENTER</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57414 u</span></code></p></td>
+<td><p>KP_EQUAL</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57415 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>KP_SEPARATOR</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57416 u</span></code></p></td>
+<td><p>KP_LEFT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57417 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>KP_RIGHT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57418 u</span></code></p></td>
+<td><p>KP_UP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57419 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>KP_DOWN</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57420 u</span></code></p></td>
+<td><p>KP_PAGE_UP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57421 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>KP_PAGE_DOWN</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57422 u</span></code></p></td>
+<td><p>KP_HOME</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57423 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>KP_END</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57424 u</span></code></p></td>
+<td><p>KP_INSERT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57425 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>KP_DELETE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57426 u</span></code></p></td>
+<td><p>LEFT_SHIFT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57427 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>LEFT_CONTROL</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57428 u</span></code></p></td>
+<td><p>LEFT_ALT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57429 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>LEFT_SUPER</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57430 u</span></code></p></td>
+<td><p>RIGHT_SHIFT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57431 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>RIGHT_CONTROL</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57432 u</span></code></p></td>
+<td><p>RIGHT_ALT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57433 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>RIGHT_SUPER</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57434 u</span></code></p></td>
+<td><p>MEDIA_PLAY</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57435 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>MEDIA_PAUSE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57436 u</span></code></p></td>
+<td><p>MEDIA_PLAY_PAUSE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57437 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MEDIA_REVERSE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57438 u</span></code></p></td>
+<td><p>MEDIA_STOP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57439 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>MEDIA_FAST_FORWARD</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57440 u</span></code></p></td>
+<td><p>MEDIA_REWIND</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57441 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MEDIA_TRACK_NEXT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57442 u</span></code></p></td>
+<td><p>MEDIA_TRACK_PREVIOUS</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57443 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>MEDIA_RECORD</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57444 u</span></code></p></td>
+<td><p>LOWER_VOLUME</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57445 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>RAISE_VOLUME</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57446 u</span></code></p></td>
+<td><p>MUTE_VOLUME</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57447 u</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that the escape codes above of the form <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">1</span> <span class="pre">letter</span></code> will omit the
+<code class="docutils literal notranslate"><span class="pre">1</span></code> if there are no modifiers, since <code class="docutils literal notranslate"><span class="pre">1</span></code> is the default value.</p>
+</div>
+<div class="section" id="legacy-ctrl-mapping-of-ascii-keys">
+<span id="ctrl-mapping"></span><h2>Legacy <kbd class="kbd docutils literal notranslate">ctrl</kbd> mapping of ASCII keys<a class="headerlink" href="#legacy-ctrl-mapping-of-ascii-keys" title="Permalink to this headline">¶</a></h2>
+<p>When the <kbd class="kbd docutils literal notranslate">ctrl</kbd> key and another key are pressed on the keyboard, terminals
+map the result <em>for some keys</em> to a <em>C0 control code</em> i.e. an value from <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">-</span>
+<span class="pre">31</span></code>. This mapping was historically dependent on the layout of hardware
+terminal keyboards and is not specified anywhere, completely. The best known
+reference is <a class="reference external" href="https://vt100.net/docs/vt100-ug/chapter3.html">Tabe 3-5 here</a>.</p>
+<p>The table below provides a mapping that is a commonly used superset of the table above.
+Any ASCII keys not in the table must be left untouched by <kbd class="kbd docutils literal notranslate">ctrl</kbd>.</p>
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-text">Emitted bytes when <kbd class="kbd docutils literal notranslate">ctrl</kbd> is held down and a key is pressed</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Byte</p></th>
+<th class="head"><p>Key</p></th>
+<th class="head"><p>Byte</p></th>
+<th class="head"><p>Key</p></th>
+<th class="head"><p>Byte</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SPC</p></td>
+<td><p>0</p></td>
+<td><p>/</p></td>
+<td><p>31</p></td>
+<td><p>0</p></td>
+<td><p>48</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>49</p></td>
+<td><p>2</p></td>
+<td><p>0</p></td>
+<td><p>3</p></td>
+<td><p>27</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>28</p></td>
+<td><p>5</p></td>
+<td><p>29</p></td>
+<td><p>6</p></td>
+<td><p>30</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>31</p></td>
+<td><p>8</p></td>
+<td><p>127</p></td>
+<td><p>9</p></td>
+<td><p>57</p></td>
+</tr>
+<tr class="row-even"><td><p>?</p></td>
+<td><p>127</p></td>
+<td><p>&#64;</p></td>
+<td><p>0</p></td>
+<td><p>[</p></td>
+<td><p>27</p></td>
+</tr>
+<tr class="row-odd"><td><p>\</p></td>
+<td><p>28</p></td>
+<td><p>]</p></td>
+<td><p>29</p></td>
+<td><p>^</p></td>
+<td><p>30</p></td>
+</tr>
+<tr class="row-even"><td><p>_</p></td>
+<td><p>31</p></td>
+<td><p>a</p></td>
+<td><p>1</p></td>
+<td><p>b</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>c</p></td>
+<td><p>3</p></td>
+<td><p>d</p></td>
+<td><p>4</p></td>
+<td><p>e</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>f</p></td>
+<td><p>6</p></td>
+<td><p>g</p></td>
+<td><p>7</p></td>
+<td><p>h</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>i</p></td>
+<td><p>9</p></td>
+<td><p>j</p></td>
+<td><p>10</p></td>
+<td><p>k</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-even"><td><p>l</p></td>
+<td><p>12</p></td>
+<td><p>m</p></td>
+<td><p>13</p></td>
+<td><p>n</p></td>
+<td><p>14</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>15</p></td>
+<td><p>p</p></td>
+<td><p>16</p></td>
+<td><p>q</p></td>
+<td><p>17</p></td>
+</tr>
+<tr class="row-even"><td><p>r</p></td>
+<td><p>18</p></td>
+<td><p>s</p></td>
+<td><p>19</p></td>
+<td><p>t</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-odd"><td><p>u</p></td>
+<td><p>21</p></td>
+<td><p>v</p></td>
+<td><p>22</p></td>
+<td><p>w</p></td>
+<td><p>23</p></td>
+</tr>
+<tr class="row-even"><td><p>x</p></td>
+<td><p>24</p></td>
+<td><p>y</p></td>
+<td><p>25</p></td>
+<td><p>z</p></td>
+<td><p>26</p></td>
+</tr>
+<tr class="row-odd"><td><p>~</p></td>
+<td><p>30</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="bugs-in-fixterms">
+<span id="fixterms-bugs"></span><h2>Bugs in fixterms<a class="headerlink" href="#bugs-in-fixterms" title="Permalink to this headline">¶</a></h2>
+<p>The following is a list of errata in the <a class="reference external" href="http://www.leonerd.org.uk/hacks/fixterms/">original fixterms proposal</a> , corrected in this
+specification.</p>
+<ul class="simple">
+<li><p>No way to disambiguate <kbd class="kbd docutils literal notranslate">Esc</kbd> keypresses, other than using 8-bit controls
+which are undesirable for other reasons</p></li>
+<li><p>Incorrectly claims special keys are sometimes encoded using <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">letter</span></code> encodings when it
+is actually <code class="docutils literal notranslate"><span class="pre">SS3</span> <span class="pre">letter</span></code> in all terminals newer than a VT-52, which is
+pretty much everything.</p></li>
+<li><p><kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">tab`</kbd></kbd> should be <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">9</span> <span class="pre">;</span> <span class="pre">6</span> <span class="pre">u</span></code> not <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">1</span> <span class="pre">;</span> <span class="pre">5</span> <span class="pre">Z</span></code>
+(shift+tab is not a separate key from tab)</p></li>
+<li><p>No support for the <kbd class="kbd docutils literal notranslate">super</kbd> modifier.</p></li>
+<li><p>Makes no mention of cursor key mode and how it changes encodings</p></li>
+<li><p>Incorrectly encoding shifted keys when shift modifier is used, for instance,
+for <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">i</kbd></kbd> is encoded as <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">I</kbd></kbd>.</p></li>
+<li><p>No way to have non-conflicting escape codes for <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">letter,</kbd>
+<kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">letter,</kbd> <kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">letter</kbd></kbd> key presses</p></li>
+<li><p>No way to specify both shifted and unshifted keys for robust shortcut
+matching (think matching <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">equal</kbd></kbd> and <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd>)</p></li>
+<li><p>No way to specify alternate layout key. This is useful for keyboard layouts
+such as Cyrillic where you want the shortcut <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">c</kbd></kbd> to work when
+pressing the <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">С</kbd></kbd> on the keyboard.</p></li>
+<li><p>No way to report repeat and release key events, only key press events</p></li>
+<li><p>No way to report key events for presses that generate text, useful for
+gaming. Think of using the <kbd class="kbd docutils literal notranslate">WASD</kbd> keys to control movement.</p></li>
+<li><p>Only a small subset of all possible functional keys are assigned numbers.</p></li>
+<li><p>Claims the <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> escape code has no fixed meaning, but has been used for
+decades as <code class="docutils literal notranslate"><span class="pre">SCORC</span></code> for instance by xterm and ansi.sys and <a class="reference external" href="https://vt100.net/docs/vt510-rm/DECSMBV.html">DECSMBV</a> by the VT-510 hardware
+terminal. This doesn't really matter since these uses are for communication
+to the terminal not from the terminal.</p></li>
+<li><p>Handwaves that <kbd class="kbd docutils literal notranslate">ctrl</kbd> <em>tends to</em> mask with <code class="docutils literal notranslate"><span class="pre">0x1f</span></code>. In actual fact it
+does this only for some keys. The action of <kbd class="kbd docutils literal notranslate">ctrl</kbd> is not specified and
+varies between terminals, historically because of different keyboard layouts.</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, Kovid Goyal.
+      
+    </div>
+
+    
+    <a href="https://github.com/kovidgoyal/kitty" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

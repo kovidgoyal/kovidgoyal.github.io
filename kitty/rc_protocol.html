@@ -13,7 +13,6 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/kitty.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -139,7 +138,7 @@ form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;cmd&quot;</span><span class="p">:</span> <span class="s2">&quot;command name&quot;</span><span class="p">,</span>
     <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">kitty</span> <span class="n">version</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;no_response&quot;</span><span class="p">:</span> <span class="n">Optional</span> <span class="n">Boolean</span><span class="p">,</span>
+    <span class="s2">&quot;no_response&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Optional</span> <span class="n">Boolean</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Optional</span> <span class="n">JSON</span> <span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
@@ -151,6 +150,17 @@ will cause a failure.</p>
 <p>Set <code class="docutils literal notranslate"><span class="pre">no_response</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> if you don’t want a response from kitty.</p>
 <p>The optional payload is a JSON object that is specific to the actual command being sent.
 The fields in the object for every command are documented below.</p>
+<p>As a quick example showing how easy to use this protocol is, we will implement
+the <code class="docutils literal notranslate"><span class="pre">&#64;</span> <span class="pre">ls</span></code> command from the shell using only shell tools. First, run kitty
+as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitty</span> <span class="o">-</span><span class="n">o</span> <span class="n">allow_remote_control</span><span class="o">=</span><span class="n">socket</span><span class="o">-</span><span class="n">only</span> <span class="o">--</span><span class="n">listen</span><span class="o">-</span><span class="n">on</span> <span class="n">unix</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">test</span>
+</pre></div>
+</div>
+<p>Now, in a different terminal, you can get the pretty printed <code class="docutils literal notranslate"><span class="pre">&#64;</span> <span class="pre">ls</span></code> output
+with the following command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo -en &#39;\eP@kitty-cmd{&quot;cmd&quot;:&quot;ls&quot;,&quot;version&quot;:[0,14,2]}\e\&#39; | socat - unix:/tmp/test | awk &#39;{ print substr($0, 13, length($0) - 14) }&#39; | jq -c &#39;.data | fromjson&#39; | jq .
+</pre></div>
+</div>
 <div class="section" id="close-tab">
 <h2>close-tab<a class="headerlink" href="#close-tab" title="Permalink to this headline">¶</a></h2>
 <p>Fields are:</p>
@@ -531,7 +541,7 @@ The fields in the object for every command are documented below.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2020, Kovid Goyal.
+      &copy;2021, Kovid Goyal.
       
     </div>
 

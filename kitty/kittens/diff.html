@@ -13,7 +13,6 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <link rel="shortcut icon" href="../_static/kitty.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -269,10 +268,10 @@ directory contents.</p>
 <p>Add the following to <cite>~/.gitconfig</cite>:</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[diff]</span>
     <span class="na">tool</span> <span class="o">=</span> <span class="s">kitty</span>
-<span class="s">    guitool = kitty.gui</span>
+    <span class="na">guitool</span> <span class="o">=</span> <span class="s">kitty.gui</span>
 <span class="k">[difftool]</span>
     <span class="na">prompt</span> <span class="o">=</span> <span class="s">false</span>
-<span class="s">    trustExitCode = true</span>
+    <span class="na">trustExitCode</span> <span class="o">=</span> <span class="s">true</span>
 <span class="k">[difftool &quot;kitty&quot;]</span>
     <span class="na">cmd</span> <span class="o">=</span> <span class="s">kitty +kitten diff $LOCAL $REMOTE</span>
 <span class="k">[difftool &quot;kitty.gui&quot;]</span>
@@ -656,7 +655,7 @@ comments describing each setting by clicking: <a class="reference download inter
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2020, Kovid Goyal.
+      &copy;2021, Kovid Goyal.
       
     </div>
 
