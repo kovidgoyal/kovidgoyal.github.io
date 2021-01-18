@@ -253,7 +253,7 @@ Modifiers are encoded as a bit field with:</p>
 </div>
 <p>In the escape code, the modifier value is encoded as a decimal number which is
 <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">actual</span> <span class="pre">modifiers</span></code>. So to represent <kbd class="kbd docutils literal notranslate">shift</kbd> only, the value would be <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span>
-<span class="pre">1</span> <span class="pre">=</span> <span class="pre">2</span></code>, to represent <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd></kbd> the value would be <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">0b101</span> <span class="pre">=</span> <span class="pre">5</span></code>
+<span class="pre">1</span> <span class="pre">=</span> <span class="pre">2</span></code>, to represent <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd></kbd> the value would be <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">0b101</span> <span class="pre">=</span> <span class="pre">6</span></code>
 and so on. If the modifier field is not present in the escape code, its default
 value is <code class="docutils literal notranslate"><span class="pre">1</span></code> which means no modifiers.</p>
 </div>
@@ -981,7 +981,7 @@ compatibility reasons.</p>
 map the result <em>for some keys</em> to a <em>C0 control code</em> i.e. an value from <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">-</span>
 <span class="pre">31</span></code>. This mapping was historically dependent on the layout of hardware
 terminal keyboards and is not specified anywhere, completely. The best known
-reference is <a class="reference external" href="https://vt100.net/docs/vt100-ug/chapter3.html">Tabe 3-5 here</a>.</p>
+reference is <a class="reference external" href="https://vt100.net/docs/vt100-ug/chapter3.html">Table 3-5 in the VT-100 docs</a>.</p>
 <p>The table below provides a mapping that is a commonly used superset of the table above.
 Any ASCII keys not in the table must be left untouched by <kbd class="kbd docutils literal notranslate">ctrl</kbd>.</p>
 <table class="docutils align-default" id="id10">
