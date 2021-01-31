@@ -154,7 +154,7 @@ See the <a class="reference internal" href="binary.html"><span class="doc">binar
 <p>You can also use your favorite package manager to install the <em>kitty</em> package.
 <em>kitty</em> packages are available for:
 <a class="reference external" href="https://formulae.brew.sh/cask/kitty">macOS with Homebrew (Cask)</a>,
-<a class="reference external" href="https://nixos.org/nixos/packages.html?channel=nixpkgs-unstable&amp;query=kitty">macOS and Linux with Nix</a>,
+<a class="reference external" href="https://search.nixos.org/packages?channel=unstable&amp;show=kitty&amp;sort=relevance&amp;query=kitty">macOS and Linux with Nix</a>,
 <a class="reference external" href="https://launchpad.net/ubuntu/+source/kitty">Ubuntu</a>,
 <a class="reference external" href="https://packages.debian.org/buster/kitty">Debian</a>,
 <a class="reference external" href="https://build.opensuse.org/package/show/X11:terminals/kitty">openSUSE</a>,
@@ -494,7 +494,14 @@ images</p>
 <dt><a class="reference internal" href="kittens/unicode-input.html"><span class="doc">Unicode Input</span></a></dt><dd><p>Easily input arbitrary unicode characters in <em>kitty</em> by name or hex code.</p>
 </dd>
 <dt><a class="reference internal" href="kittens/hints.html"><span class="doc">Hints</span></a></dt><dd><p>Select and open/paste/insert arbitrary text snippets such as URLs,
-filenames, words, lines, etc from the terminal screen.</p>
+filenames, words, lines, etc. from the terminal screen.</p>
+</dd>
+<dt><a class="reference internal" href="kittens/remote_file.html"><span class="doc">Remote file</span></a></dt><dd><p>Edit, open, or download remote files over SSH easily, by simply clicking on
+the filename.</p>
+</dd>
+<dt><a class="reference internal" href="kittens/hyperlinked_grep.html"><span class="doc">Hyperlinked grep</span></a></dt><dd><p>Search your files using <a class="reference external" href="https://github.com/BurntSushi/ripgrep">ripgrep</a>
+and open the results directly in your favorite editor in the terminal,
+at the line containing the search result, simply by clicking on the result you want.</p>
 </dd>
 <dt><a class="reference internal" href="kittens/panel.html"><span class="doc">Panel</span></a></dt><dd><p>Draw a GPU accelerated dock panel on your desktop showing the output
 from an arbitrary terminal program.</p>
@@ -614,6 +621,9 @@ arbitrary, command running in a new window, tab or overlay, for example:</p>
 </div>
 <p>Would open the scrollback buffer in a new window when you press the <kbd class="kbd docutils literal notranslate">F1</kbd>
 key. See <a class="reference internal" href="conf.html#shortcut-kitty.Browse-scrollback-buffer-in-less"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+h</span></code></a> for details.</p>
+<p>If you want to use it with an editor such as vim to get more powerful features,
+you can see tips for doing so, in
+<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/719">this thread</a>.</p>
 <p>If you wish to store very large amounts of scrollback to view using the piping or
 <a class="reference internal" href="conf.html#shortcut-kitty.Browse-scrollback-buffer-in-less"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+h</span></code></a> features, you can use the <a class="reference internal" href="conf.html#opt-kitty.scrollback_pager_history_size"><code class="xref std std-opt docutils literal notranslate"><span class="pre">scrollback_pager_history_size</span></code></a>
 option.</p>
