@@ -94,12 +94,15 @@
 <li><a class="reference internal" href="#controlling-displayed-image-layout">Controlling displayed image layout</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#deleting-images">Deleting images</a><ul>
+<li><a class="reference internal" href="#deleting-images">Deleting images</a></li>
 <li><a class="reference internal" href="#suppressing-responses-from-the-terminal">Suppressing responses from the terminal</a></li>
 <li><a class="reference internal" href="#requesting-image-ids-from-the-terminal">Requesting image ids from the terminal</a></li>
-<li><a class="reference internal" href="#image-persistence-and-storage-quotas">Image persistence and storage quotas</a></li>
+<li><a class="reference internal" href="#animation">Animation</a><ul>
+<li><a class="reference internal" href="#transferring-animation-frame-data">Transferring animation frame data</a></li>
+<li><a class="reference internal" href="#controlling-animations">Controlling animations</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#image-persistence-and-storage-quotas">Image persistence and storage quotas</a></li>
 <li><a class="reference internal" href="#control-data-reference">Control data reference</a></li>
 <li><a class="reference internal" href="#interaction-with-other-terminal-actions">Interaction with other terminal actions</a></li>
 </ul>
@@ -122,7 +125,7 @@
           <div class="body" role="main">
             
   <div class="section" id="the-terminal-graphics-protocol">
-<h1><a class="toc-backref" href="#id2">The terminal graphics protocol</a><a class="headerlink" href="#the-terminal-graphics-protocol" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id3">The terminal graphics protocol</a><a class="headerlink" href="#the-terminal-graphics-protocol" title="Permalink to this headline">¶</a></h1>
 <p>The goal of this specification is to create a flexible and performant protocol
 that allows the program running in the terminal, hereafter called the <em>client</em>,
 to render arbitrary pixel (raster) graphics to the screen of the terminal
@@ -162,45 +165,48 @@ information tool</p></li>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#the-terminal-graphics-protocol" id="id2">The terminal graphics protocol</a></p>
+<li><p><a class="reference internal" href="#the-terminal-graphics-protocol" id="id3">The terminal graphics protocol</a></p>
 <ul>
-<li><p><a class="reference internal" href="#getting-the-window-size" id="id3">Getting the window size</a></p></li>
-<li><p><a class="reference internal" href="#a-minimal-example" id="id4">A minimal example</a></p></li>
-<li><p><a class="reference internal" href="#the-graphics-escape-code" id="id5">The graphics escape code</a></p></li>
-<li><p><a class="reference internal" href="#transferring-pixel-data" id="id6">Transferring pixel data</a></p>
+<li><p><a class="reference internal" href="#getting-the-window-size" id="id4">Getting the window size</a></p></li>
+<li><p><a class="reference internal" href="#a-minimal-example" id="id5">A minimal example</a></p></li>
+<li><p><a class="reference internal" href="#the-graphics-escape-code" id="id6">The graphics escape code</a></p></li>
+<li><p><a class="reference internal" href="#transferring-pixel-data" id="id7">Transferring pixel data</a></p>
 <ul>
-<li><p><a class="reference internal" href="#rgb-and-rgba-data" id="id7">RGB and RGBA data</a></p></li>
-<li><p><a class="reference internal" href="#png-data" id="id8">PNG data</a></p></li>
-<li><p><a class="reference internal" href="#compression" id="id9">Compression</a></p></li>
-<li><p><a class="reference internal" href="#the-transmission-medium" id="id10">The transmission medium</a></p>
+<li><p><a class="reference internal" href="#rgb-and-rgba-data" id="id8">RGB and RGBA data</a></p></li>
+<li><p><a class="reference internal" href="#png-data" id="id9">PNG data</a></p></li>
+<li><p><a class="reference internal" href="#compression" id="id10">Compression</a></p></li>
+<li><p><a class="reference internal" href="#the-transmission-medium" id="id11">The transmission medium</a></p>
 <ul>
-<li><p><a class="reference internal" href="#local-client" id="id11">Local client</a></p></li>
-<li><p><a class="reference internal" href="#remote-client" id="id12">Remote client</a></p></li>
+<li><p><a class="reference internal" href="#local-client" id="id12">Local client</a></p></li>
+<li><p><a class="reference internal" href="#remote-client" id="id13">Remote client</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#querying-support-and-available-transmission-mediums" id="id13">Querying support and available transmission mediums</a></p></li>
+<li><p><a class="reference internal" href="#querying-support-and-available-transmission-mediums" id="id14">Querying support and available transmission mediums</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#display-images-on-screen" id="id14">Display images on screen</a></p>
+<li><p><a class="reference internal" href="#display-images-on-screen" id="id15">Display images on screen</a></p>
 <ul>
-<li><p><a class="reference internal" href="#controlling-displayed-image-layout" id="id15">Controlling displayed image layout</a></p></li>
+<li><p><a class="reference internal" href="#controlling-displayed-image-layout" id="id16">Controlling displayed image layout</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#deleting-images" id="id16">Deleting images</a></p>
+<li><p><a class="reference internal" href="#deleting-images" id="id17">Deleting images</a></p></li>
+<li><p><a class="reference internal" href="#suppressing-responses-from-the-terminal" id="id18">Suppressing responses from the terminal</a></p></li>
+<li><p><a class="reference internal" href="#requesting-image-ids-from-the-terminal" id="id19">Requesting image ids from the terminal</a></p></li>
+<li><p><a class="reference internal" href="#animation" id="id20">Animation</a></p>
 <ul>
-<li><p><a class="reference internal" href="#suppressing-responses-from-the-terminal" id="id17">Suppressing responses from the terminal</a></p></li>
-<li><p><a class="reference internal" href="#requesting-image-ids-from-the-terminal" id="id18">Requesting image ids from the terminal</a></p></li>
-<li><p><a class="reference internal" href="#image-persistence-and-storage-quotas" id="id19">Image persistence and storage quotas</a></p></li>
+<li><p><a class="reference internal" href="#transferring-animation-frame-data" id="id21">Transferring animation frame data</a></p></li>
+<li><p><a class="reference internal" href="#controlling-animations" id="id22">Controlling animations</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#control-data-reference" id="id20">Control data reference</a></p></li>
-<li><p><a class="reference internal" href="#interaction-with-other-terminal-actions" id="id21">Interaction with other terminal actions</a></p></li>
+<li><p><a class="reference internal" href="#image-persistence-and-storage-quotas" id="id23">Image persistence and storage quotas</a></p></li>
+<li><p><a class="reference internal" href="#control-data-reference" id="id24">Control data reference</a></p></li>
+<li><p><a class="reference internal" href="#interaction-with-other-terminal-actions" id="id25">Interaction with other terminal actions</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="getting-the-window-size">
-<h2><a class="toc-backref" href="#id3">Getting the window size</a><a class="headerlink" href="#getting-the-window-size" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Getting the window size</a><a class="headerlink" href="#getting-the-window-size" title="Permalink to this headline">¶</a></h2>
 <p>In order to know what size of images to display and how to position them, the
 client must be able to get the window size in pixels and the number of cells
 per row and column. This can be done by using the <code class="docutils literal notranslate"><span class="pre">TIOCGWINSZ</span></code> ioctl.  Some
@@ -234,7 +240,7 @@ size in pixels. This escape code is supported in many terminals, not just
 kitty.</p>
 </div>
 <div class="section" id="a-minimal-example">
-<h2><a class="toc-backref" href="#id4">A minimal example</a><a class="headerlink" href="#a-minimal-example" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">A minimal example</a><a class="headerlink" href="#a-minimal-example" title="Permalink to this headline">¶</a></h2>
 <p>Some minimal python code to display PNG images in kitty, using the most basic
 features of the graphics protocol:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
@@ -272,7 +278,7 @@ file in kitty as:</p>
 </div>
 </div>
 <div class="section" id="the-graphics-escape-code">
-<h2><a class="toc-backref" href="#id5">The graphics escape code</a><a class="headerlink" href="#the-graphics-escape-code" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">The graphics escape code</a><a class="headerlink" href="#the-graphics-escape-code" title="Permalink to this headline">¶</a></h2>
 <p>All graphics escape codes are of the form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_G</span><span class="o">&lt;</span><span class="n">control</span> <span class="n">data</span><span class="o">&gt;</span><span class="p">;</span><span class="o">&lt;</span><span class="n">payload</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
 </pre></div>
@@ -286,7 +292,7 @@ The meaning of the payload is interpreted based on the control data.</p>
 <p>The first step is to transmit the actual image data.</p>
 </div>
 <div class="section" id="transferring-pixel-data">
-<h2><a class="toc-backref" href="#id6">Transferring pixel data</a><a class="headerlink" href="#transferring-pixel-data" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2><a class="toc-backref" href="#id7">Transferring pixel data</a><a class="headerlink" href="#transferring-pixel-data" title="Permalink to this headline">¶</a></h2>
 <p>The first consideration when transferring data between the client and the
 terminal emulator is the format in which to do so. Since there is a vast and
 growing number of image formats in existence, it does not make sense to have
@@ -300,7 +306,7 @@ default) indicates 32-bit RGBA data and <code class="docutils literal notranslat
 indicates PNG data. The PNG format is supported for convenience and a compact way
 of transmitting paletted images.</p>
 <div class="section" id="rgb-and-rgba-data">
-<h3><a class="toc-backref" href="#id7">RGB and RGBA data</a><a class="headerlink" href="#rgb-and-rgba-data" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id8">RGB and RGBA data</a><a class="headerlink" href="#rgb-and-rgba-data" title="Permalink to this headline">¶</a></h3>
 <p>In these formats the pixel data is stored directly as 3 or 4 bytes per pixel,
 respectively. The colors in the data <strong>must</strong> be in the <em>sRGB color space</em>.  When
 specifying images in this format, the image dimensions <strong>must</strong> be sent in the
@@ -313,7 +319,7 @@ control data. For example:</p>
 bytes.</p>
 </div>
 <div class="section" id="png-data">
-<h3><a class="toc-backref" href="#id8">PNG data</a><a class="headerlink" href="#png-data" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">PNG data</a><a class="headerlink" href="#png-data" title="Permalink to this headline">¶</a></h3>
 <p>In this format any PNG image can be transmitted directly.  For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Gf</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span><span class="o">&lt;</span><span class="n">payload</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
 </pre></div>
@@ -323,7 +329,7 @@ the image will be read from the PNG data itself. Note that if you use both PNG a
 compression, then you must provide the <code class="docutils literal notranslate"><span class="pre">S</span></code> key with the size of the PNG data.</p>
 </div>
 <div class="section" id="compression">
-<h3><a class="toc-backref" href="#id9">Compression</a><a class="headerlink" href="#compression" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">Compression</a><a class="headerlink" href="#compression" title="Permalink to this headline">¶</a></h3>
 <p>The client can send compressed image data to the terminal emulator, by specifying the
 <code class="docutils literal notranslate"><span class="pre">o</span></code> key. Currently, only zlib based deflate compression is supported, which is specified using
 <code class="docutils literal notranslate"><span class="pre">o=z</span></code>. For example:</p>
@@ -336,7 +342,7 @@ it before rendering. You can specify compression for any format. The terminal
 emulator will decompress before interpreting the pixel data.</p>
 </div>
 <div class="section" id="the-transmission-medium">
-<h3><a class="toc-backref" href="#id10">The transmission medium</a><a class="headerlink" href="#the-transmission-medium" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">The transmission medium</a><a class="headerlink" href="#the-transmission-medium" title="Permalink to this headline">¶</a></h3>
 <p>The transmission medium is specified using the <code class="docutils literal notranslate"><span class="pre">t</span></code> key. The <code class="docutils literal notranslate"><span class="pre">t</span></code> key defaults to <code class="docutils literal notranslate"><span class="pre">d</span></code>
 and can take the values:</p>
 <table class="docutils align-default">
@@ -370,7 +376,7 @@ The terminal emulator will delete it after reading the pixel data</p></td>
 </tbody>
 </table>
 <div class="section" id="local-client">
-<h4><a class="toc-backref" href="#id11">Local client</a><a class="headerlink" href="#local-client" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id12">Local client</a><a class="headerlink" href="#local-client" title="Permalink to this headline">¶</a></h4>
 <p>First let us consider the local client techniques (files and shared memory). Some examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Gf</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="n">f</span><span class="p">;</span><span class="o">&lt;</span><span class="n">encoded</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">png</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
 </pre></div>
@@ -392,7 +398,7 @@ keys respectively. For example:</p>
 inside the specified shared memory buffer.</p>
 </div>
 <div class="section" id="remote-client">
-<h4><a class="toc-backref" href="#id12">Remote client</a><a class="headerlink" href="#remote-client" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id13">Remote client</a><a class="headerlink" href="#remote-client" title="Permalink to this headline">¶</a></h4>
 <p>Remote clients, those that are unable to use the filesystem/shared memory to
 transmit data, must send the pixel data directly using escape codes. Since
 escape codes are of limited maximum length, the data will need to be chunked up
@@ -417,7 +423,7 @@ received and validated.</p>
 </div>
 </div>
 <div class="section" id="querying-support-and-available-transmission-mediums">
-<h3><a class="toc-backref" href="#id13">Querying support and available transmission mediums</a><a class="headerlink" href="#querying-support-and-available-transmission-mediums" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id14">Querying support and available transmission mediums</a><a class="headerlink" href="#querying-support-and-available-transmission-mediums" title="Permalink to this headline">¶</a></h3>
 <p>Since a client has no a-priori knowledge of whether it shares a filesystem/shared memory
 with the terminal emulator, it can send an id with the control data, using the <code class="docutils literal notranslate"><span class="pre">i</span></code> key
 (which can be an arbitrary positive integer up to 4294967295, it must not be zero).
@@ -461,7 +467,7 @@ a response to the graphics query, it does not.</p>
 </div>
 </div>
 <div class="section" id="display-images-on-screen">
-<h2><a class="toc-backref" href="#id14">Display images on screen</a><a class="headerlink" href="#display-images-on-screen" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">Display images on screen</a><a class="headerlink" href="#display-images-on-screen" title="Permalink to this headline">¶</a></h2>
 <p>Every transmitted image can be displayed an arbitrary number of times on the
 screen, in different locations, using different parts of the source image, as
 needed. Each such display of an image is called a <em>placement</em>.  You can either
@@ -497,7 +503,7 @@ placements around the screen, without flicker.</p>
 <p><span class="versionmodified added">New in version 0.19.3: </span>Support for specifying placement ids (see <a class="reference internal" href="kittens/query_terminal.html"><span class="doc">Query terminal</span></a> to query kitty version)</p>
 </div>
 <div class="section" id="controlling-displayed-image-layout">
-<h3><a class="toc-backref" href="#id15">Controlling displayed image layout</a><a class="headerlink" href="#controlling-displayed-image-layout" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id16">Controlling displayed image layout</a><a class="headerlink" href="#controlling-displayed-image-layout" title="Permalink to this headline">¶</a></h3>
 <p>The image is rendered at the current cursor position, from the upper left corner of
 the current cell. You can also specify extra <code class="docutils literal notranslate"><span class="pre">X=3</span></code> and <code class="docutils literal notranslate"><span class="pre">Y=4</span></code> pixel offsets to display from
 a different origin within the cell. Note that the offsets must be smaller that the size of the cell.</p>
@@ -528,7 +534,7 @@ positioning of the cursor is undefined, and up to implementations.</p>
 </div>
 </div>
 <div class="section" id="deleting-images">
-<h2><a class="toc-backref" href="#id16">Deleting images</a><a class="headerlink" href="#deleting-images" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">Deleting images</a><a class="headerlink" href="#deleting-images" title="Permalink to this headline">¶</a></h2>
 <p>Images can be deleted by using the delete action <code class="docutils literal notranslate"><span class="pre">a=d</span></code>. If specified without any
 other keys, it will delete all images visible on screen. To delete specific images,
 use the <cite>d</cite> key as described in the table below. Note that each value of d has
@@ -594,8 +600,9 @@ preferentially deleted.</p>
 <span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\  <span class="c1"># delete all placements that intersect the cell at (3, 4), without freeing data</span>
 </pre></div>
 </div>
+</div>
 <div class="section" id="suppressing-responses-from-the-terminal">
-<h3><a class="toc-backref" href="#id17">Suppressing responses from the terminal</a><a class="headerlink" href="#suppressing-responses-from-the-terminal" title="Permalink to this headline">¶</a></h3>
+<h2><a class="toc-backref" href="#id18">Suppressing responses from the terminal</a><a class="headerlink" href="#suppressing-responses-from-the-terminal" title="Permalink to this headline">¶</a></h2>
 <p>If you are using the graphics protocol from a limited client, such as a shell
 script, it might be useful to avoid having to process responses from the
 terminal. For this, you can use the <code class="docutils literal notranslate"><span class="pre">q</span></code> key. Set it to <code class="docutils literal notranslate"><span class="pre">1</span></code> to suppress
@@ -605,7 +612,7 @@ terminal. For this, you can use the <code class="docutils literal notranslate"><
 </div>
 </div>
 <div class="section" id="requesting-image-ids-from-the-terminal">
-<h3><a class="toc-backref" href="#id18">Requesting image ids from the terminal</a><a class="headerlink" href="#requesting-image-ids-from-the-terminal" title="Permalink to this headline">¶</a></h3>
+<h2><a class="toc-backref" href="#id19">Requesting image ids from the terminal</a><a class="headerlink" href="#requesting-image-ids-from-the-terminal" title="Permalink to this headline">¶</a></h2>
 <p>If you are writing a program that is going to share the screen with other
 programs and you still want to use image ids, it is not possible to know
 what image ids are free to use. In this case, instead of using the <code class="docutils literal notranslate"><span class="pre">i</span></code>
@@ -635,25 +642,137 @@ terminal must reply with an EINVAL error message, unless silenced.</p>
 <p><span class="versionmodified added">New in version 0.19.3: </span>The ability to use image numbers (see <a class="reference internal" href="kittens/query_terminal.html"><span class="doc">Query terminal</span></a> to query kitty version)</p>
 </div>
 </div>
+<div class="section" id="animation">
+<h2><a class="toc-backref" href="#id20">Animation</a><a class="headerlink" href="#animation" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.20.0: </span>Animation support (see <a class="reference internal" href="kittens/query_terminal.html"><span class="doc">Query terminal</span></a> to query kitty version)</p>
+</div>
+<p>When designing support for animation, the two main considerations were:</p>
+<ol class="arabic simple">
+<li><p>There should be a way for both client and terminal driven animations.
+Since there is unknown and variable latency between client and terminal,
+especially over SSH, client driven animations are not sufficient.</p></li>
+<li><p>Animations often consist of small changes from one frame to the next, the
+protocol should thus allow transmitting these deltas for efficiency and
+performance reasons.</p></li>
+</ol>
+<p>Animation support is added to the protocol by adding two new modes for the
+<code class="docutils literal notranslate"><span class="pre">a</span></code> (action) key. A <code class="docutils literal notranslate"><span class="pre">f</span></code> mode for transmitting frame data and an <code class="docutils literal notranslate"><span class="pre">a</span></code> mode
+for controlling the animation of an image. Animation proceeds in two steps,
+first a normal image is created as described earlier. Then animation frames are
+added to the image to make it into an animation. Since every animation is
+associated with a single image, all animation escape codes must specify either
+the <code class="docutils literal notranslate"><span class="pre">i</span></code> or <code class="docutils literal notranslate"><span class="pre">I</span></code> keys to identify the image being operated on.</p>
+<div class="section" id="transferring-animation-frame-data">
+<h3><a class="toc-backref" href="#id21">Transferring animation frame data</a><a class="headerlink" href="#transferring-animation-frame-data" title="Permalink to this headline">¶</a></h3>
+<p>Transferring animation frame data is very similar to
+<a class="reference internal" href="#transferring-pixel-data"><span class="std std-ref">Transferring pixel data</span></a> above. The main difference is that the image
+the frame belongs to must be specified and it is possible to transmit data for
+only part of a frame, declaring the rest of the frame to be filled in by data
+from a previous frame, or left blank. To transfer frame data the <code class="docutils literal notranslate"><span class="pre">a=f</span></code>
+key must be used in all escape codes.</p>
+<p>First, to transfer a simple frame that has data for the full image area, the
+escape codes used are exactly the same as for transferring image data, with the
+addition of: <code class="docutils literal notranslate"><span class="pre">a=f,i=&lt;image</span> <span class="pre">id&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">a=f,I=&lt;image</span> <span class="pre">number&gt;</span></code>.</p>
+<p>If the frame has data for only a part of the image, you can specify the
+rectangle for it using the <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">s,</span> <span class="pre">v</span></code> keys, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">v</span><span class="o">=</span><span class="mi">200</span>  <span class="c1"># A 100x200 rectangle with its top left corner at (10, 5)</span>
+</pre></div>
+</div>
+<p>Frames are created by composing the transmitted data onto a background canvas.
+This canvas can be either a single color, or the pixels from a previous frame.
+The composition can be of two types, either a simple replacement (<code class="docutils literal notranslate"><span class="pre">X=1</span></code>) key
+or a full alpha blend (the default).</p>
+<p>To use a background color for the canvas, specify the <code class="docutils literal notranslate"><span class="pre">Y</span></code> key as a 32-bit
+RGBA color. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">=</span><span class="mi">4278190335</span> <span class="c1"># 0xff0000ff opaque red</span>
+<span class="n">Y</span><span class="o">=</span><span class="mi">16711816</span>   <span class="c1"># 0x00ff0088 translucent green (alpha=0.53)</span>
+</pre></div>
+</div>
+<p>The default background color when none is specified is <code class="docutils literal notranslate"><span class="pre">0</span></code> i.e. a black,
+transparent pixel.</p>
+<p>To use the data from a previous frame, specify the <code class="docutils literal notranslate"><span class="pre">c</span></code> key which is a 1-based
+frame number. Thus <code class="docutils literal notranslate"><span class="pre">c=1</span></code> refers to the root frame (the base image data),
+<code class="docutils literal notranslate"><span class="pre">c=2</span></code> refers to the second frame and so on.</p>
+<p>If the frame is composed of multiple rectangular blocks, these can be expressed
+by using the <code class="docutils literal notranslate"><span class="pre">r</span></code> key. When specifying the <code class="docutils literal notranslate"><span class="pre">r</span></code> key the data for an existing
+frame is edited. The same composition operation as above happens, but now the
+background canvas is the existing frame itself. <code class="docutils literal notranslate"><span class="pre">r</span></code> is a 1-based index, so
+<code class="docutils literal notranslate"><span class="pre">r=1</span></code> is the root frame (base image data), <code class="docutils literal notranslate"><span class="pre">r=2</span></code> is the second frame and so
+on.</p>
+<p>Finally, while transferring frame data, the frame <em>gap</em> can also be specified
+using the <code class="docutils literal notranslate"><span class="pre">z</span></code> key. The gap is the number of milliseconds to wait before
+displaying the next frame when the animation is running. A value of <code class="docutils literal notranslate"><span class="pre">z=0</span></code> is
+ignored, <code class="docutils literal notranslate"><span class="pre">z=positive</span> <span class="pre">number</span></code> sets the gap to the specified number of
+milliseconds and <code class="docutils literal notranslate"><span class="pre">z=negative</span> <span class="pre">number</span></code> creates a <em>gapless</em> frame. Gapless
+frames are not displayed to the user since they are instantly skipped over,
+however they can be useful as the base data for subsequent frames. For example,
+for an animation where the background remains the same and a small object or two
+move.</p>
+</div>
+<div class="section" id="controlling-animations">
+<h3><a class="toc-backref" href="#id22">Controlling animations</a><a class="headerlink" href="#controlling-animations" title="Permalink to this headline">¶</a></h3>
+<p>Clients can control animations by using the <code class="docutils literal notranslate"><span class="pre">a=a</span></code> key in the escape code sent
+to the terminal.</p>
+<p>The simplest is client driven animations, where the client transmits the frame
+data and the also instructs the terminal to make a particular frame the current
+frame.  To change the current frame, use the <code class="docutils literal notranslate"><span class="pre">c</span></code> key:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">a</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">7</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
+</pre></div>
+</div>
+<p>This will make the seventh frame in the image with id <code class="docutils literal notranslate"><span class="pre">3</span></code> the current frame.</p>
+<p>However, client driven animations can be sub-optimal, since the latency between
+the client and terminal is unknown and variable especially over the network.
+Also they require the client to remain running for the lifetime of the
+animation, which is not desirable for cat like utilities.</p>
+<p>Terminal driven animations are achieved by the client specifying <em>gaps</em> (time
+in milliseconds) between frames and instructing the terminal to stop or start
+the animation.</p>
+<p>The animation state is controlled by the <code class="docutils literal notranslate"><span class="pre">s</span></code> key. <code class="docutils literal notranslate"><span class="pre">s=1</span></code> stops the
+animation. <code class="docutils literal notranslate"><span class="pre">s=2</span></code> runs the animation, but in <em>loading</em> mode, in this mode when
+reaching the last frame, instead of looping, the terminal will wait for the
+arrival of more frames. <code class="docutils literal notranslate"><span class="pre">s=3</span></code> runs the animation normally, after the last
+frame, the terminal loops back to the first frame. The number of loops can be
+controlled by the <code class="docutils literal notranslate"><span class="pre">v</span></code> key. <code class="docutils literal notranslate"><span class="pre">v=0</span></code> is ignored, <code class="docutils literal notranslate"><span class="pre">v=1</span></code> is loop infinitely,
+and any other positive number is loop <code class="docutils literal notranslate"><span class="pre">number</span> <span class="pre">-</span> <span class="pre">1</span></code> times. Note that stopping
+the animation resets the loop counter.</p>
+<p>Finally, the <em>gap</em> for frames can be set using the <code class="docutils literal notranslate"><span class="pre">z</span></code> key. This can be
+specified either when the frame is created as part of the transmit escape code
+or separately using the animation control escape code. The <em>gap</em> is the time in
+milliseconds to wait before displaying the next frame in the animation.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">a</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">r</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="mi">48</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
+</pre></div>
+</div>
+<p>This sets the gap for the third frame of the image with id <code class="docutils literal notranslate"><span class="pre">7</span></code> to <code class="docutils literal notranslate"><span class="pre">48</span></code>
+milliseconds. Note that <em>gapless</em> frames are not displayed to the user since
+the next frame comes immediately, however they can be useful to store base data
+for subsequent frames, such as in an animation with an object moving against a
+static background.</p>
+<p>In particular, the first frame or <em>root frame</em> is created with the base image
+data and has no gap, so its gap must be set using this control code.</p>
+</div>
+</div>
 <div class="section" id="image-persistence-and-storage-quotas">
-<h3><a class="toc-backref" href="#id19">Image persistence and storage quotas</a><a class="headerlink" href="#image-persistence-and-storage-quotas" title="Permalink to this headline">¶</a></h3>
+<h2><a class="toc-backref" href="#id23">Image persistence and storage quotas</a><a class="headerlink" href="#image-persistence-and-storage-quotas" title="Permalink to this headline">¶</a></h2>
 <p>In order to avoid <em>Denial-of-Service</em> attacks, terminal emulators should have a
 maximum storage quota for image data. It should allow at least a few full
 screen images.  For example the quota in kitty is 320MB per buffer. When adding
 a new image, if the total size exceeds the quota, the terminal emulator should
-delete older images to make space for the new one.</p>
-</div>
+delete older images to make space for the new one. In kitty, for animations,
+the additional frame data is stored on disk and has a separate, larger quota of
+five times the base quota.</p>
 </div>
 <div class="section" id="control-data-reference">
-<h2><a class="toc-backref" href="#id20">Control data reference</a><a class="headerlink" href="#control-data-reference" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id24">Control data reference</a><a class="headerlink" href="#control-data-reference" title="Permalink to this headline">¶</a></h2>
 <p>The table below shows all the control data keys as well as what values they can
 take, and the default value they take when missing. All integers are 32-bit.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 6%" />
-<col style="width: 16%" />
+<col style="width: 5%" />
+<col style="width: 15%" />
 <col style="width: 7%" />
-<col style="width: 71%" />
+<col style="width: 72%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
@@ -670,7 +789,8 @@ take, and the default value they take when missing. All integers are 32-bit.</p>
 <td><p>The overall action this graphics command is performing.
 <code class="docutils literal notranslate"><span class="pre">t</span></code> - transmit data, <code class="docutils literal notranslate"><span class="pre">T</span></code> - transmit data and display image,
 <code class="docutils literal notranslate"><span class="pre">q</span></code> - query terminal, <code class="docutils literal notranslate"><span class="pre">p</span></code> - put (display) previous transmitted image,
-<code class="docutils literal notranslate"><span class="pre">d</span></code> - delete image</p></td>
+<code class="docutils literal notranslate"><span class="pre">d</span></code> - delete image, <code class="docutils literal notranslate"><span class="pre">f</span></code> - transmit data for animation frames,
+<code class="docutils literal notranslate"><span class="pre">a</span></code> - control animation</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">q</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">2</span></code></p></td>
@@ -755,7 +875,7 @@ take, and the default value they take when missing. All integers are 32-bit.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">w</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>The width (in pixels) of the image area to display. By default, the entire width is used.</p></td>
+<td><p>The width (in pixels) of the image area to display. By default, the entire width is used</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">h</span></code></p></td>
 <td><p>Positive integer</p></td>
@@ -787,6 +907,79 @@ take, and the default value they take when missing. All integers are 32-bit.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The <em>z-index</em> vertical stacking order of the image</p></td>
 </tr>
+<tr class="row-even"><td colspan="4"><p><strong>Keys for animation frame loading</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<td><p>Positive integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The left edge (in pixels) of where the frame data should be updated</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+<td><p>Positive integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The top edge (in pixels) of where the frame data should be updated</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></td>
+<td><p>Positive integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The 1-based frame number of the frame whose image data serves as the base data
+when creating a new frame, by default the base data is black, fully transparent pixels</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
+<td><p>Positive integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The 1-based frame number of the frame that is being edited. By default, a new frame is created</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">z</span></code></p></td>
+<td><p>32-bit integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The gap (in milliseconds) of this frame from the next one. A value of
+zero is ignored. Negative values create a <em>gapless</em> frame. If not specified,
+frames have a default gap of <code class="docutils literal notranslate"><span class="pre">40ms</span></code>. The root frame defaults to zero gap.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></td>
+<td><p>Positive integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The composition mode for blending pixels when creating a new frame or
+editing a frame's data. The default is full alpha blending. <code class="docutils literal notranslate"><span class="pre">1</span></code> means a
+simple overwrite.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Y</span></code></p></td>
+<td><p>Positive integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The background color for pixels not
+specified in the frame data. Must be in 32-bit RGBA format</p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>Keys for animation control</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+<td><p>Positive integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> - stop animation, <code class="docutils literal notranslate"><span class="pre">2</span></code> - run animation, but wait for new frames, <code class="docutils literal notranslate"><span class="pre">3</span></code> - run animation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
+<td><p>Positive integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The 1-based frame number of the frame that is being affected</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">z</span></code></p></td>
+<td><p>32-bit integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The gap (in milliseconds) of this frame from the next one. A value of
+zero is ignored. Negative values create a <em>gapless</em> frame.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></td>
+<td><p>Positive integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The 1-based frame number of the frame that should be made the current frame</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">v</span></code></p></td>
+<td><p>Positive integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The number of loops to play. <code class="docutils literal notranslate"><span class="pre">0</span></code> is
+ignored, <code class="docutils literal notranslate"><span class="pre">1</span></code> is play infinite and is the default and larger number
+means play that number <code class="docutils literal notranslate"><span class="pre">-1</span></code> loops</p></td>
+</tr>
 <tr class="row-even"><td colspan="4"><p><strong>Keys for deleting images</strong></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
@@ -801,7 +994,7 @@ take, and the default value they take when missing. All integers are 32-bit.</p>
 </table>
 </div>
 <div class="section" id="interaction-with-other-terminal-actions">
-<h2><a class="toc-backref" href="#id21">Interaction with other terminal actions</a><a class="headerlink" href="#interaction-with-other-terminal-actions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id25">Interaction with other terminal actions</a><a class="headerlink" href="#interaction-with-other-terminal-actions" title="Permalink to this headline">¶</a></h2>
 <p>When resetting the terminal, all images that are visible on the screen must be
 cleared.  When switching from the main screen to the alternate screen buffer
 (1049 private mode) all images in the alternate screen must be cleared, just as

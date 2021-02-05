@@ -503,6 +503,9 @@ the filename.</p>
 and open the results directly in your favorite editor in the terminal,
 at the line containing the search result, simply by clicking on the result you want.</p>
 </dd>
+<dt><a class="reference internal" href="kittens/broadcast.html"><span class="doc">Broadcast</span></a></dt><dd><p>Type in one kitty window and have it broadcast to all (or a subset) of
+other kitty windows.</p>
+</dd>
 <dt><a class="reference internal" href="kittens/panel.html"><span class="doc">Panel</span></a></dt><dd><p>Draw a GPU accelerated dock panel on your desktop showing the output
 from an arbitrary terminal program.</p>
 </dd>
@@ -539,7 +542,7 @@ For example:</p>
 <span class="nf">launch</span><span class="l"> zsh</span>
 <span class="c1"># Create a window with some environment variables set and run</span>
 <span class="c1"># vim in it</span>
-<span class="nf">launch</span><span class="l"> env FOO=BAR vim</span>
+<span class="nf">launch</span><span class="l"> --env FOO=BAR vim</span>
 <span class="c1"># Set the title for the next window</span>
 <span class="nf">title</span><span class="l"> Chat with x</span>
 <span class="nf">launch</span><span class="l"> irssi --profile x</span>
@@ -565,16 +568,12 @@ For example:</p>
 <span class="c1"># Make the current window the active (focused) window</span>
 <span class="nf">focus</span>
 <span class="nf">launch</span><span class="l"> emacs</span>
-
-<span class="c1"># Add a watcher that will be called with various events that occur</span>
-<span class="c1"># on all subsequent windows. See the documentation of the launch command</span>
-<span class="c1"># for details on watchers.</span>
-<span class="nf">watcher</span><span class="l"> /some/python/file.py</span>
-<span class="nf">launch</span><span class="l"> mpd</span>
-<span class="nf">launch</span><span class="l"> irssi</span>
-<span class="c1"># Remove the watcher for further windows</span>
-<span class="nf">watcher</span><span class="l"> clear</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="launch.html"><span class="doc">launch</span></a> command when used in a session file
+cannot create new OS windows, or tabs.</p>
 </div>
 </div>
 <div class="section" id="mouse-features">

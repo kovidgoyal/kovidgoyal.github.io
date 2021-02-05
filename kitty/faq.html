@@ -174,7 +174,12 @@ type it each time:</p>
 </pre></div>
 </div>
 <p>If for some reason that does not work (typically because the server is using a
-non POSIX compliant shell), you can use the following one-liner instead (it
+non POSIX compliant shell), you can try using it with python instead:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten ssh use-python myserver
+</pre></div>
+</div>
+<p>If that also fails, perhaps because python is not installed on the remote
+server, use the following one-liner instead (it
 is slower as it needs to ssh into the server twice, but will work with most
 servers):</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>infocmp xterm-kitty <span class="p">|</span> ssh myserver tic -x -o <span class="se">\~</span>/.terminfo /dev/stdin
