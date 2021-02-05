@@ -135,7 +135,7 @@ terminals. They include:</p>
 <li><p>Many of the existing escape codes used to encode these events are ambiguous
 with different key presses mapping to the same escape code.</p></li>
 <li><p>No way to handle different types of keyboard events, such as press, release or repeat</p></li>
-<li><p>No reliable way to distinguish single <code class="docutils literal notranslate"><span class="pre">Esc</span></code> keypresses from the start of a
+<li><p>No reliable way to distinguish single <code class="docutils literal notranslate"><span class="pre">Esc</span></code> key presses from the start of a
 escape sequence. Currently, client programs use fragile timing related hacks
 for this, leading to bugs, for example:
 <a class="reference external" href="https://github.com/neovim/neovim/issues/2035">neovim #2035</a>.</p></li>
@@ -143,7 +143,7 @@ for this, leading to bugs, for example:
 <p>To solve these issues and others, kitty has created a new keyboard protocol,
 that is backward compatible but allows applications to opt-in to support more
 advanced usages. The protocol is based on initial work in <a class="reference external" href="http://www.leonerd.org.uk/hacks/fixterms/">fixterms</a>, however, it corrects various
-issues in that proposal, listed at the <a class="reference internal" href="#fixterms-bugs"><span class="std std-ref">bottom of this document</span></a>.</p>
+issues in that proposal, listed at the <a class="reference internal" href="#fixterms-bugs"><span class="std std-ref">bottom of this document</span></a>. For public discussion of this spec, see <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3248">#3248</a>.</p>
 <p>You can see this protocol with all enhancements in action by running:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitty</span> <span class="o">+</span><span class="n">kitten</span> <span class="n">key_demo</span>
 </pre></div>
