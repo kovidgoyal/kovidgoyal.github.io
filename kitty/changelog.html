@@ -8,7 +8,7 @@
     <title>Changelog &#8212; kitty 0.19.3 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
@@ -169,6 +169,8 @@ command with all its capabilities. However, the syntax of the command is
 slightly different from before. In particular watchers are now specified
 directly on launch and environment variables are set using <code class="docutils literal notranslate"><span class="pre">--env</span></code>.</p></li>
 <li><p>Allow setting colors when creating windows using the <a class="reference internal" href="launch.html"><span class="doc">launch</span></a> command.</p></li>
+<li><p>A new option <a class="reference internal" href="conf.html#opt-kitty.tab_powerline_style"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_powerline_style</span></code></a> to control the appearance of the tab
+bar when using the powerline tab bar style.</p></li>
 <li><p>diff kitten: Implement recursive diff over SSH (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3268">#3268</a>)</p></li>
 <li><p>ssh kitten: Allow using python instead of the shell on the server, useful if
 the shell used is a non-POSIX compliant one, such as fish (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3277">#3277</a>)</p></li>
@@ -186,15 +188,26 @@ being colored with some fonts (<a class="reference external" href="https://githu
 larger than 16. Also using an index does not filter the list of matches. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3219">#3219</a>)</p></li>
 <li><p>Panel kitten: Allow setting WM_CLASS (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3233">#3233</a>)</p></li>
 <li><p>macOS: Add menu items to close the OS window and the current tab (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3240">#3240</a>, <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3246">#3246</a>)</p></li>
-<li><p>When using a non-US keyboard layout and pressing <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">key</kbd></kbd> when
+<li><p>When using a non-US keyboard layout and pressing <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">key</kbd></kbd> when
 the key matches an English key, send that to the program running in the
 terminal automatically (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2000">#2000</a>)</p></li>
 <li><p>When matching shortcuts, also match on shifted keys, so a shortcut defined as
-<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd> will match a keyboard where you have to press
-<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">equal</kbd></kbd> to get the plus key (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2000">#2000</a>)</p></li>
+<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd> will match a keyboard where you have to press
+<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">equal</kbd></kbd> to get the plus key (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2000">#2000</a>)</p></li>
 <li><p>Fix extra space at bottom of OS window when using the fat layout with the tab bar at the
 top (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3258">#3258</a>)</p></li>
 <li><p>Fix window icon not working on X11 with 64bits (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3260">#3260</a>)</p></li>
+<li><p>Fix OS window sizes under 100px resulting in scaled display (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3307">#3307</a>)</p></li>
+<li><p>Fix rendering of ligatures in the latest release of Cascadia code, which for
+some reason puts empty glyphs after the ligature glyph rather than before it
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3313">#3313</a>)</p></li>
+<li><p>Improve handling of infinite length ligatures in newer versions of FiraCode
+and CascadiaCode. Now such ligatures are detected based on glyph naming
+convention. This removes the gap in the ligatures at cell boundaries (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2695">#2695</a>)</p></li>
+<li><p>macOS: Disable the native operating system tabs as they are non-functional
+and can be confusing (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3325">#3325</a>)</p></li>
+<li><p>hints kitten: When using the linenumber action with a background action,
+preserve the working directory (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3352">#3352</a>)</p></li>
 </ul>
 </div>
 <div class="section" id="id1">
@@ -364,7 +377,7 @@ control (<a class="reference external" href="https://github.com/kovidgoyal/kitty
 the extra space to render a larger version of the character (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2850">#2850</a>)</p></li>
 <li><p>macOS: Fix the LC_CTYPE env var being set to UTF-8 on systems in which the
 language and country code do not form a valid locale (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1233">#1233</a>)</p></li>
-<li><p>macOS: Fix <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">cmd</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd> not changing font size (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2839">#2839</a>)</p></li>
+<li><p>macOS: Fix <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">cmd</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd> not changing font size (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2839">#2839</a>)</p></li>
 <li><p>Make neighboring window selection in grid and splits layouts more intelligent
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/2840">#2840</a>)</p></li>
 <li><p>Allow passing the current selection to kittens (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2796">#2796</a>)</p></li>
@@ -543,7 +556,7 @@ pressed (<a class="reference external" href="https://github.com/kovidgoyal/kitty
 pointing arrow (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2341">#2341</a>)</p></li>
 <li><p>Allow passing the currently active kitty window id in the launch command
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2391">#2391</a>)</p></li>
-<li><p>unicode input kitten: Allow pressing <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">tab</kbd></kbd> to change the input mode
+<li><p>unicode input kitten: Allow pressing <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">tab</kbd></kbd> to change the input mode
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2343">#2343</a>)</p></li>
 <li><p>Fix a bug that prevented using custom functions with the new marks feature
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2344">#2344</a>)</p></li>
@@ -776,7 +789,7 @@ control how multiple selections are serialized when copying to clipboard
 or inserting into the terminal. You can have them on separate lines,
 separated by arbitrary characters, or even serialized as JSON (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1665">#1665</a>)</p></li>
 <li><p>macOS: Fix a regression in the previous release that broke using
-<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">tab</kbd></kbd> (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1671">#1671</a>)</p></li>
+<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">tab</kbd></kbd> (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1671">#1671</a>)</p></li>
 <li><p>panel kitten: Fix the contents of the panel kitten not being positioned
 correctly on the vertical axis</p></li>
 <li><p>icat kitten: Fix a regression that broke passing directories to icat
@@ -812,7 +825,7 @@ the pager history buffer (<a class="reference external" href="https://github.com
 <li><p>macOS: Fix a regression that could cause rendering of a kitty window
 to occasionally freeze in certain situations, such as moving it between
 monitors or transitioning from/to fullscreen (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1641">#1641</a>)</p></li>
-<li><p>macOS: Fix a regression that caused <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">cmd</kbd>+<kbd class="kbd docutils literal notranslate">v</kbd></kbd> to double up in the dvorak
+<li><p>macOS: Fix a regression that caused <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">cmd</kbd>+<kbd class="kbd docutils literal notranslate">v</kbd></kbd> to double up in the dvorak
 keyboard layout (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1652">#1652</a>)</p></li>
 <li><p>When resizing and only a single window is present in the current layout,
 use that window's background color to fill in the blank areas.</p></li>
@@ -861,7 +874,7 @@ present before the tab-bar is shown (<a class="reference external" href="https:/
 <li><p>Automatically check for new releases and notify when an update is available,
 via the system notification facilities. Can be controlled by
 <a class="reference internal" href="conf.html#opt-kitty.update_check_interval"><code class="xref std std-opt docutils literal notranslate"><span class="pre">update_check_interval</span></code></a> (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1342">#1342</a>)</p></li>
-<li><p>macOS: Fix <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">cmd</kbd>+<kbd class="kbd docutils literal notranslate">period</kbd></kbd> key not working (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1318">#1318</a>)</p></li>
+<li><p>macOS: Fix <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">cmd</kbd>+<kbd class="kbd docutils literal notranslate">period</kbd></kbd> key not working (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1318">#1318</a>)</p></li>
 <li><p>macOS: Add an option <cite>macos_show_window_title_in_menubar</cite> to not
 show the current window title in the menu-bar (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1066">#1066</a>)</p></li>
 <li><p>macOS: Workaround for cocoa bug that could cause the mouse cursor to become
@@ -929,7 +942,7 @@ an option <code class="docutils literal notranslate"><span class="pre">--hints-o
 crashes (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1296">#1296</a>)</p></li>
 <li><p>macOS: Ensure that when running from a bundle, the bundle kitty exe is
 preferred over any kitty in PATH (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1280">#1280</a>)</p></li>
-<li><p>macOS: Fix a regression that broke mapping of <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">tab</kbd></kbd> (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1304">#1304</a>)</p></li>
+<li><p>macOS: Fix a regression that broke mapping of <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">tab</kbd></kbd> (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1304">#1304</a>)</p></li>
 <li><p>Add a list of user-created kittens to the docs</p></li>
 <li><p>Fix a regression that broke changing mouse wheel scroll direction with
 negative <a class="reference internal" href="conf.html#opt-kitty.wheel_scroll_multiplier"><code class="xref std std-opt docutils literal notranslate"><span class="pre">wheel_scroll_multiplier</span></code></a> values in full-screen applications
@@ -1040,7 +1053,7 @@ blink or key press (<a class="reference external" href="https://github.com/kovid
 the same attributes as the first cell (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1109">#1109</a>)</p></li>
 <li><p>Fix focusing neighboring windows in the grid layout with less than 4 windows
 not working (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1115">#1115</a>)</p></li>
-<li><p>Fix <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">special</kbd></kbd> key not working in normal and application keyboard
+<li><p>Fix <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">special</kbd></kbd> key not working in normal and application keyboard
 modes (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1114">#1114</a>)</p></li>
 <li><p>Add a terminfo entry for full keyboard mode.</p></li>
 <li><p>Fix incorrect text-antialiasing when using very low background opacity

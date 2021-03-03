@@ -8,7 +8,7 @@
     <title>icat - Display images in the terminal &#8212; kitty 0.19.3 documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -140,7 +140,7 @@ from inside other programs to display images. In particular, <a class="reference
 <h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-kitten-icat-align">
-<code class="sig-name descname">--align</code><code class="sig-prename descclassname"> &lt;ALIGN&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-align" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">--align</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;ALIGN&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-align" title="Permalink to this definition">¶</a></dt>
 <dd><p>Horizontal alignment for the displayed image.
 Default: <code class="code docutils literal notranslate"><span class="pre">center</span></code>
 Choices: <code class="code docutils literal notranslate"><span class="pre">center,</span> <span class="pre">left,</span> <span class="pre">right</span></code></p>
@@ -148,25 +148,25 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">cente
 
 <dl class="std option">
 <dt id="cmdoption-kitty-kitten-icat-place">
-<code class="sig-name descname">--place</code><code class="sig-prename descclassname"> &lt;PLACE&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-place" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">--place</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;PLACE&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-place" title="Permalink to this definition">¶</a></dt>
 <dd><p>Choose where on the screen to display the image. The image will be scaled to fit into the specified rectangle. The syntax for specifying rectangles is &lt;<span class="italic">width</span>&gt;x&lt;<span class="italic">height</span>&gt;&#64;&lt;<span class="italic">left</span>&gt;x&lt;<span class="italic">top</span>&gt;. All measurements are in cells (i.e. cursor positions) with the origin <span class="italic">(0, 0)</span> at the top-left corner of the screen.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt id="cmdoption-kitty-kitten-icat-scale-up">
-<code class="sig-name descname">--scale-up</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-scale-up" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">--scale-up</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-scale-up" title="Permalink to this definition">¶</a></dt>
 <dd><p>When used in combination with <a class="reference internal" href="#cmdoption-kitty-kitten-icat-place"><code class="xref std std-option docutils literal notranslate"><span class="pre">--place</span></code></a> it will cause images that are smaller than the specified area to be scaled up to use as much of the specified area as possible.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt id="cmdoption-kitty-kitten-icat-clear">
-<code class="sig-name descname">--clear</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-clear" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">--clear</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-clear" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove all images currently displayed on the screen.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt id="cmdoption-kitty-kitten-icat-transfer-mode">
-<code class="sig-name descname">--transfer-mode</code><code class="sig-prename descclassname"> &lt;TRANSFER_MODE&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-transfer-mode" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">--transfer-mode</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;TRANSFER_MODE&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-transfer-mode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Which mechanism to use to transfer images to the terminal. The default is to auto-detect. <span class="italic">file</span> means to use a temporary file and <span class="italic">stream</span> means to send the data via terminal escape codes. Note that if you use the <span class="italic">file</span> transfer mode and you are connecting over a remote session then image display will not work.
 Default: <code class="code docutils literal notranslate"><span class="pre">detect</span></code>
 Choices: <code class="code docutils literal notranslate"><span class="pre">detect,</span> <span class="pre">file,</span> <span class="pre">stream</span></code></p>
@@ -174,26 +174,26 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">detec
 
 <dl class="std option">
 <dt id="cmdoption-kitty-kitten-icat-detect-support">
-<code class="sig-name descname">--detect-support</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-detect-support" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">--detect-support</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-detect-support" title="Permalink to this definition">¶</a></dt>
 <dd><p>Detect support for image display in the terminal. If not supported, will exit with exit code 1, otherwise will exit with code 0 and print the supported transfer mode to stderr, which can be used with the <a class="reference internal" href="#cmdoption-kitty-kitten-icat-transfer-mode"><code class="xref std std-option docutils literal notranslate"><span class="pre">--transfer-mode</span></code></a> option.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt id="cmdoption-kitty-kitten-icat-detection-timeout">
-<code class="sig-name descname">--detection-timeout</code><code class="sig-prename descclassname"> &lt;DETECTION_TIMEOUT&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-detection-timeout" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">--detection-timeout</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;DETECTION_TIMEOUT&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-detection-timeout" title="Permalink to this definition">¶</a></dt>
 <dd><p>The amount of time (in seconds) to wait for a response form the terminal, when detecting image display support.
 Default: <code class="code docutils literal notranslate"><span class="pre">10</span></code></p>
 </dd></dl>
 
 <dl class="std option">
 <dt id="cmdoption-kitty-kitten-icat-print-window-size">
-<code class="sig-name descname">--print-window-size</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-print-window-size" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">--print-window-size</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-print-window-size" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print out the window size as <span class="italic">widthxheight</span> (in pixels) and quit. This is a convenience method to query the window size if using kitty icat from a scripting language that cannot make termios calls.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt id="cmdoption-kitty-kitten-icat-stdin">
-<code class="sig-name descname">--stdin</code><code class="sig-prename descclassname"> &lt;STDIN&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-stdin" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">--stdin</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;STDIN&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-stdin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read image data from stdin. The default is to do it automatically, when STDIN is not a terminal, but you can turn it off or on explicitly, if needed.
 Default: <code class="code docutils literal notranslate"><span class="pre">detect</span></code>
 Choices: <code class="code docutils literal notranslate"><span class="pre">detect,</span> <span class="pre">no,</span> <span class="pre">yes</span></code></p>
@@ -201,27 +201,27 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">detec
 
 <dl class="std option">
 <dt id="cmdoption-kitty-kitten-icat-silent">
-<code class="sig-name descname">--silent</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-silent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">--silent</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-silent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do not print out anything to STDOUT during operation.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt id="cmdoption-kitty-kitten-icat-z-index">
-<span id="cmdoption-kitty-kitten-icat-z"></span><code class="sig-name descname">--z-index</code><code class="sig-prename descclassname"> &lt;Z_INDEX&gt;</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">-z</code><code class="sig-prename descclassname"> &lt;Z_INDEX&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-z-index" title="Permalink to this definition">¶</a></dt>
+<span id="cmdoption-kitty-kitten-icat-z"></span><code class="sig-name descname"><span class="pre">--z-index</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;Z_INDEX&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-z</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;Z_INDEX&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-z-index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Z-index of the image. When negative, text will be displayed on top of the image. Use a double minus for values under the threshold for drawing images under cell background colors. For example, –1 evaluates as -1,073,741,825.
 Default: <code class="code docutils literal notranslate"><span class="pre">0</span></code></p>
 </dd></dl>
 
 <dl class="std option">
 <dt id="cmdoption-kitty-kitten-icat-loop">
-<span id="cmdoption-kitty-kitten-icat-l"></span><code class="sig-name descname">--loop</code><code class="sig-prename descclassname"> &lt;LOOP&gt;</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">-l</code><code class="sig-prename descclassname"> &lt;LOOP&gt;</code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-loop" title="Permalink to this definition">¶</a></dt>
+<span id="cmdoption-kitty-kitten-icat-l"></span><code class="sig-name descname"><span class="pre">--loop</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;LOOP&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-l</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;LOOP&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-loop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of times to loop animations. Negative values loop forever. Zero means only the first frame of the animation is displayed. Otherwise, the animation is looped the specified number of times.
 Default: <code class="code docutils literal notranslate"><span class="pre">-1</span></code></p>
 </dd></dl>
 
 <dl class="std option">
 <dt id="cmdoption-kitty-kitten-icat-hold">
-<code class="sig-name descname">--hold</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-hold" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">--hold</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-kitten-icat-hold" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wait for a key press before exiting after displaying the images.</p>
 </dd></dl>
 

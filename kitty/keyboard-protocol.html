@@ -8,7 +8,7 @@
     <title>A protocol for comprehensive keyboard handling in terminals &#8212; kitty 0.19.3 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
@@ -180,7 +180,7 @@ key, such as <code class="docutils literal notranslate"><span class="pre">97</sp
 <a class="reference internal" href="#functional"><span class="std std-ref">Functional key definitions</span></a> table below. The <code class="docutils literal notranslate"><span class="pre">modifiers</span></code> optional parameter encodes any
 modifiers pressed for the key event. The encoding is described in the
 <a class="reference internal" href="#modifiers"><span class="std std-ref">Modifiers</span></a> section.</p>
-<p>The second form is used for a few functional keys, such as the <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Home,</kbd> <kbd class="kbd docutils literal notranslate">End,</kbd>
+<p>The second form is used for a few functional keys, such as the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Home,</kbd> <kbd class="kbd docutils literal notranslate">End,</kbd>
 <kbd class="kbd docutils literal notranslate">Arrow</kbd> <kbd class="kbd docutils literal notranslate">keys</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">F1</kbd>-<kbd class="kbd docutils literal notranslate">F4</kbd></kbd>, they are enumerated in the <a class="reference internal" href="#functional"><span class="std std-ref">Functional key definitions</span></a> table below.
 Note that if no modifiers are present the parameters are omitted entirely
 giving an escape code of the form <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">[ABCDFHPQRS]</span></code>.</p>
@@ -217,7 +217,7 @@ escape code is terminated by the <code class="docutils literal notranslate"><spa
 decimal number. For example, the <kbd class="kbd docutils literal notranslate">A</kbd> key is represented as <code class="docutils literal notranslate"><span class="pre">97</span></code> which is
 the unicode code for lowercase <code class="docutils literal notranslate"><span class="pre">a</span></code>. Note that the codepoint used is <em>always</em>
 the lower-case (or more technically, un-shifted) version of the key. If the
-user presses, for example, <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">a</kbd></kbd> the escape code would be <code class="docutils literal notranslate"><span class="pre">CSI</span>
+user presses, for example, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">a</kbd></kbd> the escape code would be <code class="docutils literal notranslate"><span class="pre">CSI</span>
 <span class="pre">97;modifiers</span> <span class="pre">u</span></code>. It <em>must not</em> by <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">65;</span> <span class="pre">modifiers</span> <span class="pre">u</span></code>.</p>
 <p>If <em>alternate key reporting</em> is requested by the program running in the
 terminal, the terminal can send two additional Unicode codepoints, the
@@ -225,13 +225,13 @@ terminal, the terminal can send two additional Unicode codepoints, the
 The shifted key is simply the upper-case version of <code class="docutils literal notranslate"><span class="pre">unicode-codepoint</span></code>, or
 more technically, the shifted version. So <cite>a</cite> becomes <cite>A</cite> and so on, based on
 the current keyboard layout. This is needed to be able to match against a
-shortcut such as <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd> which depending on the type of keyboard could
-be either <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">equal</kbd></kbd> or <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd>. Note that the shifted
+shortcut such as <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd> which depending on the type of keyboard could
+be either <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">equal</kbd></kbd> or <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd>. Note that the shifted
 key must be present only if shift is also present in the modifiers.</p>
 <p>The <em>base layout key</em> is the key corresponding to the physical key in the
 standard PC-101 key layout. So for example, if the user is using a Cyrillic
-keyboard with a Cyrillic keyboard layout pressing the <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">С</kbd></kbd> key will
-be <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">c</kbd></kbd> in the standard layout. So the terminal should send the <em>base
+keyboard with a Cyrillic keyboard layout pressing the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">С</kbd></kbd> key will
+be <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">c</kbd></kbd> in the standard layout. So the terminal should send the <em>base
 layout key</em> as <code class="docutils literal notranslate"><span class="pre">99</span></code> corresponding to the <code class="docutils literal notranslate"><span class="pre">c</span></code> key.</p>
 <p>If only one alternate key is present, it is the <em>shifted key</em> if the terminal
 wants to send only a base layout key but no shifted key, it must use an empty
@@ -242,7 +242,7 @@ sub-field for the shifted key, like this:</p>
 </div>
 <div class="section" id="modifiers">
 <span id="id2"></span><h3>Modifiers<a class="headerlink" href="#modifiers" title="Permalink to this headline">¶</a></h3>
-<p>This protocol supports four modifier keys, <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift,</kbd> <kbd class="kbd docutils literal notranslate">alt,</kbd> <kbd class="kbd docutils literal notranslate">ctrl</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">super</kbd></kbd>.
+<p>This protocol supports four modifier keys, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift,</kbd> <kbd class="kbd docutils literal notranslate">alt,</kbd> <kbd class="kbd docutils literal notranslate">ctrl</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">super</kbd></kbd>.
 Here super is either the <em>Windows/Linux</em> key or the <em>Cmd</em> key on mac keyboards.
 Modifiers are encoded as a bit field with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shift</span> <span class="mb">0b1</span>     <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -253,7 +253,7 @@ Modifiers are encoded as a bit field with:</p>
 </div>
 <p>In the escape code, the modifier value is encoded as a decimal number which is
 <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">actual</span> <span class="pre">modifiers</span></code>. So to represent <kbd class="kbd docutils literal notranslate">shift</kbd> only, the value would be <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span>
-<span class="pre">1</span> <span class="pre">=</span> <span class="pre">2</span></code>, to represent <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd></kbd> the value would be <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">0b101</span> <span class="pre">=</span> <span class="pre">6</span></code>
+<span class="pre">1</span> <span class="pre">=</span> <span class="pre">2</span></code>, to represent <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd></kbd> the value would be <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">0b101</span> <span class="pre">=</span> <span class="pre">6</span></code>
 and so on. If the modifier field is not present in the escape code, its default
 value is <code class="docutils literal notranslate"><span class="pre">1</span></code> which means no modifiers.</p>
 </div>
@@ -296,7 +296,7 @@ If no known key is associated with the text the key number <code class="docutils
 <h3>Non-Unicode keys<a class="headerlink" href="#non-unicode-keys" title="Permalink to this headline">¶</a></h3>
 <p>There are many keys that don't correspond to letters from human languages, and
 thus aren't represented in Unicode. Think of functional keys, such as
-<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Escape,</kbd> <kbd class="kbd docutils literal notranslate">Play,</kbd> <kbd class="kbd docutils literal notranslate">Pause,</kbd> <kbd class="kbd docutils literal notranslate">F1,</kbd> <kbd class="kbd docutils literal notranslate">Home,</kbd> <kbd class="kbd docutils literal notranslate">etc</kbd></kbd>. These are encoded using Unicode code
+<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Escape,</kbd> <kbd class="kbd docutils literal notranslate">Play,</kbd> <kbd class="kbd docutils literal notranslate">Pause,</kbd> <kbd class="kbd docutils literal notranslate">F1,</kbd> <kbd class="kbd docutils literal notranslate">Home,</kbd> <kbd class="kbd docutils literal notranslate">etc</kbd></kbd>. These are encoded using Unicode code
 points from the Private Use Area (<code class="docutils literal notranslate"><span class="pre">57344</span> <span class="pre">-</span> <span class="pre">63743</span></code>). The mapping of key
 names to code points for these keys is in the
 <a class="reference internal" href="#functional"><span class="std std-ref">Functional key definition table below</span></a>.</p>
@@ -375,9 +375,9 @@ oldest entry from the stack must be evicted.</p>
 <p>This type of progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b1</span></code>) fixes the problem of some legacy key press
 encodings overlapping with other control codes. For instance, pressing the
 <kbd class="kbd docutils literal notranslate">Esc</kbd> key generates the byte <code class="docutils literal notranslate"><span class="pre">0x1b</span></code> which also is used to indicate the
-start of an escape code. Similarly pressing the key <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">[</kbd></kbd> will generate
+start of an escape code. Similarly pressing the key <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">[</kbd></kbd> will generate
 the bytes used for CSI control codes.</p>
-<p>Turning on this flag will cause the terminal to report the <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Esc,</kbd> <kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">key,</kbd>
+<p>Turning on this flag will cause the terminal to report the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Esc,</kbd> <kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">key,</kbd>
 <kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">key,</kbd> <kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">key,</kbd> <kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">key</kbd></kbd> keys using <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> sequences instead
 of legacy ones. Here key is any ASCII key as described in <a class="reference internal" href="#legacy-text"><span class="std std-ref">Legacy text keys</span></a>.
 Additionally, all keypad keys will be reported as separate keys with <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code>
@@ -389,10 +389,10 @@ represented in one of the following two forms:</p>
 </pre></div>
 </div>
 <p>This makes it very easy to parse key events in an application. In particular,
-<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">c</kbd></kbd> will no longer generate the <code class="docutils literal notranslate"><span class="pre">SIGINT</span></code> signal, but instead be
+<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">c</kbd></kbd> will no longer generate the <code class="docutils literal notranslate"><span class="pre">SIGINT</span></code> signal, but instead be
 delivers as a <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> escape code. This has the nice side effect of making it
 much easier to integrate into the application event loop. The only exceptions
-are the <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Enter,</kbd> <kbd class="kbd docutils literal notranslate">Tab</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">Backspace</kbd></kbd> keys which still generate the same
+are the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Enter,</kbd> <kbd class="kbd docutils literal notranslate">Tab</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">Backspace</kbd></kbd> keys which still generate the same
 bytes as in legacy mode this is to allow the user to type and execute commands
 in the shell such as <code class="docutils literal notranslate"><span class="pre">reset</span></code> after a program that sets this mode crashes
 without clearing it.</p>
@@ -421,7 +421,7 @@ events that generate text. When it is enabled, text will not be sent, instead
 only key events are sent. If the text is needed as well, combine with the
 Report associated text enhancement below.</p>
 <p>Additionally, with this mode, events for pressing modifier keys are reported.
-Note that <em>all</em> keys are reported as escape codes, including <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Enter,</kbd> <kbd class="kbd docutils literal notranslate">Tab,</kbd>
+Note that <em>all</em> keys are reported as escape codes, including <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Enter,</kbd> <kbd class="kbd docutils literal notranslate">Tab,</kbd>
 <kbd class="kbd docutils literal notranslate">Backspace</kbd></kbd> etc.</p>
 </div>
 <div class="section" id="report-associated-text">
@@ -573,38 +573,81 @@ mode</em> (the <code class="docutils literal notranslate"><span class="pre">smkx
 </tr>
 </tbody>
 </table>
-<p>There are a few more functional keys that have special cased legacy
-encodings:</p>
+<p>There are a few more functional keys that have special cased legacy encodings.
+These are present because they are commonly used and for the sake of legacy
+terminal applications that get confused when seeing CSI u escape codes:</p>
 <table class="docutils align-default" id="id7">
 <caption><span class="caption-text">C0 controls</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
-<th class="head"><p>Encodings</p></th>
+<th class="head"><p>No mods</p></th>
+<th class="head"><p>Ctrl</p></th>
+<th class="head"><p>Alt</p></th>
+<th class="head"><p>Shift</p></th>
+<th class="head"><p>Ctrl + Shift</p></th>
+<th class="head"><p>Alt + Shift</p></th>
+<th class="head"><p>Ctrl + Alt</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Enter</p></td>
-<td><p>Plain - 0xd,  alt+Enter - 0x1b 0x1d</p></td>
+<td><p>0xd</p></td>
+<td><p>0xd</p></td>
+<td><p>0x1b 0xd</p></td>
+<td><p>0xd</p></td>
+<td><p>0xd</p></td>
+<td><p>0x1b 0xd</p></td>
+<td><p>0x1b 0xd</p></td>
 </tr>
 <tr class="row-odd"><td><p>Escape</p></td>
-<td><p>Plain - 0x1b, alt+Esc - 0x1b 0x1b</p></td>
+<td><p>0x1b</p></td>
+<td><p>0x1b</p></td>
+<td><p>0x1b 0x1b</p></td>
+<td><p>0x1b</p></td>
+<td><p>0x1b</p></td>
+<td><p>0x1b 0x1b</p></td>
+<td><p>0x1b 0x1b</p></td>
 </tr>
 <tr class="row-even"><td><p>Backspace</p></td>
-<td><p>Plain - 0x7f, alt+Backspace - 0x1b 0x7f, ctrl+Backspace - 0x08</p></td>
+<td><p>0x7f</p></td>
+<td><p>0x8</p></td>
+<td><p>0x1b 0x7f</p></td>
+<td><p>0x7f</p></td>
+<td><p>0x8</p></td>
+<td><p>0x1b 0x7f</p></td>
+<td><p>0x1b 0x8</p></td>
 </tr>
-<tr class="row-odd"><td><p>Space</p></td>
-<td><p>Plain - 0x20, ctrl+Space - 0x0, alt+space - 0x1b 0x20</p></td>
+<tr class="row-odd"><td><p>Tab</p></td>
+<td><p>0x9</p></td>
+<td><p>0x9</p></td>
+<td><p>0x1b 0x9</p></td>
+<td><p>CSI Z</p></td>
+<td><p>CSI Z</p></td>
+<td><p>0x1b CSI Z</p></td>
+<td><p>0x1b 0x9</p></td>
 </tr>
-<tr class="row-even"><td><p>Tab</p></td>
-<td><p>Plain - 0x09, shift+Tab - CSI Z</p></td>
+<tr class="row-even"><td><p>Space</p></td>
+<td><p>0x20</p></td>
+<td><p>0x0</p></td>
+<td><p>0x1b 0x20</p></td>
+<td><p>0x20</p></td>
+<td><p>0x0</p></td>
+<td><p>0x1b 0x20</p></td>
+<td><p>0x1b 0x0</p></td>
 </tr>
 </tbody>
 </table>
-<p>Note that <kbd class="kbd docutils literal notranslate">Backspace</kbd> and <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Backspace</kbd></kbd> are swapped in some
+<p>Note that <kbd class="kbd docutils literal notranslate">Backspace</kbd> and <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Backspace</kbd></kbd> are swapped in some
 terminals, this can be detected using the <code class="docutils literal notranslate"><span class="pre">kbs</span></code> terminfo property that
 must correspond to the <kbd class="kbd docutils literal notranslate">Backspace</kbd> key.</p>
 <p>All keypad keys are reported as their equivalent non-keypad keys. To
@@ -613,8 +656,8 @@ distinguish these, use the <a class="reference internal" href="#disambiguate"><s
 <div class="section" id="legacy-text-keys">
 <span id="legacy-text"></span><h3>Legacy text keys<a class="headerlink" href="#legacy-text-keys" title="Permalink to this headline">¶</a></h3>
 <p>For legacy compatibility, the keys
-<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">a</kbd>-<kbd class="kbd docutils literal notranslate">z</kbd> <kbd class="kbd docutils literal notranslate">0</kbd>-<kbd class="kbd docutils literal notranslate">9</kbd> <kbd class="kbd docutils literal notranslate">`</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">=</kbd> <kbd class="kbd docutils literal notranslate">[</kbd> <kbd class="kbd docutils literal notranslate">]</kbd> <kbd class="kbd docutils literal notranslate">;</kbd> <kbd class="kbd docutils literal notranslate">'</kbd> <kbd class="kbd docutils literal notranslate">,</kbd> <kbd class="kbd docutils literal notranslate">.</kbd> <kbd class="kbd docutils literal notranslate">/</kbd></kbd> with the modifiers
-<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift,</kbd> <kbd class="kbd docutils literal notranslate">alt,</kbd> <kbd class="kbd docutils literal notranslate">ctrl,</kbd> <kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">alt,</kbd> <kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">alt</kbd></kbd> are output using the
+<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">a</kbd>-<kbd class="kbd docutils literal notranslate">z</kbd> <kbd class="kbd docutils literal notranslate">0</kbd>-<kbd class="kbd docutils literal notranslate">9</kbd> <kbd class="kbd docutils literal notranslate">`</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">=</kbd> <kbd class="kbd docutils literal notranslate">[</kbd> <kbd class="kbd docutils literal notranslate">]</kbd> <kbd class="kbd docutils literal notranslate">;</kbd> <kbd class="kbd docutils literal notranslate">'</kbd> <kbd class="kbd docutils literal notranslate">,</kbd> <kbd class="kbd docutils literal notranslate">.</kbd> <kbd class="kbd docutils literal notranslate">/</kbd></kbd> with the modifiers
+<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift,</kbd> <kbd class="kbd docutils literal notranslate">alt,</kbd> <kbd class="kbd docutils literal notranslate">ctrl,</kbd> <kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">alt,</kbd> <kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">alt</kbd></kbd> are output using the
 following algorithm:</p>
 <ol class="arabic simple">
 <li><p>If the <kbd class="kbd docutils literal notranslate">alt</kbd> key is pressed output the byte for <code class="docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">(0x1b)</span></code></p></li>
@@ -624,7 +667,7 @@ in <a class="reference internal" href="#ctrl-mapping"><span class="std std-ref">
 for example, <code class="docutils literal notranslate"><span class="pre">A</span></code> for <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">$</span></code> for <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p></li>
 <li><p>Otherwise, output the key unmodified</p></li>
 </ol>
-<p>Additionally, <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">space</kbd></kbd> is output as the NULL byte <code class="docutils literal notranslate"><span class="pre">(0x0)</span></code>.</p>
+<p>Additionally, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">space</kbd></kbd> is output as the NULL byte <code class="docutils literal notranslate"><span class="pre">(0x0)</span></code>.</p>
 <p>Any other combination of modifiers with these keys is output as the appropriate
 <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> escape code.</p>
 <table class="docutils align-default" id="id8">
@@ -683,9 +726,9 @@ for example, <code class="docutils literal notranslate"><span class="pre">A</spa
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Many of the legacy escape codes are ambiguous with multiple different key
-presses yielding the same escape code(s), for example, <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">i</kbd></kbd> is the
-same as <kbd class="kbd docutils literal notranslate">tab</kbd>, <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">m</kbd></kbd> is the same as <kbd class="kbd docutils literal notranslate">Enter</kbd>, <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">r</kbd></kbd>
-is the same <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">r</kbd></kbd>, etc. To resolve these use the
+presses yielding the same escape code(s), for example, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">i</kbd></kbd> is the
+same as <kbd class="kbd docutils literal notranslate">tab</kbd>, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">m</kbd></kbd> is the same as <kbd class="kbd docutils literal notranslate">Enter</kbd>, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">r</kbd></kbd>
+is the same <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">r</kbd></kbd>, etc. To resolve these use the
 <a class="reference internal" href="#disambiguate"><span class="std std-ref">disambiguate progressive enhancement</span></a>.</p>
 </div>
 </div>
@@ -1140,19 +1183,19 @@ which are undesirable for other reasons</p></li>
 <li><p>Incorrectly claims special keys are sometimes encoded using <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">letter</span></code> encodings when it
 is actually <code class="docutils literal notranslate"><span class="pre">SS3</span> <span class="pre">letter</span></code> in all terminals newer than a VT-52, which is
 pretty much everything.</p></li>
-<li><p><kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">tab</kbd></kbd> should be <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">9</span> <span class="pre">;</span> <span class="pre">6</span> <span class="pre">u</span></code> not <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">1</span> <span class="pre">;</span> <span class="pre">5</span> <span class="pre">Z</span></code>
+<li><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">tab</kbd></kbd> should be <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">9</span> <span class="pre">;</span> <span class="pre">6</span> <span class="pre">u</span></code> not <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">1</span> <span class="pre">;</span> <span class="pre">5</span> <span class="pre">Z</span></code>
 (shift+tab is not a separate key from tab)</p></li>
 <li><p>No support for the <kbd class="kbd docutils literal notranslate">super</kbd> modifier.</p></li>
 <li><p>Makes no mention of cursor key mode and how it changes encodings</p></li>
 <li><p>Incorrectly encoding shifted keys when shift modifier is used, for instance,
-for <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">i</kbd></kbd> is encoded as <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">I</kbd></kbd>.</p></li>
-<li><p>No way to have non-conflicting escape codes for <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">letter,</kbd>
+for <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">i</kbd></kbd> is encoded as <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">I</kbd></kbd>.</p></li>
+<li><p>No way to have non-conflicting escape codes for <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">letter,</kbd>
 <kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">letter,</kbd> <kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">letter</kbd></kbd> key presses</p></li>
 <li><p>No way to specify both shifted and unshifted keys for robust shortcut
-matching (think matching <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">equal</kbd></kbd> and <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd>)</p></li>
+matching (think matching <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">equal</kbd></kbd> and <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">plus</kbd></kbd>)</p></li>
 <li><p>No way to specify alternate layout key. This is useful for keyboard layouts
-such as Cyrillic where you want the shortcut <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">c</kbd></kbd> to work when
-pressing the <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">С</kbd></kbd> on the keyboard.</p></li>
+such as Cyrillic where you want the shortcut <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">c</kbd></kbd> to work when
+pressing the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">С</kbd></kbd> on the keyboard.</p></li>
 <li><p>No way to report repeat and release key events, only key press events</p></li>
 <li><p>No way to report key events for presses that generate text, useful for
 gaming. Think of using the <kbd class="kbd docutils literal notranslate">WASD</kbd> keys to control movement.</p></li>

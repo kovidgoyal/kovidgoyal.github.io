@@ -8,7 +8,7 @@
     <title>Frequently Asked Questions &#8212; kitty 0.19.3 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
@@ -89,6 +89,7 @@
 <li><a class="reference internal" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal">How can I assign a single global shortcut to bring up the kitty terminal?</a></li>
 <li><a class="reference internal" href="#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program">How do I map key presses in kitty to different keys in the terminal program?</a></li>
 <li><a class="reference internal" href="#how-do-i-open-a-new-window-or-tab-with-the-same-working-directory-as-the-current-window">How do I open a new window or tab with the same working directory as the current window?</a></li>
+<li><a class="reference internal" href="#things-behave-differently-when-running-kitty-from-system-launcher-vs-another-terminal">Things behave differently when running kitty from system launcher vs. another terminal?</a></li>
 <li><a class="reference internal" href="#i-am-using-tmux-and-have-a-problem">I am using tmux and have a problem</a></li>
 </ul>
 
@@ -126,7 +127,8 @@
 <li><p><a class="reference internal" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal" id="id9">How can I assign a single global shortcut to bring up the kitty terminal?</a></p></li>
 <li><p><a class="reference internal" href="#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program" id="id10">How do I map key presses in kitty to different keys in the terminal program?</a></p></li>
 <li><p><a class="reference internal" href="#how-do-i-open-a-new-window-or-tab-with-the-same-working-directory-as-the-current-window" id="id11">How do I open a new window or tab with the same working directory as the current window?</a></p></li>
-<li><p><a class="reference internal" href="#i-am-using-tmux-and-have-a-problem" id="id12">I am using tmux and have a problem</a></p></li>
+<li><p><a class="reference internal" href="#things-behave-differently-when-running-kitty-from-system-launcher-vs-another-terminal" id="id12">Things behave differently when running kitty from system launcher vs. another terminal?</a></p></li>
+<li><p><a class="reference internal" href="#i-am-using-tmux-and-have-a-problem" id="id13">I am using tmux and have a problem</a></p></li>
 </ul>
 </li>
 </ul>
@@ -329,7 +331,7 @@ For example:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>map alt+s send_text all <span class="se">\x</span><span class="m">13</span>
 </pre></div>
 </div>
-<p>This maps <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd></kbd> to <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd></kbd>. To figure out what bytes to use for
+<p>This maps <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd></kbd> to <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd></kbd>. To figure out what bytes to use for
 the <a class="reference internal" href="conf.html#shortcut-kitty.Send-arbitrary-text-on-key-presses"><code class="xref std std-sc docutils literal notranslate"><span class="pre">send_text</span></code></a> you can use the <code class="docutils literal notranslate"><span class="pre">showkey</span></code> utility. Run:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>showkey -a
 </pre></div>
@@ -341,7 +343,7 @@ available. The manual way to figure it out is:</p>
 <li><p>Look up your key's decimal value in the table at the bottom of <a class="reference external" href="http://ascii-table.com/ansi-escape-sequences.php">this
 page</a> or any
 ANSI escape sequence table. There are different modifiers for <kbd class="kbd docutils literal notranslate">ctrl</kbd>,
-<kbd class="kbd docutils literal notranslate">alt</kbd>, etc. For e.g., for <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd></kbd>, find the <code class="docutils literal notranslate"><span class="pre">S</span></code> row and look at
+<kbd class="kbd docutils literal notranslate">alt</kbd>, etc. For e.g., for <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd></kbd>, find the <code class="docutils literal notranslate"><span class="pre">S</span></code> row and look at
 the third column value, <code class="docutils literal notranslate"><span class="pre">19</span></code>.</p></li>
 <li><p>Convert the decimal value to hex with <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+runpy</span> <span class="pre">&quot;print(hex(19))&quot;</span></code>.
 This shows the hex value, <code class="docutils literal notranslate"><span class="pre">13</span></code> in this case.</p></li>
@@ -360,8 +362,24 @@ map f2  launch --cwd<span class="o">=</span>current --type<span class="o">=</spa
 as the current window. The <a class="reference internal" href="launch.html"><span class="doc">launch command</span></a> is very powerful,
 explore <a class="reference internal" href="launch.html"><span class="doc">its documentation</span></a>.</p>
 </div>
+<div class="section" id="things-behave-differently-when-running-kitty-from-system-launcher-vs-another-terminal">
+<h2><a class="toc-backref" href="#id12">Things behave differently when running kitty from system launcher vs. another terminal?</a><a class="headerlink" href="#things-behave-differently-when-running-kitty-from-system-launcher-vs-another-terminal" title="Permalink to this headline">¶</a></h2>
+<p>This will be because of environment variables. When you run kitty from the
+system launcher, it gets a default set of system environment variables. When
+you run kitty from another terminal, you are actually running it from a shell,
+and the shell's rc files will have setup a whole different set of environment
+variables which kitty will now inherit.</p>
+<p>You need to make sure that the environment variables you define in your shell's
+rc files are either also defined system wide or via the <code class="docutils literal notranslate"><span class="pre">env</span></code> directive in
+kitty.conf. Common environment variables that cause issues are those related to
+localization, such as <code class="docutils literal notranslate"><span class="pre">LANG,</span> <span class="pre">LC_*</span></code> and loading of configuration files such as
+<code class="docutils literal notranslate"><span class="pre">XDG_*,</span> <span class="pre">KITTY_CONFIG_DIRECTORY</span></code>.</p>
+<p>This problem is most common on macOS, as Apple makes it exceedingly difficult to
+setup environment variables system-wide, so people end up putting them in all
+sorts of places where they may or may not work.</p>
+</div>
 <div class="section" id="i-am-using-tmux-and-have-a-problem">
-<h2><a class="toc-backref" href="#id12">I am using tmux and have a problem</a><a class="headerlink" href="#i-am-using-tmux-and-have-a-problem" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">I am using tmux and have a problem</a><a class="headerlink" href="#i-am-using-tmux-and-have-a-problem" title="Permalink to this headline">¶</a></h2>
 <p>First, terminal multiplexers are <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/391#issuecomment-638320745">a bad idea</a>, do
 not use them, if at all possible. kitty contains features that do all of what
 tmux does, but better, with the exception of remote persistence (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/391">#391</a>).
