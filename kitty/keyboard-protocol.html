@@ -169,7 +169,7 @@ leaving alternate screen mode to restore the previously used keyboard mode.</p><
 text, or using the following escape codes, for those keys that do not produce
 text (<code class="docutils literal notranslate"><span class="pre">CSI</span></code> is the bytes <code class="docutils literal notranslate"><span class="pre">0x1b</span> <span class="pre">0x5b</span></code>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="n">number</span> <span class="p">;</span> <span class="n">modifiers</span> <span class="p">[</span><span class="n">u</span><span class="o">~</span><span class="p">]</span>
-<span class="n">CSI</span> <span class="mi">1</span><span class="p">;</span> <span class="n">modifiers</span> <span class="p">[</span><span class="n">ABCDFHPQRS</span><span class="p">]</span>
+<span class="n">CSI</span> <span class="mi">1</span><span class="p">;</span> <span class="n">modifiers</span> <span class="p">[</span><span class="n">ABCDEFHPQRS</span><span class="p">]</span>
 <span class="mh">0x0d</span> <span class="o">-</span> <span class="k">for</span> <span class="n">the</span> <span class="n">Enter</span> <span class="n">key</span>
 <span class="mh">0x7f</span> <span class="ow">or</span> <span class="mh">0x08</span> <span class="o">-</span> <span class="k">for</span> <span class="n">Backspace</span>
 <span class="mh">0x09</span> <span class="o">-</span> <span class="k">for</span> <span class="n">Tab</span>
@@ -183,7 +183,7 @@ modifiers pressed for the key event. The encoding is described in the
 <p>The second form is used for a few functional keys, such as the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Home,</kbd> <kbd class="kbd docutils literal notranslate">End,</kbd>
 <kbd class="kbd docutils literal notranslate">Arrow</kbd> <kbd class="kbd docutils literal notranslate">keys</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">F1</kbd>-<kbd class="kbd docutils literal notranslate">F4</kbd></kbd>, they are enumerated in the <a class="reference internal" href="#functional"><span class="std std-ref">Functional key definitions</span></a> table below.
 Note that if no modifiers are present the parameters are omitted entirely
-giving an escape code of the form <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">[ABCDFHPQRS]</span></code>.</p>
+giving an escape code of the form <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">[ABCDEFHPQRS]</span></code>.</p>
 <p>If you want support for more advanced features such as repeat and release
 events, alternate keys for shortcut matching et cetera, these can be turned on
 using <a class="reference internal" href="#progressive-enhancement"><span class="std std-ref">Progressive enhancement</span></a> as documented in the rest of this
@@ -242,13 +242,16 @@ sub-field for the shifted key, like this:</p>
 </div>
 <div class="section" id="modifiers">
 <span id="id2"></span><h3>Modifiers<a class="headerlink" href="#modifiers" title="Permalink to this headline">¶</a></h3>
-<p>This protocol supports four modifier keys, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift,</kbd> <kbd class="kbd docutils literal notranslate">alt,</kbd> <kbd class="kbd docutils literal notranslate">ctrl</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">super</kbd></kbd>.
-Here super is either the <em>Windows/Linux</em> key or the <em>Cmd</em> key on mac keyboards.
-Modifiers are encoded as a bit field with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shift</span> <span class="mb">0b1</span>     <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">alt</span>   <span class="mb">0b10</span>    <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ctrl</span>  <span class="mb">0b100</span>   <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="nb">super</span> <span class="mb">0b1000</span>  <span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<p>This protocol supports six modifier keys, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift,</kbd> <kbd class="kbd docutils literal notranslate">alt,</kbd> <kbd class="kbd docutils literal notranslate">ctrl,</kbd> <kbd class="kbd docutils literal notranslate">super,</kbd> <kbd class="kbd docutils literal notranslate">hyper</kbd>
+<kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">meta</kbd></kbd>. Here <kbd class="kbd docutils literal notranslate">super</kbd> is either the <em>Windows/Linux</em> key or the <em>Cmd</em> key on
+mac keyboards. <kbd class="kbd docutils literal notranslate">hyper</kbd> and <kbd class="kbd docutils literal notranslate">meta</kbd> are typically present only on X11
+based systems with special XKB rules. Modifiers are encoded as a bit field with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shift</span> <span class="mb">0b1</span>      <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">alt</span>   <span class="mb">0b10</span>     <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ctrl</span>  <span class="mb">0b100</span>    <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">super</span> <span class="mb">0b1000</span>   <span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">hyper</span> <span class="mb">0b10000</span>  <span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">meta</span>  <span class="mb">0b100000</span> <span class="p">(</span><span class="mi">32</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In the escape code, the modifier value is encoded as a decimal number which is
@@ -370,6 +373,13 @@ Denial-of-Service attacks. Terminals must maintain separate stacks for the main
 and alternate screens. If a pop request is received that empties the stack,
 all flags are reset. If a push request is received and the stack is full, the
 oldest entry from the stack must be evicted.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the interests of interoperation, the XTerm specific sequences
+<cite>CSI &gt; 4; 1 m</cite> and <cite>CSI &gt; 4; 0 m</cite> are treated as <cite>CSI &gt; 1 u</cite> and <cite>CSI &lt; 1 u</cite>.
+These codes cause XTerm to use the CSI u encoding for more keys and are therefore
+treated as similar to the disambiguate progressive enhancement.</p>
+</div>
 <div class="section" id="disambiguate-escape-codes">
 <span id="disambiguate"></span><h3>Disambiguate escape codes<a class="headerlink" href="#disambiguate-escape-codes" title="Permalink to this headline">¶</a></h3>
 <p>This type of progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b1</span></code>) fixes the problem of some legacy key press
@@ -385,7 +395,7 @@ encoding, using dedicated numbers from the <a class="reference internal" href="#
 <p>With this flag turned on, all key events that do not generate text are
 represented in one of the following two forms:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="n">number</span><span class="p">;</span> <span class="n">modifier</span> <span class="n">u</span>
-<span class="n">CSI</span> <span class="mi">1</span><span class="p">;</span> <span class="n">modifier</span> <span class="p">[</span><span class="o">~</span><span class="n">ABCDFHPQRS</span><span class="p">]</span>
+<span class="n">CSI</span> <span class="mi">1</span><span class="p">;</span> <span class="n">modifier</span> <span class="p">[</span><span class="o">~</span><span class="n">ABCDEFHPQRS</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>This makes it very easy to parse key events in an application. In particular,
@@ -453,8 +463,8 @@ progressive enhancement.</p>
 <h3>Legacy functional keys<a class="headerlink" href="#legacy-functional-keys" title="Permalink to this headline">¶</a></h3>
 <p>These keys are encoded using three schemes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="n">number</span> <span class="p">;</span> <span class="n">modifier</span> <span class="o">~</span>
-<span class="n">CSI</span> <span class="mi">1</span> <span class="p">;</span> <span class="n">modifier</span> <span class="p">{</span><span class="n">ABCDFHPQRS</span><span class="p">}</span>
-<span class="n">SS3</span> <span class="p">{</span><span class="n">ABCDFHPQRS</span><span class="p">}</span>
+<span class="n">CSI</span> <span class="mi">1</span> <span class="p">;</span> <span class="n">modifier</span> <span class="p">{</span><span class="n">ABCDEFHPQRS</span><span class="p">}</span>
+<span class="n">SS3</span> <span class="p">{</span><span class="n">ABCDEFHPQRS</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>In the above, if there are no modifiers, the modifier parameter is omitted.
@@ -961,68 +971,78 @@ compatibility reasons.</p>
 </tr>
 <tr class="row-odd"><td><p>KP_DELETE</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57426 u</span></code></p></td>
-<td><p>MEDIA_PLAY</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">57427 u</span></code></p></td>
+<td><p>KP_BEGIN</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1 E</span> <span class="pre">or</span> <span class="pre">57427</span> <span class="pre">~</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>MEDIA_PAUSE</p></td>
+<tr class="row-even"><td><p>MEDIA_PLAY</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57428 u</span></code></p></td>
-<td><p>MEDIA_PLAY_PAUSE</p></td>
+<td><p>MEDIA_PAUSE</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57429 u</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>MEDIA_REVERSE</p></td>
+<tr class="row-odd"><td><p>MEDIA_PLAY_PAUSE</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57430 u</span></code></p></td>
-<td><p>MEDIA_STOP</p></td>
+<td><p>MEDIA_REVERSE</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57431 u</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>MEDIA_FAST_FORWARD</p></td>
+<tr class="row-even"><td><p>MEDIA_STOP</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57432 u</span></code></p></td>
-<td><p>MEDIA_REWIND</p></td>
+<td><p>MEDIA_FAST_FORWARD</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57433 u</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>MEDIA_TRACK_NEXT</p></td>
+<tr class="row-odd"><td><p>MEDIA_REWIND</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57434 u</span></code></p></td>
-<td><p>MEDIA_TRACK_PREVIOUS</p></td>
+<td><p>MEDIA_TRACK_NEXT</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57435 u</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>MEDIA_RECORD</p></td>
+<tr class="row-even"><td><p>MEDIA_TRACK_PREVIOUS</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57436 u</span></code></p></td>
-<td><p>LOWER_VOLUME</p></td>
+<td><p>MEDIA_RECORD</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57437 u</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>RAISE_VOLUME</p></td>
+<tr class="row-odd"><td><p>LOWER_VOLUME</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57438 u</span></code></p></td>
-<td><p>MUTE_VOLUME</p></td>
+<td><p>RAISE_VOLUME</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57439 u</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>LEFT_SHIFT</p></td>
+<tr class="row-even"><td><p>MUTE_VOLUME</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57440 u</span></code></p></td>
-<td><p>LEFT_CONTROL</p></td>
+<td><p>LEFT_SHIFT</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57441 u</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>LEFT_ALT</p></td>
+<tr class="row-odd"><td><p>LEFT_CONTROL</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57442 u</span></code></p></td>
-<td><p>LEFT_SUPER</p></td>
+<td><p>LEFT_ALT</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57443 u</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>LEFT_HYPER</p></td>
+<tr class="row-even"><td><p>LEFT_SUPER</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57444 u</span></code></p></td>
-<td><p>RIGHT_SHIFT</p></td>
+<td><p>LEFT_HYPER</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57445 u</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>RIGHT_CONTROL</p></td>
+<tr class="row-odd"><td><p>LEFT_META</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57446 u</span></code></p></td>
-<td><p>RIGHT_ALT</p></td>
+<td><p>RIGHT_SHIFT</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57447 u</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>RIGHT_SUPER</p></td>
+<tr class="row-even"><td><p>RIGHT_CONTROL</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57448 u</span></code></p></td>
-<td><p>RIGHT_HYPER</p></td>
+<td><p>RIGHT_ALT</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57449 u</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>ISO_LEVEL3_SHIFT</p></td>
+<tr class="row-odd"><td><p>RIGHT_SUPER</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57450 u</span></code></p></td>
-<td><p>ISO_LEVEL5_SHIFT</p></td>
+<td><p>RIGHT_HYPER</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">57451 u</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>RIGHT_META</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57452 u</span></code></p></td>
+<td><p>ISO_LEVEL3_SHIFT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57453 u</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ISO_LEVEL5_SHIFT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">57454 u</span></code></p></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>

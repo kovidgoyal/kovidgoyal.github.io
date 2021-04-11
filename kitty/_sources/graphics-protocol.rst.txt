@@ -28,7 +28,7 @@ alpha-blending and text over graphics.
     :alt: Demo of graphics rendering in kitty
     :align: center
 
-Some programs that use the kitty graphics protocol:
+Some programs and libraries that use the kitty graphics protocol:
 
  * `termpdf.py <https://github.com/dsanson/termpdf.py>`_ - a terminal PDF/DJVU/CBR viewer
  * `ranger <https://github.com/ranger/ranger>`_ - a terminal file manager, with
@@ -40,6 +40,9 @@ Some programs that use the kitty graphics protocol:
  * `viu <https://github.com/atanunq/viu>`_ - a terminal image viewer
  * `glkitty <https://github.com/michaeljclark/glkitty>`_ - C library to draw OpenGL shaders in the terminal with a glgears demo
  * `ctx.graphics <https://ctx.graphics/>`_ - Library for drawing graphics
+ * `timg <https://github.com/hzeller/timg>` - a terminal image and video viewer
+ * `notcurses <https://github.com/dankamongmen/notcurses>`_ - C library for terminal graphics with bindings for C++, Rust and Python
+ * `rasterm <https://github.com/BourgeoisBear/rasterm>`_  - Go library to display images in the the terminal
 
 
 .. contents::
@@ -193,16 +196,17 @@ compression, then you must provide the ``S`` key with the size of the PNG data.
 Compression
 ~~~~~~~~~~~~~
 
-The client can send compressed image data to the terminal emulator, by specifying the
-``o`` key. Currently, only zlib based deflate compression is supported, which is specified using
-``o=z``. For example::
+The client can send compressed image data to the terminal emulator, by
+specifying the ``o`` key. Currently, only :rfc:`1950` ZLIB based deflate
+compression is supported, which is specified using ``o=z``. For example::
 
     <ESC>_Gf=24,s=10,v=20,o=z;<payload><ESC>\
 
 This is the same as the example from the RGB data section, except that the
-payload is now compressed using deflate. The terminal emulator will decompress
-it before rendering. You can specify compression for any format. The terminal
-emulator will decompress before interpreting the pixel data.
+payload is now compressed using deflate (this occurs prior to base64-encoding).
+The terminal emulator will decompress it before rendering. You can specify
+compression for any format. The terminal emulator will decompress before
+interpreting the pixel data.
 
 
 The transmission medium
@@ -268,7 +272,7 @@ sequence of escape codes to the terminal emulator::
     <ESC>_Gm=0;<encoded pixel data last chunk><ESC>\
 
 Note that only the first escape code needs to have the full set of control
-codes such as width, height, format etc. Subsequent chunks must have
+codes such as width, height, format etc. Subsequent chunks **must** have
 only the ``m`` key. The client **must** finish sending all chunks for a single image
 before sending any other graphics related escape codes. Note that the cursor
 position used to display the image **must** be the position when the final chunk is
@@ -397,6 +401,12 @@ colors.
    number of rows in the image placement rectangle. If either of these cause
    the cursor to leave either the screen or the scroll area, the exact
    positioning of the cursor is undefined, and up to implementations.
+   The client can ask the terminal emulator to not move the cursor at all
+   by specifying ``C=1`` in the command, which sets the cursor movement policy
+   to no movement for placing the current image.
+
+.. versionadded:: 0.20.0
+   Support for the C=1 cursor movement policy
 
 
 Deleting images
@@ -420,7 +430,7 @@ Value of ``d``       Meaning
 ``n`` or ``N``       Delete newest image with the specified number, specified using the ``I`` key. If you specify a ``p`` key for the
                      placement id as well, then only the placement with the specified number and placement id will be deleted.
 ``c`` or ``C``       Delete all placements that intersect with the current cursor position.
-``c`` or ``C``       Delete all placements that intersect with the current cursor position.
+``f`` or ``F``       Delete animation frames.
 ``p`` or ``P``       Delete all placements that intersect a specific cell, the cell is specified using the ``x`` and ``y`` keys
 ``q`` or ``Q``       Delete all placements that intersect a specific cell having a specific z-index. The cell and z-index is specified using the ``x``, ``y`` and ``z`` keys.
 ``x`` or ``X``       Delete all placements that intersect the specified column, specified using the ``x`` key.
@@ -431,8 +441,8 @@ Value of ``d``       Meaning
 
 Note when all placements for an image have been deleted, the image is also
 deleted, if the capital letter form above is specified. Also, when the terminal
-is running out of quota space for image, images without placements will be
-preferentially deleted.
+is running out of quota space for new images, existing images without
+placements will be preferentially deleted.
 
 Some examples::
 
@@ -676,6 +686,8 @@ Key      Value                 Default    Description
 ``Y``    Positive integer      ``0``      The y-offset within the first cell at which to start displaying the image
 ``c``    Positive integer      ``0``      The number of columns to display the image over
 ``r``    Positive integer      ``0``      The number of rows to display the image over
+``C``    Positive integer      ``0``      Cursor movement policy. ``0`` is the default, to move the cursor to after the image.
+                                          ``1`` is to not move the cursor at all when placing the image.
 ``z``    32-bit integer        ``0``      The *z-index* vertical stacking order of the image
 
 **Keys for animation frame loading**

@@ -171,6 +171,9 @@ directly on launch and environment variables are set using <code class="docutils
 <li><p>Allow setting colors when creating windows using the <a class="reference internal" href="launch.html"><span class="doc">launch</span></a> command.</p></li>
 <li><p>A new option <a class="reference internal" href="conf.html#opt-kitty.tab_powerline_style"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_powerline_style</span></code></a> to control the appearance of the tab
 bar when using the powerline tab bar style.</p></li>
+<li><p>A new option <a class="reference internal" href="conf.html#opt-kitty.scrollback_fill_enlarged_window"><code class="xref std std-opt docutils literal notranslate"><span class="pre">scrollback_fill_enlarged_window</span></code></a> to fill extra lines in
+the window when the window is expanded with lines from the scrollback
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3371">#3371</a>)</p></li>
 <li><p>diff kitten: Implement recursive diff over SSH (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3268">#3268</a>)</p></li>
 <li><p>ssh kitten: Allow using python instead of the shell on the server, useful if
 the shell used is a non-POSIX compliant one, such as fish (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3277">#3277</a>)</p></li>
@@ -182,12 +185,22 @@ with XTerm (<a class="reference external" href="https://github.com/kovidgoyal/ki
 run. The system-wide PATH is used first, then system specific default paths,
 and finally the PATH inside the shell.</p></li>
 <li><p>Double clicking on empty tab bar area now opens a new tab (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3201">#3201</a>)</p></li>
+<li><p>When passing a directory or a non-executable file as the program to run to
+kitty opens it with the shell or by parsing the shebang, instead of just failing.</p></li>
 <li><p>Linux: Fix rendering of emoji followed by the graphics variation selector not
 being colored with some fonts (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3211">#3211</a>)</p></li>
 <li><p>Unicode input: Fix using index in select by name mode not working for indices
 larger than 16. Also using an index does not filter the list of matches. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3219">#3219</a>)</p></li>
+<li><p>Wayland: Add support for the text input protocol (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3410">#3410</a>)</p></li>
+<li><p>Wayland: Fix mouse handling when using client side decorations</p></li>
+<li><p>Wayland: Fix un-maximizing a window not restoring its size to what it was
+before being maximized</p></li>
+<li><p>GNOME/Wayland: Improve window decorations the titlebar now shows the window
+title. Allow running under Wayland on GNOME by default. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3284">#3284</a>)</p></li>
 <li><p>Panel kitten: Allow setting WM_CLASS (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3233">#3233</a>)</p></li>
 <li><p>macOS: Add menu items to close the OS window and the current tab (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3240">#3240</a>, <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3246">#3246</a>)</p></li>
+<li><p>macOS: Allow opening script and command files with kitty (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3366">#3366</a>)</p></li>
+<li><p>Also detect <code class="docutils literal notranslate"><span class="pre">gemini://</span></code> URLs when hovering with the mouse (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3370">#3370</a>)</p></li>
 <li><p>When using a non-US keyboard layout and pressing <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">key</kbd></kbd> when
 the key matches an English key, send that to the program running in the
 terminal automatically (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2000">#2000</a>)</p></li>
@@ -208,6 +221,18 @@ convention. This removes the gap in the ligatures at cell boundaries (<a class="
 and can be confusing (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3325">#3325</a>)</p></li>
 <li><p>hints kitten: When using the linenumber action with a background action,
 preserve the working directory (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3352">#3352</a>)</p></li>
+<li><p>Graphics protocol: Fix suppression of responses not working for chunked
+transmission (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3375">#3375</a>)</p></li>
+<li><p>Fix inactive tab closing causing active tab to change (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3398">#3398</a>)</p></li>
+<li><p>Fix a crash on systems using musl as libc (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3395">#3395</a>)</p></li>
+<li><p>Improve rendering of rounded corners by using a rectircle equation rather
+than a cubic bezier (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3409">#3409</a>)</p></li>
+<li><p>Graphics protocol: Add a control to allow clients to specify that the cursor
+should not move when displaying an image (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3411">#3411</a>)</p></li>
+<li><p>Fix marking of text not working on lines that contain zero cells
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3403">#3403</a>)</p></li>
+<li><p>Fix the selection getting changed if the screen contents scroll while
+the selection is in progress (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3431">#3431</a>)</p></li>
 </ul>
 </div>
 <div class="section" id="id1">
