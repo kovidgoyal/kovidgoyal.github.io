@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Controlling kitty from scripts or the shell &#8212; kitty 0.19.3 documentation</title>
+    <title>Controlling kitty from scripts or the shell &#8212; kitty 0.20.0 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -776,11 +776,20 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">&#64;
 </div>
 <div class="section" id="kitty-ls">
 <span id="at-ls"></span><h2>kitty &#64; ls<a class="headerlink" href="#kitty-ls" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ ls
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ ls <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 </div>
-<p>List all windows. The list is returned as JSON tree. The top-level is a list of operating system kitty windows. Each OS window has an <span class="italic">id</span> and a list of <span class="italic">tabs</span>. Each tab has its own <span class="italic">id</span>, a <span class="italic">title</span> and a list of <span class="italic">windows</span>. Each window has an <span class="italic">id</span>, <span class="italic">title</span>, <span class="italic">current working directory</span>, <span class="italic">process id (PID)</span>,  <span class="italic">command-line</span> and <span class="italic">environment</span> of the process running in the window.</p>
+<p>List all windows. The list is returned as JSON tree. The top-level is a list of operating system kitty windows. Each OS window has an <span class="italic">id</span> and a list of <span class="italic">tabs</span>. Each tab has its own <span class="italic">id</span>, a <span class="italic">title</span> and a list of <span class="italic">windows</span>. Each window has an <span class="italic">id</span>, <span class="italic">title</span>, <span class="italic">current working directory</span>, <span class="italic">process id (PID)</span>,  <span class="italic">command-line</span> and <span class="italic">environment</span> of the process running in the window. Additionally, when running the command inside a kitty window, that window can be identified by the <span class="italic">is_self</span> parameter.</p>
 <p>You can use these criteria to select windows/tabs for the other commands.</p>
+<div class="section" id="id15">
+<h3>Options<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<dl class="std option">
+<dt id="cmdoption-kitty-ls-all-env-vars">
+<code class="sig-name descname"><span class="pre">--all-env-vars</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-ls-all-env-vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show all environment variables in output not just differing ones.</p>
+</dd></dl>
+
+</div>
 </div>
 <div class="section" id="kitty-new-window">
 <span id="at-new-window"></span><h2>kitty &#64; new-window<a class="headerlink" href="#kitty-new-window" title="Permalink to this headline">¶</a></h2>
@@ -789,8 +798,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">&#64;
 </div>
 <p>Open a new window in the specified tab. If you use the <a class="reference internal" href="#cmdoption-kitty-new-window-match"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">new-window</span> <span class="pre">--match</span></code></a> option the first matching tab is used. Otherwise the currently active tab is used. Prints out the id of the newly opened window (unless <a class="reference internal" href="#cmdoption-kitty-new-window-no-response"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-response</span></code></a> is used). Any command line arguments are assumed to be the command line used to run in the new window, if none are provided, the default shell is run. For example:
 <span class="italic">kitty &#64; new-window –title Email mutt</span></p>
-<div class="section" id="id15">
-<h3>Options<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>Options<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-new-window-match">
 <span id="cmdoption-kitty-new-window-m"></span><code class="sig-name descname"><span class="pre">--match</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-m</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-new-window-match" title="Permalink to this definition">¶</a></dt>
@@ -850,8 +859,8 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 </pre></div>
 </div>
 <p>Remove the currently set marker, if any.</p>
-<div class="section" id="id16">
-<h3>Options<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>Options<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-remove-marker-match">
 <span id="cmdoption-kitty-remove-marker-m"></span><code class="sig-name descname"><span class="pre">--match</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-m</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-remove-marker-match" title="Permalink to this definition">¶</a></dt>
@@ -872,8 +881,8 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 </pre></div>
 </div>
 <p>Resize the specified window in the current layout. Note that not all layouts can resize all windows in all directions.</p>
-<div class="section" id="id17">
-<h3>Options<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>Options<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-resize-window-match">
 <span id="cmdoption-kitty-resize-window-m"></span><code class="sig-name descname"><span class="pre">--match</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-m</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-resize-window-match" title="Permalink to this definition">¶</a></dt>
@@ -909,8 +918,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 </pre></div>
 </div>
 <p>Scroll the specified window, if no window is specified, scroll the window this command is run inside. SCROLL_AMOUNT can be either the keywords <code class="code docutils literal notranslate"><span class="pre">start</span></code> or <code class="code docutils literal notranslate"><span class="pre">end</span></code> or an argument of the form &lt;number&gt;[unit][+-]. For example, 30 will scroll down 30 lines and 2p- will scroll up 2 pages.</p>
-<div class="section" id="id18">
-<h3>Options<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h3>Options<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-scroll-window-match">
 <span id="cmdoption-kitty-scroll-window-m"></span><code class="sig-name descname"><span class="pre">--match</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-m</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-scroll-window-match" title="Permalink to this definition">¶</a></dt>
@@ -925,8 +934,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 </pre></div>
 </div>
 <p>Send arbitrary text to specified windows. The text follows Python escaping rules. So you can use escapes like <span class="italic">x1b</span> to send control codes and <span class="italic">u21fa</span> to send unicode characters. If you use the <a class="reference internal" href="#cmdoption-kitty-send-text-match"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">send-text</span> <span class="pre">--match</span></code></a> option the text will be sent to all matched windows. By default, text is sent to only the currently active window.</p>
-<div class="section" id="id19">
-<h3>Options<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id20">
+<h3>Options<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-send-text-match">
 <span id="cmdoption-kitty-send-text-m"></span><code class="sig-name descname"><span class="pre">--match</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-m</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-send-text-match" title="Permalink to this definition">¶</a></dt>
@@ -971,8 +980,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 </pre></div>
 </div>
 <p>Set the background image for the specified OS windows. You must specify the path to a PNG image that will be used as the background. If you specify the special value “none” then any existing image will be removed.</p>
-<div class="section" id="id20">
-<h3>Options<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id21">
+<h3>Options<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-set-background-image-all">
 <span id="cmdoption-kitty-set-background-image-a"></span><code class="sig-name descname"><span class="pre">--all</span></code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-a</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-set-background-image-all" title="Permalink to this definition">¶</a></dt>
@@ -1006,8 +1015,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">confi
 </pre></div>
 </div>
 <p>Set the background opacity for the specified windows. This will only work if you have turned on <a class="reference internal" href="conf.html#opt-kitty.dynamic_background_opacity"><code class="xref std std-opt docutils literal notranslate"><span class="pre">dynamic_background_opacity</span></code></a> in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>. The background opacity affects all kitty windows in a single os_window. For example: kitty &#64; set-background-opacity 0.5</p>
-<div class="section" id="id21">
-<h3>Options<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id22">
+<h3>Options<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-set-background-opacity-all">
 <span id="cmdoption-kitty-set-background-opacity-a"></span><code class="sig-name descname"><span class="pre">--all</span></code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-a</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-set-background-opacity-all" title="Permalink to this definition">¶</a></dt>
@@ -1034,8 +1043,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">confi
 </pre></div>
 </div>
 <p>Set the terminal colors for the specified windows/tabs (defaults to active window). You can either specify the path to a conf file (in the same format as kitty.conf) to read the colors from or you can specify individual colors, for example: kitty &#64; set-colors foreground=red background=white</p>
-<div class="section" id="id22">
-<h3>Options<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id23">
+<h3>Options<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-set-colors-all">
 <span id="cmdoption-kitty-set-colors-a"></span><code class="sig-name descname"><span class="pre">--all</span></code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-a</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-set-colors-all" title="Permalink to this definition">¶</a></dt>
@@ -1074,8 +1083,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">confi
 </pre></div>
 </div>
 <p>Sets the font size to the specified size, in pts. Note that in kitty all sub-windows in the same OS window must have the same font size. A value of zero resets the font size to default. Prefixing the value with a + or - increments the font size by the specified amount.</p>
-<div class="section" id="id23">
-<h3>Options<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id24">
+<h3>Options<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-set-font-size-all">
 <span id="cmdoption-kitty-set-font-size-a"></span><code class="sig-name descname"><span class="pre">--all</span></code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-a</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-set-font-size-all" title="Permalink to this definition">¶</a></dt>
@@ -1090,8 +1099,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">confi
 </pre></div>
 </div>
 <p>Set the padding and margins for the specified windows (defaults to active window). For example: margin=20 or padding-left=10 or margin-h=30. The shorthand form sets all values, the <code class="code docutils literal notranslate"><span class="pre">*-h</span></code> and <code class="code docutils literal notranslate"><span class="pre">*-v</span></code> variants set horizontal and vertical values. The special value “default” resets to using the default value. If you specify a tab rather than a window, all windows in that tab are affected.</p>
-<div class="section" id="id24">
-<h3>Options<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id25">
+<h3>Options<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-set-spacing-all">
 <span id="cmdoption-kitty-set-spacing-a"></span><code class="sig-name descname"><span class="pre">--all</span></code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-a</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-set-spacing-all" title="Permalink to this definition">¶</a></dt>
@@ -1124,8 +1133,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">confi
 </pre></div>
 </div>
 <p>Set the title for the specified tab(s). If you use the <a class="reference internal" href="#cmdoption-kitty-set-tab-title-match"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">set-tab-title</span> <span class="pre">--match</span></code></a> option the title will be set for all matched tabs. By default, only the tab in which the command is run is affected. If you do not specify a title, the title of the currently active window in the tab is used.</p>
-<div class="section" id="id25">
-<h3>Options<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id26">
+<h3>Options<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-set-tab-title-match">
 <span id="cmdoption-kitty-set-tab-title-m"></span><code class="sig-name descname"><span class="pre">--match</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-m</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-set-tab-title-match" title="Permalink to this definition">¶</a></dt>
@@ -1140,8 +1149,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">confi
 </pre></div>
 </div>
 <p>Set the title for the specified window(s). If you use the <a class="reference internal" href="#cmdoption-kitty-set-window-title-match"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">set-window-title</span> <span class="pre">--match</span></code></a> option the title will be set for all matched windows. By default, only the window in which the command is run is affected. If you do not specify a title, the last title set by the child process running in the window will be used.</p>
-<div class="section" id="id26">
-<h3>Options<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id27">
+<h3>Options<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-set-window-title-temporary">
 <code class="sig-name descname"><span class="pre">--temporary</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-set-window-title-temporary" title="Permalink to this definition">¶</a></dt>
@@ -1165,8 +1174,8 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">confi
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>map F1 signal_child SIGTERM
 </pre></div>
 </div>
-<div class="section" id="id27">
-<h3>Options<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id28">
+<h3>Options<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt id="cmdoption-kitty-signal-child-match">
 <span id="cmdoption-kitty-signal-child-m"></span><code class="sig-name descname"><span class="pre">--match</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-m</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-signal-child-match" title="Permalink to this definition">¶</a></dt>

@@ -4,7 +4,7 @@ Changelog
 |kitty| is a feature-rich, cross-platform, *fast*, GPU based terminal.
 To update |kitty|, :doc:`follow the instructions <binary>`.
 
-0.20.0 [future]
+0.20.0 [2021-04-19]
 ----------------------
 
 - Support display of animated images ``kitty +kitten icat animation.gif``. See
@@ -45,6 +45,9 @@ To update |kitty|, :doc:`follow the instructions <binary>`.
   and finally the PATH inside the shell.
 
 - Double clicking on empty tab bar area now opens a new tab (:iss:`3201`)
+
+- kitty @ ls: Show only environment variables that are different for each
+  window, by default.
 
 - When passing a directory or a non-executable file as the program to run to
   kitty opens it with the shell or by parsing the shebang, instead of just failing.
@@ -120,6 +123,9 @@ To update |kitty|, :doc:`follow the instructions <binary>`.
 
 - Fix the selection getting changed if the screen contents scroll while
   the selection is in progress (:iss:`3431`)
+
+- X11: Fix :opt:`resize_in_steps` being applied even when window is maximized
+  (:iss:`3473`)
 
 
 0.19.3 [2020-12-19]

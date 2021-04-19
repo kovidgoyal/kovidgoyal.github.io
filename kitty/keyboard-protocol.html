@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A protocol for comprehensive keyboard handling in terminals &#8212; kitty 0.19.3 documentation</title>
+    <title>A protocol for comprehensive keyboard handling in terminals &#8212; kitty 0.20.0 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -243,15 +243,18 @@ sub-field for the shifted key, like this:</p>
 <div class="section" id="modifiers">
 <span id="id2"></span><h3>Modifiers<a class="headerlink" href="#modifiers" title="Permalink to this headline">¶</a></h3>
 <p>This protocol supports six modifier keys, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift,</kbd> <kbd class="kbd docutils literal notranslate">alt,</kbd> <kbd class="kbd docutils literal notranslate">ctrl,</kbd> <kbd class="kbd docutils literal notranslate">super,</kbd> <kbd class="kbd docutils literal notranslate">hyper</kbd>
-<kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">meta</kbd></kbd>. Here <kbd class="kbd docutils literal notranslate">super</kbd> is either the <em>Windows/Linux</em> key or the <em>Cmd</em> key on
-mac keyboards. <kbd class="kbd docutils literal notranslate">hyper</kbd> and <kbd class="kbd docutils literal notranslate">meta</kbd> are typically present only on X11
-based systems with special XKB rules. Modifiers are encoded as a bit field with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shift</span> <span class="mb">0b1</span>      <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">alt</span>   <span class="mb">0b10</span>     <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ctrl</span>  <span class="mb">0b100</span>    <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="nb">super</span> <span class="mb">0b1000</span>   <span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">hyper</span> <span class="mb">0b10000</span>  <span class="p">(</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">meta</span>  <span class="mb">0b100000</span> <span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">meta</kbd></kbd> as well as <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">num_lock</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">caps_lock</kbd></kbd>. Here <kbd class="kbd docutils literal notranslate">super</kbd> is either
+the <em>Windows/Linux</em> key or the <em>Cmd</em> key on mac keyboards. <kbd class="kbd docutils literal notranslate">hyper</kbd> and
+<kbd class="kbd docutils literal notranslate">meta</kbd> are typically present only on X11 based systems with special XKB
+rules. Modifiers are encoded as a bit field with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shift</span>     <span class="mb">0b1</span>         <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">alt</span>       <span class="mb">0b10</span>        <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ctrl</span>      <span class="mb">0b100</span>       <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">super</span>     <span class="mb">0b1000</span>      <span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">hyper</span>     <span class="mb">0b10000</span>     <span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">meta</span>      <span class="mb">0b100000</span>    <span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">caps_lock</span> <span class="mb">0b1000000</span>   <span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+<span class="n">num_lock</span>  <span class="mb">0b10000000</span>  <span class="p">(</span><span class="mi">128</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In the escape code, the modifier value is encoded as a decimal number which is
