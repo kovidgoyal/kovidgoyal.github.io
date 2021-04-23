@@ -79,6 +79,7 @@
 <div>&nbsp;</div>
 <div id="sidebartoc">
   <ul>
+<li><a class="reference internal" href="#future">0.20.2 [future]</a></li>
 <li><a class="reference internal" href="#id1">0.20.1 [2021-04-19]</a></li>
 <li><a class="reference internal" href="#id2">0.20.0 [2021-04-19]</a></li>
 <li><a class="reference internal" href="#id3">0.19.3 [2020-12-19]</a></li>
@@ -156,6 +157,26 @@
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
 <p><em>kitty</em> is a feature-rich, cross-platform, <em>fast</em>, GPU based terminal.
 To update <em>kitty</em>, <a class="reference internal" href="binary.html"><span class="doc">follow the instructions</span></a>.</p>
+<div class="section" id="future">
+<h2>0.20.2 [future]<a class="headerlink" href="#future" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>A new protocol extension to <a class="reference internal" href="protocol-extensions.html#unscroll"><span class="std std-ref">unscroll</span></a> text from the
+scrollback buffer onto the screen. Useful, for example, to restore
+the screen after showing completions below the shell prompt.</p></li>
+<li><p>Linux: Fix binary kitty builds not able to load fonts in WOFF2 format
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3506">#3506</a>)</p></li>
+<li><p>macOS: Prevent <kbd class="kbd docutils literal notranslate">option</kbd> based shortcuts for being used for global menu
+actions (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3515">#3515</a>)</p></li>
+<li><p>Fix <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">close-tab</span></code> not working with pipe based remote control
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3510">#3510</a>)</p></li>
+<li><p>Fix removal of inactive tab that is before the currently active tab causing
+the highlighted tab to be incorrect (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3516">#3516</a>)</p></li>
+<li><p>icat kitten: Respect EXIF orientation when displaying JPEG images
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3518">#3518</a>)</p></li>
+<li><p>GNOME: Fix maximize state not being remembered when focus changes and window
+decorations are hidden (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3507">#3507</a>)</p></li>
+</ul>
+</div>
 <div class="section" id="id1">
 <h2>0.20.1 [2021-04-19]<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">

@@ -85,6 +85,7 @@
 <li><a class="reference internal" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen">Setting text styles/colors in arbitrary regions of the screen</a></li>
 <li><a class="reference internal" href="#saving-and-restoring-colors">Saving and restoring colors</a></li>
 <li><a class="reference internal" href="#pasting-to-clipboard">Pasting to clipboard</a></li>
+<li><a class="reference internal" href="#unscrolling-the-screen">Unscrolling the screen</a></li>
 <li><a class="reference internal" href="#desktop-notifications">Desktop notifications</a></li>
 </ul>
 
@@ -132,7 +133,8 @@ please do so by opening issues in the github bug tracker.</p>
 <li><p><a class="reference internal" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" id="id6">Setting text styles/colors in arbitrary regions of the screen</a></p></li>
 <li><p><a class="reference internal" href="#saving-and-restoring-colors" id="id7">Saving and restoring colors</a></p></li>
 <li><p><a class="reference internal" href="#pasting-to-clipboard" id="id8">Pasting to clipboard</a></p></li>
-<li><p><a class="reference internal" href="#desktop-notifications" id="id9">Desktop notifications</a></p></li>
+<li><p><a class="reference internal" href="#unscrolling-the-screen" id="id9">Unscrolling the screen</a></p></li>
+<li><p><a class="reference internal" href="#desktop-notifications" id="id10">Desktop notifications</a></p></li>
 </ul>
 </li>
 </ul>
@@ -255,8 +257,37 @@ no ill-effects in other terminal emulators.</p>
 protocol extension, it can be disabled by specifying <code class="docutils literal notranslate"><span class="pre">no-append</span></code> to the
 <a class="reference internal" href="conf.html#opt-kitty.clipboard_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">clipboard_control</span></code></a> setting.</p>
 </div>
+<div class="section" id="unscrolling-the-screen">
+<span id="unscroll"></span><h2><a class="toc-backref" href="#id9">Unscrolling the screen</a><a class="headerlink" href="#unscrolling-the-screen" title="Permalink to this headline">¶</a></h2>
+<p>This is a small extension to the <a class="reference external" href="https://vt100.net/docs/vt510-rm/SD.html">SD (Pan up) escape code</a> from the VT-420 terminal. The
+<code class="docutils literal notranslate"><span class="pre">SD</span></code> escape code normally causes the text on screen to scroll down by the
+specified number of lines, with empty lines appearing at the top of the screen.
+This extension allows the new lines to be filled in from the scrollback buffer
+instead of being blank.</p>
+<p>The motivation for this is that many modern shells will show completions in a
+block of lines under the cursor, this causes some of the on-screen text to be
+lost even after the completion is completed, because it has scrolled off
+screen. This escape code allows that text to be restored.</p>
+<p>If the scrollback buffer is empty or there is no scrollback buffer, such as for
+the alternate screen, then the newly inserted lines must be empty, just as with
+the original <code class="docutils literal notranslate"><span class="pre">SD</span></code> escape code. The maximum number of lines that can be
+scrolled down is the height of the screen, i.e. the number of lines on the screen.
+If the escape code requests more than that number of lines, the terminal <em>must</em>
+clip the request to the current screen size.</p>
+<p>The syntax of the escape code is identical to that of <code class="docutils literal notranslate"><span class="pre">SD</span></code> except that it has
+a trailing <code class="docutils literal notranslate"><span class="pre">+</span></code> modifier. This is legal under the <a class="reference external" href="https://www.ecma-international.org/publications-and-standards/standards/ecma-48/">ECMA 48 standard</a>
+and unused for any other purpose as far as I can tell. So for example, to
+unscroll three lines, the escape code would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">T</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://gitlab.freedesktop.org/terminal-wg/specifications/-/issues/30">discussion here</a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.20.2.</span></p>
+</div>
+</div>
 <div class="section" id="desktop-notifications">
-<span id="id1"></span><h2><a class="toc-backref" href="#id9">Desktop notifications</a><a class="headerlink" href="#desktop-notifications" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2><a class="toc-backref" href="#id10">Desktop notifications</a><a class="headerlink" href="#desktop-notifications" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> implements an extensible escape code (OSC 99) to show desktop
 notifications. It is easy to use from shell scripts and fully extensible to
 show title and body.  Clicking on the notification can optionally focus the
