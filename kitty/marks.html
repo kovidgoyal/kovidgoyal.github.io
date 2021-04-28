@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marks &#8212; kitty 0.20.1 documentation</title>
+    <title>Marks &#8212; kitty 0.20.2 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -119,12 +119,12 @@ If you want to make it case-insensitive, use:</p>
 </pre></div>
 </div>
 <p>To make it match only complete words, use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f1</span> <span class="n">toggle_marker</span> <span class="n">regex</span> <span class="mi">1</span> \<span class="n">bERROR</span>\<span class="n">b</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f1</span> <span class="n">toggle_marker</span> <span class="n">regex</span> <span class="mi">1</span> \\<span class="n">bERROR</span>\\<span class="n">b</span>
 </pre></div>
 </div>
 <p>Suppose you want to highlight both <code class="code docutils literal notranslate"><span class="pre">ERROR</span></code> and <code class="code docutils literal notranslate"><span class="pre">WARNING</span></code>, case
 insensitively:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f1</span> <span class="n">toggle_marker</span> <span class="n">iregex</span> <span class="mi">1</span> \<span class="n">bERROR</span>\<span class="n">b</span> <span class="mi">2</span> \<span class="n">bWARNING</span>\<span class="n">b</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f1</span> <span class="n">toggle_marker</span> <span class="n">iregex</span> <span class="mi">1</span> \\<span class="n">bERROR</span>\\<span class="n">b</span> <span class="mi">2</span> \\<span class="n">bWARNING</span>\\<span class="n">b</span>
 </pre></div>
 </div>
 <p>kitty supports up to 3 mark groups (the numbers in the commands above). You

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Controlling kitty from scripts or the shell &#8212; kitty 0.20.1 documentation</title>
+    <title>Controlling kitty from scripts or the shell &#8212; kitty 0.20.2 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -92,6 +92,7 @@
 <li><a class="reference internal" href="#kitty-detach-tab">kitty &#64; detach-tab</a></li>
 <li><a class="reference internal" href="#kitty-detach-window">kitty &#64; detach-window</a></li>
 <li><a class="reference internal" href="#kitty-disable-ligatures">kitty &#64; disable-ligatures</a></li>
+<li><a class="reference internal" href="#kitty-env">kitty &#64; env</a></li>
 <li><a class="reference internal" href="#kitty-focus-tab">kitty &#64; focus-tab</a></li>
 <li><a class="reference internal" href="#kitty-focus-window">kitty &#64; focus-window</a></li>
 <li><a class="reference internal" href="#kitty-get-colors">kitty &#64; get-colors</a></li>
@@ -459,6 +460,13 @@ can use the <a class="reference internal" href="rc_protocol.html"><span class="d
 </dd></dl>
 
 </div>
+</div>
+<div class="section" id="kitty-env">
+<span id="at-env"></span><h2>kitty &#64; env<a class="headerlink" href="#kitty-env" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ env <span class="nv">env_var1</span><span class="o">=</span>val <span class="nv">env_var2</span><span class="o">=</span>val ...
+</pre></div>
+</div>
+<p>Change the environment variables seen by processing in newly launched windows. Similar to the <a class="reference internal" href="conf.html#opt-kitty.env"><code class="xref std std-opt docutils literal notranslate"><span class="pre">env</span></code></a> option in kitty.conf, but affects running kitty instances. Empty values cause the environment variable to be removed.</p>
 </div>
 <div class="section" id="kitty-focus-tab">
 <span id="at-focus-tab"></span><h2>kitty &#64; focus-tab<a class="headerlink" href="#kitty-focus-tab" title="Permalink to this headline">¶</a></h2>
