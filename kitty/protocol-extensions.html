@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Extensions to the xterm protocol &#8212; kitty 0.20.2 documentation</title>
+    <title>Extensions to the xterm protocol &#8212; kitty 0.20.3 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -107,7 +107,7 @@
           <div class="body" role="main">
             
   <div class="section" id="extensions-to-the-xterm-protocol">
-<h1><a class="toc-backref" href="#id2">Extensions to the xterm protocol</a><a class="headerlink" href="#extensions-to-the-xterm-protocol" title="Permalink to this headline">¶</a></h1>
+<h1>Extensions to the xterm protocol<a class="headerlink" href="#extensions-to-the-xterm-protocol" title="Permalink to this headline">¶</a></h1>
 <p><em>kitty</em> has a few extensions to the xterm protocol, to enable advanced features.
 These are typically in the form of new or re-purposed escape codes. While these
 extensions are currently <em>kitty</em> specific, it would be nice to get some of them
@@ -121,26 +121,21 @@ possible amount of extra functionality into the terminal program itself. This
 is to make it as easy to implement these protocol extensions as possible,
 thereby hopefully encouraging their widespread adoption.</p>
 <p>If you wish to discuss these extensions, propose additions/changes to them
-please do so by opening issues in the github bug tracker.</p>
-<div class="contents topic" id="contents">
-<p class="topic-title">Contents</p>
+please do so by opening issues in the <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues">GitHub</a> bug tracker.</p>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#extensions-to-the-xterm-protocol" id="id2">Extensions to the xterm protocol</a></p>
-<ul>
-<li><p><a class="reference internal" href="#colored-and-styled-underlines" id="id3">Colored and styled underlines</a></p></li>
-<li><p><a class="reference internal" href="#graphics-rendering" id="id4">Graphics rendering</a></p></li>
-<li><p><a class="reference internal" href="#keyboard-handling" id="id5">Keyboard handling</a></p></li>
-<li><p><a class="reference internal" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" id="id6">Setting text styles/colors in arbitrary regions of the screen</a></p></li>
-<li><p><a class="reference internal" href="#saving-and-restoring-colors" id="id7">Saving and restoring colors</a></p></li>
-<li><p><a class="reference internal" href="#pasting-to-clipboard" id="id8">Pasting to clipboard</a></p></li>
-<li><p><a class="reference internal" href="#unscrolling-the-screen" id="id9">Unscrolling the screen</a></p></li>
-<li><p><a class="reference internal" href="#desktop-notifications" id="id10">Desktop notifications</a></p></li>
-</ul>
-</li>
+<li><p><a class="reference internal" href="#colored-and-styled-underlines" id="id2">Colored and styled underlines</a></p></li>
+<li><p><a class="reference internal" href="#graphics-rendering" id="id3">Graphics rendering</a></p></li>
+<li><p><a class="reference internal" href="#keyboard-handling" id="id4">Keyboard handling</a></p></li>
+<li><p><a class="reference internal" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" id="id5">Setting text styles/colors in arbitrary regions of the screen</a></p></li>
+<li><p><a class="reference internal" href="#saving-and-restoring-colors" id="id6">Saving and restoring colors</a></p></li>
+<li><p><a class="reference internal" href="#pasting-to-clipboard" id="id7">Pasting to clipboard</a></p></li>
+<li><p><a class="reference internal" href="#unscrolling-the-screen" id="id8">Unscrolling the screen</a></p></li>
+<li><p><a class="reference internal" href="#desktop-notifications" id="id9">Desktop notifications</a></p></li>
 </ul>
 </div>
 <div class="section" id="colored-and-styled-underlines">
-<h2><a class="toc-backref" href="#id3">Colored and styled underlines</a><a class="headerlink" href="#colored-and-styled-underlines" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">Colored and styled underlines</a><a class="headerlink" href="#colored-and-styled-underlines" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> supports colored and styled (wavy) underlines. This is of particular
 use in terminal editors such as vim and emacs to display red, wavy underlines
 under mis-spelled words and/or syntax errors. This is done by re-purposing some
@@ -172,18 +167,18 @@ color, if not, it should follow the foreground color.</p>
 for the <code class="docutils literal notranslate"><span class="pre">Su</span></code> boolean capability.</p>
 </div>
 <div class="section" id="graphics-rendering">
-<h2><a class="toc-backref" href="#id4">Graphics rendering</a><a class="headerlink" href="#graphics-rendering" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Graphics rendering</a><a class="headerlink" href="#graphics-rendering" title="Permalink to this headline">¶</a></h2>
 <p>See <a class="reference internal" href="graphics-protocol.html"><span class="doc">The terminal graphics protocol</span></a> for a description
 of this protocol to enable drawing of arbitrary raster images in the terminal.</p>
 </div>
 <div class="section" id="keyboard-handling">
-<span id="extended-key-protocol"></span><h2><a class="toc-backref" href="#id5">Keyboard handling</a><a class="headerlink" href="#keyboard-handling" title="Permalink to this headline">¶</a></h2>
+<span id="extended-key-protocol"></span><h2><a class="toc-backref" href="#id4">Keyboard handling</a><a class="headerlink" href="#keyboard-handling" title="Permalink to this headline">¶</a></h2>
 <p>kitty has a <a class="reference internal" href="keyboard-protocol.html"><span class="doc">keyboard protocol</span></a> for reporting key
 presses to terminal applications that solves all key handling issues in
 terminal applications.</p>
 </div>
 <div class="section" id="setting-text-styles-colors-in-arbitrary-regions-of-the-screen">
-<span id="ext-styles"></span><h2><a class="toc-backref" href="#id6">Setting text styles/colors in arbitrary regions of the screen</a><a class="headerlink" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" title="Permalink to this headline">¶</a></h2>
+<span id="ext-styles"></span><h2><a class="toc-backref" href="#id5">Setting text styles/colors in arbitrary regions of the screen</a><a class="headerlink" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" title="Permalink to this headline">¶</a></h2>
 <p>There already exists an escape code to set <em>some</em> text attributes in arbitrary
 regions of the screen, <a class="reference external" href="https://vt100.net/docs/vt510-rm/DECCARA.html">DECCARA</a>.  However, it is limited to
 only a few attributes. <em>kitty</em> extends this to work with <em>all</em> SGR attributes.
@@ -202,7 +197,7 @@ rectangular region of the screen from (3, 4) to (10, 11), you use:</p>
 </div>
 </div>
 <div class="section" id="saving-and-restoring-colors">
-<h2><a class="toc-backref" href="#id7">Saving and restoring colors</a><a class="headerlink" href="#saving-and-restoring-colors" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">Saving and restoring colors</a><a class="headerlink" href="#saving-and-restoring-colors" title="Permalink to this headline">¶</a></h2>
 <p>It is often useful for a full screen application with its own color themes to
 set the default foreground, background, selection and cursor colors and the
 ANSI color table. This allows for various performance optimizations when
@@ -230,7 +225,7 @@ table.</p>
 </div>
 </div>
 <div class="section" id="pasting-to-clipboard">
-<h2><a class="toc-backref" href="#id8">Pasting to clipboard</a><a class="headerlink" href="#pasting-to-clipboard" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">Pasting to clipboard</a><a class="headerlink" href="#pasting-to-clipboard" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> implements the OSC 52 escape code protocol to get/set the clipboard
 contents (controlled via the <a class="reference internal" href="conf.html#opt-kitty.clipboard_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">clipboard_control</span></code></a> setting). There is one
 difference in kitty's implementation compared to some other terminal emulators.
@@ -258,7 +253,7 @@ protocol extension, it can be disabled by specifying <code class="docutils liter
 <a class="reference internal" href="conf.html#opt-kitty.clipboard_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">clipboard_control</span></code></a> setting.</p>
 </div>
 <div class="section" id="unscrolling-the-screen">
-<span id="unscroll"></span><h2><a class="toc-backref" href="#id9">Unscrolling the screen</a><a class="headerlink" href="#unscrolling-the-screen" title="Permalink to this headline">¶</a></h2>
+<span id="unscroll"></span><h2><a class="toc-backref" href="#id8">Unscrolling the screen</a><a class="headerlink" href="#unscrolling-the-screen" title="Permalink to this headline">¶</a></h2>
 <p>This is a small extension to the <a class="reference external" href="https://vt100.net/docs/vt510-rm/SD.html">SD (Pan up) escape code</a> from the VT-420 terminal. The
 <code class="docutils literal notranslate"><span class="pre">SD</span></code> escape code normally causes the text on screen to scroll down by the
 specified number of lines, with empty lines appearing at the top of the screen.
@@ -287,7 +282,7 @@ unscroll three lines, the escape code would be:</p>
 </div>
 </div>
 <div class="section" id="desktop-notifications">
-<span id="id1"></span><h2><a class="toc-backref" href="#id10">Desktop notifications</a><a class="headerlink" href="#desktop-notifications" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2><a class="toc-backref" href="#id9">Desktop notifications</a><a class="headerlink" href="#desktop-notifications" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> implements an extensible escape code (OSC 99) to show desktop
 notifications. It is easy to use from shell scripts and fully extensible to
 show title and body.  Clicking on the notification can optionally focus the

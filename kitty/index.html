@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>kitty - the fast, featureful, GPU based terminal emulator &#8212; kitty 0.20.2 documentation</title>
+    <title>kitty - the fast, featureful, GPU based terminal emulator &#8212; kitty 0.20.3 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -115,7 +115,7 @@
           <div class="body" role="main">
             
   <div class="section" id="kitty-the-fast-featureful-gpu-based-terminal-emulator">
-<h1><a class="toc-backref" href="#id5">kitty - the fast, featureful, GPU based terminal emulator</a><a class="headerlink" href="#kitty-the-fast-featureful-gpu-based-terminal-emulator" title="Permalink to this headline">¶</a></h1>
+<h1>kitty - the fast, featureful, GPU based terminal emulator<a class="headerlink" href="#kitty-the-fast-featureful-gpu-based-terminal-emulator" title="Permalink to this headline">¶</a></h1>
 <div class="major-features docutils container">
 <ul class="simple">
 <li><p>Offloads rendering to the GPU for <a class="reference internal" href="performance.html"><span class="doc">lower system load</span></a> and
@@ -146,8 +146,30 @@ browsing the history comfortably in a pager or editor.</p></li>
 <a class="reference internal image-reference" href="_images/screenshot.png"><img alt="Screenshot, showing three programs in the 'Tall' layout" src="_images/screenshot.png" style="width: 3880.0px; height: 2168.0px;" /></a>
 <p class="caption"><span class="caption-text">Screenshot, showing vim, tig and git running in <em>kitty</em> with the 'Tall' layout</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#quickstart" id="id5">Quickstart</a></p></li>
+<li><p><a class="reference internal" href="#design-philosophy" id="id6">Design philosophy</a></p></li>
+<li><p><a class="reference internal" href="#tabs-and-windows" id="id7">Tabs and Windows</a></p></li>
+<li><p><a class="reference internal" href="#other-keyboard-shortcuts" id="id8">Other keyboard shortcuts</a></p></li>
+<li><p><a class="reference internal" href="#layouts" id="id9">Layouts</a></p></li>
+<li><p><a class="reference internal" href="#kittens" id="id10">Kittens</a></p></li>
+<li><p><a class="reference internal" href="#configuring-kitty" id="id11">Configuring kitty</a></p></li>
+<li><p><a class="reference internal" href="#remote-control" id="id12">Remote control</a></p></li>
+<li><p><a class="reference internal" href="#startup-sessions" id="id13">Startup Sessions</a></p></li>
+<li><p><a class="reference internal" href="#mouse-features" id="id14">Mouse features</a></p></li>
+<li><p><a class="reference internal" href="#font-control" id="id15">Font control</a></p></li>
+<li><p><a class="reference internal" href="#the-scrollback-buffer" id="id16">The scrollback buffer</a></p></li>
+<li><p><a class="reference internal" href="#multiple-copy-paste-buffers" id="id17">Multiple copy/paste buffers</a></p></li>
+<li><p><a class="reference internal" href="#marks" id="id18">Marks</a></p></li>
+<li><p><a class="reference internal" href="#frequently-asked-questions" id="id19">Frequently Asked Questions</a></p></li>
+<li><p><a class="reference internal" href="#cool-integrations-for-kitty-with-other-cli-tools" id="id20">Cool integrations for kitty with other CLI tools</a></p></li>
+<li><p><a class="reference internal" href="#completion-for-kitty" id="id21">Completion for kitty</a></p></li>
+<li><p><a class="reference internal" href="#changelog" id="id22">Changelog</a></p></li>
+</ul>
+</div>
 <div class="section" id="quickstart">
-<span id="id1"></span><h2><a class="toc-backref" href="#id6">Quickstart</a><a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2><a class="toc-backref" href="#id5">Quickstart</a><a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
 <p>Pre-built binaries of <em>kitty</em> are available for both macOS and Linux.
 See the <a class="reference internal" href="binary.html"><span class="doc">binary install instructions</span></a>. You can
 <a class="reference internal" href="build.html"><span class="doc">build from source</span></a>.</p>
@@ -165,48 +187,9 @@ See the <a class="reference internal" href="binary.html"><span class="doc">binar
 and <a class="reference external" href="https://dev.getsol.us/source/kitty/">Solus</a>.</p>
 <p>See <a class="reference internal" href="conf.html"><span class="doc">Configuring kitty</span></a> for help on configuring <em>kitty</em> and
 <a class="reference internal" href="invocation.html"><span class="doc">Invocation</span></a> for the command line arguments <em>kitty</em> supports.</p>
-<div class="contents topic" id="contents">
-<p class="topic-title">Contents</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#kitty-the-fast-featureful-gpu-based-terminal-emulator" id="id5">kitty - the fast, featureful, GPU based terminal emulator</a></p>
-<ul>
-<li><p><a class="reference internal" href="#quickstart" id="id6">Quickstart</a></p></li>
-<li><p><a class="reference internal" href="#design-philosophy" id="id7">Design philosophy</a></p></li>
-<li><p><a class="reference internal" href="#tabs-and-windows" id="id8">Tabs and Windows</a></p>
-<ul>
-<li><p><a class="reference internal" href="#scrolling" id="id9">Scrolling</a></p></li>
-<li><p><a class="reference internal" href="#tabs" id="id10">Tabs</a></p></li>
-<li><p><a class="reference internal" href="#windows" id="id11">Windows</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#other-keyboard-shortcuts" id="id12">Other keyboard shortcuts</a></p></li>
-<li><p><a class="reference internal" href="#layouts" id="id13">Layouts</a></p></li>
-<li><p><a class="reference internal" href="#kittens" id="id14">Kittens</a></p></li>
-<li><p><a class="reference internal" href="#configuring-kitty" id="id15">Configuring kitty</a></p></li>
-<li><p><a class="reference internal" href="#remote-control" id="id16">Remote control</a></p></li>
-<li><p><a class="reference internal" href="#startup-sessions" id="id17">Startup Sessions</a></p></li>
-<li><p><a class="reference internal" href="#mouse-features" id="id18">Mouse features</a></p></li>
-<li><p><a class="reference internal" href="#font-control" id="id19">Font control</a></p></li>
-<li><p><a class="reference internal" href="#the-scrollback-buffer" id="id20">The scrollback buffer</a></p></li>
-<li><p><a class="reference internal" href="#multiple-copy-paste-buffers" id="id21">Multiple copy/paste buffers</a></p></li>
-<li><p><a class="reference internal" href="#marks" id="id22">Marks</a></p></li>
-<li><p><a class="reference internal" href="#frequently-asked-questions" id="id23">Frequently Asked Questions</a></p></li>
-<li><p><a class="reference internal" href="#cool-integrations-for-kitty-with-other-cli-tools" id="id24">Cool integrations for kitty with other CLI tools</a></p></li>
-<li><p><a class="reference internal" href="#completion-for-kitty" id="id25">Completion for kitty</a></p>
-<ul>
-<li><p><a class="reference internal" href="#bash" id="id26">bash</a></p></li>
-<li><p><a class="reference internal" href="#zsh" id="id27">zsh</a></p></li>
-<li><p><a class="reference internal" href="#fish" id="id28">fish</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#changelog" id="id29">Changelog</a></p></li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div class="section" id="design-philosophy">
-<h2><a class="toc-backref" href="#id7">Design philosophy</a><a class="headerlink" href="#design-philosophy" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">Design philosophy</a><a class="headerlink" href="#design-philosophy" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> is designed for power keyboard users. To that end all its controls
 work with the keyboard (although it fully supports mouse interactions as
 well). Its configuration is a simple, human editable, single file for
@@ -224,7 +207,7 @@ easily extensible so that new features can be added in the future with
 relatively little effort.</p>
 </div>
 <div class="section" id="tabs-and-windows">
-<h2><a class="toc-backref" href="#id8">Tabs and Windows</a><a class="headerlink" href="#tabs-and-windows" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">Tabs and Windows</a><a class="headerlink" href="#tabs-and-windows" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> is capable of running multiple programs organized into tabs and
 windows. The top level of organization is the <em>Tab</em>. Each tab consists
 of one or more <em>windows</em>. The windows can be arranged in multiple
@@ -232,7 +215,7 @@ different layouts, like windows are organized in a tiling window
 manager. The keyboard controls (which are all customizable) for tabs and
 windows are:</p>
 <div class="section" id="scrolling">
-<h3><a class="toc-backref" href="#id9">Scrolling</a><a class="headerlink" href="#scrolling" title="Permalink to this headline">¶</a></h3>
+<h3>Scrolling<a class="headerlink" href="#scrolling" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 27%" />
@@ -266,7 +249,7 @@ windows are:</p>
 </table>
 </div>
 <div class="section" id="tabs">
-<h3><a class="toc-backref" href="#id10">Tabs</a><a class="headerlink" href="#tabs" title="Permalink to this headline">¶</a></h3>
+<h3>Tabs<a class="headerlink" href="#tabs" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 27%" />
@@ -306,7 +289,7 @@ windows are:</p>
 </table>
 </div>
 <div class="section" id="windows">
-<h3><a class="toc-backref" href="#id11">Windows</a><a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 28%" />
@@ -389,7 +372,7 @@ the currently active window:</p>
 </div>
 </div>
 <div class="section" id="other-keyboard-shortcuts">
-<h2><a class="toc-backref" href="#id12">Other keyboard shortcuts</a><a class="headerlink" href="#other-keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">Other keyboard shortcuts</a><a class="headerlink" href="#other-keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 35%" />
@@ -459,10 +442,10 @@ the currently active window:</p>
 </table>
 </div>
 <div class="section" id="layouts">
-<span id="id2"></span><h2><a class="toc-backref" href="#id13">Layouts</a><a class="headerlink" href="#layouts" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2><a class="toc-backref" href="#id9">Layouts</a><a class="headerlink" href="#layouts" title="Permalink to this headline">¶</a></h2>
 <p>A layout is an arrangement of multiple kitty <em>windows</em> inside a top-level OS window. You can create a new window
 using the <a class="reference internal" href="conf.html#shortcut-kitty."><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+enter</span></code></a> key combination.</p>
-<p>Currently, there are six layouts available:</p>
+<p>Currently, there are seven layouts available:</p>
 <ul class="simple">
 <li><p><strong>Fat</strong> -- One (or optionally more) windows are shown full width on the top, the rest of the windows are shown side-by-side on the bottom</p></li>
 <li><p><strong>Grid</strong> -- All windows are shown in a grid</p></li>
@@ -480,7 +463,7 @@ particular layouts, and choose which layouts you want to enable/disable, see
 <p>For more details on the layouts and how to use them see <a class="reference internal" href="layouts.html"><span class="doc">Layouts</span></a>.</p>
 </div>
 <div class="section" id="kittens">
-<span id="id3"></span><h2><a class="toc-backref" href="#id14">Kittens</a><a class="headerlink" href="#kittens" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2><a class="toc-backref" href="#id10">Kittens</a><a class="headerlink" href="#kittens" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> has a framework for easily creating terminal programs that make use of
 its advanced features. These programs are called kittens. They are used both
 to add features to <em>kitty</em> itself and to create useful standalone programs.
@@ -515,14 +498,14 @@ from an arbitrary terminal program.</p>
 <p>You can also <a class="reference internal" href="kittens/custom.html"><span class="doc">Learn to create your own kittens</span></a>.</p>
 </div>
 <div class="section" id="configuring-kitty">
-<h2><a class="toc-backref" href="#id15">Configuring kitty</a><a class="headerlink" href="#configuring-kitty" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">Configuring kitty</a><a class="headerlink" href="#configuring-kitty" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> is highly configurable, everything from keyboard shortcuts to
 painting frames-per-second. Press <a class="reference internal" href="conf.html#shortcut-kitty.Edit-config-file"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f2</span></code></a> in kitty
 to open its fully commented sample config file in your text editor.
 For details see the <a class="reference internal" href="conf.html"><span class="doc">configuration docs</span></a>.</p>
 </div>
 <div class="section" id="remote-control">
-<h2><a class="toc-backref" href="#id16">Remote control</a><a class="headerlink" href="#remote-control" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">Remote control</a><a class="headerlink" href="#remote-control" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> has a very powerful system that allows you to control it from the
 <a class="reference internal" href="remote-control.html"><span class="doc">shell prompt, even over SSH</span></a>. You can change colors,
 fonts, open new windows, tabs, set their titles, change window layout, get text
@@ -530,7 +513,7 @@ from one window and send text to another, etc, etc. The possibilities are
 endless. See the <a class="reference internal" href="remote-control.html"><span class="doc">tutorial</span></a> to get started.</p>
 </div>
 <div class="section" id="startup-sessions">
-<span id="sessions"></span><h2><a class="toc-backref" href="#id17">Startup Sessions</a><a class="headerlink" href="#startup-sessions" title="Permalink to this headline">¶</a></h2>
+<span id="sessions"></span><h2><a class="toc-backref" href="#id13">Startup Sessions</a><a class="headerlink" href="#startup-sessions" title="Permalink to this headline">¶</a></h2>
 <p>You can control the tabs, window layout, working directory, startup programs,
 etc. by creating a &quot;session&quot; file and using the <a class="reference internal" href="invocation.html#cmdoption-kitty-session"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--session</span></code></a>
 command line flag or the <a class="reference internal" href="conf.html#opt-kitty.startup_session"><code class="xref std std-opt docutils literal notranslate"><span class="pre">startup_session</span></code></a> option in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.
@@ -578,7 +561,7 @@ cannot create new OS windows, or tabs.</p>
 </div>
 </div>
 <div class="section" id="mouse-features">
-<h2><a class="toc-backref" href="#id18">Mouse features</a><a class="headerlink" href="#mouse-features" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id14">Mouse features</a><a class="headerlink" href="#mouse-features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>You can hold down <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd></kbd> and click on a URL to open it in a browser.</p></li>
 <li><p>You can double click to select a word and then drag to select more words.</p></li>
@@ -594,7 +577,7 @@ the mouse by holding down the <kbd class="kbd docutils literal notranslate">shif
 </ul>
 </div>
 <div class="section" id="font-control">
-<h2><a class="toc-backref" href="#id19">Font control</a><a class="headerlink" href="#font-control" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">Font control</a><a class="headerlink" href="#font-control" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> has extremely flexible and powerful font selection features. You can
 specify individual families for the regular, bold, italic and bold+italic
 fonts. You can even specify specific font families for specific ranges of
@@ -604,7 +587,7 @@ fonts. See the various font related configuration directives in
 <a class="reference internal" href="conf.html#conf-kitty-fonts"><span class="std std-ref">Fonts</span></a>.</p>
 </div>
 <div class="section" id="the-scrollback-buffer">
-<span id="scrollback"></span><h2><a class="toc-backref" href="#id20">The scrollback buffer</a><a class="headerlink" href="#the-scrollback-buffer" title="Permalink to this headline">¶</a></h2>
+<span id="scrollback"></span><h2><a class="toc-backref" href="#id16">The scrollback buffer</a><a class="headerlink" href="#the-scrollback-buffer" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> supports scrolling back to view history, just like most terminals. You
 can use either keyboard shortcuts or the mouse scroll wheel to do so.  However,
 <em>kitty</em> has an extra, neat feature. Sometimes you need to explore the
@@ -629,7 +612,7 @@ you can see tips for doing so, in
 option.</p>
 </div>
 <div class="section" id="multiple-copy-paste-buffers">
-<span id="cpbuf"></span><h2><a class="toc-backref" href="#id21">Multiple copy/paste buffers</a><a class="headerlink" href="#multiple-copy-paste-buffers" title="Permalink to this headline">¶</a></h2>
+<span id="cpbuf"></span><h2><a class="toc-backref" href="#id17">Multiple copy/paste buffers</a><a class="headerlink" href="#multiple-copy-paste-buffers" title="Permalink to this headline">¶</a></h2>
 <p>In addition to being able to copy/paste from the system clipboard, in <em>kitty</em> you
 can also setup an arbitrary number of copy paste buffers. To do so, simply add
 something like the following to your <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>:</p>
@@ -643,27 +626,27 @@ names are arbitrary strings, so you can define as many such buffers as you
 need.</p>
 </div>
 <div class="section" id="marks">
-<h2><a class="toc-backref" href="#id22">Marks</a><a class="headerlink" href="#marks" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">Marks</a><a class="headerlink" href="#marks" title="Permalink to this headline">¶</a></h2>
 <p>kitty has the ability to mark text on the screen based on regular expressions.
 This can be useful to highlight words or phrases when browsing output from long
 running programs or similar. To learn how this feature works, see <a class="reference internal" href="marks.html"><span class="doc">Marks</span></a>.</p>
 </div>
 <div class="section" id="frequently-asked-questions">
-<h2><a class="toc-backref" href="#id23">Frequently Asked Questions</a><a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id19">Frequently Asked Questions</a><a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h2>
 <p>The list of Frequently Asked Questions (<em>FAQ</em>) is <a class="reference internal" href="faq.html"><span class="doc">available here</span></a>.</p>
 </div>
 <div class="section" id="cool-integrations-for-kitty-with-other-cli-tools">
-<span id="completion"></span><h2><a class="toc-backref" href="#id24">Cool integrations for kitty with other CLI tools</a><a class="headerlink" href="#cool-integrations-for-kitty-with-other-cli-tools" title="Permalink to this headline">¶</a></h2>
+<span id="completion"></span><h2><a class="toc-backref" href="#id20">Cool integrations for kitty with other CLI tools</a><a class="headerlink" href="#cool-integrations-for-kitty-with-other-cli-tools" title="Permalink to this headline">¶</a></h2>
 <p>kitty provides extremely powerful interfaces such as <a class="reference internal" href="remote-control.html"><span class="doc">Controlling kitty from scripts or the shell</span></a> and
 <a class="reference internal" href="kittens/custom.html"><span class="doc">Custom kittens</span></a> and <a class="reference internal" href="kittens/icat.html"><span class="doc">icat - Display images in the terminal</span></a>
 that allow it to be integrated with other tools seamlessly. For a list of such
 user created integrations, see: <a class="reference internal" href="integrations.html"><span class="doc">Integrations with other tools</span></a>.</p>
 </div>
 <div class="section" id="completion-for-kitty">
-<h2><a class="toc-backref" href="#id25">Completion for kitty</a><a class="headerlink" href="#completion-for-kitty" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id21">Completion for kitty</a><a class="headerlink" href="#completion-for-kitty" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> comes with completion for the <code class="docutils literal notranslate"><span class="pre">kitty</span></code> command for popular shells.</p>
 <div class="section" id="bash">
-<h3><a class="toc-backref" href="#id26">bash</a><a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h3>
+<h3>bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h3>
 <p>Add the following to your <code class="file docutils literal notranslate"><span class="pre">~/.bashrc</span></code></p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> &lt;<span class="o">(</span>kitty + <span class="nb">complete</span> setup bash<span class="o">)</span>
 </pre></div>
@@ -676,7 +659,7 @@ case you can try an alternative:</p>
 </div>
 </div>
 <div class="section" id="zsh">
-<h3><a class="toc-backref" href="#id27">zsh</a><a class="headerlink" href="#zsh" title="Permalink to this headline">¶</a></h3>
+<h3>zsh<a class="headerlink" href="#zsh" title="Permalink to this headline">¶</a></h3>
 <p>Add the following to your <code class="file docutils literal notranslate"><span class="pre">~/.zshrc</span></code></p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>autoload -Uz compinit
 compinit
@@ -688,7 +671,7 @@ kitty + <span class="nb">complete</span> setup zsh <span class="p">|</span> <spa
 completions happens after the call to <code class="file docutils literal notranslate"><span class="pre">compinit</span></code>.</p>
 </div>
 <div class="section" id="fish">
-<h3><a class="toc-backref" href="#id28">fish</a><a class="headerlink" href="#fish" title="Permalink to this headline">¶</a></h3>
+<h3>fish<a class="headerlink" href="#fish" title="Permalink to this headline">¶</a></h3>
 <p>For versions of fish earlier than 3.0.0, add the following to your
 <code class="file docutils literal notranslate"><span class="pre">~/.config/fish/config.fish</span></code>. Later versions source completions by default.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty + <span class="nb">complete</span> setup fish <span class="p">|</span> <span class="nb">source</span>
@@ -697,7 +680,7 @@ completions happens after the call to <code class="file docutils literal notrans
 </div>
 </div>
 <div class="section" id="changelog">
-<h2><a class="toc-backref" href="#id29">Changelog</a><a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id22">Changelog</a><a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
 <p>See <a class="reference internal" href="changelog.html"><span class="doc">Changelog</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>

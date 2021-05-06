@@ -49,6 +49,12 @@ kitty - the fast, featureful, GPU based terminal emulator
     Screenshot, showing vim, tig and git running in |kitty| with the 'Tall' layout
 
 
+
+.. contents::
+   :local:
+   :depth: 1
+
+
 .. _quickstart:
 
 Quickstart
@@ -73,9 +79,6 @@ and `Solus <https://dev.getsol.us/source/kitty/>`_.
 
 See :doc:`Configuring kitty <conf>` for help on configuring |kitty| and
 :doc:`Invocation <invocation>` for the command line arguments |kitty| supports.
-
-
-.. contents::
 
 
 Design philosophy
@@ -109,7 +112,7 @@ Layouts
 A layout is an arrangement of multiple kitty *windows* inside a top-level OS window. You can create a new window
 using the :sc:`new_window` key combination.
 
-Currently, there are six layouts available:
+Currently, there are seven layouts available:
 
 * **Fat** -- One (or optionally more) windows are shown full width on the top, the rest of the windows are shown side-by-side on the bottom
 * **Grid** -- All windows are shown in a grid
