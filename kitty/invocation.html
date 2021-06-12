@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The kitty command line interface &#8212; kitty 0.20.3 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <title>The kitty command line interface &#8212; kitty 0.21.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -122,27 +122,27 @@ For example: kitty sh -c “echo hello, world. Press ENTER to quit; read”</p>
 <div class="section" id="options">
 <h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
 <dl class="std option">
-<dt id="cmdoption-kitty-class">
-<code class="sig-name descname"><span class="pre">--class</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;CLS&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-class" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-class">
+<span class="sig-name descname"><span class="pre">--class</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CLS&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-class" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the class part of the <span class="italic">WM_CLASS</span> window property. On Wayland, it sets the app id.
 Default: <code class="code docutils literal notranslate"><span class="pre">kitty</span></code></p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-name">
-<code class="sig-name descname"><span class="pre">--name</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-name" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-name">
+<span class="sig-name descname"><span class="pre">--name</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the name part of the <span class="italic">WM_CLASS</span> property (defaults to using the value from <a class="reference internal" href="#cmdoption-kitty-class"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--class</span></code></a>)</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-title">
-<span id="cmdoption-kitty-T"></span><span id="cmdoption-kitty-t"></span><code class="sig-name descname"><span class="pre">--title</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;TITLE&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-T</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;TITLE&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-title" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-title">
+<span id="cmdoption-kitty-T"></span><span id="cmdoption-kitty-t"></span><span class="sig-name descname"><span class="pre">--title</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;TITLE&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-T</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;TITLE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-title" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the window title. This will override any title set by the program running inside kitty. So only use this if you are running a program that does not set titles. If combined with <a class="reference internal" href="#cmdoption-kitty-session"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--session</span></code></a> the title will be used for all windows created by the session, that do not set their own titles.</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-config">
-<span id="cmdoption-kitty-c"></span><code class="sig-name descname"><span class="pre">--config</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-c</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-config" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-config">
+<span id="cmdoption-kitty-c"></span><span class="sig-name descname"><span class="pre">--config</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specify a path to the configuration file(s) to use. All configuration files are merged onto the builtin kitty.conf, overriding the builtin values. This option can be specified multiple times to read multiple configuration files in sequence, which are merged. Use the special value NONE to not load a config file.</p>
 <p>If this option is not specified, config files are searched for in the order: <code class="file docutils literal notranslate"><span class="pre">$XDG_CONFIG_HOME/kitty/kitty.conf</span></code>, <code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/kitty.conf</span></code>, <code class="file docutils literal notranslate"><span class="pre">$XDG_CONFIG_DIRS/kitty/kitty.conf</span></code>. The first one that exists is used as the config file.</p>
 <p>If the environment variable <span class="env">KITTY_CONFIG_DIRECTORY</span> is specified, that directory is always used and the above searching does not happen.</p>
@@ -150,69 +150,69 @@ Default: <code class="code docutils literal notranslate"><span class="pre">kitty
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-override">
-<span id="cmdoption-kitty-o"></span><code class="sig-name descname"><span class="pre">--override</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-o</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-override" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-override">
+<span id="cmdoption-kitty-o"></span><span class="sig-name descname"><span class="pre">--override</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-override" title="Permalink to this definition">¶</a></dt>
 <dd><p>Override individual configuration options, can be specified multiple times. Syntax: <span class="italic">name=value</span>. For example: <a class="reference internal" href="#cmdoption-kitty-override"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">-o</span></code></a> font_size=20</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-directory">
-<span id="cmdoption-kitty-d"></span><code class="sig-name descname"><span class="pre">--directory</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;DIRECTORY&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-d</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;DIRECTORY&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-directory" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-directory">
+<span id="cmdoption-kitty-working-directory"></span><span id="cmdoption-kitty-d"></span><span class="sig-name descname"><span class="pre">--directory</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;DIRECTORY&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--working-directory</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;DIRECTORY&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-d</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;DIRECTORY&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-directory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change to the specified directory when launching
 Default: <code class="code docutils literal notranslate"><span class="pre">.</span></code></p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-detach">
-<code class="sig-name descname"><span class="pre">--detach</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-detach" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-detach">
+<span class="sig-name descname"><span class="pre">--detach</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-detach" title="Permalink to this definition">¶</a></dt>
 <dd><p>Detach from the controlling terminal, if any</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-session">
-<code class="sig-name descname"><span class="pre">--session</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;SESSION&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-session" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-session">
+<span class="sig-name descname"><span class="pre">--session</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;SESSION&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-session" title="Permalink to this definition">¶</a></dt>
 <dd><p>Path to a file containing the startup <span class="italic">session</span> (tabs, windows, layout, programs). Use - to read from STDIN. See the README file for details and an example.</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-watcher">
-<span id="cmdoption-kitty-w"></span><code class="sig-name descname"><span class="pre">--watcher</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;WATCHER&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-w</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;WATCHER&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-watcher" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-watcher">
+<span id="cmdoption-kitty-w"></span><span class="sig-name descname"><span class="pre">--watcher</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;WATCHER&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-w</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;WATCHER&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-watcher" title="Permalink to this definition">¶</a></dt>
 <dd><p>Path to a python file. Appropriately named functions in this file will be called for various events, such as when the window is resized, focused or closed. See the section on watchers in the launch command documentation <a class="reference internal" href="launch.html"><span class="doc">Launching programs in new windows/tabs</span></a>. Relative paths are resolved relative to the kitty config directory. Note that this watcher will be added only to all initially created windows, not new windows created after startup.</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-hold">
-<code class="sig-name descname"><span class="pre">--hold</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-hold" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-hold">
+<span class="sig-name descname"><span class="pre">--hold</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-hold" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remain open after child process exits. Note that this only affects the first window. You can quit by either using the close window shortcut or pressing any key.</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-single-instance">
-<span id="cmdoption-kitty-1"></span><code class="sig-name descname"><span class="pre">--single-instance</span></code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-1</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-single-instance" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-single-instance">
+<span id="cmdoption-kitty-1"></span><span class="sig-name descname"><span class="pre">--single-instance</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-1</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-single-instance" title="Permalink to this definition">¶</a></dt>
 <dd><p>If specified only a single instance of <span class="italic">kitty</span> will run. New invocations will instead create a new top-level window in the existing <span class="italic">kitty</span> instance. This allows <span class="italic">kitty</span> to share a single sprite cache on the GPU and also reduces startup time. You can also have separate groups of <span class="italic">kitty</span> instances by using the <a class="reference internal" href="#cmdoption-kitty-instance-group"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--instance-group</span></code></a> option</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-instance-group">
-<code class="sig-name descname"><span class="pre">--instance-group</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;INSTANCE_GROUP&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-instance-group" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-instance-group">
+<span class="sig-name descname"><span class="pre">--instance-group</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;INSTANCE_GROUP&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-instance-group" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used in combination with the <a class="reference internal" href="#cmdoption-kitty-single-instance"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--single-instance</span></code></a> option. All <span class="italic">kitty</span> invocations with the same <a class="reference internal" href="#cmdoption-kitty-instance-group"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--instance-group</span></code></a> will result in new windows being created in the first <span class="italic">kitty</span> instance within that group</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-wait-for-single-instance-window-close">
-<code class="sig-name descname"><span class="pre">--wait-for-single-instance-window-close</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-wait-for-single-instance-window-close" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-wait-for-single-instance-window-close">
+<span class="sig-name descname"><span class="pre">--wait-for-single-instance-window-close</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-wait-for-single-instance-window-close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Normally, when using <a class="reference internal" href="#cmdoption-kitty-single-instance"><code class="xref std std-option docutils literal notranslate"><span class="pre">--single-instance</span></code></a>, <span class="italic">kitty</span> will open a new window in an existing instance and quit immediately. With this option, it will not quit till the newly opened window is closed. Note that if no previous instance is found, then <span class="italic">kitty</span> will wait anyway, regardless of this option.</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-listen-on">
-<code class="sig-name descname"><span class="pre">--listen-on</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;LISTEN_ON&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-listen-on" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-listen-on">
+<span class="sig-name descname"><span class="pre">--listen-on</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;LISTEN_ON&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-listen-on" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tell kitty to listen on the specified address for control messages. For example, <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a><code class="code docutils literal notranslate"><span class="pre">=unix:/tmp/mykitty</span></code> or <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a><code class="code docutils literal notranslate"><span class="pre">=tcp:localhost:12345</span></code>. On Linux systems, you can also use abstract UNIX sockets, not associated with a file, like this: <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a><code class="code docutils literal notranslate"><span class="pre">=unix:&#64;mykitty</span></code>. Environment variables in the setting are expanded and relative paths are resolved with respect to the temporary directory. To control kitty, you can send it commands with <span class="italic">kitty &#64;</span> using the <a class="reference internal" href="remote-control.html#cmdoption-kitty-to"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">--to</span></code></a> option to specify this address. This option will be ignored, unless you set <a class="reference internal" href="conf.html#opt-kitty.allow_remote_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">allow_remote_control</span></code></a> to yes in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>. Note that if you run <span class="italic">kitty &#64;</span> within a kitty window, there is no need to specify the <span class="italic">–to</span> option as it is read automatically from the environment. For UNIX sockets, this can also be specified in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-start-as">
-<code class="sig-name descname"><span class="pre">--start-as</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;START_AS&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-start-as" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-start-as">
+<span class="sig-name descname"><span class="pre">--start-as</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;START_AS&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-start-as" title="Permalink to this definition">¶</a></dt>
 <dd><p>Control how the initial kitty window is created.
 Default: <code class="code docutils literal notranslate"><span class="pre">normal</span></code>
 Choices: <code class="code docutils literal notranslate"><span class="pre">fullscreen,</span> <span class="pre">maximized,</span> <span class="pre">minimized,</span> <span class="pre">normal</span></code></p>
@@ -221,20 +221,20 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">fulls
 <div class="section" id="debugging-options">
 <h3>Debugging options<a class="headerlink" href="#debugging-options" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
-<dt id="cmdoption-kitty-version">
-<span id="cmdoption-kitty-v"></span><code class="sig-name descname"><span class="pre">--version</span></code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-v</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-version" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-version">
+<span id="cmdoption-kitty-v"></span><span class="sig-name descname"><span class="pre">--version</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-v</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-version" title="Permalink to this definition">¶</a></dt>
 <dd><p>The current kitty version</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-dump-commands">
-<code class="sig-name descname"><span class="pre">--dump-commands</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-dump-commands" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-dump-commands">
+<span class="sig-name descname"><span class="pre">--dump-commands</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-dump-commands" title="Permalink to this definition">¶</a></dt>
 <dd><p>Output commands received from child process to stdout</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-replay-commands">
-<code class="sig-name descname"><span class="pre">--replay-commands</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;REPLAY_COMMANDS&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-replay-commands" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-replay-commands">
+<span class="sig-name descname"><span class="pre">--replay-commands</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;REPLAY_COMMANDS&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-replay-commands" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replay previously dumped commands. Specify the path to a dump file previously created by –dump-commands. You can open a new kitty window to replay the commands with:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty sh -c <span class="s2">&quot;kitty --replay-commands /path/to/dump/file; read&quot;</span>
 </pre></div>
@@ -242,33 +242,27 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">fulls
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-dump-bytes">
-<code class="sig-name descname"><span class="pre">--dump-bytes</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;DUMP_BYTES&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-dump-bytes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-dump-bytes">
+<span class="sig-name descname"><span class="pre">--dump-bytes</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;DUMP_BYTES&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-dump-bytes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Path to file in which to store the raw bytes received from the child process</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-debug-gl">
-<span id="cmdoption-kitty-debug-rendering"></span><code class="sig-name descname"><span class="pre">--debug-gl</span></code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">--debug-rendering</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-debug-gl" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-debug-gl">
+<span id="cmdoption-kitty-debug-rendering"></span><span class="sig-name descname"><span class="pre">--debug-gl</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--debug-rendering</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-debug-gl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Debug rendering commands. This will cause all OpenGL calls to check for errors instead of ignoring them. Also prints out miscellaneous debug information. Useful when debugging rendering problems</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-debug-keyboard">
-<code class="sig-name descname"><span class="pre">--debug-keyboard</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-debug-keyboard" title="Permalink to this definition">¶</a></dt>
-<dd><p>This option will cause kitty to print out key events as they are received</p>
+<dt class="sig sig-object std" id="cmdoption-kitty-debug-input">
+<span id="cmdoption-kitty-debug-keyboard"></span><span class="sig-name descname"><span class="pre">--debug-input</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--debug-keyboard</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-debug-input" title="Permalink to this definition">¶</a></dt>
+<dd><p>This option will cause kitty to print out key and mouse events as they are received</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-debug-font-fallback">
-<code class="sig-name descname"><span class="pre">--debug-font-fallback</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-debug-font-fallback" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-debug-font-fallback">
+<span class="sig-name descname"><span class="pre">--debug-font-fallback</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-debug-font-fallback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print out information about the selection of fallback fonts for characters not present in the main font.</p>
-</dd></dl>
-
-<dl class="std option">
-<dt id="cmdoption-kitty-debug-config">
-<code class="sig-name descname"><span class="pre">--debug-config</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-kitty-debug-config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Print out information about the system and kitty configuration.</p>
 </dd></dl>
 
 </div>
@@ -369,7 +363,7 @@ windows are:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>New window</p></td>
-<td><p><a class="reference internal" href="conf.html#shortcut-kitty."><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+enter</span></code></a> (also <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⌘</kbd>+<kbd class="kbd docutils literal notranslate">↩</kbd></kbd> on macOS)</p></td>
+<td><p><a class="reference internal" href="conf.html#shortcut-kitty.New-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+enter</span></code></a> (also <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⌘</kbd>+<kbd class="kbd docutils literal notranslate">↩</kbd></kbd> on macOS)</p></td>
 </tr>
 <tr class="row-odd"><td><p>New OS window</p></td>
 <td><p><a class="reference internal" href="conf.html#shortcut-kitty.New-OS-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+n</span></code></a> (also <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⌘</kbd>+<kbd class="kbd docutils literal notranslate">n</kbd></kbd> on macOS)</p></td>
@@ -483,6 +477,12 @@ the currently active window:</p>
 </tr>
 <tr class="row-even"><td><p>Reset the terminal</p></td>
 <td><p><a class="reference internal" href="conf.html#shortcut-kitty.Reset-the-terminal"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+delete</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Reload <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code></p></td>
+<td><p><a class="reference internal" href="conf.html#shortcut-kitty.Reload-kitty.conf"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f5</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Debug <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code></p></td>
+<td><p><a class="reference internal" href="conf.html#shortcut-kitty.Debug-kitty-configuration"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f6</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Pass current selection to program</p></td>
 <td><p><a class="reference internal" href="conf.html#shortcut-kitty.Pass-selection-to-program"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+o</span></code></a></p></td>

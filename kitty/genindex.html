@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; kitty 0.20.3 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <title>Index &#8212; kitty 0.21.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -103,10 +103,24 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    --add-cursor
+
+      <ul>
+        <li><a href="remote-control.html#cmdoption-kitty-get-text-add-cursor">kitty-@-get-text command line option</a>
+</li>
+      </ul></li>
+      <li>
     --add-trailing-space &lt;ADD_TRAILING_SPACE&gt;
 
       <ul>
         <li><a href="kittens/hints.html#cmdoption-kitty-kitten-hints-add-trailing-space">kitty-+kitten-hints command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --add-wrap-markers
+
+      <ul>
+        <li><a href="remote-control.html#cmdoption-kitty-get-text-add-wrap-markers">kitty-@-get-text command line option</a>
 </li>
       </ul></li>
       <li>
@@ -302,13 +316,6 @@
 </li>
       </ul></li>
       <li>
-    --debug-config
-
-      <ul>
-        <li><a href="invocation.html#cmdoption-kitty-debug-config">kitty command line option</a>
-</li>
-      </ul></li>
-      <li>
     --debug-font-fallback
 
       <ul>
@@ -323,10 +330,17 @@
 </li>
       </ul></li>
       <li>
+    --debug-input
+
+      <ul>
+        <li><a href="invocation.html#cmdoption-kitty-debug-input">kitty command line option</a>
+</li>
+      </ul></li>
+      <li>
     --debug-keyboard
 
       <ul>
-        <li><a href="invocation.html#cmdoption-kitty-debug-keyboard">kitty command line option</a>
+        <li><a href="invocation.html#cmdoption-kitty-debug-input">kitty command line option</a>
 </li>
       </ul></li>
       <li>
@@ -679,6 +693,8 @@
 </li>
         <li><a href="remote-control.html#cmdoption-kitty-new-window-no-response">kitty-@-new-window command line option</a>
 </li>
+        <li><a href="remote-control.html#cmdoption-kitty-set-background-image-no-response">kitty-@-set-background-image command line option</a>
+</li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -1018,6 +1034,13 @@
 
       <ul>
         <li><a href="kittens/hints.html#cmdoption-kitty-kitten-hints-word-characters">kitty-+kitten-hints command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --working-directory &lt;DIRECTORY&gt;
+
+      <ul>
+        <li><a href="invocation.html#cmdoption-kitty-directory">kitty command line option</a>
 </li>
       </ul></li>
       <li>
@@ -1470,8 +1493,6 @@
 </li>
         <li><a href="conf.html#opt-kitty.mouse_hide_wait">kitty.mouse_hide_wait</a>
 </li>
-        <li><a href="conf.html#opt-kitty.open_url_modifiers">kitty.open_url_modifiers</a>
-</li>
         <li><a href="conf.html#opt-kitty.open_url_with">kitty.open_url_with</a>
 </li>
         <li><a href="conf.html#opt-kitty.placement_strategy">kitty.placement_strategy</a>
@@ -1479,8 +1500,6 @@
         <li><a href="conf.html#opt-kitty.pointer_shape_when_dragging">kitty.pointer_shape_when_dragging</a>
 </li>
         <li><a href="conf.html#opt-kitty.pointer_shape_when_grabbed">kitty.pointer_shape_when_grabbed</a>
-</li>
-        <li><a href="conf.html#opt-kitty.rectangle_select_modifiers">kitty.rectangle_select_modifiers</a>
 </li>
         <li><a href="conf.html#opt-kitty.remember_window_size">kitty.remember_window_size</a>
 </li>
@@ -1524,6 +1543,8 @@
 </li>
         <li><a href="conf.html#opt-kitty.tab_bar_edge">kitty.tab_bar_edge</a>
 </li>
+        <li><a href="conf.html#opt-kitty.tab_bar_margin_height">kitty.tab_bar_margin_height</a>
+</li>
         <li><a href="conf.html#opt-kitty.tab_bar_margin_width">kitty.tab_bar_margin_width</a>
 </li>
         <li><a href="conf.html#opt-kitty.tab_bar_min_tabs">kitty.tab_bar_min_tabs</a>
@@ -1541,8 +1562,6 @@
         <li><a href="conf.html#opt-kitty.tab_title_template">kitty.tab_title_template</a>
 </li>
         <li><a href="conf.html#opt-kitty.term">kitty.term</a>
-</li>
-        <li><a href="conf.html#opt-kitty.terminal_select_modifiers">kitty.terminal_select_modifiers</a>
 </li>
         <li><a href="conf.html#opt-kitty.touch_scroll_multiplier">kitty.touch_scroll_multiplier</a>
 </li>
@@ -1617,9 +1636,15 @@
 </li>
         <li><a href="kittens/diff.html#shortcut-kitten-diff.Show-default-context">kitten-diff.Show default context</a>
 </li>
-        <li><a href="conf.html#shortcut-kitty.">kitty.</a>
-</li>
         <li><a href="conf.html#shortcut-kitty.Browse-scrollback-buffer-in-less">kitty.Browse scrollback buffer in less</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Click-the-link-under-the-mouse-cursor">kitty.Click the link under the mouse cursor</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Click-the-link-under-the-mouse-cursor-when-no-selection-is-created">kitty.Click the link under the mouse cursor when no selection is created</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Click-the-link-under-the-mouse-cursor-when-no-selection-is-created-even-if-grabbed">kitty.Click the link under the mouse cursor when no selection is created even if grabbed</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Close-OS-window">kitty.Close OS window</a>
 </li>
         <li><a href="conf.html#shortcut-kitty.Close-tab">kitty.Close tab</a>
 </li>
@@ -1627,13 +1652,21 @@
 </li>
         <li><a href="conf.html#shortcut-kitty.Copy-to-clipboard">kitty.Copy to clipboard</a>
 </li>
+        <li><a href="conf.html#shortcut-kitty.Debug-kitty-configuration">kitty.Debug kitty configuration</a>
+</li>
         <li><a href="conf.html#shortcut-kitty.Decrease-background-opacity">kitty.Decrease background opacity</a>
 </li>
         <li><a href="conf.html#shortcut-kitty.Decrease-font-size">kitty.Decrease font size</a>
 </li>
+        <li><a href="conf.html#shortcut-kitty.Discard-press-event-for-link-click">kitty.Discard press event for link click</a>
+</li>
         <li><a href="conf.html#shortcut-kitty.Edit-config-file">kitty.Edit config file</a>
 </li>
         <li><a href="conf.html#shortcut-kitty.Eight-window">kitty.Eight window</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Extend-the-current-selection">kitty.Extend the current selection</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Extend-the-current-selection-even-when-grabbed">kitty.Extend the current selection even when grabbed</a>
 </li>
         <li><a href="conf.html#shortcut-kitty.Fifth-window">kitty.Fifth window</a>
 </li>
@@ -1669,6 +1702,8 @@
 </li>
         <li><a href="conf.html#shortcut-kitty.New-tab">kitty.New tab</a>
 </li>
+        <li><a href="conf.html#shortcut-kitty.New-window">kitty.New window</a>
+</li>
         <li><a href="conf.html#shortcut-kitty.Next-layout">kitty.Next layout</a>
 </li>
         <li><a href="conf.html#shortcut-kitty.Next-tab">kitty.Next tab</a>
@@ -1693,9 +1728,15 @@
 </li>
         <li><a href="conf.html#shortcut-kitty.Paste-from-selection">kitty.Paste from selection</a>
 </li>
+        <li><a href="conf.html#shortcut-kitty.Paste-from-the-primary-selection">kitty.Paste from the primary selection</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Paste-from-the-primary-selection-even-when-grabbed">kitty.Paste from the primary selection even when grabbed</a>
+</li>
         <li><a href="conf.html#shortcut-kitty.Previous-tab">kitty.Previous tab</a>
 </li>
         <li><a href="conf.html#shortcut-kitty.Previous-window">kitty.Previous window</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Reload-kitty.conf">kitty.Reload kitty.conf</a>
 </li>
         <li><a href="conf.html#shortcut-kitty.Reset-background-opacity">kitty.Reset background opacity</a>
 </li>
@@ -1717,6 +1758,18 @@
 </li>
         <li><a href="conf.html#shortcut-kitty.Second-window">kitty.Second window</a>
 </li>
+        <li><a href="conf.html#shortcut-kitty.Select-a-line">kitty.Select a line</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Select-a-line-even-when-grabbed">kitty.Select a line even when grabbed</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Select-a-word">kitty.Select a word</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Select-a-word-even-when-grabbed">kitty.Select a word even when grabbed</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Select-line-from-point">kitty.Select line from point</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Select-line-from-point-even-when-grabbed">kitty.Select line from point even when grabbed</a>
+</li>
         <li><a href="conf.html#shortcut-kitty.Send-arbitrary-text-on-key-presses">kitty.Send arbitrary text on key presses</a>
 </li>
         <li><a href="conf.html#shortcut-kitty.Set-tab-title">kitty.Set tab title</a>
@@ -1726,6 +1779,14 @@
         <li><a href="conf.html#shortcut-kitty.Sixth-window">kitty.Sixth window</a>
 </li>
         <li><a href="conf.html#shortcut-kitty.Start-resizing-window">kitty.Start resizing window</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Start-selecting-text">kitty.Start selecting text</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Start-selecting-text-even-when-grabbed">kitty.Start selecting text even when grabbed</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Start-selecting-text-in-a-rectangle">kitty.Start selecting text in a rectangle</a>
+</li>
+        <li><a href="conf.html#shortcut-kitty.Start-selecting-text-in-a-rectangle-even-when-grabbed">kitty.Start selecting text in a rectangle even when grabbed</a>
 </li>
         <li><a href="conf.html#shortcut-kitty.Tenth-window">kitty.Tenth window</a>
 </li>
@@ -1977,13 +2038,13 @@
 </li>
         <li><a href="invocation.html#cmdoption-kitty-config">--config &lt;CONFIG&gt;</a>
 </li>
-        <li><a href="invocation.html#cmdoption-kitty-debug-config">--debug-config</a>
-</li>
         <li><a href="invocation.html#cmdoption-kitty-debug-font-fallback">--debug-font-fallback</a>
 </li>
         <li><a href="invocation.html#cmdoption-kitty-debug-gl">--debug-gl</a>
 </li>
-        <li><a href="invocation.html#cmdoption-kitty-debug-keyboard">--debug-keyboard</a>
+        <li><a href="invocation.html#cmdoption-kitty-debug-input">--debug-input</a>
+</li>
+        <li><a href="invocation.html#cmdoption-kitty-debug-input">--debug-keyboard</a>
 </li>
         <li><a href="invocation.html#cmdoption-kitty-debug-gl">--debug-rendering</a>
 </li>
@@ -2020,6 +2081,8 @@
         <li><a href="invocation.html#cmdoption-kitty-wait-for-single-instance-window-close">--wait-for-single-instance-window-close</a>
 </li>
         <li><a href="invocation.html#cmdoption-kitty-watcher">--watcher &lt;WATCHER&gt;</a>
+</li>
+        <li><a href="invocation.html#cmdoption-kitty-directory">--working-directory &lt;DIRECTORY&gt;</a>
 </li>
         <li><a href="invocation.html#cmdoption-kitty-single-instance">-1</a>
 </li>
@@ -2312,6 +2375,10 @@
     kitty-@-get-text command line option
 
       <ul>
+        <li><a href="remote-control.html#cmdoption-kitty-get-text-add-cursor">--add-cursor</a>
+</li>
+        <li><a href="remote-control.html#cmdoption-kitty-get-text-add-wrap-markers">--add-wrap-markers</a>
+</li>
         <li><a href="remote-control.html#cmdoption-kitty-get-text-ansi">--ansi</a>
 </li>
         <li><a href="remote-control.html#cmdoption-kitty-get-text-extent">--extent &lt;EXTENT&gt;</a>
@@ -2513,6 +2580,8 @@
 </li>
         <li><a href="remote-control.html#cmdoption-kitty-set-background-image-match">--match &lt;MATCH&gt;</a>
 </li>
+        <li><a href="remote-control.html#cmdoption-kitty-set-background-image-no-response">--no-response</a>
+</li>
         <li><a href="remote-control.html#cmdoption-kitty-set-background-image-all">-a</a>
 </li>
         <li><a href="remote-control.html#cmdoption-kitty-set-background-image-configured">-c</a>
@@ -2560,8 +2629,6 @@
         <li><a href="remote-control.html#cmdoption-kitty-set-colors-match-tab">-t &lt;MATCH_TAB&gt;</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     kitty-@-set-font-size command line option
 
@@ -2592,6 +2659,8 @@
         <li><a href="remote-control.html#cmdoption-kitty-set-spacing-match-tab">-t &lt;MATCH_TAB&gt;</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     kitty-@-set-tab-title command line option
 
@@ -2619,13 +2688,6 @@
         <li><a href="remote-control.html#cmdoption-kitty-signal-child-match">--match &lt;MATCH&gt;</a>
 </li>
         <li><a href="remote-control.html#cmdoption-kitty-signal-child-match">-m &lt;MATCH&gt;</a>
-</li>
-      </ul></li>
-      <li>
-    kitty.
-
-      <ul>
-        <li><a href="conf.html#shortcut-kitty.">Keyboard Shortcut</a>
 </li>
       </ul></li>
       <li>
@@ -2741,6 +2803,27 @@
 </li>
       </ul></li>
       <li>
+    kitty.Click the link under the mouse cursor
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Click-the-link-under-the-mouse-cursor">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Click the link under the mouse cursor when no selection is created
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Click-the-link-under-the-mouse-cursor-when-no-selection-is-created">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Click the link under the mouse cursor when no selection is created even if grabbed
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Click-the-link-under-the-mouse-cursor-when-no-selection-is-created-even-if-grabbed">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
     kitty.click_interval
 
       <ul>
@@ -2752,6 +2835,13 @@
 
       <ul>
         <li><a href="conf.html#opt-kitty.clipboard_control">Config Setting</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Close OS window
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Close-OS-window">Keyboard Shortcut</a>
 </li>
       </ul></li>
       <li>
@@ -2909,6 +2999,13 @@
 </li>
       </ul></li>
       <li>
+    kitty.Debug kitty configuration
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Debug-kitty-configuration">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
     kitty.Decrease background opacity
 
       <ul>
@@ -2948,6 +3045,13 @@
 
       <ul>
         <li><a href="conf.html#opt-kitty.disable_ligatures">Config Setting</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Discard press event for link click
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Discard-press-event-for-link-click">Keyboard Shortcut</a>
 </li>
       </ul></li>
       <li>
@@ -3004,6 +3108,20 @@
 
       <ul>
         <li><a href="conf.html#opt-kitty.env">Config Setting</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Extend the current selection
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Extend-the-current-selection">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Extend the current selection even when grabbed
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Extend-the-current-selection-even-when-grabbed">Keyboard Shortcut</a>
 </li>
       </ul></li>
       <li>
@@ -3336,6 +3454,13 @@
 </li>
       </ul></li>
       <li>
+    kitty.New window
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.New-window">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
     kitty.Next layout
 
       <ul>
@@ -3399,13 +3524,6 @@
 </li>
       </ul></li>
       <li>
-    kitty.open_url_modifiers
-
-      <ul>
-        <li><a href="conf.html#opt-kitty.open_url_modifiers">Config Setting</a>
-</li>
-      </ul></li>
-      <li>
     kitty.open_url_with
 
       <ul>
@@ -3431,6 +3549,20 @@
 
       <ul>
         <li><a href="conf.html#shortcut-kitty.Paste-from-selection">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Paste from the primary selection
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Paste-from-the-primary-selection">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Paste from the primary selection even when grabbed
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Paste-from-the-primary-selection-even-when-grabbed">Keyboard Shortcut</a>
 </li>
       </ul></li>
       <li>
@@ -3469,10 +3601,10 @@
 </li>
       </ul></li>
       <li>
-    kitty.rectangle_select_modifiers
+    kitty.Reload kitty.conf
 
       <ul>
-        <li><a href="conf.html#opt-kitty.rectangle_select_modifiers">Config Setting</a>
+        <li><a href="conf.html#shortcut-kitty.Reload-kitty.conf">Keyboard Shortcut</a>
 </li>
       </ul></li>
       <li>
@@ -3609,6 +3741,48 @@
 </li>
       </ul></li>
       <li>
+    kitty.Select a line
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Select-a-line">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Select a line even when grabbed
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Select-a-line-even-when-grabbed">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Select a word
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Select-a-word">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Select a word even when grabbed
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Select-a-word-even-when-grabbed">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Select line from point
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Select-line-from-point">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Select line from point even when grabbed
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Select-line-from-point-even-when-grabbed">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
     kitty.select_by_word_characters
 
       <ul>
@@ -3679,6 +3853,34 @@
 </li>
       </ul></li>
       <li>
+    kitty.Start selecting text
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Start-selecting-text">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Start selecting text even when grabbed
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Start-selecting-text-even-when-grabbed">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Start selecting text in a rectangle
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Start-selecting-text-in-a-rectangle">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.Start selecting text in a rectangle even when grabbed
+
+      <ul>
+        <li><a href="conf.html#shortcut-kitty.Start-selecting-text-in-a-rectangle-even-when-grabbed">Keyboard Shortcut</a>
+</li>
+      </ul></li>
+      <li>
     kitty.startup_session
 
       <ul>
@@ -3725,6 +3927,13 @@
 
       <ul>
         <li><a href="conf.html#opt-kitty.tab_bar_edge">Config Setting</a>
+</li>
+      </ul></li>
+      <li>
+    kitty.tab_bar_margin_height
+
+      <ul>
+        <li><a href="conf.html#opt-kitty.tab_bar_margin_height">Config Setting</a>
 </li>
       </ul></li>
       <li>
@@ -3795,13 +4004,6 @@
 
       <ul>
         <li><a href="conf.html#opt-kitty.term">Config Setting</a>
-</li>
-      </ul></li>
-      <li>
-    kitty.terminal_select_modifiers
-
-      <ul>
-        <li><a href="conf.html#opt-kitty.terminal_select_modifiers">Config Setting</a>
 </li>
       </ul></li>
       <li>

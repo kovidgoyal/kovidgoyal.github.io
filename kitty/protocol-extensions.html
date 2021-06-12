@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Extensions to the xterm protocol &#8212; kitty 0.20.3 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <title>Extensions to the xterm protocol &#8212; kitty 0.21.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -266,9 +266,7 @@ screen. This escape code allows that text to be restored.</p>
 <p>If the scrollback buffer is empty or there is no scrollback buffer, such as for
 the alternate screen, then the newly inserted lines must be empty, just as with
 the original <code class="docutils literal notranslate"><span class="pre">SD</span></code> escape code. The maximum number of lines that can be
-scrolled down is the height of the screen, i.e. the number of lines on the screen.
-If the escape code requests more than that number of lines, the terminal <em>must</em>
-clip the request to the current screen size.</p>
+scrolled down is implementation defined, but must be at least one screen worth.</p>
 <p>The syntax of the escape code is identical to that of <code class="docutils literal notranslate"><span class="pre">SD</span></code> except that it has
 a trailing <code class="docutils literal notranslate"><span class="pre">+</span></code> modifier. This is legal under the <a class="reference external" href="https://www.ecma-international.org/publications-and-standards/standards/ecma-48/">ECMA 48 standard</a>
 and unused for any other purpose as far as I can tell. So for example, to

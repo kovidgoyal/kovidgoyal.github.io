@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Draw a GPU accelerated dock panel on your desktop &#8212; kitty 0.20.3 documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <title>Draw a GPU accelerated dock panel on your desktop &#8212; kitty 0.21.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -136,49 +136,49 @@ you like, as demonstrated in the screenshot above.</p>
 <div class="section" id="options">
 <h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
-<dt id="cmdoption-kitty-kitten-panel-lines">
-<code class="sig-name descname"><span class="pre">--lines</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;LINES&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-lines" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-lines">
+<span class="sig-name descname"><span class="pre">--lines</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;LINES&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-lines" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of lines shown in the panel (the height of the panel). Applies to horizontal panels.
 Default: <code class="code docutils literal notranslate"><span class="pre">1</span></code></p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-kitten-panel-columns">
-<code class="sig-name descname"><span class="pre">--columns</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;COLUMNS&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-columns" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-columns">
+<span class="sig-name descname"><span class="pre">--columns</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;COLUMNS&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-columns" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of columns shown in the panel (the width of the panel). Applies to vertical panels.
 Default: <code class="code docutils literal notranslate"><span class="pre">20</span></code></p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-kitten-panel-edge">
-<code class="sig-name descname"><span class="pre">--edge</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;EDGE&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-edge" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-edge">
+<span class="sig-name descname"><span class="pre">--edge</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;EDGE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-edge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Which edge of the screen to place the panel on. Note that some window managers (such as i3) do not support placing docked windows on the left and right edges.
 Default: <code class="code docutils literal notranslate"><span class="pre">top</span></code>
 Choices: <code class="code docutils literal notranslate"><span class="pre">bottom,</span> <span class="pre">left,</span> <span class="pre">right,</span> <span class="pre">top</span></code></p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-kitten-panel-config">
-<span id="cmdoption-kitty-kitten-panel-c"></span><code class="sig-name descname"><span class="pre">--config</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-c</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-config" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-config">
+<span id="cmdoption-kitty-kitten-panel-c"></span><span class="sig-name descname"><span class="pre">--config</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Path to config file to use for kitty when drawing the panel.</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-kitten-panel-override">
-<span id="cmdoption-kitty-kitten-panel-o"></span><code class="sig-name descname"><span class="pre">--override</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-o</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-override" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-override">
+<span id="cmdoption-kitty-kitten-panel-o"></span><span class="sig-name descname"><span class="pre">--override</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-override" title="Permalink to this definition">¶</a></dt>
 <dd><p>Override individual kitty configuration options, can be specified multiple times. Syntax: <span class="italic">name=value</span>. For example: <a class="reference internal" href="#cmdoption-kitty-kitten-panel-override"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">panel</span> <span class="pre">-o</span></code></a> font_size=20</p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-kitten-panel-class">
-<code class="sig-name descname"><span class="pre">--class</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;CLS&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-class" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-class">
+<span class="sig-name descname"><span class="pre">--class</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CLS&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-class" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the class part of the <span class="italic">WM_CLASS</span> window property. On Wayland, it sets the app id.
 Default: <code class="code docutils literal notranslate"><span class="pre">kitty-panel</span></code></p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-kitten-panel-name">
-<code class="sig-name descname"><span class="pre">--name</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-panel-name" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-name">
+<span class="sig-name descname"><span class="pre">--name</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the name part of the <span class="italic">WM_CLASS</span> property (defaults to using the value from <a class="reference internal" href="../invocation.html#cmdoption-kitty-class"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--class</span></code></a>)</p>
 </dd></dl>
 

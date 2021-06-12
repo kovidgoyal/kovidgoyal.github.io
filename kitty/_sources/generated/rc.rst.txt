@@ -148,6 +148,12 @@ Fields are:
 :code:`ansi (default: False)`
   Boolean, if True send ANSI formatting codes
 
+:code:`cursor (optional)`
+  Boolean, if True send cursor position/style as ANSI codes
+
+:code:`wrap_markers (optional)`
+  Boolean, if True add wrap markers to output
+
 :code:`self (default: False)`
   Boolean, if True use window command was run in
 
@@ -328,11 +334,12 @@ Fields are:
 
 scroll-window
 --------------------------------------------------------------------------------
+             for unscrolling by lines.
 
 Fields are:
 
 :code:`amount (required)`
-  The amount to scroll, a two item list with the first item being              either a number or the keywords, start and end.              And the second item being either 'p' for pages or 'l' for lines.
+  The amount to scroll, a two item list with the first item being              either a number or the keywords, start and end.              And the second item being either 'p' for pages or 'l' for lines or 'u'
 
 :code:`match (default: None)`
   The window to scroll

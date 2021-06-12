@@ -64,7 +64,7 @@ server, use the following one-liner instead (it
 is slower as it needs to ssh into the server twice, but will work with most
 servers)::
 
-    infocmp xterm-kitty | ssh myserver tic -x -o \~/.terminfo /dev/stdin
+    infocmp -a xterm-kitty | ssh myserver tic -x -o \~/.terminfo /dev/stdin
 
 If you are behind a proxy (like Balabit) that prevents this, you must redirect the
 1st command to a file, copy that to the server and run ``tic`` manually.  If you
@@ -170,6 +170,19 @@ You can, of course, also run |kitty| from a terminal with command line options, 
 And within |kitty| itself, you can always run |kitty| using just `kitty` as it
 cleverly adds itself to the ``PATH``.
 
+I catted a binary file and now kitty is hung?
+-----------------------------------------------
+
+**Never** output unknown binary data directly into a terminal.
+
+Terminals have a single channel for both data and control. Certain bytes
+are control codes. Some of these control codes are of arbitrary length, so
+if the binary data you output into the terminal happens to contain the starting
+sequence for one of these control codes, the terminal will hang waiting for
+the closing sequence. Press :kbd:`ctrl+shift+delete` to reset the terminal.
+
+If you do want to cat unknown data, use ``cat -v``.
+
 
 kitty is not able to use my favorite font?
 ---------------------------------------------
@@ -227,7 +240,7 @@ How do I map key presses in kitty to different keys in the terminal program?
 This is accomplished by using ``map`` with :sc:`send_text <send_text>` in :file:`kitty.conf`.
 For example::
 
-    map alt+s send_text all \x13
+    map alt+s send_text normal,application \x13
 
 This maps :kbd:`alt+s` to :kbd:`ctrl+s`. To figure out what bytes to use for
 the :sc:`send_text <send_text>` you can use the ``show_key`` kitten. Run::

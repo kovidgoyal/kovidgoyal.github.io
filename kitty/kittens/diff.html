@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>kitty-diff - A fast side-by-side diff tool with syntax highlighting and images &#8212; kitty 0.20.3 documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <title>kitty-diff - A fast side-by-side diff tool with syntax highlighting and images &#8212; kitty 0.21.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -273,19 +273,18 @@ configuration directives.</p>
 <div class="section" id="diffing">
 <span id="conf-kitten-diff-diff"></span><h3>Diffing<a class="headerlink" href="#diffing" title="Permalink to this headline">¶</a></h3>
 <dl class="std opt">
-<dt id="opt-kitten-diff.syntax_aliases">
-<code class="sig-name descname"><span class="pre">syntax_aliases</span></code><a class="headerlink" href="#opt-kitten-diff.syntax_aliases" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.syntax_aliases">
+<span class="sig-name descname"><span class="pre">syntax_aliases</span></span><a class="headerlink" href="#opt-kitten-diff.syntax_aliases" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">syntax_aliases</span><span class="w"> </span><span class="s">pyj:py pyi:py recipe:py</span><span class="w"></span>
 </pre></div>
 </div>
-<p>File extension aliases for syntax highlight
-For example, to syntax highlight <code class="file docutils literal notranslate"><span class="pre">file.xyz</span></code> as
-<code class="file docutils literal notranslate"><span class="pre">file.abc</span></code> use a setting of <code class="code docutils literal notranslate"><span class="pre">xyz:abc</span></code></p>
+<p>File extension aliases for syntax highlight For example, to syntax highlight
+<code class="file docutils literal notranslate"><span class="pre">file.xyz</span></code> as <code class="file docutils literal notranslate"><span class="pre">file.abc</span></code> use a setting of <code class="code docutils literal notranslate"><span class="pre">xyz:abc</span></code></p>
 <dl class="std opt">
-<dt id="opt-kitten-diff.num_context_lines">
-<code class="sig-name descname"><span class="pre">num_context_lines</span></code><a class="headerlink" href="#opt-kitten-diff.num_context_lines" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.num_context_lines">
+<span class="sig-name descname"><span class="pre">num_context_lines</span></span><a class="headerlink" href="#opt-kitten-diff.num_context_lines" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">num_context_lines</span><span class="w"> </span><span class="mi">3</span>
@@ -293,19 +292,19 @@ For example, to syntax highlight <code class="file docutils literal notranslate"
 </div>
 <p>The number of lines of context to show around each change.</p>
 <dl class="std opt">
-<dt id="opt-kitten-diff.diff_cmd">
-<code class="sig-name descname"><span class="pre">diff_cmd</span></code><a class="headerlink" href="#opt-kitten-diff.diff_cmd" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.diff_cmd">
+<span class="sig-name descname"><span class="pre">diff_cmd</span></span><a class="headerlink" href="#opt-kitten-diff.diff_cmd" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">diff_cmd</span><span class="w"> </span><span class="s">auto</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The diff command to use. Must contain the placeholder <code class="code docutils literal notranslate"><span class="pre">_CONTEXT_</span></code>
-which will be replaced by the number of lines of context. The default
-is to search the system for either git or diff and use that, if found.</p>
+<p>The diff command to use. Must contain the placeholder <code class="code docutils literal notranslate"><span class="pre">_CONTEXT_</span></code> which
+will be replaced by the number of lines of context. The default is to search the
+system for either git or diff and use that, if found.</p>
 <dl class="std opt">
-<dt id="opt-kitten-diff.replace_tab_by">
-<code class="sig-name descname"><span class="pre">replace_tab_by</span></code><a class="headerlink" href="#opt-kitten-diff.replace_tab_by" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.replace_tab_by">
+<span class="sig-name descname"><span class="pre">replace_tab_by</span></span><a class="headerlink" href="#opt-kitten-diff.replace_tab_by" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">replace_tab_by</span><span class="w"> </span><span class="s">\x20\x20\x20\x20</span><span class="w"></span>
@@ -316,18 +315,17 @@ is to search the system for either git or diff and use that, if found.</p>
 <div class="section" id="colors">
 <span id="conf-kitten-diff-colors"></span><h3>Colors<a class="headerlink" href="#colors" title="Permalink to this headline">¶</a></h3>
 <dl class="std opt">
-<dt id="opt-kitten-diff.pygments_style">
-<code class="sig-name descname"><span class="pre">pygments_style</span></code><a class="headerlink" href="#opt-kitten-diff.pygments_style" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.pygments_style">
+<span class="sig-name descname"><span class="pre">pygments_style</span></span><a class="headerlink" href="#opt-kitten-diff.pygments_style" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">pygments_style</span><span class="w"> </span><span class="s">default</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The pygments color scheme to use for syntax highlighting.
-See <a class="reference external" href="https://help.farbox.com/pygments.html">pygments colors schemes</a> for a list of schemes.</p>
+<p>The pygments color scheme to use for syntax highlighting. See <a class="reference external" href="https://help.farbox.com/pygments.html">pygments colors schemes</a> for a list of schemes.</p>
 <dl class="std opt">
-<dt id="opt-kitten-diff.foreground">
-<code class="sig-name descname"><span class="pre">foreground</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">background</span></code><a class="headerlink" href="#opt-kitten-diff.foreground" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.foreground">
+<span class="sig-name descname"><span class="pre">foreground</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">background</span></span><a class="headerlink" href="#opt-kitten-diff.foreground" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">foreground</span><span class="w"> </span><span class="s">black</span><span class="w"></span>
@@ -336,8 +334,8 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </div>
 <p>Basic colors</p>
 <dl class="std opt">
-<dt id="opt-kitten-diff.title_fg">
-<code class="sig-name descname"><span class="pre">title_fg</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">title_bg</span></code><a class="headerlink" href="#opt-kitten-diff.title_fg" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.title_fg">
+<span class="sig-name descname"><span class="pre">title_fg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">title_bg</span></span><a class="headerlink" href="#opt-kitten-diff.title_fg" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">title_fg</span><span class="w"> </span><span class="s">black</span><span class="w"></span>
@@ -346,8 +344,8 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </div>
 <p>Title colors</p>
 <dl class="std opt">
-<dt id="opt-kitten-diff.margin_bg">
-<code class="sig-name descname"><span class="pre">margin_bg</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">margin_fg</span></code><a class="headerlink" href="#opt-kitten-diff.margin_bg" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.margin_bg">
+<span class="sig-name descname"><span class="pre">margin_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">margin_fg</span></span><a class="headerlink" href="#opt-kitten-diff.margin_bg" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">margin_bg</span><span class="w"> </span><span class="s">#fafbfc</span><span class="w"></span>
@@ -356,8 +354,8 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </div>
 <p>Margin colors</p>
 <dl class="std opt">
-<dt id="opt-kitten-diff.removed_bg">
-<code class="sig-name descname"><span class="pre">removed_bg</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">highlight_removed_bg</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">removed_margin_bg</span></code><a class="headerlink" href="#opt-kitten-diff.removed_bg" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.removed_bg">
+<span class="sig-name descname"><span class="pre">removed_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">highlight_removed_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">removed_margin_bg</span></span><a class="headerlink" href="#opt-kitten-diff.removed_bg" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">removed_bg</span><span class="w">           </span><span class="s">#ffeef0</span><span class="w"></span>
@@ -367,8 +365,8 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </div>
 <p>Removed text backgrounds</p>
 <dl class="std opt">
-<dt id="opt-kitten-diff.added_bg">
-<code class="sig-name descname"><span class="pre">added_bg</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">highlight_added_bg</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">added_margin_bg</span></code><a class="headerlink" href="#opt-kitten-diff.added_bg" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.added_bg">
+<span class="sig-name descname"><span class="pre">added_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">highlight_added_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">added_margin_bg</span></span><a class="headerlink" href="#opt-kitten-diff.added_bg" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">added_bg</span><span class="w">           </span><span class="s">#e6ffed</span><span class="w"></span>
@@ -378,8 +376,8 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </div>
 <p>Added text backgrounds</p>
 <dl class="std opt">
-<dt id="opt-kitten-diff.filler_bg">
-<code class="sig-name descname"><span class="pre">filler_bg</span></code><a class="headerlink" href="#opt-kitten-diff.filler_bg" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.filler_bg">
+<span class="sig-name descname"><span class="pre">filler_bg</span></span><a class="headerlink" href="#opt-kitten-diff.filler_bg" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">filler_bg</span><span class="w"> </span><span class="s">#fafbfc</span>
@@ -387,8 +385,8 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </div>
 <p>Filler (empty) line background</p>
 <dl class="std opt">
-<dt id="opt-kitten-diff.margin_filler_bg">
-<code class="sig-name descname"><span class="pre">margin_filler_bg</span></code><a class="headerlink" href="#opt-kitten-diff.margin_filler_bg" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.margin_filler_bg">
+<span class="sig-name descname"><span class="pre">margin_filler_bg</span></span><a class="headerlink" href="#opt-kitten-diff.margin_filler_bg" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">margin_filler_bg</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
@@ -396,8 +394,8 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </div>
 <p>Filler (empty) line background in margins, defaults to the filler background</p>
 <dl class="std opt">
-<dt id="opt-kitten-diff.hunk_margin_bg">
-<code class="sig-name descname"><span class="pre">hunk_margin_bg</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">hunk_bg</span></code><a class="headerlink" href="#opt-kitten-diff.hunk_margin_bg" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.hunk_margin_bg">
+<span class="sig-name descname"><span class="pre">hunk_margin_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">hunk_bg</span></span><a class="headerlink" href="#opt-kitten-diff.hunk_margin_bg" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">hunk_margin_bg</span><span class="w"> </span><span class="s">#dbedff</span><span class="w"></span>
@@ -406,8 +404,8 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </div>
 <p>Hunk header colors</p>
 <dl class="std opt">
-<dt id="opt-kitten-diff.search_bg">
-<code class="sig-name descname"><span class="pre">search_bg</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">search_fg</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">select_bg</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">select_fg</span></code><a class="headerlink" href="#opt-kitten-diff.search_bg" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="opt-kitten-diff.search_bg">
+<span class="sig-name descname"><span class="pre">search_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">search_fg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">select_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">select_fg</span></span><a class="headerlink" href="#opt-kitten-diff.search_bg" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">search_bg</span><span class="w"> </span><span class="s">#444</span><span class="w"></span>
@@ -421,8 +419,8 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 <div class="section" id="keyboard-shortcuts">
 <span id="conf-kitten-diff-shortcuts"></span><h3>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h3>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Quit">
-<code class="sig-name descname"><span class="pre">Quit</span></code><a class="headerlink" href="#shortcut-kitten-diff.Quit" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Quit">
+<span class="sig-name descname"><span class="pre">Quit</span></span><a class="headerlink" href="#shortcut-kitten-diff.Quit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">q</span><span class="w"> </span><span class="nf">quit</span><span class="w"></span>
@@ -430,8 +428,8 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Scroll-down">
-<span id="shortcut-kitten-diff.Scroll down"></span><code class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">down</span></code><a class="headerlink" href="#shortcut-kitten-diff.Scroll-down" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-down">
+<span id="shortcut-kitten-diff.Scroll down"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">down</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-down" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">j</span><span class="w"> </span><span class="nf">scroll_by</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
@@ -439,8 +437,8 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Scroll-up">
-<span id="shortcut-kitten-diff.Scroll up"></span><code class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">up</span></code><a class="headerlink" href="#shortcut-kitten-diff.Scroll-up" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-up">
+<span id="shortcut-kitten-diff.Scroll up"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">up</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-up" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">k</span><span class="w"> </span><span class="nf">scroll_by</span><span class="w"> </span><span class="mi">-1</span><span class="w"></span>
@@ -448,24 +446,24 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Scroll-to-top">
-<span id="shortcut-kitten-diff.Scroll to top"></span><code class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">top</span></code><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-top" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-top">
+<span id="shortcut-kitten-diff.Scroll to top"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">top</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-top" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">home</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">start</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Scroll-to-bottom">
-<span id="shortcut-kitten-diff.Scroll to bottom"></span><code class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">bottom</span></code><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-bottom" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-bottom">
+<span id="shortcut-kitten-diff.Scroll to bottom"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">bottom</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-bottom" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">end</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">end</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Scroll-to-next-page">
-<span id="shortcut-kitten-diff.Scroll to next page"></span><code class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">next</span> <span class="pre">page</span></code><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-next-page" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-next-page">
+<span id="shortcut-kitten-diff.Scroll to next page"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">next</span> <span class="pre">page</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-next-page" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">page_down</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">next-page</span><span class="w"></span>
@@ -473,80 +471,80 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Scroll-to-previous-page">
-<span id="shortcut-kitten-diff.Scroll to previous page"></span><code class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">previous</span> <span class="pre">page</span></code><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-previous-page" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-previous-page">
+<span id="shortcut-kitten-diff.Scroll to previous page"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">previous</span> <span class="pre">page</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-previous-page" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">page_up</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">prev-page</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Scroll-to-next-change">
-<span id="shortcut-kitten-diff.Scroll to next change"></span><code class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">next</span> <span class="pre">change</span></code><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-next-change" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-next-change">
+<span id="shortcut-kitten-diff.Scroll to next change"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">next</span> <span class="pre">change</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-next-change" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">n</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">next-change</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Scroll-to-previous-change">
-<span id="shortcut-kitten-diff.Scroll to previous change"></span><code class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">previous</span> <span class="pre">change</span></code><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-previous-change" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-previous-change">
+<span id="shortcut-kitten-diff.Scroll to previous change"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">previous</span> <span class="pre">change</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-previous-change" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">p</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">prev-change</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Show-all-context">
-<span id="shortcut-kitten-diff.Show all context"></span><code class="sig-name descname"><span class="pre">Show</span> <span class="pre">all</span> <span class="pre">context</span></code><a class="headerlink" href="#shortcut-kitten-diff.Show-all-context" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Show-all-context">
+<span id="shortcut-kitten-diff.Show all context"></span><span class="sig-name descname"><span class="pre">Show</span> <span class="pre">all</span> <span class="pre">context</span></span><a class="headerlink" href="#shortcut-kitten-diff.Show-all-context" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="nf">change_context</span><span class="w"> </span><span class="s">all</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Show-default-context">
-<span id="shortcut-kitten-diff.Show default context"></span><code class="sig-name descname"><span class="pre">Show</span> <span class="pre">default</span> <span class="pre">context</span></code><a class="headerlink" href="#shortcut-kitten-diff.Show-default-context" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Show-default-context">
+<span id="shortcut-kitten-diff.Show default context"></span><span class="sig-name descname"><span class="pre">Show</span> <span class="pre">default</span> <span class="pre">context</span></span><a class="headerlink" href="#shortcut-kitten-diff.Show-default-context" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">=</span><span class="w"> </span><span class="nf">change_context</span><span class="w"> </span><span class="s">default</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Increase-context">
-<span id="shortcut-kitten-diff.Increase context"></span><code class="sig-name descname"><span class="pre">Increase</span> <span class="pre">context</span></code><a class="headerlink" href="#shortcut-kitten-diff.Increase-context" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Increase-context">
+<span id="shortcut-kitten-diff.Increase context"></span><span class="sig-name descname"><span class="pre">Increase</span> <span class="pre">context</span></span><a class="headerlink" href="#shortcut-kitten-diff.Increase-context" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">+</span><span class="w"> </span><span class="nf">change_context</span><span class="w"> </span><span class="mi">5</span>
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Decrease-context">
-<span id="shortcut-kitten-diff.Decrease context"></span><code class="sig-name descname"><span class="pre">Decrease</span> <span class="pre">context</span></code><a class="headerlink" href="#shortcut-kitten-diff.Decrease-context" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Decrease-context">
+<span id="shortcut-kitten-diff.Decrease context"></span><span class="sig-name descname"><span class="pre">Decrease</span> <span class="pre">context</span></span><a class="headerlink" href="#shortcut-kitten-diff.Decrease-context" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">-</span><span class="w"> </span><span class="nf">change_context</span><span class="w"> </span><span class="mi">-5</span>
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Search-forward">
-<span id="shortcut-kitten-diff.Search forward"></span><code class="sig-name descname"><span class="pre">Search</span> <span class="pre">forward</span></code><a class="headerlink" href="#shortcut-kitten-diff.Search-forward" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Search-forward">
+<span id="shortcut-kitten-diff.Search forward"></span><span class="sig-name descname"><span class="pre">Search</span> <span class="pre">forward</span></span><a class="headerlink" href="#shortcut-kitten-diff.Search-forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="nf">start_search</span><span class="w"> </span><span class="s">regex forward</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Search-backward">
-<span id="shortcut-kitten-diff.Search backward"></span><code class="sig-name descname"><span class="pre">Search</span> <span class="pre">backward</span></code><a class="headerlink" href="#shortcut-kitten-diff.Search-backward" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Search-backward">
+<span id="shortcut-kitten-diff.Search backward"></span><span class="sig-name descname"><span class="pre">Search</span> <span class="pre">backward</span></span><a class="headerlink" href="#shortcut-kitten-diff.Search-backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">?</span><span class="w"> </span><span class="nf">start_search</span><span class="w"> </span><span class="s">regex backward</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Scroll-to-next-search-match">
-<span id="shortcut-kitten-diff.Scroll to next search match"></span><code class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">next</span> <span class="pre">search</span> <span class="pre">match</span></code><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-next-search-match" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-next-search-match">
+<span id="shortcut-kitten-diff.Scroll to next search match"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">next</span> <span class="pre">search</span> <span class="pre">match</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-next-search-match" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">.</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">next-match</span><span class="w"></span>
@@ -554,8 +552,8 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Scroll-to-previous-search-match">
-<span id="shortcut-kitten-diff.Scroll to previous search match"></span><code class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">previous</span> <span class="pre">search</span> <span class="pre">match</span></code><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-previous-search-match" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-previous-search-match">
+<span id="shortcut-kitten-diff.Scroll to previous search match"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">previous</span> <span class="pre">search</span> <span class="pre">match</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-previous-search-match" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">,</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">prev-match</span><span class="w"></span>
@@ -563,16 +561,16 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Search-forward-no-regex">
-<span id="shortcut-kitten-diff.Search forward (no regex)"></span><code class="sig-name descname"><span class="pre">Search</span> <span class="pre">forward</span> <span class="pre">(no</span> <span class="pre">regex)</span></code><a class="headerlink" href="#shortcut-kitten-diff.Search-forward-no-regex" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Search-forward-no-regex">
+<span id="shortcut-kitten-diff.Search forward (no regex)"></span><span class="sig-name descname"><span class="pre">Search</span> <span class="pre">forward</span> <span class="pre">(no</span> <span class="pre">regex)</span></span><a class="headerlink" href="#shortcut-kitten-diff.Search-forward-no-regex" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f</span><span class="w"> </span><span class="nf">start_search</span><span class="w"> </span><span class="s">substring forward</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
-<dt id="shortcut-kitten-diff.Search-backward-no-regex">
-<span id="shortcut-kitten-diff.Search backward (no regex)"></span><code class="sig-name descname"><span class="pre">Search</span> <span class="pre">backward</span> <span class="pre">(no</span> <span class="pre">regex)</span></code><a class="headerlink" href="#shortcut-kitten-diff.Search-backward-no-regex" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="shortcut-kitten-diff.Search-backward-no-regex">
+<span id="shortcut-kitten-diff.Search backward (no regex)"></span><span class="sig-name descname"><span class="pre">Search</span> <span class="pre">backward</span> <span class="pre">(no</span> <span class="pre">regex)</span></span><a class="headerlink" href="#shortcut-kitten-diff.Search-backward-no-regex" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">b</span><span class="w"> </span><span class="nf">start_search</span><span class="w"> </span><span class="s">substring backward</span><span class="w"></span>
@@ -589,15 +587,15 @@ See <a class="reference external" href="https://help.farbox.com/pygments.html">p
 <div class="section" id="options">
 <h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
-<dt id="cmdoption-kitty-kitten-diff-context">
-<code class="sig-name descname"><span class="pre">--context</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;CONTEXT&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-diff-context" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-diff-context">
+<span class="sig-name descname"><span class="pre">--context</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CONTEXT&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-diff-context" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of lines of context to show between changes. Negative values use the number set in diff.conf
 Default: <code class="code docutils literal notranslate"><span class="pre">-1</span></code></p>
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-kitten-diff-config">
-<code class="sig-name descname"><span class="pre">--config</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-diff-config" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-diff-config">
+<span class="sig-name descname"><span class="pre">--config</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-diff-config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specify a path to the configuration file(s) to use. All configuration files are merged onto the builtin diff.conf, overriding the builtin values. This option can be specified multiple times to read multiple configuration files in sequence, which are merged. Use the special value NONE to not load a config file.</p>
 <p>If this option is not specified, config files are searched for in the order: <code class="file docutils literal notranslate"><span class="pre">$XDG_CONFIG_HOME/kitty/diff.conf</span></code>, <code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/diff.conf</span></code>, <code class="file docutils literal notranslate"><span class="pre">$XDG_CONFIG_DIRS/kitty/diff.conf</span></code>. The first one that exists is used as the config file.</p>
 <p>If the environment variable <span class="env">KITTY_CONFIG_DIRECTORY</span> is specified, that directory is always used and the above searching does not happen.</p>
@@ -605,8 +603,8 @@ Default: <code class="code docutils literal notranslate"><span class="pre">-1</s
 </dd></dl>
 
 <dl class="std option">
-<dt id="cmdoption-kitty-kitten-diff-override">
-<span id="cmdoption-kitty-kitten-diff-o"></span><code class="sig-name descname"><span class="pre">--override</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">-o</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></code><a class="headerlink" href="#cmdoption-kitty-kitten-diff-override" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-diff-override">
+<span id="cmdoption-kitty-kitten-diff-o"></span><span class="sig-name descname"><span class="pre">--override</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-diff-override" title="Permalink to this definition">¶</a></dt>
 <dd><p>Override individual configuration options, can be specified multiple times. Syntax: <span class="italic">name=value</span>. For example: <span class="italic">-o background=gray</span></p>
 </dd></dl>
 
