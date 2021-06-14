@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Launching programs in new windows/tabs &#8212; kitty 0.21.0 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Launching programs in new windows/tabs &#8212; kitty 0.21.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -106,7 +107,7 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="launching-programs-in-new-windows-tabs">
+  <section id="launching-programs-in-new-windows-tabs">
 <h1>Launching programs in new windows/tabs<a class="headerlink" href="#launching-programs-in-new-windows-tabs" title="Permalink to this headline">¶</a></h1>
 <p><em>kitty</em> has a <code class="code docutils literal notranslate"><span class="pre">launch</span></code> action that can be used to run arbitrary programs
 in new windows/tabs. It can be mapped to user defined shortcuts in kitty.conf.
@@ -140,7 +141,7 @@ active window:</p>
 </pre></div>
 </div>
 <p>There are many more powerful options, refer to the complete list below.</p>
-<div class="section" id="the-piping-environment">
+<section id="the-piping-environment">
 <h2>The piping environment<a class="headerlink" href="#the-piping-environment" title="Permalink to this headline">¶</a></h2>
 <p>When using <a class="reference internal" href="#cmdoption-launch-stdin-source"><code class="xref std std-option docutils literal notranslate"><span class="pre">launch</span> <span class="pre">--stdin-source</span></code></a>, the program to which the data is
 piped has a special environment variable declared, <code class="docutils literal notranslate"><span class="pre">KITTY_PIPE_DATA</span></code> whose
@@ -152,8 +153,8 @@ contents are:</p>
 <code class="docutils literal notranslate"><span class="pre">cursor_(x|y)</span></code> is the position of the cursor on the screen with <code class="docutils literal notranslate"><span class="pre">(1,1)</span></code>
 being the top left corner and <code class="docutils literal notranslate"><span class="pre">{lines},{columns}</span></code> being the number of rows
 and columns of the screen.</p>
-</div>
-<div class="section" id="special-arguments">
+</section>
+<section id="special-arguments">
 <h2>Special arguments<a class="headerlink" href="#special-arguments" title="Permalink to this headline">¶</a></h2>
 <p>There are a few special placeholder arguments that can be specified as part of
 the command line:</p>
@@ -179,8 +180,8 @@ scroll position in kitty. See <a class="reference internal" href="conf.html#opt-
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f1</span> <span class="n">launch</span> <span class="n">my</span><span class="o">-</span><span class="n">program</span> <span class="nd">@active</span><span class="o">-</span><span class="n">kitty</span><span class="o">-</span><span class="n">window</span><span class="o">-</span><span class="nb">id</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="watching-launched-windows">
+</section>
+<section id="watching-launched-windows">
 <h2>Watching launched windows<a class="headerlink" href="#watching-launched-windows" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#cmdoption-launch-watcher"><code class="xref std std-option docutils literal notranslate"><span class="pre">launch</span> <span class="pre">--watcher</span></code></a> option allows you to specify python functions
 that will be called at specific events, such as when the window is resized or
@@ -206,8 +207,8 @@ contents of the window and its scrollback buffer. Similarly,
 <code class="docutils literal notranslate"><span class="pre">window.child.pid</span></code> is the PID of the processes that was launched
 in the window and <code class="docutils literal notranslate"><span class="pre">window.id</span></code> is the internal kitty <code class="docutils literal notranslate"><span class="pre">id</span></code> of the
 window.</p>
-</div>
-<div class="section" id="finding-executables">
+</section>
+<section id="finding-executables">
 <h2>Finding executables<a class="headerlink" href="#finding-executables" title="Permalink to this headline">¶</a></h2>
 <p>When you specify a command to run as just a name rather than an absolute path,
 it is searched for in the system-wide <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable. Note that
@@ -215,8 +216,8 @@ this <strong>may not</strong> be the value of <code class="docutils literal notr
 often change the value of this variable. If it is not found there, then a
 system specific list of default paths is searched. If it is still not found,
 then your shell is run and the value of <code class="docutils literal notranslate"><span class="pre">PATH</span></code> inside the shell is used.</p>
-</div>
-<div class="section" id="syntax-reference">
+</section>
+<section id="syntax-reference">
 <h2>Syntax reference<a class="headerlink" href="#syntax-reference" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>launch <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>program-to-run ...<span class="o">]</span>
 </pre></div>
@@ -224,7 +225,7 @@ then your shell is run and the value of <code class="docutils literal notranslat
 <p>Launch an arbitrary program in a new kitty window/tab. Note that
 if you specify a program-to-run you can use the special placeholder
 <code class="code docutils literal notranslate"><span class="pre">&#64;selection</span></code> which will be replaced by the current selection.</p>
-<div class="section" id="options">
+<section id="options">
 <h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-launch-title">
@@ -346,9 +347,9 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">&#64;
 <dd><p>Path to a python file. Appropriately named functions in this file will be called for various events, such as when the window is resized, focused or closed. See the section on watchers in the launch command documentation <a class="reference internal" href="#"><span class="doc">Launching programs in new windows/tabs</span></a>. Relative paths are resolved relative to the kitty config directory.</p>
 </dd></dl>
 
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>

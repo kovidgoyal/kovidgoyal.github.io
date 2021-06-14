@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Controlling kitty from scripts or the shell &#8212; kitty 0.21.0 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Controlling kitty from scripts or the shell &#8212; kitty 0.21.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -134,9 +135,9 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="controlling-kitty-from-scripts-or-the-shell">
+  <section id="controlling-kitty-from-scripts-or-the-shell">
 <h1>Controlling kitty from scripts or the shell<a class="headerlink" href="#controlling-kitty-from-scripts-or-the-shell" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="tutorial">
+<section id="tutorial">
 <h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h2>
 <p><em>kitty</em> can be controlled from scripts or the shell prompt. You can open new
 windows, send arbitrary text input to any window, name windows and tabs, etc.
@@ -227,8 +228,8 @@ instance of <em>kitty</em> using the <a class="reference internal" href="#cmdopt
 <p>Note that if all you want to do is run a single <em>kitty</em> “daemon” and have subsequent
 <em>kitty</em> invocations appear as new top-level windows, you can use the simpler <a class="reference internal" href="invocation.html#cmdoption-kitty-single-instance"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--single-instance</span></code></a>
 option, see <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--help</span></code> for that.</p>
-</div>
-<div class="section" id="the-builtin-kitty-shell">
+</section>
+<section id="the-builtin-kitty-shell">
 <h2>The builtin kitty shell<a class="headerlink" href="#the-builtin-kitty-shell" title="Permalink to this headline">¶</a></h2>
 <p>You can explore the <em>kitty</em> command language more easily using the builtin <em>kitty</em>
 shell. Run <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span></code> with no arguments and you will be dropped into the <em>kitty</em>
@@ -240,8 +241,8 @@ keyboard shortcut (<a class="reference internal" href="conf.html#shortcut-kitty.
 <p>This has the added advantage that you don’t need to use
 <code class="docutils literal notranslate"><span class="pre">allow_remote_control</span></code> to make it work.</p>
 </div>
-</div>
-<div class="section" id="allowing-only-some-windows-to-control-kitty">
+</section>
+<section id="allowing-only-some-windows-to-control-kitty">
 <h2>Allowing only some windows to control kitty<a class="headerlink" href="#allowing-only-some-windows-to-control-kitty" title="Permalink to this headline">¶</a></h2>
 <p>If you do not want to allow all programs running in <em>kitty</em> to control it, you can selectively
 enable remote control for only some <em>kitty</em> windows. Simply create a shortcut
@@ -261,8 +262,8 @@ limited to only programs running in that specific window. Be careful with
 what programs you run in such windows, since they can effectively control
 kitty, as if you were running with <code class="docutils literal notranslate"><span class="pre">allow_remote_control</span></code> turned on.</p>
 </div>
-</div>
-<div class="section" id="mapping-key-presses-to-remote-control-commands">
+</section>
+<section id="mapping-key-presses-to-remote-control-commands">
 <h2>Mapping key presses to remote control commands<a class="headerlink" href="#mapping-key-presses-to-remote-control-commands" title="Permalink to this headline">¶</a></h2>
 <p>If you wish to trigger a remote control command easily with just a keypress,
 you can map it in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>. For example:</p>
@@ -278,8 +279,8 @@ as the syntax for what follows <code class="code docutils literal notranslate"><
 as they are not actual remote programs, but are simply a way to resuse
 the remote control infrastructure via keybings.</p>
 </div>
-</div>
-<div class="section" id="broadcasting-what-you-type-to-all-kitty-windows">
+</section>
+<section id="broadcasting-what-you-type-to-all-kitty-windows">
 <h2>Broadcasting what you type to all kitty windows<a class="headerlink" href="#broadcasting-what-you-type-to-all-kitty-windows" title="Permalink to this headline">¶</a></h2>
 <p>As a simple illustration of the power of remote control, lets
 have what we type sent to all open kitty windows. To do that define the
@@ -289,19 +290,19 @@ following mapping in <code class="file docutils literal notranslate"><span class
 </div>
 <p>Now press, F1 and start typing, what you type will be sent to all windows,
 live, as you type it.</p>
-</div>
-<div class="section" id="documentation-for-the-remote-control-protocol">
+</section>
+<section id="documentation-for-the-remote-control-protocol">
 <h2>Documentation for the remote control protocol<a class="headerlink" href="#documentation-for-the-remote-control-protocol" title="Permalink to this headline">¶</a></h2>
 <p>If you wish to develop your own client to talk to <em>kitty</em>, you
 can use the <a class="reference internal" href="rc_protocol.html"><span class="doc">Documentation for the kitty remote control protocol</span></a>.</p>
-</div>
-<div class="section" id="kitty">
+</section>
+<section id="kitty">
 <h2>kitty &#64;<a class="headerlink" href="#kitty" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ <span class="o">[</span>options<span class="o">]</span> <span class="nb">command</span> ...
 </pre></div>
 </div>
 <p>Control kitty by sending it commands. Set the <a class="reference internal" href="conf.html#opt-kitty.allow_remote_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">allow_remote_control</span></code></a> option to yes in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> for this to work.</p>
-<div class="section" id="options">
+<section id="options">
 <h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-to">
@@ -309,15 +310,15 @@ can use the <a class="reference internal" href="rc_protocol.html"><span class="d
 <dd><p>An address for the kitty instance to control. Corresponds to the address given to the kitty instance via the <a class="reference internal" href="invocation.html#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a> option. If not specified, messages are sent to the controlling terminal for this process, i.e. they will only work if this process is run within an existing kitty window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-close-tab">
+</section>
+</section>
+<section id="kitty-close-tab">
 <span id="at-close-tab"></span><h2>kitty &#64; close-tab<a class="headerlink" href="#kitty-close-tab" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ close-tab <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 </div>
 <p>Close the specified tab(s)</p>
-<div class="section" id="id1">
+<section id="id1">
 <h3>Options<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-close-tab-match">
@@ -331,15 +332,15 @@ can use the <a class="reference internal" href="rc_protocol.html"><span class="d
 <dd><p>If specified close the tab this command is run in, rather than the active tab.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-close-window">
+</section>
+</section>
+<section id="kitty-close-window">
 <span id="at-close-window"></span><h2>kitty &#64; close-window<a class="headerlink" href="#kitty-close-window" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ close-window <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 </div>
 <p>Close the specified window(s)</p>
-<div class="section" id="id2">
+<section id="id2">
 <h3>Options<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-close-window-match">
@@ -353,15 +354,15 @@ can use the <a class="reference internal" href="rc_protocol.html"><span class="d
 <dd><p>If specified close the window this command is run in, rather than the active window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-create-marker">
+</section>
+</section>
+<section id="kitty-create-marker">
 <span id="at-create-marker"></span><h2>kitty &#64; create-marker<a class="headerlink" href="#kitty-create-marker" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ create-marker <span class="o">[</span>options<span class="o">]</span> MARKER SPECIFICATION
 </pre></div>
 </div>
 <p>Create a marker which can highlight text in the specified window. For example: create_marker text 1 ERROR. For full details see: <a class="reference external" href="https://sw.kovidgoyal.net/kitty/marks.html">https://sw.kovidgoyal.net/kitty/marks.html</a></p>
-<div class="section" id="id3">
+<section id="id3">
 <h3>Options<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-create-marker-match">
@@ -375,15 +376,15 @@ can use the <a class="reference internal" href="rc_protocol.html"><span class="d
 <dd><p>If specified apply marker to the window this command is run in, rather than the active window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-detach-tab">
+</section>
+</section>
+<section id="kitty-detach-tab">
 <span id="at-detach-tab"></span><h2>kitty &#64; detach-tab<a class="headerlink" href="#kitty-detach-tab" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ detach-tab <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 </div>
 <p>Detach the specified tab and either move it into a new OS window or add it to the OS Window containing the tab specified by –target-tab</p>
-<div class="section" id="id4">
+<section id="id4">
 <h3>Options<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-detach-tab-match">
@@ -403,15 +404,15 @@ can use the <a class="reference internal" href="rc_protocol.html"><span class="d
 <dd><p>If specified detach the tab this command is run in, rather than the active tab.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-detach-window">
+</section>
+</section>
+<section id="kitty-detach-window">
 <span id="at-detach-window"></span><h2>kitty &#64; detach-window<a class="headerlink" href="#kitty-detach-window" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ detach-window <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 </div>
 <p>Detach the specified window and either move it into a new tab, a new OS window or add it to the specified tab. Use the special value <code class="code docutils literal notranslate"><span class="pre">new</span></code> for –target-tab to move to a new tab. If no target tab is specified the window is moved to a new OS window.</p>
-<div class="section" id="id5">
+<section id="id5">
 <h3>Options<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-detach-window-match">
@@ -431,15 +432,15 @@ can use the <a class="reference internal" href="rc_protocol.html"><span class="d
 <dd><p>If specified detach the window this command is run in, rather than the active window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-disable-ligatures">
+</section>
+</section>
+<section id="kitty-disable-ligatures">
 <span id="at-disable-ligatures"></span><h2>kitty &#64; disable-ligatures<a class="headerlink" href="#kitty-disable-ligatures" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ disable-ligatures <span class="o">[</span>options<span class="o">]</span> STRATEGY
 </pre></div>
 </div>
 <p>Control ligature rendering for the specified windows/tabs (defaults to active window). The STRATEGY can be one of: never, always, cursor</p>
-<div class="section" id="id6">
+<section id="id6">
 <h3>Options<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-disable-ligatures-all">
@@ -459,22 +460,22 @@ can use the <a class="reference internal" href="rc_protocol.html"><span class="d
 <dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, index, title, window_id, window_title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id, index and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used. You can also use window_id and window_title to match the tab that contains the window with the specified id or title. The index number is used to match the nth tab in the currently active OS window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-env">
+</section>
+</section>
+<section id="kitty-env">
 <span id="at-env"></span><h2>kitty &#64; env<a class="headerlink" href="#kitty-env" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ env <span class="nv">env_var1</span><span class="o">=</span>val <span class="nv">env_var2</span><span class="o">=</span>val ...
 </pre></div>
 </div>
 <p>Change the environment variables seen by processing in newly launched windows. Similar to the <a class="reference internal" href="conf.html#opt-kitty.env"><code class="xref std std-opt docutils literal notranslate"><span class="pre">env</span></code></a> option in kitty.conf, but affects running kitty instances. Empty values cause the environment variable to be removed.</p>
-</div>
-<div class="section" id="kitty-focus-tab">
+</section>
+<section id="kitty-focus-tab">
 <span id="at-focus-tab"></span><h2>kitty &#64; focus-tab<a class="headerlink" href="#kitty-focus-tab" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ focus-tab <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 </div>
 <p>The active window in the specified tab will be focused.</p>
-<div class="section" id="id7">
+<section id="id7">
 <h3>Options<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-focus-tab-match">
@@ -489,15 +490,15 @@ can use the <a class="reference internal" href="rc_protocol.html"><span class="d
 Default: <code class="code docutils literal notranslate"><span class="pre">false</span></code></p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-focus-window">
+</section>
+</section>
+<section id="kitty-focus-window">
 <span id="at-focus-window"></span><h2>kitty &#64; focus-window<a class="headerlink" href="#kitty-focus-window" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ focus-window <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 </div>
 <p>Focus the specified window, if no window is specified, focus the window this command is run inside.</p>
-<div class="section" id="id8">
+<section id="id8">
 <h3>Options<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-focus-window-match">
@@ -512,15 +513,15 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 Default: <code class="code docutils literal notranslate"><span class="pre">false</span></code></p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-get-colors">
+</section>
+</section>
+<section id="kitty-get-colors">
 <span id="at-get-colors"></span><h2>kitty &#64; get-colors<a class="headerlink" href="#kitty-get-colors" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ get-colors <span class="o">[</span>options<span class="o">]</span> ...
 </pre></div>
 </div>
 <p>Get the terminal colors for the specified window (defaults to active window). Colors will be output to stdout in the same syntax as used for kitty.conf</p>
-<div class="section" id="id9">
+<section id="id9">
 <h3>Options<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-get-colors-configured">
@@ -534,15 +535,15 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 <dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-get-text">
+</section>
+</section>
+<section id="kitty-get-text">
 <span id="at-get-text"></span><h2>kitty &#64; get-text<a class="headerlink" href="#kitty-get-text" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ get-text <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 </div>
 <p>Get text from the specified window</p>
-<div class="section" id="id10">
+<section id="id10">
 <h3>Options<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-get-text-match">
@@ -582,15 +583,15 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">all,<
 <dd><p>If specified get text from the window this command is run in, rather than the active window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-goto-layout">
+</section>
+</section>
+<section id="kitty-goto-layout">
 <span id="at-goto-layout"></span><h2>kitty &#64; goto-layout<a class="headerlink" href="#kitty-goto-layout" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ goto-layout <span class="o">[</span>options<span class="o">]</span> LAYOUT_NAME
 </pre></div>
 </div>
 <p>Set the window layout in the specified tab (or the active tab if not specified). You can use special match value <span class="italic">all</span> to set the layout in all tabs.</p>
-<div class="section" id="id11">
+<section id="id11">
 <h3>Options<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-goto-layout-match">
@@ -598,15 +599,15 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">all,<
 <dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, index, title, window_id, window_title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id, index and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used. You can also use window_id and window_title to match the tab that contains the window with the specified id or title. The index number is used to match the nth tab in the currently active OS window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-kitten">
+</section>
+</section>
+<section id="kitty-kitten">
 <span id="at-kitten"></span><h2>kitty &#64; kitten<a class="headerlink" href="#kitty-kitten" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ kitten <span class="o">[</span>options<span class="o">]</span> kitten_name
 </pre></div>
 </div>
 <p>Run a kitten over the specified window (active window by default). The <span class="italic">kitten_name</span> can be either the name of a builtin kitten or the path to a python file containing a custom kitten. If a relative path is used it is searched for in the kitty config directory. If the kitten is a no_ui kitten and its handle response method returns a string or boolean, this is printed out to stdout.</p>
-<div class="section" id="id12">
+<section id="id12">
 <h3>Options<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-match">
@@ -614,15 +615,15 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">all,<
 <dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-last-used-layout">
+</section>
+</section>
+<section id="kitty-last-used-layout">
 <span id="at-last-used-layout"></span><h2>kitty &#64; last-used-layout<a class="headerlink" href="#kitty-last-used-layout" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ last-used-layout <span class="o">[</span>options<span class="o">]</span> ...
 </pre></div>
 </div>
 <p>Switch to the last used window layout in the specified tab (or the active tab if not specified).</p>
-<div class="section" id="id13">
+<section id="id13">
 <h3>Options<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-last-used-layout-all">
@@ -643,16 +644,16 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 <dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, index, title, window_id, window_title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id, index and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used. You can also use window_id and window_title to match the tab that contains the window with the specified id or title. The index number is used to match the nth tab in the currently active OS window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-launch">
+</section>
+</section>
+<section id="kitty-launch">
 <span id="at-launch"></span><h2>kitty &#64; launch<a class="headerlink" href="#kitty-launch" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span> kitty @ launch <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>CMD ...<span class="o">]</span>
 
 Prints out the id of the newly opened window. Any <span class="nb">command</span> line arguments are assumed to be the <span class="nb">command</span> line used to run <span class="k">in</span> the new window, <span class="k">if</span> none are provided, the default shell is run. For example: :italic:<span class="sb">`</span>kitty @ launch --title Email mutt<span class="sb">`</span>.
 </pre></div>
 </div>
-<div class="section" id="id14">
+<section id="id14">
 <h3>Options<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-launch-match">
@@ -792,16 +793,16 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">&#64;
 <dd><p>Path to a python file. Appropriately named functions in this file will be called for various events, such as when the window is resized, focused or closed. See the section on watchers in the launch command documentation <a class="reference internal" href="launch.html"><span class="doc">Launching programs in new windows/tabs</span></a>. Relative paths are resolved relative to the kitty config directory.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-ls">
+</section>
+</section>
+<section id="kitty-ls">
 <span id="at-ls"></span><h2>kitty &#64; ls<a class="headerlink" href="#kitty-ls" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ ls <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 </div>
 <p>List all windows. The list is returned as JSON tree. The top-level is a list of operating system kitty windows. Each OS window has an <span class="italic">id</span> and a list of <span class="italic">tabs</span>. Each tab has its own <span class="italic">id</span>, a <span class="italic">title</span> and a list of <span class="italic">windows</span>. Each window has an <span class="italic">id</span>, <span class="italic">title</span>, <span class="italic">current working directory</span>, <span class="italic">process id (PID)</span>,  <span class="italic">command-line</span> and <span class="italic">environment</span> of the process running in the window. Additionally, when running the command inside a kitty window, that window can be identified by the <span class="italic">is_self</span> parameter.</p>
 <p>You can use these criteria to select windows/tabs for the other commands.</p>
-<div class="section" id="id15">
+<section id="id15">
 <h3>Options<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-ls-all-env-vars">
@@ -809,16 +810,16 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">&#64;
 <dd><p>Show all environment variables in output not just differing ones.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-new-window">
+</section>
+</section>
+<section id="kitty-new-window">
 <span id="at-new-window"></span><h2>kitty &#64; new-window<a class="headerlink" href="#kitty-new-window" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ new-window <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>CMD ...<span class="o">]</span>
 </pre></div>
 </div>
 <p>Open a new window in the specified tab. If you use the <a class="reference internal" href="#cmdoption-kitty-new-window-match"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">new-window</span> <span class="pre">--match</span></code></a> option the first matching tab is used. Otherwise the currently active tab is used. Prints out the id of the newly opened window (unless <a class="reference internal" href="#cmdoption-kitty-new-window-no-response"><code class="xref std std-option docutils literal notranslate"><span class="pre">--no-response</span></code></a> is used). Any command line arguments are assumed to be the command line used to run in the new window, if none are provided, the default shell is run. For example:
 <span class="italic">kitty &#64; new-window –title Email mutt</span></p>
-<div class="section" id="id16">
+<section id="id16">
 <h3>Options<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-new-window-match">
@@ -871,15 +872,15 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">kitty
 Default: <code class="code docutils literal notranslate"><span class="pre">false</span></code></p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-remove-marker">
+</section>
+</section>
+<section id="kitty-remove-marker">
 <span id="at-remove-marker"></span><h2>kitty &#64; remove-marker<a class="headerlink" href="#kitty-remove-marker" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ remove-marker <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 </div>
 <p>Remove the currently set marker, if any.</p>
-<div class="section" id="id17">
+<section id="id17">
 <h3>Options<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-remove-marker-match">
@@ -893,15 +894,15 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 <dd><p>If specified apply marker to the window this command is run in, rather than the active window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-resize-window">
+</section>
+</section>
+<section id="kitty-resize-window">
 <span id="at-resize-window"></span><h2>kitty &#64; resize-window<a class="headerlink" href="#kitty-resize-window" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ resize-window <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 </div>
 <p>Resize the specified window in the current layout. Note that not all layouts can resize all windows in all directions.</p>
-<div class="section" id="id18">
+<section id="id18">
 <h3>Options<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-resize-window-match">
@@ -930,15 +931,15 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 <dd><p>If specified resize the window this command is run in, rather than the active window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-scroll-window">
+</section>
+</section>
+<section id="kitty-scroll-window">
 <span id="at-scroll-window"></span><h2>kitty &#64; scroll-window<a class="headerlink" href="#kitty-scroll-window" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ scroll-window <span class="o">[</span>options<span class="o">]</span> SCROLL_AMOUNT
 </pre></div>
 </div>
 <p>Scroll the specified window, if no window is specified, scroll the window this command is run inside. SCROLL_AMOUNT can be either the keywords <code class="code docutils literal notranslate"><span class="pre">start</span></code> or <code class="code docutils literal notranslate"><span class="pre">end</span></code> or an argument of the form &lt;number&gt;[unit][+-]. For example, 30 will scroll down 30 lines and 2p- will scroll up 2 pages. 3u will <em>unscroll</em> by 3 lines, which means that 3 lines will move from the scrollback buffer onto the top of the screen.</p>
-<div class="section" id="id19">
+<section id="id19">
 <h3>Options<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-scroll-window-match">
@@ -946,15 +947,15 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 <dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-send-text">
+</section>
+</section>
+<section id="kitty-send-text">
 <span id="at-send-text"></span><h2>kitty &#64; send-text<a class="headerlink" href="#kitty-send-text" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ send-text <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>TEXT TO SEND<span class="o">]</span>
 </pre></div>
 </div>
 <p>Send arbitrary text to specified windows. The text follows Python escaping rules. So you can use escapes like <span class="italic">x1b</span> to send control codes and <span class="italic">u21fa</span> to send unicode characters. If you use the <a class="reference internal" href="#cmdoption-kitty-send-text-match"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">send-text</span> <span class="pre">--match</span></code></a> option the text will be sent to all matched windows. By default, text is sent to only the currently active window.</p>
-<div class="section" id="id20">
+<section id="id20">
 <h3>Options<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-send-text-match">
@@ -992,15 +993,15 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">horiz
 <dd><p>Do not send text to the active window, even if it is one of the matched windows.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-set-background-image">
+</section>
+</section>
+<section id="kitty-set-background-image">
 <span id="at-set-background-image"></span><h2>kitty &#64; set-background-image<a class="headerlink" href="#kitty-set-background-image" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ set-background-image <span class="o">[</span>options<span class="o">]</span> PATH_TO_PNG_IMAGE
 </pre></div>
 </div>
 <p>Set the background image for the specified OS windows. You must specify the path to a PNG image that will be used as the background. If you specify the special value “none” then any existing image will be removed.</p>
-<div class="section" id="id21">
+<section id="id21">
 <h3>Options<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-set-background-image-all">
@@ -1034,15 +1035,15 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 <dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-set-background-opacity">
+</section>
+</section>
+<section id="kitty-set-background-opacity">
 <span id="at-set-background-opacity"></span><h2>kitty &#64; set-background-opacity<a class="headerlink" href="#kitty-set-background-opacity" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ set-background-opacity <span class="o">[</span>options<span class="o">]</span> OPACITY
 </pre></div>
 </div>
 <p>Set the background opacity for the specified windows. This will only work if you have turned on <a class="reference internal" href="conf.html#opt-kitty.dynamic_background_opacity"><code class="xref std std-opt docutils literal notranslate"><span class="pre">dynamic_background_opacity</span></code></a> in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>. The background opacity affects all kitty windows in a single os_window. For example: kitty &#64; set-background-opacity 0.5</p>
-<div class="section" id="id22">
+<section id="id22">
 <h3>Options<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-set-background-opacity-all">
@@ -1062,15 +1063,15 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 <dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, index, title, window_id, window_title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id, index and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used. You can also use window_id and window_title to match the tab that contains the window with the specified id or title. The index number is used to match the nth tab in the currently active OS window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-set-colors">
+</section>
+</section>
+<section id="kitty-set-colors">
 <span id="at-set-colors"></span><h2>kitty &#64; set-colors<a class="headerlink" href="#kitty-set-colors" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ set-colors <span class="o">[</span>options<span class="o">]</span> COLOR_OR_FILE ...
 </pre></div>
 </div>
 <p>Set the terminal colors for the specified windows/tabs (defaults to active window). You can either specify the path to a conf file (in the same format as kitty.conf) to read the colors from or you can specify individual colors, for example: kitty &#64; set-colors foreground=red background=white</p>
-<div class="section" id="id23">
+<section id="id23">
 <h3>Options<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-set-colors-all">
@@ -1102,15 +1103,15 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 <dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, index, title, window_id, window_title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id, index and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used. You can also use window_id and window_title to match the tab that contains the window with the specified id or title. The index number is used to match the nth tab in the currently active OS window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-set-font-size">
+</section>
+</section>
+<section id="kitty-set-font-size">
 <span id="at-set-font-size"></span><h2>kitty &#64; set-font-size<a class="headerlink" href="#kitty-set-font-size" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ set-font-size <span class="o">[</span>options<span class="o">]</span> FONT_SIZE
 </pre></div>
 </div>
 <p>Sets the font size to the specified size, in pts. Note that in kitty all sub-windows in the same OS window must have the same font size. A value of zero resets the font size to default. Prefixing the value with a + or - increments the font size by the specified amount.</p>
-<div class="section" id="id24">
+<section id="id24">
 <h3>Options<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-set-font-size-all">
@@ -1118,15 +1119,15 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 <dd><p>By default, the font size is only changed in the active OS window, this option will cause it to be changed in all OS windows. It also changes the font size for any newly created OS Windows in the future.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-set-spacing">
+</section>
+</section>
+<section id="kitty-set-spacing">
 <span id="at-set-spacing"></span><h2>kitty &#64; set-spacing<a class="headerlink" href="#kitty-set-spacing" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ set-spacing <span class="o">[</span>options<span class="o">]</span> MARGIN_OR_PADDING ...
 </pre></div>
 </div>
 <p>Set the padding and margins for the specified windows (defaults to active window). For example: margin=20 or padding-left=10 or margin-h=30. The shorthand form sets all values, the <code class="code docutils literal notranslate"><span class="pre">*-h</span></code> and <code class="code docutils literal notranslate"><span class="pre">*-v</span></code> variants set horizontal and vertical values. The special value “default” resets to using the default value. If you specify a tab rather than a window, all windows in that tab are affected.</p>
-<div class="section" id="id25">
+<section id="id25">
 <h3>Options<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-set-spacing-all">
@@ -1152,15 +1153,15 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 <dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, index, title, window_id, window_title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id, index and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used. You can also use window_id and window_title to match the tab that contains the window with the specified id or title. The index number is used to match the nth tab in the currently active OS window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-set-tab-title">
+</section>
+</section>
+<section id="kitty-set-tab-title">
 <span id="at-set-tab-title"></span><h2>kitty &#64; set-tab-title<a class="headerlink" href="#kitty-set-tab-title" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ set-tab-title <span class="o">[</span>options<span class="o">]</span> TITLE ...
 </pre></div>
 </div>
 <p>Set the title for the specified tab(s). If you use the <a class="reference internal" href="#cmdoption-kitty-set-tab-title-match"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">set-tab-title</span> <span class="pre">--match</span></code></a> option the title will be set for all matched tabs. By default, only the tab in which the command is run is affected. If you do not specify a title, the title of the currently active window in the tab is used.</p>
-<div class="section" id="id26">
+<section id="id26">
 <h3>Options<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-set-tab-title-match">
@@ -1168,15 +1169,15 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 <dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, index, title, window_id, window_title, pid, cwd, env, cmdline. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id, index and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used. You can also use window_id and window_title to match the tab that contains the window with the specified id or title. The index number is used to match the nth tab in the currently active OS window.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-set-window-title">
+</section>
+</section>
+<section id="kitty-set-window-title">
 <span id="at-set-window-title"></span><h2>kitty &#64; set-window-title<a class="headerlink" href="#kitty-set-window-title" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ set-window-title <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>TITLE ...<span class="o">]</span>
 </pre></div>
 </div>
 <p>Set the title for the specified window(s). If you use the <a class="reference internal" href="#cmdoption-kitty-set-window-title-match"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">set-window-title</span> <span class="pre">--match</span></code></a> option the title will be set for all matched windows. By default, only the window in which the command is run is affected. If you do not specify a title, the last title set by the child process running in the window will be used.</p>
-<div class="section" id="id27">
+<section id="id27">
 <h3>Options<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-set-window-title-temporary">
@@ -1190,9 +1191,9 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 <dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="kitty-signal-child">
+</section>
+</section>
+<section id="kitty-signal-child">
 <span id="at-signal-child"></span><h2>kitty &#64; signal-child<a class="headerlink" href="#kitty-signal-child" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty @ signal-child <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>SIGNAL_NAME ...<span class="o">]</span>
 </pre></div>
@@ -1201,7 +1202,7 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>map F1 signal_child SIGTERM
 </pre></div>
 </div>
-<div class="section" id="id28">
+<section id="id28">
 <h3>Options<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-signal-child-match">
@@ -1209,9 +1210,9 @@ Default: <code class="code docutils literal notranslate"><span class="pre">false
 <dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
 </dd></dl>
 
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>

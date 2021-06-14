@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Building kitty from source &#8212; kitty 0.21.0 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Building kitty from source &#8212; kitty 0.21.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -103,7 +104,7 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="building-kitty-from-source">
+  <section id="building-kitty-from-source">
 <h1>Building kitty from source<a class="headerlink" href="#building-kitty-from-source" title="Permalink to this headline">¶</a></h1>
 <a class="reference external image-reference" href="https://github.com/kovidgoyal/kitty/actions?query=workflow%3ACI"><img alt="Build status" src="https://github.com/kovidgoyal/kitty/workflows/CI/badge.svg" /></a>
 <p><em>kitty</em> is designed to run from source, for easy hack-ability. Make sure
@@ -118,7 +119,7 @@ code. kitty will then load its python code from there. You should use a
 version of the source that matches the binary version as closely as
 possible, since the two are tightly coupled.</p>
 </div>
-<div class="section" id="dependencies">
+<section id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Run-time dependencies:</p>
 <blockquote>
@@ -145,8 +146,8 @@ possible, since the two are tightly coupled.</p>
 if they are not already installed by your distro.</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="install-and-run-from-source">
+</section>
+<section id="install-and-run-from-source">
 <h2>Install and run from source<a class="headerlink" href="#install-and-run-from-source" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/kovidgoyal/kitty <span class="o">&amp;&amp;</span> <span class="nb">cd</span> kitty
 </pre></div>
@@ -162,8 +163,8 @@ if they are not already installed by your distro.</p></li>
 <p>If that works, you can create a symlink to the launcher in <code class="file docutils literal notranslate"><span class="pre">~/bin</span></code> or
 some other directory on your PATH so that you can run <em>kitty</em> using
 just <code class="docutils literal notranslate"><span class="pre">kitty</span></code>.</p>
-</div>
-<div class="section" id="building-kitty-app-on-macos-from-source">
+</section>
+<section id="building-kitty-app-on-macos-from-source">
 <h2>Building kitty.app on macOS from source<a class="headerlink" href="#building-kitty-app-on-macos-from-source" title="Permalink to this headline">¶</a></h2>
 <p>Run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">app</span>
@@ -185,8 +186,8 @@ run on Linux and is not for the faint of heart.</p>
 If you need this functionality, you can try signing the built kitty.app with
 a self signed certificate, see for example, <a class="reference external" href="https://stackoverflow.com/questions/27474751/how-can-i-codesign-an-app-without-being-in-the-mac-developer-program/27474942">here</a>.</p>
 </div>
-</div>
-<div class="section" id="build-and-run-from-source-with-nix">
+</section>
+<section id="build-and-run-from-source-with-nix">
 <h2>Build and run from source with Nix<a class="headerlink" href="#build-and-run-from-source-with-nix" title="Permalink to this headline">¶</a></h2>
 <p>On NixOS or any other Linux or macOS system with the Nix package manager
 installed, execute <a class="reference external" href="https://nixos.org/guides/nix-pills/developing-with-nix-shell.html">nix-shell</a> to create
@@ -195,10 +196,10 @@ eliminate most of the influence of the outside system, e.g. globally installed
 packages. <code class="docutils literal notranslate"><span class="pre">nix-shell</span></code> will automatically fetch all required dependencies and
 make them available in the newly spawned shell.</p>
 <p>Then proceed with <code class="docutils literal notranslate"><span class="pre">make</span></code> or <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">app</span></code> according to the platform specific instructions above.</p>
-</div>
-<div class="section" id="note-for-linux-macos-packagers">
+</section>
+<section id="note-for-linux-macos-packagers">
 <h2>Note for Linux/macOS packagers<a class="headerlink" href="#note-for-linux-macos-packagers" title="Permalink to this headline">¶</a></h2>
-<p>The released <em>kitty</em> source code is available as a <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases/download/v0.21.0/kitty-0.21.0.tar.xz">tarball</a> from
+<p>The released <em>kitty</em> source code is available as a <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases/download/v0.21.1/kitty-0.21.1.tar.xz">tarball</a> from
 <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases">the GitHub releases page</a>.</p>
 <p>While <em>kitty</em> does use python, it is not a traditional python package, so please
 do not install it in site-packages.
@@ -233,8 +234,8 @@ brew or MacPorts as well.</p>
 it off for your package, use
 <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">setup.py</span> <span class="pre">linux-package</span> <span class="pre">--update-check-interval=0</span></code></p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>

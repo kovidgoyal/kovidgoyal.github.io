@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A protocol for comprehensive keyboard handling in terminals &#8212; kitty 0.21.0 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>A protocol for comprehensive keyboard handling in terminals &#8212; kitty 0.21.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -124,7 +125,7 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="a-protocol-for-comprehensive-keyboard-handling-in-terminals">
+  <section id="a-protocol-for-comprehensive-keyboard-handling-in-terminals">
 <h1>A protocol for comprehensive keyboard handling in terminals<a class="headerlink" href="#a-protocol-for-comprehensive-keyboard-handling-in-terminals" title="Permalink to this headline">¶</a></h1>
 <p>There are various problems with the current state of keyboard handling in
 terminals. They include:</p>
@@ -152,7 +153,7 @@ issues in that proposal, listed at the <a class="reference internal" href="#fixt
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.20.0.</span></p>
 </div>
-<div class="section" id="quickstart">
+<section id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
 <p>If you are an application or library developer just interested in using this
 protocol to make keyboard handling simpler and more robust in your application,
@@ -188,8 +189,8 @@ giving an escape code of the form <code class="docutils literal notranslate"><sp
 events, alternate keys for shortcut matching et cetera, these can be turned on
 using <a class="reference internal" href="#progressive-enhancement"><span class="std std-ref">Progressive enhancement</span></a> as documented in the rest of this
 specification.</p>
-</div>
-<div class="section" id="an-overview">
+</section>
+<section id="an-overview">
 <h2>An overview<a class="headerlink" href="#an-overview" title="Permalink to this headline">¶</a></h2>
 <p>Key events are divided into two types, those that produce text and those that
 do not. When a key event produces text, the text is sent directly as UTF-8
@@ -211,7 +212,7 @@ key events.</p>
 are separated by the semi-colon and sub-fields by the colon. Only the
 <code class="docutils literal notranslate"><span class="pre">unicode-key-code</span></code> field is mandatory, everything else is optional. The
 escape code is terminated by the <code class="docutils literal notranslate"><span class="pre">u</span></code> character (the byte <code class="docutils literal notranslate"><span class="pre">0x75</span></code>).</p>
-<div class="section" id="key-codes">
+<section id="key-codes">
 <span id="id1"></span><h3>Key codes<a class="headerlink" href="#key-codes" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">unicode-key-code</span></code> above is the Unicode codepoint representing the key, as a
 decimal number. For example, the <kbd class="kbd docutils literal notranslate">A</kbd> key is represented as <code class="docutils literal notranslate"><span class="pre">97</span></code> which is
@@ -239,8 +240,8 @@ sub-field for the shifted key, like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="n">unicode</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">code</span><span class="p">::</span><span class="n">base</span><span class="o">-</span><span class="n">layout</span><span class="o">-</span><span class="n">key</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="modifiers">
+</section>
+<section id="modifiers">
 <span id="id2"></span><h3>Modifiers<a class="headerlink" href="#modifiers" title="Permalink to this headline">¶</a></h3>
 <p>This protocol supports six modifier keys, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift,</kbd> <kbd class="kbd docutils literal notranslate">alt,</kbd> <kbd class="kbd docutils literal notranslate">ctrl,</kbd> <kbd class="kbd docutils literal notranslate">super,</kbd> <kbd class="kbd docutils literal notranslate">hyper</kbd>
 <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">meta</kbd></kbd> as well as <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">num_lock</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">caps_lock</kbd></kbd>. Here <kbd class="kbd docutils literal notranslate">super</kbd> is either
@@ -262,8 +263,8 @@ rules. Modifiers are encoded as a bit field with:</p>
 <span class="pre">1</span> <span class="pre">=</span> <span class="pre">2</span></code>, to represent <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd></kbd> the value would be <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">0b101</span> <span class="pre">=</span> <span class="pre">6</span></code>
 and so on. If the modifier field is not present in the escape code, its default
 value is <code class="docutils literal notranslate"><span class="pre">1</span></code> which means no modifiers.</p>
-</div>
-<div class="section" id="event-types">
+</section>
+<section id="event-types">
 <span id="id3"></span><h3>Event types<a class="headerlink" href="#event-types" title="Permalink to this headline">¶</a></h3>
 <p>There are three key event types: <code class="docutils literal notranslate"><span class="pre">press,</span> <span class="pre">repeat</span> <span class="pre">and</span> <span class="pre">release</span></code>. They are
 reported (if requested <code class="docutils literal notranslate"><span class="pre">0b10</span></code>) as a sub-field of the modifiers field
@@ -285,8 +286,8 @@ field is present. The <code class="docutils literal notranslate"><span class="pr
 events are not supported for them, unless the application requests <em>key
 report mode</em>, see below.</p>
 </div>
-</div>
-<div class="section" id="text-as-code-points">
+</section>
+<section id="text-as-code-points">
 <span id="text-as-codepoints"></span><h3>Text as code points<a class="headerlink" href="#text-as-code-points" title="Permalink to this headline">¶</a></h3>
 <p>The terminal can optionally send the text associated with key events as a
 sequence of Unicode code points. This behavior is opt-in by the <a class="reference internal" href="#progressive-enhancement"><span class="std std-ref">progressive
@@ -297,8 +298,8 @@ enhancement</span></a> mechanism described below. Some examples:</p>
 </div>
 <p>If multiple code points are present, they must be separated by colons.
 If no known key is associated with the text the key number <code class="docutils literal notranslate"><span class="pre">0</span></code> must be used.</p>
-</div>
-<div class="section" id="non-unicode-keys">
+</section>
+<section id="non-unicode-keys">
 <h3>Non-Unicode keys<a class="headerlink" href="#non-unicode-keys" title="Permalink to this headline">¶</a></h3>
 <p>There are many keys that don't correspond to letters from human languages, and
 thus aren't represented in Unicode. Think of functional keys, such as
@@ -306,9 +307,9 @@ thus aren't represented in Unicode. Think of functional keys, such as
 points from the Private Use Area (<code class="docutils literal notranslate"><span class="pre">57344</span> <span class="pre">-</span> <span class="pre">63743</span></code>). The mapping of key
 names to code points for these keys is in the
 <a class="reference internal" href="#functional"><span class="std std-ref">Functional key definition table below</span></a>.</p>
-</div>
-</div>
-<div class="section" id="progressive-enhancement">
+</section>
+</section>
+<section id="progressive-enhancement">
 <span id="id4"></span><h2>Progressive enhancement<a class="headerlink" href="#progressive-enhancement" title="Permalink to this headline">¶</a></h2>
 <p>While, in theory, every key event could be completely represented by this
 protocol and all would be hunk-dory, in reality there is a vast universe of
@@ -383,7 +384,7 @@ oldest entry from the stack must be evicted.</p>
 These codes cause XTerm to use the CSI u encoding for more keys and are therefore
 treated as similar to the disambiguate progressive enhancement.</p>
 </div>
-<div class="section" id="disambiguate-escape-codes">
+<section id="disambiguate-escape-codes">
 <span id="disambiguate"></span><h3>Disambiguate escape codes<a class="headerlink" href="#disambiguate-escape-codes" title="Permalink to this headline">¶</a></h3>
 <p>This type of progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b1</span></code>) fixes the problem of some legacy key press
 encodings overlapping with other control codes. For instance, pressing the
@@ -409,21 +410,21 @@ are the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd d
 bytes as in legacy mode this is to allow the user to type and execute commands
 in the shell such as <code class="docutils literal notranslate"><span class="pre">reset</span></code> after a program that sets this mode crashes
 without clearing it.</p>
-</div>
-<div class="section" id="report-event-types">
+</section>
+<section id="report-event-types">
 <span id="report-events"></span><h3>Report event types<a class="headerlink" href="#report-event-types" title="Permalink to this headline">¶</a></h3>
 <p>This progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b10</span></code>) causes the terminal to report key repeat
 and key release events. Normally only key press events are reported and key
 repeat events are treated as key press events. See <a class="reference internal" href="#event-types"><span class="std std-ref">Event types</span></a> for
 details on how these are reported.</p>
-</div>
-<div class="section" id="report-alternate-keys">
+</section>
+<section id="report-alternate-keys">
 <span id="report-alternates"></span><h3>Report alternate keys<a class="headerlink" href="#report-alternate-keys" title="Permalink to this headline">¶</a></h3>
 <p>This progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b100</span></code>) causes the terminal to report
 alternate key values in addition to the main value, to aid in shortcut
 matching. See <a class="reference internal" href="#key-codes"><span class="std std-ref">Key codes</span></a> for details on how these are reported.</p>
-</div>
-<div class="section" id="report-all-keys-as-escape-codes">
+</section>
+<section id="report-all-keys-as-escape-codes">
 <span id="report-all-keys"></span><h3>Report all keys as escape codes<a class="headerlink" href="#report-all-keys-as-escape-codes" title="Permalink to this headline">¶</a></h3>
 <p>Key events that generate text, such as plain key presses without modifiers,
 result in just the text being sent, in the legacy protocol. There is no way to
@@ -436,15 +437,15 @@ Report associated text enhancement below.</p>
 <p>Additionally, with this mode, events for pressing modifier keys are reported.
 Note that <em>all</em> keys are reported as escape codes, including <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Enter,</kbd> <kbd class="kbd docutils literal notranslate">Tab,</kbd>
 <kbd class="kbd docutils literal notranslate">Backspace</kbd></kbd> etc.</p>
-</div>
-<div class="section" id="report-associated-text">
+</section>
+<section id="report-associated-text">
 <span id="report-text"></span><h3>Report associated text<a class="headerlink" href="#report-associated-text" title="Permalink to this headline">¶</a></h3>
 <p>This progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b10000</span></code>) causes key events that generate text
 to be reported as <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> escape codes with the text embedded in the escape
 code. See <a class="reference internal" href="#text-as-codepoints"><span class="std std-ref">Text as code points</span></a> above for details on the mechanism.</p>
-</div>
-</div>
-<div class="section" id="detection-of-support-for-this-protocol">
+</section>
+</section>
+<section id="detection-of-support-for-this-protocol">
 <span id="detection"></span><h2>Detection of support for this protocol<a class="headerlink" href="#detection-of-support-for-this-protocol" title="Permalink to this headline">¶</a></h2>
 <p>An application can query the terminal for support of this protocol by sending
 the escape code querying for the <a class="reference internal" href="#progressive-enhancement"><span class="std std-ref">current progressive enhancement</span></a> status
@@ -452,8 +453,8 @@ followed by request for the <cite>primary device attributes
 &lt;https://vt100.net/docs/vt510-rm/DA1.html&gt;</cite>. If an answer for the device
 attributes is received without getting back an answer for the progressive
 enhancement the terminal does not support this protocol.</p>
-</div>
-<div class="section" id="legacy-key-event-encoding">
+</section>
+<section id="legacy-key-event-encoding">
 <h2>Legacy key event encoding<a class="headerlink" href="#legacy-key-event-encoding" title="Permalink to this headline">¶</a></h2>
 <p>In the default mode, the terminal uses a legacy encoding for key events. In
 this encoding, only key press and repeat events are sent and there is no
@@ -462,7 +463,7 @@ way to distinguish between them. Text is sent directly as UTF-8 bytes.</p>
 <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> encoding. This includes keys that are not encodable in the legacy
 encoding, thereby increasing the space of usable key combinations even without
 progressive enhancement.</p>
-<div class="section" id="legacy-functional-keys">
+<section id="legacy-functional-keys">
 <h3>Legacy functional keys<a class="headerlink" href="#legacy-functional-keys" title="Permalink to this headline">¶</a></h3>
 <p>These keys are encoded using three schemes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="n">number</span> <span class="p">;</span> <span class="n">modifier</span> <span class="o">~</span>
@@ -665,8 +666,8 @@ terminals, this can be detected using the <code class="docutils literal notransl
 must correspond to the <kbd class="kbd docutils literal notranslate">Backspace</kbd> key.</p>
 <p>All keypad keys are reported as their equivalent non-keypad keys. To
 distinguish these, use the <a class="reference internal" href="#disambiguate"><span class="std std-ref">disambiguate</span></a> flag.</p>
-</div>
-<div class="section" id="legacy-text-keys">
+</section>
+<section id="legacy-text-keys">
 <span id="legacy-text"></span><h3>Legacy text keys<a class="headerlink" href="#legacy-text-keys" title="Permalink to this headline">¶</a></h3>
 <p>For legacy compatibility, the keys
 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">a</kbd>-<kbd class="kbd docutils literal notranslate">z</kbd> <kbd class="kbd docutils literal notranslate">0</kbd>-<kbd class="kbd docutils literal notranslate">9</kbd> <kbd class="kbd docutils literal notranslate">`</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate"></kbd> <kbd class="kbd docutils literal notranslate">=</kbd> <kbd class="kbd docutils literal notranslate">[</kbd> <kbd class="kbd docutils literal notranslate">]</kbd> <kbd class="kbd docutils literal notranslate">;</kbd> <kbd class="kbd docutils literal notranslate">'</kbd> <kbd class="kbd docutils literal notranslate">,</kbd> <kbd class="kbd docutils literal notranslate">.</kbd> <kbd class="kbd docutils literal notranslate">/</kbd></kbd> with the modifiers
@@ -744,9 +745,9 @@ same as <kbd class="kbd docutils literal notranslate">tab</kbd>, <kbd class="kbd
 is the same <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">r</kbd></kbd>, etc. To resolve these use the
 <a class="reference internal" href="#disambiguate"><span class="std std-ref">disambiguate progressive enhancement</span></a>.</p>
 </div>
-</div>
-</div>
-<div class="section" id="functional-key-definitions">
+</section>
+</section>
+<section id="functional-key-definitions">
 <span id="functional"></span><h2>Functional key definitions<a class="headerlink" href="#functional-key-definitions" title="Permalink to this headline">¶</a></h2>
 <p>All numbers are in the Unicode Private Use Area (<code class="docutils literal notranslate"><span class="pre">57344</span> <span class="pre">-</span> <span class="pre">63743</span></code>) except
 for a handful of keys that use numbers under 32 and 127 (C0 control codes) for legacy
@@ -1051,8 +1052,8 @@ compatibility reasons.</p>
 </table>
 <p>Note that the escape codes above of the form <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">1</span> <span class="pre">letter</span></code> will omit the
 <code class="docutils literal notranslate"><span class="pre">1</span></code> if there are no modifiers, since <code class="docutils literal notranslate"><span class="pre">1</span></code> is the default value.</p>
-</div>
-<div class="section" id="legacy-ctrl-mapping-of-ascii-keys">
+</section>
+<section id="legacy-ctrl-mapping-of-ascii-keys">
 <span id="ctrl-mapping"></span><h2>Legacy <kbd class="kbd docutils literal notranslate">ctrl</kbd> mapping of ASCII keys<a class="headerlink" href="#legacy-ctrl-mapping-of-ascii-keys" title="Permalink to this headline">¶</a></h2>
 <p>When the <kbd class="kbd docutils literal notranslate">ctrl</kbd> key and another key are pressed on the keyboard, terminals
 map the result <em>for some keys</em> to a <em>C0 control code</em> i.e. an value from <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">-</span>
@@ -1195,8 +1196,8 @@ Any ASCII keys not in the table must be left untouched by <kbd class="kbd docuti
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="bugs-in-fixterms">
+</section>
+<section id="bugs-in-fixterms">
 <span id="fixterms-bugs"></span><h2>Bugs in fixterms<a class="headerlink" href="#bugs-in-fixterms" title="Permalink to this headline">¶</a></h2>
 <p>The following is a list of errata in the <a class="reference external" href="http://www.leonerd.org.uk/hacks/fixterms/">original fixterms proposal</a>, corrected in this
 specification.</p>
@@ -1231,8 +1232,8 @@ to the terminal not from the terminal.</p></li>
 does this only for some keys. The action of <kbd class="kbd docutils literal notranslate">ctrl</kbd> is not specified and
 varies between terminals, historically because of different keyboard layouts.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>

@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>kitty-diff - A fast side-by-side diff tool with syntax highlighting and images &#8212; kitty 0.21.0 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>kitty-diff - A fast side-by-side diff tool with syntax highlighting and images &#8212; kitty 0.21.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -115,9 +116,9 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="kitty-diff-a-fast-side-by-side-diff-tool-with-syntax-highlighting-and-images">
+  <section id="kitty-diff-a-fast-side-by-side-diff-tool-with-syntax-highlighting-and-images">
 <h1>kitty-diff - A fast side-by-side diff tool with syntax highlighting and images<a class="headerlink" href="#kitty-diff-a-fast-side-by-side-diff-tool-with-syntax-highlighting-and-images" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="major-features">
+<section id="major-features">
 <h2>Major Features<a class="headerlink" href="#major-features" title="Permalink to this headline">¶</a></h2>
 <div class="major-features docutils container">
 <ul class="simple">
@@ -128,20 +129,22 @@ speed</p></li>
 <li><p>Does recursive directory diffing</p></li>
 </ul>
 </div>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/diff.png"><img alt="Screenshot, showing a sample diff" src="../_images/diff.png" style="width: 1640.0px; height: 919.0px;" /></a>
-<p class="caption"><span class="caption-text">Screenshot, showing a sample diff</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="installation">
+<figcaption>
+<p><span class="caption-text">Screenshot, showing a sample diff</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>Simply <a class="reference internal" href="../index.html#quickstart"><span class="std std-ref">install kitty</span></a>.  You also need
 to have either the <a class="reference external" href="https://git-scm.com/">git</a> program or the <code class="docutils literal notranslate"><span class="pre">diff</span></code> program
 installed. Additionally, for syntax highlighting to work,
 <a class="reference external" href="http://pygments.org/">pygments</a> must be installed (note that pygments is
 included in the macOS kitty app).</p>
-</div>
-<div class="section" id="usage">
+</section>
+<section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>In the kitty terminal, run:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten diff file1 file2
@@ -158,8 +161,8 @@ included in the macOS kitty app).</p>
 </div>
 <p>You can also pass directories instead of files to see the recursive diff of the
 directory contents.</p>
-</div>
-<div class="section" id="keyboard-controls">
+</section>
+<section id="keyboard-controls">
 <h2>Keyboard controls<a class="headerlink" href="#keyboard-controls" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -234,8 +237,8 @@ directory contents.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="integrating-with-git">
+</section>
+<section id="integrating-with-git">
 <h2>Integrating with git<a class="headerlink" href="#integrating-with-git" title="Permalink to this headline">¶</a></h2>
 <p>Add the following to <cite>~/.gitconfig</cite>:</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[diff]</span>
@@ -255,22 +258,22 @@ directory contents.</p>
 </pre></div>
 </div>
 <p>Once again, creating an alias for this command is useful.</p>
-</div>
-<div class="section" id="why-does-this-work-only-in-kitty">
+</section>
+<section id="why-does-this-work-only-in-kitty">
 <h2>Why does this work only in kitty?<a class="headerlink" href="#why-does-this-work-only-in-kitty" title="Permalink to this headline">¶</a></h2>
 <p>The diff kitten makes use of various features that are <a class="reference internal" href="../protocol-extensions.html"><span class="doc">kitty only</span></a>,  such as the <a class="reference internal" href="../graphics-protocol.html"><span class="doc">kitty graphics protocol</span></a>, the <a class="reference internal" href="../protocol-extensions.html#extended-key-protocol"><span class="std std-ref">extended keyboard protocol</span></a>, etc. It also leverages terminal program
 infrastructure I created for all of kitty’s other kittens to reduce the amount
 of code needed (the entire implementation is under 2000 lines of code).</p>
 <p>And fundamentally, it’s kitty only because I wrote it for myself, and I am
 highly unlikely to use any other terminals :)</p>
-</div>
-<div class="section" id="configuration">
+</section>
+<section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <p>You can configure the colors used, keyboard shortcuts, the diff implementation,
 the default lines of context, etc.  by creating a <code class="file docutils literal notranslate"><span class="pre">diff.conf</span></code> file in
 your <a class="reference internal" href="../conf.html#confloc"><span class="std std-ref">kitty config folder</span></a>. See below for the supported
 configuration directives.</p>
-<div class="section" id="diffing">
+<section id="diffing">
 <span id="conf-kitten-diff-diff"></span><h3>Diffing<a class="headerlink" href="#diffing" title="Permalink to this headline">¶</a></h3>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-diff.syntax_aliases">
@@ -311,8 +314,8 @@ system for either git or diff and use that, if found.</p>
 </pre></div>
 </div>
 <p>The string to replace tabs with. Default is to use four spaces.</p>
-</div>
-<div class="section" id="colors">
+</section>
+<section id="colors">
 <span id="conf-kitten-diff-colors"></span><h3>Colors<a class="headerlink" href="#colors" title="Permalink to this headline">¶</a></h3>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-diff.pygments_style">
@@ -415,8 +418,8 @@ system for either git or diff and use that, if found.</p>
 </pre></div>
 </div>
 <p>Highlighting</p>
-</div>
-<div class="section" id="keyboard-shortcuts">
+</section>
+<section id="keyboard-shortcuts">
 <span id="conf-kitten-diff-shortcuts"></span><h3>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h3>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Quit">
@@ -576,15 +579,15 @@ system for either git or diff and use that, if found.</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">b</span><span class="w"> </span><span class="nf">start_search</span><span class="w"> </span><span class="s">substring backward</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="command-line-interface">
+</section>
+</section>
+<section id="command-line-interface">
 <h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten diff <span class="o">[</span>options<span class="o">]</span> file_or_directory_left file_or_directory_right
 </pre></div>
 </div>
 <p>Show a side-by-side diff of the specified files/directories. You can also use <a class="reference external" href="ssh:hostname:remote-file-path">ssh:hostname:remote-file-path</a> to diff remote files.</p>
-<div class="section" id="options">
+<section id="options">
 <h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-diff-context">
@@ -608,14 +611,14 @@ Default: <code class="code docutils literal notranslate"><span class="pre">-1</s
 <dd><p>Override individual configuration options, can be specified multiple times. Syntax: <span class="italic">name=value</span>. For example: <span class="italic">-o background=gray</span></p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="sample-diff-conf">
+</section>
+</section>
+<section id="sample-diff-conf">
 <h2>Sample diff.conf<a class="headerlink" href="#sample-diff-conf" title="Permalink to this headline">¶</a></h2>
 <p>You can download a sample <code class="file docutils literal notranslate"><span class="pre">diff.conf</span></code> file with all default settings and
 comments describing each setting by clicking: <a class="reference download internal" download="" href="../_downloads/a489ebbb52d84eeb19a12b2fda7debda/diff.conf"><code class="xref download docutils literal notranslate"><span class="pre">sample</span> <span class="pre">diff.conf</span></code></a>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>

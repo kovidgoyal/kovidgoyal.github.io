@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The terminal graphics protocol &#8212; kitty 0.21.0 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>The terminal graphics protocol &#8212; kitty 0.21.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -124,7 +125,7 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="the-terminal-graphics-protocol">
+  <section id="the-terminal-graphics-protocol">
 <h1>The terminal graphics protocol<a class="headerlink" href="#the-terminal-graphics-protocol" title="Permalink to this headline">¶</a></h1>
 <p>The goal of this specification is to create a flexible and performant protocol
 that allows the program running in the terminal, hereafter called the <em>client</em>,
@@ -203,7 +204,7 @@ information tool</p></li>
 <li><p><a class="reference internal" href="#interaction-with-other-terminal-actions" id="id24">Interaction with other terminal actions</a></p></li>
 </ul>
 </div>
-<div class="section" id="getting-the-window-size">
+<section id="getting-the-window-size">
 <h2><a class="toc-backref" href="#id3">Getting the window size</a><a class="headerlink" href="#getting-the-window-size" title="Permalink to this headline">¶</a></h2>
 <p>In order to know what size of images to display and how to position them, the
 client must be able to get the window size in pixels and the number of cells
@@ -236,8 +237,8 @@ terminals that return correct values: <code class="docutils literal notranslate"
 <code class="docutils literal notranslate"><span class="pre">&lt;ESC&gt;[4;&lt;height&gt;;&lt;width&gt;t</span></code> where <code class="docutils literal notranslate"><span class="pre">height</span></code> and <code class="docutils literal notranslate"><span class="pre">width</span></code> are the window
 size in pixels. This escape code is supported in many terminals, not just
 kitty.</p>
-</div>
-<div class="section" id="a-minimal-example">
+</section>
+<section id="a-minimal-example">
 <h2><a class="toc-backref" href="#id4">A minimal example</a><a class="headerlink" href="#a-minimal-example" title="Permalink to this headline">¶</a></h2>
 <p>Some minimal python code to display PNG images in kitty, using the most basic
 features of the graphics protocol:</p>
@@ -274,8 +275,8 @@ file in kitty as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">png</span><span class="o">.</span><span class="n">py</span> <span class="n">file</span><span class="o">.</span><span class="n">png</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-graphics-escape-code">
+</section>
+<section id="the-graphics-escape-code">
 <h2><a class="toc-backref" href="#id5">The graphics escape code</a><a class="headerlink" href="#the-graphics-escape-code" title="Permalink to this headline">¶</a></h2>
 <p>All graphics escape codes are of the form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_G</span><span class="o">&lt;</span><span class="n">control</span> <span class="n">data</span><span class="o">&gt;</span><span class="p">;</span><span class="o">&lt;</span><span class="n">payload</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
@@ -288,8 +289,8 @@ is arbitrary binary data, base64-encoded to prevent interoperation problems
 with legacy terminals that get confused by control codes within an APC code.
 The meaning of the payload is interpreted based on the control data.</p>
 <p>The first step is to transmit the actual image data.</p>
-</div>
-<div class="section" id="transferring-pixel-data">
+</section>
+<section id="transferring-pixel-data">
 <span id="id2"></span><h2><a class="toc-backref" href="#id6">Transferring pixel data</a><a class="headerlink" href="#transferring-pixel-data" title="Permalink to this headline">¶</a></h2>
 <p>The first consideration when transferring data between the client and the
 terminal emulator is the format in which to do so. Since there is a vast and
@@ -303,7 +304,7 @@ PNG. This is specified using the <code class="docutils literal notranslate"><spa
 default) indicates 32-bit RGBA data and <code class="docutils literal notranslate"><span class="pre">f=24</span></code> indicates 24-bit RGB data and <code class="docutils literal notranslate"><span class="pre">f=100</span></code>
 indicates PNG data. The PNG format is supported for convenience and a compact way
 of transmitting paletted images.</p>
-<div class="section" id="rgb-and-rgba-data">
+<section id="rgb-and-rgba-data">
 <h3><a class="toc-backref" href="#id7">RGB and RGBA data</a><a class="headerlink" href="#rgb-and-rgba-data" title="Permalink to this headline">¶</a></h3>
 <p>In these formats the pixel data is stored directly as 3 or 4 bytes per pixel,
 respectively. The colors in the data <strong>must</strong> be in the <em>sRGB color space</em>.  When
@@ -315,8 +316,8 @@ control data. For example:</p>
 <p>Here the width and height are specified using the <code class="docutils literal notranslate"><span class="pre">s</span></code> and <code class="docutils literal notranslate"><span class="pre">v</span></code> keys respectively. Since
 <code class="docutils literal notranslate"><span class="pre">f=24</span></code> there are three bytes per pixel and therefore the pixel data must be <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">10</span> <span class="pre">*</span> <span class="pre">20</span> <span class="pre">=</span> <span class="pre">600</span></code>
 bytes.</p>
-</div>
-<div class="section" id="png-data">
+</section>
+<section id="png-data">
 <h3><a class="toc-backref" href="#id8">PNG data</a><a class="headerlink" href="#png-data" title="Permalink to this headline">¶</a></h3>
 <p>In this format any PNG image can be transmitted directly.  For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Gf</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span><span class="o">&lt;</span><span class="n">payload</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
@@ -325,8 +326,8 @@ bytes.</p>
 <p>The PNG format is specified using the <code class="docutils literal notranslate"><span class="pre">f=100</span></code> key. The width and height of
 the image will be read from the PNG data itself. Note that if you use both PNG and
 compression, then you must provide the <code class="docutils literal notranslate"><span class="pre">S</span></code> key with the size of the PNG data.</p>
-</div>
-<div class="section" id="compression">
+</section>
+<section id="compression">
 <h3><a class="toc-backref" href="#id9">Compression</a><a class="headerlink" href="#compression" title="Permalink to this headline">¶</a></h3>
 <p>The client can send compressed image data to the terminal emulator, by
 specifying the <code class="docutils literal notranslate"><span class="pre">o</span></code> key. Currently, only <span class="target" id="index-0"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc1950.html"><strong>RFC 1950</strong></a> ZLIB based deflate
@@ -339,8 +340,8 @@ payload is now compressed using deflate (this occurs prior to base64-encoding).
 The terminal emulator will decompress it before rendering. You can specify
 compression for any format. The terminal emulator will decompress before
 interpreting the pixel data.</p>
-</div>
-<div class="section" id="the-transmission-medium">
+</section>
+<section id="the-transmission-medium">
 <h3><a class="toc-backref" href="#id10">The transmission medium</a><a class="headerlink" href="#the-transmission-medium" title="Permalink to this headline">¶</a></h3>
 <p>The transmission medium is specified using the <code class="docutils literal notranslate"><span class="pre">t</span></code> key. The <code class="docutils literal notranslate"><span class="pre">t</span></code> key defaults to <code class="docutils literal notranslate"><span class="pre">d</span></code>
 and can take the values:</p>
@@ -377,7 +378,7 @@ close it on Windows.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="local-client">
+<section id="local-client">
 <h4><a class="toc-backref" href="#id11">Local client</a><a class="headerlink" href="#local-client" title="Permalink to this headline">¶</a></h4>
 <p>First let us consider the local client techniques (files and shared memory). Some examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Gf</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="n">f</span><span class="p">;</span><span class="o">&lt;</span><span class="n">encoded</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">png</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
@@ -398,8 +399,8 @@ keys respectively. For example:</p>
 </div>
 <p>This tells the terminal emulator to read <code class="docutils literal notranslate"><span class="pre">80</span></code> bytes starting from the offset <code class="docutils literal notranslate"><span class="pre">10</span></code>
 inside the specified shared memory buffer.</p>
-</div>
-<div class="section" id="remote-client">
+</section>
+<section id="remote-client">
 <h4><a class="toc-backref" href="#id12">Remote client</a><a class="headerlink" href="#remote-client" title="Permalink to this headline">¶</a></h4>
 <p>Remote clients, those that are unable to use the filesystem/shared memory to
 transmit data, must send the pixel data directly using escape codes. Since
@@ -422,9 +423,9 @@ before sending any other graphics related escape codes. Note that the cursor
 position used to display the image <strong>must</strong> be the position when the final chunk is
 received. Finally, terminals must not display anything, until the entire sequence is
 received and validated.</p>
-</div>
-</div>
-<div class="section" id="querying-support-and-available-transmission-mediums">
+</section>
+</section>
+<section id="querying-support-and-available-transmission-mediums">
 <h3><a class="toc-backref" href="#id13">Querying support and available transmission mediums</a><a class="headerlink" href="#querying-support-and-available-transmission-mediums" title="Permalink to this headline">¶</a></h3>
 <p>Since a client has no a-priori knowledge of whether it shares a filesystem/shared memory
 with the terminal emulator, it can send an id with the control data, using the <code class="docutils literal notranslate"><span class="pre">i</span></code> key
@@ -466,9 +467,9 @@ terminal emulators handle input in a FIFO manner, anyway.</p>
 <p>If you get back a response to the graphics query, the terminal emulator supports
 the protocol, if you get back a response to the device attributes query without
 a response to the graphics query, it does not.</p>
-</div>
-</div>
-<div class="section" id="display-images-on-screen">
+</section>
+</section>
+<section id="display-images-on-screen">
 <h2><a class="toc-backref" href="#id14">Display images on screen</a><a class="headerlink" href="#display-images-on-screen" title="Permalink to this headline">¶</a></h2>
 <p>Every transmitted image can be displayed an arbitrary number of times on the
 screen, in different locations, using different parts of the source image, as
@@ -504,7 +505,7 @@ placements around the screen, without flicker.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.19.3: </span>Support for specifying placement ids (see <a class="reference internal" href="kittens/query_terminal.html"><span class="doc">Query terminal</span></a> to query kitty version)</p>
 </div>
-<div class="section" id="controlling-displayed-image-layout">
+<section id="controlling-displayed-image-layout">
 <h3><a class="toc-backref" href="#id15">Controlling displayed image layout</a><a class="headerlink" href="#controlling-displayed-image-layout" title="Permalink to this headline">¶</a></h3>
 <p>The image is rendered at the current cursor position, from the upper left corner of
 the current cell. You can also specify extra <code class="docutils literal notranslate"><span class="pre">X=3</span></code> and <code class="docutils literal notranslate"><span class="pre">Y=4</span></code> pixel offsets to display from
@@ -539,9 +540,9 @@ to no movement for placing the current image.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.20.0: </span>Support for the C=1 cursor movement policy</p>
 </div>
-</div>
-</div>
-<div class="section" id="deleting-images">
+</section>
+</section>
+<section id="deleting-images">
 <h2><a class="toc-backref" href="#id16">Deleting images</a><a class="headerlink" href="#deleting-images" title="Permalink to this headline">¶</a></h2>
 <p>Images can be deleted by using the delete action <code class="docutils literal notranslate"><span class="pre">a=d</span></code>. If specified without any
 other keys, it will delete all images visible on screen. To delete specific images,
@@ -608,8 +609,8 @@ placements will be preferentially deleted.</p>
 <span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\  <span class="c1"># delete all placements that intersect the cell at (3, 4), without freeing data</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="suppressing-responses-from-the-terminal">
+</section>
+<section id="suppressing-responses-from-the-terminal">
 <h2><a class="toc-backref" href="#id17">Suppressing responses from the terminal</a><a class="headerlink" href="#suppressing-responses-from-the-terminal" title="Permalink to this headline">¶</a></h2>
 <p>If you are using the graphics protocol from a limited client, such as a shell
 script, it might be useful to avoid having to process responses from the
@@ -618,8 +619,8 @@ terminal. For this, you can use the <code class="docutils literal notranslate"><
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.19.3: </span>The ability to suppress responses (see <a class="reference internal" href="kittens/query_terminal.html"><span class="doc">Query terminal</span></a> to query kitty version)</p>
 </div>
-</div>
-<div class="section" id="requesting-image-ids-from-the-terminal">
+</section>
+<section id="requesting-image-ids-from-the-terminal">
 <h2><a class="toc-backref" href="#id18">Requesting image ids from the terminal</a><a class="headerlink" href="#requesting-image-ids-from-the-terminal" title="Permalink to this headline">¶</a></h2>
 <p>If you are writing a program that is going to share the screen with other
 programs and you still want to use image ids, it is not possible to know
@@ -649,8 +650,8 @@ terminal must reply with an EINVAL error message, unless silenced.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.19.3: </span>The ability to use image numbers (see <a class="reference internal" href="kittens/query_terminal.html"><span class="doc">Query terminal</span></a> to query kitty version)</p>
 </div>
-</div>
-<div class="section" id="animation">
+</section>
+<section id="animation">
 <span id="animation-protocol"></span><h2><a class="toc-backref" href="#id19">Animation</a><a class="headerlink" href="#animation" title="Permalink to this headline">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.20.0: </span>Animation support (see <a class="reference internal" href="kittens/query_terminal.html"><span class="doc">Query terminal</span></a> to query kitty version)</p>
@@ -671,7 +672,7 @@ first a normal image is created as described earlier. Then animation frames are
 added to the image to make it into an animation. Since every animation is
 associated with a single image, all animation escape codes must specify either
 the <code class="docutils literal notranslate"><span class="pre">i</span></code> or <code class="docutils literal notranslate"><span class="pre">I</span></code> keys to identify the image being operated on.</p>
-<div class="section" id="transferring-animation-frame-data">
+<section id="transferring-animation-frame-data">
 <h3><a class="toc-backref" href="#id20">Transferring animation frame data</a><a class="headerlink" href="#transferring-animation-frame-data" title="Permalink to this headline">¶</a></h3>
 <p>Transferring animation frame data is very similar to
 <a class="reference internal" href="#transferring-pixel-data"><span class="std std-ref">Transferring pixel data</span></a> above. The main difference is that the image
@@ -717,8 +718,8 @@ frames are not displayed to the user since they are instantly skipped over,
 however they can be useful as the base data for subsequent frames. For example,
 for an animation where the background remains the same and a small object or two
 move.</p>
-</div>
-<div class="section" id="controlling-animations">
+</section>
+<section id="controlling-animations">
 <h3><a class="toc-backref" href="#id21">Controlling animations</a><a class="headerlink" href="#controlling-animations" title="Permalink to this headline">¶</a></h3>
 <p>Clients can control animations by using the <code class="docutils literal notranslate"><span class="pre">a=a</span></code> key in the escape code sent
 to the terminal.</p>
@@ -759,9 +760,9 @@ for subsequent frames, such as in an animation with an object moving against a
 static background.</p>
 <p>In particular, the first frame or <em>root frame</em> is created with the base image
 data and has no gap, so its gap must be set using this control code.</p>
-</div>
-</div>
-<div class="section" id="image-persistence-and-storage-quotas">
+</section>
+</section>
+<section id="image-persistence-and-storage-quotas">
 <h2><a class="toc-backref" href="#id22">Image persistence and storage quotas</a><a class="headerlink" href="#image-persistence-and-storage-quotas" title="Permalink to this headline">¶</a></h2>
 <p>In order to avoid <em>Denial-of-Service</em> attacks, terminal emulators should have a
 maximum storage quota for image data. It should allow at least a few full
@@ -770,8 +771,8 @@ a new image, if the total size exceeds the quota, the terminal emulator should
 delete older images to make space for the new one. In kitty, for animations,
 the additional frame data is stored on disk and has a separate, larger quota of
 five times the base quota.</p>
-</div>
-<div class="section" id="control-data-reference">
+</section>
+<section id="control-data-reference">
 <h2><a class="toc-backref" href="#id23">Control data reference</a><a class="headerlink" href="#control-data-reference" title="Permalink to this headline">¶</a></h2>
 <p>The table below shows all the control data keys as well as what values they can
 take, and the default value they take when missing. All integers are 32-bit.</p>
@@ -1006,8 +1007,8 @@ means play that number <code class="docutils literal notranslate"><span class="p
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="interaction-with-other-terminal-actions">
+</section>
+<section id="interaction-with-other-terminal-actions">
 <h2><a class="toc-backref" href="#id24">Interaction with other terminal actions</a><a class="headerlink" href="#interaction-with-other-terminal-actions" title="Permalink to this headline">¶</a></h2>
 <p>When resetting the terminal, all images that are visible on the screen must be
 cleared.  When switching from the main screen to the alternate screen buffer
@@ -1022,8 +1023,8 @@ text. When page margins are defined and the index commands are used, only
 images that are entirely within the page area (between the margins) must be
 scrolled. When scrolling them would cause them to extend outside the page area,
 they must be clipped.</p>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
