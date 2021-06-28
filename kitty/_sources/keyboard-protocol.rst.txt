@@ -41,12 +41,14 @@ If you are an application or library developer just interested in using this
 protocol to make keyboard handling simpler and more robust in your application,
 without too many changes, do the following:
 
-#. Emit the escape code ``CSI > 1 u`` at application startup or when entering
-   alternate screen mode
+#. Emit the escape code ``CSI > 1 u`` at application startup if using the main
+   screen or when entering alternate screen mode, if using the alternate
+   screen.
 #. All key events will now be sent in only a few forms to your application,
    that are easy to parse unambiguously.
-#. Emit the escape sequence ``CSI < u`` at application exit or just before
-   leaving alternate screen mode to restore the previously used keyboard mode.
+#. Emit the escape sequence ``CSI < u`` at application exit if using the main
+   screen or just before leaving alternate screen mode if using the alternate screen,
+   to restore the previously used keyboard mode.
 
 Key events will all be delivered to your application either as plain UTF-8
 text, or using the following escape codes, for those keys that do not produce
@@ -265,6 +267,15 @@ Denial-of-Service attacks. Terminals must maintain separate stacks for the main
 and alternate screens. If a pop request is received that empties the stack,
 all flags are reset. If a push request is received and the stack is full, the
 oldest entry from the stack must be evicted.
+
+.. note:: The main and alternate screens in the terminal emulator must maintain
+   their own, independent, keyboard mode stacks. This is so that a program that
+   uses the alternate screen such as an editor, can change the keyboard mode
+   in the alternate screen only, without affecting the mode in the main screen
+   or even knowing what that mode is. Without this, and if no stack is
+   implemented for keyboard modes (such as in some legacy terminal emulators)
+   the editor would have to somehow know what the keyboard mode of the main
+   screen is and restore to that mode on exit.
 
 .. note:: In the interests of interoperation, the XTerm specific sequences
    `CSI > 4; 1 m` and `CSI > 4; 0 m` are treated as `CSI > 1 u` and `CSI < 1 u`.

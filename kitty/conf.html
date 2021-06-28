@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Configuring kitty &#8212; kitty 0.21.1 documentation</title>
+    <title>Configuring kitty &#8212; kitty 0.21.2 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -207,6 +207,20 @@ which are interpreted as percentages of the unmodified values. You can use
 negative pixels or percentages less than 100% to reduce sizes (but this might
 cause rendering artifacts).</p>
 <dl class="std opt">
+<dt class="sig sig-object std" id="opt-kitty.adjust_baseline">
+<span class="sig-name descname"><span class="pre">adjust_baseline</span></span><a class="headerlink" href="#opt-kitty.adjust_baseline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">adjust_baseline</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>Adjust the vertical alignment of text (the height in the cell at which text is
+positioned). You can use either numbers, which are interpreted as pixels or a
+percentages (number followed by %), which are interpreted as the percentage of
+the line height. A positive value moves the baseline up, and a negative value
+moves them down. The underline and strikethrough positions are adjusted
+accordingly.</p>
+<dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitty.symbol_map">
 <span class="sig-name descname"><span class="pre">symbol_map</span></span><a class="headerlink" href="#opt-kitty.symbol_map" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -259,6 +273,8 @@ Code Retina includes a discretionary feature, <code class="code docutils literal
 changes the appearance of the zero (0), to make it more easily distinguishable
 from Ø. Fira Code Retina also includes other discretionary features known as
 Stylistic Sets which have the tags <code class="code docutils literal notranslate"><span class="pre">ss01</span></code> through <code class="code docutils literal notranslate"><span class="pre">ss20</span></code>.</p>
+<p>For the exact syntax to use for individual features, see the
+<a class="reference external" href="https://harfbuzz.github.io/harfbuzz-hb-common.html#hb-feature-from-string">Harfbuzz documentation</a>.</p>
 <p>Note that this code is indexed by PostScript name, and not the font
 family. This allows you to define very precise feature settings; e.g. you can
 disable a feature in the italic font but not in the regular font.</p>
@@ -513,6 +529,16 @@ be one of: none, single, double, curly</p>
 the mouse cursor becomes a hand over them. Even if this option is disabled, URLs
 are still clickable.</p>
 <dl class="std opt">
+<dt class="sig sig-object std" id="opt-kitty.url_excluded_characters">
+<span class="sig-name descname"><span class="pre">url_excluded_characters</span></span><a class="headerlink" href="#opt-kitty.url_excluded_characters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">url_excluded_characters</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Additional characters to be disallowed from URLs, when detecting URLs under the
+mouse cursor. By default, all characters legal in URLs are allowed.</p>
+<dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitty.copy_on_select">
 <span class="sig-name descname"><span class="pre">copy_on_select</span></span><a class="headerlink" href="#opt-kitty.copy_on_select" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -618,13 +644,18 @@ the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docut
 number <code class="docutils literal notranslate"><span class="pre">b1</span> <span class="pre">...</span> <span class="pre">b8</span></code> can be used to refer to upto eight buttons on a mouse.</p>
 <p><code class="docutils literal notranslate"><span class="pre">event-type</span></code> is one <code class="docutils literal notranslate"><span class="pre">press</span></code>, <code class="docutils literal notranslate"><span class="pre">release</span></code>, <code class="docutils literal notranslate"><span class="pre">doublepress</span></code>, <code class="docutils literal notranslate"><span class="pre">triplepress</span></code>,
 <code class="docutils literal notranslate"><span class="pre">click</span></code> and <code class="docutils literal notranslate"><span class="pre">doubleclick</span></code>.  <code class="docutils literal notranslate"><span class="pre">modes</span></code> indicates whether the action is
-performed when the mouse is grabbed by the terminal application or not. It can
-have one or more or the values, <code class="docutils literal notranslate"><span class="pre">grabbed,ungrabbed</span></code>. Note that the click
-and double click events have a delay of <a class="reference internal" href="#opt-kitty.click_interval"><code class="xref std std-opt docutils literal notranslate"><span class="pre">click_interval</span></code></a> to disambiguate
-from double and triple presses.</p>
+performed when the mouse is grabbed by the program running in the terminal, or
+not. It can have one or more or the values, <code class="docutils literal notranslate"><span class="pre">grabbed,ungrabbed</span></code>. <code class="docutils literal notranslate"><span class="pre">grabbed</span></code>
+refers to when the program running in the terminal has requested mouse events.
+Note that the click and double click events have a delay of
+<a class="reference internal" href="#opt-kitty.click_interval"><code class="xref std std-opt docutils literal notranslate"><span class="pre">click_interval</span></code></a> to disambiguate from double and triple presses.</p>
 <p>You can run kitty with the <a class="reference internal" href="invocation.html#cmdoption-kitty-debug-input"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--debug-input</span></code></a> command line option
 to see mouse events. See the builtin actions below to get a sense of what is possible.</p>
-<p>If you want to unmap an action map it to <code class="docutils literal notranslate"><span class="pre">no-op</span></code>.</p>
+<p>If you want to unmap an action map it to <code class="docutils literal notranslate"><span class="pre">no-op</span></code>. For example, to disable opening
+of URLs with a plain click:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">left click ungrabbed no-op</span><span class="w"></span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Once a selection is started, releasing the button that started it will
@@ -660,7 +691,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Discard press event for link click"></span><span class="sig-name descname"><span class="pre">Discard</span> <span class="pre">press</span> <span class="pre">event</span> <span class="pre">for</span> <span class="pre">link</span> <span class="pre">click</span></span><a class="headerlink" href="#shortcut-kitty.Discard-press-event-for-link-click" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">ctrl+shift+left press grabbed mouse_discard_event</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">ctrl+shift+left press grabbed discard_event</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Prevent this press event from being sent to the program that has grabbed the mouse, as the corresponding release event is used to open a URL.</p>
@@ -669,7 +700,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Paste from the primary selection"></span><span class="sig-name descname"><span class="pre">Paste</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">primary</span> <span class="pre">selection</span></span><a class="headerlink" href="#shortcut-kitty.Paste-from-the-primary-selection" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">middle release ungrabbed paste_selection</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">middle release ungrabbed paste_from_selection</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -1215,7 +1246,8 @@ does not have focus has some activity.</p>
 </div>
 <p>A template to render the tab title. The default just renders the title. If you
 wish to include the tab-index as well, use something like: <code class="code docutils literal notranslate"><span class="pre">{index}:</span>
-<span class="pre">{title}</span></code>. Useful if you have shortcuts mapped for <code class="code docutils literal notranslate"><span class="pre">goto_tab</span> <span class="pre">N</span></code>. In
+<span class="pre">{title}</span></code>. Useful if you have shortcuts mapped for <code class="code docutils literal notranslate"><span class="pre">goto_tab</span> <span class="pre">N</span></code>. If you
+prefer to see the index as a superscript, use {sup.index}. In
 addition you can use <code class="code docutils literal notranslate"><span class="pre">{layout_name}</span></code> for the current layout name and
 <code class="code docutils literal notranslate"><span class="pre">{num_windows}</span></code> for the number of windows in the tab. Note that formatting
 is done by Python’s string formatting machinery, so you can use, for instance,

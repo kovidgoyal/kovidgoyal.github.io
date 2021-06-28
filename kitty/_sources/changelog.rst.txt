@@ -4,6 +4,49 @@ Changelog
 |kitty| is a feature-rich, cross-platform, *fast*, GPU based terminal.
 To update |kitty|, :doc:`follow the instructions <binary>`.
 
+0.21.2 [2021-06-28]
+----------------------
+
+- A new :opt:`adjust_baseline` option to adjust the vertical alignment of text
+  inside a line (:pull:`3734`)
+
+- A new :opt:`url_excluded_characters` option to exclude additional characters
+  when detecting URLs under the mouse (:pull:`3738`)
+
+- Fix a regression in 0.21.0 that broke rendering of private use Unicode symbols followed
+  by spaces, when they also exist not followed by spaces (:iss:`3729`)
+
+- ssh kitten: Support systems where the login shell is a non-POSIX shell
+  (:iss:`3405`)
+
+- ssh kitten: Add completion (:iss:`3760`)
+
+- ssh kitten: Fix "Connection closed" message being printed by ssh when running
+  remote commands
+
+- Add support for the XTVERSION escape code
+
+- macOS: Fix a regression in 0.21.0 that broke middle-click to paste from clipboard (:iss:`3730`)
+
+- macOS: Fix shortcuts in the global menu bar responding slowly when cursor blink
+  is disabled/timed out (:iss:`3693`)
+
+- When displaying scrollback ensure that the window does not quit if the amount
+  of scrollback is less than a screen and the user has the ``--quit-if-one-screen``
+  option enabled for less (:iss:`3740`)
+
+- Linux: Fix Emoji/bitmapped fonts not use able in symbol_map
+
+- query terminal kitten: Allow querying font face and size information
+  (:iss:`3756`)
+
+- hyperlinked grep kitten: Fix context options not generating contextual output (:iss:`3759`)
+
+- Allow using superscripts in tab titles (:iss:`3763`)
+
+- Unicode input kitten: Fix searching when a word has more than 1024 matches (:iss:`3773`)
+
+
 0.21.1 [2021-06-14]
 ----------------------
 
@@ -27,7 +70,7 @@ To update |kitty|, :doc:`follow the instructions <binary>`.
   :kbd:`ctrl+shift`
 
 - Allow remapping all mouse button press/release events to perform arbitrary
-  actions. :ref:`See details <conf-kitty-mouse.mousemap>`.
+  actions. :ref:`See details <conf-kitty-mouse.mousemap>` (:iss:`1033`)
 
 - Support infinite length ligatures (:iss:`3504`)
 

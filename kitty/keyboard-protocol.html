@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>A protocol for comprehensive keyboard handling in terminals &#8212; kitty 0.21.1 documentation</title>
+    <title>A protocol for comprehensive keyboard handling in terminals &#8212; kitty 0.21.2 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -159,12 +159,14 @@ issues in that proposal, listed at the <a class="reference internal" href="#fixt
 protocol to make keyboard handling simpler and more robust in your application,
 without too many changes, do the following:</p>
 <ol class="arabic simple">
-<li><p>Emit the escape code <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">&gt;</span> <span class="pre">1</span> <span class="pre">u</span></code> at application startup or when entering
-alternate screen mode</p></li>
+<li><p>Emit the escape code <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">&gt;</span> <span class="pre">1</span> <span class="pre">u</span></code> at application startup if using the main
+screen or when entering alternate screen mode, if using the alternate
+screen.</p></li>
 <li><p>All key events will now be sent in only a few forms to your application,
 that are easy to parse unambiguously.</p></li>
-<li><p>Emit the escape sequence <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">&lt;</span> <span class="pre">u</span></code> at application exit or just before
-leaving alternate screen mode to restore the previously used keyboard mode.</p></li>
+<li><p>Emit the escape sequence <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">&lt;</span> <span class="pre">u</span></code> at application exit if using the main
+screen or just before leaving alternate screen mode if using the alternate screen,
+to restore the previously used keyboard mode.</p></li>
 </ol>
 <p>Key events will all be delivered to your application either as plain UTF-8
 text, or using the following escape codes, for those keys that do not produce
@@ -377,6 +379,17 @@ Denial-of-Service attacks. Terminals must maintain separate stacks for the main
 and alternate screens. If a pop request is received that empties the stack,
 all flags are reset. If a push request is received and the stack is full, the
 oldest entry from the stack must be evicted.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The main and alternate screens in the terminal emulator must maintain
+their own, independent, keyboard mode stacks. This is so that a program that
+uses the alternate screen such as an editor, can change the keyboard mode
+in the alternate screen only, without affecting the mode in the main screen
+or even knowing what that mode is. Without this, and if no stack is
+implemented for keyboard modes (such as in some legacy terminal emulators)
+the editor would have to somehow know what the keyboard mode of the main
+screen is and restore to that mode on exit.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In the interests of interoperation, the XTerm specific sequences
