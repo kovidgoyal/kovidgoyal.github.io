@@ -177,7 +177,7 @@ Send the specified SIGNAL to the foreground process in the active window
 
 For example::
 
-            map F1 signal_child SIGTERM
+    map F1 signal_child SIGTERM
 
 .. _action-clear_terminal:
 
@@ -188,14 +188,14 @@ Clear the terminal
 
 See :sc:`reset_terminal` for details. For example::
 
-            # Reset the terminal
-            map kitty_mod+f9 clear_terminal reset active
-            # Clear the terminal screen by erasing all contents
-            map kitty_mod+f10 clear_terminal clear active
-            # Clear the terminal scrollback by erasing it
-            map kitty_mod+f11 clear_terminal scrollback active
-            # Scroll the contents of the screen into the scrollback
-            map kitty_mod+f12 clear_terminal scroll active
+    # Reset the terminal
+    map kitty_mod+f9 clear_terminal reset active
+    # Clear the terminal screen by erasing all contents
+    map kitty_mod+f10 clear_terminal clear active
+    # Clear the terminal scrollback by erasing it
+    map kitty_mod+f11 clear_terminal scrollback active
+    # Scroll the contents of the screen into the scrollback
+    map kitty_mod+f12 clear_terminal scroll active
 
 Default shortcuts using this action:
 :sc:`kitty.reset_terminal`
@@ -209,11 +209,11 @@ Combine multiple actions and map to a single keypress
 
 The syntax is::
 
-            map key combine <separator> action1 <separator> action2 <separator> action3 ...
+    map key combine <separator> action1 <separator> action2 <separator> action3 ...
 
-        For example::
+For example::
 
-            map kitty_mod+e combine : new_window : next_layout
+    map kitty_mod+e combine : new_window : next_layout
 
 .. _action-disable_ligatures_in:
 
@@ -290,10 +290,10 @@ load_config_file
 Reload the config file
 
 If mapped without arguments reloads the default config file, otherwise loads
-        the specified config files, in order. Loading a config file *replaces* all
-        config options. For example::
+the specified config files, in order. Loading a config file *replaces* all
+config options. For example::
 
-            map f5 load_config_file /path/to/some/kitty.conf
+    map f5 load_config_file /path/to/some/kitty.conf
 
 Default shortcuts using this action:
 :sc:`kitty.reload_config_file`
@@ -318,9 +318,9 @@ Run a remote control command
 
 For example::
 
-            map F1 remote_control set-spacing margin=30
+    map F1 remote_control set-spacing margin=30
 
-        See :ref:`rc_mapping` for details.
+See :ref:`rc_mapping` for details.
 
 .. _action-set_colors:
 
@@ -331,7 +331,7 @@ Change colors in the specified windows
 
 For details, see :ref:`at_set-colors`. For example::
 
-            map f5 set_colors --configured /path/to/some/config/file/colors.conf
+    map f5 set_colors --configured /path/to/some/config/file/colors.conf
 
 .. _action-show_kitty_env_vars:
 
@@ -615,8 +615,8 @@ move_window
 Move the window in the specified direction
 
 For example::
-            map ctrl+left move_window left
-            map ctrl+down move_window bottom
+    map ctrl+left move_window left
+    map ctrl+down move_window bottom
 
 .. _action-move_window_backward:
 
@@ -659,8 +659,8 @@ neighboring_window
 Focus the neighboring window in the current tab
 
 For example::
-            map ctrl+left neighboring_window left
-            map ctrl+down neighboring_window bottom
+    map ctrl+left neighboring_window left
+    map ctrl+down neighboring_window bottom
 
 .. _action-next_window:
 
@@ -682,7 +682,7 @@ Focus the nth window if positive or the previously active windows if negative
 
 For example, to ficus the previously active window::
 
-            map ctrl+p nth_window -1
+    map ctrl+p nth_window -1
 
 .. _action-previous_window:
 
@@ -787,9 +787,9 @@ set_background_opacity
 Set the background opacity for the active OS Window
 
 For example::
-            map f1 set_background_opacity +0.1
-            map f2 set_background_opacity -0.1
-            map f3 set_background_opacity 0.5
+    map f1 set_background_opacity +0.1
+    map f2 set_background_opacity -0.1
+    map f3 set_background_opacity 0.5
 
 Default shortcuts using this action:
 :sc:`kitty.decrease_background_opacity`, :sc:`kitty.full_background_opacity`, :sc:`kitty.increase_background_opacity`, :sc:`kitty.reset_background_opacity`

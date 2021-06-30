@@ -273,11 +273,11 @@ using the <code class="docutils literal notranslate"><span class="pre">map</span
 <span id="action-combine"></span><h3><a class="toc-backref" href="#id32">combine</a><a class="headerlink" href="#combine" title="Permalink to this headline">¶</a></h3>
 <p>Combine multiple actions and map to a single keypress</p>
 <p>The syntax is:</p>
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">map</span><span class="w"> </span><span class="s">key</span><span class="w"> </span><span class="nf">combine</span><span class="w"> </span><span class="s">&lt;separator&gt; action1 &lt;separator&gt; action2 &lt;separator&gt; action3 ...</span><span class="w"></span>
-
-<span class="nv">For</span><span class="w"> </span><span class="s">example::</span><span class="w"></span>
-
-<span class="w">    </span><span class="kd">map</span><span class="w"> </span><span class="s">kitty_mod+e</span><span class="w"> </span><span class="nf">combine</span><span class="w"> </span><span class="s">: new_window : next_layout</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">key</span><span class="w"> </span><span class="nf">combine</span><span class="w"> </span><span class="s">&lt;separator&gt; action1 &lt;separator&gt; action2 &lt;separator&gt; action3 ...</span><span class="w"></span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">kitty_mod+e</span><span class="w"> </span><span class="nf">combine</span><span class="w"> </span><span class="s">: new_window : next_layout</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -320,14 +320,12 @@ using the <code class="docutils literal notranslate"><span class="pre">map</span
 <section id="load-config-file">
 <span id="action-load-config-file"></span><h3><a class="toc-backref" href="#id40">load_config_file</a><a class="headerlink" href="#load-config-file" title="Permalink to this headline">¶</a></h3>
 <p>Reload the config file</p>
-<dl>
-<dt>If mapped without arguments reloads the default config file, otherwise loads</dt><dd><p>the specified config files, in order. Loading a config file <em>replaces</em> all
+<p>If mapped without arguments reloads the default config file, otherwise loads
+the specified config files, in order. Loading a config file <em>replaces</em> all
 config options. For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f5</span><span class="w"> </span><span class="nf">load_config_file</span><span class="w"> </span><span class="s">/path/to/some/kitty.conf</span><span class="w"></span>
 </pre></div>
 </div>
-</dd>
-</dl>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="conf.html#shortcut-kitty.Reload-kitty.conf"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f5</span></code></a></p>
 </section>
@@ -341,11 +339,10 @@ config options. For example:</p>
 <span id="action-remote-control"></span><h3><a class="toc-backref" href="#id42">remote_control</a><a class="headerlink" href="#remote-control" title="Permalink to this headline">¶</a></h3>
 <p>Run a remote control command</p>
 <p>For example:</p>
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">map</span><span class="w"> </span><span class="s">F1</span><span class="w"> </span><span class="nf">remote_control</span><span class="w"> </span><span class="s">set-spacing margin=30</span><span class="w"></span>
-
-<span class="nv">See</span><span class="w"> </span><span class="s">:ref:`rc_mapping` for details.</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">F1</span><span class="w"> </span><span class="nf">remote_control</span><span class="w"> </span><span class="s">set-spacing margin=30</span><span class="w"></span>
 </pre></div>
 </div>
+<p>See <a class="reference internal" href="remote-control.html#rc-mapping"><span class="std std-ref">Mapping key presses to remote control commands</span></a> for details.</p>
 </section>
 <section id="set-colors">
 <span id="action-set-colors"></span><h3><a class="toc-backref" href="#id43">set_colors</a><a class="headerlink" href="#set-colors" title="Permalink to this headline">¶</a></h3>
