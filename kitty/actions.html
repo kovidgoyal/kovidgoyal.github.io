@@ -170,10 +170,12 @@ using the <code class="docutils literal notranslate"><span class="pre">map</span
 <section id="copy-to-buffer">
 <span id="action-copy-to-buffer"></span><h3><a class="toc-backref" href="#id21">copy_to_buffer</a><a class="headerlink" href="#copy-to-buffer" title="Permalink to this headline">¶</a></h3>
 <p>Copy the selection from the active window to the specified buffer</p>
+<p>See <a class="reference internal" href="index.html#cpbuf"><span class="std std-ref">Multiple copy/paste buffers</span></a> for details.</p>
 </section>
 <section id="paste-from-buffer">
 <span id="action-paste-from-buffer"></span><h3><a class="toc-backref" href="#id22">paste_from_buffer</a><a class="headerlink" href="#paste-from-buffer" title="Permalink to this headline">¶</a></h3>
 <p>Paste from the specified buffer to the active window</p>
+<p>See <a class="reference internal" href="index.html#cpbuf"><span class="std std-ref">Multiple copy/paste buffers</span></a> for details.</p>
 </section>
 <section id="paste-from-clipboard">
 <span id="action-paste-from-clipboard"></span><h3><a class="toc-backref" href="#id23">paste_from_clipboard</a><a class="headerlink" href="#paste-from-clipboard" title="Permalink to this headline">¶</a></h3>
@@ -552,11 +554,11 @@ config options. For example:</p>
 <section id="move-window">
 <span id="action-move-window"></span><h3><a class="toc-backref" href="#id68">move_window</a><a class="headerlink" href="#move-window" title="Permalink to this headline">¶</a></h3>
 <p>Move the window in the specified direction</p>
-<dl class="simple">
-<dt>For example::</dt><dd><p>map ctrl+left move_window left
-map ctrl+down move_window bottom</p>
-</dd>
-</dl>
+<p>For example:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+left</span><span class="w"> </span><span class="nf">move_window</span><span class="w"> </span><span class="s">left</span><span class="w"></span>
+<span class="kd">map</span><span class="w"> </span><span class="s">ctrl+down</span><span class="w"> </span><span class="nf">move_window</span><span class="w"> </span><span class="s">bottom</span><span class="w"></span>
+</pre></div>
+</div>
 </section>
 <section id="move-window-backward">
 <span id="action-move-window-backward"></span><h3><a class="toc-backref" href="#id69">move_window_backward</a><a class="headerlink" href="#move-window-backward" title="Permalink to this headline">¶</a></h3>
@@ -579,11 +581,11 @@ map ctrl+down move_window bottom</p>
 <section id="neighboring-window">
 <span id="action-neighboring-window"></span><h3><a class="toc-backref" href="#id72">neighboring_window</a><a class="headerlink" href="#neighboring-window" title="Permalink to this headline">¶</a></h3>
 <p>Focus the neighboring window in the current tab</p>
-<dl class="simple">
-<dt>For example::</dt><dd><p>map ctrl+left neighboring_window left
-map ctrl+down neighboring_window bottom</p>
-</dd>
-</dl>
+<p>For example:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+left</span><span class="w"> </span><span class="nf">neighboring_window</span><span class="w"> </span><span class="s">left</span><span class="w"></span>
+<span class="kd">map</span><span class="w"> </span><span class="s">ctrl+down</span><span class="w"> </span><span class="nf">neighboring_window</span><span class="w"> </span><span class="s">bottom</span><span class="w"></span>
+</pre></div>
+</div>
 </section>
 <section id="next-window">
 <span id="action-next-window"></span><h3><a class="toc-backref" href="#id73">next_window</a><a class="headerlink" href="#next-window" title="Permalink to this headline">¶</a></h3>
@@ -653,12 +655,12 @@ map ctrl+down neighboring_window bottom</p>
 <section id="set-background-opacity">
 <span id="action-set-background-opacity"></span><h3><a class="toc-backref" href="#id85">set_background_opacity</a><a class="headerlink" href="#set-background-opacity" title="Permalink to this headline">¶</a></h3>
 <p>Set the background opacity for the active OS Window</p>
-<dl class="simple">
-<dt>For example::</dt><dd><p>map f1 set_background_opacity +0.1
-map f2 set_background_opacity -0.1
-map f3 set_background_opacity 0.5</p>
-</dd>
-</dl>
+<p>For example:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f1</span><span class="w"> </span><span class="nf">set_background_opacity</span><span class="w"> </span><span class="mf">+0.1</span><span class="w"></span>
+<span class="kd">map</span><span class="w"> </span><span class="s">f2</span><span class="w"> </span><span class="nf">set_background_opacity</span><span class="w"> </span><span class="mf">-0.1</span><span class="w"></span>
+<span class="kd">map</span><span class="w"> </span><span class="s">f3</span><span class="w"> </span><span class="nf">set_background_opacity</span><span class="w"> </span><span class="mf">0.5</span>
+</pre></div>
+</div>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="conf.html#shortcut-kitty.Decrease-background-opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;l</span></code></a>, <a class="reference internal" href="conf.html#shortcut-kitty.Make-background-fully-opaque"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;1</span></code></a>, <a class="reference internal" href="conf.html#shortcut-kitty.Increase-background-opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;m</span></code></a>, <a class="reference internal" href="conf.html#shortcut-kitty.Reset-background-opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;d</span></code></a></p>
 </section>

@@ -136,6 +136,11 @@ expanded, so <code class="code docutils literal notranslate"><span class="pre">$
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="cp">include</span><span class="w"> </span><span class="nn">other.conf</span><span class="w"></span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Syntax highlighting for <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> in vim is available via
+<a class="reference external" href="https://github.com/fladson/vim-kitty">vim-kitty</a>.</p>
+</div>
 <section id="fonts">
 <span id="conf-kitty-fonts"></span><h2>Fonts<a class="headerlink" href="#fonts" title="Permalink to this headline">¶</a></h2>
 <p>kitty has very powerful font management. You can configure individual font faces
@@ -653,7 +658,7 @@ Note that the click and double click events have a delay of
 to see mouse events. See the builtin actions below to get a sense of what is possible.</p>
 <p>If you want to unmap an action map it to <code class="docutils literal notranslate"><span class="pre">no-op</span></code>. For example, to disable opening
 of URLs with a plain click:</p>
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">left click ungrabbed no-op</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">left</span><span class="w"> </span><span class="nv">click</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">no</span><span class="s">-op</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -666,7 +671,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Click the link under the mouse cursor when no selection is created"></span><span class="sig-name descname"><span class="pre">Click</span> <span class="pre">the</span> <span class="pre">link</span> <span class="pre">under</span> <span class="pre">the</span> <span class="pre">mouse</span> <span class="pre">cursor</span> <span class="pre">when</span> <span class="pre">no</span> <span class="pre">selection</span> <span class="pre">is</span> <span class="pre">created</span></span><a class="headerlink" href="#shortcut-kitty.Click-the-link-under-the-mouse-cursor-when-no-selection-is-created" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">left click ungrabbed mouse_click_url_or_select</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">left</span><span class="w"> </span><span class="nv">click</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_click_url_or_select</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -674,7 +679,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Click the link under the mouse cursor when no selection is created even if grabbed"></span><span class="sig-name descname"><span class="pre">Click</span> <span class="pre">the</span> <span class="pre">link</span> <span class="pre">under</span> <span class="pre">the</span> <span class="pre">mouse</span> <span class="pre">cursor</span> <span class="pre">when</span> <span class="pre">no</span> <span class="pre">selection</span> <span class="pre">is</span> <span class="pre">created</span> <span class="pre">even</span> <span class="pre">if</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Click-the-link-under-the-mouse-cursor-when-no-selection-is-created-even-if-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">shift+left click grabbed,ungrabbed mouse_click_url_or_select</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+left</span><span class="w"> </span><span class="nv">click</span><span class="w"> </span><span class="s">grabbed,ungrabbed</span><span class="w"> </span><span class="nf">mouse_click_url_or_select</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -682,7 +687,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Click the link under the mouse cursor"></span><span class="sig-name descname"><span class="pre">Click</span> <span class="pre">the</span> <span class="pre">link</span> <span class="pre">under</span> <span class="pre">the</span> <span class="pre">mouse</span> <span class="pre">cursor</span></span><a class="headerlink" href="#shortcut-kitty.Click-the-link-under-the-mouse-cursor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">ctrl+shift+left release grabbed,ungrabbed mouse_click_url</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">ctrl+shift+left</span><span class="w"> </span><span class="nv">release</span><span class="w"> </span><span class="s">grabbed,ungrabbed</span><span class="w"> </span><span class="nf">mouse_click_url</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Variant with <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd></kbd> is present because the simple click based version has an unavoidable delay of <a class="reference internal" href="#opt-kitty.click_interval"><code class="xref std std-opt docutils literal notranslate"><span class="pre">click_interval</span></code></a>, to disambiguate clicks from double clicks.</p>
@@ -691,7 +696,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Discard press event for link click"></span><span class="sig-name descname"><span class="pre">Discard</span> <span class="pre">press</span> <span class="pre">event</span> <span class="pre">for</span> <span class="pre">link</span> <span class="pre">click</span></span><a class="headerlink" href="#shortcut-kitty.Discard-press-event-for-link-click" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">ctrl+shift+left press grabbed discard_event</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">ctrl+shift+left</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">grabbed</span><span class="w"> </span><span class="nf">discard_event</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Prevent this press event from being sent to the program that has grabbed the mouse, as the corresponding release event is used to open a URL.</p>
@@ -700,7 +705,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Paste from the primary selection"></span><span class="sig-name descname"><span class="pre">Paste</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">primary</span> <span class="pre">selection</span></span><a class="headerlink" href="#shortcut-kitty.Paste-from-the-primary-selection" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">middle release ungrabbed paste_from_selection</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">middle</span><span class="w"> </span><span class="nv">release</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">paste_from_selection</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -708,7 +713,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Start selecting text"></span><span class="sig-name descname"><span class="pre">Start</span> <span class="pre">selecting</span> <span class="pre">text</span></span><a class="headerlink" href="#shortcut-kitty.Start-selecting-text" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">left press ungrabbed mouse_selection normal</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">left</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">normal</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -716,7 +721,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Start selecting text in a rectangle"></span><span class="sig-name descname"><span class="pre">Start</span> <span class="pre">selecting</span> <span class="pre">text</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">rectangle</span></span><a class="headerlink" href="#shortcut-kitty.Start-selecting-text-in-a-rectangle" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">ctrl+alt+left press ungrabbed mouse_selection rectangle</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">ctrl+alt+left</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">rectangle</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -724,7 +729,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Select a word"></span><span class="sig-name descname"><span class="pre">Select</span> <span class="pre">a</span> <span class="pre">word</span></span><a class="headerlink" href="#shortcut-kitty.Select-a-word" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">left doublepress ungrabbed mouse_selection word</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">left</span><span class="w"> </span><span class="nv">doublepress</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">word</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -732,7 +737,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Select a line"></span><span class="sig-name descname"><span class="pre">Select</span> <span class="pre">a</span> <span class="pre">line</span></span><a class="headerlink" href="#shortcut-kitty.Select-a-line" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">left triplepress ungrabbed mouse_selection line</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">left</span><span class="w"> </span><span class="nv">triplepress</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">line</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Select the entire line</p>
@@ -741,7 +746,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Select line from point"></span><span class="sig-name descname"><span class="pre">Select</span> <span class="pre">line</span> <span class="pre">from</span> <span class="pre">point</span></span><a class="headerlink" href="#shortcut-kitty.Select-line-from-point" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">ctrl+alt+left triplepress ungrabbed mouse_selection line_from_point</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">ctrl+alt+left</span><span class="w"> </span><span class="nv">triplepress</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">line_from_point</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Select from the clicked point to the end of the line</p>
@@ -750,7 +755,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Extend the current selection"></span><span class="sig-name descname"><span class="pre">Extend</span> <span class="pre">the</span> <span class="pre">current</span> <span class="pre">selection</span></span><a class="headerlink" href="#shortcut-kitty.Extend-the-current-selection" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">right press ungrabbed mouse_selection extend</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">right</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">extend</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -758,7 +763,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Paste from the primary selection even when grabbed"></span><span class="sig-name descname"><span class="pre">Paste</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">primary</span> <span class="pre">selection</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Paste-from-the-primary-selection-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">shift+middle release ungrabbed,grabbed paste_selection</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+middle</span><span class="w"> </span><span class="nv">release</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">paste_selection</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -766,7 +771,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Start selecting text even when grabbed"></span><span class="sig-name descname"><span class="pre">Start</span> <span class="pre">selecting</span> <span class="pre">text</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Start-selecting-text-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">shift+left press ungrabbed,grabbed mouse_selection normal</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+left</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">normal</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -774,7 +779,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Start selecting text in a rectangle even when grabbed"></span><span class="sig-name descname"><span class="pre">Start</span> <span class="pre">selecting</span> <span class="pre">text</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">rectangle</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Start-selecting-text-in-a-rectangle-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">shift+ctrl+alt+left press ungrabbed,grabbed mouse_selection rectangle</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+ctrl+alt+left</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">rectangle</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -782,7 +787,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Select a word even when grabbed"></span><span class="sig-name descname"><span class="pre">Select</span> <span class="pre">a</span> <span class="pre">word</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Select-a-word-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">shift+left doublepress ungrabbed,grabbed mouse_selection word</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+left</span><span class="w"> </span><span class="nv">doublepress</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">word</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -790,7 +795,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Select a line even when grabbed"></span><span class="sig-name descname"><span class="pre">Select</span> <span class="pre">a</span> <span class="pre">line</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Select-a-line-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">shift+left triplepress ungrabbed,grabbed mouse_selection line</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+left</span><span class="w"> </span><span class="nv">triplepress</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">line</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Select the entire line</p>
@@ -799,7 +804,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Select line from point even when grabbed"></span><span class="sig-name descname"><span class="pre">Select</span> <span class="pre">line</span> <span class="pre">from</span> <span class="pre">point</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Select-line-from-point-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">shift+ctrl+alt+left triplepress ungrabbed,grabbed mouse_selection line_from_point</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+ctrl+alt+left</span><span class="w"> </span><span class="nv">triplepress</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">line_from_point</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Select from the clicked point to the end of the line</p>
@@ -808,7 +813,7 @@ automatically end it and no release event will be dispatched.</p>
 <span id="shortcut-kitty.Extend the current selection even when grabbed"></span><span class="sig-name descname"><span class="pre">Extend</span> <span class="pre">the</span> <span class="pre">current</span> <span class="pre">selection</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Extend-the-current-selection-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_map</span><span class="w"> </span><span class="s">shift+right press ungrabbed,grabbed mouse_selection extend</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+right</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">extend</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
