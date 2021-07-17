@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extensions to the xterm protocol &#8212; kitty 0.21.2 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/kitty.png"/>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Documentation for the kitty remote control protocol" href="../rc_protocol/" />
+    <link rel="prev" title="Working with the screen and history buffer contents" href="../pipe/" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../">
+    <img class="logo" src="../_static/kitty.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+<div id="support" style="text-align: center">
+    <form class="support-form" action="../support/" title="Donate to support kitty development">
+        <input type="submit" value="Support kitty">
+    </form>
+</div>
+
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search/" method="get">
+      <input type="text" name="q" placeholder="Search" />
+      <input type="submit" value="Go" style="cursor: pointer" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div>&nbsp;</div>
+<div id="sidebartoc">
+  <ul>
+<li><a class="reference internal" href="#colored-and-styled-underlines">Colored and styled underlines</a></li>
+<li><a class="reference internal" href="#graphics-rendering">Graphics rendering</a></li>
+<li><a class="reference internal" href="#keyboard-handling">Keyboard handling</a></li>
+<li><a class="reference internal" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen">Setting text styles/colors in arbitrary regions of the screen</a></li>
+<li><a class="reference internal" href="#saving-and-restoring-colors">Saving and restoring colors</a></li>
+<li><a class="reference internal" href="#pasting-to-clipboard">Pasting to clipboard</a></li>
+<li><a class="reference internal" href="#unscrolling-the-screen">Unscrolling the screen</a></li>
+<li><a class="reference internal" href="#desktop-notifications">Desktop notifications</a></li>
+</ul>
+
+</div><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../">Documentation overview</a><ul>
+      <li>Previous: <a href="../pipe/" title="previous chapter">Working with the screen and history buffer contents</a></li>
+      <li>Next: <a href="../rc_protocol/" title="next chapter">Documentation for the kitty remote control protocol</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="extensions-to-the-xterm-protocol">
+<h1>Extensions to the xterm protocol<a class="headerlink" href="#extensions-to-the-xterm-protocol" title="Permalink to this headline">¶</a></h1>
+<p><em>kitty</em> has a few extensions to the xterm protocol, to enable advanced features.
+These are typically in the form of new or re-purposed escape codes. While these
+extensions are currently <em>kitty</em> specific, it would be nice to get some of them
+adopted more broadly, to push the state of terminal emulators forward.</p>
+<p>The goal of these extensions is to be as small and unobtrusive as possible,
+while filling in some gaps in the existing xterm protocol. In particular, one
+of the goals of this specification is explicitly not to “re-imagine” the tty.
+The tty should remain what it is – a device for efficiently processing text
+received as a simple byte stream. Another objective is to only move the minimum
+possible amount of extra functionality into the terminal program itself. This
+is to make it as easy to implement these protocol extensions as possible,
+thereby hopefully encouraging their widespread adoption.</p>
+<p>If you wish to discuss these extensions, propose additions/changes to them
+please do so by opening issues in the <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues">GitHub</a> bug tracker.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#colored-and-styled-underlines" id="id2">Colored and styled underlines</a></p></li>
+<li><p><a class="reference internal" href="#graphics-rendering" id="id3">Graphics rendering</a></p></li>
+<li><p><a class="reference internal" href="#keyboard-handling" id="id4">Keyboard handling</a></p></li>
+<li><p><a class="reference internal" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" id="id5">Setting text styles/colors in arbitrary regions of the screen</a></p></li>
+<li><p><a class="reference internal" href="#saving-and-restoring-colors" id="id6">Saving and restoring colors</a></p></li>
+<li><p><a class="reference internal" href="#pasting-to-clipboard" id="id7">Pasting to clipboard</a></p></li>
+<li><p><a class="reference internal" href="#unscrolling-the-screen" id="id8">Unscrolling the screen</a></p></li>
+<li><p><a class="reference internal" href="#desktop-notifications" id="id9">Desktop notifications</a></p></li>
+</ul>
+</div>
+<div class="section" id="colored-and-styled-underlines">
+<h2><a class="toc-backref" href="#id2">Colored and styled underlines</a><a class="headerlink" href="#colored-and-styled-underlines" title="Permalink to this headline">¶</a></h2>
+<p><em>kitty</em> supports colored and styled (wavy) underlines. This is of particular
+use in terminal editors such as vim and emacs to display red, wavy underlines
+under mis-spelled words and/or syntax errors. This is done by re-purposing some
+SGR escape codes that are not used in modern terminals (<a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#CSI_(Control_Sequence_Introducer)_sequences">CSI codes</a>)</p>
+<p>To set the underline style:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="n">m</span>  <span class="c1"># this is no underline</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">1</span><span class="n">m</span>  <span class="c1"># this is a straight underline</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="n">m</span>  <span class="c1"># this is a double underline</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">3</span><span class="n">m</span>  <span class="c1"># this is a curly underline</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">4</span><span class="n">m</span>  <span class="c1"># this is a dotted underline (not implemented in kitty)</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="n">m</span>  <span class="c1"># this is a dashed underline (not implemented in kitty)</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">4</span><span class="n">m</span>    <span class="c1"># this is a straight underline (for backwards compat)</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">24</span><span class="n">m</span>   <span class="c1"># this is no underline (for backwards compat)</span>
+</pre></div>
+</div>
+<p>To set the underline color (this is reserved and as far as I can tell not actually used for anything):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mf">58.</span><span class="o">..</span><span class="n">m</span>
+</pre></div>
+</div>
+<p>This works exactly like the codes <code class="docutils literal notranslate"><span class="pre">38,</span> <span class="pre">48</span></code> that are used to set foreground and
+background color respectively.</p>
+<p>To reset the underline color (also previously reserved and unused):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">59</span><span class="n">m</span>
+</pre></div>
+</div>
+<p>The underline color must remain the same under reverse video, if it has a
+color, if not, it should follow the foreground color.</p>
+<p>To detect support for this feature in a terminal emulator, query the terminfo database
+for the <code class="docutils literal notranslate"><span class="pre">Su</span></code> boolean capability.</p>
+</div>
+<div class="section" id="graphics-rendering">
+<h2><a class="toc-backref" href="#id3">Graphics rendering</a><a class="headerlink" href="#graphics-rendering" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="../graphics-protocol/"><span class="doc">The terminal graphics protocol</span></a> for a description
+of this protocol to enable drawing of arbitrary raster images in the terminal.</p>
+</div>
+<div class="section" id="keyboard-handling">
+<span id="extended-key-protocol"></span><h2><a class="toc-backref" href="#id4">Keyboard handling</a><a class="headerlink" href="#keyboard-handling" title="Permalink to this headline">¶</a></h2>
+<p>kitty has a <a class="reference internal" href="../keyboard-protocol/"><span class="doc">keyboard protocol</span></a> for reporting key
+presses to terminal applications that solves all key handling issues in
+terminal applications.</p>
+</div>
+<div class="section" id="setting-text-styles-colors-in-arbitrary-regions-of-the-screen">
+<span id="ext-styles"></span><h2><a class="toc-backref" href="#id5">Setting text styles/colors in arbitrary regions of the screen</a><a class="headerlink" href="#setting-text-styles-colors-in-arbitrary-regions-of-the-screen" title="Permalink to this headline">¶</a></h2>
+<p>There already exists an escape code to set <em>some</em> text attributes in arbitrary
+regions of the screen, <a class="reference external" href="https://vt100.net/docs/vt510-rm/DECCARA.html">DECCARA</a>.  However, it is limited to
+only a few attributes. <em>kitty</em> extends this to work with <em>all</em> SGR attributes.
+So, for example, this can be used to set the background color in an arbitrary
+region of the screen.</p>
+<p>The motivation for this extension is the various problems with the existing
+solution for erasing to background color, namely the <em>background color erase
+(bce)</em> capability. See
+<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/160#issuecomment-346470545">this discussion</a>
+and <a class="reference external" href="https://invisible-island.net/ncurses/ncurses.faq.html#bce_mismatches">this FAQ</a>
+for a summary of problems with <em>bce</em>.</p>
+<p>For example, to set the background color to blue in a
+rectangular region of the screen from (3, 4) to (10, 11), you use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;ESC&gt;[2*x&lt;ESC&gt;[4;3;11;10;44$r&lt;ESC&gt;[*x
+</pre></div>
+</div>
+</div>
+<div class="section" id="saving-and-restoring-colors">
+<h2><a class="toc-backref" href="#id6">Saving and restoring colors</a><a class="headerlink" href="#saving-and-restoring-colors" title="Permalink to this headline">¶</a></h2>
+<p>It is often useful for a full screen application with its own color themes to
+set the default foreground, background, selection and cursor colors and the
+ANSI color table. This allows for various performance optimizations when
+drawing the screen. The problem is that if the user previously used the escape
+codes to change these colors herself, then running the full screen application
+will lose her changes even after it exits. To avoid this, kitty introduces a
+new pair of <em>OSC</em> escape codes to push and pop the current color values from a
+stack:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">]</span><span class="mi">30001</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\  <span class="c1"># push onto stack</span>
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">]</span><span class="mi">30101</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\  <span class="c1"># pop from stack</span>
+</pre></div>
+</div>
+<p>These escape codes save/restore the colors, default
+background, default foreground, selection background, selection foreground and
+cursor color and the 256 colors of the ANSI color table.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In July 2020, after several years, XTerm copied this protocol
+extension, without acknowledgement, and using incompatible escape codes
+(XTPUSHCOLORS, XTPOPCOLORS, XTREPORTCOLORS). And they decided to save not
+just the dynamic colors but the entire ANSI color table. In the interests of
+promoting interoperability, kitty added support for XTerm’s escape codes as
+well, and changed this extension to also save/restore the entire ANSI color
+table.</p>
+</div>
+</div>
+<div class="section" id="pasting-to-clipboard">
+<h2><a class="toc-backref" href="#id7">Pasting to clipboard</a><a class="headerlink" href="#pasting-to-clipboard" title="Permalink to this headline">¶</a></h2>
+<p><em>kitty</em> implements the OSC 52 escape code protocol to get/set the clipboard
+contents (controlled via the <a class="reference internal" href="../conf/#opt-kitty.clipboard_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">clipboard_control</span></code></a> setting). There is one
+difference in kitty’s implementation compared to some other terminal emulators.
+<em>kitty</em> allows sending arbitrary amounts of text to the clipboard. It does so
+by modifying the protocol slightly. Successive OSC 52 escape codes to set the
+clipboard will concatenate, so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">]</span><span class="mi">52</span><span class="p">;</span><span class="n">c</span><span class="p">;</span><span class="o">&lt;</span><span class="n">payload1</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
+<span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="p">]</span><span class="mi">52</span><span class="p">;</span><span class="n">c</span><span class="p">;</span><span class="o">&lt;</span><span class="n">payload2</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
+</pre></div>
+</div>
+<p>will result in the clipboard having the contents <code class="docutils literal notranslate"><span class="pre">payload1</span> <span class="pre">+</span> <span class="pre">payload2</span></code>. To
+send a new string to the clipboard send an OSC 52 sequence with an invalid payload
+first, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;ESC&gt;]52;c;!&lt;ESC&gt;\
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">!</span></code> is not valid base64 encoded text, so it clears the clipboard.
+Further, since it is invalid, it should be ignored by terminal emulators
+that do not support this extension, thereby making it safe to use, simply
+always send it before starting a new OSC 52 paste, even if you aren’t chunking
+up large pastes, that way kitty won’t concatenate your paste, and it will have
+no ill-effects in other terminal emulators.</p>
+<p>In case you’re using software that can’t be easily adapted to this
+protocol extension, it can be disabled by specifying <code class="docutils literal notranslate"><span class="pre">no-append</span></code> to the
+<a class="reference internal" href="../conf/#opt-kitty.clipboard_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">clipboard_control</span></code></a> setting.</p>
+</div>
+<div class="section" id="unscrolling-the-screen">
+<span id="unscroll"></span><h2><a class="toc-backref" href="#id8">Unscrolling the screen</a><a class="headerlink" href="#unscrolling-the-screen" title="Permalink to this headline">¶</a></h2>
+<p>This is a small extension to the <a class="reference external" href="https://vt100.net/docs/vt510-rm/SD.html">SD (Pan up) escape code</a> from the VT-420 terminal. The
+<code class="docutils literal notranslate"><span class="pre">SD</span></code> escape code normally causes the text on screen to scroll down by the
+specified number of lines, with empty lines appearing at the top of the screen.
+This extension allows the new lines to be filled in from the scrollback buffer
+instead of being blank.</p>
+<p>The motivation for this is that many modern shells will show completions in a
+block of lines under the cursor, this causes some of the on-screen text to be
+lost even after the completion is completed, because it has scrolled off
+screen. This escape code allows that text to be restored.</p>
+<p>If the scrollback buffer is empty or there is no scrollback buffer, such as for
+the alternate screen, then the newly inserted lines must be empty, just as with
+the original <code class="docutils literal notranslate"><span class="pre">SD</span></code> escape code. The maximum number of lines that can be
+scrolled down is implementation defined, but must be at least one screen worth.</p>
+<p>The syntax of the escape code is identical to that of <code class="docutils literal notranslate"><span class="pre">SD</span></code> except that it has
+a trailing <code class="docutils literal notranslate"><span class="pre">+</span></code> modifier. This is legal under the <a class="reference external" href="https://www.ecma-international.org/publications-and-standards/standards/ecma-48/">ECMA 48 standard</a>
+and unused for any other purpose as far as I can tell. So for example, to
+unscroll three lines, the escape code would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">T</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://gitlab.freedesktop.org/terminal-wg/specifications/-/issues/30">discussion here</a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.20.2.</span></p>
+</div>
+</div>
+<div class="section" id="desktop-notifications">
+<span id="id1"></span><h2><a class="toc-backref" href="#id9">Desktop notifications</a><a class="headerlink" href="#desktop-notifications" title="Permalink to this headline">¶</a></h2>
+<p><em>kitty</em> implements an extensible escape code (OSC 99) to show desktop
+notifications. It is easy to use from shell scripts and fully extensible to
+show title and body.  Clicking on the notification can optionally focus the
+window it came from, and/or send an escape code back to the application running
+in that window.</p>
+<p>The design of the escape code is partially based on the discussion in
+the defunct
+<a class="reference external" href="https://gitlab.freedesktop.org/terminal-wg/specifications/-/issues/13">terminal-wg</a></p>
+<p>The escape code has the form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">OSC</span><span class="o">&gt;</span> <span class="mi">99</span> <span class="p">;</span> <span class="n">metadata</span> <span class="p">;</span> <span class="n">payload</span> <span class="o">&lt;</span><span class="n">terminator</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">&lt;OSC&gt;</span></code> is <code class="code docutils literal notranslate"><span class="pre">&lt;ESC&gt;]</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;terminator&gt;</span></code> is
+<code class="code docutils literal notranslate"><span class="pre">&lt;ESC&gt;&lt;backslash&gt;</span></code>.  The metadata is a section of colon separated
+<code class="code docutils literal notranslate"><span class="pre">key=value</span></code> pairs. Every key must be a single character from the set
+<code class="code docutils literal notranslate"><span class="pre">a-zA-Z</span></code> and every value must be a word consisting of characters from
+the set <code class="code docutils literal notranslate"><span class="pre">a-zA-Z0-9-_/\+.,(){}[]*&amp;^%$#&#64;!`~</span></code>. The payload must be
+interpreted based on the metadata section. The two semi-colons <em>must</em> always be
+present even when no metadata is present.</p>
+<p>Before going into details, lets see how one can display a simple, single line
+notification from a shell script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span> <span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">]99;;Hello world</span><span class="se">\x1b\\</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>To show a message with a title and a body:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span> <span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">]99;i=1:d=0;Hello world</span><span class="se">\x1b\\</span><span class="s1">&#39;</span>
+<span class="n">printf</span> <span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">]99;i=1:d=1:p=body;This is cool</span><span class="se">\x1b\\</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>The most important key in the metadata is the <code class="docutils literal notranslate"><span class="pre">p</span></code> key, it controls how the
+payload is interpreted. A value of <code class="docutils literal notranslate"><span class="pre">title</span></code> means the payload is setting the
+title for the notification. A value of <code class="docutils literal notranslate"><span class="pre">body</span></code> means it is setting the body,
+and so on, see the table below for full details.</p>
+<p>The design of the escape code is fundamentally chunked, this is because
+different terminal emulators have different limits on how large a single escape
+code can be. Chunking is accomplished by the <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code> keys. The <code class="docutils literal notranslate"><span class="pre">i</span></code>
+key is the <em>notification id</em> which can be any string containing the characters
+<code class="docutils literal notranslate"><span class="pre">[a-zA-Z0-9_-+.]</span></code>. The <code class="docutils literal notranslate"><span class="pre">d</span></code> key stands for <em>done</em> and
+can only take the values <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code>. A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> means the
+notification is not yet done and the terminal emulator should hold off
+displaying it. A value of <code class="docutils literal notranslate"><span class="pre">1</span></code> means the notification is done, and should be
+displayed. You can specify the title or body multiple times and the terminal
+emulator will concatenate them, thereby allowing arbitrarily long text
+(terminal emulators are free to impose a sensible limit to avoid
+Denial-of-Service attacks).</p>
+<p>Both the <code class="docutils literal notranslate"><span class="pre">title</span></code> and <code class="docutils literal notranslate"><span class="pre">body</span></code> payloads must be either UTF-8 encoded plain
+text with no embedded escape codes, or UTF-8 text that is base64 encoded, in
+which case there must be an <code class="docutils literal notranslate"><span class="pre">e=1</span></code> key in the metadata to indicate the payload
+is base64 encoded.</p>
+<p>When the user clicks the notification, a couple of things can happen, the
+terminal emulator can focus the window from which the notification came, and/or
+it can send back an escape code to the application indicating the notification
+was activated. This is controlled by the <code class="docutils literal notranslate"><span class="pre">a</span></code> key which takes a comma
+separated set of values, <code class="docutils literal notranslate"><span class="pre">report</span></code> and <code class="docutils literal notranslate"><span class="pre">focus</span></code>. The value <code class="docutils literal notranslate"><span class="pre">focus</span></code> means
+focus the window from which the notification was issued and is the default.
+<code class="docutils literal notranslate"><span class="pre">report</span></code> means send an escape code back to the application. The format of the
+returned escape code is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">OSC</span><span class="o">&gt;</span> <span class="mi">99</span> <span class="p">;</span> <span class="n">i</span><span class="o">=</span><span class="n">identifier</span> <span class="p">;</span> <span class="o">&lt;</span><span class="n">terminator</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The value of <code class="docutils literal notranslate"><span class="pre">identifier</span></code> comes from the <code class="docutils literal notranslate"><span class="pre">i</span></code> key in the escape code sent by
+the application. If the application sends no identifier, then the terminal
+<em>must</em> use <code class="docutils literal notranslate"><span class="pre">i=0</span></code>. Actions can be preceded by a negative sign to turn them
+off, so for example if you do not want any action, turn off the default
+<code class="docutils literal notranslate"><span class="pre">focus</span></code> action with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=-</span><span class="n">focus</span>
+</pre></div>
+</div>
+<p>Complete specification of all the metadata keys is in the table below. If a
+terminal emulator encounters a key in the metadata it does not understand,
+the key <em>must</em> be ignored, to allow for future extensibility of this escape
+code. Similarly if values for known keys are unknown, the terminal emulator
+<em>should</em> either ignore the entire escape code or perform a best guess effort
+to display it based on what it does understand.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is possible to extend this escape code to allow specifying an icon for
+the notification, however, given that some platforms, such as macOS, dont
+allow displaying custom icons on a notification, at all, it was decided to
+leave it out of the spec for the time being.</p>
+<p>Similarly, features such as scheduled notifications could be added in future
+revisions.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 20%" />
+<col style="width: 9%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td><p>Comma separated list
+of <code class="docutils literal notranslate"><span class="pre">report</span></code>,
+<code class="docutils literal notranslate"><span class="pre">focus</span></code>, with
+optional leading
+<code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">focus</span></code></p></td>
+<td><p>What action to perform when the
+notification is clicked</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Indicates if the notification is
+complete or not.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">e</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>If set to <code class="docutils literal notranslate"><span class="pre">1</span></code> means the payload is base64 encoded UTF-8,
+otherwise it is plain UTF-8 text with no C0 control codes in it</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">i</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[a-zA-Z0-9-_+.]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Identifier for the notification</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p</span></code></p></td>
+<td><p>One of <code class="docutils literal notranslate"><span class="pre">title</span></code> or
+<code class="docutils literal notranslate"><span class="pre">body</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<td><p>Whether the payload is the notification title or body. If a
+notification has no title, the body will be used as title.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>kitty</em> also supports the legacy OSC 9 protocol developed by iTerm2 for
+desktop notifications.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, Kovid Goyal.
+      
+    </div>
+
+    
+    <a href="https://github.com/kovidgoyal/kitty" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>

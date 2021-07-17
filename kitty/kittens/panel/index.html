@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Draw a GPU accelerated dock panel on your desktop &#8212; kitty 0.21.2 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/kitty.png"/>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Query terminal" href="../query_terminal/" />
+    <link rel="prev" title="icat - Display images in the terminal" href="../icat/" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../">
+    <img class="logo" src="../../_static/kitty.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+<div id="support" style="text-align: center">
+    <form class="support-form" action="../../support/" title="Donate to support kitty development">
+        <input type="submit" value="Support kitty">
+    </form>
+</div>
+
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" placeholder="Search" />
+      <input type="submit" value="Go" style="cursor: pointer" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div>&nbsp;</div>
+<div id="sidebartoc">
+  <ul>
+<li><a class="reference internal" href="#command-line-interface">Command Line Interface</a><ul>
+<li><a class="reference internal" href="#options">Options</a></li>
+</ul>
+</li>
+</ul>
+
+</div><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../">Documentation overview</a><ul>
+      <li>Previous: <a href="../icat/" title="previous chapter">icat - Display images in the terminal</a></li>
+      <li>Next: <a href="../query_terminal/" title="next chapter">Query terminal</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="draw-a-gpu-accelerated-dock-panel-on-your-desktop">
+<h1>Draw a GPU accelerated dock panel on your desktop<a class="headerlink" href="#draw-a-gpu-accelerated-dock-panel-on-your-desktop" title="Permalink to this headline">¶</a></h1>
+<p>You can use this kitten to draw a GPU accelerated panel on the edge
+of your screen, that shows the output from an arbitrary terminal program.</p>
+<p>It is useful for showing status information or notifications on your desktop
+using terminal programs instead of GUI toolkits.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../_images/panel.png"><img alt="Screenshot, showing a sample panel" src="../../_images/panel.png" style="width: 1640.0px; height: 61.0px;" /></a>
+<p class="caption"><span class="caption-text">Screenshot, showing a sample panel</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>The screenshot above shows a sample panel that displays the current desktop and
+window title as well as miscellaneous system information such as network
+activity, CPU load, date/time, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This kitten currently only works on X11 desktops</p>
+</div>
+<p>Using this kitten is simple, for example:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten panel sh -c <span class="s1">&#39;printf &quot;\n\n\nHello, world.&quot;; sleep 5s&#39;</span>
+</pre></div>
+</div>
+<p>This will show <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world.</span></code> at the top edge of your screen for five
+seconds. Here the terminal program we are running is <code class="docutils literal notranslate"><span class="pre">sh</span></code> with a script to
+print out <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code>. You can make the terminal program as complex as
+you like, as demonstrated in the screenshot above.</p>
+<div class="section" id="command-line-interface">
+<h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten panel <span class="o">[</span>options<span class="o">]</span> program-to-run
+</pre></div>
+</div>
+<p>Use a command line program to draw a GPU accelerated panel on your X11 desktop</p>
+<div class="section" id="options">
+<h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-lines">
+<span class="sig-name descname"><span class="pre">--lines</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;LINES&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of lines shown in the panel (the height of the panel). Applies to horizontal panels.
+Default: <code class="code docutils literal notranslate"><span class="pre">1</span></code></p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-columns">
+<span class="sig-name descname"><span class="pre">--columns</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;COLUMNS&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of columns shown in the panel (the width of the panel). Applies to vertical panels.
+Default: <code class="code docutils literal notranslate"><span class="pre">20</span></code></p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-edge">
+<span class="sig-name descname"><span class="pre">--edge</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;EDGE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Which edge of the screen to place the panel on. Note that some window managers (such as i3) do not support placing docked windows on the left and right edges.
+Default: <code class="code docutils literal notranslate"><span class="pre">top</span></code>
+Choices: <code class="code docutils literal notranslate"><span class="pre">bottom,</span> <span class="pre">left,</span> <span class="pre">right,</span> <span class="pre">top</span></code></p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-config">
+<span id="cmdoption-kitty-kitten-panel-c"></span><span class="sig-name descname"><span class="pre">--config</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to config file to use for kitty when drawing the panel.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-override">
+<span id="cmdoption-kitty-kitten-panel-o"></span><span class="sig-name descname"><span class="pre">--override</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-override" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override individual kitty configuration options, can be specified multiple times. Syntax: <span class="italic">name=value</span>. For example: <a class="reference internal" href="#cmdoption-kitty-kitten-panel-override"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">panel</span> <span class="pre">-o</span></code></a> font_size=20</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-class">
+<span class="sig-name descname"><span class="pre">--class</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CLS&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the class part of the <span class="italic">WM_CLASS</span> window property. On Wayland, it sets the app id.
+Default: <code class="code docutils literal notranslate"><span class="pre">kitty-panel</span></code></p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-name">
+<span class="sig-name descname"><span class="pre">--name</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the name part of the <span class="italic">WM_CLASS</span> property (defaults to using the value from <a class="reference internal" href="../../invocation/#cmdoption-kitty-class"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--class</span></code></a>)</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, Kovid Goyal.
+      
+    </div>
+
+    
+    <a href="https://github.com/kovidgoyal/kitty" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>

@@ -590,7 +590,7 @@ Clients can control animations by using the ``a=a`` key in the escape code sent
 to the terminal.
 
 The simplest is client driven animations, where the client transmits the frame
-data and the also instructs the terminal to make a particular frame the current
+data and then also instructs the terminal to make a particular frame the current
 frame.  To change the current frame, use the ``c`` key::
 
     <ESC>_Ga=a,i=3,c=7<ESC>\
@@ -654,8 +654,8 @@ take, and the default value they take when missing. All integers are 32-bit.
 Key      Value                 Default    Description
 =======  ====================  =========  =================
 ``a``    Single character.     ``t``      The overall action this graphics command is performing.
-         ``(t, T, q, p, d)``              ``t`` - transmit data, ``T`` - transmit data and display image,
-                                          ``q`` - query terminal, ``p`` - put (display) previous transmitted image,
+         ``(a, d, f,``                    ``t`` - transmit data, ``T`` - transmit data and display image,
+         ``p, q, t, T)``                  ``q`` - query terminal, ``p`` - put (display) previous transmitted image,
                                           ``d`` - delete image, ``f`` - transmit data for animation frames,
                                           ``a`` - control animation
 
