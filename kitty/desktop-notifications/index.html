@@ -1,0 +1,390 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Desktop notifications" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sw.kovidgoyal.net/kitty/desktop-notifications.html" />
+  <meta property="og:description" content="kitty implements an extensible escape code (OSC 99) to show desktop notifications. It is easy to use from shell scripts and fully extensible to show title and body. Clicking on the notification can..." />
+  <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Unscrolling the screen" href="../unscroll/" /><link rel="prev" title="Comprehensive keyboard handling in terminals" href="../keyboard-protocol/" />
+
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.0.3, furo 2021.07.05.beta38"/>
+        <title>Desktop notifications - kitty 0.21.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css" />
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+  
+      <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../"><div class="brand">kitty 0.21.2 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/kitty.svg" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search/">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../quickstart/">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../binary/">Install kitty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/">Build from source</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../overview/">Overview</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../conf/">Configure kitty</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../actions/">Mappable actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../layouts/">Arrange windows</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../kittens_intro/">Extend kitty</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/icat/">icat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/diff/">kitty-diff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/unicode-input/">Unicode input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/hints/">Hints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/remote_file/">Remote files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/hyperlinked_grep/">Hyperlinked grep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/custom/">Custom kittens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/broadcast/">broadcast - type text in all kitty windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/clipboard/">clipboard - copy/paste to the system clipboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/panel/">Draw a GPU accelerated dock panel on your desktop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/query_terminal/">Query terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../remote-control/">Control kitty from scripts</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rc_protocol/">The kitty remote control protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../launch/">Launching new tabs/windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marks/">Mark text on screen</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support kitty development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/">Integrations with other tools</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../underlines/">Colored and styled underlines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graphics-protocol/">The terminal graphics protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keyboard-protocol/">Comprehensive keyboard handling in terminals</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Desktop notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unscroll/">Unscrolling the screen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clipboard/">Pasting to clipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../color-stack/">Saving and restoring colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deccara/">Setting text styles/colors in arbitrary regions of the screen</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="desktop-notifications">
+<span id="id1"></span><h1>Desktop notifications<a class="headerlink" href="#desktop-notifications" title="Permalink to this headline">¶</a></h1>
+<p><em>kitty</em> implements an extensible escape code (OSC 99) to show desktop
+notifications. It is easy to use from shell scripts and fully extensible to
+show title and body.  Clicking on the notification can optionally focus the
+window it came from, and/or send an escape code back to the application running
+in that window.</p>
+<p>The design of the escape code is partially based on the discussion in
+the defunct
+<a class="reference external" href="https://gitlab.freedesktop.org/terminal-wg/specifications/-/issues/13">terminal-wg</a></p>
+<p>The escape code has the form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">OSC</span><span class="o">&gt;</span> <span class="mi">99</span> <span class="p">;</span> <span class="n">metadata</span> <span class="p">;</span> <span class="n">payload</span> <span class="o">&lt;</span><span class="n">terminator</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">&lt;OSC&gt;</span></code> is <code class="code docutils literal notranslate"><span class="pre">&lt;ESC&gt;]</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;terminator&gt;</span></code> is
+<code class="code docutils literal notranslate"><span class="pre">&lt;ESC&gt;&lt;backslash&gt;</span></code>.  The metadata is a section of colon separated
+<code class="code docutils literal notranslate"><span class="pre">key=value</span></code> pairs. Every key must be a single character from the set
+<code class="code docutils literal notranslate"><span class="pre">a-zA-Z</span></code> and every value must be a word consisting of characters from
+the set <code class="code docutils literal notranslate"><span class="pre">a-zA-Z0-9-_/\+.,(){}[]*&amp;^%$#@!`~</span></code>. The payload must be
+interpreted based on the metadata section. The two semi-colons <em>must</em> always be
+present even when no metadata is present.</p>
+<p>Before going into details, lets see how one can display a simple, single line
+notification from a shell script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span> <span class="s1">'</span><span class="se">\x1b</span><span class="s1">]99;;Hello world</span><span class="se">\x1b\\</span><span class="s1">'</span>
+</pre></div>
+</div>
+<p>To show a message with a title and a body:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span> <span class="s1">'</span><span class="se">\x1b</span><span class="s1">]99;i=1:d=0;Hello world</span><span class="se">\x1b\\</span><span class="s1">'</span>
+<span class="n">printf</span> <span class="s1">'</span><span class="se">\x1b</span><span class="s1">]99;i=1:d=1:p=body;This is cool</span><span class="se">\x1b\\</span><span class="s1">'</span>
+</pre></div>
+</div>
+<p>The most important key in the metadata is the <code class="docutils literal notranslate"><span class="pre">p</span></code> key, it controls how the
+payload is interpreted. A value of <code class="docutils literal notranslate"><span class="pre">title</span></code> means the payload is setting the
+title for the notification. A value of <code class="docutils literal notranslate"><span class="pre">body</span></code> means it is setting the body,
+and so on, see the table below for full details.</p>
+<p>The design of the escape code is fundamentally chunked, this is because
+different terminal emulators have different limits on how large a single escape
+code can be. Chunking is accomplished by the <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code> keys. The <code class="docutils literal notranslate"><span class="pre">i</span></code>
+key is the <em>notification id</em> which can be any string containing the characters
+<code class="docutils literal notranslate"><span class="pre">[a-zA-Z0-9_-+.]</span></code>. The <code class="docutils literal notranslate"><span class="pre">d</span></code> key stands for <em>done</em> and
+can only take the values <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code>. A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> means the
+notification is not yet done and the terminal emulator should hold off
+displaying it. A value of <code class="docutils literal notranslate"><span class="pre">1</span></code> means the notification is done, and should be
+displayed. You can specify the title or body multiple times and the terminal
+emulator will concatenate them, thereby allowing arbitrarily long text
+(terminal emulators are free to impose a sensible limit to avoid
+Denial-of-Service attacks).</p>
+<p>Both the <code class="docutils literal notranslate"><span class="pre">title</span></code> and <code class="docutils literal notranslate"><span class="pre">body</span></code> payloads must be either UTF-8 encoded plain
+text with no embedded escape codes, or UTF-8 text that is base64 encoded, in
+which case there must be an <code class="docutils literal notranslate"><span class="pre">e=1</span></code> key in the metadata to indicate the payload
+is base64 encoded.</p>
+<p>When the user clicks the notification, a couple of things can happen, the
+terminal emulator can focus the window from which the notification came, and/or
+it can send back an escape code to the application indicating the notification
+was activated. This is controlled by the <code class="docutils literal notranslate"><span class="pre">a</span></code> key which takes a comma
+separated set of values, <code class="docutils literal notranslate"><span class="pre">report</span></code> and <code class="docutils literal notranslate"><span class="pre">focus</span></code>. The value <code class="docutils literal notranslate"><span class="pre">focus</span></code> means
+focus the window from which the notification was issued and is the default.
+<code class="docutils literal notranslate"><span class="pre">report</span></code> means send an escape code back to the application. The format of the
+returned escape code is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">OSC</span><span class="o">&gt;</span> <span class="mi">99</span> <span class="p">;</span> <span class="n">i</span><span class="o">=</span><span class="n">identifier</span> <span class="p">;</span> <span class="o">&lt;</span><span class="n">terminator</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The value of <code class="docutils literal notranslate"><span class="pre">identifier</span></code> comes from the <code class="docutils literal notranslate"><span class="pre">i</span></code> key in the escape code sent by
+the application. If the application sends no identifier, then the terminal
+<em>must</em> use <code class="docutils literal notranslate"><span class="pre">i=0</span></code>. Actions can be preceded by a negative sign to turn them
+off, so for example if you do not want any action, turn off the default
+<code class="docutils literal notranslate"><span class="pre">focus</span></code> action with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=-</span><span class="n">focus</span>
+</pre></div>
+</div>
+<p>Complete specification of all the metadata keys is in the table below. If a
+terminal emulator encounters a key in the metadata it does not understand,
+the key <em>must</em> be ignored, to allow for future extensibility of this escape
+code. Similarly if values for known keys are unknown, the terminal emulator
+<em>should</em> either ignore the entire escape code or perform a best guess effort
+to display it based on what it does understand.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is possible to extend this escape code to allow specifying an icon for
+the notification, however, given that some platforms, such as macOS, dont
+allow displaying custom icons on a notification, at all, it was decided to
+leave it out of the spec for the time being.</p>
+<p>Similarly, features such as scheduled notifications could be added in future
+revisions.</p>
+</div>
+<div class="table-wrapper"><table class="docutils align-default">
+<colgroup>
+<col style="width: 7%"/>
+<col style="width: 20%"/>
+<col style="width: 9%"/>
+<col style="width: 64%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td><p>Comma separated list
+of <code class="docutils literal notranslate"><span class="pre">report</span></code>,
+<code class="docutils literal notranslate"><span class="pre">focus</span></code>, with
+optional leading
+<code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">focus</span></code></p></td>
+<td><p>What action to perform when the
+notification is clicked</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Indicates if the notification is
+complete or not.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">e</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>If set to <code class="docutils literal notranslate"><span class="pre">1</span></code> means the payload is base64 encoded UTF-8,
+otherwise it is plain UTF-8 text with no C0 control codes in it</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">i</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[a-zA-Z0-9-_+.]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Identifier for the notification</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p</span></code></p></td>
+<td><p>One of <code class="docutils literal notranslate"><span class="pre">title</span></code> or
+<code class="docutils literal notranslate"><span class="pre">body</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<td><p>Whether the payload is the notification title or body. If a
+notification has no title, the body will be used as title.</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>kitty</em> also supports the legacy OSC 9 protocol developed by iTerm2 for
+desktop notifications.</p>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../unscroll/">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Unscrolling the screen</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../keyboard-protocol/">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Comprehensive keyboard handling in terminals</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Kovid Goyal
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    </body>
+</html>

@@ -1,118 +1,204 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Comprehensive keyboard handling in terminals" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sw.kovidgoyal.net/kitty/keyboard-protocol.html" />
+  <meta property="og:description" content="There are various problems with the current state of keyboard handling in terminals. They include: No way to use modifiers other than ctrl and alt, No way to reliably use multiple modifier keys, ot..." />
+  <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Desktop notifications" href="../desktop-notifications/" /><link rel="prev" title="The terminal graphics protocol" href="../graphics-protocol/" />
 
-<!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A protocol for comprehensive keyboard handling in terminals &#8212; kitty 0.21.2 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.0.3, furo 2021.07.05.beta38"/>
+        <title>Comprehensive keyboard handling in terminals - kitty 0.21.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <link rel="shortcut icon" href="../_static/kitty.png"/>
-    <link rel="index" title="Index" href="../genindex/" />
-    <link rel="search" title="Search" href="../search/" />
-    <link rel="next" title="Launching programs in new windows/tabs" href="../launch/" />
-    <link rel="prev" title="The kitty command line interface" href="../invocation/" />
-   
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
-  <div class="document">
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css" />
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="../">
-    <img class="logo" src="../_static/kitty.png" alt="Logo"/>
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+  
+      <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body dir="">
     
-  </a>
-</p>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
 
 
-
-
-
-
-
-
-
-
-<div id="support" style="text-align: center">
-    <form class="support-form" action="../support/" title="Donate to support kitty development">
-        <input type="submit" value="Support kitty">
-    </form>
-</div>
-
-<div id="searchbox" style="display: none" role="search">
-    <div class="searchformwrapper">
-    <form class="search" action="../search/" method="get">
-      <input type="text" name="q" placeholder="Search" />
-      <input type="submit" value="Go" style="cursor: pointer" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
     </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-<div>&nbsp;</div>
-<div id="sidebartoc">
-  <ul>
-<li><a class="reference internal" href="#quickstart">Quickstart</a></li>
-<li><a class="reference internal" href="#an-overview">An overview</a><ul>
-<li><a class="reference internal" href="#key-codes">Key codes</a></li>
-<li><a class="reference internal" href="#modifiers">Modifiers</a></li>
-<li><a class="reference internal" href="#event-types">Event types</a></li>
-<li><a class="reference internal" href="#text-as-code-points">Text as code points</a></li>
-<li><a class="reference internal" href="#non-unicode-keys">Non-Unicode keys</a></li>
+    <div class="header-center">
+      <a href="../"><div class="brand">kitty 0.21.2 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/kitty.svg" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search/">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../quickstart/">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../binary/">Install kitty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/">Build from source</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#progressive-enhancement">Progressive enhancement</a><ul>
-<li><a class="reference internal" href="#disambiguate-escape-codes">Disambiguate escape codes</a></li>
-<li><a class="reference internal" href="#report-event-types">Report event types</a></li>
-<li><a class="reference internal" href="#report-alternate-keys">Report alternate keys</a></li>
-<li><a class="reference internal" href="#report-all-keys-as-escape-codes">Report all keys as escape codes</a></li>
-<li><a class="reference internal" href="#report-associated-text">Report associated text</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../overview/">Overview</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../conf/">Configure kitty</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../actions/">Mappable actions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#detection-of-support-for-this-protocol">Detection of support for this protocol</a></li>
-<li><a class="reference internal" href="#legacy-key-event-encoding">Legacy key event encoding</a><ul>
-<li><a class="reference internal" href="#legacy-functional-keys">Legacy functional keys</a></li>
-<li><a class="reference internal" href="#legacy-text-keys">Legacy text keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layouts/">Arrange windows</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../kittens_intro/">Extend kitty</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/icat/">icat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/diff/">kitty-diff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/unicode-input/">Unicode input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/hints/">Hints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/remote_file/">Remote files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/hyperlinked_grep/">Hyperlinked grep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/custom/">Custom kittens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/broadcast/">broadcast - type text in all kitty windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/clipboard/">clipboard - copy/paste to the system clipboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/panel/">Draw a GPU accelerated dock panel on your desktop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/query_terminal/">Query terminal</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#functional-key-definitions">Functional key definitions</a></li>
-<li><a class="reference internal" href="#legacy-ctrl-mapping-of-ascii-keys">Legacy <kbd class="kbd docutils literal notranslate">ctrl</kbd> mapping of ASCII keys</a></li>
-<li><a class="reference internal" href="#bugs-in-fixterms">Bugs in fixterms</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../remote-control/">Control kitty from scripts</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rc_protocol/">The kitty remote control protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../launch/">Launching new tabs/windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marks/">Mark text on screen</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support kitty development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/">Integrations with other tools</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../underlines/">Colored and styled underlines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graphics-protocol/">The terminal graphics protocol</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Comprehensive keyboard handling in terminals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../desktop-notifications/">Desktop notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unscroll/">Unscrolling the screen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clipboard/">Pasting to clipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../color-stack/">Saving and restoring colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deccara/">Setting text styles/colors in arbitrary regions of the screen</a></li>
+</ul>
+</li>
 </ul>
 
-</div><div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../">Documentation overview</a><ul>
-      <li>Previous: <a href="../invocation/" title="previous chapter">The kitty command line interface</a></li>
-      <li>Next: <a href="../launch/" title="next chapter">Launching programs in new windows/tabs</a></li>
-  </ul></li>
-</ul>
 </div>
-        </div>
+</div>
       </div>
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
-
-          <div class="body" role="main">
-            
-  <div class="section" id="a-protocol-for-comprehensive-keyboard-handling-in-terminals">
-<h1>A protocol for comprehensive keyboard handling in terminals<a class="headerlink" href="#a-protocol-for-comprehensive-keyboard-handling-in-terminals" title="Permalink to this headline">¶</a></h1>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="comprehensive-keyboard-handling-in-terminals">
+<h1>Comprehensive keyboard handling in terminals<a class="headerlink" href="#comprehensive-keyboard-handling-in-terminals" title="Permalink to this headline">¶</a></h1>
 <p>There are various problems with the current state of keyboard handling in
 terminals. They include:</p>
 <ul class="simple">
@@ -280,8 +366,8 @@ report mode</em>, see below.</p>
 <p>The terminal can optionally send the text associated with key events as a
 sequence of Unicode code points. This behavior is opt-in by the <a class="reference internal" href="#progressive-enhancement"><span class="std std-ref">progressive
 enhancement</span></a> mechanism described below. Some examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shift</span><span class="o">+</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">CSI</span> <span class="mi">97</span> <span class="p">;</span> <span class="mi">2</span> <span class="p">;</span> <span class="mi">65</span> <span class="n">u</span>  <span class="c1"># The text &#39;A&#39; is reported as 65</span>
-<span class="n">option</span><span class="o">+</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">CSI</span> <span class="mi">97</span> <span class="p">;</span> <span class="p">;</span> <span class="mi">229</span> <span class="n">u</span>  <span class="c1"># The text &#39;å&#39; is reported as 229</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shift</span><span class="o">+</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">CSI</span> <span class="mi">97</span> <span class="p">;</span> <span class="mi">2</span> <span class="p">;</span> <span class="mi">65</span> <span class="n">u</span>  <span class="c1"># The text 'A' is reported as 65</span>
+<span class="n">option</span><span class="o">+</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">CSI</span> <span class="mi">97</span> <span class="p">;</span> <span class="p">;</span> <span class="mi">229</span> <span class="n">u</span>  <span class="c1"># The text 'å' is reported as 229</span>
 </pre></div>
 </div>
 <p>If multiple code points are present, they must be separated by colons.
@@ -316,11 +402,11 @@ optional (defaulting to <code class="docutils literal notranslate"><span class="
 The value <code class="docutils literal notranslate"><span class="pre">1</span></code> means all set bits are set and all unset bits are reset.
 The value <code class="docutils literal notranslate"><span class="pre">2</span></code> means all set bits are set, unset bits are left unchanged.
 The value <code class="docutils literal notranslate"><span class="pre">3</span></code> means all set bits are reset, unset bits are left unchanged.</p>
-<table class="docutils align-default" id="id5">
+<div class="table-wrapper"><table class="docutils align-default" id="id5">
 <caption><span class="caption-text">The progressive enhancement flags</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col style="width: 50%"/>
+<col style="width: 50%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Bit</p></th>
@@ -344,7 +430,7 @@ The value <code class="docutils literal notranslate"><span class="pre">3</span><
 <td><p><a class="reference internal" href="#report-text"><span class="std std-ref">Report associated text</span></a></p></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>The program running in the terminal can query the terminal for the
 current values of the flags by sending:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CSI ? u
@@ -482,12 +568,12 @@ escape code is present in its terminfo database for the key.
 Some keys have an alternate representation when the terminal is in <em>cursor key
 mode</em> (the <code class="docutils literal notranslate"><span class="pre">smkx/rmkx</span></code> terminfo capabilities). This form is used only in
 <em>cursor key mode</em> and only when no modifiers are present.</p>
-<table class="docutils align-default" id="id6">
+<div class="table-wrapper"><table class="docutils align-default" id="id6">
 <caption><span class="caption-text">Legacy functional encoding</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -585,21 +671,21 @@ mode</em> (the <code class="docutils literal notranslate"><span class="pre">smkx
 <td><p>CSI 24 ~</p></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>There are a few more functional keys that have special cased legacy encodings.
 These are present because they are commonly used and for the sake of legacy
 terminal applications that get confused when seeing CSI u escape codes:</p>
-<table class="docutils align-default" id="id7">
+<div class="table-wrapper"><table class="docutils align-default" id="id7">
 <caption><span class="caption-text">C0 controls</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
@@ -659,7 +745,7 @@ terminal applications that get confused when seeing CSI u escape codes:</p>
 <td><p>0x1b 0x0</p></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Note that <kbd class="kbd docutils literal notranslate">Backspace</kbd> and <kbd class="kbd docutils literal notranslate">ctrl+Backspace</kbd> are swapped in some
 terminals, this can be detected using the <code class="docutils literal notranslate"><span class="pre">kbs</span></code> terminfo property that
 must correspond to the <kbd class="kbd docutils literal notranslate">Backspace</kbd> key.</p>
@@ -683,17 +769,17 @@ for example, <code class="docutils literal notranslate"><span class="pre">A</spa
 <p>Additionally, <kbd class="kbd docutils literal notranslate">ctrl+space</kbd> is output as the NULL byte <code class="docutils literal notranslate"><span class="pre">(0x0)</span></code>.</p>
 <p>Any other combination of modifiers with these keys is output as the appropriate
 <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> escape code.</p>
-<table class="docutils align-default" id="id8">
+<div class="table-wrapper"><table class="docutils align-default" id="id8">
 <caption><span class="caption-text">Example encodings</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
@@ -735,7 +821,7 @@ for example, <code class="docutils literal notranslate"><span class="pre">A</spa
 <td><p>CSI 59; 6 u</p></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Many of the legacy escape codes are ambiguous with multiple different key
@@ -751,13 +837,13 @@ is the same <kbd class="kbd docutils literal notranslate">ctrl+shift+r</kbd>, et
 <p>All numbers are in the Unicode Private Use Area (<code class="docutils literal notranslate"><span class="pre">57344</span> <span class="pre">-</span> <span class="pre">63743</span></code>) except
 for a handful of keys that use numbers under 32 and 127 (C0 control codes) for legacy
 compatibility reasons.</p>
-<table class="docutils align-default" id="id9">
+<div class="table-wrapper"><table class="docutils align-default" id="id9">
 <caption><span class="caption-text">Functional key codes</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1048,7 +1134,7 @@ compatibility reasons.</p>
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Note that the escape codes above of the form <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">1</span> <span class="pre">letter</span></code> will omit the
 <code class="docutils literal notranslate"><span class="pre">1</span></code> if there are no modifiers, since <code class="docutils literal notranslate"><span class="pre">1</span></code> is the default value.</p>
 </div>
@@ -1061,15 +1147,15 @@ terminal keyboards and is not specified anywhere, completely. The best known
 reference is <a class="reference external" href="https://vt100.net/docs/vt100-ug/chapter3.html">Table 3-5 in the VT-100 docs</a>.</p>
 <p>The table below provides a mapping that is a commonly used superset of the table above.
 Any ASCII keys not in the table must be left untouched by <kbd class="kbd docutils literal notranslate">ctrl</kbd>.</p>
-<table class="docutils align-default" id="id10">
+<div class="table-wrapper"><table class="docutils align-default" id="id10">
 <caption><span class="caption-text">Emitted bytes when <kbd class="kbd docutils literal notranslate">ctrl</kbd> is held down and a key is pressed</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
+<col style="width: 17%"/>
+<col style="width: 17%"/>
+<col style="width: 17%"/>
+<col style="width: 17%"/>
+<col style="width: 17%"/>
+<col style="width: 17%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
@@ -1111,7 +1197,7 @@ Any ASCII keys not in the table must be left untouched by <kbd class="kbd docuti
 </tr>
 <tr class="row-even"><td><p>?</p></td>
 <td><p>127</p></td>
-<td><p>&#64;</p></td>
+<td><p>@</p></td>
 <td><p>0</p></td>
 <td><p>[</p></td>
 <td><p>27</p></td>
@@ -1194,7 +1280,7 @@ Any ASCII keys not in the table must be left untouched by <kbd class="kbd docuti
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
 <div class="section" id="bugs-in-fixterms">
 <span id="fixterms-bugs"></span><h2>Bugs in fixterms<a class="headerlink" href="#bugs-in-fixterms" title="Permalink to this headline">¶</a></h2>
@@ -1234,40 +1320,95 @@ varies between terminals, historically because of different keyboard layouts.</p
 </div>
 </div>
 
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../desktop-notifications/">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Desktop notifications</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../graphics-protocol/">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">The terminal graphics protocol</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Kovid Goyal
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Comprehensive keyboard handling in terminals</a><ul>
+<li><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li><a class="reference internal" href="#an-overview">An overview</a><ul>
+<li><a class="reference internal" href="#key-codes">Key codes</a></li>
+<li><a class="reference internal" href="#modifiers">Modifiers</a></li>
+<li><a class="reference internal" href="#event-types">Event types</a></li>
+<li><a class="reference internal" href="#text-as-code-points">Text as code points</a></li>
+<li><a class="reference internal" href="#non-unicode-keys">Non-Unicode keys</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#progressive-enhancement">Progressive enhancement</a><ul>
+<li><a class="reference internal" href="#disambiguate-escape-codes">Disambiguate escape codes</a></li>
+<li><a class="reference internal" href="#report-event-types">Report event types</a></li>
+<li><a class="reference internal" href="#report-alternate-keys">Report alternate keys</a></li>
+<li><a class="reference internal" href="#report-all-keys-as-escape-codes">Report all keys as escape codes</a></li>
+<li><a class="reference internal" href="#report-associated-text">Report associated text</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detection-of-support-for-this-protocol">Detection of support for this protocol</a></li>
+<li><a class="reference internal" href="#legacy-key-event-encoding">Legacy key event encoding</a><ul>
+<li><a class="reference internal" href="#legacy-functional-keys">Legacy functional keys</a></li>
+<li><a class="reference internal" href="#legacy-text-keys">Legacy text keys</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functional-key-definitions">Functional key definitions</a></li>
+<li><a class="reference internal" href="#legacy-ctrl-mapping-of-ascii-keys">Legacy <kbd class="kbd docutils literal notranslate">ctrl</kbd> mapping of ASCII keys</a></li>
+<li><a class="reference internal" href="#bugs-in-fixterms">Bugs in fixterms</a></li>
+</ul>
+</li>
+</ul>
 
           </div>
-          
         </div>
       </div>
-    <div class="clearer"></div>
-  </div>
-    <div class="footer">
-      &copy;2021, Kovid Goyal.
       
-    </div>
-
-    
-    <a href="https://github.com/kovidgoyal/kitty" class="github">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
-    </a>
-    
-
-    
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-20736318-2']);
-      _gaq.push(['_setDomainName', 'none']);
-      _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
-    </script>
-    
-  </body>
+      
+    </aside>
+  </main>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    </body>
 </html>

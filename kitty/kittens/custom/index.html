@@ -1,98 +1,203 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Custom kittens" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sw.kovidgoyal.net/kitty/kittens/custom.html" />
+  <meta property="og:description" content="You can easily create your own kittens to extend kitty. They are just terminal programs written in Python. When launching a kitten, kitty will open an overlay window over the current window and opt..." />
+  <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="broadcast - type text in all kitty windows" href="../broadcast/" /><link rel="prev" title="Hyperlinked grep" href="../hyperlinked_grep/" />
 
-<!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Custom kittens &#8212; kitty 0.21.2 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="shortcut icon" href="../../_static/kitty.svg"/><meta name="generator" content="sphinx-4.0.3, furo 2021.07.05.beta38"/>
+        <title>Custom kittens - kitty 0.21.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <link rel="shortcut icon" href="../../_static/kitty.png"/>
-    <link rel="index" title="Index" href="../../genindex/" />
-    <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="kitty-diff - A fast side-by-side diff tool with syntax highlighting and images" href="../diff/" />
-    <link rel="prev" title="clipboard - copy/paste to the system clipboard" href="../clipboard/" />
-   
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
-  <div class="document">
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css" />
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="../../">
-    <img class="logo" src="../../_static/kitty.png" alt="Logo"/>
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css">
+  
+      <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body dir="">
     
-  </a>
-</p>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
 
 
-
-
-
-
-
-
-
-
-<div id="support" style="text-align: center">
-    <form class="support-form" action="../../support/" title="Donate to support kitty development">
-        <input type="submit" value="Support kitty">
-    </form>
-</div>
-
-<div id="searchbox" style="display: none" role="search">
-    <div class="searchformwrapper">
-    <form class="search" action="../../search/" method="get">
-      <input type="text" name="q" placeholder="Search" />
-      <input type="submit" value="Go" style="cursor: pointer" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
     </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-<div>&nbsp;</div>
-<div id="sidebartoc">
-  <ul>
-<li><a class="reference internal" href="#passing-arguments-to-kittens">Passing arguments to kittens</a></li>
-<li><a class="reference internal" href="#passing-the-contents-of-the-screen-to-the-kitten">Passing the contents of the screen to the kitten</a></li>
-<li><a class="reference internal" href="#using-kittens-to-script-kitty-without-any-terminal-ui">Using kittens to script kitty, without any terminal UI</a></li>
-<li><a class="reference internal" href="#sending-mouse-events">Sending mouse events</a></li>
-<li><a class="reference internal" href="#debugging-kittens">Debugging kittens</a></li>
-<li><a class="reference internal" href="#adding-options-to-kittens">Adding options to kittens</a></li>
-<li><a class="reference internal" href="#kittens-created-by-kitty-users">Kittens created by kitty users</a></li>
+    <div class="header-center">
+      <a href="../../"><div class="brand">kitty 0.21.2 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/kitty.svg" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../../search/">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../quickstart/">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../binary/">Install kitty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/">Build from source</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../../overview/">Overview</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../conf/">Configure kitty</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../actions/">Mappable actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../layouts/">Arrange windows</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="../../kittens_intro/">Extend kitty</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../icat/">icat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diff/">kitty-diff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unicode-input/">Unicode input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hints/">Hints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remote_file/">Remote files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperlinked_grep/">Hyperlinked grep</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Custom kittens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../broadcast/">broadcast - type text in all kitty windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../clipboard/">clipboard - copy/paste to the system clipboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../panel/">Draw a GPU accelerated dock panel on your desktop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../query_terminal/">Query terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../remote-control/">Control kitty from scripts</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rc_protocol/">The kitty remote control protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../launch/">Launching new tabs/windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../open_actions/">Scripting the mouse click</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../marks/">Mark text on screen</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/">Support kitty development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../performance/">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integrations/">Integrations with other tools</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../protocol-extensions/">Terminal protocol extensions</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../underlines/">Colored and styled underlines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../graphics-protocol/">The terminal graphics protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../keyboard-protocol/">Comprehensive keyboard handling in terminals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../desktop-notifications/">Desktop notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../unscroll/">Unscrolling the screen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../clipboard/">Pasting to clipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../color-stack/">Saving and restoring colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../deccara/">Setting text styles/colors in arbitrary regions of the screen</a></li>
+</ul>
+</li>
 </ul>
 
-</div><div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../../">Documentation overview</a><ul>
-      <li>Previous: <a href="../clipboard/" title="previous chapter">clipboard - copy/paste to the system clipboard</a></li>
-      <li>Next: <a href="../diff/" title="next chapter">kitty-diff - A fast side-by-side diff tool with syntax highlighting and images</a></li>
-  </ul></li>
-</ul>
 </div>
-        </div>
+</div>
       </div>
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
-
-          <div class="body" role="main">
-            
-  <div class="section" id="custom-kittens">
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="custom-kittens">
 <h1>Custom kittens<a class="headerlink" href="#custom-kittens" title="Permalink to this headline">¶</a></h1>
 <p>You can easily create your own kittens to extend kitty. They are just
 terminal programs written in Python. When launching a kitten, kitty will
@@ -113,7 +218,7 @@ your machine).</p>
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="c1"># this is the main entry point of the kitten, it will be executed in</span>
     <span class="c1"># the overlay window when the kitten is launched</span>
-    <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter some text: &#39;</span><span class="p">)</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">'Enter some text: '</span><span class="p">)</span>
     <span class="c1"># whatever this function returns will be available in the</span>
     <span class="c1"># handle_result() function</span>
     <span class="k">return</span> <span class="n">answer</span>
@@ -144,7 +249,7 @@ that other kitty users have created.</p>
 <p>These will be available as the <code class="docutils literal notranslate"><span class="pre">args</span></code> parameter in the <code class="docutils literal notranslate"><span class="pre">main()</span></code> and
 <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> functions. Note also that the current working directory
 of the kitten is set to the working directory of whatever program is
-running in the active kitty window. The special argument <code class="docutils literal notranslate"><span class="pre">&#64;selection</span></code>
+running in the active kitty window. The special argument <code class="docutils literal notranslate"><span class="pre">@selection</span></code>
 is replaced by the currently selected text in the active kitty window.</p>
 </div>
 <div class="section" id="passing-the-contents-of-the-screen-to-the-kitten">
@@ -160,7 +265,7 @@ function, telling kitty what kind of input your kitten would like. For example:<
 <span class="c1"># in handle_result, STDIN is for the kitty process itself, rather</span>
 <span class="c1"># than the kitten process and should not be read from.</span>
 <span class="kn">from</span> <span class="nn">kittens.tui.handler</span> <span class="kn">import</span> <span class="n">result_handler</span>
-<span class="nd">@result_handler</span><span class="p">(</span><span class="n">type_of_input</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">)</span>
+<span class="nd">@result_handler</span><span class="p">(</span><span class="n">type_of_input</span><span class="o">=</span><span class="s1">'text'</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">handle_result</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">stdin_data</span><span class="p">,</span> <span class="n">target_window_id</span><span class="p">,</span> <span class="n">boss</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
@@ -189,10 +294,10 @@ equivalent to the builtin <a class="reference internal" href="../../actions/#act
 <span class="k">def</span> <span class="nf">handle_result</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">answer</span><span class="p">,</span> <span class="n">target_window_id</span><span class="p">,</span> <span class="n">boss</span><span class="p">):</span>
     <span class="n">tab</span> <span class="o">=</span> <span class="n">boss</span><span class="o">.</span><span class="n">active_tab</span>
     <span class="k">if</span> <span class="n">tab</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">tab</span><span class="o">.</span><span class="n">current_layout</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;stack&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tab</span><span class="o">.</span><span class="n">current_layout</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">'stack'</span><span class="p">:</span>
             <span class="n">tab</span><span class="o">.</span><span class="n">last_used_layout</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">tab</span><span class="o">.</span><span class="n">goto_layout</span><span class="p">(</span><span class="s1">&#39;stack&#39;</span><span class="p">)</span>
+            <span class="n">tab</span><span class="o">.</span><span class="n">goto_layout</span><span class="p">(</span><span class="s1">'stack'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now in kitty.conf add:</p>
@@ -237,7 +342,7 @@ that type, and will return <code class="docutils literal notranslate"><span clas
 the output of print statements will be visible in the kitten window. Or
 alternately, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kittens.tui.loop</span> <span class="kn">import</span> <span class="n">debug</span>
-<span class="n">debug</span><span class="p">(</span><span class="s1">&#39;whatever&#39;</span><span class="p">)</span>
+<span class="n">debug</span><span class="p">(</span><span class="s1">'whatever'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">debug()</span></code> function is just like <code class="docutils literal notranslate"><span class="pre">print()</span></code> except that the output
@@ -257,11 +362,11 @@ of your kitten make the following files.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kitty.conf.types</span> <span class="kn">import</span> <span class="n">Action</span><span class="p">,</span> <span class="n">Definition</span>
 
 <span class="n">definition</span> <span class="o">=</span> <span class="n">Definition</span><span class="p">(</span>
-    <span class="s1">&#39;!kitten_options_utils&#39;</span><span class="p">,</span>
+    <span class="s1">'!kitten_options_utils'</span><span class="p">,</span>
     <span class="n">Action</span><span class="p">(</span>
-        <span class="s1">&#39;map&#39;</span><span class="p">,</span> <span class="s1">&#39;parse_map&#39;</span><span class="p">,</span>
-        <span class="p">{</span><span class="s1">&#39;key_definitions&#39;</span><span class="p">:</span> <span class="s1">&#39;kitty.conf.utils.KittensKeyMap&#39;</span><span class="p">},</span>
-        <span class="p">[</span><span class="s1">&#39;kitty.types.ParsedShortcut&#39;</span><span class="p">,</span> <span class="s1">&#39;kitty.conf.utils.KeyAction&#39;</span><span class="p">]</span>
+        <span class="s1">'map'</span><span class="p">,</span> <span class="s1">'parse_map'</span><span class="p">,</span>
+        <span class="p">{</span><span class="s1">'key_definitions'</span><span class="p">:</span> <span class="s1">'kitty.conf.utils.KittensKeyMap'</span><span class="p">},</span>
+        <span class="p">[</span><span class="s1">'kitty.types.ParsedShortcut'</span><span class="p">,</span> <span class="s1">'kitty.conf.utils.KeyAction'</span><span class="p">]</span>
     <span class="p">),</span>
 <span class="p">)</span>
 
@@ -271,20 +376,20 @@ of your kitten make the following files.</p>
 <span class="nb">map</span> <span class="o">=</span> <span class="n">definition</span><span class="o">.</span><span class="n">add_map</span>
 
 <span class="c1"># main options {{{</span>
-<span class="n">agr</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;Main&#39;</span><span class="p">)</span>
+<span class="n">agr</span><span class="p">(</span><span class="s1">'main'</span><span class="p">,</span> <span class="s1">'Main'</span><span class="p">)</span>
 
-<span class="n">opt</span><span class="p">(</span><span class="s1">&#39;some_option&#39;</span><span class="p">,</span> <span class="s1">&#39;33&#39;</span><span class="p">,</span>
-    <span class="n">option_type</span><span class="o">=</span><span class="s1">&#39;some_option_parser&#39;</span><span class="p">,</span>
-    <span class="n">long_text</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="n">opt</span><span class="p">(</span><span class="s1">'some_option'</span><span class="p">,</span> <span class="s1">'33'</span><span class="p">,</span>
+    <span class="n">option_type</span><span class="o">=</span><span class="s1">'some_option_parser'</span><span class="p">,</span>
+    <span class="n">long_text</span><span class="o">=</span><span class="s1">'''</span>
 <span class="s1">Help text for this option</span>
-<span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">'''</span>
     <span class="p">)</span>
 <span class="n">egr</span><span class="p">()</span>  <span class="c1"># }}}</span>
 
 <span class="c1"># shortcuts {{{</span>
-<span class="n">agr</span><span class="p">(</span><span class="s1">&#39;shortcuts&#39;</span><span class="p">,</span> <span class="s1">&#39;Keyboard shortcuts&#39;</span><span class="p">)</span>
+<span class="n">agr</span><span class="p">(</span><span class="s1">'shortcuts'</span><span class="p">,</span> <span class="s1">'Keyboard shortcuts'</span><span class="p">)</span>
 
-<span class="nb">map</span><span class="p">(</span><span class="s1">&#39;Quit&#39;</span><span class="p">,</span> <span class="s1">&#39;quit q quit&#39;</span><span class="p">)</span>
+<span class="nb">map</span><span class="p">(</span><span class="s1">'Quit'</span><span class="p">,</span> <span class="s1">'quit q quit'</span><span class="p">)</span>
 <span class="n">egr</span><span class="p">()</span>  <span class="c1"># }}}</span>
 </pre></div>
 </div>
@@ -304,7 +409,7 @@ of your kitten make the following files.</p>
 </pre></div>
 </div>
 <p>Then run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitty</span> <span class="o">+</span><span class="n">runpy</span> <span class="s1">&#39;from kitty.conf.generate import main; main()&#39;</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">kitten_options_definition</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitty</span> <span class="o">+</span><span class="n">runpy</span> <span class="s1">'from kitty.conf.generate import main; main()'</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">kitten_options_definition</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>You can parse and read the options in your kitten using the following code:</p>
@@ -354,40 +459,76 @@ raw-mode.</p>
 </div>
 </div>
 
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../broadcast/">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">broadcast - type text in all kitty windows</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../hyperlinked_grep/">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Hyperlinked grep</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Kovid Goyal
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Custom kittens</a><ul>
+<li><a class="reference internal" href="#passing-arguments-to-kittens">Passing arguments to kittens</a></li>
+<li><a class="reference internal" href="#passing-the-contents-of-the-screen-to-the-kitten">Passing the contents of the screen to the kitten</a></li>
+<li><a class="reference internal" href="#using-kittens-to-script-kitty-without-any-terminal-ui">Using kittens to script kitty, without any terminal UI</a></li>
+<li><a class="reference internal" href="#sending-mouse-events">Sending mouse events</a></li>
+<li><a class="reference internal" href="#debugging-kittens">Debugging kittens</a></li>
+<li><a class="reference internal" href="#adding-options-to-kittens">Adding options to kittens</a></li>
+<li><a class="reference internal" href="#kittens-created-by-kitty-users">Kittens created by kitty users</a></li>
+</ul>
+</li>
+</ul>
 
           </div>
-          
         </div>
       </div>
-    <div class="clearer"></div>
-  </div>
-    <div class="footer">
-      &copy;2021, Kovid Goyal.
       
-    </div>
-
-    
-    <a href="https://github.com/kovidgoyal/kitty" class="github">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
-    </a>
-    
-
-    
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-20736318-2']);
-      _gaq.push(['_setDomainName', 'none']);
-      _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
-    </script>
-    
-  </body>
+      
+    </aside>
+  </main>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/main.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/tabs.js"></script>
+    </body>
 </html>

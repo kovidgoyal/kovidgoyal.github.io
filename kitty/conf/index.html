@@ -1,105 +1,204 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Configure kitty" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sw.kovidgoyal.net/kitty/conf.html" />
+  <meta property="og:description" content="kitty is highly customizable, everything from keyboard shortcuts, to rendering frames-per-second. See below for an overview of all customization possibilities. You can open the config file within k..." />
+  <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Mappable actions" href="../actions/" /><link rel="prev" title="Overview" href="../overview/" />
 
-<!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Configuring kitty &#8212; kitty 0.21.2 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.0.3, furo 2021.07.05.beta38"/>
+        <title>Configure kitty - kitty 0.21.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <link rel="shortcut icon" href="../_static/kitty.png"/>
-    <link rel="index" title="Index" href="../genindex/" />
-    <link rel="search" title="Search" href="../search/" />
-    <link rel="next" title="Frequently Asked Questions" href="../faq/" />
-    <link rel="prev" title="Changelog" href="../changelog/" />
-   
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
-  <div class="document">
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css" />
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="../">
-    <img class="logo" src="../_static/kitty.png" alt="Logo"/>
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+  
+      <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body dir="">
     
-  </a>
-</p>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
 
 
-
-
-
-
-
-
-
-
-<div id="support" style="text-align: center">
-    <form class="support-form" action="../support/" title="Donate to support kitty development">
-        <input type="submit" value="Support kitty">
-    </form>
-</div>
-
-<div id="searchbox" style="display: none" role="search">
-    <div class="searchformwrapper">
-    <form class="search" action="../search/" method="get">
-      <input type="text" name="q" placeholder="Search" />
-      <input type="submit" value="Go" style="cursor: pointer" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
     </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-<div>&nbsp;</div>
-<div id="sidebartoc">
-  <ul>
-<li><a class="reference internal" href="#fonts">Fonts</a></li>
-<li><a class="reference internal" href="#cursor-customization">Cursor customization</a></li>
-<li><a class="reference internal" href="#scrollback">Scrollback</a></li>
-<li><a class="reference internal" href="#mouse">Mouse</a></li>
-<li><a class="reference internal" href="#performance-tuning">Performance tuning</a></li>
-<li><a class="reference internal" href="#terminal-bell">Terminal bell</a></li>
-<li><a class="reference internal" href="#window-layout">Window layout</a></li>
-<li><a class="reference internal" href="#tab-bar">Tab bar</a></li>
-<li><a class="reference internal" href="#color-scheme">Color scheme</a></li>
-<li><a class="reference internal" href="#advanced">Advanced</a></li>
-<li><a class="reference internal" href="#os-specific-tweaks">OS specific tweaks</a></li>
-<li><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
-<li><a class="reference internal" href="#sample-kitty-conf">Sample kitty.conf</a></li>
+    <div class="header-center">
+      <a href="../"><div class="brand">kitty 0.21.2 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/kitty.svg" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search/">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../quickstart/">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../binary/">Install kitty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/">Build from source</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../overview/">Overview</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">Configure kitty</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../actions/">Mappable actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../layouts/">Arrange windows</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../kittens_intro/">Extend kitty</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/icat/">icat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/diff/">kitty-diff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/unicode-input/">Unicode input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/hints/">Hints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/remote_file/">Remote files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/hyperlinked_grep/">Hyperlinked grep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/custom/">Custom kittens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/broadcast/">broadcast - type text in all kitty windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/clipboard/">clipboard - copy/paste to the system clipboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/panel/">Draw a GPU accelerated dock panel on your desktop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/query_terminal/">Query terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../remote-control/">Control kitty from scripts</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rc_protocol/">The kitty remote control protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../launch/">Launching new tabs/windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marks/">Mark text on screen</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support kitty development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/">Integrations with other tools</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../underlines/">Colored and styled underlines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graphics-protocol/">The terminal graphics protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keyboard-protocol/">Comprehensive keyboard handling in terminals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../desktop-notifications/">Desktop notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unscroll/">Unscrolling the screen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clipboard/">Pasting to clipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../color-stack/">Saving and restoring colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deccara/">Setting text styles/colors in arbitrary regions of the screen</a></li>
+</ul>
+</li>
 </ul>
 
-</div><div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../">Documentation overview</a><ul>
-      <li>Previous: <a href="../changelog/" title="previous chapter">Changelog</a></li>
-      <li>Next: <a href="../faq/" title="next chapter">Frequently Asked Questions</a></li>
-  </ul></li>
-</ul>
 </div>
-        </div>
+</div>
       </div>
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
-
-          <div class="body" role="main">
-            
-  <div class="section" id="configuring-kitty">
-<h1>Configuring kitty<a class="headerlink" href="#configuring-kitty" title="Permalink to this headline">¶</a></h1>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="configure-kitty">
+<h1>Configure kitty<a class="headerlink" href="#configure-kitty" title="Permalink to this headline">¶</a></h1>
 <p><em>kitty</em> is highly customizable, everything from keyboard shortcuts, to
 rendering frames-per-second. See below for an overview of all customization
 possibilities.</p>
@@ -135,7 +234,6 @@ and even specify special fonts for particular characters.</p>
 <dt class="sig sig-object std" id="opt-kitty.font_family">
 <span class="sig-name descname"><span class="pre">font_family</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">bold_font</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">italic_font</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">bold_italic_font</span></span><a class="headerlink" href="#opt-kitty.font_family" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">font_family</span><span class="w">      </span><span class="s">monospace</span><span class="w"></span>
 <span class="nv">bold_font</span><span class="w">        </span><span class="s">auto</span><span class="w"></span>
 <span class="nv">italic_font</span><span class="w">      </span><span class="s">auto</span><span class="w"></span>
@@ -157,7 +255,6 @@ Book, Medium, Thick, etc. For example:</p>
 <dt class="sig sig-object std" id="opt-kitty.font_size">
 <span class="sig-name descname"><span class="pre">font_size</span></span><a class="headerlink" href="#opt-kitty.font_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">font_size</span><span class="w"> </span><span class="mf">11.0</span>
 </pre></div>
 </div>
@@ -166,7 +263,6 @@ Book, Medium, Thick, etc. For example:</p>
 <dt class="sig sig-object std" id="opt-kitty.force_ltr">
 <span class="sig-name descname"><span class="pre">force_ltr</span></span><a class="headerlink" href="#opt-kitty.force_ltr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">force_ltr</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -187,7 +283,6 @@ terminals.</p>
 <dt class="sig sig-object std" id="opt-kitty.adjust_line_height">
 <span class="sig-name descname"><span class="pre">adjust_line_height</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">adjust_column_width</span></span><a class="headerlink" href="#opt-kitty.adjust_line_height" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">adjust_line_height</span><span class="w">  </span><span class="mi">0</span><span class="w"></span>
 <span class="nv">adjust_column_width</span><span class="w"> </span><span class="mi">0</span>
 </pre></div>
@@ -201,7 +296,6 @@ cause rendering artifacts).</p>
 <dt class="sig sig-object std" id="opt-kitty.adjust_baseline">
 <span class="sig-name descname"><span class="pre">adjust_baseline</span></span><a class="headerlink" href="#opt-kitty.adjust_baseline" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">adjust_baseline</span><span class="w"> </span><span class="mi">0</span>
 </pre></div>
 </div>
@@ -215,7 +309,6 @@ accordingly.</p>
 <dt class="sig sig-object std" id="opt-kitty.symbol_map">
 <span class="sig-name descname"><span class="pre">symbol_map</span></span><a class="headerlink" href="#opt-kitty.symbol_map" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">symbol_map</span><span class="w"> </span><span class="s">U+E0A0-U+E0A3,U+E0C0-U+E0C7</span><span class="w"> </span><span class="l">PowerlineSymbols</span><span class="w"></span>
 </pre></div>
 </div>
@@ -232,7 +325,6 @@ Syntax is:</p>
 <dt class="sig sig-object std" id="opt-kitty.disable_ligatures">
 <span class="sig-name descname"><span class="pre">disable_ligatures</span></span><a class="headerlink" href="#opt-kitty.disable_ligatures" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">disable_ligatures</span><span class="w"> </span><span class="s">never</span><span class="w"></span>
 </pre></div>
 </div>
@@ -254,7 +346,6 @@ or by defining shortcuts for it in kitty.conf, for example:</p>
 <dt class="sig sig-object std" id="opt-kitty.font_features">
 <span class="sig-name descname"><span class="pre">font_features</span></span><a class="headerlink" href="#opt-kitty.font_features" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">font_features</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
 </pre></div>
 </div>
@@ -305,7 +396,6 @@ You can do this with e.g.:</p>
 <dt class="sig sig-object std" id="opt-kitty.box_drawing_scale">
 <span class="sig-name descname"><span class="pre">box_drawing_scale</span></span><a class="headerlink" href="#opt-kitty.box_drawing_scale" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">box_drawing_scale</span><span class="w"> </span><span class="mi">0</span><span class="mf">.001</span><span class="s">, 1, 1.5, 2</span><span class="w"></span>
 </pre></div>
 </div>
@@ -320,7 +410,6 @@ thick lines.</p>
 <dt class="sig sig-object std" id="opt-kitty.cursor">
 <span class="sig-name descname"><span class="pre">cursor</span></span><a class="headerlink" href="#opt-kitty.cursor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">cursor</span><span class="w"> </span><span class="s">#cccccc</span>
 </pre></div>
 </div>
@@ -329,7 +418,6 @@ thick lines.</p>
 <dt class="sig sig-object std" id="opt-kitty.cursor_text_color">
 <span class="sig-name descname"><span class="pre">cursor_text_color</span></span><a class="headerlink" href="#opt-kitty.cursor_text_color" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">cursor_text_color</span><span class="w"> </span><span class="s">#111111</span>
 </pre></div>
 </div>
@@ -340,7 +428,6 @@ background</p>
 <dt class="sig sig-object std" id="opt-kitty.cursor_shape">
 <span class="sig-name descname"><span class="pre">cursor_shape</span></span><a class="headerlink" href="#opt-kitty.cursor_shape" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">cursor_shape</span><span class="w"> </span><span class="s">block</span><span class="w"></span>
 </pre></div>
 </div>
@@ -349,7 +436,6 @@ background</p>
 <dt class="sig sig-object std" id="opt-kitty.cursor_beam_thickness">
 <span class="sig-name descname"><span class="pre">cursor_beam_thickness</span></span><a class="headerlink" href="#opt-kitty.cursor_beam_thickness" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">cursor_beam_thickness</span><span class="w"> </span><span class="mf">1.5</span>
 </pre></div>
 </div>
@@ -358,7 +444,6 @@ background</p>
 <dt class="sig sig-object std" id="opt-kitty.cursor_underline_thickness">
 <span class="sig-name descname"><span class="pre">cursor_underline_thickness</span></span><a class="headerlink" href="#opt-kitty.cursor_underline_thickness" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">cursor_underline_thickness</span><span class="w"> </span><span class="mf">2.0</span>
 </pre></div>
 </div>
@@ -367,7 +452,6 @@ background</p>
 <dt class="sig sig-object std" id="opt-kitty.cursor_blink_interval">
 <span class="sig-name descname"><span class="pre">cursor_blink_interval</span></span><a class="headerlink" href="#opt-kitty.cursor_blink_interval" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">cursor_blink_interval</span><span class="w"> </span><span class="mi">-1</span>
 </pre></div>
 </div>
@@ -378,7 +462,6 @@ than <a class="reference internal" href="#opt-kitty.repaint_delay"><code class="
 <dt class="sig sig-object std" id="opt-kitty.cursor_stop_blinking_after">
 <span class="sig-name descname"><span class="pre">cursor_stop_blinking_after</span></span><a class="headerlink" href="#opt-kitty.cursor_stop_blinking_after" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">cursor_stop_blinking_after</span><span class="w"> </span><span class="mf">15.0</span>
 </pre></div>
 </div>
@@ -391,7 +474,6 @@ inactivity.  Set to zero to never stop blinking.</p>
 <dt class="sig sig-object std" id="opt-kitty.scrollback_lines">
 <span class="sig-name descname"><span class="pre">scrollback_lines</span></span><a class="headerlink" href="#opt-kitty.scrollback_lines" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">scrollback_lines</span><span class="w"> </span><span class="mi">2000</span>
 </pre></div>
 </div>
@@ -405,7 +487,6 @@ is changed it will only affect newly created windows, not existing ones.</p>
 <dt class="sig sig-object std" id="opt-kitty.scrollback_pager">
 <span class="sig-name descname"><span class="pre">scrollback_pager</span></span><a class="headerlink" href="#opt-kitty.scrollback_pager" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">scrollback_pager</span><span class="w"> </span><span class="s">less --chop-long-lines --RAW-CONTROL-CHARS +INPUT_LINE_NUMBER</span><span class="w"></span>
 </pre></div>
 </div>
@@ -419,7 +500,6 @@ CURSOR_LINE and CURSOR_COLUMN will be replaced by the current cursor position.</
 <dt class="sig sig-object std" id="opt-kitty.scrollback_pager_history_size">
 <span class="sig-name descname"><span class="pre">scrollback_pager_history_size</span></span><a class="headerlink" href="#opt-kitty.scrollback_pager_history_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">scrollback_pager_history_size</span><span class="w"> </span><span class="mi">0</span>
 </pre></div>
 </div>
@@ -435,7 +515,6 @@ is changed it will only affect newly created windows, not existing ones.</p>
 <dt class="sig sig-object std" id="opt-kitty.scrollback_fill_enlarged_window">
 <span class="sig-name descname"><span class="pre">scrollback_fill_enlarged_window</span></span><a class="headerlink" href="#opt-kitty.scrollback_fill_enlarged_window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">scrollback_fill_enlarged_window</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -444,7 +523,6 @@ is changed it will only affect newly created windows, not existing ones.</p>
 <dt class="sig sig-object std" id="opt-kitty.wheel_scroll_multiplier">
 <span class="sig-name descname"><span class="pre">wheel_scroll_multiplier</span></span><a class="headerlink" href="#opt-kitty.wheel_scroll_multiplier" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">wheel_scroll_multiplier</span><span class="w"> </span><span class="mf">5.0</span>
 </pre></div>
 </div>
@@ -455,7 +533,6 @@ as macOS and Wayland. Use negative numbers to change scroll direction.</p>
 <dt class="sig sig-object std" id="opt-kitty.touch_scroll_multiplier">
 <span class="sig-name descname"><span class="pre">touch_scroll_multiplier</span></span><a class="headerlink" href="#opt-kitty.touch_scroll_multiplier" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">touch_scroll_multiplier</span><span class="w"> </span><span class="mf">1.0</span>
 </pre></div>
 </div>
@@ -469,7 +546,6 @@ numbers to change scroll direction.</p>
 <dt class="sig sig-object std" id="opt-kitty.mouse_hide_wait">
 <span class="sig-name descname"><span class="pre">mouse_hide_wait</span></span><a class="headerlink" href="#opt-kitty.mouse_hide_wait" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mouse_hide_wait</span><span class="w"> </span><span class="mf">3.0</span>
 </pre></div>
 </div>
@@ -482,7 +558,6 @@ is too much effort.</p>
 <dt class="sig sig-object std" id="opt-kitty.url_color">
 <span class="sig-name descname"><span class="pre">url_color</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">url_style</span></span><a class="headerlink" href="#opt-kitty.url_color" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">url_color</span><span class="w"> </span><span class="s">#0087bd</span><span class="w"></span>
 <span class="nv">url_style</span><span class="w"> </span><span class="s">curly</span><span class="w"></span>
 </pre></div>
@@ -493,7 +568,6 @@ be one of: none, single, double, curly</p>
 <dt class="sig sig-object std" id="opt-kitty.open_url_with">
 <span class="sig-name descname"><span class="pre">open_url_with</span></span><a class="headerlink" href="#opt-kitty.open_url_with" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">open_url_with</span><span class="w"> </span><span class="s">default</span><span class="w"></span>
 </pre></div>
 </div>
@@ -503,7 +577,6 @@ be one of: none, single, double, curly</p>
 <dt class="sig sig-object std" id="opt-kitty.url_prefixes">
 <span class="sig-name descname"><span class="pre">url_prefixes</span></span><a class="headerlink" href="#opt-kitty.url_prefixes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">url_prefixes</span><span class="w"> </span><span class="s">http https file ftp gemini irc gopher mailto news git</span><span class="w"></span>
 </pre></div>
 </div>
@@ -512,7 +585,6 @@ be one of: none, single, double, curly</p>
 <dt class="sig sig-object std" id="opt-kitty.detect_urls">
 <span class="sig-name descname"><span class="pre">detect_urls</span></span><a class="headerlink" href="#opt-kitty.detect_urls" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">detect_urls</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
 </pre></div>
 </div>
@@ -523,7 +595,6 @@ are still clickable.</p>
 <dt class="sig sig-object std" id="opt-kitty.url_excluded_characters">
 <span class="sig-name descname"><span class="pre">url_excluded_characters</span></span><a class="headerlink" href="#opt-kitty.url_excluded_characters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">url_excluded_characters</span><span class="w"></span>
 </pre></div>
 </div>
@@ -533,7 +604,6 @@ mouse cursor. By default, all characters legal in URLs are allowed.</p>
 <dt class="sig sig-object std" id="opt-kitty.copy_on_select">
 <span class="sig-name descname"><span class="pre">copy_on_select</span></span><a class="headerlink" href="#opt-kitty.copy_on_select" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">copy_on_select</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -554,7 +624,6 @@ system clipboard.</p>
 <dt class="sig sig-object std" id="opt-kitty.strip_trailing_spaces">
 <span class="sig-name descname"><span class="pre">strip_trailing_spaces</span></span><a class="headerlink" href="#opt-kitty.strip_trailing_spaces" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">strip_trailing_spaces</span><span class="w"> </span><span class="s">never</span><span class="w"></span>
 </pre></div>
 </div>
@@ -565,7 +634,6 @@ selections. <code class="code docutils literal notranslate"><span class="pre">al
 <dt class="sig sig-object std" id="opt-kitty.select_by_word_characters">
 <span class="sig-name descname"><span class="pre">select_by_word_characters</span></span><a class="headerlink" href="#opt-kitty.select_by_word_characters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">select_by_word_characters</span><span class="w"> </span><span class="s">@-./_~?&amp;=%+#</span><span class="w"></span>
 </pre></div>
 </div>
@@ -576,7 +644,6 @@ unicode database will be matched.</p>
 <dt class="sig sig-object std" id="opt-kitty.click_interval">
 <span class="sig-name descname"><span class="pre">click_interval</span></span><a class="headerlink" href="#opt-kitty.click_interval" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">click_interval</span><span class="w"> </span><span class="mf">-1.0</span>
 </pre></div>
 </div>
@@ -587,7 +654,6 @@ fallback to 0.5.</p>
 <dt class="sig sig-object std" id="opt-kitty.focus_follows_mouse">
 <span class="sig-name descname"><span class="pre">focus_follows_mouse</span></span><a class="headerlink" href="#opt-kitty.focus_follows_mouse" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">focus_follows_mouse</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -596,7 +662,6 @@ fallback to 0.5.</p>
 <dt class="sig sig-object std" id="opt-kitty.pointer_shape_when_grabbed">
 <span class="sig-name descname"><span class="pre">pointer_shape_when_grabbed</span></span><a class="headerlink" href="#opt-kitty.pointer_shape_when_grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">pointer_shape_when_grabbed</span><span class="w"> </span><span class="s">arrow</span><span class="w"></span>
 </pre></div>
 </div>
@@ -606,7 +671,6 @@ the mouse. Valid values are: <code class="code docutils literal notranslate"><sp
 <dt class="sig sig-object std" id="opt-kitty.default_pointer_shape">
 <span class="sig-name descname"><span class="pre">default_pointer_shape</span></span><a class="headerlink" href="#opt-kitty.default_pointer_shape" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">default_pointer_shape</span><span class="w"> </span><span class="s">beam</span><span class="w"></span>
 </pre></div>
 </div>
@@ -616,7 +680,6 @@ the mouse. Valid values are: <code class="code docutils literal notranslate"><sp
 <dt class="sig sig-object std" id="opt-kitty.pointer_shape_when_dragging">
 <span class="sig-name descname"><span class="pre">pointer_shape_when_dragging</span></span><a class="headerlink" href="#opt-kitty.pointer_shape_when_dragging" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">pointer_shape_when_dragging</span><span class="w"> </span><span class="s">beam</span><span class="w"></span>
 </pre></div>
 </div>
@@ -656,7 +719,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Click-the-link-under-the-mouse-cursor-when-no-selection-is-created">
 <span id="shortcut-kitty.Click the link under the mouse cursor when no selection is created"></span><span class="sig-name descname"><span class="pre">Click</span> <span class="pre">the</span> <span class="pre">link</span> <span class="pre">under</span> <span class="pre">the</span> <span class="pre">mouse</span> <span class="pre">cursor</span> <span class="pre">when</span> <span class="pre">no</span> <span class="pre">selection</span> <span class="pre">is</span> <span class="pre">created</span></span><a class="headerlink" href="#shortcut-kitty.Click-the-link-under-the-mouse-cursor-when-no-selection-is-created" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">left</span><span class="w"> </span><span class="nv">click</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_click_url_or_select</span><span class="w"></span>
 </pre></div>
 </div>
@@ -664,7 +726,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Click-the-link-under-the-mouse-cursor-when-no-selection-is-created-even-if-grabbed">
 <span id="shortcut-kitty.Click the link under the mouse cursor when no selection is created even if grabbed"></span><span class="sig-name descname"><span class="pre">Click</span> <span class="pre">the</span> <span class="pre">link</span> <span class="pre">under</span> <span class="pre">the</span> <span class="pre">mouse</span> <span class="pre">cursor</span> <span class="pre">when</span> <span class="pre">no</span> <span class="pre">selection</span> <span class="pre">is</span> <span class="pre">created</span> <span class="pre">even</span> <span class="pre">if</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Click-the-link-under-the-mouse-cursor-when-no-selection-is-created-even-if-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+left</span><span class="w"> </span><span class="nv">click</span><span class="w"> </span><span class="s">grabbed,ungrabbed</span><span class="w"> </span><span class="nf">mouse_click_url_or_select</span><span class="w"></span>
 </pre></div>
 </div>
@@ -672,7 +733,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Click-the-link-under-the-mouse-cursor">
 <span id="shortcut-kitty.Click the link under the mouse cursor"></span><span class="sig-name descname"><span class="pre">Click</span> <span class="pre">the</span> <span class="pre">link</span> <span class="pre">under</span> <span class="pre">the</span> <span class="pre">mouse</span> <span class="pre">cursor</span></span><a class="headerlink" href="#shortcut-kitty.Click-the-link-under-the-mouse-cursor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">ctrl+shift+left</span><span class="w"> </span><span class="nv">release</span><span class="w"> </span><span class="s">grabbed,ungrabbed</span><span class="w"> </span><span class="nf">mouse_click_url</span><span class="w"></span>
 </pre></div>
 </div>
@@ -681,7 +741,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Discard-press-event-for-link-click">
 <span id="shortcut-kitty.Discard press event for link click"></span><span class="sig-name descname"><span class="pre">Discard</span> <span class="pre">press</span> <span class="pre">event</span> <span class="pre">for</span> <span class="pre">link</span> <span class="pre">click</span></span><a class="headerlink" href="#shortcut-kitty.Discard-press-event-for-link-click" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">ctrl+shift+left</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">grabbed</span><span class="w"> </span><span class="nf">discard_event</span><span class="w"></span>
 </pre></div>
 </div>
@@ -690,7 +749,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Paste-from-the-primary-selection">
 <span id="shortcut-kitty.Paste from the primary selection"></span><span class="sig-name descname"><span class="pre">Paste</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">primary</span> <span class="pre">selection</span></span><a class="headerlink" href="#shortcut-kitty.Paste-from-the-primary-selection" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">middle</span><span class="w"> </span><span class="nv">release</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">paste_from_selection</span><span class="w"></span>
 </pre></div>
 </div>
@@ -698,7 +756,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Start-selecting-text">
 <span id="shortcut-kitty.Start selecting text"></span><span class="sig-name descname"><span class="pre">Start</span> <span class="pre">selecting</span> <span class="pre">text</span></span><a class="headerlink" href="#shortcut-kitty.Start-selecting-text" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">left</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">normal</span><span class="w"></span>
 </pre></div>
 </div>
@@ -706,7 +763,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Start-selecting-text-in-a-rectangle">
 <span id="shortcut-kitty.Start selecting text in a rectangle"></span><span class="sig-name descname"><span class="pre">Start</span> <span class="pre">selecting</span> <span class="pre">text</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">rectangle</span></span><a class="headerlink" href="#shortcut-kitty.Start-selecting-text-in-a-rectangle" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">ctrl+alt+left</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">rectangle</span><span class="w"></span>
 </pre></div>
 </div>
@@ -714,7 +770,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Select-a-word">
 <span id="shortcut-kitty.Select a word"></span><span class="sig-name descname"><span class="pre">Select</span> <span class="pre">a</span> <span class="pre">word</span></span><a class="headerlink" href="#shortcut-kitty.Select-a-word" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">left</span><span class="w"> </span><span class="nv">doublepress</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">word</span><span class="w"></span>
 </pre></div>
 </div>
@@ -722,7 +777,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Select-a-line">
 <span id="shortcut-kitty.Select a line"></span><span class="sig-name descname"><span class="pre">Select</span> <span class="pre">a</span> <span class="pre">line</span></span><a class="headerlink" href="#shortcut-kitty.Select-a-line" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">left</span><span class="w"> </span><span class="nv">triplepress</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">line</span><span class="w"></span>
 </pre></div>
 </div>
@@ -731,7 +785,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Select-line-from-point">
 <span id="shortcut-kitty.Select line from point"></span><span class="sig-name descname"><span class="pre">Select</span> <span class="pre">line</span> <span class="pre">from</span> <span class="pre">point</span></span><a class="headerlink" href="#shortcut-kitty.Select-line-from-point" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">ctrl+alt+left</span><span class="w"> </span><span class="nv">triplepress</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">line_from_point</span><span class="w"></span>
 </pre></div>
 </div>
@@ -740,7 +793,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Extend-the-current-selection">
 <span id="shortcut-kitty.Extend the current selection"></span><span class="sig-name descname"><span class="pre">Extend</span> <span class="pre">the</span> <span class="pre">current</span> <span class="pre">selection</span></span><a class="headerlink" href="#shortcut-kitty.Extend-the-current-selection" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">right</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">extend</span><span class="w"></span>
 </pre></div>
 </div>
@@ -749,7 +801,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Paste-from-the-primary-selection-even-when-grabbed">
 <span id="shortcut-kitty.Paste from the primary selection even when grabbed"></span><span class="sig-name descname"><span class="pre">Paste</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">primary</span> <span class="pre">selection</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Paste-from-the-primary-selection-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+middle</span><span class="w"> </span><span class="nv">release</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">paste_selection</span><span class="w"></span>
 </pre></div>
 </div>
@@ -757,7 +808,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Start-selecting-text-even-when-grabbed">
 <span id="shortcut-kitty.Start selecting text even when grabbed"></span><span class="sig-name descname"><span class="pre">Start</span> <span class="pre">selecting</span> <span class="pre">text</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Start-selecting-text-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+left</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">normal</span><span class="w"></span>
 </pre></div>
 </div>
@@ -765,7 +815,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Start-selecting-text-in-a-rectangle-even-when-grabbed">
 <span id="shortcut-kitty.Start selecting text in a rectangle even when grabbed"></span><span class="sig-name descname"><span class="pre">Start</span> <span class="pre">selecting</span> <span class="pre">text</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">rectangle</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Start-selecting-text-in-a-rectangle-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+ctrl+alt+left</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">rectangle</span><span class="w"></span>
 </pre></div>
 </div>
@@ -773,7 +822,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Select-a-word-even-when-grabbed">
 <span id="shortcut-kitty.Select a word even when grabbed"></span><span class="sig-name descname"><span class="pre">Select</span> <span class="pre">a</span> <span class="pre">word</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Select-a-word-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+left</span><span class="w"> </span><span class="nv">doublepress</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">word</span><span class="w"></span>
 </pre></div>
 </div>
@@ -781,7 +829,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Select-a-line-even-when-grabbed">
 <span id="shortcut-kitty.Select a line even when grabbed"></span><span class="sig-name descname"><span class="pre">Select</span> <span class="pre">a</span> <span class="pre">line</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Select-a-line-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+left</span><span class="w"> </span><span class="nv">triplepress</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">line</span><span class="w"></span>
 </pre></div>
 </div>
@@ -790,7 +837,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Select-line-from-point-even-when-grabbed">
 <span id="shortcut-kitty.Select line from point even when grabbed"></span><span class="sig-name descname"><span class="pre">Select</span> <span class="pre">line</span> <span class="pre">from</span> <span class="pre">point</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Select-line-from-point-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+ctrl+alt+left</span><span class="w"> </span><span class="nv">triplepress</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">line_from_point</span><span class="w"></span>
 </pre></div>
 </div>
@@ -799,7 +845,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Extend-the-current-selection-even-when-grabbed">
 <span id="shortcut-kitty.Extend the current selection even when grabbed"></span><span class="sig-name descname"><span class="pre">Extend</span> <span class="pre">the</span> <span class="pre">current</span> <span class="pre">selection</span> <span class="pre">even</span> <span class="pre">when</span> <span class="pre">grabbed</span></span><a class="headerlink" href="#shortcut-kitty.Extend-the-current-selection-even-when-grabbed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">shift+right</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed,grabbed</span><span class="w"> </span><span class="nf">mouse_selection</span><span class="w"> </span><span class="s">extend</span><span class="w"></span>
 </pre></div>
 </div>
@@ -811,7 +856,6 @@ automatically end it and no release event will be dispatched.</p>
 <dt class="sig sig-object std" id="opt-kitty.repaint_delay">
 <span class="sig-name descname"><span class="pre">repaint_delay</span></span><a class="headerlink" href="#opt-kitty.repaint_delay" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">repaint_delay</span><span class="w"> </span><span class="mi">10</span>
 </pre></div>
 </div>
@@ -825,7 +869,6 @@ to be processed, repaint_delay is ignored.</p>
 <dt class="sig sig-object std" id="opt-kitty.input_delay">
 <span class="sig-name descname"><span class="pre">input_delay</span></span><a class="headerlink" href="#opt-kitty.input_delay" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">input_delay</span><span class="w"> </span><span class="mi">3</span>
 </pre></div>
 </div>
@@ -838,7 +881,6 @@ updates will be drawn.</p>
 <dt class="sig sig-object std" id="opt-kitty.sync_to_monitor">
 <span class="sig-name descname"><span class="pre">sync_to_monitor</span></span><a class="headerlink" href="#opt-kitty.sync_to_monitor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">sync_to_monitor</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
 </pre></div>
 </div>
@@ -854,7 +896,6 @@ If so, set this to no.</p>
 <dt class="sig sig-object std" id="opt-kitty.enable_audio_bell">
 <span class="sig-name descname"><span class="pre">enable_audio_bell</span></span><a class="headerlink" href="#opt-kitty.enable_audio_bell" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">enable_audio_bell</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
 </pre></div>
 </div>
@@ -863,7 +904,6 @@ If so, set this to no.</p>
 <dt class="sig sig-object std" id="opt-kitty.visual_bell_duration">
 <span class="sig-name descname"><span class="pre">visual_bell_duration</span></span><a class="headerlink" href="#opt-kitty.visual_bell_duration" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">visual_bell_duration</span><span class="w"> </span><span class="mf">0.0</span>
 </pre></div>
 </div>
@@ -873,7 +913,6 @@ number of seconds. Set to zero to disable.</p>
 <dt class="sig sig-object std" id="opt-kitty.window_alert_on_bell">
 <span class="sig-name descname"><span class="pre">window_alert_on_bell</span></span><a class="headerlink" href="#opt-kitty.window_alert_on_bell" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">window_alert_on_bell</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
 </pre></div>
 </div>
@@ -883,7 +922,6 @@ taskbar flash on linux.</p>
 <dt class="sig sig-object std" id="opt-kitty.bell_on_tab">
 <span class="sig-name descname"><span class="pre">bell_on_tab</span></span><a class="headerlink" href="#opt-kitty.bell_on_tab" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">bell_on_tab</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
 </pre></div>
 </div>
@@ -893,7 +931,6 @@ and the window is not the currently focused window</p>
 <dt class="sig sig-object std" id="opt-kitty.command_on_bell">
 <span class="sig-name descname"><span class="pre">command_on_bell</span></span><a class="headerlink" href="#opt-kitty.command_on_bell" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">command_on_bell</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
 </pre></div>
 </div>
@@ -905,7 +942,6 @@ and the window is not the currently focused window</p>
 <dt class="sig sig-object std" id="opt-kitty.remember_window_size">
 <span class="sig-name descname"><span class="pre">remember_window_size</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">initial_window_width</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">initial_window_height</span></span><a class="headerlink" href="#opt-kitty.remember_window_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">remember_window_size</span><span class="w">  </span><span class="mb">yes</span><span class="w"></span>
 <span class="nv">initial_window_width</span><span class="w">  </span><span class="mi">640</span><span class="w"></span>
 <span class="nv">initial_window_height</span><span class="w"> </span><span class="mi">400</span>
@@ -920,19 +956,17 @@ number of cells instead of pixels.</p>
 <dt class="sig sig-object std" id="opt-kitty.enabled_layouts">
 <span class="sig-name descname"><span class="pre">enabled_layouts</span></span><a class="headerlink" href="#opt-kitty.enabled_layouts" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">enabled_layouts</span><span class="w"> </span><span class="s">*</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The enabled window layouts. A comma separated list of layout names. The special
 value <code class="code docutils literal notranslate"><span class="pre">all</span></code> means all layouts. The first listed layout will be used as the
 startup layout. Default configuration is all layouts in alphabetical order. For
-a list of available layouts, see the <a class="reference internal" href="../#layouts"><span class="std std-ref">Layouts</span></a>.</p>
+a list of available layouts, see the <a class="reference internal" href="../overview/#layouts"><span class="std std-ref">Layouts</span></a>.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitty.window_resize_step_cells">
 <span class="sig-name descname"><span class="pre">window_resize_step_cells</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">window_resize_step_lines</span></span><a class="headerlink" href="#opt-kitty.window_resize_step_cells" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">window_resize_step_cells</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
 <span class="nv">window_resize_step_lines</span><span class="w"> </span><span class="mi">2</span>
 </pre></div>
@@ -944,7 +978,6 @@ resizing.</p>
 <dt class="sig sig-object std" id="opt-kitty.window_border_width">
 <span class="sig-name descname"><span class="pre">window_border_width</span></span><a class="headerlink" href="#opt-kitty.window_border_width" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">window_border_width</span><span class="w"> </span><span class="mi">0</span><span class="mf">.5</span><span class="s">pt</span><span class="w"></span>
 </pre></div>
 </div>
@@ -957,7 +990,6 @@ windows.</p>
 <dt class="sig sig-object std" id="opt-kitty.draw_minimal_borders">
 <span class="sig-name descname"><span class="pre">draw_minimal_borders</span></span><a class="headerlink" href="#opt-kitty.draw_minimal_borders" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">draw_minimal_borders</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
 </pre></div>
 </div>
@@ -969,7 +1001,6 @@ overrides this and causes all borders to be drawn.</p>
 <dt class="sig sig-object std" id="opt-kitty.window_margin_width">
 <span class="sig-name descname"><span class="pre">window_margin_width</span></span><a class="headerlink" href="#opt-kitty.window_margin_width" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">window_margin_width</span><span class="w"> </span><span class="mi">0</span>
 </pre></div>
 </div>
@@ -980,7 +1011,6 @@ set top, horizontal and bottom. Four values set top, right, bottom and left.</p>
 <dt class="sig sig-object std" id="opt-kitty.single_window_margin_width">
 <span class="sig-name descname"><span class="pre">single_window_margin_width</span></span><a class="headerlink" href="#opt-kitty.single_window_margin_width" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">single_window_margin_width</span><span class="w"> </span><span class="mi">-1</span>
 </pre></div>
 </div>
@@ -993,7 +1023,6 @@ bottom and left.</p>
 <dt class="sig sig-object std" id="opt-kitty.window_padding_width">
 <span class="sig-name descname"><span class="pre">window_padding_width</span></span><a class="headerlink" href="#opt-kitty.window_padding_width" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">window_padding_width</span><span class="w"> </span><span class="mi">0</span>
 </pre></div>
 </div>
@@ -1005,7 +1034,6 @@ bottom and left.</p>
 <dt class="sig sig-object std" id="opt-kitty.placement_strategy">
 <span class="sig-name descname"><span class="pre">placement_strategy</span></span><a class="headerlink" href="#opt-kitty.placement_strategy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">placement_strategy</span><span class="w"> </span><span class="s">center</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1018,7 +1046,6 @@ how that padding is distributed with this option. Using a value of
 <dt class="sig sig-object std" id="opt-kitty.active_border_color">
 <span class="sig-name descname"><span class="pre">active_border_color</span></span><a class="headerlink" href="#opt-kitty.active_border_color" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">active_border_color</span><span class="w"> </span><span class="s">#00ff00</span>
 </pre></div>
 </div>
@@ -1028,7 +1055,6 @@ borders around the active window.</p>
 <dt class="sig sig-object std" id="opt-kitty.inactive_border_color">
 <span class="sig-name descname"><span class="pre">inactive_border_color</span></span><a class="headerlink" href="#opt-kitty.inactive_border_color" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">inactive_border_color</span><span class="w"> </span><span class="s">#cccccc</span>
 </pre></div>
 </div>
@@ -1037,7 +1063,6 @@ borders around the active window.</p>
 <dt class="sig sig-object std" id="opt-kitty.bell_border_color">
 <span class="sig-name descname"><span class="pre">bell_border_color</span></span><a class="headerlink" href="#opt-kitty.bell_border_color" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">bell_border_color</span><span class="w"> </span><span class="s">#ff5a00</span>
 </pre></div>
 </div>
@@ -1046,7 +1071,6 @@ borders around the active window.</p>
 <dt class="sig sig-object std" id="opt-kitty.inactive_text_alpha">
 <span class="sig-name descname"><span class="pre">inactive_text_alpha</span></span><a class="headerlink" href="#opt-kitty.inactive_text_alpha" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">inactive_text_alpha</span><span class="w"> </span><span class="mf">1.0</span>
 </pre></div>
 </div>
@@ -1056,7 +1080,6 @@ and one, with zero being fully faded).</p>
 <dt class="sig sig-object std" id="opt-kitty.hide_window_decorations">
 <span class="sig-name descname"><span class="pre">hide_window_decorations</span></span><a class="headerlink" href="#opt-kitty.hide_window_decorations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">hide_window_decorations</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1069,7 +1092,6 @@ are undefined.</p>
 <dt class="sig sig-object std" id="opt-kitty.resize_debounce_time">
 <span class="sig-name descname"><span class="pre">resize_debounce_time</span></span><a class="headerlink" href="#opt-kitty.resize_debounce_time" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">resize_debounce_time</span><span class="w"> </span><span class="mf">0.1</span>
 </pre></div>
 </div>
@@ -1080,7 +1102,6 @@ corresponding to the start and end of a resize, this number is ignored.</p>
 <dt class="sig sig-object std" id="opt-kitty.resize_draw_strategy">
 <span class="sig-name descname"><span class="pre">resize_draw_strategy</span></span><a class="headerlink" href="#opt-kitty.resize_draw_strategy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">resize_draw_strategy</span><span class="w"> </span><span class="s">static</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1093,7 +1114,6 @@ window size in cells.</p>
 <dt class="sig sig-object std" id="opt-kitty.resize_in_steps">
 <span class="sig-name descname"><span class="pre">resize_in_steps</span></span><a class="headerlink" href="#opt-kitty.resize_in_steps" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">resize_in_steps</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1106,7 +1126,6 @@ does not currently work on Wayland.</p>
 <dt class="sig sig-object std" id="opt-kitty.confirm_os_window_close">
 <span class="sig-name descname"><span class="pre">confirm_os_window_close</span></span><a class="headerlink" href="#opt-kitty.confirm_os_window_close" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">confirm_os_window_close</span><span class="w"> </span><span class="mi">0</span>
 </pre></div>
 </div>
@@ -1121,7 +1140,6 @@ windows, via the quit action).</p>
 <dt class="sig sig-object std" id="opt-kitty.tab_bar_edge">
 <span class="sig-name descname"><span class="pre">tab_bar_edge</span></span><a class="headerlink" href="#opt-kitty.tab_bar_edge" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_bar_edge</span><span class="w"> </span><span class="s">bottom</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1130,7 +1148,6 @@ windows, via the quit action).</p>
 <dt class="sig sig-object std" id="opt-kitty.tab_bar_margin_width">
 <span class="sig-name descname"><span class="pre">tab_bar_margin_width</span></span><a class="headerlink" href="#opt-kitty.tab_bar_margin_width" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_bar_margin_width</span><span class="w"> </span><span class="mf">0.0</span>
 </pre></div>
 </div>
@@ -1139,7 +1156,6 @@ windows, via the quit action).</p>
 <dt class="sig sig-object std" id="opt-kitty.tab_bar_margin_height">
 <span class="sig-name descname"><span class="pre">tab_bar_margin_height</span></span><a class="headerlink" href="#opt-kitty.tab_bar_margin_height" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_bar_margin_height</span><span class="w"> </span><span class="mi">0</span><span class="mf">.0</span><span class="w"> </span><span class="mf">0.0</span>
 </pre></div>
 </div>
@@ -1151,7 +1167,6 @@ tab.</p>
 <dt class="sig sig-object std" id="opt-kitty.tab_bar_style">
 <span class="sig-name descname"><span class="pre">tab_bar_style</span></span><a class="headerlink" href="#opt-kitty.tab_bar_style" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_bar_style</span><span class="w"> </span><span class="s">fade</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1166,7 +1181,6 @@ easy switching to a tab.</p>
 <dt class="sig sig-object std" id="opt-kitty.tab_bar_min_tabs">
 <span class="sig-name descname"><span class="pre">tab_bar_min_tabs</span></span><a class="headerlink" href="#opt-kitty.tab_bar_min_tabs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_bar_min_tabs</span><span class="w"> </span><span class="mi">2</span>
 </pre></div>
 </div>
@@ -1175,7 +1189,6 @@ easy switching to a tab.</p>
 <dt class="sig sig-object std" id="opt-kitty.tab_switch_strategy">
 <span class="sig-name descname"><span class="pre">tab_switch_strategy</span></span><a class="headerlink" href="#opt-kitty.tab_switch_strategy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_switch_strategy</span><span class="w"> </span><span class="s">previous</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1188,7 +1201,6 @@ default of <code class="code docutils literal notranslate"><span class="pre">pre
 <dt class="sig sig-object std" id="opt-kitty.tab_fade">
 <span class="sig-name descname"><span class="pre">tab_fade</span></span><a class="headerlink" href="#opt-kitty.tab_fade" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_fade</span><span class="w"> </span><span class="mi">0</span><span class="mf">.25</span><span class="w"> </span><span class="mi">0</span><span class="mf">.5</span><span class="w"> </span><span class="mi">0</span><span class="mf">.75</span><span class="w"> </span><span class="mi">1</span>
 </pre></div>
 </div>
@@ -1201,8 +1213,7 @@ by adding/removing entries to this list.</p>
 <dt class="sig sig-object std" id="opt-kitty.tab_separator">
 <span class="sig-name descname"><span class="pre">tab_separator</span></span><a class="headerlink" href="#opt-kitty.tab_separator" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_separator</span><span class="w"> </span><span class="s">&quot; ┇&quot;</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_separator</span><span class="w"> </span><span class="s">" ┇"</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The separator between tabs in the tab bar when using <code class="code docutils literal notranslate"><span class="pre">separator</span></code> as the
@@ -1211,7 +1222,6 @@ by adding/removing entries to this list.</p>
 <dt class="sig sig-object std" id="opt-kitty.tab_powerline_style">
 <span class="sig-name descname"><span class="pre">tab_powerline_style</span></span><a class="headerlink" href="#opt-kitty.tab_powerline_style" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_powerline_style</span><span class="w"> </span><span class="s">angled</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1222,7 +1232,6 @@ by adding/removing entries to this list.</p>
 <dt class="sig sig-object std" id="opt-kitty.tab_activity_symbol">
 <span class="sig-name descname"><span class="pre">tab_activity_symbol</span></span><a class="headerlink" href="#opt-kitty.tab_activity_symbol" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_activity_symbol</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1232,8 +1241,7 @@ does not have focus has some activity.</p>
 <dt class="sig sig-object std" id="opt-kitty.tab_title_template">
 <span class="sig-name descname"><span class="pre">tab_title_template</span></span><a class="headerlink" href="#opt-kitty.tab_title_template" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_title_template</span><span class="w"> </span><span class="s">&quot;{title}&quot;</span><span class="w"></span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_title_template</span><span class="w"> </span><span class="s">"{title}"</span><span class="w"></span>
 </pre></div>
 </div>
 <p>A template to render the tab title. The default just renders the title. If you
@@ -1255,7 +1263,6 @@ directives, for example:
 <dt class="sig sig-object std" id="opt-kitty.active_tab_title_template">
 <span class="sig-name descname"><span class="pre">active_tab_title_template</span></span><a class="headerlink" href="#opt-kitty.active_tab_title_template" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">active_tab_title_template</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1265,7 +1272,6 @@ directives, for example:
 <dt class="sig sig-object std" id="opt-kitty.active_tab_foreground">
 <span class="sig-name descname"><span class="pre">active_tab_foreground</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">active_tab_background</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">active_tab_font_style</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">inactive_tab_foreground</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">inactive_tab_background</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">inactive_tab_font_style</span></span><a class="headerlink" href="#opt-kitty.active_tab_foreground" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">active_tab_foreground</span><span class="w">   </span><span class="s">#000</span><span class="w"></span>
 <span class="nv">active_tab_background</span><span class="w">   </span><span class="s">#eee</span><span class="w"></span>
 <span class="nv">active_tab_font_style</span><span class="w">   </span><span class="s">bold-italic</span><span class="w"></span>
@@ -1279,7 +1285,6 @@ directives, for example:
 <dt class="sig sig-object std" id="opt-kitty.tab_bar_background">
 <span class="sig-name descname"><span class="pre">tab_bar_background</span></span><a class="headerlink" href="#opt-kitty.tab_bar_background" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">tab_bar_background</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1292,7 +1297,6 @@ color.</p>
 <dt class="sig sig-object std" id="opt-kitty.foreground">
 <span class="sig-name descname"><span class="pre">foreground</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">background</span></span><a class="headerlink" href="#opt-kitty.foreground" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">foreground</span><span class="w"> </span><span class="s">#dddddd</span><span class="w"></span>
 <span class="nv">background</span><span class="w"> </span><span class="s">#000000</span>
 </pre></div>
@@ -1302,7 +1306,6 @@ color.</p>
 <dt class="sig sig-object std" id="opt-kitty.background_opacity">
 <span class="sig-name descname"><span class="pre">background_opacity</span></span><a class="headerlink" href="#opt-kitty.background_opacity" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">background_opacity</span><span class="w"> </span><span class="mf">1.0</span>
 </pre></div>
 </div>
@@ -1326,7 +1329,6 @@ in the original config.</p>
 <dt class="sig sig-object std" id="opt-kitty.background_image">
 <span class="sig-name descname"><span class="pre">background_image</span></span><a class="headerlink" href="#opt-kitty.background_image" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">background_image</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1335,7 +1337,6 @@ in the original config.</p>
 <dt class="sig sig-object std" id="opt-kitty.background_image_layout">
 <span class="sig-name descname"><span class="pre">background_image_layout</span></span><a class="headerlink" href="#opt-kitty.background_image_layout" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">background_image_layout</span><span class="w"> </span><span class="s">tiled</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1344,7 +1345,6 @@ in the original config.</p>
 <dt class="sig sig-object std" id="opt-kitty.background_image_linear">
 <span class="sig-name descname"><span class="pre">background_image_linear</span></span><a class="headerlink" href="#opt-kitty.background_image_linear" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">background_image_linear</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1353,7 +1353,6 @@ in the original config.</p>
 <dt class="sig sig-object std" id="opt-kitty.dynamic_background_opacity">
 <span class="sig-name descname"><span class="pre">dynamic_background_opacity</span></span><a class="headerlink" href="#opt-kitty.dynamic_background_opacity" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">dynamic_background_opacity</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1365,7 +1364,6 @@ this setting by reloading the config is not supported.</p>
 <dt class="sig sig-object std" id="opt-kitty.background_tint">
 <span class="sig-name descname"><span class="pre">background_tint</span></span><a class="headerlink" href="#opt-kitty.background_tint" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">background_tint</span><span class="w"> </span><span class="mf">0.0</span>
 </pre></div>
 </div>
@@ -1378,7 +1376,6 @@ windows are supported or <a class="reference internal" href="#opt-kitty.backgrou
 <dt class="sig sig-object std" id="opt-kitty.dim_opacity">
 <span class="sig-name descname"><span class="pre">dim_opacity</span></span><a class="headerlink" href="#opt-kitty.dim_opacity" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">dim_opacity</span><span class="w"> </span><span class="mf">0.75</span>
 </pre></div>
 </div>
@@ -1388,7 +1385,6 @@ and zero means fully dimmed (i.e. invisible).</p>
 <dt class="sig sig-object std" id="opt-kitty.selection_foreground">
 <span class="sig-name descname"><span class="pre">selection_foreground</span></span><a class="headerlink" href="#opt-kitty.selection_foreground" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">selection_foreground</span><span class="w"> </span><span class="s">#000000</span>
 </pre></div>
 </div>
@@ -1398,7 +1394,6 @@ the color unchanged.</p>
 <dt class="sig sig-object std" id="opt-kitty.selection_background">
 <span class="sig-name descname"><span class="pre">selection_background</span></span><a class="headerlink" href="#opt-kitty.selection_background" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">selection_background</span><span class="w"> </span><span class="s">#fffacd</span>
 </pre></div>
 </div>
@@ -1412,7 +1407,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.color0">
 <span class="sig-name descname"><span class="pre">color0</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">color8</span></span><a class="headerlink" href="#opt-kitty.color0" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">color0</span><span class="w"> </span><span class="s">#000000</span><span class="w"></span>
 <span class="nv">color8</span><span class="w"> </span><span class="s">#767676</span>
 </pre></div>
@@ -1422,7 +1416,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.color1">
 <span class="sig-name descname"><span class="pre">color1</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">color9</span></span><a class="headerlink" href="#opt-kitty.color1" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">color1</span><span class="w"> </span><span class="s">#cc0403</span><span class="w"></span>
 <span class="nv">color9</span><span class="w"> </span><span class="s">#f2201f</span>
 </pre></div>
@@ -1432,7 +1425,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.color2">
 <span class="sig-name descname"><span class="pre">color2</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">color10</span></span><a class="headerlink" href="#opt-kitty.color2" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">color2</span><span class="w">  </span><span class="s">#19cb00</span><span class="w"></span>
 <span class="nv">color10</span><span class="w"> </span><span class="s">#23fd00</span>
 </pre></div>
@@ -1442,7 +1434,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.color3">
 <span class="sig-name descname"><span class="pre">color3</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">color11</span></span><a class="headerlink" href="#opt-kitty.color3" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">color3</span><span class="w">  </span><span class="s">#cecb00</span><span class="w"></span>
 <span class="nv">color11</span><span class="w"> </span><span class="s">#fffd00</span>
 </pre></div>
@@ -1452,7 +1443,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.color4">
 <span class="sig-name descname"><span class="pre">color4</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">color12</span></span><a class="headerlink" href="#opt-kitty.color4" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">color4</span><span class="w">  </span><span class="s">#0d73cc</span><span class="w"></span>
 <span class="nv">color12</span><span class="w"> </span><span class="s">#1a8fff</span>
 </pre></div>
@@ -1462,7 +1452,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.color5">
 <span class="sig-name descname"><span class="pre">color5</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">color13</span></span><a class="headerlink" href="#opt-kitty.color5" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">color5</span><span class="w">  </span><span class="s">#cb1ed1</span><span class="w"></span>
 <span class="nv">color13</span><span class="w"> </span><span class="s">#fd28ff</span>
 </pre></div>
@@ -1472,7 +1461,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.color6">
 <span class="sig-name descname"><span class="pre">color6</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">color14</span></span><a class="headerlink" href="#opt-kitty.color6" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">color6</span><span class="w">  </span><span class="s">#0dcdcd</span><span class="w"></span>
 <span class="nv">color14</span><span class="w"> </span><span class="s">#14ffff</span>
 </pre></div>
@@ -1482,7 +1470,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.color7">
 <span class="sig-name descname"><span class="pre">color7</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">color15</span></span><a class="headerlink" href="#opt-kitty.color7" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">color7</span><span class="w">  </span><span class="s">#dddddd</span><span class="w"></span>
 <span class="nv">color15</span><span class="w"> </span><span class="s">#ffffff</span>
 </pre></div>
@@ -1492,7 +1479,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.mark1_foreground">
 <span class="sig-name descname"><span class="pre">mark1_foreground</span></span><a class="headerlink" href="#opt-kitty.mark1_foreground" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mark1_foreground</span><span class="w"> </span><span class="s">black</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1501,7 +1487,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.mark1_background">
 <span class="sig-name descname"><span class="pre">mark1_background</span></span><a class="headerlink" href="#opt-kitty.mark1_background" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mark1_background</span><span class="w"> </span><span class="s">#98d3cb</span>
 </pre></div>
 </div>
@@ -1510,7 +1495,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.mark2_foreground">
 <span class="sig-name descname"><span class="pre">mark2_foreground</span></span><a class="headerlink" href="#opt-kitty.mark2_foreground" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mark2_foreground</span><span class="w"> </span><span class="s">black</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1519,7 +1503,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.mark2_background">
 <span class="sig-name descname"><span class="pre">mark2_background</span></span><a class="headerlink" href="#opt-kitty.mark2_background" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mark2_background</span><span class="w"> </span><span class="s">#f2dcd3</span>
 </pre></div>
 </div>
@@ -1528,7 +1511,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.mark3_foreground">
 <span class="sig-name descname"><span class="pre">mark3_foreground</span></span><a class="headerlink" href="#opt-kitty.mark3_foreground" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mark3_foreground</span><span class="w"> </span><span class="s">black</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1537,7 +1519,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.mark3_background">
 <span class="sig-name descname"><span class="pre">mark3_background</span></span><a class="headerlink" href="#opt-kitty.mark3_background" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">mark3_background</span><span class="w"> </span><span class="s">#f274bc</span>
 </pre></div>
 </div>
@@ -1550,7 +1531,6 @@ color16 to color255.</p>
 <dt class="sig sig-object std" id="opt-kitty.shell">
 <span class="sig-name descname"><span class="pre">shell</span></span><a class="headerlink" href="#opt-kitty.shell" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">shell</span><span class="w"> </span><span class="mf">.</span>
 </pre></div>
 </div>
@@ -1562,7 +1542,6 @@ starts in interactive mode and reads its startup rc files.</p>
 <dt class="sig sig-object std" id="opt-kitty.editor">
 <span class="sig-name descname"><span class="pre">editor</span></span><a class="headerlink" href="#opt-kitty.editor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">editor</span><span class="w"> </span><span class="mf">.</span>
 </pre></div>
 </div>
@@ -1574,7 +1553,6 @@ startup scripts but system-wide, otherwise kitty will not see it.</p>
 <dt class="sig sig-object std" id="opt-kitty.close_on_child_death">
 <span class="sig-name descname"><span class="pre">close_on_child_death</span></span><a class="headerlink" href="#opt-kitty.close_on_child_death" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">close_on_child_death</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1588,7 +1566,6 @@ terminal can fail silently because their stdout/stderr/stdin no longer work.</p>
 <dt class="sig sig-object std" id="opt-kitty.allow_remote_control">
 <span class="sig-name descname"><span class="pre">allow_remote_control</span></span><a class="headerlink" href="#opt-kitty.allow_remote_control" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">allow_remote_control</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1606,7 +1583,6 @@ newly created windows.</p>
 <dt class="sig sig-object std" id="opt-kitty.listen_on">
 <span class="sig-name descname"><span class="pre">listen_on</span></span><a class="headerlink" href="#opt-kitty.listen_on" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">listen_on</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1614,7 +1590,7 @@ newly created windows.</p>
 connections. Note that this will apply to all kitty instances. It can be
 overridden by the <a class="reference internal" href="../invocation/#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a> command line flag. This option
 accepts only UNIX sockets, such as unix:${TEMP}/mykitty or (on Linux)
-unix:&#64;mykitty. Environment variables are expanded. If {kitty_pid} is present
+unix:@mykitty. Environment variables are expanded. If {kitty_pid} is present
 then it is replaced by the PID of the kitty process, otherwise the PID of the
 kitty process is appended to the value, with a hyphen. This option is ignored
 unless you also set <a class="reference internal" href="#opt-kitty.allow_remote_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">allow_remote_control</span></code></a> to enable remote control. See
@@ -1624,7 +1600,6 @@ by reloading the config is not supported.</p>
 <dt class="sig sig-object std" id="opt-kitty.env">
 <span class="sig-name descname"><span class="pre">env</span></span><a class="headerlink" href="#opt-kitty.env" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">env</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1639,7 +1614,6 @@ environment variables are expanded recursively, so if you use:</p>
 <dt class="sig sig-object std" id="opt-kitty.update_check_interval">
 <span class="sig-name descname"><span class="pre">update_check_interval</span></span><a class="headerlink" href="#opt-kitty.update_check_interval" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">update_check_interval</span><span class="w"> </span><span class="mi">24</span>
 </pre></div>
 </div>
@@ -1651,13 +1625,12 @@ by reloading the config is not supported.</p>
 <dt class="sig sig-object std" id="opt-kitty.startup_session">
 <span class="sig-name descname"><span class="pre">startup_session</span></span><a class="headerlink" href="#opt-kitty.startup_session" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">startup_session</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Path to a session file to use for all kitty instances. Can be overridden by
 using the <a class="reference internal" href="../invocation/#cmdoption-kitty-session"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--session</span></code></a> command line option for individual
-instances. See <a class="reference internal" href="../#sessions"><span class="std std-ref">Startup Sessions</span></a> in the kitty documentation for details. Note that
+instances. See <a class="reference internal" href="../overview/#sessions"><span class="std std-ref">Startup Sessions</span></a> in the kitty documentation for details. Note that
 relative paths are interpreted with respect to the kitty config directory.
 Environment variables in the path are expanded. Changing this option by reloading
 the config is not supported.</p>
@@ -1665,7 +1638,6 @@ the config is not supported.</p>
 <dt class="sig sig-object std" id="opt-kitty.clipboard_control">
 <span class="sig-name descname"><span class="pre">clipboard_control</span></span><a class="headerlink" href="#opt-kitty.clipboard_control" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">clipboard_control</span><span class="w"> </span><span class="s">write-clipboard write-primary</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1681,7 +1653,6 @@ server via SSH can read your clipboard.</p>
 <dt class="sig sig-object std" id="opt-kitty.allow_hyperlinks">
 <span class="sig-name descname"><span class="pre">allow_hyperlinks</span></span><a class="headerlink" href="#opt-kitty.allow_hyperlinks" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">allow_hyperlinks</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1693,7 +1664,6 @@ holding down ctrl+shift and clicking with the mouse. The special value of
 <dt class="sig sig-object std" id="opt-kitty.term">
 <span class="sig-name descname"><span class="pre">term</span></span><a class="headerlink" href="#opt-kitty.term" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">term</span><span class="w"> </span><span class="s">xterm-kitty</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1712,7 +1682,6 @@ the config will only affect newly created windows.</p>
 <dt class="sig sig-object std" id="opt-kitty.wayland_titlebar_color">
 <span class="sig-name descname"><span class="pre">wayland_titlebar_color</span></span><a class="headerlink" href="#opt-kitty.wayland_titlebar_color" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">wayland_titlebar_color</span><span class="w"> </span><span class="s">system</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1725,7 +1694,6 @@ arbitrary color, such as <code class="code docutils literal notranslate"><span c
 <dt class="sig sig-object std" id="opt-kitty.macos_titlebar_color">
 <span class="sig-name descname"><span class="pre">macos_titlebar_color</span></span><a class="headerlink" href="#opt-kitty.macos_titlebar_color" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_titlebar_color</span><span class="w"> </span><span class="s">system</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1742,7 +1710,6 @@ just hiding the titlebar with <a class="reference internal" href="#opt-kitty.hid
 <dt class="sig sig-object std" id="opt-kitty.macos_option_as_alt">
 <span class="sig-name descname"><span class="pre">macos_option_as_alt</span></span><a class="headerlink" href="#opt-kitty.macos_option_as_alt" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_option_as_alt</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1756,7 +1723,6 @@ as Alt, instead. Changing this setting by reloading the config is not supported.
 <dt class="sig sig-object std" id="opt-kitty.macos_hide_from_tasks">
 <span class="sig-name descname"><span class="pre">macos_hide_from_tasks</span></span><a class="headerlink" href="#opt-kitty.macos_hide_from_tasks" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_hide_from_tasks</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1765,7 +1731,6 @@ as Alt, instead. Changing this setting by reloading the config is not supported.
 <dt class="sig sig-object std" id="opt-kitty.macos_quit_when_last_window_closed">
 <span class="sig-name descname"><span class="pre">macos_quit_when_last_window_closed</span></span><a class="headerlink" href="#opt-kitty.macos_quit_when_last_window_closed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_quit_when_last_window_closed</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1776,7 +1741,6 @@ macOS.</p>
 <dt class="sig sig-object std" id="opt-kitty.macos_window_resizable">
 <span class="sig-name descname"><span class="pre">macos_window_resizable</span></span><a class="headerlink" href="#opt-kitty.macos_window_resizable" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_window_resizable</span><span class="w"> </span><span class="mb">yes</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1787,7 +1751,6 @@ created windows.</p>
 <dt class="sig sig-object std" id="opt-kitty.macos_thicken_font">
 <span class="sig-name descname"><span class="pre">macos_thicken_font</span></span><a class="headerlink" href="#opt-kitty.macos_thicken_font" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_thicken_font</span><span class="w"> </span><span class="mi">0</span>
 </pre></div>
 </div>
@@ -1798,7 +1761,6 @@ rendering that looks similar to sub-pixel antialiasing at common font sizes.</p>
 <dt class="sig sig-object std" id="opt-kitty.macos_traditional_fullscreen">
 <span class="sig-name descname"><span class="pre">macos_traditional_fullscreen</span></span><a class="headerlink" href="#opt-kitty.macos_traditional_fullscreen" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_traditional_fullscreen</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1807,7 +1769,6 @@ rendering that looks similar to sub-pixel antialiasing at common font sizes.</p>
 <dt class="sig sig-object std" id="opt-kitty.macos_show_window_title_in">
 <span class="sig-name descname"><span class="pre">macos_show_window_title_in</span></span><a class="headerlink" href="#opt-kitty.macos_show_window_title_in" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_show_window_title_in</span><span class="w"> </span><span class="s">all</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1821,7 +1782,6 @@ title in the window and the menu-bar.</p>
 <dt class="sig sig-object std" id="opt-kitty.macos_custom_beam_cursor">
 <span class="sig-name descname"><span class="pre">macos_custom_beam_cursor</span></span><a class="headerlink" href="#opt-kitty.macos_custom_beam_cursor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">macos_custom_beam_cursor</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1832,7 +1792,6 @@ dual GPU machines. Changing this setting by reloading the config is not supporte
 <dt class="sig sig-object std" id="opt-kitty.linux_display_server">
 <span class="sig-name descname"><span class="pre">linux_display_server</span></span><a class="headerlink" href="#opt-kitty.linux_display_server" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">linux_display_server</span><span class="w"> </span><span class="s">auto</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1858,7 +1817,7 @@ known as GLFW keys. To see the system key code
 for a key, start kitty with the <a class="reference internal" href="../invocation/#cmdoption-kitty-debug-input"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--debug-input</span></code></a> option. Then kitty will
 output some debug text for every key event. In that text look for <code class="docutils literal notranslate"><span class="pre">native_code</span></code>
 the value of that becomes the key name in the shortcut. For example:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>on_key_input: glfw key: 65 native_code: 0x61 action: PRESS mods: 0x0 text: &#39;a&#39;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>on_key_input: glfw key: 65 native_code: 0x61 action: PRESS mods: 0x0 text: 'a'
 </pre></div>
 </div>
 <p>Here, the key name for the <kbd class="kbd docutils literal notranslate">A</kbd> key is <kbd class="kbd docutils literal notranslate">0x61</kbd> and you can use it with:</p>
@@ -1895,7 +1854,6 @@ syntax below:</p>
 <dt class="sig sig-object std" id="opt-kitty.kitty_mod">
 <span class="sig-name descname"><span class="pre">kitty_mod</span></span><a class="headerlink" href="#opt-kitty.kitty_mod" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">kitty_mod</span><span class="w"> </span><span class="s">ctrl+shift</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1906,7 +1864,6 @@ the default shortcuts.</p>
 <dt class="sig sig-object std" id="opt-kitty.clear_all_shortcuts">
 <span class="sig-name descname"><span class="pre">clear_all_shortcuts</span></span><a class="headerlink" href="#opt-kitty.clear_all_shortcuts" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">clear_all_shortcuts</span><span class="w"> </span><span class="mb">no</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1916,7 +1873,6 @@ for instance, to remove the default shortcuts.</p>
 <dt class="sig sig-object std" id="opt-kitty.kitten_alias">
 <span class="sig-name descname"><span class="pre">kitten_alias</span></span><a class="headerlink" href="#opt-kitty.kitten_alias" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">kitten_alias</span><span class="w"> </span><span class="s">hints hints --hints-offset=0</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1931,7 +1887,6 @@ all mappings, including the builtin ones.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Copy-to-clipboard">
 <span id="shortcut-kitty.Copy to clipboard"></span><span class="sig-name descname"><span class="pre">Copy</span> <span class="pre">to</span> <span class="pre">clipboard</span></span><a class="headerlink" href="#shortcut-kitty.Copy-to-clipboard" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+c</span><span class="w"> </span><span class="nf">copy_to_clipboard</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1943,7 +1898,6 @@ and clear the selection or send an interrupt if there is no selection.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Paste-from-clipboard">
 <span id="shortcut-kitty.Paste from clipboard"></span><span class="sig-name descname"><span class="pre">Paste</span> <span class="pre">from</span> <span class="pre">clipboard</span></span><a class="headerlink" href="#shortcut-kitty.Paste-from-clipboard" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+v</span><span class="w"> </span><span class="nf">paste_from_clipboard</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1951,7 +1905,6 @@ and clear the selection or send an interrupt if there is no selection.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Paste-from-selection">
 <span id="shortcut-kitty.Paste from selection"></span><span class="sig-name descname"><span class="pre">Paste</span> <span class="pre">from</span> <span class="pre">selection</span></span><a class="headerlink" href="#shortcut-kitty.Paste-from-selection" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+s</span><span class="w"> </span><span class="nf">paste_from_selection</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">shift+insert</span><span class="w"> </span><span class="nf">paste_from_selection</span><span class="w"></span>
 </pre></div>
@@ -1960,7 +1913,6 @@ and clear the selection or send an interrupt if there is no selection.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Pass-selection-to-program">
 <span id="shortcut-kitty.Pass selection to program"></span><span class="sig-name descname"><span class="pre">Pass</span> <span class="pre">selection</span> <span class="pre">to</span> <span class="pre">program</span></span><a class="headerlink" href="#shortcut-kitty.Pass-selection-to-program" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+o</span><span class="w"> </span><span class="nf">pass_selection_to_program</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1972,7 +1924,7 @@ for example:</p>
 </pre></div>
 </div>
 <p>You can pass the current selection to a terminal program running in a new kitty
-window, by using the &#64;selection placeholder:</p>
+window, by using the @selection placeholder:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">kitty_mod+y</span><span class="w"> </span><span class="nf">new_window</span><span class="w"> </span><span class="s">less @selection</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1983,7 +1935,6 @@ window, by using the &#64;selection placeholder:</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Scroll-line-up">
 <span id="shortcut-kitty.Scroll line up"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">line</span> <span class="pre">up</span></span><a class="headerlink" href="#shortcut-kitty.Scroll-line-up" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+up</span><span class="w"> </span><span class="nf">scroll_line_up</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+k</span><span class="w"> </span><span class="nf">scroll_line_up</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">alt+cmd+page_up</span><span class="w"> </span><span class="nf">scroll_line_up</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
@@ -1994,7 +1945,6 @@ window, by using the &#64;selection placeholder:</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Scroll-line-down">
 <span id="shortcut-kitty.Scroll line down"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">line</span> <span class="pre">down</span></span><a class="headerlink" href="#shortcut-kitty.Scroll-line-down" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+down</span><span class="w"> </span><span class="nf">scroll_line_down</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+j</span><span class="w"> </span><span class="nf">scroll_line_down</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">alt+cmd+page_down</span><span class="w"> </span><span class="nf">scroll_line_down</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
@@ -2005,7 +1955,6 @@ window, by using the &#64;selection placeholder:</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Scroll-page-up">
 <span id="shortcut-kitty.Scroll page up"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">page</span> <span class="pre">up</span></span><a class="headerlink" href="#shortcut-kitty.Scroll-page-up" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+page_up</span><span class="w"> </span><span class="nf">scroll_page_up</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+page_up</span><span class="w"> </span><span class="nf">scroll_page_up</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2014,7 +1963,6 @@ window, by using the &#64;selection placeholder:</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Scroll-page-down">
 <span id="shortcut-kitty.Scroll page down"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">page</span> <span class="pre">down</span></span><a class="headerlink" href="#shortcut-kitty.Scroll-page-down" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+page_down</span><span class="w"> </span><span class="nf">scroll_page_down</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+page_down</span><span class="w"> </span><span class="nf">scroll_page_down</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2023,7 +1971,6 @@ window, by using the &#64;selection placeholder:</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Scroll-to-top">
 <span id="shortcut-kitty.Scroll to top"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">top</span></span><a class="headerlink" href="#shortcut-kitty.Scroll-to-top" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+home</span><span class="w"> </span><span class="nf">scroll_home</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+home</span><span class="w"> </span><span class="nf">scroll_home</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2032,7 +1979,6 @@ window, by using the &#64;selection placeholder:</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Scroll-to-bottom">
 <span id="shortcut-kitty.Scroll to bottom"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">bottom</span></span><a class="headerlink" href="#shortcut-kitty.Scroll-to-bottom" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+end</span><span class="w"> </span><span class="nf">scroll_end</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+end</span><span class="w"> </span><span class="nf">scroll_end</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2041,7 +1987,6 @@ window, by using the &#64;selection placeholder:</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Browse-scrollback-buffer-in-less">
 <span id="shortcut-kitty.Browse scrollback buffer in less"></span><span class="sig-name descname"><span class="pre">Browse</span> <span class="pre">scrollback</span> <span class="pre">buffer</span> <span class="pre">in</span> <span class="pre">less</span></span><a class="headerlink" href="#shortcut-kitty.Browse-scrollback-buffer-in-less" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+h</span><span class="w"> </span><span class="nf">show_scrollback</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2052,7 +1997,7 @@ the following opens the scrollback buffer in less in an overlay window:</p>
 </pre></div>
 </div>
 <p>For more details on piping screen and buffer contents to external programs,
-see <a class="reference internal" href="../launch/"><span class="doc">Launching programs in new windows/tabs</span></a>.</p>
+see <a class="reference internal" href="../launch/"><span class="doc">Launching new tabs/windows</span></a>.</p>
 </div>
 <div class="section" id="window-management">
 <span id="conf-kitty-shortcuts-window"></span><h3>Window management<a class="headerlink" href="#window-management" title="Permalink to this headline">¶</a></h3>
@@ -2060,7 +2005,6 @@ see <a class="reference internal" href="../launch/"><span class="doc">Launching 
 <dt class="sig sig-object std" id="shortcut-kitty.New-window">
 <span id="shortcut-kitty.New window"></span><span class="sig-name descname"><span class="pre">New</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.New-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+enter</span><span class="w"> </span><span class="nf">new_window</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+enter</span><span class="w"> </span><span class="nf">new_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2075,7 +2019,7 @@ working directory of the current window using:</p>
 </pre></div>
 </div>
 <p>You can open a new window that is allowed to control kitty via
-the kitty remote control facility by prefixing the command line with &#64;.
+the kitty remote control facility by prefixing the command line with @.
 Any programs running in that window will be allowed to control kitty.
 For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+enter</span><span class="w"> </span><span class="nf">launch</span><span class="w"> </span><span class="s">--allow-remote-control some_program</span><span class="w"></span>
@@ -2087,12 +2031,11 @@ with:</p>
 <span class="kd">map</span><span class="w"> </span><span class="s">ctrl+f</span><span class="w"> </span><span class="nf">launch</span><span class="w"> </span><span class="s">--location=first some_program</span><span class="w"></span>
 </pre></div>
 </div>
-<p>For more details, see <a class="reference internal" href="../launch/"><span class="doc">Launching programs in new windows/tabs</span></a>.</p>
+<p>For more details, see <a class="reference internal" href="../launch/"><span class="doc">Launching new tabs/windows</span></a>.</p>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitty.New-OS-window">
 <span id="shortcut-kitty.New OS window"></span><span class="sig-name descname"><span class="pre">New</span> <span class="pre">OS</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.New-OS-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+n</span><span class="w"> </span><span class="nf">new_os_window</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+n</span><span class="w"> </span><span class="nf">new_os_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2104,7 +2047,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Close-window">
 <span id="shortcut-kitty.Close window"></span><span class="sig-name descname"><span class="pre">Close</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Close-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+w</span><span class="w"> </span><span class="nf">close_window</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">shift+cmd+d</span><span class="w"> </span><span class="nf">close_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2113,7 +2055,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Next-window">
 <span id="shortcut-kitty.Next window"></span><span class="sig-name descname"><span class="pre">Next</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Next-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+]</span><span class="w"> </span><span class="nf">next_window</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2121,7 +2062,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Previous-window">
 <span id="shortcut-kitty.Previous window"></span><span class="sig-name descname"><span class="pre">Previous</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Previous-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+[</span><span class="w"> </span><span class="nf">previous_window</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2129,7 +2069,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Move-window-forward">
 <span id="shortcut-kitty.Move window forward"></span><span class="sig-name descname"><span class="pre">Move</span> <span class="pre">window</span> <span class="pre">forward</span></span><a class="headerlink" href="#shortcut-kitty.Move-window-forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+f</span><span class="w"> </span><span class="nf">move_window_forward</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2137,7 +2076,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Move-window-backward">
 <span id="shortcut-kitty.Move window backward"></span><span class="sig-name descname"><span class="pre">Move</span> <span class="pre">window</span> <span class="pre">backward</span></span><a class="headerlink" href="#shortcut-kitty.Move-window-backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+b</span><span class="w"> </span><span class="nf">move_window_backward</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2145,7 +2083,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Move-window-to-top">
 <span id="shortcut-kitty.Move window to top"></span><span class="sig-name descname"><span class="pre">Move</span> <span class="pre">window</span> <span class="pre">to</span> <span class="pre">top</span></span><a class="headerlink" href="#shortcut-kitty.Move-window-to-top" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+`</span><span class="w"> </span><span class="nf">move_window_to_top</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2153,7 +2090,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Start-resizing-window">
 <span id="shortcut-kitty.Start resizing window"></span><span class="sig-name descname"><span class="pre">Start</span> <span class="pre">resizing</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Start-resizing-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+r</span><span class="w"> </span><span class="nf">start_resizing_window</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+r</span><span class="w"> </span><span class="nf">start_resizing_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2162,7 +2098,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.First-window">
 <span id="shortcut-kitty.First window"></span><span class="sig-name descname"><span class="pre">First</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.First-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+1</span><span class="w"> </span><span class="nf">first_window</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+1</span><span class="w"> </span><span class="nf">first_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2171,7 +2106,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Second-window">
 <span id="shortcut-kitty.Second window"></span><span class="sig-name descname"><span class="pre">Second</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Second-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+2</span><span class="w"> </span><span class="nf">second_window</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+2</span><span class="w"> </span><span class="nf">second_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2180,7 +2114,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Third-window">
 <span id="shortcut-kitty.Third window"></span><span class="sig-name descname"><span class="pre">Third</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Third-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+3</span><span class="w"> </span><span class="nf">third_window</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+3</span><span class="w"> </span><span class="nf">third_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2189,7 +2122,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Fourth-window">
 <span id="shortcut-kitty.Fourth window"></span><span class="sig-name descname"><span class="pre">Fourth</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Fourth-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+4</span><span class="w"> </span><span class="nf">fourth_window</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+4</span><span class="w"> </span><span class="nf">fourth_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2198,7 +2130,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Fifth-window">
 <span id="shortcut-kitty.Fifth window"></span><span class="sig-name descname"><span class="pre">Fifth</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Fifth-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+5</span><span class="w"> </span><span class="nf">fifth_window</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+5</span><span class="w"> </span><span class="nf">fifth_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2207,7 +2138,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Sixth-window">
 <span id="shortcut-kitty.Sixth window"></span><span class="sig-name descname"><span class="pre">Sixth</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Sixth-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+6</span><span class="w"> </span><span class="nf">sixth_window</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+6</span><span class="w"> </span><span class="nf">sixth_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2216,7 +2146,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Seventh-window">
 <span id="shortcut-kitty.Seventh window"></span><span class="sig-name descname"><span class="pre">Seventh</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Seventh-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+7</span><span class="w"> </span><span class="nf">seventh_window</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+7</span><span class="w"> </span><span class="nf">seventh_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2225,7 +2154,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Eight-window">
 <span id="shortcut-kitty.Eight window"></span><span class="sig-name descname"><span class="pre">Eight</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Eight-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+8</span><span class="w"> </span><span class="nf">eighth_window</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+8</span><span class="w"> </span><span class="nf">eighth_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2234,7 +2162,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Ninth-window">
 <span id="shortcut-kitty.Ninth window"></span><span class="sig-name descname"><span class="pre">Ninth</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Ninth-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+9</span><span class="w"> </span><span class="nf">ninth_window</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+9</span><span class="w"> </span><span class="nf">ninth_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2243,7 +2170,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Tenth-window">
 <span id="shortcut-kitty.Tenth window"></span><span class="sig-name descname"><span class="pre">Tenth</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Tenth-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+0</span><span class="w"> </span><span class="nf">tenth_window</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2254,7 +2180,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Next-tab">
 <span id="shortcut-kitty.Next tab"></span><span class="sig-name descname"><span class="pre">Next</span> <span class="pre">tab</span></span><a class="headerlink" href="#shortcut-kitty.Next-tab" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+right</span><span class="w"> </span><span class="nf">next_tab</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">shift+cmd+]</span><span class="w"> </span><span class="nf">next_tab</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">ctrl+tab</span><span class="w"> </span><span class="nf">next_tab</span><span class="w"></span>
@@ -2264,7 +2189,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Previous-tab">
 <span id="shortcut-kitty.Previous tab"></span><span class="sig-name descname"><span class="pre">Previous</span> <span class="pre">tab</span></span><a class="headerlink" href="#shortcut-kitty.Previous-tab" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+left</span><span class="w"> </span><span class="nf">previous_tab</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">shift+cmd+[</span><span class="w"> </span><span class="nf">previous_tab</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">shift+ctrl+tab</span><span class="w"> </span><span class="nf">previous_tab</span><span class="w"></span>
@@ -2274,7 +2198,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.New-tab">
 <span id="shortcut-kitty.New tab"></span><span class="sig-name descname"><span class="pre">New</span> <span class="pre">tab</span></span><a class="headerlink" href="#shortcut-kitty.New-tab" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+t</span><span class="w"> </span><span class="nf">new_tab</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+t</span><span class="w"> </span><span class="nf">new_tab</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2283,7 +2206,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Close-tab">
 <span id="shortcut-kitty.Close tab"></span><span class="sig-name descname"><span class="pre">Close</span> <span class="pre">tab</span></span><a class="headerlink" href="#shortcut-kitty.Close-tab" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+q</span><span class="w"> </span><span class="nf">close_tab</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+w</span><span class="w"> </span><span class="nf">close_tab</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2292,7 +2214,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Close-OS-window">
 <span id="shortcut-kitty.Close OS window"></span><span class="sig-name descname"><span class="pre">Close</span> <span class="pre">OS</span> <span class="pre">window</span></span><a class="headerlink" href="#shortcut-kitty.Close-OS-window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">shift+cmd+w</span><span class="w"> </span><span class="nf">close_os_window</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2300,7 +2221,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Move-tab-forward">
 <span id="shortcut-kitty.Move tab forward"></span><span class="sig-name descname"><span class="pre">Move</span> <span class="pre">tab</span> <span class="pre">forward</span></span><a class="headerlink" href="#shortcut-kitty.Move-tab-forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+.</span><span class="w"> </span><span class="nf">move_tab_forward</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2308,7 +2228,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Move-tab-backward">
 <span id="shortcut-kitty.Move tab backward"></span><span class="sig-name descname"><span class="pre">Move</span> <span class="pre">tab</span> <span class="pre">backward</span></span><a class="headerlink" href="#shortcut-kitty.Move-tab-backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+,</span><span class="w"> </span><span class="nf">move_tab_backward</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2316,7 +2235,6 @@ current working directory.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Set-tab-title">
 <span id="shortcut-kitty.Set tab title"></span><span class="sig-name descname"><span class="pre">Set</span> <span class="pre">tab</span> <span class="pre">title</span></span><a class="headerlink" href="#shortcut-kitty.Set-tab-title" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+alt+t</span><span class="w"> </span><span class="nf">set_tab_title</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">shift+cmd+i</span><span class="w"> </span><span class="nf">set_tab_title</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2342,7 +2260,6 @@ end of the tabs list, use:</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Next-layout">
 <span id="shortcut-kitty.Next layout"></span><span class="sig-name descname"><span class="pre">Next</span> <span class="pre">layout</span></span><a class="headerlink" href="#shortcut-kitty.Next-layout" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+l</span><span class="w"> </span><span class="nf">next_layout</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2371,7 +2288,6 @@ only the current one.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Increase-font-size">
 <span id="shortcut-kitty.Increase font size"></span><span class="sig-name descname"><span class="pre">Increase</span> <span class="pre">font</span> <span class="pre">size</span></span><a class="headerlink" href="#shortcut-kitty.Increase-font-size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+equal</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all +2.0</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+plus</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all +2.0</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+kp_add</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all +2.0</span><span class="w"></span>
@@ -2384,7 +2300,6 @@ only the current one.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Decrease-font-size">
 <span id="shortcut-kitty.Decrease font size"></span><span class="sig-name descname"><span class="pre">Decrease</span> <span class="pre">font</span> <span class="pre">size</span></span><a class="headerlink" href="#shortcut-kitty.Decrease-font-size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+minus</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all -2.0</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+kp_subtract</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all -2.0</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+minus</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all -2.0 🍎</span><span class="w"></span>
@@ -2395,7 +2310,6 @@ only the current one.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Reset-font-size">
 <span id="shortcut-kitty.Reset font size"></span><span class="sig-name descname"><span class="pre">Reset</span> <span class="pre">font</span> <span class="pre">size</span></span><a class="headerlink" href="#shortcut-kitty.Reset-font-size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+backspace</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all 0</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+0</span><span class="w"> </span><span class="nf">change_font_size</span><span class="w"> </span><span class="s">all 0 🍎</span><span class="w"></span>
 </pre></div>
@@ -2417,7 +2331,6 @@ insert it into the terminal or copy it to the clipboard.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Open-URL">
 <span id="shortcut-kitty.Open URL"></span><span class="sig-name descname"><span class="pre">Open</span> <span class="pre">URL</span></span><a class="headerlink" href="#shortcut-kitty.Open-URL" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+e</span><span class="w"> </span><span class="nf">open_url_with_hints</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2427,7 +2340,6 @@ URL is specified in <a class="reference internal" href="#opt-kitty.open_url_with
 <dt class="sig sig-object std" id="shortcut-kitty.Insert-selected-path">
 <span id="shortcut-kitty.Insert selected path"></span><span class="sig-name descname"><span class="pre">Insert</span> <span class="pre">selected</span> <span class="pre">path</span></span><a class="headerlink" href="#shortcut-kitty.Insert-selected-path" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+p&gt;f</span><span class="w"> </span><span class="nf">kitten</span><span class="w"> </span><span class="s">hints --type path --program -</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2437,7 +2349,6 @@ run git commands on a filename output from a previous git command.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Open-selected-path">
 <span id="shortcut-kitty.Open selected path"></span><span class="sig-name descname"><span class="pre">Open</span> <span class="pre">selected</span> <span class="pre">path</span></span><a class="headerlink" href="#shortcut-kitty.Open-selected-path" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+p&gt;shift+f</span><span class="w"> </span><span class="nf">kitten</span><span class="w"> </span><span class="s">hints --type path</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2446,7 +2357,6 @@ run git commands on a filename output from a previous git command.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Insert-selected-line">
 <span id="shortcut-kitty.Insert selected line"></span><span class="sig-name descname"><span class="pre">Insert</span> <span class="pre">selected</span> <span class="pre">line</span></span><a class="headerlink" href="#shortcut-kitty.Insert-selected-line" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+p&gt;l</span><span class="w"> </span><span class="nf">kitten</span><span class="w"> </span><span class="s">hints --type line --program -</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2456,7 +2366,6 @@ things like: ls -1</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Insert-selected-word">
 <span id="shortcut-kitty.Insert selected word"></span><span class="sig-name descname"><span class="pre">Insert</span> <span class="pre">selected</span> <span class="pre">word</span></span><a class="headerlink" href="#shortcut-kitty.Insert-selected-word" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+p&gt;w</span><span class="w"> </span><span class="nf">kitten</span><span class="w"> </span><span class="s">hints --type word --program -</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2465,7 +2374,6 @@ things like: ls -1</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Insert-selected-hash">
 <span id="shortcut-kitty.Insert selected hash"></span><span class="sig-name descname"><span class="pre">Insert</span> <span class="pre">selected</span> <span class="pre">hash</span></span><a class="headerlink" href="#shortcut-kitty.Insert-selected-hash" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+p&gt;h</span><span class="w"> </span><span class="nf">kitten</span><span class="w"> </span><span class="s">hints --type hash --program -</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2475,7 +2383,6 @@ with git, which uses sha1 hashes to identify commits</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Open-the-selected-file-at-the-selected-line">
 <span id="shortcut-kitty.Open the selected file at the selected line"></span><span class="sig-name descname"><span class="pre">Open</span> <span class="pre">the</span> <span class="pre">selected</span> <span class="pre">file</span> <span class="pre">at</span> <span class="pre">the</span> <span class="pre">selected</span> <span class="pre">line</span></span><a class="headerlink" href="#shortcut-kitty.Open-the-selected-file-at-the-selected-line" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+p&gt;n</span><span class="w"> </span><span class="nf">kitten</span><span class="w"> </span><span class="s">hints --type linenum</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2485,7 +2392,6 @@ the specified line number.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Open-the-selected-hyperlink">
 <span id="shortcut-kitty.Open the selected hyperlink"></span><span class="sig-name descname"><span class="pre">Open</span> <span class="pre">the</span> <span class="pre">selected</span> <span class="pre">hyperlink</span></span><a class="headerlink" href="#shortcut-kitty.Open-the-selected-hyperlink" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+p&gt;y</span><span class="w"> </span><span class="nf">kitten</span><span class="w"> </span><span class="s">hints --type hyperlink</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2500,7 +2406,6 @@ shortcuts. For a full description see <a class="reference internal" href="../kit
 <dt class="sig sig-object std" id="shortcut-kitty.Toggle-fullscreen">
 <span id="shortcut-kitty.Toggle fullscreen"></span><span class="sig-name descname"><span class="pre">Toggle</span> <span class="pre">fullscreen</span></span><a class="headerlink" href="#shortcut-kitty.Toggle-fullscreen" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+f11</span><span class="w"> </span><span class="nf">toggle_fullscreen</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2508,7 +2413,6 @@ shortcuts. For a full description see <a class="reference internal" href="../kit
 <dt class="sig sig-object std" id="shortcut-kitty.Toggle-maximized">
 <span id="shortcut-kitty.Toggle maximized"></span><span class="sig-name descname"><span class="pre">Toggle</span> <span class="pre">maximized</span></span><a class="headerlink" href="#shortcut-kitty.Toggle-maximized" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+f10</span><span class="w"> </span><span class="nf">toggle_maximized</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2516,7 +2420,6 @@ shortcuts. For a full description see <a class="reference internal" href="../kit
 <dt class="sig sig-object std" id="shortcut-kitty.Unicode-input">
 <span id="shortcut-kitty.Unicode input"></span><span class="sig-name descname"><span class="pre">Unicode</span> <span class="pre">input</span></span><a class="headerlink" href="#shortcut-kitty.Unicode-input" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+u</span><span class="w"> </span><span class="nf">kitten</span><span class="w"> </span><span class="s">unicode_input</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+ctrl+space</span><span class="w"> </span><span class="nf">kitten</span><span class="w"> </span><span class="s">unicode_input 🍎</span><span class="w"></span>
 </pre></div>
@@ -2525,7 +2428,6 @@ shortcuts. For a full description see <a class="reference internal" href="../kit
 <dt class="sig sig-object std" id="shortcut-kitty.Edit-config-file">
 <span id="shortcut-kitty.Edit config file"></span><span class="sig-name descname"><span class="pre">Edit</span> <span class="pre">config</span> <span class="pre">file</span></span><a class="headerlink" href="#shortcut-kitty.Edit-config-file" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+f2</span><span class="w"> </span><span class="nf">edit_config_file</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+,</span><span class="w"> </span><span class="nf">edit_config_file</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2534,7 +2436,6 @@ shortcuts. For a full description see <a class="reference internal" href="../kit
 <dt class="sig sig-object std" id="shortcut-kitty.Open-the-kitty-command-shell">
 <span id="shortcut-kitty.Open the kitty command shell"></span><span class="sig-name descname"><span class="pre">Open</span> <span class="pre">the</span> <span class="pre">kitty</span> <span class="pre">command</span> <span class="pre">shell</span></span><a class="headerlink" href="#shortcut-kitty.Open-the-kitty-command-shell" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+escape</span><span class="w"> </span><span class="nf">kitty_shell</span><span class="w"> </span><span class="s">window</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2544,7 +2445,6 @@ using commands.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Increase-background-opacity">
 <span id="shortcut-kitty.Increase background opacity"></span><span class="sig-name descname"><span class="pre">Increase</span> <span class="pre">background</span> <span class="pre">opacity</span></span><a class="headerlink" href="#shortcut-kitty.Increase-background-opacity" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+a&gt;m</span><span class="w"> </span><span class="nf">set_background_opacity</span><span class="w"> </span><span class="mf">+0.1</span>
 </pre></div>
 </div>
@@ -2552,7 +2452,6 @@ using commands.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Decrease-background-opacity">
 <span id="shortcut-kitty.Decrease background opacity"></span><span class="sig-name descname"><span class="pre">Decrease</span> <span class="pre">background</span> <span class="pre">opacity</span></span><a class="headerlink" href="#shortcut-kitty.Decrease-background-opacity" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+a&gt;l</span><span class="w"> </span><span class="nf">set_background_opacity</span><span class="w"> </span><span class="mf">-0.1</span>
 </pre></div>
 </div>
@@ -2560,7 +2459,6 @@ using commands.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Make-background-fully-opaque">
 <span id="shortcut-kitty.Make background fully opaque"></span><span class="sig-name descname"><span class="pre">Make</span> <span class="pre">background</span> <span class="pre">fully</span> <span class="pre">opaque</span></span><a class="headerlink" href="#shortcut-kitty.Make-background-fully-opaque" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+a&gt;1</span><span class="w"> </span><span class="nf">set_background_opacity</span><span class="w"> </span><span class="mi">1</span>
 </pre></div>
 </div>
@@ -2568,7 +2466,6 @@ using commands.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Reset-background-opacity">
 <span id="shortcut-kitty.Reset background opacity"></span><span class="sig-name descname"><span class="pre">Reset</span> <span class="pre">background</span> <span class="pre">opacity</span></span><a class="headerlink" href="#shortcut-kitty.Reset-background-opacity" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+a&gt;d</span><span class="w"> </span><span class="nf">set_background_opacity</span><span class="w"> </span><span class="s">default</span><span class="w"></span>
 </pre></div>
 </div>
@@ -2576,7 +2473,6 @@ using commands.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Reset-the-terminal">
 <span id="shortcut-kitty.Reset the terminal"></span><span class="sig-name descname"><span class="pre">Reset</span> <span class="pre">the</span> <span class="pre">terminal</span></span><a class="headerlink" href="#shortcut-kitty.Reset-the-terminal" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+delete</span><span class="w"> </span><span class="nf">clear_terminal</span><span class="w"> </span><span class="s">reset active</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+option+r</span><span class="w"> </span><span class="nf">clear_terminal</span><span class="w"> </span><span class="s">reset active 🍎</span><span class="w"></span>
 </pre></div>
@@ -2598,18 +2494,17 @@ using commands.</p>
 into the scrollback buffer and clear the screen, instead of just clearing the
 screen, for example, for ZSH add the following to <code class="file docutils literal notranslate"><span class="pre">~/.zshrc</span></code>:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>scroll-and-clear-screen<span class="o">()</span> <span class="o">{</span>
-    <span class="nb">printf</span> <span class="s1">&#39;\n%.0s&#39;</span> <span class="o">{</span><span class="m">1</span>..<span class="nv">$LINES</span><span class="o">}</span>
+    <span class="nb">printf</span> <span class="s1">'\n%.0s'</span> <span class="o">{</span><span class="m">1</span>..<span class="nv">$LINES</span><span class="o">}</span>
     zle clear-screen
 <span class="o">}</span>
 zle -N scroll-and-clear-screen
-bindkey <span class="s1">&#39;^l&#39;</span> scroll-and-clear-screen
+bindkey <span class="s1">'^l'</span> scroll-and-clear-screen
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitty.Reload-kitty.conf">
 <span id="shortcut-kitty.Reload kitty.conf"></span><span class="sig-name descname"><span class="pre">Reload</span> <span class="pre">kitty.conf</span></span><a class="headerlink" href="#shortcut-kitty.Reload-kitty.conf" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+f5</span><span class="w"> </span><span class="nf">load_config_file</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+control+,</span><span class="w"> </span><span class="nf">load_config_file</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2627,7 +2522,6 @@ the new conf settings <em>replace</em> the old ones.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Debug-kitty-configuration">
 <span id="shortcut-kitty.Debug kitty configuration"></span><span class="sig-name descname"><span class="pre">Debug</span> <span class="pre">kitty</span> <span class="pre">configuration</span></span><a class="headerlink" href="#shortcut-kitty.Debug-kitty-configuration" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+shift+f6</span><span class="w"> </span><span class="nf">debug_config</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">cmd+option+,</span><span class="w"> </span><span class="nf">debug_config</span><span class="w"> </span><span class="s">🍎</span><span class="w"></span>
 </pre></div>
@@ -2638,7 +2532,6 @@ its host environment. Useful for debugging issues.</p>
 <dt class="sig sig-object std" id="shortcut-kitty.Send-arbitrary-text-on-key-presses">
 <span id="shortcut-kitty.Send arbitrary text on key presses"></span><span class="sig-name descname"><span class="pre">Send</span> <span class="pre">arbitrary</span> <span class="pre">text</span> <span class="pre">on</span> <span class="pre">key</span> <span class="pre">presses</span></span><a class="headerlink" href="#shortcut-kitty.Send-arbitrary-text-on-key-presses" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <p>You can tell kitty to send arbitrary (UTF-8) encoded text to
 the client program when pressing specified shortcut keys. For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+alt+a</span><span class="w"> </span><span class="nf">send_text</span><span class="w"> </span><span class="s">all Special text</span><span class="w"></span>
@@ -2666,42 +2559,107 @@ the line (same as pressing the Home key):</p>
 <p>You can download a sample <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> file with all default settings and
 comments describing each setting by clicking: <a class="reference download internal" download="" href="../_downloads/433dadebd0bf504f8b008985378086ce/kitty.conf"><code class="xref download docutils literal notranslate"><span class="pre">sample</span> <span class="pre">kitty.conf</span></code></a>.</p>
 </div>
+<div class="section" id="all-mappable-actions">
+<h2>All mappable actions<a class="headerlink" href="#all-mappable-actions" title="Permalink to this headline">¶</a></h2>
+<p>See the <a class="reference internal" href="../actions/"><span class="doc">list of all the things you can make kitty can do</span></a>.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
 </div>
 
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../actions/">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Mappable actions</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../overview/">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Overview</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Kovid Goyal
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Configure kitty</a><ul>
+<li><a class="reference internal" href="#fonts">Fonts</a></li>
+<li><a class="reference internal" href="#cursor-customization">Cursor customization</a></li>
+<li><a class="reference internal" href="#scrollback">Scrollback</a></li>
+<li><a class="reference internal" href="#mouse">Mouse</a><ul>
+<li><a class="reference internal" href="#mouse-actions">Mouse actions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#performance-tuning">Performance tuning</a></li>
+<li><a class="reference internal" href="#terminal-bell">Terminal bell</a></li>
+<li><a class="reference internal" href="#window-layout">Window layout</a></li>
+<li><a class="reference internal" href="#tab-bar">Tab bar</a></li>
+<li><a class="reference internal" href="#color-scheme">Color scheme</a><ul>
+<li><a class="reference internal" href="#the-color-table">The color table</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced">Advanced</a></li>
+<li><a class="reference internal" href="#os-specific-tweaks">OS specific tweaks</a></li>
+<li><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a><ul>
+<li><a class="reference internal" href="#clipboard">Clipboard</a></li>
+<li><a class="reference internal" href="#scrolling">Scrolling</a></li>
+<li><a class="reference internal" href="#window-management">Window management</a></li>
+<li><a class="reference internal" href="#tab-management">Tab management</a></li>
+<li><a class="reference internal" href="#layout-management">Layout management</a></li>
+<li><a class="reference internal" href="#font-sizes">Font sizes</a></li>
+<li><a class="reference internal" href="#select-and-act-on-visible-text">Select and act on visible text</a></li>
+<li><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sample-kitty-conf">Sample kitty.conf</a></li>
+<li><a class="reference internal" href="#all-mappable-actions">All mappable actions</a></li>
+</ul>
+</li>
+</ul>
 
           </div>
-          
         </div>
       </div>
-    <div class="clearer"></div>
-  </div>
-    <div class="footer">
-      &copy;2021, Kovid Goyal.
       
-    </div>
-
-    
-    <a href="https://github.com/kovidgoyal/kitty" class="github">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
-    </a>
-    
-
-    
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-20736318-2']);
-      _gaq.push(['_setDomainName', 'none']);
-      _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
-    </script>
-    
-  </body>
+      
+    </aside>
+  </main>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    </body>
 </html>

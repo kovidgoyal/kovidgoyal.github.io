@@ -1,85 +1,203 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Glossary" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sw.kovidgoyal.net/kitty/glossary.html" />
+  <meta property="og:description" content="os_window, kitty has two kinds of windows. Operating System windows, refered to as OS Window, and kitty windows. An OS Window consists of one or more kitty tabs. Each tab in turn consists of one or..." />
+  <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" />
 
-<!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Glossary &#8212; kitty 0.21.2 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.0.3, furo 2021.07.05.beta38"/>
+        <title>Glossary - kitty 0.21.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <link rel="shortcut icon" href="../_static/kitty.png"/>
-    <link rel="index" title="Index" href="../genindex/" />
-    <link rel="search" title="Search" href="../search/" />
-    <link rel="next" title="The terminal graphics protocol" href="../graphics-protocol/" />
-    <link rel="prev" title="Frequently Asked Questions" href="../faq/" />
-   
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
-  <div class="document">
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css" />
     
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="../">
-    <img class="logo" src="../_static/kitty.png" alt="Logo"/>
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+  
+      <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body dir="">
     
-  </a>
-</p>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
 
 
-
-
-
-
-
-
-
-
-<div id="support" style="text-align: center">
-    <form class="support-form" action="../support/" title="Donate to support kitty development">
-        <input type="submit" value="Support kitty">
-    </form>
-</div>
-
-<div id="searchbox" style="display: none" role="search">
-    <div class="searchformwrapper">
-    <form class="search" action="../search/" method="get">
-      <input type="text" name="q" placeholder="Search" />
-      <input type="submit" value="Go" style="cursor: pointer" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
     </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script><div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../">Documentation overview</a><ul>
-      <li>Previous: <a href="../faq/" title="previous chapter">Frequently Asked Questions</a></li>
-      <li>Next: <a href="../graphics-protocol/" title="next chapter">The terminal graphics protocol</a></li>
-  </ul></li>
+    <div class="header-center">
+      <a href="../"><div class="brand">kitty 0.21.2 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/kitty.svg" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search/">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../quickstart/">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../binary/">Install kitty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/">Build from source</a></li>
 </ul>
-</div>
-        </div>
-      </div>
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../overview/">Overview</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../conf/">Configure kitty</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../actions/">Mappable actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../layouts/">Arrange windows</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../kittens_intro/">Extend kitty</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/icat/">icat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/diff/">kitty-diff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/unicode-input/">Unicode input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/hints/">Hints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/remote_file/">Remote files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/hyperlinked_grep/">Hyperlinked grep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/custom/">Custom kittens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/broadcast/">broadcast - type text in all kitty windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/clipboard/">clipboard - copy/paste to the system clipboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/panel/">Draw a GPU accelerated dock panel on your desktop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/query_terminal/">Query terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../remote-control/">Control kitty from scripts</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rc_protocol/">The kitty remote control protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../launch/">Launching new tabs/windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marks/">Mark text on screen</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support kitty development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/">Integrations with other tools</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../underlines/">Colored and styled underlines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graphics-protocol/">The terminal graphics protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keyboard-protocol/">Comprehensive keyboard handling in terminals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../desktop-notifications/">Desktop notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unscroll/">Unscrolling the screen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clipboard/">Pasting to clipboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../color-stack/">Saving and restoring colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deccara/">Setting text styles/colors in arbitrary regions of the screen</a></li>
+</ul>
+</li>
+</ul>
 
-          <div class="body" role="main">
-            
-  <div class="section" id="glossary">
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="glossary">
 <h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
 <dl class="glossary simple">
 <dt id="term-os_window">os_window<a class="headerlink" href="#term-os_window" title="Permalink to this term">¶</a></dt><dd><p>kitty has two kinds of windows. Operating System windows, refered to as <a class="reference internal" href="#term-os_window"><span class="xref std std-term">OS
@@ -93,7 +211,7 @@ a <a class="reference internal" href="#term-layout"><span class="xref std std-te
 <dt id="term-layout">layout<a class="headerlink" href="#term-layout" title="Permalink to this term">¶</a></dt><dd><p>A <em>layout</em> is a system of organizing <a class="reference internal" href="#term-window"><span class="xref std std-term">kitty windows</span></a> in
 groups inside a tab. The layout automatically maintains the size and
 position of the windows, think of a layout as a tiling window manager for
-the terminal. See <a class="reference internal" href="../layouts/"><span class="doc">Layouts</span></a> for details.</p>
+the terminal. See <a class="reference internal" href="../layouts/"><span class="doc">Arrange windows</span></a> for details.</p>
 </dd>
 <dt id="term-window">window<a class="headerlink" href="#term-window" title="Permalink to this term">¶</a></dt><dd><p>kitty has two kinds of windows. Operating System windows, refered to as <a class="reference internal" href="#term-os_window"><span class="xref std std-term">OS
 Window</span></a>, and <em>kitty windows</em>. An OS Window consists of one or more kitty
@@ -102,46 +220,39 @@ windows</em> organized in a <a class="reference internal" href="#term-layout"><s
 </dd>
 <dt id="term-overlay">overlay<a class="headerlink" href="#term-overlay" title="Permalink to this term">¶</a></dt><dd><p>An <em>overlay window</em> is a <a class="reference internal" href="#term-window"><span class="xref std std-term">kitty window</span></a> that is placed on
 top of an existing kitty window, entirely covering it. Overlays are used
-throught kitty, for example, to display the <a class="reference internal" href="../#scrollback"><span class="std std-ref">the scrollback buffer</span></a>,
+throught kitty, for example, to display the <a class="reference internal" href="../overview/#scrollback"><span class="std std-ref">the scrollback buffer</span></a>,
 to display <a class="reference internal" href="../kittens/hints/"><span class="doc">hints</span></a>, for <a class="reference internal" href="../kittens/unicode-input/"><span class="doc">unicode input</span></a> etc.</p>
 </dd>
 </dl>
 </div>
 
-
-          </div>
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          
           
         </div>
-      </div>
-    <div class="clearer"></div>
-  </div>
-    <div class="footer">
-      &copy;2021, Kovid Goyal.
-      
+
+        <div class="related-information">
+              Copyright &#169; 2021, Kovid Goyal
+        </div>
+        
+      </footer>
     </div>
-
-    
-    <a href="https://github.com/kovidgoyal/kitty" class="github">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
-    </a>
-    
-
-    
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-20736318-2']);
-      _gaq.push(['_setDomainName', 'none']);
-      _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
-    </script>
-    
-  </body>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    </body>
 </html>
