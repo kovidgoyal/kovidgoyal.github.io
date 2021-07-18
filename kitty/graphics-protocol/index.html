@@ -10,7 +10,7 @@
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Comprehensive keyboard handling in terminals" href="../keyboard-protocol/" /><link rel="prev" title="Colored and styled underlines" href="../underlines/" />
 
     <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.0.3, furo 2021.07.05.beta38"/>
-        <title>The terminal graphics protocol - kitty 0.21.2 documentation</title>
+        <title>The terminal graphics protocol - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -109,7 +109,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../"><div class="brand">kitty 0.21.2 documentation</div></a>
+      <a href="../"><div class="brand">kitty</div></a>
     </div>
     <div class="header-right">
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
@@ -240,24 +240,32 @@ information tool</p></li>
 client must be able to get the window size in pixels and the number of cells
 per row and column. This can be done by using the <code class="docutils literal notranslate"><span class="pre">TIOCGWINSZ</span></code> ioctl.  Some
 code to demonstrate its use</p>
-<p>In C:</p>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"/><label class="tab-label" for="tab-set--0-input--1">C</label><div class="tab-content docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;sys/ioctl.h&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">struct</span> <span class="nc">winsize</span> <span class="n">sz</span><span class="p">;</span>
     <span class="n">ioctl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TIOCGWINSZ</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sz</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"number of rows: %i, number of columns: %i, screen width: %i, screen height: %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">sz</span><span class="p">.</span><span class="n">ws_row</span><span class="p">,</span> <span class="n">sz</span><span class="p">.</span><span class="n">ws_col</span><span class="p">,</span> <span class="n">sz</span><span class="p">.</span><span class="n">ws_xpixel</span><span class="p">,</span> <span class="n">sz</span><span class="p">.</span><span class="n">ws_ypixel</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span>
+        <span class="s">"number of rows: %i, number of columns: %i, screen width: %i, screen height: %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+        <span class="n">sz</span><span class="p">.</span><span class="n">ws_row</span><span class="p">,</span> <span class="n">sz</span><span class="p">.</span><span class="n">ws_col</span><span class="p">,</span> <span class="n">sz</span><span class="p">.</span><span class="n">ws_xpixel</span><span class="p">,</span> <span class="n">sz</span><span class="p">.</span><span class="n">ws_ypixel</span><span class="p">);</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In Python:</p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"/><label class="tab-label" for="tab-set--0-input--2">Python</label><div class="tab-content docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">array</span><span class="o">,</span> <span class="nn">fcntl</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">termios</span>
 <span class="n">buf</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'H'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 <span class="n">fcntl</span><span class="o">.</span><span class="n">ioctl</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TIOCGWINSZ</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'number of rows: </span><span class="si">{}</span><span class="s1">, number of columns: </span><span class="si">{}</span><span class="s1">, screen width: </span><span class="si">{}</span><span class="s1">, screen height: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">buf</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">((</span>
+    <span class="s1">'number of rows: </span><span class="si">{}</span><span class="s1"> number of columns: </span><span class="si">{}</span><span class="s1">'</span>
+    <span class="s1">'screen width: </span><span class="si">{}</span><span class="s1"> screen height: </span><span class="si">{}</span><span class="s1">'</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">buf</span><span class="p">))</span>
 </pre></div>
+</div>
+</div>
 </div>
 <p>Note that some terminals return <code class="docutils literal notranslate"><span class="pre">0</span></code> for the width and height values. Such
 terminals should be modified to return the correct values.  Examples of
