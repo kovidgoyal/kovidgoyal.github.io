@@ -25,24 +25,27 @@ Dependencies
 
 Run-time dependencies:
 
-    * python >= 3.6
-    * harfbuzz >= 2.2.0
-    * zlib
-    * libpng
-    * liblcms2
-    * freetype (not needed on macOS)
-    * fontconfig (not needed on macOS)
-    * libcanberra (not needed on macOS)
-    * ImageMagick (optional, needed to use the ``kitty +kitten icat`` tool to display images in the terminal)
-    * pygments (optional, need for syntax highlighting in ``kitty +kitten diff``)
+* ``python`` >= 3.6
+* ``harfbuzz`` >= 2.2.0
+* ``zlib``
+* ``libpng``
+* ``liblcms2``
+* ``freetype`` (not needed on macOS)
+* ``fontconfig`` (not needed on macOS)
+* ``libcanberra`` (not needed on macOS)
+* ``ImageMagick`` (optional, needed to use the ``kitty +kitten icat`` tool to display images in the terminal)
+* ``pygments`` (optional, needed for syntax highlighting in ``kitty +kitten diff``)
+
 
 Build-time dependencies:
 
-    * gcc or clang
-    * pkg-config
-    * For building on Linux in addition to the above dependencies you might also need to install the ``-dev`` packages for:
-      ``libdbus-1-dev``, ``libxcursor-dev``, ``libxrandr-dev``, ``libxi-dev``, ``libxinerama-dev``, ``libgl1-mesa-dev``, ``libxkbcommon-x11-dev``, ``libfontconfig-dev``, ``libx11-xcb-dev``, ``liblcms2-dev``, and ``libpython3-dev``,
-      if they are not already installed by your distro.
+* ``gcc`` or ``clang``
+* ``pkg-config``
+* For building on Linux in addition to the above dependencies you might also need to install the ``-dev`` packages for:
+  ``libdbus-1-dev``, ``libxcursor-dev``, ``libxrandr-dev``, ``libxi-dev``, ``libxinerama-dev``,
+  ``libgl1-mesa-dev``, ``libxkbcommon-x11-dev``, ``libfontconfig-dev``, ``libx11-xcb-dev``,
+  ``liblcms2-dev``, and ``libpython3-dev``, if they are not already installed by your distro.
+
 
 Install and run from source
 ------------------------------
@@ -128,19 +131,19 @@ This allows users to install the terminfo file on servers into which they ssh,
 without needing to install all of |kitty|.
 
 .. note::
-        You need a couple of extra dependencies to build linux-package.
-        :file:`tic` to compile terminfo files, usually found in the
-        development package of :file:`ncurses`. Also, if you are building from
-        a git checkout instead of the released source code tarball, you will
-        need to install the dependencies from ``docs/requirements.txt`` to
-        build the kitty documentation, with ``python -m pip -r
-        docs/requirements.txt``.
+   You need a couple of extra dependencies to build linux-package.
+   :file:`tic` to compile terminfo files, usually found in the
+   development package of :file:`ncurses`. Also, if you are building from
+   a git checkout instead of the released source code tarball, you will
+   need to install the dependencies from ``docs/requirements.txt`` to
+   build the kitty documentation. They can be installed most easily with
+   ``python -m pip -r docs/requirements.txt``.
 
 This applies to creating packages for |kitty| for macOS package managers such as
 brew or MacPorts as well.
 
 
 .. note::
-        |kitty| has its own update check mechanism, if you would like to turn
-        it off for your package, use
-        ``python3 setup.py linux-package --update-check-interval=0``
+   |kitty| has its own update check mechanism, if you would like to turn
+   it off for your package, use
+   ``python3 setup.py linux-package --update-check-interval=0``

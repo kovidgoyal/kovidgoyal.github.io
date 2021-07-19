@@ -6,7 +6,7 @@
   <meta property="og:title" content="Build from source" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sw.kovidgoyal.net/kitty/build.html" />
-  <meta property="og:description" content="Build status kitty is designed to run from source, for easy hack-ability. Make sure the following dependencies are installed first. Dependencies: Run-time dependencies: python >= 3.6, harfbuzz >= 2..." />
+  <meta property="og:description" content="Build status kitty is designed to run from source, for easy hack-ability. Make sure the following dependencies are installed first. Dependencies: Run-time dependencies: python>= 3.6, harfbuzz>= 2.2..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Overview" href="../overview/" /><link rel="prev" title="Install kitty" href="../binary/" />
 
     <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.0.3, furo 2021.07.05.beta38"/>
@@ -215,30 +215,27 @@ possible, since the two are tightly coupled.</p>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Run-time dependencies:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>python &gt;= 3.6</p></li>
-<li><p>harfbuzz &gt;= 2.2.0</p></li>
-<li><p>zlib</p></li>
-<li><p>libpng</p></li>
-<li><p>liblcms2</p></li>
-<li><p>freetype (not needed on macOS)</p></li>
-<li><p>fontconfig (not needed on macOS)</p></li>
-<li><p>libcanberra (not needed on macOS)</p></li>
-<li><p>ImageMagick (optional, needed to use the <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">icat</span></code> tool to display images in the terminal)</p></li>
-<li><p>pygments (optional, need for syntax highlighting in <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">diff</span></code>)</p></li>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">python</span></code> &gt;= 3.6</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">harfbuzz</span></code> &gt;= 2.2.0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zlib</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libpng</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">liblcms2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">freetype</span></code> (not needed on macOS)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fontconfig</span></code> (not needed on macOS)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libcanberra</span></code> (not needed on macOS)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ImageMagick</span></code> (optional, needed to use the <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">icat</span></code> tool to display images in the terminal)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pygments</span></code> (optional, needed for syntax highlighting in <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">diff</span></code>)</p></li>
 </ul>
-</div></blockquote>
 <p>Build-time dependencies:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>gcc or clang</p></li>
-<li><p>pkg-config</p></li>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gcc</span></code> or <code class="docutils literal notranslate"><span class="pre">clang</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pkg-config</span></code></p></li>
 <li><p>For building on Linux in addition to the above dependencies you might also need to install the <code class="docutils literal notranslate"><span class="pre">-dev</span></code> packages for:
-<code class="docutils literal notranslate"><span class="pre">libdbus-1-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxcursor-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxrandr-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxi-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxinerama-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libgl1-mesa-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxkbcommon-x11-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libfontconfig-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libx11-xcb-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">liblcms2-dev</span></code>, and <code class="docutils literal notranslate"><span class="pre">libpython3-dev</span></code>,
-if they are not already installed by your distro.</p></li>
+<code class="docutils literal notranslate"><span class="pre">libdbus-1-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxcursor-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxrandr-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxi-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxinerama-dev</span></code>,
+<code class="docutils literal notranslate"><span class="pre">libgl1-mesa-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxkbcommon-x11-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libfontconfig-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libx11-xcb-dev</span></code>,
+<code class="docutils literal notranslate"><span class="pre">liblcms2-dev</span></code>, and <code class="docutils literal notranslate"><span class="pre">libpython3-dev</span></code>, if they are not already installed by your distro.</p></li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="install-and-run-from-source">
 <h2>Install and run from source<a class="headerlink" href="#install-and-run-from-source" title="Permalink to this headline">¶</a></h2>
@@ -318,8 +315,8 @@ without needing to install all of <em>kitty</em>.</p>
 development package of <code class="file docutils literal notranslate"><span class="pre">ncurses</span></code>. Also, if you are building from
 a git checkout instead of the released source code tarball, you will
 need to install the dependencies from <code class="docutils literal notranslate"><span class="pre">docs/requirements.txt</span></code> to
-build the kitty documentation, with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">-r</span>
-<span class="pre">docs/requirements.txt</span></code>.</p>
+build the kitty documentation. They can be installed most easily with
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">-r</span> <span class="pre">docs/requirements.txt</span></code>.</p>
 </div>
 <p>This applies to creating packages for <em>kitty</em> for macOS package managers such as
 brew or MacPorts as well.</p>
