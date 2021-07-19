@@ -152,8 +152,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../kittens/remote_file/">Remote files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../kittens/hyperlinked_grep/">Hyperlinked grep</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../kittens/custom/">Custom kittens</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../kittens/broadcast/">broadcast - type text in all kitty windows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../kittens/clipboard/">clipboard - copy/paste to the system clipboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/broadcast/">broadcast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kittens/clipboard/">clipboard</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../kittens/panel/">Draw a GPU accelerated dock panel on your desktop</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../kittens/query_terminal/">Query terminal</a></li>
 </ul>
@@ -245,25 +245,23 @@ grid view and connecting to the webcam make it a versatile terminal utility.</p>
 <dt><a class="reference external" href="https://github.com/joouha/euporie">euporie</a></dt><dd><p>a text-based user interface for running and editing Jupyter notebooks,
 powered by kitty’s graphics protocol for displaying plots</p>
 </dd>
-<dt><a class="reference external" href="http://www.gnuplot.info/">gnuplot</a></dt><dd><blockquote>
-<div><p>a graphing and data visualization tool that can be made to display its
+<dt><a class="reference external" href="http://www.gnuplot.info/">gnuplot</a></dt><dd><p>a graphing and data visualization tool that can be made to display its
 output in kitty with the following bash snippet:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function iplot {
-    cat &lt;&lt;EOF | gnuplot
-    set terminal pngcairo enhanced font 'Fira Sans,10'
-    set autoscale
-    set samples 1000
-    set output '|kitty +kitten icat --stdin yes'
-    set object 1 rectangle from screen 0,0 to screen 1,1 fillcolor rgb"#fdf6e3" behind
-    plot $@
-    set output '/dev/null'
-    EOF
-}
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> iplot <span class="o">{</span>
+    cat <span class="s">&lt;&lt;EOF | gnuplot</span>
+<span class="s">    set terminal pngcairo enhanced font 'Fira Sans,10'</span>
+<span class="s">    set autoscale</span>
+<span class="s">    set samples 1000</span>
+<span class="s">    set output '|kitty +kitten icat --stdin yes'</span>
+<span class="s">    set object 1 rectangle from screen 0,0 to screen 1,1 fillcolor rgb"#fdf6e3" behind</span>
+<span class="s">    plot $@</span>
+<span class="s">    set output '/dev/null'</span>
+<span class="s">    EOF</span>
+<span class="o">}</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>Add this to bashrc and then to plot a function, simply do:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iplot</span> <span class="s1">'sin(x*3)*exp(x*.2)'</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>iplot <span class="s1">'sin(x*3)*exp(x*.2)'</span>
 </pre></div>
 </div>
 </dd>
