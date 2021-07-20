@@ -9,7 +9,7 @@
   <meta property="og:description" content="kitty is a feature-rich, cross-platform, fast, GPU based terminal. To update kitty, follow the instructions. 0.21.3 [future]: Add a new toggle_layout action to easily zoom/unzoom a window, When rig..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Integrations with other tools" href="../integrations/" /><link rel="prev" title="Performance" href="../performance/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.0.3, furo 2021.07.05.beta38"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.1.1, furo 2021.07.05.beta38"/>
         <title>Changelog - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
@@ -225,6 +225,14 @@ applications (<a class="reference external" href="https://github.com/kovidgoyal/
 <li><p>Wayland: Fix <a class="reference internal" href="../conf/#opt-kitty.remember_window_size"><code class="xref std std-opt docutils literal notranslate"><span class="pre">initial_window_width/height</span></code></a> specified
 in cells not working on High DPI screens (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3834">#3834</a>)</p></li>
 <li><p>A new theme for the kitty website with support for dark mode.</p></li>
+<li><p>Render ┄ ┅ ┆ ┇ ┈ ┉ ┊ ┋ with spaces at the edges. Matches rendering in
+most other programs and allows long chains of them to look better
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3844">#3844</a>)</p></li>
+<li><p>hints kitten: Detect paths and hashes that appear over multiple lines.
+Note that this means that all line breaks in the text are no longer n
+soft breaks are instead r. If you use a custom regular expression that
+is meant to match over line breaks, you will need to match over both.
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3845">#3845</a>)</p></li>
 </ul>
 </div>
 <div class="section" id="id1">

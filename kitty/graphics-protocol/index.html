@@ -9,7 +9,7 @@
   <meta property="og:description" content="The goal of this specification is to create a flexible and performant protocol that allows the program running in the terminal, hereafter called the client, to render arbitrary pixel (raster) graph..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Comprehensive keyboard handling in terminals" href="../keyboard-protocol/" /><link rel="prev" title="Colored and styled underlines" href="../underlines/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.0.3, furo 2021.07.05.beta38"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.1.1, furo 2021.07.05.beta38"/>
         <title>The terminal graphics protocol - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
@@ -408,7 +408,9 @@ is in a known temporary directory, such as <code class="file docutils literal no
 specific temporary directories.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
-<td><p>A <em>shared memory object</em>, which on POSIX systems is a <a class="reference external" href="https://man7.org/linux/man-pages/man7/shm_overview.7.html">POSIX shared memory object</a> and on Windows is a
+<td><p>A <em>shared memory object</em>, which on POSIX systems is a
+<a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799/functions/shm_open.html">POSIX shared memory object</a>
+and on Windows is a
 <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/memory/creating-named-shared-memory">Named shared memory object</a>.
 The terminal emulator must read the data from the memory
 object and then unlink and close it on POSIX and just
