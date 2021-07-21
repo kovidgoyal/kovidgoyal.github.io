@@ -7,7 +7,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sw.kovidgoyal.net/kitty/actions.html" />
   <meta property="og:description" content="The actions described below can be mapped to any key press or mouse action using the map and mouse_map directives in kitty.conf. Copy/paste: copy_and_clear_or_interrupt: Copy the selected text from..." />
-  <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Arrange windows" href="../layouts/" /><link rel="prev" title="Configure kitty" href="../conf/" />
+  <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Arrange windows" href="../layouts/" /><link rel="prev" title="kitty.conf" href="../conf/" />
 
     <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.1.1, furo 2021.07.05.beta38"/>
         <title>Mappable actions - kitty</title>
@@ -134,48 +134,634 @@
 </form><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../quickstart/">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../binary/">Install kitty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../build/">Build from source</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../binary/">Install kitty</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../binary/#binary-install">Binary install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binary/#manually-installing">Manually installing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binary/#desktop-integration-on-linux">Desktop integration on Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binary/#customizing-the-installation">Customizing the installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binary/#uninstalling">Uninstalling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binary/#building-from-source">Building from source</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../overview/">Overview</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current has-children"><a class="reference internal" href="../conf/">Configure kitty</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Mappable actions</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../build/">Build from source</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build/#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build/#install-and-run-from-source">Install and run from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build/#building-kitty-app-on-macos-from-source">Building kitty.app on macOS from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build/#build-and-run-from-source-with-nix">Build and run from source with Nix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build/#note-for-linux-macos-packagers">Note for Linux/macOS packagers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../layouts/">Arrange windows</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../kittens_intro/">Extend kitty</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../kittens/icat/">icat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../kittens/diff/">kitty-diff</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../kittens/unicode-input/">Unicode input</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../kittens/hints/">Hints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../kittens/remote_file/">Remote files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../kittens/hyperlinked_grep/">Hyperlinked grep</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../kittens/custom/">Custom kittens</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../kittens/broadcast/">broadcast</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../kittens/clipboard/">clipboard</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../kittens/panel/">Draw a GPU accelerated dock panel on your desktop</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../kittens/query_terminal/">Query terminal</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../remote-control/">Control kitty from scripts</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../rc_protocol/">The kitty remote control protocol</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../overview/">Overview</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview/#design-philosophy">Design philosophy</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#tabs-and-windows">Tabs and Windows</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/#scrolling">Scrolling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/#tabs">Tabs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/#windows">Windows</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../launch/">Launching new tabs/windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../marks/">Mark text on screen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/#other-keyboard-shortcuts">Other keyboard shortcuts</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="../overview/#configuring-kitty">Configuring kitty</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../conf/">kitty.conf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#fonts">Fonts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#cursor-customization">Cursor customization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#scrollback">Scrollback</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../conf/#mouse">Mouse</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label for="toctree-checkbox-7"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#mouse-actions">Mouse actions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#performance-tuning">Performance tuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#terminal-bell">Terminal bell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#window-layout">Window layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#tab-bar">Tab bar</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../conf/#color-scheme">Color scheme</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label for="toctree-checkbox-8"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#the-color-table">The color table</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#advanced">Advanced</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#os-specific-tweaks">OS specific tweaks</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../conf/#keyboard-shortcuts">Keyboard shortcuts</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label for="toctree-checkbox-9"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#clipboard">Clipboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#scrolling">Scrolling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#window-management">Window management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#tab-management">Tab management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#layout-management">Layout management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#font-sizes">Font sizes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#select-and-act-on-visible-text">Select and act on visible text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#sample-kitty-conf">Sample kitty.conf</a></li>
+<li class="toctree-l3 current has-children"><a class="reference internal" href="../conf/#all-mappable-actions">All mappable actions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label for="toctree-checkbox-10"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l4 current current-page"><a class="current reference internal" href="#">Mappable actions</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="#copy-paste">Copy/paste</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label for="toctree-checkbox-11"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="#copy-and-clear-or-interrupt">copy_and_clear_or_interrupt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#copy-or-interrupt">copy_or_interrupt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#copy-to-clipboard">copy_to_clipboard</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pass-selection-to-program">pass_selection_to_program</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#paste">paste</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#show-scrollback">show_scrollback</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#copy-to-buffer">copy_to_buffer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#paste-from-buffer">paste_from_buffer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#paste-from-clipboard">paste_from_clipboard</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#paste-from-selection">paste_from_selection</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="#layouts">Layouts</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label for="toctree-checkbox-12"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="#goto-layout">goto_layout</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#last-used-layout">last_used_layout</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#layout-action">layout_action</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#next-layout">next_layout</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#toggle-layout">toggle_layout</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="#marks">Marks</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label for="toctree-checkbox-13"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="#remove-marker">remove_marker</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#scroll-to-mark">scroll_to_mark</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#toggle-marker">toggle_marker</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#create-marker">create_marker</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="#miscellaneous">Miscellaneous</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label for="toctree-checkbox-14"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="#send-text">send_text</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#signal-child">signal_child</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#clear-terminal">clear_terminal</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#combine">combine</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#debug-config">debug_config</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#disable-ligatures-in">disable_ligatures_in</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#discard-event">discard_event</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#edit-config-file">edit_config_file</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#input-unicode-character">input_unicode_character</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#kitten">kitten</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#kitty-shell">kitty_shell</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#launch">launch</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#load-config-file">load_config_file</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#open-url-with-hints">open_url_with_hints</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#remote-control">remote_control</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#set-colors">set_colors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#show-kitty-env-vars">show_kitty_env_vars</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="#mouse-actions">Mouse actions</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label for="toctree-checkbox-15"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="#mouse-click-url">mouse_click_url</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#mouse-click-url-or-select">mouse_click_url_or_select</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#mouse-selection">mouse_selection</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#paste-selection">paste_selection</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#paste-selection-or-clipboard">paste_selection_or_clipboard</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="#scrolling">Scrolling</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label for="toctree-checkbox-16"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="#scroll-end">scroll_end</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#scroll-home">scroll_home</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#scroll-line-down">scroll_line_down</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#scroll-line-up">scroll_line_up</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#scroll-page-down">scroll_page_down</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#scroll-page-up">scroll_page_up</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="#tab-management">Tab management</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label for="toctree-checkbox-17"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="#close-tab">close_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#detach-tab">detach_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#goto-tab">goto_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#move-tab-backward">move_tab_backward</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#move-tab-forward">move_tab_forward</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#new-tab">new_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#new-tab-with-cwd">new_tab_with_cwd</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#next-tab">next_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#previous-tab">previous_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#select-tab">select_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#set-tab-title">set_tab_title</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="#window-management">Window management</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label for="toctree-checkbox-18"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="#close-other-windows-in-tab">close_other_windows_in_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#close-window">close_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#move-window">move_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#move-window-backward">move_window_backward</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#move-window-forward">move_window_forward</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#move-window-to-top">move_window_to_top</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#neighboring-window">neighboring_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#next-window">next_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#nth-window">nth_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#previous-window">previous_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#reset-window-sizes">reset_window_sizes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#resize-window">resize_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#change-font-size">change_font_size</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#close-os-window">close_os_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#detach-window">detach_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#new-os-window">new_os_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#new-os-window-with-cwd">new_os_window_with_cwd</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#new-window">new_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#new-window-with-cwd">new_window_with_cwd</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#quit">quit</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#set-background-opacity">set_background_opacity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#start-resizing-window">start_resizing_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#toggle-fullscreen">toggle_fullscreen</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#toggle-maximized">toggle_maximized</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#first-window">first_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#second-window">second_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#third-window">third_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#fourth-window">fourth_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#fifth-window">fifth_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#sixth-window">sixth_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#seventh-window">seventh_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#eighth-window">eighth_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ninth-window">ninth_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#tenth-window">tenth_window</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#layouts">Layouts</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label for="toctree-checkbox-19"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/">Arrange windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-stack-layout">The Stack Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-tall-layout">The Tall Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-fat-layout">The Fat Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-grid-layout">The Grid Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-splits-layout">The Splits Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-horizontal-layout">The Horizontal Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-vertical-layout">The Vertical Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#resizing-windows">Resizing windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#extending-kitty">Extending kitty</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label for="toctree-checkbox-20"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../kittens_intro/">Extend with kittens</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label for="toctree-checkbox-21"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/icat/">icat</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label for="toctree-checkbox-22"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/icat/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label for="toctree-checkbox-23"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/icat/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/diff/">kitty-diff</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#major-features">Major Features</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#installation">Installation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#usage">Usage</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#keyboard-controls">Keyboard controls</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#integrating-with-git">Integrating with git</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#why-does-this-work-only-in-kitty">Why does this work only in kitty?</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#configuration">Configuration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#diffing">Diffing</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#colors">Colors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#keyboard-shortcuts">Keyboard shortcuts</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/diff/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/diff/#options">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#sample-diff-conf">Sample diff.conf</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/unicode-input/">Unicode input</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/unicode-input/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/unicode-input/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/hints/">Hints</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/hints/#completely-customizing-the-matching-and-actions-of-the-kitten">Completely customizing the matching and actions of the kitten</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/hints/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label for="toctree-checkbox-29"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/hints/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../kittens/remote_file/">Remote files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kittens/hyperlinked_grep/">Hyperlinked grep</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/custom/">Custom kittens</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/><label for="toctree-checkbox-30"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#passing-arguments-to-kittens">Passing arguments to kittens</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#passing-the-contents-of-the-screen-to-the-kitten">Passing the contents of the screen to the kitten</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#using-kittens-to-script-kitty-without-any-terminal-ui">Using kittens to script kitty, without any terminal UI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#sending-mouse-events">Sending mouse events</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#debugging-kittens">Debugging kittens</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#adding-options-to-kittens">Adding options to kittens</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#kittens-created-by-kitty-users">Kittens created by kitty users</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/broadcast/">broadcast</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label for="toctree-checkbox-31"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/broadcast/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/><label for="toctree-checkbox-32"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/broadcast/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/clipboard/">clipboard</a><input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/><label for="toctree-checkbox-33"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/clipboard/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" type="checkbox"/><label for="toctree-checkbox-34"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/clipboard/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/panel/">Draw a GPU accelerated dock panel on your desktop</a><input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" type="checkbox"/><label for="toctree-checkbox-35"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/panel/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" type="checkbox"/><label for="toctree-checkbox-36"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/panel/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/query_terminal/">Query terminal</a><input class="toctree-checkbox" id="toctree-checkbox-37" name="toctree-checkbox-37" type="checkbox"/><label for="toctree-checkbox-37"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/query_terminal/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" type="checkbox"/><label for="toctree-checkbox-38"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/query_terminal/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#remote-control">Remote control</a><input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" type="checkbox"/><label for="toctree-checkbox-39"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/">Control kitty from scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#tutorial">Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#the-builtin-kitty-shell">The builtin kitty shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#allowing-only-some-windows-to-control-kitty">Allowing only some windows to control kitty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#mapping-key-presses-to-remote-control-commands">Mapping key presses to remote control commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#broadcasting-what-you-type-to-all-kitty-windows">Broadcasting what you type to all kitty windows</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#the-remote-control-protocol">The remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" type="checkbox"/><label for="toctree-checkbox-40"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../rc_protocol/">The kitty remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-41" name="toctree-checkbox-41" type="checkbox"/><label for="toctree-checkbox-41"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-tab">close-tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-window">close-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#create-marker">create-marker</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#detach-tab">detach-tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#detach-window">detach-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#disable-ligatures">disable-ligatures</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#env">env</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#focus-tab">focus-tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#focus-window">focus-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#get-colors">get-colors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#get-text">get-text</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#goto-layout">goto-layout</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#kitten">kitten</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#last-used-layout">last-used-layout</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#launch">launch</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#ls">ls</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#new-window">new-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#remove-marker">remove-marker</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#resize-window">resize-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#scroll-window">scroll-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#send-text">send-text</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-background-image">set-background-image</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-background-opacity">set-background-opacity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-colors">set-colors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-font-size">set-font-size</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-spacing">set-spacing</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-tab-title">set-tab-title</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-window-title">set-window-title</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#signal-child">signal-child</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty">kitty @</a><input class="toctree-checkbox" id="toctree-checkbox-42" name="toctree-checkbox-42" type="checkbox"/><label for="toctree-checkbox-42"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#options">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-close-tab">kitty @ close-tab</a><input class="toctree-checkbox" id="toctree-checkbox-43" name="toctree-checkbox-43" type="checkbox"/><label for="toctree-checkbox-43"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id1">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-close-window">kitty @ close-window</a><input class="toctree-checkbox" id="toctree-checkbox-44" name="toctree-checkbox-44" type="checkbox"/><label for="toctree-checkbox-44"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id2">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-create-marker">kitty @ create-marker</a><input class="toctree-checkbox" id="toctree-checkbox-45" name="toctree-checkbox-45" type="checkbox"/><label for="toctree-checkbox-45"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id3">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-detach-tab">kitty @ detach-tab</a><input class="toctree-checkbox" id="toctree-checkbox-46" name="toctree-checkbox-46" type="checkbox"/><label for="toctree-checkbox-46"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id4">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-detach-window">kitty @ detach-window</a><input class="toctree-checkbox" id="toctree-checkbox-47" name="toctree-checkbox-47" type="checkbox"/><label for="toctree-checkbox-47"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id5">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-disable-ligatures">kitty @ disable-ligatures</a><input class="toctree-checkbox" id="toctree-checkbox-48" name="toctree-checkbox-48" type="checkbox"/><label for="toctree-checkbox-48"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id6">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#kitty-env">kitty @ env</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-focus-tab">kitty @ focus-tab</a><input class="toctree-checkbox" id="toctree-checkbox-49" name="toctree-checkbox-49" type="checkbox"/><label for="toctree-checkbox-49"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id7">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-focus-window">kitty @ focus-window</a><input class="toctree-checkbox" id="toctree-checkbox-50" name="toctree-checkbox-50" type="checkbox"/><label for="toctree-checkbox-50"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id8">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-get-colors">kitty @ get-colors</a><input class="toctree-checkbox" id="toctree-checkbox-51" name="toctree-checkbox-51" type="checkbox"/><label for="toctree-checkbox-51"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id9">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-get-text">kitty @ get-text</a><input class="toctree-checkbox" id="toctree-checkbox-52" name="toctree-checkbox-52" type="checkbox"/><label for="toctree-checkbox-52"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id10">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-goto-layout">kitty @ goto-layout</a><input class="toctree-checkbox" id="toctree-checkbox-53" name="toctree-checkbox-53" type="checkbox"/><label for="toctree-checkbox-53"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id11">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-kitten">kitty @ kitten</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" type="checkbox"/><label for="toctree-checkbox-54"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id12">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-last-used-layout">kitty @ last-used-layout</a><input class="toctree-checkbox" id="toctree-checkbox-55" name="toctree-checkbox-55" type="checkbox"/><label for="toctree-checkbox-55"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id13">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-launch">kitty @ launch</a><input class="toctree-checkbox" id="toctree-checkbox-56" name="toctree-checkbox-56" type="checkbox"/><label for="toctree-checkbox-56"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id14">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-ls">kitty @ ls</a><input class="toctree-checkbox" id="toctree-checkbox-57" name="toctree-checkbox-57" type="checkbox"/><label for="toctree-checkbox-57"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id15">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-new-window">kitty @ new-window</a><input class="toctree-checkbox" id="toctree-checkbox-58" name="toctree-checkbox-58" type="checkbox"/><label for="toctree-checkbox-58"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id16">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-remove-marker">kitty @ remove-marker</a><input class="toctree-checkbox" id="toctree-checkbox-59" name="toctree-checkbox-59" type="checkbox"/><label for="toctree-checkbox-59"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id17">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-resize-window">kitty @ resize-window</a><input class="toctree-checkbox" id="toctree-checkbox-60" name="toctree-checkbox-60" type="checkbox"/><label for="toctree-checkbox-60"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id18">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-scroll-window">kitty @ scroll-window</a><input class="toctree-checkbox" id="toctree-checkbox-61" name="toctree-checkbox-61" type="checkbox"/><label for="toctree-checkbox-61"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id19">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-send-text">kitty @ send-text</a><input class="toctree-checkbox" id="toctree-checkbox-62" name="toctree-checkbox-62" type="checkbox"/><label for="toctree-checkbox-62"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id20">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-background-image">kitty @ set-background-image</a><input class="toctree-checkbox" id="toctree-checkbox-63" name="toctree-checkbox-63" type="checkbox"/><label for="toctree-checkbox-63"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id21">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-background-opacity">kitty @ set-background-opacity</a><input class="toctree-checkbox" id="toctree-checkbox-64" name="toctree-checkbox-64" type="checkbox"/><label for="toctree-checkbox-64"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id22">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-colors">kitty @ set-colors</a><input class="toctree-checkbox" id="toctree-checkbox-65" name="toctree-checkbox-65" type="checkbox"/><label for="toctree-checkbox-65"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id23">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-font-size">kitty @ set-font-size</a><input class="toctree-checkbox" id="toctree-checkbox-66" name="toctree-checkbox-66" type="checkbox"/><label for="toctree-checkbox-66"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id24">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-spacing">kitty @ set-spacing</a><input class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" type="checkbox"/><label for="toctree-checkbox-67"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id25">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-tab-title">kitty @ set-tab-title</a><input class="toctree-checkbox" id="toctree-checkbox-68" name="toctree-checkbox-68" type="checkbox"/><label for="toctree-checkbox-68"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id26">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-window-title">kitty @ set-window-title</a><input class="toctree-checkbox" id="toctree-checkbox-69" name="toctree-checkbox-69" type="checkbox"/><label for="toctree-checkbox-69"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id27">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-signal-child">kitty @ signal-child</a><input class="toctree-checkbox" id="toctree-checkbox-70" name="toctree-checkbox-70" type="checkbox"/><label for="toctree-checkbox-70"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id28">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/#startup-sessions">Startup Sessions</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#creating-tabs-windows">Creating tabs/windows</a><input class="toctree-checkbox" id="toctree-checkbox-71" name="toctree-checkbox-71" type="checkbox"/><label for="toctree-checkbox-71"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../launch/">The <strong class="command">launch</strong> command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../launch/#the-piping-environment">The piping environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../launch/#special-arguments">Special arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../launch/#watching-launched-windows">Watching launched windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../launch/#finding-executables">Finding executables</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../launch/#syntax-reference">Syntax reference</a><input class="toctree-checkbox" id="toctree-checkbox-72" name="toctree-checkbox-72" type="checkbox"/><label for="toctree-checkbox-72"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../launch/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#mouse-features">Mouse features</a><input class="toctree-checkbox" id="toctree-checkbox-73" name="toctree-checkbox-73" type="checkbox"/><label for="toctree-checkbox-73"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" type="checkbox"/><label for="toctree-checkbox-74"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../open_actions/#matching-criteria">Matching criteria</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/#font-control">Font control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/#the-scrollback-buffer">The scrollback buffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/#multiple-copy-paste-buffers">Multiple copy/paste buffers</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#marks">Marks</a><input class="toctree-checkbox" id="toctree-checkbox-75" name="toctree-checkbox-75" type="checkbox"/><label for="toctree-checkbox-75"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../marks/">Mark text on screen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marks/#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marks/#creating-markers-dynamically">Creating markers dynamically</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marks/#scrolling-to-marks">Scrolling to marks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marks/#the-full-syntax-for-creating-marks">The full syntax for creating marks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marks/#arbitrary-marker-functions">Arbitrary marker functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../faq/">Frequently Asked Questions</a><input class="toctree-checkbox" id="toctree-checkbox-76" name="toctree-checkbox-76" type="checkbox"/><label for="toctree-checkbox-76"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#some-special-symbols-are-rendered-small-truncated-in-kitty">Some special symbols are rendered small/truncated in kitty?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim">Using a color theme with a background color does not work well in vim?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer">I get errors about the terminal being unknown or opening the terminal failing when SSHing into a different computer?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#keys-such-as-arrow-keys-backspace-delete-home-end-etc-do-not-work-when-using-su-or-sudo">Keys such as arrow keys, backspace, delete, home/end, etc. do not work when using su or sudo?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#how-do-i-change-the-colors-in-a-running-kitty-instance">How do I change the colors in a running kitty instance?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#how-do-i-specify-command-line-options-for-kitty-on-macos">How do I specify command line options for kitty on macOS?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#i-catted-a-binary-file-and-now-kitty-is-hung">I catted a binary file and now kitty is hung?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#kitty-is-not-able-to-use-my-favorite-font">kitty is not able to use my favorite font?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal">How can I assign a single global shortcut to bring up the kitty terminal?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program">How do I map key presses in kitty to different keys in the terminal program?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#how-do-i-open-a-new-window-or-tab-with-the-same-working-directory-as-the-current-window">How do I open a new window or tab with the same working directory as the current window?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#things-behave-differently-when-running-kitty-from-system-launcher-vs-from-another-terminal">Things behave differently when running kitty from system launcher vs. from another terminal?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#i-am-using-tmux-and-have-a-problem">I am using tmux and have a problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#i-opened-and-closed-a-lot-of-windows-tabs-and-top-shows-kitty-s-memory-usage-is-very-high">I opened and closed a lot of windows/tabs and top shows kitty’s memory usage is very high?</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../support/">Support kitty development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../changelog/">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integrations/">Integrations with other tools</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../changelog/">Changelog</a><input class="toctree-checkbox" id="toctree-checkbox-77" name="toctree-checkbox-77" type="checkbox"/><label for="toctree-checkbox-77"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#future">0.21.3 [future]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id1">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id2">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id3">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id4">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id5">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id6">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id7">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id8">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id9">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id10">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id11">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id12">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id13">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id14">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id15">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id16">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id17">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id18">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id19">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id20">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id21">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id22">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id23">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id24">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id25">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id26">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id27">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id28">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id29">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id30">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id31">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id32">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id33">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id34">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id35">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id36">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id37">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id38">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id39">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id40">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id41">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id42">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id43">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id44">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id45">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id46">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id47">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id48">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id49">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id50">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id51">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id52">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id53">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id54">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id55">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id56">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id57">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id58">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/#id59">0.4.0 [2017-10-22]</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../integrations/">Integrations with other tools</a><input class="toctree-checkbox" id="toctree-checkbox-78" name="toctree-checkbox-78" type="checkbox"/><label for="toctree-checkbox-78"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/#image-and-document-viewers">Image and document viewers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/#system-and-data-visualisation-tools">System and data visualisation tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/#editor-integration">Editor integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/#scrollback-manipulation">Scrollback manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input class="toctree-checkbox" id="toctree-checkbox-79" name="toctree-checkbox-79" type="checkbox"/><label for="toctree-checkbox-79"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../underlines/">Colored and styled underlines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../graphics-protocol/">Terminal graphics protocol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../keyboard-protocol/">Comprehensive keyboard handling in terminals</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../graphics-protocol/">Terminal graphics protocol</a><input class="toctree-checkbox" id="toctree-checkbox-80" name="toctree-checkbox-80" type="checkbox"/><label for="toctree-checkbox-80"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#getting-the-window-size">Getting the window size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#a-minimal-example">A minimal example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#the-graphics-escape-code">The graphics escape code</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#transferring-pixel-data">Transferring pixel data</a><input class="toctree-checkbox" id="toctree-checkbox-81" name="toctree-checkbox-81" type="checkbox"/><label for="toctree-checkbox-81"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#rgb-and-rgba-data">RGB and RGBA data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#png-data">PNG data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#compression">Compression</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../graphics-protocol/#the-transmission-medium">The transmission medium</a><input class="toctree-checkbox" id="toctree-checkbox-82" name="toctree-checkbox-82" type="checkbox"/><label for="toctree-checkbox-82"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../graphics-protocol/#local-client">Local client</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../graphics-protocol/#remote-client">Remote client</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#querying-support-and-available-transmission-mediums">Querying support and available transmission mediums</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#display-images-on-screen">Display images on screen</a><input class="toctree-checkbox" id="toctree-checkbox-83" name="toctree-checkbox-83" type="checkbox"/><label for="toctree-checkbox-83"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#controlling-displayed-image-layout">Controlling displayed image layout</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#deleting-images">Deleting images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#suppressing-responses-from-the-terminal">Suppressing responses from the terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#requesting-image-ids-from-the-terminal">Requesting image ids from the terminal</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#animation">Animation</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" type="checkbox"/><label for="toctree-checkbox-84"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#transferring-animation-frame-data">Transferring animation frame data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#controlling-animations">Controlling animations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#image-persistence-and-storage-quotas">Image persistence and storage quotas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#control-data-reference">Control data reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#interaction-with-other-terminal-actions">Interaction with other terminal actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../keyboard-protocol/">Comprehensive keyboard handling in terminals</a><input class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" type="checkbox"/><label for="toctree-checkbox-85"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#quickstart">Quickstart</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#an-overview">An overview</a><input class="toctree-checkbox" id="toctree-checkbox-86" name="toctree-checkbox-86" type="checkbox"/><label for="toctree-checkbox-86"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#key-codes">Key codes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#modifiers">Modifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#event-types">Event types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#text-as-code-points">Text as code points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#non-unicode-keys">Non-Unicode keys</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#progressive-enhancement">Progressive enhancement</a><input class="toctree-checkbox" id="toctree-checkbox-87" name="toctree-checkbox-87" type="checkbox"/><label for="toctree-checkbox-87"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#disambiguate-escape-codes">Disambiguate escape codes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#report-event-types">Report event types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#report-alternate-keys">Report alternate keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#report-all-keys-as-escape-codes">Report all keys as escape codes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#report-associated-text">Report associated text</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#detection-of-support-for-this-protocol">Detection of support for this protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#legacy-key-event-encoding">Legacy key event encoding</a><input class="toctree-checkbox" id="toctree-checkbox-88" name="toctree-checkbox-88" type="checkbox"/><label for="toctree-checkbox-88"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#legacy-functional-keys">Legacy functional keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#legacy-text-keys">Legacy text keys</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#functional-key-definitions">Functional key definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#legacy-ctrl-mapping-of-ascii-keys">Legacy <kbd class="kbd docutils literal notranslate">ctrl</kbd> mapping of ASCII keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#bugs-in-fixterms">Bugs in fixterms</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../desktop-notifications/">Desktop notifications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unscroll/">Unscrolling the screen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../clipboard/">Pasting to clipboard</a></li>
@@ -201,65 +787,66 @@
 <h1>Mappable actions<a class="headerlink" href="#mappable-actions" title="Permalink to this headline">¶</a></h1>
 <p>The actions described below can be mapped to any key press or mouse action
 using the <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">mouse_map</span></code> directives in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.</p>
+</div>
 <div class="section" id="copy-paste">
-<span id="action-group-cp"></span><h2>Copy/paste<a class="headerlink" href="#copy-paste" title="Permalink to this headline">¶</a></h2>
+<span id="action-group-cp"></span><h1>Copy/paste<a class="headerlink" href="#copy-paste" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="copy-and-clear-or-interrupt">
-<span id="action-copy-and-clear-or-interrupt"></span><h3>copy_and_clear_or_interrupt<a class="headerlink" href="#copy-and-clear-or-interrupt" title="Permalink to this headline">¶</a></h3>
+<span id="action-copy-and-clear-or-interrupt"></span><h2>copy_and_clear_or_interrupt<a class="headerlink" href="#copy-and-clear-or-interrupt" title="Permalink to this headline">¶</a></h2>
 <p>Copy the selected text from the active window to the clipboard and clear selection, if no selection, send Ctrl-C</p>
 </div>
 <div class="section" id="copy-or-interrupt">
-<span id="action-copy-or-interrupt"></span><h3>copy_or_interrupt<a class="headerlink" href="#copy-or-interrupt" title="Permalink to this headline">¶</a></h3>
+<span id="action-copy-or-interrupt"></span><h2>copy_or_interrupt<a class="headerlink" href="#copy-or-interrupt" title="Permalink to this headline">¶</a></h2>
 <p>Copy the selected text from the active window to the clipboard, if no selection, send Ctrl-C</p>
 </div>
 <div class="section" id="copy-to-clipboard">
-<span id="action-copy-to-clipboard"></span><h3>copy_to_clipboard<a class="headerlink" href="#copy-to-clipboard" title="Permalink to this headline">¶</a></h3>
+<span id="action-copy-to-clipboard"></span><h2>copy_to_clipboard<a class="headerlink" href="#copy-to-clipboard" title="Permalink to this headline">¶</a></h2>
 <p>Copy the selected text from the active window to the clipboard</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Copy-to-clipboard"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+c</span></code></a></p>
 </div>
 <div class="section" id="pass-selection-to-program">
-<span id="action-pass-selection-to-program"></span><h3>pass_selection_to_program<a class="headerlink" href="#pass-selection-to-program" title="Permalink to this headline">¶</a></h3>
+<span id="action-pass-selection-to-program"></span><h2>pass_selection_to_program<a class="headerlink" href="#pass-selection-to-program" title="Permalink to this headline">¶</a></h2>
 <p>Pass the selected text from the active window to the specified program</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Pass-selection-to-program"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+o</span></code></a></p>
 </div>
 <div class="section" id="paste">
-<span id="action-paste"></span><h3>paste<a class="headerlink" href="#paste" title="Permalink to this headline">¶</a></h3>
+<span id="action-paste"></span><h2>paste<a class="headerlink" href="#paste" title="Permalink to this headline">¶</a></h2>
 <p>Paste the specified text into the current window</p>
 </div>
 <div class="section" id="show-scrollback">
-<span id="action-show-scrollback"></span><h3>show_scrollback<a class="headerlink" href="#show-scrollback" title="Permalink to this headline">¶</a></h3>
+<span id="action-show-scrollback"></span><h2>show_scrollback<a class="headerlink" href="#show-scrollback" title="Permalink to this headline">¶</a></h2>
 <p>Show scrollback in a pager like less</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Browse-scrollback-buffer-in-less"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+h</span></code></a></p>
 </div>
 <div class="section" id="copy-to-buffer">
-<span id="action-copy-to-buffer"></span><h3>copy_to_buffer<a class="headerlink" href="#copy-to-buffer" title="Permalink to this headline">¶</a></h3>
+<span id="action-copy-to-buffer"></span><h2>copy_to_buffer<a class="headerlink" href="#copy-to-buffer" title="Permalink to this headline">¶</a></h2>
 <p>Copy the selection from the active window to the specified buffer</p>
 <p>See <a class="reference internal" href="../overview/#cpbuf"><span class="std std-ref">Multiple copy/paste buffers</span></a> for details.</p>
 </div>
 <div class="section" id="paste-from-buffer">
-<span id="action-paste-from-buffer"></span><h3>paste_from_buffer<a class="headerlink" href="#paste-from-buffer" title="Permalink to this headline">¶</a></h3>
+<span id="action-paste-from-buffer"></span><h2>paste_from_buffer<a class="headerlink" href="#paste-from-buffer" title="Permalink to this headline">¶</a></h2>
 <p>Paste from the specified buffer to the active window</p>
 <p>See <a class="reference internal" href="../overview/#cpbuf"><span class="std std-ref">Multiple copy/paste buffers</span></a> for details.</p>
 </div>
 <div class="section" id="paste-from-clipboard">
-<span id="action-paste-from-clipboard"></span><h3>paste_from_clipboard<a class="headerlink" href="#paste-from-clipboard" title="Permalink to this headline">¶</a></h3>
+<span id="action-paste-from-clipboard"></span><h2>paste_from_clipboard<a class="headerlink" href="#paste-from-clipboard" title="Permalink to this headline">¶</a></h2>
 <p>Paste from the clipboard to the active window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Paste-from-clipboard"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+v</span></code></a></p>
 </div>
 <div class="section" id="paste-from-selection">
-<span id="action-paste-from-selection"></span><h3>paste_from_selection<a class="headerlink" href="#paste-from-selection" title="Permalink to this headline">¶</a></h3>
+<span id="action-paste-from-selection"></span><h2>paste_from_selection<a class="headerlink" href="#paste-from-selection" title="Permalink to this headline">¶</a></h2>
 <p>Paste from the clipboard to the active window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Paste-from-selection"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+s</span></code></a></p>
 </div>
 </div>
 <div class="section" id="layouts">
-<span id="action-group-lay"></span><h2>Layouts<a class="headerlink" href="#layouts" title="Permalink to this headline">¶</a></h2>
+<span id="action-group-lay"></span><h1>Layouts<a class="headerlink" href="#layouts" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="goto-layout">
-<span id="action-goto-layout"></span><h3>goto_layout<a class="headerlink" href="#goto-layout" title="Permalink to this headline">¶</a></h3>
+<span id="action-goto-layout"></span><h2>goto_layout<a class="headerlink" href="#goto-layout" title="Permalink to this headline">¶</a></h2>
 <p>Switch to the named layout</p>
 <p>For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f1</span><span class="w"> </span><span class="nf">goto_layout</span><span class="w"> </span><span class="s">tall</span><span class="w"></span>
@@ -267,21 +854,21 @@ using the <code class="docutils literal notranslate"><span class="pre">map</span
 </div>
 </div>
 <div class="section" id="last-used-layout">
-<span id="action-last-used-layout"></span><h3>last_used_layout<a class="headerlink" href="#last-used-layout" title="Permalink to this headline">¶</a></h3>
+<span id="action-last-used-layout"></span><h2>last_used_layout<a class="headerlink" href="#last-used-layout" title="Permalink to this headline">¶</a></h2>
 <p>Go to the previously used layout</p>
 </div>
 <div class="section" id="layout-action">
-<span id="action-layout-action"></span><h3>layout_action<a class="headerlink" href="#layout-action" title="Permalink to this headline">¶</a></h3>
+<span id="action-layout-action"></span><h2>layout_action<a class="headerlink" href="#layout-action" title="Permalink to this headline">¶</a></h2>
 <p>Perform a layout specific action. See <a class="reference internal" href="../layouts/"><span class="doc">Arrange windows</span></a> for details</p>
 </div>
 <div class="section" id="next-layout">
-<span id="action-next-layout"></span><h3>next_layout<a class="headerlink" href="#next-layout" title="Permalink to this headline">¶</a></h3>
+<span id="action-next-layout"></span><h2>next_layout<a class="headerlink" href="#next-layout" title="Permalink to this headline">¶</a></h2>
 <p>Go to the next enabled layout</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Next-layout"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+l</span></code></a></p>
 </div>
 <div class="section" id="toggle-layout">
-<span id="action-toggle-layout"></span><h3>toggle_layout<a class="headerlink" href="#toggle-layout" title="Permalink to this headline">¶</a></h3>
+<span id="action-toggle-layout"></span><h2>toggle_layout<a class="headerlink" href="#toggle-layout" title="Permalink to this headline">¶</a></h2>
 <p>Toggle the named layout</p>
 <p>Switches to the named layout if another layout is current, otherwise
 switches to the last used layout. Useful to “zoom” a window temporarily
@@ -292,35 +879,35 @@ by switching to the stack layout. For example:</p>
 </div>
 </div>
 <div class="section" id="marks">
-<span id="action-group-mk"></span><h2>Marks<a class="headerlink" href="#marks" title="Permalink to this headline">¶</a></h2>
+<span id="action-group-mk"></span><h1>Marks<a class="headerlink" href="#marks" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="remove-marker">
-<span id="action-remove-marker"></span><h3>remove_marker<a class="headerlink" href="#remove-marker" title="Permalink to this headline">¶</a></h3>
+<span id="action-remove-marker"></span><h2>remove_marker<a class="headerlink" href="#remove-marker" title="Permalink to this headline">¶</a></h2>
 <p>Remove a previously created marker</p>
 </div>
 <div class="section" id="scroll-to-mark">
-<span id="action-scroll-to-mark"></span><h3>scroll_to_mark<a class="headerlink" href="#scroll-to-mark" title="Permalink to this headline">¶</a></h3>
+<span id="action-scroll-to-mark"></span><h2>scroll_to_mark<a class="headerlink" href="#scroll-to-mark" title="Permalink to this headline">¶</a></h2>
 <p>Scroll to the next or previous mark of the specified type</p>
 </div>
 <div class="section" id="toggle-marker">
-<span id="action-toggle-marker"></span><h3>toggle_marker<a class="headerlink" href="#toggle-marker" title="Permalink to this headline">¶</a></h3>
+<span id="action-toggle-marker"></span><h2>toggle_marker<a class="headerlink" href="#toggle-marker" title="Permalink to this headline">¶</a></h2>
 <p>Toggle the current marker on/off</p>
 </div>
 <div class="section" id="create-marker">
-<span id="action-create-marker"></span><h3>create_marker<a class="headerlink" href="#create-marker" title="Permalink to this headline">¶</a></h3>
+<span id="action-create-marker"></span><h2>create_marker<a class="headerlink" href="#create-marker" title="Permalink to this headline">¶</a></h2>
 <p>Create a new marker</p>
 </div>
 </div>
 <div class="section" id="miscellaneous">
-<span id="action-group-misc"></span><h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
+<span id="action-group-misc"></span><h1>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="send-text">
-<span id="action-send-text"></span><h3>send_text<a class="headerlink" href="#send-text" title="Permalink to this headline">¶</a></h3>
+<span id="action-send-text"></span><h2>send_text<a class="headerlink" href="#send-text" title="Permalink to this headline">¶</a></h2>
 <p>Send the specified text to the active window</p>
 <p>For details, see <a class="reference internal" href="../conf/#shortcut-kitty.Send-arbitrary-text-on-key-presses"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+alt+h</span></code></a>.</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Send-arbitrary-text-on-key-presses"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+alt+h</span></code></a></p>
 </div>
 <div class="section" id="signal-child">
-<span id="action-signal-child"></span><h3>signal_child<a class="headerlink" href="#signal-child" title="Permalink to this headline">¶</a></h3>
+<span id="action-signal-child"></span><h2>signal_child<a class="headerlink" href="#signal-child" title="Permalink to this headline">¶</a></h2>
 <p>Send the specified SIGNAL to the foreground process in the active window</p>
 <p>For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">F1</span><span class="w"> </span><span class="nf">signal_child</span><span class="w"> </span><span class="s">SIGTERM</span><span class="w"></span>
@@ -328,7 +915,7 @@ by switching to the stack layout. For example:</p>
 </div>
 </div>
 <div class="section" id="clear-terminal">
-<span id="action-clear-terminal"></span><h3>clear_terminal<a class="headerlink" href="#clear-terminal" title="Permalink to this headline">¶</a></h3>
+<span id="action-clear-terminal"></span><h2>clear_terminal<a class="headerlink" href="#clear-terminal" title="Permalink to this headline">¶</a></h2>
 <p>Clear the terminal</p>
 <p>See <a class="reference internal" href="../conf/#shortcut-kitty.Reset-the-terminal"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+delete</span></code></a> for details. For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset the terminal</span><span class="w"></span>
@@ -345,7 +932,7 @@ by switching to the stack layout. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Reset-the-terminal"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+delete</span></code></a></p>
 </div>
 <div class="section" id="combine">
-<span id="action-combine"></span><h3>combine<a class="headerlink" href="#combine" title="Permalink to this headline">¶</a></h3>
+<span id="action-combine"></span><h2>combine<a class="headerlink" href="#combine" title="Permalink to this headline">¶</a></h2>
 <p>Combine multiple actions and map to a single keypress</p>
 <p>The syntax is:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">key</span><span class="w"> </span><span class="nf">combine</span><span class="w"> </span><span class="s">&lt;separator&gt; action1 &lt;separator&gt; action2 &lt;separator&gt; action3 ...</span><span class="w"></span>
@@ -357,49 +944,49 @@ by switching to the stack layout. For example:</p>
 </div>
 </div>
 <div class="section" id="debug-config">
-<span id="action-debug-config"></span><h3>debug_config<a class="headerlink" href="#debug-config" title="Permalink to this headline">¶</a></h3>
+<span id="action-debug-config"></span><h2>debug_config<a class="headerlink" href="#debug-config" title="Permalink to this headline">¶</a></h2>
 <p>Show the effective configuration kitty is running with</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Debug-kitty-configuration"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f6</span></code></a></p>
 </div>
 <div class="section" id="disable-ligatures-in">
-<span id="action-disable-ligatures-in"></span><h3>disable_ligatures_in<a class="headerlink" href="#disable-ligatures-in" title="Permalink to this headline">¶</a></h3>
+<span id="action-disable-ligatures-in"></span><h2>disable_ligatures_in<a class="headerlink" href="#disable-ligatures-in" title="Permalink to this headline">¶</a></h2>
 <p>Turn on/off ligatures in the specified window</p>
 <p>See <a class="reference internal" href="../conf/#opt-kitty.disable_ligatures"><code class="xref std std-opt docutils literal notranslate"><span class="pre">disable_ligatures</span></code></a> for details</p>
 </div>
 <div class="section" id="discard-event">
-<span id="action-discard-event"></span><h3>discard_event<a class="headerlink" href="#discard-event" title="Permalink to this headline">¶</a></h3>
+<span id="action-discard-event"></span><h2>discard_event<a class="headerlink" href="#discard-event" title="Permalink to this headline">¶</a></h2>
 <p>Discard this event completely ignoring it</p>
 </div>
 <div class="section" id="edit-config-file">
-<span id="action-edit-config-file"></span><h3>edit_config_file<a class="headerlink" href="#edit-config-file" title="Permalink to this headline">¶</a></h3>
+<span id="action-edit-config-file"></span><h2>edit_config_file<a class="headerlink" href="#edit-config-file" title="Permalink to this headline">¶</a></h2>
 <p>Edit the kitty.conf config file in your favorite text editor</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Edit-config-file"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f2</span></code></a></p>
 </div>
 <div class="section" id="input-unicode-character">
-<span id="action-input-unicode-character"></span><h3>input_unicode_character<a class="headerlink" href="#input-unicode-character" title="Permalink to this headline">¶</a></h3>
+<span id="action-input-unicode-character"></span><h2>input_unicode_character<a class="headerlink" href="#input-unicode-character" title="Permalink to this headline">¶</a></h2>
 <p>Input an arbitrary unicode character. See <a class="reference internal" href="../kittens/unicode-input/"><span class="doc">Unicode input</span></a> for details.</p>
 </div>
 <div class="section" id="kitten">
-<span id="action-kitten"></span><h3>kitten<a class="headerlink" href="#kitten" title="Permalink to this headline">¶</a></h3>
+<span id="action-kitten"></span><h2>kitten<a class="headerlink" href="#kitten" title="Permalink to this headline">¶</a></h2>
 <p>Run the specified kitten. See <a class="reference internal" href="../kittens/custom/"><span class="doc">Custom kittens</span></a> for details</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Open-the-selected-file-at-the-selected-line"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;n</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Unicode-input"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+u</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Insert-selected-hash"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;h</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Insert-selected-line"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;l</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Insert-selected-path"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;f</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Insert-selected-word"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;w</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Open-the-selected-hyperlink"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;y</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Open-selected-path"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;shift+f</span></code></a></p>
 </div>
 <div class="section" id="kitty-shell">
-<span id="action-kitty-shell"></span><h3>kitty_shell<a class="headerlink" href="#kitty-shell" title="Permalink to this headline">¶</a></h3>
+<span id="action-kitty-shell"></span><h2>kitty_shell<a class="headerlink" href="#kitty-shell" title="Permalink to this headline">¶</a></h2>
 <p>Run the kitty shell to control kitty with commands</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Open-the-kitty-command-shell"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+escape</span></code></a></p>
 </div>
 <div class="section" id="launch">
-<span id="action-launch"></span><h3>launch<a class="headerlink" href="#launch" title="Permalink to this headline">¶</a></h3>
+<span id="action-launch"></span><h2>launch<a class="headerlink" href="#launch" title="Permalink to this headline">¶</a></h2>
 <p>Launch the specified program in a new window/tab/etc.</p>
-<p>See <a class="reference internal" href="../launch/"><span class="doc">Launching new tabs/windows</span></a> for details</p>
+<p>See <a class="reference internal" href="../launch/"><span class="doc">The launch command</span></a> for details</p>
 </div>
 <div class="section" id="load-config-file">
-<span id="action-load-config-file"></span><h3>load_config_file<a class="headerlink" href="#load-config-file" title="Permalink to this headline">¶</a></h3>
+<span id="action-load-config-file"></span><h2>load_config_file<a class="headerlink" href="#load-config-file" title="Permalink to this headline">¶</a></h2>
 <p>Reload the config file</p>
 <p>If mapped without arguments reloads the default config file, otherwise loads
 the specified config files, in order. Loading a config file <em>replaces</em> all
@@ -411,13 +998,13 @@ config options. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Reload-kitty.conf"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f5</span></code></a></p>
 </div>
 <div class="section" id="open-url-with-hints">
-<span id="action-open-url-with-hints"></span><h3>open_url_with_hints<a class="headerlink" href="#open-url-with-hints" title="Permalink to this headline">¶</a></h3>
+<span id="action-open-url-with-hints"></span><h2>open_url_with_hints<a class="headerlink" href="#open-url-with-hints" title="Permalink to this headline">¶</a></h2>
 <p>Click a URL using the keyboard</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Open-URL"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+e</span></code></a></p>
 </div>
 <div class="section" id="remote-control">
-<span id="action-remote-control"></span><h3>remote_control<a class="headerlink" href="#remote-control" title="Permalink to this headline">¶</a></h3>
+<span id="action-remote-control"></span><h2>remote_control<a class="headerlink" href="#remote-control" title="Permalink to this headline">¶</a></h2>
 <p>Run a remote control command</p>
 <p>For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">F1</span><span class="w"> </span><span class="nf">remote_control</span><span class="w"> </span><span class="s">set-spacing margin=30</span><span class="w"></span>
@@ -426,7 +1013,7 @@ config options. For example:</p>
 <p>See <a class="reference internal" href="../remote-control/#rc-mapping"><span class="std std-ref">Mapping key presses to remote control commands</span></a> for details.</p>
 </div>
 <div class="section" id="set-colors">
-<span id="action-set-colors"></span><h3>set_colors<a class="headerlink" href="#set-colors" title="Permalink to this headline">¶</a></h3>
+<span id="action-set-colors"></span><h2>set_colors<a class="headerlink" href="#set-colors" title="Permalink to this headline">¶</a></h2>
 <p>Change colors in the specified windows</p>
 <p>For details, see <a class="reference internal" href="../remote-control/#at-set-colors"><span class="std std-ref">kitty @ set-colors</span></a>. For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f5</span><span class="w"> </span><span class="nf">set_colors</span><span class="w"> </span><span class="s">--configured /path/to/some/config/file/colors.conf</span><span class="w"></span>
@@ -434,150 +1021,150 @@ config options. For example:</p>
 </div>
 </div>
 <div class="section" id="show-kitty-env-vars">
-<span id="action-show-kitty-env-vars"></span><h3>show_kitty_env_vars<a class="headerlink" href="#show-kitty-env-vars" title="Permalink to this headline">¶</a></h3>
+<span id="action-show-kitty-env-vars"></span><h2>show_kitty_env_vars<a class="headerlink" href="#show-kitty-env-vars" title="Permalink to this headline">¶</a></h2>
 <p>Show the environment variables that the kitty process sees</p>
 </div>
 </div>
 <div class="section" id="mouse-actions">
-<span id="action-group-mouse"></span><h2>Mouse actions<a class="headerlink" href="#mouse-actions" title="Permalink to this headline">¶</a></h2>
+<span id="action-group-mouse"></span><h1>Mouse actions<a class="headerlink" href="#mouse-actions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="mouse-click-url">
-<span id="action-mouse-click-url"></span><h3>mouse_click_url<a class="headerlink" href="#mouse-click-url" title="Permalink to this headline">¶</a></h3>
+<span id="action-mouse-click-url"></span><h2>mouse_click_url<a class="headerlink" href="#mouse-click-url" title="Permalink to this headline">¶</a></h2>
 <p>Click the URL under the mouse</p>
 </div>
 <div class="section" id="mouse-click-url-or-select">
-<span id="action-mouse-click-url-or-select"></span><h3>mouse_click_url_or_select<a class="headerlink" href="#mouse-click-url-or-select" title="Permalink to this headline">¶</a></h3>
+<span id="action-mouse-click-url-or-select"></span><h2>mouse_click_url_or_select<a class="headerlink" href="#mouse-click-url-or-select" title="Permalink to this headline">¶</a></h2>
 <p>Click the URL under the mouse only if the screen has no selection</p>
 </div>
 <div class="section" id="mouse-selection">
-<span id="action-mouse-selection"></span><h3>mouse_selection<a class="headerlink" href="#mouse-selection" title="Permalink to this headline">¶</a></h3>
+<span id="action-mouse-selection"></span><h2>mouse_selection<a class="headerlink" href="#mouse-selection" title="Permalink to this headline">¶</a></h2>
 <p>Manipulate the selection based on the current mouse position</p>
 <p>For examples, see <a class="reference internal" href="../conf/#conf-kitty-mouse-mousemap"><span class="std std-ref">Mouse actions</span></a></p>
 </div>
 <div class="section" id="paste-selection">
-<span id="action-paste-selection"></span><h3>paste_selection<a class="headerlink" href="#paste-selection" title="Permalink to this headline">¶</a></h3>
+<span id="action-paste-selection"></span><h2>paste_selection<a class="headerlink" href="#paste-selection" title="Permalink to this headline">¶</a></h2>
 <p>Paste the current primary selection</p>
 </div>
 <div class="section" id="paste-selection-or-clipboard">
-<span id="action-paste-selection-or-clipboard"></span><h3>paste_selection_or_clipboard<a class="headerlink" href="#paste-selection-or-clipboard" title="Permalink to this headline">¶</a></h3>
+<span id="action-paste-selection-or-clipboard"></span><h2>paste_selection_or_clipboard<a class="headerlink" href="#paste-selection-or-clipboard" title="Permalink to this headline">¶</a></h2>
 <p>Paste the current primary selection or the clipboard if no selection is present</p>
 </div>
 </div>
 <div class="section" id="scrolling">
-<span id="action-group-sc"></span><h2>Scrolling<a class="headerlink" href="#scrolling" title="Permalink to this headline">¶</a></h2>
+<span id="action-group-sc"></span><h1>Scrolling<a class="headerlink" href="#scrolling" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="scroll-end">
-<span id="action-scroll-end"></span><h3>scroll_end<a class="headerlink" href="#scroll-end" title="Permalink to this headline">¶</a></h3>
+<span id="action-scroll-end"></span><h2>scroll_end<a class="headerlink" href="#scroll-end" title="Permalink to this headline">¶</a></h2>
 <p>Scroll to the bottom of the scrollback buffer</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-bottom"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+end</span></code></a></p>
 </div>
 <div class="section" id="scroll-home">
-<span id="action-scroll-home"></span><h3>scroll_home<a class="headerlink" href="#scroll-home" title="Permalink to this headline">¶</a></h3>
+<span id="action-scroll-home"></span><h2>scroll_home<a class="headerlink" href="#scroll-home" title="Permalink to this headline">¶</a></h2>
 <p>Scroll to the top of the scrollback buffer</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-top"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+home</span></code></a></p>
 </div>
 <div class="section" id="scroll-line-down">
-<span id="action-scroll-line-down"></span><h3>scroll_line_down<a class="headerlink" href="#scroll-line-down" title="Permalink to this headline">¶</a></h3>
+<span id="action-scroll-line-down"></span><h2>scroll_line_down<a class="headerlink" href="#scroll-line-down" title="Permalink to this headline">¶</a></h2>
 <p>Scroll down by one line</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-line-down"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+down</span></code></a></p>
 </div>
 <div class="section" id="scroll-line-up">
-<span id="action-scroll-line-up"></span><h3>scroll_line_up<a class="headerlink" href="#scroll-line-up" title="Permalink to this headline">¶</a></h3>
+<span id="action-scroll-line-up"></span><h2>scroll_line_up<a class="headerlink" href="#scroll-line-up" title="Permalink to this headline">¶</a></h2>
 <p>Scroll up by one line</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-line-up"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+up</span></code></a></p>
 </div>
 <div class="section" id="scroll-page-down">
-<span id="action-scroll-page-down"></span><h3>scroll_page_down<a class="headerlink" href="#scroll-page-down" title="Permalink to this headline">¶</a></h3>
+<span id="action-scroll-page-down"></span><h2>scroll_page_down<a class="headerlink" href="#scroll-page-down" title="Permalink to this headline">¶</a></h2>
 <p>Scroll down by one page</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-page-down"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+page_down</span></code></a></p>
 </div>
 <div class="section" id="scroll-page-up">
-<span id="action-scroll-page-up"></span><h3>scroll_page_up<a class="headerlink" href="#scroll-page-up" title="Permalink to this headline">¶</a></h3>
+<span id="action-scroll-page-up"></span><h2>scroll_page_up<a class="headerlink" href="#scroll-page-up" title="Permalink to this headline">¶</a></h2>
 <p>Scroll up by one page</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-page-up"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+page_up</span></code></a></p>
 </div>
 </div>
 <div class="section" id="tab-management">
-<span id="action-group-tab"></span><h2>Tab management<a class="headerlink" href="#tab-management" title="Permalink to this headline">¶</a></h2>
+<span id="action-group-tab"></span><h1>Tab management<a class="headerlink" href="#tab-management" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="close-tab">
-<span id="action-close-tab"></span><h3>close_tab<a class="headerlink" href="#close-tab" title="Permalink to this headline">¶</a></h3>
+<span id="action-close-tab"></span><h2>close_tab<a class="headerlink" href="#close-tab" title="Permalink to this headline">¶</a></h2>
 <p>Close the current tab</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Close-tab"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+q</span></code></a></p>
 </div>
 <div class="section" id="detach-tab">
-<span id="action-detach-tab"></span><h3>detach_tab<a class="headerlink" href="#detach-tab" title="Permalink to this headline">¶</a></h3>
+<span id="action-detach-tab"></span><h2>detach_tab<a class="headerlink" href="#detach-tab" title="Permalink to this headline">¶</a></h2>
 <p>Detach a tab, moving it to another OS Window</p>
 <p>See <a class="reference internal" href="../invocation/#detach-window"><span class="std std-ref">detaching windows</span></a> for details.</p>
 </div>
 <div class="section" id="goto-tab">
-<span id="action-goto-tab"></span><h3>goto_tab<a class="headerlink" href="#goto-tab" title="Permalink to this headline">¶</a></h3>
+<span id="action-goto-tab"></span><h2>goto_tab<a class="headerlink" href="#goto-tab" title="Permalink to this headline">¶</a></h2>
 <p>Go to the specified tab, by number, starting with 1</p>
 <p>Zero and negative numbers go to previously active tabs</p>
 </div>
 <div class="section" id="move-tab-backward">
-<span id="action-move-tab-backward"></span><h3>move_tab_backward<a class="headerlink" href="#move-tab-backward" title="Permalink to this headline">¶</a></h3>
+<span id="action-move-tab-backward"></span><h2>move_tab_backward<a class="headerlink" href="#move-tab-backward" title="Permalink to this headline">¶</a></h2>
 <p>Move the active tab backward</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-tab-backward"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+,</span></code></a></p>
 </div>
 <div class="section" id="move-tab-forward">
-<span id="action-move-tab-forward"></span><h3>move_tab_forward<a class="headerlink" href="#move-tab-forward" title="Permalink to this headline">¶</a></h3>
+<span id="action-move-tab-forward"></span><h2>move_tab_forward<a class="headerlink" href="#move-tab-forward" title="Permalink to this headline">¶</a></h2>
 <p>Move the active tab forward</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-tab-forward"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+.</span></code></a></p>
 </div>
 <div class="section" id="new-tab">
-<span id="action-new-tab"></span><h3>new_tab<a class="headerlink" href="#new-tab" title="Permalink to this headline">¶</a></h3>
+<span id="action-new-tab"></span><h2>new_tab<a class="headerlink" href="#new-tab" title="Permalink to this headline">¶</a></h2>
 <p>Create a new tab</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.New-tab"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+t</span></code></a></p>
 </div>
 <div class="section" id="new-tab-with-cwd">
-<span id="action-new-tab-with-cwd"></span><h3>new_tab_with_cwd<a class="headerlink" href="#new-tab-with-cwd" title="Permalink to this headline">¶</a></h3>
+<span id="action-new-tab-with-cwd"></span><h2>new_tab_with_cwd<a class="headerlink" href="#new-tab-with-cwd" title="Permalink to this headline">¶</a></h2>
 <p>Create a new tab with working directory for the window in it set to the same as the active window</p>
 </div>
 <div class="section" id="next-tab">
-<span id="action-next-tab"></span><h3>next_tab<a class="headerlink" href="#next-tab" title="Permalink to this headline">¶</a></h3>
+<span id="action-next-tab"></span><h2>next_tab<a class="headerlink" href="#next-tab" title="Permalink to this headline">¶</a></h2>
 <p>Make the next tab active</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Next-tab"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+right</span></code></a></p>
 </div>
 <div class="section" id="previous-tab">
-<span id="action-previous-tab"></span><h3>previous_tab<a class="headerlink" href="#previous-tab" title="Permalink to this headline">¶</a></h3>
+<span id="action-previous-tab"></span><h2>previous_tab<a class="headerlink" href="#previous-tab" title="Permalink to this headline">¶</a></h2>
 <p>Make the previous tab active</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Previous-tab"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+left</span></code></a></p>
 </div>
 <div class="section" id="select-tab">
-<span id="action-select-tab"></span><h3>select_tab<a class="headerlink" href="#select-tab" title="Permalink to this headline">¶</a></h3>
+<span id="action-select-tab"></span><h2>select_tab<a class="headerlink" href="#select-tab" title="Permalink to this headline">¶</a></h2>
 <p>Interactively select a tab to switch to</p>
 </div>
 <div class="section" id="set-tab-title">
-<span id="action-set-tab-title"></span><h3>set_tab_title<a class="headerlink" href="#set-tab-title" title="Permalink to this headline">¶</a></h3>
+<span id="action-set-tab-title"></span><h2>set_tab_title<a class="headerlink" href="#set-tab-title" title="Permalink to this headline">¶</a></h2>
 <p>Change the title of the active tab</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Set-tab-title"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+alt+t</span></code></a></p>
 </div>
 </div>
 <div class="section" id="window-management">
-<span id="action-group-win"></span><h2>Window management<a class="headerlink" href="#window-management" title="Permalink to this headline">¶</a></h2>
+<span id="action-group-win"></span><h1>Window management<a class="headerlink" href="#window-management" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="close-other-windows-in-tab">
-<span id="action-close-other-windows-in-tab"></span><h3>close_other_windows_in_tab<a class="headerlink" href="#close-other-windows-in-tab" title="Permalink to this headline">¶</a></h3>
+<span id="action-close-other-windows-in-tab"></span><h2>close_other_windows_in_tab<a class="headerlink" href="#close-other-windows-in-tab" title="Permalink to this headline">¶</a></h2>
 <p>Close all windows in the tab other than the currently active window</p>
 </div>
 <div class="section" id="close-window">
-<span id="action-close-window"></span><h3>close_window<a class="headerlink" href="#close-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-close-window"></span><h2>close_window<a class="headerlink" href="#close-window" title="Permalink to this headline">¶</a></h2>
 <p>Close the currently active window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Close-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+w</span></code></a></p>
 </div>
 <div class="section" id="move-window">
-<span id="action-move-window"></span><h3>move_window<a class="headerlink" href="#move-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-move-window"></span><h2>move_window<a class="headerlink" href="#move-window" title="Permalink to this headline">¶</a></h2>
 <p>Move the window in the specified direction</p>
 <p>For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+left</span><span class="w"> </span><span class="nf">move_window</span><span class="w"> </span><span class="s">left</span><span class="w"></span>
@@ -586,25 +1173,25 @@ config options. For example:</p>
 </div>
 </div>
 <div class="section" id="move-window-backward">
-<span id="action-move-window-backward"></span><h3>move_window_backward<a class="headerlink" href="#move-window-backward" title="Permalink to this headline">¶</a></h3>
+<span id="action-move-window-backward"></span><h2>move_window_backward<a class="headerlink" href="#move-window-backward" title="Permalink to this headline">¶</a></h2>
 <p>Move active window backward (swap it with the previous window)</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-window-backward"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+b</span></code></a></p>
 </div>
 <div class="section" id="move-window-forward">
-<span id="action-move-window-forward"></span><h3>move_window_forward<a class="headerlink" href="#move-window-forward" title="Permalink to this headline">¶</a></h3>
+<span id="action-move-window-forward"></span><h2>move_window_forward<a class="headerlink" href="#move-window-forward" title="Permalink to this headline">¶</a></h2>
 <p>Move active window forward (swap it with the next window)</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-window-forward"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f</span></code></a></p>
 </div>
 <div class="section" id="move-window-to-top">
-<span id="action-move-window-to-top"></span><h3>move_window_to_top<a class="headerlink" href="#move-window-to-top" title="Permalink to this headline">¶</a></h3>
+<span id="action-move-window-to-top"></span><h2>move_window_to_top<a class="headerlink" href="#move-window-to-top" title="Permalink to this headline">¶</a></h2>
 <p>Move active window to the top (make it the first window)</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-window-to-top"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+`</span></code></a></p>
 </div>
 <div class="section" id="neighboring-window">
-<span id="action-neighboring-window"></span><h3>neighboring_window<a class="headerlink" href="#neighboring-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-neighboring-window"></span><h2>neighboring_window<a class="headerlink" href="#neighboring-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the neighboring window in the current tab</p>
 <p>For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+left</span><span class="w"> </span><span class="nf">neighboring_window</span><span class="w"> </span><span class="s">left</span><span class="w"></span>
@@ -613,13 +1200,13 @@ config options. For example:</p>
 </div>
 </div>
 <div class="section" id="next-window">
-<span id="action-next-window"></span><h3>next_window<a class="headerlink" href="#next-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-next-window"></span><h2>next_window<a class="headerlink" href="#next-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the next window in the current tab</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Next-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+]</span></code></a></p>
 </div>
 <div class="section" id="nth-window">
-<span id="action-nth-window"></span><h3>nth_window<a class="headerlink" href="#nth-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-nth-window"></span><h2>nth_window<a class="headerlink" href="#nth-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the nth window if positive or the previously active windows if negative</p>
 <p>For example, to ficus the previously active window:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+p</span><span class="w"> </span><span class="nf">nth_window</span><span class="w"> </span><span class="mi">-1</span>
@@ -627,64 +1214,64 @@ config options. For example:</p>
 </div>
 </div>
 <div class="section" id="previous-window">
-<span id="action-previous-window"></span><h3>previous_window<a class="headerlink" href="#previous-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-previous-window"></span><h2>previous_window<a class="headerlink" href="#previous-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the previous window in the current tab</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Previous-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+[</span></code></a></p>
 </div>
 <div class="section" id="reset-window-sizes">
-<span id="action-reset-window-sizes"></span><h3>reset_window_sizes<a class="headerlink" href="#reset-window-sizes" title="Permalink to this headline">¶</a></h3>
+<span id="action-reset-window-sizes"></span><h2>reset_window_sizes<a class="headerlink" href="#reset-window-sizes" title="Permalink to this headline">¶</a></h2>
 <p>Reset window sizes undoing any dynamic resizing of windows</p>
 </div>
 <div class="section" id="resize-window">
-<span id="action-resize-window"></span><h3>resize_window<a class="headerlink" href="#resize-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-resize-window"></span><h2>resize_window<a class="headerlink" href="#resize-window" title="Permalink to this headline">¶</a></h2>
 <p>Resize the active window by the specified amount</p>
 <p>See <a class="reference internal" href="../layouts/#window-resizing"><span class="std std-ref">Resizing windows</span></a> for details.</p>
 </div>
 <div class="section" id="change-font-size">
-<span id="action-change-font-size"></span><h3>change_font_size<a class="headerlink" href="#change-font-size" title="Permalink to this headline">¶</a></h3>
+<span id="action-change-font-size"></span><h2>change_font_size<a class="headerlink" href="#change-font-size" title="Permalink to this headline">¶</a></h2>
 <p>Change the font size for the current or all OS Windows</p>
 <p>See <a class="reference internal" href="../conf/#conf-kitty-shortcuts-fonts"><span class="std std-ref">Font sizes</span></a> for details.</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Decrease-font-size"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+minus</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Increase-font-size"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+equal</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Reset-font-size"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+backspace</span></code></a></p>
 </div>
 <div class="section" id="close-os-window">
-<span id="action-close-os-window"></span><h3>close_os_window<a class="headerlink" href="#close-os-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-close-os-window"></span><h2>close_os_window<a class="headerlink" href="#close-os-window" title="Permalink to this headline">¶</a></h2>
 <p>Close the currently active OS Window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Close-OS-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">shift+cmd+w</span></code></a></p>
 </div>
 <div class="section" id="detach-window">
-<span id="action-detach-window"></span><h3>detach_window<a class="headerlink" href="#detach-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-detach-window"></span><h2>detach_window<a class="headerlink" href="#detach-window" title="Permalink to this headline">¶</a></h2>
 <p>Detach a window, moving it to another tab or OS Window</p>
 <p>See <a class="reference internal" href="../invocation/#detach-window"><span class="std std-ref">detaching windows</span></a> for details.</p>
 </div>
 <div class="section" id="new-os-window">
-<span id="action-new-os-window"></span><h3>new_os_window<a class="headerlink" href="#new-os-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-new-os-window"></span><h2>new_os_window<a class="headerlink" href="#new-os-window" title="Permalink to this headline">¶</a></h2>
 <p>New OS Window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.New-OS-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+n</span></code></a></p>
 </div>
 <div class="section" id="new-os-window-with-cwd">
-<span id="action-new-os-window-with-cwd"></span><h3>new_os_window_with_cwd<a class="headerlink" href="#new-os-window-with-cwd" title="Permalink to this headline">¶</a></h3>
+<span id="action-new-os-window-with-cwd"></span><h2>new_os_window_with_cwd<a class="headerlink" href="#new-os-window-with-cwd" title="Permalink to this headline">¶</a></h2>
 <p>New OS Window with the same working directory as the currently active window</p>
 </div>
 <div class="section" id="new-window">
-<span id="action-new-window"></span><h3>new_window<a class="headerlink" href="#new-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-new-window"></span><h2>new_window<a class="headerlink" href="#new-window" title="Permalink to this headline">¶</a></h2>
 <p>Create a new window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.New-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+enter</span></code></a></p>
 </div>
 <div class="section" id="new-window-with-cwd">
-<span id="action-new-window-with-cwd"></span><h3>new_window_with_cwd<a class="headerlink" href="#new-window-with-cwd" title="Permalink to this headline">¶</a></h3>
+<span id="action-new-window-with-cwd"></span><h2>new_window_with_cwd<a class="headerlink" href="#new-window-with-cwd" title="Permalink to this headline">¶</a></h2>
 <p>Create a new window with working directory same as that of the active window</p>
 </div>
 <div class="section" id="quit">
-<span id="action-quit"></span><h3>quit<a class="headerlink" href="#quit" title="Permalink to this headline">¶</a></h3>
+<span id="action-quit"></span><h2>quit<a class="headerlink" href="#quit" title="Permalink to this headline">¶</a></h2>
 <p>Quit, closing all windows</p>
 </div>
 <div class="section" id="set-background-opacity">
-<span id="action-set-background-opacity"></span><h3>set_background_opacity<a class="headerlink" href="#set-background-opacity" title="Permalink to this headline">¶</a></h3>
+<span id="action-set-background-opacity"></span><h2>set_background_opacity<a class="headerlink" href="#set-background-opacity" title="Permalink to this headline">¶</a></h2>
 <p>Set the background opacity for the active OS Window</p>
 <p>For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f1</span><span class="w"> </span><span class="nf">set_background_opacity</span><span class="w"> </span><span class="mf">+0.1</span><span class="w"></span>
@@ -696,84 +1283,83 @@ config options. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Decrease-background-opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;l</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Make-background-fully-opaque"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;1</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Increase-background-opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;m</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Reset-background-opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;d</span></code></a></p>
 </div>
 <div class="section" id="start-resizing-window">
-<span id="action-start-resizing-window"></span><h3>start_resizing_window<a class="headerlink" href="#start-resizing-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-start-resizing-window"></span><h2>start_resizing_window<a class="headerlink" href="#start-resizing-window" title="Permalink to this headline">¶</a></h2>
 <p>Resize the active window interactively</p>
 <p>See <a class="reference internal" href="../layouts/#window-resizing"><span class="std std-ref">Resizing windows</span></a> for details.</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Start-resizing-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+r</span></code></a></p>
 </div>
 <div class="section" id="toggle-fullscreen">
-<span id="action-toggle-fullscreen"></span><h3>toggle_fullscreen<a class="headerlink" href="#toggle-fullscreen" title="Permalink to this headline">¶</a></h3>
+<span id="action-toggle-fullscreen"></span><h2>toggle_fullscreen<a class="headerlink" href="#toggle-fullscreen" title="Permalink to this headline">¶</a></h2>
 <p>Toggle the fullscreen status of the active OS Window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Toggle-fullscreen"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f11</span></code></a></p>
 </div>
 <div class="section" id="toggle-maximized">
-<span id="action-toggle-maximized"></span><h3>toggle_maximized<a class="headerlink" href="#toggle-maximized" title="Permalink to this headline">¶</a></h3>
+<span id="action-toggle-maximized"></span><h2>toggle_maximized<a class="headerlink" href="#toggle-maximized" title="Permalink to this headline">¶</a></h2>
 <p>Toggle the maximized status of the active OS Window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Toggle-maximized"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f10</span></code></a></p>
 </div>
 <div class="section" id="first-window">
-<span id="action-first-window"></span><h3>first_window<a class="headerlink" href="#first-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-first-window"></span><h2>first_window<a class="headerlink" href="#first-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the first window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.First-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+1</span></code></a></p>
 </div>
 <div class="section" id="second-window">
-<span id="action-second-window"></span><h3>second_window<a class="headerlink" href="#second-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-second-window"></span><h2>second_window<a class="headerlink" href="#second-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the second window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Second-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+2</span></code></a></p>
 </div>
 <div class="section" id="third-window">
-<span id="action-third-window"></span><h3>third_window<a class="headerlink" href="#third-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-third-window"></span><h2>third_window<a class="headerlink" href="#third-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the third window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Third-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+3</span></code></a></p>
 </div>
 <div class="section" id="fourth-window">
-<span id="action-fourth-window"></span><h3>fourth_window<a class="headerlink" href="#fourth-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-fourth-window"></span><h2>fourth_window<a class="headerlink" href="#fourth-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the fourth window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Fourth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+4</span></code></a></p>
 </div>
 <div class="section" id="fifth-window">
-<span id="action-fifth-window"></span><h3>fifth_window<a class="headerlink" href="#fifth-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-fifth-window"></span><h2>fifth_window<a class="headerlink" href="#fifth-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the fifth window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Fifth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+5</span></code></a></p>
 </div>
 <div class="section" id="sixth-window">
-<span id="action-sixth-window"></span><h3>sixth_window<a class="headerlink" href="#sixth-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-sixth-window"></span><h2>sixth_window<a class="headerlink" href="#sixth-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the sixth window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Sixth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+6</span></code></a></p>
 </div>
 <div class="section" id="seventh-window">
-<span id="action-seventh-window"></span><h3>seventh_window<a class="headerlink" href="#seventh-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-seventh-window"></span><h2>seventh_window<a class="headerlink" href="#seventh-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the seventh window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Seventh-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+7</span></code></a></p>
 </div>
 <div class="section" id="eighth-window">
-<span id="action-eighth-window"></span><h3>eighth_window<a class="headerlink" href="#eighth-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-eighth-window"></span><h2>eighth_window<a class="headerlink" href="#eighth-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the eighth window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Eight-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+8</span></code></a></p>
 </div>
 <div class="section" id="ninth-window">
-<span id="action-ninth-window"></span><h3>ninth_window<a class="headerlink" href="#ninth-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-ninth-window"></span><h2>ninth_window<a class="headerlink" href="#ninth-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the ninth window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Ninth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+9</span></code></a></p>
 </div>
 <div class="section" id="tenth-window">
-<span id="action-tenth-window"></span><h3>tenth_window<a class="headerlink" href="#tenth-window" title="Permalink to this headline">¶</a></h3>
+<span id="action-tenth-window"></span><h2>tenth_window<a class="headerlink" href="#tenth-window" title="Permalink to this headline">¶</a></h2>
 <p>Focus the tenth window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Tenth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+0</span></code></a></p>
-</div>
 </div>
 </div>
 
@@ -797,7 +1383,7 @@ config options. For example:</p>
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Configure kitty</div>
+                <div class="title">kitty.conf</div>
                 
               </div>
             </a>
@@ -821,7 +1407,7 @@ config options. For example:</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Mappable actions</a><ul>
+<li><a class="reference internal" href="#">Mappable actions</a></li>
 <li><a class="reference internal" href="#copy-paste">Copy/paste</a><ul>
 <li><a class="reference internal" href="#copy-and-clear-or-interrupt">copy_and_clear_or_interrupt</a></li>
 <li><a class="reference internal" href="#copy-or-interrupt">copy_or_interrupt</a></li>
@@ -936,8 +1522,6 @@ config options. For example:</p>
 <li><a class="reference internal" href="#eighth-window">eighth_window</a></li>
 <li><a class="reference internal" href="#ninth-window">ninth_window</a></li>
 <li><a class="reference internal" href="#tenth-window">tenth_window</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
