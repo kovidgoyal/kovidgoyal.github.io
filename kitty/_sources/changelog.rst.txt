@@ -4,6 +4,52 @@ Changelog
 |kitty| is a feature-rich, cross-platform, *fast*, GPU based terminal.
 To update |kitty|, :doc:`follow the instructions <binary>`.
 
+0.23.0 [2021-08-16]
+----------------------
+
+- A new :doc:`themes kitten </kittens/themes>` to easily change kitty themes.
+  Choose from almost two hundred themes in the `kitty themes repository
+  <https://github.com/kovidgoyal/kitty-themes>`_
+
+- A new style for the tab bar that makes tabs looks like the tabs in a physical
+  tabbed file, see :opt:`tab_bar_style`
+
+- Make the visual bell flash more gentle, especially on dark themes
+  (:pull:`2937`)
+
+- Fix :option:`kitty --title` not overriding the OS Window title when multiple
+  tabs are present. Also this option is no longer used as the default title for
+  windows, allowing individual tabs/windows to have their own titles, even when
+  the OS Window has a fixed overall title (:iss:`3893`)
+
+- Linux: Fix some very long ligatures being rendered incorrectly at some font
+  sizes (:iss:`3896`)
+
+- Fix shift+middle click to paste sending a mouse press event but no release
+  event which breaks some applications that grab the mouse but cant handle
+  mouse events (:iss:`3902`)
+
+- macOS: When the language is set to English and the country to one for which
+  an English locale does not exist, set :envvar:`LANG` to ``en_US.UTF-8``
+  (:iss:`3899`)
+
+- terminfo: Fix "cnorm" the property for setting the cursor to normal using a
+  solid block rather than a blinking block cursor (:iss:`3906`)
+
+- Add :opt:`clear_all_mouse_actions` to clear all mouse actions defined to
+  that point (:iss:`3907`)
+
+- Fix the remote file kitten not working when using -- with ssh. The ssh kitten
+  was recently changed to do this (:iss:`3929`)
+
+- When dragging word or line selections, ensure the initially selected item is
+  never deselected. This matches behavior in most other programs (:iss:`3930`)
+
+- hints kitten: Make copy/paste with the :option:`kitty +kitten hints
+  --program` option work when using the ``self``
+  :option:`kitty +kitten hints --linenum-action` (:iss:`3931`)
+
+
 0.22.2 [2021-08-02]
 ----------------------
 
