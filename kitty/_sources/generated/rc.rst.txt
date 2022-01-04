@@ -7,7 +7,7 @@ Fields are:
   Which tab to close
 
 :code:`self (default: False)`
-  Boolean indicating whether to close the window the command is run in
+  Boolean indicating whether to close the tab of the window the command is run in
 
 
 
@@ -48,8 +48,8 @@ Fields are:
 :code:`match (default: None)`
   Which tab to detach
 
-:code:`target (optional)`
-  Which OS Window to move the detached tab to
+:code:`target_tab (default: None)`
+  Which OS Window that containing the target tab to move the detached tab to
 
 :code:`self (default: False)`
   Boolean indicating whether to detach the tab the command is run in
@@ -64,7 +64,7 @@ Fields are:
 :code:`match (default: None)`
   Which window to detach
 
-:code:`target (optional)`
+:code:`target_tab (default: None)`
   Which tab to move the detached window to
 
 :code:`self (default: False)`
@@ -143,7 +143,7 @@ Fields are:
   The tab to focus
 
 :code:`extent (default: screen)`
-  One of :code:`screen`, :code:`all`, or :code:`selection`
+  One of :code:`screen`, :code:`first_cmd_output_on_screen`, :code:`last_cmd_output`,             :code:`last_visited_cmd_output`, :code:`all`, or :code:`selection`
 
 :code:`ansi (default: False)`
   Boolean, if True send ANSI formatting codes
@@ -260,6 +260,18 @@ Fields are:
 :code:`marker (default: None)`
   Specification for marker for new window, for example: "text 1 ERROR"
 
+:code:`logo (default: None)`
+  Path to window logo
+
+:code:`logo_position (default: None)`
+  Window logo position as string or empty string to use default
+
+:code:`logo_alpha (default: -1.0)`
+  Window logo alpha or -1 to use default
+
+:code:`self (default: False)`
+  Boolean, if True use tab the command was run in
+
 
 
 ls
@@ -350,7 +362,7 @@ Fields are:
   Which window to resize
 
 :code:`self (default: False)`
-  Boolean indicating whether to close the window the command is run in
+  Boolean indicating whether to resize the window the command is run in
 
 :code:`increment (default: 2)`
   Integer specifying the resize increment
@@ -374,6 +386,28 @@ Fields are:
 
 
 
+select-window
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`match (default: None)`
+  The tab to open the new window in
+
+:code:`self (default: False)`
+  Boolean, if True use tab the command was run in
+
+:code:`title (default: None)`
+  A title for this selection
+
+:code:`exclude_active (default: False)`
+  Exclude the currently active window from the list to pick
+
+:code:`reactivate_prev_tab (default: False)`
+  Reactivate the previously activated tab when finished
+
+
+
 send-text
 --------------------------------------------------------------------------------
 
@@ -394,6 +428,9 @@ Fields are:
 :code:`exclude_active (default: False)`
   A boolean that prevents sending text to the active window
 
+:code:`session_id (optional)`
+  A string that identifies a "broadcast session"
+
 
 
 set-background-image
@@ -403,9 +440,6 @@ Fields are:
 
 :code:`data (required)`
   Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value - to indicate image must be removed.
-
-:code:`img_id (required)`
-  Unique uuid (as string) used for chunking
 
 :code:`match (default: None)`
   Window to change opacity in
@@ -446,10 +480,7 @@ set-colors
 Fields are:
 
 :code:`colors (required)`
-  An object mapping names to colors as 24-bit RGB integers
-
-:code:`cursor_text_color (optional)`
-  A 24-bit color for text under the cursor, or null to use background.
+  An object mapping names to colors as 24-bit RGB integers or null for nullable colors
 
 :code:`match_window (optional)`
   Window to change colors in
@@ -465,6 +496,22 @@ Fields are:
 
 :code:`reset (default: False)`
   Boolean indicating colors should be reset to startup values
+
+
+
+set-enabled-layouts
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`layouts (required)`
+  The list of layout names
+
+:code:`match (default: None)`
+  Which tab to change the layout of
+
+:code:`configured (default: False)`
+  Boolean indicating whether to change the configured value
 
 
 
@@ -506,6 +553,22 @@ Fields are:
 
 
 
+set-tab-color
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`colors (required)`
+  An object mapping names to colors as 24-bit RGB integers. A color value of null indicates it should be unset.
+
+:code:`match (default: None)`
+  Which tab to change the color of
+
+:code:`self (default: False)`
+  Boolean indicating whether to use the tab of the window the command is run in
+
+
+
 set-tab-title
 --------------------------------------------------------------------------------
 
@@ -516,6 +579,28 @@ Fields are:
 
 :code:`match (default: None)`
   Which tab to change the title of
+
+
+
+set-window-logo
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`data (required)`
+  Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value - to indicate image must be removed.
+
+:code:`position (default: None)`
+  The logo position as a string, empty string means default
+
+:code:`alpha (default: -1.0)`
+  The logo alpha between 0 and 1. -1 means use default
+
+:code:`match (default: None)`
+  Which window to change the logo in
+
+:code:`self (default: False)`
+  Boolean indicating whether to act on the window the command is run in
 
 
 

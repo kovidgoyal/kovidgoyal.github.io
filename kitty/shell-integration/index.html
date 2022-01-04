@@ -1,0 +1,1712 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Shell integration" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sw.kovidgoyal.net/kitty/shell-integration.html" />
+  <meta property="og:description" content="kitty has the ability to integrate closely within common shells, such as zsh, fish and bash to enable features such as jumping to previous prompts in the scrollback, viewing the output of the last ..." />
+  <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Mark text on screen" href="../marks/" /><link rel="prev" title="Scripting the mouse click" href="../open_actions/" />
+
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.3.2, furo 2021.11.23"/>
+        <title>Shell integration - kitty</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=7f0192ddeb2adecfbaa87ffbcf67d16358b30bc1" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style>
+
+  
+      <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20736318-2']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../"><div class="brand">kitty</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/kitty.svg" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search/" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../quickstart/">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../binary/">Install kitty</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../binary/#binary-install">Binary install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binary/#manually-installing">Manually installing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binary/#desktop-integration-on-linux">Desktop integration on Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binary/#customizing-the-installation">Customizing the installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binary/#uninstalling">Uninstalling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binary/#building-from-source">Building from source</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../build/">Build from source</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build/#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build/#install-and-run-from-source">Install and run from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build/#building-kitty-app-on-macos-from-source">Building kitty.app on macOS from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build/#build-and-run-from-source-with-nix">Build and run from source with Nix</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../build/#notes-for-linux-macos-packagers">Notes for Linux/macOS packagers</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../build/#changing-defaults-for-packages">Changing defaults for packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../overview/">Overview</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview/#design-philosophy">Design philosophy</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#tabs-and-windows">Tabs and Windows</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/#scrolling">Scrolling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/#tabs">Tabs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/#other-keyboard-shortcuts">Other keyboard shortcuts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#configuring-kitty">Configuring kitty</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../conf/">kitty.conf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#fonts">Fonts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#cursor-customization">Cursor customization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#scrollback">Scrollback</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../conf/#mouse">Mouse</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#mouse-actions">Mouse actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#performance-tuning">Performance tuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#terminal-bell">Terminal bell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#window-layout">Window layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#tab-bar">Tab bar</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../conf/#color-scheme">Color scheme</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#the-color-table">The color table</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#advanced">Advanced</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#os-specific-tweaks">OS specific tweaks</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../conf/#keyboard-shortcuts">Keyboard shortcuts</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#clipboard">Clipboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#scrolling">Scrolling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#window-management">Window management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#tab-management">Tab management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#layout-management">Layout management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#font-sizes">Font sizes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#select-and-act-on-visible-text">Select and act on visible text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../conf/#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../conf/#sample-kitty-conf">Sample kitty.conf</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../conf/#all-mappable-actions">All mappable actions</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../actions/">Mappable actions</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../actions/#copy-paste">Copy/paste</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#copy-and-clear-or-interrupt">copy_and_clear_or_interrupt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#copy-or-interrupt">copy_or_interrupt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#copy-to-clipboard">copy_to_clipboard</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#pass-selection-to-program">pass_selection_to_program</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#paste">paste</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#show-first-command-output-on-screen">show_first_command_output_on_screen</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#show-last-command-output">show_last_command_output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#show-last-visited-command-output">show_last_visited_command_output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#show-scrollback">show_scrollback</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#copy-to-buffer">copy_to_buffer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#paste-from-buffer">paste_from_buffer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#paste-from-clipboard">paste_from_clipboard</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#paste-from-selection">paste_from_selection</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../actions/#debugging">Debugging</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#dump-lines-with-attrs">dump_lines_with_attrs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#debug-config">debug_config</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#show-kitty-env-vars">show_kitty_env_vars</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../actions/#layouts">Layouts</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#goto-layout">goto_layout</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#last-used-layout">last_used_layout</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#layout-action">layout_action</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#next-layout">next_layout</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#toggle-layout">toggle_layout</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../actions/#marks">Marks</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#remove-marker">remove_marker</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#scroll-to-mark">scroll_to_mark</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#toggle-marker">toggle_marker</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#create-marker">create_marker</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../actions/#miscellaneous">Miscellaneous</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#send-text">send_text</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#signal-child">signal_child</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#clear-terminal">clear_terminal</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#combine">combine</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#disable-ligatures-in">disable_ligatures_in</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#discard-event">discard_event</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#edit-config-file">edit_config_file</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#input-unicode-character">input_unicode_character</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#kitten">kitten</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#kitty-shell">kitty_shell</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#launch">launch</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#load-config-file">load_config_file</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#open-url-with-hints">open_url_with_hints</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#remote-control">remote_control</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#set-colors">set_colors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#no-op">no_op</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../actions/#mouse-actions">Mouse actions</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#mouse-click-url">mouse_click_url</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#mouse-click-url-or-select">mouse_click_url_or_select</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#mouse-handle-click">mouse_handle_click</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#mouse-select-command-output">mouse_select_command_output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#mouse-selection">mouse_selection</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#mouse-show-command-output">mouse_show_command_output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#paste-selection">paste_selection</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#paste-selection-or-clipboard">paste_selection_or_clipboard</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../actions/#scrolling">Scrolling</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#scroll-end">scroll_end</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#scroll-home">scroll_home</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#scroll-line-down">scroll_line_down</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#scroll-line-up">scroll_line_up</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#scroll-page-down">scroll_page_down</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#scroll-page-up">scroll_page_up</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#scroll-to-prompt">scroll_to_prompt</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../actions/#tab-management">Tab management</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#close-tab">close_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#detach-tab">detach_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#goto-tab">goto_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#move-tab-backward">move_tab_backward</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#move-tab-forward">move_tab_forward</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#new-tab">new_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#new-tab-with-cwd">new_tab_with_cwd</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#next-tab">next_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#previous-tab">previous_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#select-tab">select_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#set-tab-title">set_tab_title</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../actions/#window-management">Window management</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#close-other-windows-in-tab">close_other_windows_in_tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#eighth-window">eighth_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#fifth-window">fifth_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#first-window">first_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#focus-visible-window">focus_visible_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#fourth-window">fourth_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#move-window">move_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#move-window-backward">move_window_backward</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#move-window-forward">move_window_forward</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#move-window-to-top">move_window_to_top</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#neighboring-window">neighboring_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#next-window">next_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#ninth-window">ninth_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#nth-window">nth_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#previous-window">previous_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#reset-window-sizes">reset_window_sizes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#resize-window">resize_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#second-window">second_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#seventh-window">seventh_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#sixth-window">sixth_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#swap-with-window">swap_with_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#tenth-window">tenth_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#third-window">third_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#change-font-size">change_font_size</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#close-os-window">close_os_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#close-window">close_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#close-window-with-confirmation">close_window_with_confirmation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#detach-window">detach_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#new-os-window">new_os_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#new-os-window-with-cwd">new_os_window_with_cwd</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#new-window">new_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#new-window-with-cwd">new_window_with_cwd</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#nth-os-window">nth_os_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#quit">quit</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#set-background-opacity">set_background_opacity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#start-resizing-window">start_resizing_window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#toggle-fullscreen">toggle_fullscreen</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#toggle-maximized">toggle_maximized</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#layouts">Layouts</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/">Arrange windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-stack-layout">The Stack Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-tall-layout">The Tall Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-fat-layout">The Fat Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-grid-layout">The Grid Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-splits-layout">The Splits Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-horizontal-layout">The Horizontal Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-vertical-layout">The Vertical Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#resizing-windows">Resizing windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#extending-kitty">Extending kitty</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../kittens_intro/">Extend with kittens</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/icat/">icat</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/icat/#source-code-for-icat">Source code for icat</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/icat/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/icat/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/diff/">kitty-diff</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" role="switch" type="checkbox"/><label for="toctree-checkbox-26"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#major-features">Major Features</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#installation">Installation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#usage">Usage</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#keyboard-controls">Keyboard controls</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#integrating-with-git">Integrating with git</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#why-does-this-work-only-in-kitty">Why does this work only in kitty?</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#configuration">Configuration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#diffing">Diffing</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#colors">Colors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#keyboard-shortcuts">Keyboard shortcuts</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#source-code-for-diff">Source code for diff</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/diff/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" role="switch" type="checkbox"/><label for="toctree-checkbox-27"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/diff/#options">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/diff/#sample-diff-conf">Sample diff.conf</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/unicode_input/">Unicode input</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" role="switch" type="checkbox"/><label for="toctree-checkbox-28"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/unicode_input/#source-code-for-unicode-input">Source code for unicode_input</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/unicode_input/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" role="switch" type="checkbox"/><label for="toctree-checkbox-29"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/unicode_input/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/themes/">Changing kitty colors</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" role="switch" type="checkbox"/><label for="toctree-checkbox-30"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/themes/#how-it-works">How it works</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/themes/#using-your-own-themes">Using your own themes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/themes/#contributing-new-themes">Contributing new themes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/themes/#changing-the-theme-non-interactively">Changing the theme non-interactively</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/themes/#source-code-for-themes">Source code for themes</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/themes/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/themes/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/hints/">Hints</a><input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" role="switch" type="checkbox"/><label for="toctree-checkbox-32"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/hints/#completely-customizing-the-matching-and-actions-of-the-kitten">Completely customizing the matching and actions of the kitten</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/hints/#source-code-for-hints">Source code for hints</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/hints/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" role="switch" type="checkbox"/><label for="toctree-checkbox-33"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/hints/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../kittens/remote_file/">Remote files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kittens/hyperlinked_grep/">Hyperlinked grep</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/transfer/">Transfer files</a><input class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" role="switch" type="checkbox"/><label for="toctree-checkbox-34"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/transfer/#basic-usage">Basic usage</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/transfer/#avoiding-the-confirmation-prompt">Avoiding the confirmation prompt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/transfer/#delta-transfers">Delta transfers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/transfer/#source-code-for-transfer">Source code for transfer</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/transfer/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" role="switch" type="checkbox"/><label for="toctree-checkbox-35"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/transfer/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/custom/">Custom kittens</a><input class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" role="switch" type="checkbox"/><label for="toctree-checkbox-36"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#passing-arguments-to-kittens">Passing arguments to kittens</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#passing-the-contents-of-the-screen-to-the-kitten">Passing the contents of the screen to the kitten</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#using-kittens-to-script-kitty-without-any-terminal-ui">Using kittens to script kitty, without any terminal UI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#sending-mouse-events">Sending mouse events</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#debugging-kittens">Debugging kittens</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#adding-options-to-kittens">Adding options to kittens</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/custom/#kittens-created-by-kitty-users">Kittens created by kitty users</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/broadcast/">broadcast</a><input class="toctree-checkbox" id="toctree-checkbox-37" name="toctree-checkbox-37" role="switch" type="checkbox"/><label for="toctree-checkbox-37"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/broadcast/#source-code-for-broadcast">Source code for broadcast</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/broadcast/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/broadcast/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/clipboard/">clipboard</a><input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/clipboard/#source-code-for-clipboard">Source code for clipboard</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/clipboard/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" role="switch" type="checkbox"/><label for="toctree-checkbox-40"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/clipboard/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/panel/">Draw a GPU accelerated dock panel on your desktop</a><input class="toctree-checkbox" id="toctree-checkbox-41" name="toctree-checkbox-41" role="switch" type="checkbox"/><label for="toctree-checkbox-41"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/panel/#source-code-for-panel">Source code for panel</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/panel/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-42" name="toctree-checkbox-42" role="switch" type="checkbox"/><label for="toctree-checkbox-42"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/panel/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../kittens/query_terminal/">Query terminal</a><input class="toctree-checkbox" id="toctree-checkbox-43" name="toctree-checkbox-43" role="switch" type="checkbox"/><label for="toctree-checkbox-43"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../kittens/query_terminal/#source-code-for-query-terminal">Source code for query_terminal</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../kittens/query_terminal/#command-line-interface">Command Line Interface</a><input class="toctree-checkbox" id="toctree-checkbox-44" name="toctree-checkbox-44" role="switch" type="checkbox"/><label for="toctree-checkbox-44"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../kittens/query_terminal/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#remote-control">Remote control</a><input class="toctree-checkbox" id="toctree-checkbox-45" name="toctree-checkbox-45" role="switch" type="checkbox"/><label for="toctree-checkbox-45"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/">Control kitty from scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#tutorial">Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#the-builtin-kitty-shell">The builtin kitty shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#allowing-only-some-windows-to-control-kitty">Allowing only some windows to control kitty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#mapping-key-presses-to-remote-control-commands">Mapping key presses to remote control commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#broadcasting-what-you-type-to-all-kitty-windows">Broadcasting what you type to all kitty windows</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#the-remote-control-protocol">The remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-46" name="toctree-checkbox-46" role="switch" type="checkbox"/><label for="toctree-checkbox-46"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../rc_protocol/">The kitty remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-47" name="toctree-checkbox-47" role="switch" type="checkbox"/><label for="toctree-checkbox-47"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-tab">close-tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-window">close-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#create-marker">create-marker</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#detach-tab">detach-tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#detach-window">detach-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#disable-ligatures">disable-ligatures</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#env">env</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#focus-tab">focus-tab</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#focus-window">focus-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#get-colors">get-colors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#get-text">get-text</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#goto-layout">goto-layout</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#kitten">kitten</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#last-used-layout">last-used-layout</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#launch">launch</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#ls">ls</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#new-window">new-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#remove-marker">remove-marker</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#resize-os-window">resize-os-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#resize-window">resize-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#scroll-window">scroll-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#select-window">select-window</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#send-text">send-text</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-background-image">set-background-image</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-background-opacity">set-background-opacity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-colors">set-colors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-enabled-layouts">set-enabled-layouts</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-font-size">set-font-size</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-spacing">set-spacing</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-tab-color">set-tab-color</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-tab-title">set-tab-title</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-window-logo">set-window-logo</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#set-window-title">set-window-title</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#signal-child">signal-child</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty">kitty @</a><input class="toctree-checkbox" id="toctree-checkbox-48" name="toctree-checkbox-48" role="switch" type="checkbox"/><label for="toctree-checkbox-48"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#options">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-close-tab">kitty @ close-tab</a><input class="toctree-checkbox" id="toctree-checkbox-49" name="toctree-checkbox-49" role="switch" type="checkbox"/><label for="toctree-checkbox-49"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id1">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-close-window">kitty @ close-window</a><input class="toctree-checkbox" id="toctree-checkbox-50" name="toctree-checkbox-50" role="switch" type="checkbox"/><label for="toctree-checkbox-50"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id2">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-create-marker">kitty @ create-marker</a><input class="toctree-checkbox" id="toctree-checkbox-51" name="toctree-checkbox-51" role="switch" type="checkbox"/><label for="toctree-checkbox-51"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id3">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-detach-tab">kitty @ detach-tab</a><input class="toctree-checkbox" id="toctree-checkbox-52" name="toctree-checkbox-52" role="switch" type="checkbox"/><label for="toctree-checkbox-52"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id4">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-detach-window">kitty @ detach-window</a><input class="toctree-checkbox" id="toctree-checkbox-53" name="toctree-checkbox-53" role="switch" type="checkbox"/><label for="toctree-checkbox-53"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id5">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-disable-ligatures">kitty @ disable-ligatures</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id6">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#kitty-env">kitty @ env</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-focus-tab">kitty @ focus-tab</a><input class="toctree-checkbox" id="toctree-checkbox-55" name="toctree-checkbox-55" role="switch" type="checkbox"/><label for="toctree-checkbox-55"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id7">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-focus-window">kitty @ focus-window</a><input class="toctree-checkbox" id="toctree-checkbox-56" name="toctree-checkbox-56" role="switch" type="checkbox"/><label for="toctree-checkbox-56"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id8">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-get-colors">kitty @ get-colors</a><input class="toctree-checkbox" id="toctree-checkbox-57" name="toctree-checkbox-57" role="switch" type="checkbox"/><label for="toctree-checkbox-57"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id9">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-get-text">kitty @ get-text</a><input class="toctree-checkbox" id="toctree-checkbox-58" name="toctree-checkbox-58" role="switch" type="checkbox"/><label for="toctree-checkbox-58"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id10">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-goto-layout">kitty @ goto-layout</a><input class="toctree-checkbox" id="toctree-checkbox-59" name="toctree-checkbox-59" role="switch" type="checkbox"/><label for="toctree-checkbox-59"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id11">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-kitten">kitty @ kitten</a><input class="toctree-checkbox" id="toctree-checkbox-60" name="toctree-checkbox-60" role="switch" type="checkbox"/><label for="toctree-checkbox-60"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id12">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-last-used-layout">kitty @ last-used-layout</a><input class="toctree-checkbox" id="toctree-checkbox-61" name="toctree-checkbox-61" role="switch" type="checkbox"/><label for="toctree-checkbox-61"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id13">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-launch">kitty @ launch</a><input class="toctree-checkbox" id="toctree-checkbox-62" name="toctree-checkbox-62" role="switch" type="checkbox"/><label for="toctree-checkbox-62"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id14">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-ls">kitty @ ls</a><input class="toctree-checkbox" id="toctree-checkbox-63" name="toctree-checkbox-63" role="switch" type="checkbox"/><label for="toctree-checkbox-63"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id15">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-new-window">kitty @ new-window</a><input class="toctree-checkbox" id="toctree-checkbox-64" name="toctree-checkbox-64" role="switch" type="checkbox"/><label for="toctree-checkbox-64"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id16">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-remove-marker">kitty @ remove-marker</a><input class="toctree-checkbox" id="toctree-checkbox-65" name="toctree-checkbox-65" role="switch" type="checkbox"/><label for="toctree-checkbox-65"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id17">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-resize-os-window">kitty @ resize-os-window</a><input class="toctree-checkbox" id="toctree-checkbox-66" name="toctree-checkbox-66" role="switch" type="checkbox"/><label for="toctree-checkbox-66"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id18">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-resize-window">kitty @ resize-window</a><input class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" role="switch" type="checkbox"/><label for="toctree-checkbox-67"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id19">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-scroll-window">kitty @ scroll-window</a><input class="toctree-checkbox" id="toctree-checkbox-68" name="toctree-checkbox-68" role="switch" type="checkbox"/><label for="toctree-checkbox-68"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id20">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-select-window">kitty @ select-window</a><input class="toctree-checkbox" id="toctree-checkbox-69" name="toctree-checkbox-69" role="switch" type="checkbox"/><label for="toctree-checkbox-69"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id21">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-send-text">kitty @ send-text</a><input class="toctree-checkbox" id="toctree-checkbox-70" name="toctree-checkbox-70" role="switch" type="checkbox"/><label for="toctree-checkbox-70"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id22">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-background-image">kitty @ set-background-image</a><input class="toctree-checkbox" id="toctree-checkbox-71" name="toctree-checkbox-71" role="switch" type="checkbox"/><label for="toctree-checkbox-71"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id23">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-background-opacity">kitty @ set-background-opacity</a><input class="toctree-checkbox" id="toctree-checkbox-72" name="toctree-checkbox-72" role="switch" type="checkbox"/><label for="toctree-checkbox-72"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id24">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-colors">kitty @ set-colors</a><input class="toctree-checkbox" id="toctree-checkbox-73" name="toctree-checkbox-73" role="switch" type="checkbox"/><label for="toctree-checkbox-73"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id25">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-enabled-layouts">kitty @ set-enabled-layouts</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id26">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-font-size">kitty @ set-font-size</a><input class="toctree-checkbox" id="toctree-checkbox-75" name="toctree-checkbox-75" role="switch" type="checkbox"/><label for="toctree-checkbox-75"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id27">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-spacing">kitty @ set-spacing</a><input class="toctree-checkbox" id="toctree-checkbox-76" name="toctree-checkbox-76" role="switch" type="checkbox"/><label for="toctree-checkbox-76"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id28">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-tab-color">kitty @ set-tab-color</a><input class="toctree-checkbox" id="toctree-checkbox-77" name="toctree-checkbox-77" role="switch" type="checkbox"/><label for="toctree-checkbox-77"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id29">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-tab-title">kitty @ set-tab-title</a><input class="toctree-checkbox" id="toctree-checkbox-78" name="toctree-checkbox-78" role="switch" type="checkbox"/><label for="toctree-checkbox-78"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id30">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-window-logo">kitty @ set-window-logo</a><input class="toctree-checkbox" id="toctree-checkbox-79" name="toctree-checkbox-79" role="switch" type="checkbox"/><label for="toctree-checkbox-79"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id31">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-set-window-title">kitty @ set-window-title</a><input class="toctree-checkbox" id="toctree-checkbox-80" name="toctree-checkbox-80" role="switch" type="checkbox"/><label for="toctree-checkbox-80"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id32">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitty-signal-child">kitty @ signal-child</a><input class="toctree-checkbox" id="toctree-checkbox-81" name="toctree-checkbox-81" role="switch" type="checkbox"/><label for="toctree-checkbox-81"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id33">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/#startup-sessions">Startup Sessions</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#creating-tabs-windows">Creating tabs/windows</a><input class="toctree-checkbox" id="toctree-checkbox-82" name="toctree-checkbox-82" role="switch" type="checkbox"/><label for="toctree-checkbox-82"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../launch/">The <strong class="command">launch</strong> command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../launch/#the-piping-environment">The piping environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../launch/#special-arguments">Special arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../launch/#watching-launched-windows">Watching launched windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../launch/#finding-executables">Finding executables</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../launch/#syntax-reference">Syntax reference</a><input class="toctree-checkbox" id="toctree-checkbox-83" name="toctree-checkbox-83" role="switch" type="checkbox"/><label for="toctree-checkbox-83"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../launch/#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#mouse-features">Mouse features</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a><input class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" role="switch" type="checkbox"/><label for="toctree-checkbox-85"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../open_actions/#matching-criteria">Matching criteria</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/#font-control">Font control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/#the-scrollback-buffer">The scrollback buffer</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="../overview/#integration-with-shells">Integration with shells</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-86" name="toctree-checkbox-86" role="switch" type="checkbox"/><label for="toctree-checkbox-86"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Shell integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="#configuration">Configuration</a><input class="toctree-checkbox" id="toctree-checkbox-87" name="toctree-checkbox-87" role="switch" type="checkbox"/><label for="toctree-checkbox-87"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="#more-ways-to-browse-command-output">More ways to browse command output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manual-shell-integration">Manual shell integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes-for-shell-developers">Notes for shell developers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/#multiple-copy-paste-buffers">Multiple copy/paste buffers</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#marks">Marks</a><input class="toctree-checkbox" id="toctree-checkbox-88" name="toctree-checkbox-88" role="switch" type="checkbox"/><label for="toctree-checkbox-88"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../marks/">Mark text on screen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marks/#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marks/#creating-markers-dynamically">Creating markers dynamically</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marks/#scrolling-to-marks">Scrolling to marks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marks/#the-full-syntax-for-creating-marks">The full syntax for creating marks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../marks/#arbitrary-marker-functions">Arbitrary marker functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../faq/">Frequently Asked Questions</a><input class="toctree-checkbox" id="toctree-checkbox-89" name="toctree-checkbox-89" role="switch" type="checkbox"/><label for="toctree-checkbox-89"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#some-special-symbols-are-rendered-small-truncated-in-kitty">Some special symbols are rendered small/truncated in kitty?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim">Using a color theme with a background color does not work well in vim?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer">I get errors about the terminal being unknown or opening the terminal failing when SSHing into a different computer?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#keys-such-as-arrow-keys-backspace-delete-home-end-etc-do-not-work-when-using-su-or-sudo">Keys such as arrow keys, backspace, delete, home/end, etc. do not work when using su or sudo?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#how-do-i-change-the-colors-in-a-running-kitty-instance">How do I change the colors in a running kitty instance?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#how-do-i-specify-command-line-options-for-kitty-on-macos">How do I specify command line options for kitty on macOS?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#i-catted-a-binary-file-and-now-kitty-is-hung">I catted a binary file and now kitty is hung?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#kitty-is-not-able-to-use-my-favorite-font">kitty is not able to use my favorite font?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal">How can I assign a single global shortcut to bring up the kitty terminal?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#i-do-not-like-the-kitty-icon">I do not like the kitty icon!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program">How do I map key presses in kitty to different keys in the terminal program?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#how-do-i-open-a-new-window-or-tab-with-the-same-working-directory-as-the-current-window">How do I open a new window or tab with the same working directory as the current window?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#things-behave-differently-when-running-kitty-from-system-launcher-vs-from-another-terminal">Things behave differently when running kitty from system launcher vs. from another terminal?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#i-am-using-tmux-and-have-a-problem">I am using tmux and have a problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#i-opened-and-closed-a-lot-of-windows-tabs-and-top-shows-kitty-s-memory-usage-is-very-high">I opened and closed a lot of windows/tabs and top shows kitty’s memory usage is very high?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/#why-does-kitty-sometimes-start-slowly-on-my-linux-system">Why does kitty sometimes start slowly on my Linux system?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support kitty development ❤️</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/">Performance</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../changelog/">Changelog</a><input class="toctree-checkbox" id="toctree-checkbox-90" name="toctree-checkbox-90" role="switch" type="checkbox"/><label for="toctree-checkbox-90"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#recent-major-new-features">Recent major new features</a><input class="toctree-checkbox" id="toctree-checkbox-91" name="toctree-checkbox-91" role="switch" type="checkbox"/><label for="toctree-checkbox-91"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#a-demo-video">A demo video</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#shell-integration">Shell integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#logos-for-windows">Logos for windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#visual-keyboard-based-window-select">Visual keyboard based window select</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-92" name="toctree-checkbox-92" role="switch" type="checkbox"/><label for="toctree-checkbox-92"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.4.0 [2017-10-22]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../integrations/">Integrations with other tools</a><input class="toctree-checkbox" id="toctree-checkbox-93" name="toctree-checkbox-93" role="switch" type="checkbox"/><label for="toctree-checkbox-93"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/#image-and-document-viewers">Image and document viewers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/#system-and-data-visualisation-tools">System and data visualisation tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/#editor-integration">Editor integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/#scrollback-manipulation">Scrollback manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input class="toctree-checkbox" id="toctree-checkbox-94" name="toctree-checkbox-94" role="switch" type="checkbox"/><label for="toctree-checkbox-94"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../underlines/">Colored and styled underlines</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../graphics-protocol/">Terminal graphics protocol</a><input class="toctree-checkbox" id="toctree-checkbox-95" name="toctree-checkbox-95" role="switch" type="checkbox"/><label for="toctree-checkbox-95"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#getting-the-window-size">Getting the window size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#a-minimal-example">A minimal example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#the-graphics-escape-code">The graphics escape code</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#transferring-pixel-data">Transferring pixel data</a><input class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#rgb-and-rgba-data">RGB and RGBA data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#png-data">PNG data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#compression">Compression</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../graphics-protocol/#the-transmission-medium">The transmission medium</a><input class="toctree-checkbox" id="toctree-checkbox-97" name="toctree-checkbox-97" role="switch" type="checkbox"/><label for="toctree-checkbox-97"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../graphics-protocol/#local-client">Local client</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../graphics-protocol/#remote-client">Remote client</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#querying-support-and-available-transmission-mediums">Querying support and available transmission mediums</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#display-images-on-screen">Display images on screen</a><input class="toctree-checkbox" id="toctree-checkbox-98" name="toctree-checkbox-98" role="switch" type="checkbox"/><label for="toctree-checkbox-98"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#controlling-displayed-image-layout">Controlling displayed image layout</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#deleting-images">Deleting images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#suppressing-responses-from-the-terminal">Suppressing responses from the terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#requesting-image-ids-from-the-terminal">Requesting image ids from the terminal</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#animation">Animation</a><input class="toctree-checkbox" id="toctree-checkbox-99" name="toctree-checkbox-99" role="switch" type="checkbox"/><label for="toctree-checkbox-99"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#transferring-animation-frame-data">Transferring animation frame data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#controlling-animations">Controlling animations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#composing-animation-frames">Composing animation frames</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#image-persistence-and-storage-quotas">Image persistence and storage quotas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#control-data-reference">Control data reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#interaction-with-other-terminal-actions">Interaction with other terminal actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../keyboard-protocol/">Comprehensive keyboard handling in terminals</a><input class="toctree-checkbox" id="toctree-checkbox-100" name="toctree-checkbox-100" role="switch" type="checkbox"/><label for="toctree-checkbox-100"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#quickstart">Quickstart</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#an-overview">An overview</a><input class="toctree-checkbox" id="toctree-checkbox-101" name="toctree-checkbox-101" role="switch" type="checkbox"/><label for="toctree-checkbox-101"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#key-codes">Key codes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#modifiers">Modifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#event-types">Event types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#text-as-code-points">Text as code points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#non-unicode-keys">Non-Unicode keys</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#progressive-enhancement">Progressive enhancement</a><input class="toctree-checkbox" id="toctree-checkbox-102" name="toctree-checkbox-102" role="switch" type="checkbox"/><label for="toctree-checkbox-102"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#disambiguate-escape-codes">Disambiguate escape codes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#report-event-types">Report event types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#report-alternate-keys">Report alternate keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#report-all-keys-as-escape-codes">Report all keys as escape codes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#report-associated-text">Report associated text</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#detection-of-support-for-this-protocol">Detection of support for this protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#legacy-key-event-encoding">Legacy key event encoding</a><input class="toctree-checkbox" id="toctree-checkbox-103" name="toctree-checkbox-103" role="switch" type="checkbox"/><label for="toctree-checkbox-103"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#legacy-functional-keys">Legacy functional keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#legacy-text-keys">Legacy text keys</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#functional-key-definitions">Functional key definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#legacy-ctrl-mapping-of-ascii-keys">Legacy <kbd class="kbd docutils literal notranslate">ctrl</kbd> mapping of ASCII keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#bugs-in-fixterms">Bugs in fixterms</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../file-transfer-protocol/">File transfer over the TTY</a><input class="toctree-checkbox" id="toctree-checkbox-104" name="toctree-checkbox-104" role="switch" type="checkbox"/><label for="toctree-checkbox-104"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#overall-design">Overall design</a><input class="toctree-checkbox" id="toctree-checkbox-105" name="toctree-checkbox-105" role="switch" type="checkbox"/><label for="toctree-checkbox-105"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#sending-files-to-the-computer-running-the-terminal-emulator">Sending files to the computer running the terminal emulator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#receiving-files-from-the-computer-running-terminal-emulator">Receiving files from the computer running terminal emulator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../file-transfer-protocol/#canceling-a-session">Canceling a session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../file-transfer-protocol/#quieting-responses-from-the-terminal">Quieting responses from the terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../file-transfer-protocol/#file-metadata">File metadata</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#symbolic-and-hard-links">Symbolic and hard links</a><input class="toctree-checkbox" id="toctree-checkbox-106" name="toctree-checkbox-106" role="switch" type="checkbox"/><label for="toctree-checkbox-106"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#sending-links-to-the-terminal-emulator">Sending links to the terminal emulator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#receiving-links-from-the-terminal-emulator">Receiving links from the terminal emulator</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#transmitting-binary-deltas">Transmitting binary deltas</a><input class="toctree-checkbox" id="toctree-checkbox-107" name="toctree-checkbox-107" role="switch" type="checkbox"/><label for="toctree-checkbox-107"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#sending-to-the-terminal-emulator">Sending to the terminal emulator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#receiving-from-the-terminal-emulator">Receiving from the terminal emulator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#the-format-of-signatures-and-deltas">The format of signatures and deltas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../file-transfer-protocol/#compression">Compression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../file-transfer-protocol/#bypassing-explicit-user-authorization">Bypassing explicit user authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../file-transfer-protocol/#encoding-of-transfer-commands-as-escape-codes">Encoding of transfer commands as escape codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../desktop-notifications/">Desktop notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unscroll/">Unscrolling the screen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../color-stack/">Saving and restoring colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deccara/">Setting text styles/colors in arbitrary regions of the screen</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <div class="section" id="shell-integration">
+<span id="id1"></span><h1>Shell integration<a class="headerlink" href="#shell-integration" title="Permalink to this headline">¶</a></h1>
+<p>kitty has the ability to integrate closely within common shells, such as <a class="reference external" href="https://www.zsh.org/">zsh</a>, <a class="reference external" href="https://fishshell.com">fish</a> and <a class="reference external" href="https://www.gnu.org/software/bash/">bash</a> to enable features such as jumping to
+previous prompts in the scrollback, viewing the output of the last command in
+<strong class="program">less</strong>, using the mouse to move the cursor while editing prompts, etc.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.24.0.</span></p>
+</div>
+</div>
+<div class="section" id="features">
+<h1>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Open the output of the last command in a pager such as <strong class="program">less</strong>
+(<a class="reference internal" href="../conf/#shortcut-kitty.Browse-output-of-the-last-shell-command-in-pager"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+g</span></code></a>)</p></li>
+<li><p>Jump to the previous/next prompt in the scrollback
+(<a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-previous-shell-prompt"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+z</span></code></a> /  <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-next-shell-prompt"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+x</span></code></a>)</p></li>
+<li><p>Click with the mouse anywhere in the current command to move the cursor there</p></li>
+<li><p>Hold <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd></kbd> and right-click on any command output in the scrollback
+to view it in a pager</p></li>
+<li><p>The current working directory or the command being executed are automatically
+displayed in the kitty window titlebar/tab title.</p></li>
+<li><p>The text cursor is changed to a bar when editing commands at the shell prompt</p></li>
+<li><p>Glitch free window resizing even with complex prompts. Achieved by erasing
+the prompt on resize and allowing the shell to redraw it cleanly.</p></li>
+<li><p>Sophisticated completion for the <strong class="program">kitty</strong> command in the shell.</p></li>
+<li><p>When confirming a quit command if a window is sitting at a shell prompt,
+it is optionally, not counted (see <a class="reference internal" href="../conf/#opt-kitty.confirm_os_window_close"><code class="xref std std-opt docutils literal notranslate"><span class="pre">confirm_os_window_close</span></code></a>)</p></li>
+</ul>
+</div>
+<div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>Shell integration is controlled by the <a class="reference internal" href="../conf/#opt-kitty.shell_integration"><code class="xref std std-opt docutils literal notranslate"><span class="pre">shell_integration</span></code></a> option. By
+default, all shell integration is enabled. Individual features can be turned
+off or it can be disabled entirely as well. The <a class="reference internal" href="../conf/#opt-kitty.shell_integration"><code class="xref std std-opt docutils literal notranslate"><span class="pre">shell_integration</span></code></a> option
+takes a space separated list of keywords:</p>
+<dl class="simple">
+<dt>disabled</dt><dd><p>Turn off all shell integration</p>
+</dd>
+<dt>no-rc</dt><dd><p>Do not modify the shell’s launch environment to enable integration. Useful if you prefer
+to <a class="reference internal" href="#manual-shell-integration"><span class="std std-ref">manually enable integration</span></a>.</p>
+</dd>
+<dt>no-cursor</dt><dd><p>Turn off changing of the text cursor to a bar when editing text</p>
+</dd>
+<dt>no-title</dt><dd><p>Turn off setting the kitty window/tab title based on shell state</p>
+</dd>
+<dt>no-prompt-mark</dt><dd><p>Turn off marking of prompts. This disables jumping to prompt, browsing
+output of last command and click to move cursor functionality.</p>
+</dd>
+<dt>no-complete</dt><dd><p>Turn off completion for the kitty command.</p>
+</dd>
+</dl>
+<div class="section" id="more-ways-to-browse-command-output">
+<h2>More ways to browse command output<a class="headerlink" href="#more-ways-to-browse-command-output" title="Permalink to this headline">¶</a></h2>
+<p>You can add further key and mouse bindings to browse the output of commands
+easily. For example to select the output of a command by right clicking the mouse
+on the output, define the following in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">right</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_select_command_output</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Now, when you right click on the output, the entire output is selected, ready
+to be copied.</p>
+<p>The feature to jump to previous prompts (
+<a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-previous-shell-prompt"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+z</span></code></a> and <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-next-shell-prompt"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+x</span></code></a>) and mouse
+actions (<a class="reference internal" href="../actions/#action-mouse-select-command-output"><span class="std std-ref">mouse_select_command_output</span></a> and <a class="reference internal" href="../actions/#action-mouse-show-command-output"><span class="std std-ref">mouse_show_command_output</span></a>) can
+be integrated with browsing command output as well. For example, define the
+following mapping in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f1</span><span class="w"> </span><span class="nf">show_last_visited_command_output</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Now, pressing <kbd class="kbd docutils literal notranslate">F1</kbd> will cause the output of the last jumped to command or
+the last mouse clicked command output to be opened in a pager for easy browsing.</p>
+<p>In addition, You can define shortcut to get the first command output on screen.
+For example, define the following in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f1</span><span class="w"> </span><span class="nf">show_first_command_output_on_screen</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Now, pressing <kbd class="kbd docutils literal notranslate">F1</kbd> will cause the output of the first command output on
+screen to be opened in a pager.</p>
+<p>You can also add shortcut to scroll to the last jumped position. For example,
+define the following in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f1</span><span class="w"> </span><span class="nf">scroll_to_prompt</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="how-it-works">
+<h1>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h1>
+<p>At startup, kitty detects if the shell you have configured (either system wide
+or in kitty.conf) is a supported shell. If so, kitty injects some shell specific
+code into the shell, to enable shell integration. How it does so varies for
+different shells.</p>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"/><label class="tab-label" for="tab-set--0-input--1">zsh</label><div class="tab-content docutils container">
+<p>For zsh, kitty sets the <code class="docutils literal notranslate"><span class="pre">ZDOTDIR</span></code> environment variable to make zsh load
+kitty’s <code class="file docutils literal notranslate"><span class="pre">.zshenv</span></code> which restores the original value of <code class="docutils literal notranslate"><span class="pre">ZDOTDIR</span></code>
+and sources the original <code class="file docutils literal notranslate"><span class="pre">.zshenv</span></code>. It then loads the shell integration code.
+The remainder of zsh’s startup process proceeds as normal.</p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"/><label class="tab-label" for="tab-set--0-input--2">bash</label><div class="tab-content docutils container">
+<p>For bash, kitty adds a couple of lines to the bottom of <code class="file docutils literal notranslate"><span class="pre">~/.bashrc</span></code>
+(in an atomic manner) to load the shell integration code.</p>
+</div>
+<input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio"/><label class="tab-label" for="tab-set--0-input--3">fish</label><div class="tab-content docutils container">
+<p>For fish, to make it automatically load the integration code provided by
+kitty, the integration script directory path is prepended to the
+<code class="code docutils literal notranslate"><span class="pre">XDG_DATA_DIRS</span></code> environment variable. This is only applied to the fish
+process and will be cleaned up by the integration script after startup. No files
+are added or modified.</p>
+</div>
+</div>
+<p>Then, when launching the shell, kitty sets the environment variable
+<span class="target" id="index-0"></span><a class="reference internal" href="../glossary/#envvar-KITTY_SHELL_INTEGRATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_SHELL_INTEGRATION</span></code></a> to the value of the <a class="reference internal" href="../conf/#opt-kitty.shell_integration"><code class="xref std std-opt docutils literal notranslate"><span class="pre">shell_integration</span></code></a>
+option. The shell integration code reads the environment variable, turns on the
+specified integration functionality and then unsets the variable so as to not
+pollute the system. This has the nice effect that the changes to the shell’s rc
+files become no-ops when running the shell in anything other than kitty itself.</p>
+<p>The actual shell integration code uses hooks provided by each shell to send
+special escape codes to kitty, to perform the various tasks. You can see the
+code used for each shell below:</p>
+<details>
+<summary>Click to toggle shell integration code</summary><div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"/><label class="tab-label" for="tab-set--1-input--1">zsh</label><div class="tab-content docutils container">
+<div class="highlight-zsh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/zsh</span>
+<span class="c1">#</span>
+<span class="c1"># Enables integration between zsh and kitty based on KITTY_SHELL_INTEGRATION.</span>
+<span class="c1"># The latter is set by kitty based on kitty.conf.</span>
+<span class="c1">#</span>
+<span class="c1"># This is an autoloadable function. It's invoked automatically in shells</span>
+<span class="c1"># directly spawned by kitty but not in any other shells. For example, running</span>
+<span class="c1"># `exec zsh`, `sudo -E zsh`, `tmux`, or plain `zsh` will create a shell where</span>
+<span class="c1"># kitty-integration won't automatically run. Zsh users who want integration with</span>
+<span class="c1"># kitty in all shells should add the following lines to their .zshrc:</span>
+<span class="c1">#</span>
+<span class="c1">#   if [[ -n $KITTY_INSTALLATION_DIR ]]; then</span>
+<span class="c1">#     export KITTY_SHELL_INTEGRATION="enabled"</span>
+<span class="c1">#     autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration</span>
+<span class="c1">#     kitty-integration</span>
+<span class="c1">#     unfunction kitty-integration</span>
+<span class="c1">#   fi</span>
+<span class="c1">#</span>
+<span class="c1"># Implementation note: We can assume that alias expansion is disabled in this</span>
+<span class="c1"># file, so no need to quote defensively. We still have to defensively prefix all</span>
+<span class="c1"># builtins with `builtin` to avoid accidentally invoking user-defined functions.</span>
+<span class="c1"># We avoid `function` reserved word as an additional defensive measure.</span>
+
+<span class="nb">builtin</span> emulate -L zsh -o no_warn_create_global
+
+<span class="o">[[</span> -o interactive <span class="o">]]</span>              <span class="o">||</span> <span class="nb">builtin</span> <span class="k">return</span> <span class="m">0</span>  <span class="c1"># non-interactive shell</span>
+<span class="o">[[</span> -n <span class="nv">$KITTY_SHELL_INTEGRATION</span> <span class="o">]]</span> <span class="o">||</span> <span class="nb">builtin</span> <span class="k">return</span> <span class="m">0</span>  <span class="c1"># integration disabled</span>
+<span class="o">((</span> ! $+_ksi_state <span class="o">))</span>              <span class="o">||</span> <span class="nb">builtin</span> <span class="k">return</span> <span class="m">0</span>  <span class="c1"># already initialized</span>
+
+<span class="c1"># 0: no OSC 133 [AC] marks have been written yet.</span>
+<span class="c1"># 1: the last written OSC 133 C has not been closed with D yet.</span>
+<span class="c1"># 2: none of the above.</span>
+<span class="nb">builtin</span> <span class="nb">typeset</span> -gi _ksi_state
+
+<span class="c1"># Asks kitty to print $@ to its STDOUT. This is for debugging.</span>
+_ksi_debug_print<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">builtin</span> <span class="nb">local</span> data saved
+    <span class="nv">saved</span><span class="o">=</span><span class="s2">"</span><span class="nv">$IFS</span><span class="s2">"</span>
+    <span class="nv">IFS</span><span class="o">=</span><span class="s2">" "</span>
+    <span class="nv">data</span><span class="o">=</span><span class="k">$(</span><span class="nb">command</span> base64 <span class="o">&lt;&lt;&lt;</span> <span class="s2">"</span><span class="nv">$*</span><span class="s2">"</span><span class="k">)</span> 
+    <span class="nv">IFS</span><span class="o">=</span><span class="s2">"</span><span class="nv">$saved</span><span class="s2">"</span>
+    <span class="nb">builtin</span> <span class="nb">printf</span> <span class="s1">'\eP@kitty-print|%s\e\\'</span> <span class="s2">"</span><span class="si">${</span><span class="nv">data</span><span class="p">//</span><span class="s1">$'\n'</span><span class="si">}</span><span class="s2">"</span>
+<span class="o">}</span>
+
+<span class="c1"># We defer initialization until precmd for several reasons:</span>
+<span class="c1">#</span>
+<span class="c1"># - Oh My Zsh and many other configs remove zle-line-init and</span>
+<span class="c1">#   zle-line-finish hooks when they initialize.</span>
+<span class="c1"># - By deferring initialization we allow user rc files to opt out from some</span>
+<span class="c1">#   parts of integration. For example, if a zshrc theme prints OSC 133</span>
+<span class="c1">#   marks, it can append " no-prompt-mark" to KITTY_SHELL_INTEGRATION during</span>
+<span class="c1">#   intialization to avoid redundant marks from our code.</span>
+<span class="nb">builtin</span> <span class="nb">typeset</span> -ag precmd_functions
+<span class="nv">precmd_functions</span><span class="o">+=(</span>_ksi_deferred_init<span class="o">)</span>
+
+_ksi_deferred_init<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">builtin</span> emulate -L zsh -o no_warn_create_global
+
+    <span class="c1"># Recognized options: no-cursor, no-title, no-prompt-mark, no-complete.</span>
+    <span class="nb">builtin</span> <span class="nb">local</span> -a opt
+    <span class="nv">opt</span><span class="o">=(</span><span class="si">${</span><span class="p">(s: :)KITTY_SHELL_INTEGRATION</span><span class="si">}</span><span class="o">)</span>
+    <span class="nb">unset</span> KITTY_SHELL_INTEGRATION
+
+    <span class="c1"># The directory where kitty-integration is located: /.../shell-integration/zsh.</span>
+    <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">self_dir</span><span class="o">=</span><span class="si">${</span><span class="nv">functions_source</span><span class="p">[_ksi_deferred_init]:</span><span class="nv">A</span><span class="p">:</span><span class="nv">h</span><span class="si">}</span>
+    <span class="c1"># The directory with _kitty. We store it in a directory of its own rather than</span>
+    <span class="c1"># in $self_dir because we are adding it to fpath and we don't want any other</span>
+    <span class="c1"># files to be accidentally autoloadable.</span>
+    <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">comp_dir</span><span class="o">=</span><span class="nv">$self_dir</span>/completions
+
+    <span class="c1"># Enable completions for `kitty` command.</span>
+    _ksi_debug_print <span class="s2">"</span><span class="nv">$self_dir</span><span class="s2">"</span> 
+    <span class="k">if</span> <span class="o">((</span> ! opt<span class="o">[(</span>Ie<span class="o">)</span>no-complete<span class="o">]</span> <span class="o">))</span> <span class="o">&amp;&amp;</span> <span class="o">[[</span> -r <span class="nv">$comp_dir</span>/_kitty <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="k">if</span> <span class="o">((</span> $+functions<span class="o">[</span>compdef<span class="o">]</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+            <span class="c1"># If compdef is defined, then either compinit has already run or it's</span>
+            <span class="c1"># a shim that records all calls for the purpose of replaying them after</span>
+            <span class="c1"># compinit. Either way we clobber the existing completion for kitty and</span>
+            <span class="c1"># install our own.</span>
+            <span class="nb">builtin</span> <span class="nb">unset</span> <span class="s2">"functions[_kitty]"</span>
+            <span class="nb">builtin</span> autoload -Uz -- <span class="nv">$comp_dir</span>/_kitty
+            compdef _kitty kitty
+        <span class="k">fi</span>
+
+        <span class="c1"># If compdef is not set, compinit has not run yet. In this case we must</span>
+        <span class="c1"># add our completions directory to fpath so that _kitty gets picked up by</span>
+        <span class="c1"># compinit.</span>
+        <span class="c1">#</span>
+        <span class="c1"># We extend fpath even if compinit has run because it might run again.</span>
+        <span class="c1"># Without our completions directory in fpath compinit would our _comp</span>
+        <span class="c1"># mapping.</span>
+        <span class="nb">builtin</span> <span class="nb">typeset</span> -ga fpath
+        <span class="nv">fpath</span><span class="o">=(</span><span class="nv">$comp_dir</span> <span class="si">${</span><span class="nv">fpath</span><span class="p">:#</span><span class="nv">$comp_dir</span><span class="si">}</span><span class="o">)</span>
+    <span class="k">fi</span>
+
+    <span class="c1"># Enable cursor shape changes depending on the current keymap.</span>
+    <span class="k">if</span> <span class="o">((</span> ! opt<span class="o">[(</span>Ie<span class="o">)</span>no-cursor<span class="o">]</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+        <span class="c1"># This implementation leaks blinking block cursor into external commands</span>
+        <span class="c1"># executed from zle. For example, users of fzf-based widgets may find</span>
+        <span class="c1"># themselves with a blinking block cursor within fzf.</span>
+        _ksi_zle_line_init _ksi_zle_line_finish _ksi_zle_keymap_select<span class="o">()</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="si">${</span><span class="nv">KEYMAP</span><span class="p">-</span><span class="si">}</span> <span class="k">in</span>
+                vicmd<span class="p">|</span>visual<span class="o">)</span> <span class="nb">builtin</span> print -n <span class="s1">'\e[1 q'</span><span class="p">;;</span>  <span class="c1"># blinking block cursor</span>
+                *<span class="o">)</span>            <span class="nb">builtin</span> print -n <span class="s1">'\e[5 q'</span><span class="p">;;</span>  <span class="c1"># blinking bar cursor</span>
+            <span class="k">esac</span>
+        <span class="o">}</span>
+    <span class="k">fi</span>
+
+    <span class="c1"># Enable semantic markup with OSC 133.</span>
+    <span class="k">if</span> <span class="o">((</span> ! opt<span class="o">[(</span>Ie<span class="o">)</span>no-prompt-mark<span class="o">]</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+        _ksi_precmd<span class="o">()</span> <span class="o">{</span>
+            <span class="nb">builtin</span> <span class="nb">local</span> -i <span class="nv">cmd_status</span><span class="o">=</span><span class="nv">$?</span>
+            <span class="nb">builtin</span> emulate -L zsh -o no_warn_create_global
+
+            <span class="c1"># Don't write OSC 133 D when our precmd handler is invoked from zle.</span>
+            <span class="c1"># Some plugins do that to update prompt on cd.</span>
+            <span class="k">if</span> ! <span class="nb">builtin</span> zle<span class="p">;</span> <span class="k">then</span>
+                <span class="c1"># This code works incorrectly in the presence of a precmd or chpwd</span>
+                <span class="c1"># hook that prints. For example, sindresorhus/pure prints an empty</span>
+                <span class="c1"># line on precmd and marlonrichert/zsh-snap prints $PWD on chpwd.</span>
+                <span class="c1"># We'll end up writing our OSC 133 D mark too late.</span>
+                <span class="c1">#</span>
+                <span class="c1"># Another failure mode is when the output of a command doesn't end</span>
+                <span class="c1"># with LF and prompst_sp is set (it is by default). In this case</span>
+                <span class="c1"># we'll incorrectly state that '%' from prompt_sp is a part of the</span>
+                <span class="c1"># command's output.</span>
+                <span class="k">if</span> <span class="o">((</span> <span class="nv">_ksi_state</span> <span class="o">==</span> <span class="m">1</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+                    <span class="c1"># The last written OSC 133 C has not been closed with D yet.</span>
+                    <span class="c1"># Close it and supply status.</span>
+                    <span class="nb">builtin</span> <span class="nb">printf</span> <span class="s1">'\e]133;D;%s\a'</span> <span class="nv">$cmd_status</span>
+                    <span class="o">((</span> <span class="nv">_ksi_state</span> <span class="o">=</span> <span class="m">2</span> <span class="o">))</span>
+                <span class="k">elif</span> <span class="o">((</span> <span class="nv">_ksi_state</span> <span class="o">==</span> <span class="m">2</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+                    <span class="c1"># There might be an unclosed OSC 133 C. Close that.</span>
+                    <span class="nb">builtin</span> print -n <span class="s1">'\e]133;D\a'</span>
+                <span class="k">fi</span>
+            <span class="k">fi</span>
+
+            <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">mark1</span><span class="o">=</span><span class="s1">$'%{\e]133;A\a%}'</span>
+            <span class="k">if</span> <span class="o">[[</span> -o prompt_percent <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+                <span class="nb">builtin</span> <span class="nb">typeset</span> -g precmd_functions
+                <span class="k">if</span> <span class="o">[[</span> <span class="si">${</span><span class="nv">precmd_functions</span><span class="p">[-1]</span><span class="si">}</span> <span class="o">==</span> _ksi_precmd <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+                    <span class="c1"># This is the best case for us: we can add our marks to PS1 and</span>
+                    <span class="c1"># PS2. This way our marks will be printed whenever zsh</span>
+                    <span class="c1"># redisplays prompt: on reset-prompt, on SIGWINCH, and on</span>
+                    <span class="c1"># SIGCHLD if notify is set. Themes that update prompt</span>
+                    <span class="c1"># asynchronously from a `zle -F` handler might still remove our</span>
+                    <span class="c1"># marks. Oh well.</span>
+                    <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">mark2</span><span class="o">=</span><span class="s1">$'%{\e]133;A;k=s\a%}'</span>
+                    <span class="c1"># Add marks conditionally to avoid a situation where we have</span>
+                    <span class="c1"># several marks in place. These conditions can have false</span>
+                    <span class="c1"># positives and false negatives though.</span>
+                    <span class="c1">#</span>
+                    <span class="c1"># - False positive (with prompt_percent): PS1="%(?.$mark1.)"</span>
+                    <span class="c1"># - False negative (with prompt_subst):   PS1='$mark1'</span>
+                    <span class="o">[[</span> <span class="nv">$PS1</span> <span class="o">==</span> *<span class="nv">$mark1</span>* <span class="o">]]</span> <span class="o">||</span> <span class="nv">PS1</span><span class="o">=</span><span class="si">${</span><span class="nv">mark1</span><span class="si">}${</span><span class="nv">PS1</span><span class="si">}</span>
+                    <span class="o">[[</span> <span class="nv">$PS2</span> <span class="o">==</span> *<span class="nv">$mark2</span>* <span class="o">]]</span> <span class="o">||</span> <span class="nv">PS2</span><span class="o">=</span><span class="si">${</span><span class="nv">mark2</span><span class="si">}${</span><span class="nv">PS2</span><span class="si">}</span>
+                    <span class="o">((</span> <span class="nv">_ksi_state</span> <span class="o">=</span> <span class="m">2</span> <span class="o">))</span>
+                <span class="k">else</span>
+                    <span class="c1"># If our precmd hook is not the last, we cannot rely on prompt</span>
+                    <span class="c1"># changes to stick, so we don't even try. At least we can move</span>
+                    <span class="c1"># our hook to the end to have better luck next time. If there is</span>
+                    <span class="c1"># another piece of code that wants to take this privileged</span>
+                    <span class="c1"># position, this won't work well. We'll break them as much as</span>
+                    <span class="c1"># they are breaking us.</span>
+                    <span class="nv">precmd_functions</span><span class="o">=(</span><span class="si">${</span><span class="nv">precmd_functions</span><span class="p">:#_ksi_precmd</span><span class="si">}</span> _ksi_precmd<span class="o">)</span>
+                    <span class="c1"># Plugins that invoke precmd hooks from zle do that before zle</span>
+                    <span class="c1"># is trashed. This means that the cursor is in the middle of</span>
+                    <span class="c1"># BUFFER and we cannot print our mark there. Prompt might</span>
+                    <span class="c1"># already have a mark, so the following reset-prompt will write</span>
+                    <span class="c1"># it. If it doesn't, there is nothing we can do.</span>
+                    <span class="k">if</span> ! <span class="nb">builtin</span> zle<span class="p">;</span> <span class="k">then</span>
+                        <span class="nb">builtin</span> print -rn -- <span class="nv">$mark1</span><span class="o">[</span><span class="m">3</span>,-3<span class="o">]</span>
+                        <span class="o">((</span> <span class="nv">_ksi_state</span> <span class="o">=</span> <span class="m">2</span> <span class="o">))</span>
+                    <span class="k">fi</span>
+                <span class="k">fi</span>
+            <span class="k">elif</span> ! <span class="nb">builtin</span> zle<span class="p">;</span> <span class="k">then</span>
+                <span class="c1"># Without prompt_percent we cannot patch prompt. Just print the</span>
+                <span class="c1"># mark, except when we are invoked from zle. In the latter case we</span>
+                <span class="c1"># cannot do anything.</span>
+                <span class="nb">builtin</span> print -rn -- <span class="nv">$mark1</span><span class="o">[</span><span class="m">3</span>,-3<span class="o">]</span>
+                <span class="o">((</span> <span class="nv">_ksi_state</span> <span class="o">=</span> <span class="m">2</span> <span class="o">))</span>
+            <span class="k">fi</span>
+        <span class="o">}</span>
+
+        _ksi_preexec<span class="o">()</span> <span class="o">{</span>
+            <span class="nb">builtin</span> emulate -L zsh -o no_warn_create_global
+
+            <span class="c1"># This can potentially break user prompt. Oh well. The robustness of</span>
+            <span class="c1"># this code can be improved in the case prompt_subst is set because</span>
+            <span class="c1"># it'll allow us distinguish (not perfectly but close enough) between</span>
+            <span class="c1"># our own prompt, user prompt, and our own prompt with user additions on</span>
+            <span class="c1"># top. We cannot force prompt_subst on the user though, so we would</span>
+            <span class="c1"># still need this code for the no_prompt_subst case.</span>
+            <span class="nv">PS1</span><span class="o">=</span><span class="si">${</span><span class="nv">PS1</span><span class="p">//</span><span class="s1">$'%{\e]133;A\a%}'</span><span class="si">}</span>
+            <span class="nv">PS2</span><span class="o">=</span><span class="si">${</span><span class="nv">PS2</span><span class="p">//</span><span class="s1">$'%{\e]133;A;k=s\a%}'</span><span class="si">}</span>
+
+            <span class="c1"># This will work incorrectly in the presence of a preexec hook that</span>
+            <span class="c1"># prints. For example, if MichaelAquilina/zsh-you-should-use installs</span>
+            <span class="c1"># its preexec hook before us, we'll incorrectly mark its output as</span>
+            <span class="c1"># belonging to the command (as if the user typed it into zle) rather</span>
+            <span class="c1"># than command output.</span>
+            <span class="nb">builtin</span> print -n <span class="s1">'\e]133;C\a'</span>
+            <span class="o">((</span> <span class="nv">_ksi_state</span> <span class="o">=</span> <span class="m">1</span> <span class="o">))</span>
+        <span class="o">}</span>
+
+        functions<span class="o">[</span>_ksi_zle_line_init<span class="o">]</span>+<span class="o">=</span><span class="s1">'</span>
+<span class="s1">            builtin print -n "\\e]133;B\\a"'</span>
+    <span class="k">fi</span>
+
+    <span class="c1"># Enable terminal title changes.</span>
+    <span class="k">if</span> <span class="o">((</span> ! opt<span class="o">[(</span>Ie<span class="o">)</span>no-title<span class="o">]</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+        <span class="c1"># We don't use `print -P` because it depends on prompt options, which</span>
+        <span class="c1"># we don't control and cannot change.</span>
+        <span class="c1">#</span>
+        <span class="c1"># We use (V) in preexec to convert control characters to something visible</span>
+        <span class="c1"># (LF becomes \n, etc.). This isn't necessary in precmd because (%) does it</span>
+        <span class="c1"># for us.</span>
+        functions<span class="o">[</span>_ksi_precmd<span class="o">]</span>+<span class="o">=</span><span class="s1">'</span>
+<span class="s1">            builtin printf "\\e]2;%s\\a" "${(%):-%(4~|…/%3~|%~)}"'</span>
+        functions<span class="o">[</span>_ksi_preexec<span class="o">]</span>+<span class="o">=</span><span class="s1">'</span>
+<span class="s1">            builtin printf "\\e]2;%s\\a" "${(V)1}"'</span>
+    <span class="k">fi</span>
+
+    <span class="c1"># Some zsh users manually run `source ~/.zshrc` in order to apply rc file</span>
+    <span class="c1"># changes to the current shell. This is a terrible practice that breaks many</span>
+    <span class="c1"># things, including our shell integration. For example, Oh My Zsh and Prezto</span>
+    <span class="c1"># (both very popular among zsh users) will remove zle-line-init and</span>
+    <span class="c1"># zle-line-finish hooks if .zshrc is manually sourced. Prezto will also remove</span>
+    <span class="c1"># zle-keymap-select.</span>
+    <span class="c1">#</span>
+    <span class="c1"># Another common (and much more robust) way to apply rc file changes to the</span>
+    <span class="c1"># current shell is `exec zsh`. This will remove our integration from the shell</span>
+    <span class="c1"># unless it's explicitly invoked from .zshrc. This is not an issue with</span>
+    <span class="c1"># `exec zsh` but rather with our implementation of automatic shell integration.</span>
+    <span class="nb">builtin</span> autoload -Uz add-zle-hook-widget
+    <span class="k">if</span> <span class="o">((</span> $+functions<span class="o">[</span>_ksi_zle_line_init<span class="o">]</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+        add-zle-hook-widget line-init _ksi_zle_line_init
+    <span class="k">fi</span>
+    <span class="k">if</span> <span class="o">((</span> $+functions<span class="o">[</span>_ksi_zle_line_finish<span class="o">]</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+        add-zle-hook-widget line-finish _ksi_zle_line_finish
+    <span class="k">fi</span>
+    <span class="k">if</span> <span class="o">((</span> $+functions<span class="o">[</span>_ksi_zle_keymap_select<span class="o">]</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+        add-zle-hook-widget keymap-select _ksi_zle_keymap_select
+    <span class="k">fi</span>
+
+    <span class="k">if</span> <span class="o">((</span> $+functions<span class="o">[</span>_ksi_preexec<span class="o">]</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">builtin</span> <span class="nb">typeset</span> -ag preexec_functions
+        <span class="nv">preexec_functions</span><span class="o">+=(</span>_ksi_preexec<span class="o">)</span>
+    <span class="k">fi</span>
+
+    <span class="nb">builtin</span> <span class="nb">typeset</span> -ag precmd_functions
+    <span class="k">if</span> <span class="o">((</span> $+functions<span class="o">[</span>_ksi_precmd<span class="o">]</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nv">precmd_functions</span><span class="o">=(</span><span class="si">${</span><span class="nv">precmd_functions</span><span class="p">:/_ksi_deferred_init/_ksi_precmd</span><span class="si">}</span><span class="o">)</span>
+        _ksi_precmd
+    <span class="k">else</span>
+        <span class="nv">precmd_functions</span><span class="o">=(</span><span class="si">${</span><span class="nv">precmd_functions</span><span class="p">:#_ksi_deferred_init</span><span class="si">}</span><span class="o">)</span>
+    <span class="k">fi</span>
+
+    <span class="c1"># Unfunction _ksi_deferred_init to save memory. Don't unfunction</span>
+    <span class="c1"># kitty-integration though because decent public functions aren't supposed to</span>
+    <span class="c1"># to unfunction themselves when invoked. Unfunctioning is done by calling code.</span>
+    <span class="nb">builtin</span> unfunction _ksi_deferred_init
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"/><label class="tab-label" for="tab-set--1-input--2">fish</label><div class="tab-content docutils container">
+<div class="highlight-fish notranslate"><div class="highlight"><pre><span></span><span class="c">#!/bin/fish</span>
+
+<span class="k">function</span> _ksi_main
+    <span class="k">test</span> -z <span class="s2">"</span><span class="nv">$KITTY_SHELL_INTEGRATION</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="k">return</span>
+    <span class="k">if</span> <span class="k">set</span> -q XDG_DATA_DIRS KITTY_FISH_XDG_DATA_DIR
+        <span class="k">set</span> --global --export --path XDG_DATA_DIRS <span class="s2">"</span><span class="nv">$XDG_DATA_DIRS</span><span class="s2">"</span>
+        <span class="k">if</span> <span class="k">set</span> -l index <span class="o">(</span><span class="nb">contains</span> -i <span class="s2">"</span><span class="nv">$KITTY_FISH_XDG_DATA_DIR</span><span class="s2">"</span> <span class="nv">$XDG_DATA_DIRS</span><span class="o">)</span>
+            <span class="k">set</span> --erase --global XDG_DATA_DIRS<span class="o">[</span><span class="nv">$index</span><span class="o">]</span>
+            <span class="k">test</span> -z <span class="s2">"</span><span class="nv">$XDG_DATA_DIRS</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="k">set</span> --erase --global XDG_DATA_DIRS
+        <span class="k">end</span>
+        <span class="k">if</span> <span class="k">set</span> -q XDG_DATA_DIRS
+            <span class="k">set</span> --global --export --unpath XDG_DATA_DIRS <span class="s2">"</span><span class="nv">$XDG_DATA_DIRS</span><span class="s2">"</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="k">set</span> --local _ksi <span class="o">(</span>string split <span class="s2">" "</span> -- <span class="s2">"</span><span class="nv">$KITTY_SHELL_INTEGRATION</span><span class="s2">"</span><span class="o">)</span>
+    <span class="k">set</span> --erase KITTY_SHELL_INTEGRATION
+    <span class="k">set</span> --erase KITTY_FISH_XDG_DATA_DIR
+
+    <span class="k">function</span> _ksi_osc
+        <span class="nb">printf</span> <span class="s2">"\e]%s\a"</span> <span class="s2">"</span><span class="nv">$argv</span><span class="s2">[1]"</span>
+    <span class="k">end</span>
+
+    <span class="k">if</span> <span class="k">not</span> <span class="nb">contains</span> <span class="s2">"no-complete"</span> <span class="nv">$_ksi</span>
+        <span class="k">function</span> _ksi_completions
+            <span class="k">set</span> --local ct <span class="o">(</span><span class="nb">commandline</span> --current-token<span class="o">)</span>
+            <span class="k">set</span> --local tokens <span class="o">(</span><span class="nb">commandline</span> --tokenize --cut-at-cursor --current-process<span class="o">)</span>
+            <span class="nb">printf</span> <span class="s2">"%s\n"</span> <span class="nv">$tokens</span> <span class="nv">$ct</span> <span class="o">|</span> kitty +complete fish2
+        <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="k">if</span> <span class="k">not</span> <span class="nb">contains</span> <span class="s2">"no-cursor"</span> <span class="nv">$_ksi</span>
+        <span class="k">function</span> _ksi_bar_cursor --on-event <span class="nb">fish_prompt</span>
+<span class="nb">            printf</span> <span class="s2">"\e[5 q"</span>
+        <span class="k">end</span>
+        <span class="k">function</span> _ksi_block_cursor --on-event fish_preexec
+            <span class="nb">printf</span> <span class="s2">"\e[2 q"</span>
+        <span class="k">end</span>
+        _ksi_bar_cursor
+    <span class="k">end</span>
+
+    <span class="k">if</span> <span class="k">not</span> <span class="nb">contains</span> <span class="s2">"no-title"</span> <span class="nv">$_ksi</span>
+        <span class="k">function</span> fish_title
+            <span class="k">if</span> <span class="k">set</span> -q argv<span class="o">[</span>1<span class="o">]</span>
+                <span class="k">echo</span> <span class="nv">$argv</span><span class="o">[</span>1<span class="o">]</span>
+            <span class="k">else</span>
+                prompt_pwd
+            <span class="k">end</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="k">if</span> <span class="k">not</span> <span class="nb">contains</span> <span class="s2">"no-prompt-mark"</span> <span class="nv">$_ksi</span>
+        <span class="k">set</span> --global _ksi_prompt_state <span class="s2">"first-run"</span>
+
+        <span class="k">function</span> _ksi_function_is_not_empty -d <span class="s2">"Check if the specified function exists and is not empty"</span>
+            <span class="nb">functions</span> <span class="nv">$argv</span><span class="o">[</span>1<span class="o">]</span> <span class="o">|</span> string match -qnvr <span class="s1">'^ *(#|function |end$|$)'</span>
+        <span class="k">end</span>
+
+        <span class="k">function</span> _ksi_mark -d <span class="s2">"tell kitty to mark the current cursor position using OSC 133"</span>
+            _ksi_osc <span class="s2">"133;</span><span class="nv">$argv</span><span class="s2">[1]"</span>
+        <span class="k">end</span>
+
+        <span class="k">function</span> _ksi_start_prompt
+            <span class="k">set</span> --local cmd_status <span class="s2">"</span><span class="nv">$status</span><span class="s2">"</span>
+            <span class="k">if</span> <span class="k">test</span> <span class="s2">"</span><span class="nv">$_ksi_prompt_state</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"postexec"</span> -a <span class="s2">"</span><span class="nv">$_ksi_prompt_state</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"first-run"</span>
+                _ksi_mark <span class="s2">"D"</span>
+            <span class="k">end</span>
+            <span class="k">set</span> --global _ksi_prompt_state <span class="s2">"prompt_start"</span>
+            _ksi_mark <span class="s2">"A"</span>
+            <span class="k">return</span> <span class="s2">"</span><span class="nv">$cmd_status</span><span class="s2">"</span> <span class="c"># preserve the value of $status</span>
+        <span class="k">end</span>
+
+        <span class="k">function</span> _ksi_end_prompt
+            <span class="k">set</span> --local cmd_status <span class="s2">"</span><span class="nv">$status</span><span class="s2">"</span>
+            <span class="c"># fish trims one trailing newline from the output of fish_prompt, so</span>
+            <span class="c"># we need to do the same. See https://github.com/kovidgoyal/kitty/issues/4032</span>
+            <span class="k">set</span> --local op <span class="o">(</span>_ksi_original_fish_prompt<span class="o">)</span> <span class="c"># op is an array because fish splits on newlines in command substitution</span>
+            <span class="k">if</span> <span class="k">set</span> -q op<span class="o">[</span>2<span class="o">]</span>
+                <span class="nb">printf</span> <span class="s1">'%s\n'</span> <span class="nv">$op</span><span class="o">[</span>1..-2<span class="o">]</span> <span class="c"># print all but last element of array, each followed by a new line</span>
+            <span class="k">end</span>
+            <span class="nb">printf</span> <span class="s1">'%s'</span> <span class="nv">$op</span><span class="o">[</span>-1<span class="o">]</span> <span class="c"># print the last component without a newline</span>
+            <span class="k">set</span> --global _ksi_prompt_state <span class="s2">"prompt_end"</span>
+            _ksi_mark <span class="s2">"B"</span>
+            <span class="k">return</span> <span class="s2">"</span><span class="nv">$cmd_status</span><span class="s2">"</span> <span class="c"># preserve the value of $status</span>
+        <span class="k">end</span>
+
+        <span class="nb">functions</span> -c <span class="nb">fish_prompt </span>_ksi_original_fish_prompt
+
+        <span class="k">if</span> _ksi_function_is_not_empty fish_mode_prompt
+            <span class="c"># see https://github.com/starship/starship/issues/1283</span>
+            <span class="c"># for why we have to test for a non-empty fish_mode_prompt</span>
+            <span class="nb">functions</span> -c fish_mode_prompt _ksi_original_fish_mode_prompt
+            <span class="k">function</span> fish_mode_prompt
+                _ksi_start_prompt
+                _ksi_original_fish_mode_prompt
+            <span class="k">end</span>
+            <span class="k">function</span> <span class="nb">fish_prompt</span>
+<span class="nb">                </span>_ksi_end_prompt
+            <span class="k">end</span>
+        <span class="k">else</span>
+            <span class="k">function</span> <span class="nb">fish_prompt</span>
+<span class="nb">                </span>_ksi_start_prompt
+                _ksi_end_prompt
+            <span class="k">end</span>
+        <span class="k">end</span>
+
+        <span class="k">function</span> _ksi_mark_output_start --on-event fish_preexec
+            <span class="k">set</span> --global _ksi_prompt_state <span class="s2">"preexec"</span>
+            _ksi_mark <span class="s2">"C"</span>
+        <span class="k">end</span>
+
+        <span class="k">function</span> _ksi_mark_output_end --on-event fish_postexec
+            <span class="k">set</span> --global _ksi_prompt_state <span class="s2">"postexec"</span>
+            _ksi_mark <span class="s2">"D;</span><span class="nv">$status</span><span class="s2">"</span>
+        <span class="k">end</span>
+        <span class="c"># with prompt marking kitty clears the current prompt on resize so we need</span>
+        <span class="c"># fish to redraw it</span>
+        <span class="k">set</span> --global fish_handle_reflow 1
+    <span class="k">end</span>
+    <span class="nb">functions</span> --erase _ksi_main
+    <span class="nb">functions</span> --erase _ksi_schedule
+<span class="k">end</span>
+
+<span class="k">if</span> <span class="nb">status</span> --is-interactive
+    <span class="k">function</span> _ksi_schedule --on-event <span class="nb">fish_prompt</span> -d <span class="s2">"Setup kitty integration after other scripts have run, we hope"</span>
+        _ksi_main
+    <span class="k">end</span>
+<span class="k">else</span>
+    <span class="nb">functions</span> --erase _ksi_main
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--1-input--3" name="tab-set--1" type="radio"/><label class="tab-label" for="tab-set--1-input--3">bash</label><div class="tab-content docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+_ksi_main<span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">[[</span> <span class="nv">$-</span> !<span class="o">=</span> *i* <span class="o">]]</span> <span class="p">;</span> <span class="k">then</span> <span class="k">return</span><span class="p">;</span> <span class="k">fi</span>  <span class="c1"># check in interactive mode</span>
+    <span class="k">if</span> <span class="o">[[</span> -z <span class="s2">"</span><span class="nv">$KITTY_SHELL_INTEGRATION</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> <span class="k">return</span><span class="p">;</span> <span class="k">fi</span>
+    <span class="nb">declare</span> -A <span class="nv">_ksi_prompt</span><span class="o">=(</span> <span class="o">[</span>cursor<span class="o">]=</span><span class="s1">'y'</span> <span class="o">[</span>title<span class="o">]=</span><span class="s1">'y'</span> <span class="o">[</span>mark<span class="o">]=</span><span class="s1">'y'</span> <span class="o">[</span>complete<span class="o">]=</span><span class="s1">'y'</span> <span class="o">)</span>
+    <span class="nb">set</span> -f
+    <span class="k">for</span> i <span class="k">in</span> <span class="si">${</span><span class="nv">KITTY_SHELL_INTEGRATION</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+        <span class="nb">set</span> +f
+        <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"no-cursor"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> _ksi_prompt<span class="o">[</span>cursor<span class="o">]=</span><span class="s1">'n'</span><span class="p">;</span> <span class="k">fi</span>
+        <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"no-title"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> _ksi_prompt<span class="o">[</span>title<span class="o">]=</span><span class="s1">'n'</span><span class="p">;</span> <span class="k">fi</span>
+        <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"no-prompt-mark"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> _ksi_prompt<span class="o">[</span>mark<span class="o">]=</span><span class="s1">'n'</span><span class="p">;</span> <span class="k">fi</span>
+        <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"no-complete"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> _ksi_prompt<span class="o">[</span>complete<span class="o">]=</span><span class="s1">'n'</span><span class="p">;</span> <span class="k">fi</span>
+    <span class="k">done</span>
+    <span class="nb">set</span> +f
+
+    <span class="nb">unset</span> KITTY_SHELL_INTEGRATION
+
+    _ksi_debug_print<span class="o">()</span> <span class="o">{</span>
+        <span class="c1"># print a line to STDOUT of parent kitty process</span>
+        <span class="nb">local</span> <span class="nv">b</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span> <span class="s2">"%s\n"</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="p">|</span> base64 <span class="p">|</span> tr -d <span class="se">\\</span>n<span class="k">)</span>
+        <span class="nb">printf</span> <span class="s2">"\eP@kitty-print|%s\e\\"</span> <span class="s2">"</span><span class="nv">$b</span><span class="s2">"</span> 
+        <span class="c1"># "</span>
+    <span class="o">}</span>
+
+    <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[cursor]</span><span class="si">}</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"y"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
+        <span class="nv">PS1</span><span class="o">=</span><span class="s2">"\[\e[5 q\]</span><span class="nv">$PS1</span><span class="s2">"</span>  <span class="c1"># blinking bar cursor</span>
+        <span class="nv">PS0</span><span class="o">=</span><span class="s2">"\[\e[1 q\]</span><span class="nv">$PS0</span><span class="s2">"</span>  <span class="c1"># blinking block cursor</span>
+    <span class="k">fi</span>
+
+    <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[title]</span><span class="si">}</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"y"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
+        <span class="c1"># see https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html#Controlling-the-Prompt</span>
+        <span class="nv">PS1</span><span class="o">=</span><span class="s2">"\[\e]2;\w\a\]</span><span class="nv">$PS1</span><span class="s2">"</span>
+        <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$HISTCONTROL</span><span class="s2">"</span> <span class="o">==</span> *<span class="s2">"ignoreboth"</span>* <span class="o">]]</span> <span class="o">||</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$HISTCONTROL</span><span class="s2">"</span> <span class="o">==</span> *<span class="s2">"ignorespace"</span>* <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            _ksi_debug_print <span class="s2">"ignoreboth or ignorespace present in bash HISTCONTROL setting, showing running command in window title will not be robust"</span>
+        <span class="k">fi</span>
+        <span class="nb">local</span> <span class="nv">orig_ps0</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PS0</span><span class="s2">"</span>
+        <span class="nv">PS0</span><span class="o">=</span><span class="s1">'$(printf "\e]2;%s\a" "$(HISTTIMEFORMAT= history 1 | sed -e "s/^[ ]*[0-9]*[ ]*//")")'</span>
+        <span class="nv">PS0</span><span class="o">+=</span><span class="s2">"</span><span class="nv">$orig_ps0</span><span class="s2">"</span>
+    <span class="k">fi</span>
+
+    <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[mark]</span><span class="si">}</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"y"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
+        <span class="c1"># bash does not redraw the leading lines in a multiline prompt so</span>
+        <span class="c1"># mark them as secondary prompts</span>
+        <span class="nb">local</span> <span class="nv">secondary_prompt</span><span class="o">=</span><span class="s2">"\n\[\e]133;A;k=s\a\]"</span>
+        <span class="nv">PS1</span><span class="o">=</span><span class="si">${</span><span class="nv">PS1</span><span class="p">//</span><span class="s2">"\n"</span><span class="p">/</span><span class="s2">"</span><span class="nv">$secondary_prompt</span><span class="s2">"</span><span class="si">}</span>
+        <span class="nv">PS1</span><span class="o">=</span><span class="s2">"\[\e]133;A\a\]</span><span class="nv">$PS1</span><span class="s2">"</span>
+        <span class="nv">PS2</span><span class="o">=</span><span class="s2">"\[\e]133;A;k=s\a\]</span><span class="nv">$PS2</span><span class="s2">"</span>
+        <span class="nv">PS0</span><span class="o">=</span><span class="s2">"\[\e]133;C\a\]</span><span class="nv">$PS0</span><span class="s2">"</span>
+    <span class="k">fi</span>
+
+    <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[complete]</span><span class="si">}</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"y"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
+        _ksi_completions<span class="o">()</span> <span class="o">{</span>
+            <span class="nb">local</span> src
+            <span class="nb">local</span> limit
+            <span class="c1"># Send all words up to the word the cursor is currently on</span>
+            <span class="nb">let</span> <span class="nv">limit</span><span class="o">=</span><span class="m">1</span>+<span class="nv">$COMP_CWORD</span>
+            <span class="nv">src</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span> <span class="s2">"%s\n"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">COMP_WORDS</span><span class="p">[@]: 0:</span><span class="nv">$limit</span><span class="si">}</span><span class="s2">"</span> <span class="p">|</span> kitty +complete bash<span class="k">)</span>
+            <span class="k">if</span> <span class="o">[[</span> <span class="nv">$?</span> <span class="o">==</span> <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+                <span class="nb">eval</span> <span class="si">${</span><span class="nv">src</span><span class="si">}</span>
+            <span class="k">fi</span>
+        <span class="o">}</span>
+        <span class="nb">complete</span> -o nospace -F _ksi_completions kitty
+    <span class="k">fi</span>
+<span class="o">}</span>
+_ksi_main
+</pre></div>
+</div>
+</div>
+</div>
+</details></div>
+<div class="section" id="manual-shell-integration">
+<span id="id2"></span><h1>Manual shell integration<a class="headerlink" href="#manual-shell-integration" title="Permalink to this headline">¶</a></h1>
+<p>The automatic shell integration is designed to be minimally intrusive, as such
+it wont work for sub-shells, terminal multiplexers, containers, remote systems, etc.
+For such systems, you should setup manual shell integration by adding some code
+to your shells startup files to load the shell integration script.</p>
+<p>First, in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> set:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">shell_integration</span><span class="w"> </span><span class="s">disabled</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Then in your shell’s rc file, add the lines:</p>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"/><label class="tab-label" for="tab-set--2-input--1">bash</label><div class="tab-content docutils container">
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">test</span> -n <span class="s2">"</span><span class="nv">$KITTY_INSTALLATION_DIR</span><span class="s2">"</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">export</span> <span class="nv">KITTY_SHELL_INTEGRATION</span><span class="o">=</span><span class="s2">"enabled"</span>
+    <span class="nb">source</span> <span class="s2">"</span><span class="nv">$KITTY_INSTALLATION_DIR</span><span class="s2">/shell-integration/bash/kitty.bash"</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"/><label class="tab-label" for="tab-set--2-input--2">zsh</label><div class="tab-content docutils container">
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">test</span> -n <span class="s2">"</span><span class="nv">$KITTY_INSTALLATION_DIR</span><span class="s2">"</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">export</span> <span class="nv">KITTY_SHELL_INTEGRATION</span><span class="o">=</span><span class="s2">"enabled"</span>
+    autoload -Uz -- <span class="s2">"</span><span class="nv">$KITTY_INSTALLATION_DIR</span><span class="s2">"</span>/shell-integration/zsh/kitty-integration
+    kitty-integration
+    unfunction kitty-integration
+<span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--2-input--3" name="tab-set--2" type="radio"/><label class="tab-label" for="tab-set--2-input--3">fish</label><div class="tab-content docutils container">
+<div class="highlight-fish notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="k">set</span> -q KITTY_INSTALLATION_DIR
+    <span class="k">set</span> --global KITTY_SHELL_INTEGRATION enabled
+    <span class="nb">source</span> <span class="s2">"</span><span class="nv">$KITTY_INSTALLATION_DIR</span><span class="s2">/shell-integration/fish/vendor_conf.d/kitty-shell-integration.fish"</span>
+    <span class="k">set</span> --prepend fish_complete_path <span class="s2">"</span><span class="nv">$KITTY_INSTALLATION_DIR</span><span class="s2">/shell-integration/fish/vendor_completions.d"</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The value of <span class="target" id="index-1"></span><a class="reference internal" href="../glossary/#envvar-KITTY_SHELL_INTEGRATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_SHELL_INTEGRATION</span></code></a> is the same as that for
+<a class="reference internal" href="../conf/#opt-kitty.shell_integration"><code class="xref std std-opt docutils literal notranslate"><span class="pre">shell_integration</span></code></a>, except if you want to disable shell integration
+completely, in which case simply do not set the
+<span class="target" id="index-2"></span><a class="reference internal" href="../glossary/#envvar-KITTY_SHELL_INTEGRATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_SHELL_INTEGRATION</span></code></a> variable at all.</p>
+<p>If you want this to work while SSHing into a remote system, then you will
+need to add some code to the snippets above to check if <code class="code docutils literal notranslate"><span class="pre">KITTY_INSTALLATION_DIR</span></code>
+is empty and if so to set it to some hard coded location with the shell
+integration scripts that need to be copied onto the remote system.</p>
+</div>
+<div class="section" id="notes-for-shell-developers">
+<h1>Notes for shell developers<a class="headerlink" href="#notes-for-shell-developers" title="Permalink to this headline">¶</a></h1>
+<p>The protocol used for marking the prompt is very simple. You should consider
+adding it to your shell as a builtin. Many modern terminals make use of it, for
+example: kitty, iTerm2, WezTerm, DomTerm</p>
+<p>Just before starting to draw the PS1 prompt send the escape code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">OSC</span><span class="o">&gt;</span><span class="mi">133</span><span class="p">;</span><span class="n">A</span><span class="o">&lt;</span><span class="n">ST</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Just before starting to draw the PS2 prompt send the escape code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">OSC</span><span class="o">&gt;</span><span class="mi">133</span><span class="p">;</span><span class="n">A</span><span class="p">;</span><span class="n">k</span><span class="o">=</span><span class="n">s</span><span class="o">&lt;</span><span class="n">ST</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Just before running a command/program, send the escape code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">OSC</span><span class="o">&gt;</span><span class="mi">133</span><span class="p">;</span><span class="n">C</span><span class="o">&lt;</span><span class="n">ST</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">&lt;OSC&gt;</span></code> is the bytes <code class="docutils literal notranslate"><span class="pre">0x1b</span> <span class="pre">0x5d</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;ST&gt;</span></code> is the bytes <code class="docutils literal notranslate"><span class="pre">0x1b</span>
+<span class="pre">0x5c</span></code>. This is exactly what is needed for shell integration in kitty. For the
+full protocol, that also marks the command region, see <a class="reference external" href="https://iterm2.com/documentation-escape-codes.html">the iTerm2 docs</a>.</p>
+</div>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../marks/">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Mark text on screen</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../open_actions/">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Scripting the mouse click</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2022, Kovid Goyal |
+          Created using <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Shell integration</a></li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#more-ways-to-browse-command-output">More ways to browse command output</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li><a class="reference internal" href="#manual-shell-integration">Manual shell integration</a></li>
+<li><a class="reference internal" href="#notes-for-shell-developers">Notes for shell developers</a></li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script src="../_static/custom.js"></script>
+    </body>
+</html>

@@ -32,7 +32,7 @@ Glossary
       top of an existing kitty window, entirely covering it. Overlays are used
       throught kitty, for example, to display the :ref:`the scrollback buffer <scrollback>`,
       to display :doc:`hints </kittens/hints>`, for :doc:`unicode input
-      </kittens/unicode-input>` etc.
+      </kittens/unicode_input>` etc.
 
    hyperlinks
       Terminals can have hyperlinks, just like the internet. In kitty you can
@@ -52,6 +52,10 @@ Variables that influence kitty behavior
    files. Defaults to :file:`~/.config/kitty`. For full details of the config
    directory lookup mechanism see, :option:`kitty --config`.
 
+.. envvar:: KITTY_CACHE_DIRECTORY
+
+   Controls where kitty stores cache files. Defaults to :file:`~/.cache/kitty`
+   or :file:`~/Library/Caches/kitty` on macOS.
 
 .. envvar:: VISUAL
 
@@ -62,6 +66,17 @@ Variables that influence kitty behavior
 .. envvar:: EDITOR
 
    Same as :envvar:`VISUAL`. Used if :envvar:`VISUAL` is not set.
+
+.. envvar:: GLFW_IM_MODULE
+
+   Set this to ``ibus`` to enable support for IME under X11.
+
+.. envvar:: KITTY_WAYLAND_DETECT_MODIFIERS
+
+   When set to a non-empty value, kitty attempts to autodiscover XKB modifiers
+   under Wayland. This is useful if using non-standard modifers like hyper. It
+   is possible for the autodiscovery to fail; the default Wayland XKB mappings
+   are used in this case. See :pull:`3943` for details.
 
 
 Variables that kitty sets when running child programs
@@ -101,6 +116,11 @@ Variables that kitty sets when running child programs
    Path to a directory containing the kitty terminfo database.
 
 
+.. envvar:: KITTY_INSTALLATION_DIR
+
+   Path to the kitty installation directory.
+
+
 .. envvar:: COLORTERM
 
    Set to the value ``truecolor`` to indicate that kitty supports 16 million
@@ -133,3 +153,9 @@ Variables that kitty sets when running child programs
 
    Set with the values of some common kitty options when running
    kittens, so kittens can use them without needing to load kitty.conf.
+
+
+.. envvar:: KITTY_SHELL_INTEGRATION
+
+   Set when enabling :ref:`shell_integration`. It is automatically removed by
+   the shell integration scripts.

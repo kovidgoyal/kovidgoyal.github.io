@@ -51,6 +51,9 @@ type it each time::
 
     alias ssh="kitty +kitten ssh"
 
+Remember to also setup :ref:`shell_integration` for completion and other
+niceties.
+
 If for some reason that does not work (typically because the server is using a
 non POSIX compliant shell as ``/bin/sh``), you can try using it with ``python``
 instead::
@@ -124,9 +127,7 @@ to choose a new color theme. Simply run::
 
 And choose your theme from the list.
 
-Additionally, You can use the
-`OSC terminal escape codes <https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h3-Operating-System-Commands>`_
-to set colors or you can define keyboard shortcuts to set colors, for example::
+You can also define keyboard shortcuts to set colors, for example::
 
     map f1 set_colors --configured /path/to/some/config/file/colors.conf
 
@@ -134,10 +135,9 @@ Or you can enable :doc:`remote control <remote-control>` for |kitty| and use :re
 The shortcut mapping technique has the same syntax as the remote control
 command, for details, see :ref:`at_set-colors`.
 
-A list of pre-made color themes for kitty is available at:
-`kitty-themes <https://github.com/dexpota/kitty-themes>`_
-
-Examples of using OSC escape codes to set colors::
+Additionally, You can use the
+`OSC terminal escape codes <https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h3-Operating-System-Commands>`_
+to set colors. Examples of using OSC escape codes to set colors::
 
     Change the default foreground color:
     printf '\x1b]10;#ff0000\x1b\\'
@@ -192,12 +192,21 @@ If you do want to cat unknown data, use ``cat -v``.
 kitty is not able to use my favorite font?
 ---------------------------------------------
 
-|kitty| achieves its stellar performance by caching alpha masks of each rendered
-character on the GPU, so that every character needs to be rendered only once.
-This means it is a strictly character cell based display.  As such it can use
-only monospace fonts, since every cell in the grid has to be the same size.
+|kitty| achieves its stellar performance by caching alpha masks of each
+rendered character on the GPU, and rendering them all in parallel. This means
+it is a strictly character cell based display. As such it can use only
+monospace fonts, since every cell in the grid has to be the same size.
 Furthermore, it needs fonts to be freely resizable, so it does not support
 bitmapped fonts.
+
+.. note::
+   If you are trying to use a font patched with NERD font symbols, dont do that
+   as patching destroys fonts. There is no need, simply install the standalone
+   NERD font, kitty should pick up symbols from it automatically, and you can
+   tell it to do so explicitly in case it doesnt with the :opt:`symbol_map`
+   directive::
+
+        symbol_map U+23FB-U+23FE,U+2B58,U+E200-U+E2A9,U+E0A0-U+E0A3,U+E0B0-U+E0BF,U+E0C0-U+E0C8,U+E0CC-U+E0CF,U+E0D0-U+E0D2,U+E0D4,U+E700-U+E7C5,U+F000-U+F2E0,U+2665,U+26A1,U+F400-U+F4A8,U+F67C,U+E000-U+E00A,U+F300-U+F313,U+E5FA-U+E62B Symbols Nerd Font
 
 If your font is not listed in ``kitty list-fonts`` it means that it is not
 monospace or is a bitmapped font. On Linux you can list all monospace fonts with::
@@ -239,6 +248,37 @@ terminal) in different environments,
 see `here <https://github.com/kovidgoyal/kitty/issues/45>`_.
 
 
+I do not like the kitty icon!
+-------------------------------
+
+There are many alternate icons available, click on an icon to visit its
+homepage:
+
+.. image:: https://github.com/k0nserv/kitty-icon/raw/main/icon_512x512.png
+   :target: https://github.com/k0nserv/kitty-icon
+   :width: 256
+
+.. image:: https://github.com/DinkDonk/kitty-icon/raw/main/kitty-dark.png
+   :target: https://github.com/DinkDonk/kitty-icon
+   :width: 256
+
+.. image:: https://github.com/DinkDonk/kitty-icon/raw/main/kitty-light.png
+   :target: https://github.com/DinkDonk/kitty-icon
+   :width: 256
+
+.. image:: https://github.com/hristost/kitty-alternative-icon/raw/main/kitty_icon.png
+   :target: https://github.com/hristost/kitty-alternative-icon
+   :width: 256
+
+On macOS you can change the icon by following the steps:
+
+#. Find :file:`kitty.app` in the Applications folder, select it and press :kbd:`⌘+i`
+#. Drag :file:`kitty.icns` onto the application icon in the kitty info pane
+#. Delete the icon cache and restart Dock::
+
+    $ rm /var/folders/*/*/*/com.apple.dock.iconcache; killall Dock
+
+
 How do I map key presses in kitty to different keys in the terminal program?
 --------------------------------------------------------------------------------------
 
@@ -260,7 +300,7 @@ How do I open a new window or tab with the same working directory as the current
 In :file:`kitty.conf` add the following::
 
     map f1 launch --cwd=current
-    map f2  launch --cwd=current --type=tab
+    map f2 launch --cwd=current --type=tab
 
 Pressing :kbd:`F1` will open a new kitty window with the same working directory
 as the current window. The :doc:`launch command <launch>` is very powerful,
@@ -305,6 +345,9 @@ If you still want to use tmux, read on.
 
 Image display will not work, see `tmux issue
 <https://github.com/tmux/tmux/issues/1391>`_.
+
+Using ancient versions of tmux such as 1.8 will
+cause gibberish on screen when pressing keys (:iss:`3541`).
 
 If you are using tmux with multiple terminals or you start it under one
 terminal and then switch to another and these terminals have different TERM
@@ -352,3 +395,28 @@ remaining used memory can be investigated using valgrind again, and it will
 come from arenas in the GPU drivers and the per thread arenas glibc's malloc
 maintains. These too allocate memory in large blocks and dont release it back
 to the OS immediately.
+
+Why does kitty sometimes start slowly on my Linux system?
+-------------------------------------------------------------------------------------------
+
+|kitty| takes no longer (within 100ms) to start than other similar GPU terminal
+emulators, (and may be faster than some). If |kitty| occasionally takes a long
+time to start, it could be a power management issue with the graphics card. On
+a multi-GPU system (which many modern laptops are, having a power efficient GPU
+that's built into the processor and a power hungry dedicated one that's usually
+off), even if the answer of the GPU will only be "don't use me".
+
+For example, if you have a system with an AMD CPU and an NVIDIA GPU, and you
+know that you want to use the lower powered card to save battery life and
+because kitty does not require a powerful GPU to function, you can choose not
+to wake up the dedicated card, which has been reported on at least one system
+(:iss:`4292`) to take ≈2 seconds, by running |kitty| as::
+
+    MESA_LOADER_DRIVER_OVERRIDE=radeonsi __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json kitty
+
+The correct command will depend on your situation and hardware.
+``__EGL_VENDOR_LIBRARY_FILENAMES`` instructs the GL dispatch library to use
+:file:`libEGL_mesa.so` and ignore :file:`libEGL_nvidia.so` also available on the
+system, which will wake the NVIDIA card during device enumeration.
+``MESA_LOADER_DRIVER_OVERRIDE`` also assures that Mesa won't offer any NVIDIA
+card during enumeration, and will instead just use `/lib/dri/radeonsi_dri.so`.

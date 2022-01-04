@@ -22,9 +22,9 @@ ______________________________
 
     Where to launch the child process, in a new kitty window in the current tab, a new tab, or a new OS window or an overlay over the current window. Note that if the current window already has an overlay, then it will open a new window. The value of background means the process will be run in the background. The values clipboard and primary are meant to work with :option:`launch --stdin-source` to copy data to the system clipboard or primary selection.
     Default: :code:`window`
-    Choices: :code:`background, clipboard, os-window, overlay, primary, tab, window`
+    Choices: :code:`background`, :code:`clipboard`, :code:`os-window`, :code:`overlay`, :code:`primary`, :code:`tab`, :code:`window`
 
-.. option:: --keep-focus
+.. option:: --dont-take-focus, --keep-focus
 
     Keep the focus on the currently active window instead of switching to the newly opened window.
 
@@ -34,7 +34,7 @@ ______________________________
 
 .. option:: --env <ENV>
 
-    Environment variables to set in the child process. Can be specified multiple times to set different environment variables. Syntax: :italic:`name=value`.
+    Environment variables to set in the child process. Can be specified multiple times to set different environment variables.  Syntax: :code:`name=value`. Using :code:`name=` will set to empty string and just :code:`name` will remove the environment variable.
 
 .. option:: --copy-colors
 
@@ -52,7 +52,7 @@ ______________________________
 
     Where to place the newly created window when it is added to a tab which already has existing windows in it. :code:`after` and :code:`before` place the new window before or after the active window. :code:`neighbor` is a synonym for :code:`after`. Also applies to creating a new tab, where the value of :code:`after` will cause the new tab to be placed next to the current tab instead of at the end. The values of :code:`vsplit` and :code:`hsplit` are only used by the :code:`splits` layout and control if the new window is placed in a vertical or horizontal split with the currently active window. The default is to place the window in a layout dependent manner, typically, after the currently active window.
     Default: :code:`default`
-    Choices: :code:`after, before, default, first, hsplit, last, neighbor, vsplit`
+    Choices: :code:`after`, :code:`before`, :code:`default`, :code:`first`, :code:`hsplit`, :code:`last`, :code:`neighbor`, :code:`vsplit`
 
 .. option:: --allow-remote-control
 
@@ -60,9 +60,9 @@ ______________________________
 
 .. option:: --stdin-source <STDIN_SOURCE>
 
-    Pass the screen contents as :code:`STDIN` to the child process. :code:`@selection` is the currently selected text. :code:`@screen` is the contents of the currently active window. :code:`@screen_scrollback` is the same as :code:`@screen`, but includes the scrollback buffer as well. :code:`@alternate` is the secondary screen of the current active window. For example if you run a full screen terminal application, the secondary screen will be the screen you return to when quitting the application.
+    Pass the screen contents as :code:`STDIN` to the child process. :code:`@selection` is the currently selected text. :code:`@screen` is the contents of the currently active window. :code:`@screen_scrollback` is the same as :code:`@screen`, but includes the scrollback buffer as well. :code:`@alternate` is the secondary screen of the current active window. For example if you run a full screen terminal application, the secondary screen will be the screen you return to when quitting the application. :code:`@first_cmd_output_on_screen` is the output from the first command run in the shell on screen, :code:`@last_cmd_output` is the output from the last command run in the shell, :code:`@last_visited_cmd_output` is the first output below the last scrolled position via scroll_to_prompt, this three needs :ref:`shell_integration` to work.
     Default: :code:`none`
-    Choices: :code:`@alternate, @alternate_scrollback, @screen, @screen_scrollback, @selection, none`
+    Choices: :code:`@alternate`, :code:`@alternate_scrollback`, :code:`@first_cmd_output_on_screen`, :code:`@last_cmd_output`, :code:`@last_visited_cmd_output`, :code:`@screen`, :code:`@screen_scrollback`, :code:`@selection`, :code:`none`
 
 .. option:: --stdin-add-formatting
 
@@ -84,10 +84,27 @@ ______________________________
 
     Set the WM_NAME property on X11 for the newly created OS Window when using :option:`launch --type`:code:`=os-window`. Defaults to :option:`launch --os-window-class`.
 
+.. option:: --os-window-title <OS_WINDOW_TITLE>
+
+    Set the title for the newly created OS window. This title will override any titles set by programs running in kitty.
+
+.. option:: --logo <LOGO>
+
+    Path to a PNG image to use as the logo for the newly created window. See :opt:`window_logo_path`.
+
+.. option:: --logo-position <LOGO_POSITION>
+
+    The position for the window logo. Only takes effect if :option:`--logo` is specified. See :opt:`window_logo_position`.
+
+.. option:: --logo-alpha <LOGO_ALPHA>
+
+    The amount the window logo should be faded into the background. Only takes effect if :option:`--logo` is specified. See :opt:`window_logo_position`.
+    Default: :code:`-1`
+
 .. option:: --color <COLOR>
 
     Change colors in the newly launched window. You can either specify a path to a .conf file with the same syntax as kitty.conf to read the colors from, or specify them individually, for example: ``--color background=white`` ``--color foreground=red``
 
 .. option:: --watcher <WATCHER>, -w <WATCHER>
 
-    Path to a python file. Appropriately named functions in this file will be called for various events, such as when the window is resized, focused or closed. See the section on watchers in the launch command documentation :doc:`launch`. Relative paths are resolved relative to the kitty config directory.
+    Path to a python file. Appropriately named functions in this file will be called for various events, such as when the window is resized, focused or closed. See the section on watchers in the launch command documentation: :ref:`watchers`. Relative paths are resolved relative to the kitty config directory. Global watchers for all windows can be specified with :opt:`watcher`.

@@ -38,6 +38,18 @@ To pass the contents of the current screen and scrollback to the started process
 
 There are many more powerful options, refer to the complete list below.
 
+.. note::
+    To avoid duplicating launch actions with frequently used parameters, you can
+    use :opt:`action_alias` to define launch action aliases. For example::
+
+        action_alias launch_tab launch --cwd=current --type=tab
+        map f1 launch_tab vim
+        map f2 launch_tab emacs
+
+    The :kbd:`F1` key will now open vim in a new tab with the current windows
+    working directory
+
+
 The piping environment
 --------------------------
 
@@ -89,6 +101,8 @@ For example::
     map f1 launch my-program @active-kitty-window-id
 
 
+.. _watchers:
+
 Watching launched windows
 ---------------------------
 
@@ -103,7 +117,7 @@ functions for the events you are interested in, for example:
         # Here data will contain old_geometry and new_geometry
 
     def on_focus_change(boss, window, data):
-        # Here data kill contain focused
+        # Here data will contain focused
 
     def on_close(boss, window, data):
         # called when window is closed, typically when the program running in
@@ -112,7 +126,7 @@ functions for the events you are interested in, for example:
 
 Every callback is passed a reference to the global ``Boss`` object as well as
 the ``Window`` object the action is occurring on. The ``data`` object is
-mapping that contains event dependent data. Some useful methods and attributes
+a dict that contains event dependent data. Some useful methods and attributes
 for the ``Window`` object are: ``as_text(as_ans=False, add_history=False,
 add_wrap_markers=False, alternate_screen=False)`` with which you can get the
 contents of the window and its scrollback buffer. Similarly,
@@ -130,6 +144,7 @@ this **may not** be the value of ``PATH`` inside a shell, as shell startup scrip
 often change the value of this variable. If it is not found there, then a
 system specific list of default paths is searched. If it is still not found,
 then your shell is run and the value of ``PATH`` inside the shell is used.
+See :opt:`exe_search_path` for details and how to control this.
 
 Syntax reference
 ------------------

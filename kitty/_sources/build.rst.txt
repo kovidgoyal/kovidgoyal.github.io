@@ -5,10 +5,14 @@ Build from source
   :alt: Build status
   :target: https://github.com/kovidgoyal/kitty/actions?query=workflow%3ACI
 
+.. highlight:: sh
 
 |kitty| is designed to run from source, for easy hack-ability. Make sure
 the following dependencies are installed first.
 
+.. note::
+   If you just want to test the latest changes to kitty you dont need to build
+   from source. Instead install the :ref:`latest nightly build <nightly>`.
 
 .. note::
    If you are making small changes only to the python parts of kitty, there is no need to
@@ -30,6 +34,7 @@ Run-time dependencies:
 * ``zlib``
 * ``libpng``
 * ``liblcms2``
+* ``librsync``
 * ``freetype`` (not needed on macOS)
 * ``fontconfig`` (not needed on macOS)
 * ``libcanberra`` (not needed on macOS)
@@ -41,10 +46,20 @@ Build-time dependencies:
 
 * ``gcc`` or ``clang``
 * ``pkg-config``
-* For building on Linux in addition to the above dependencies you might also need to install the ``-dev`` packages for:
-  ``libdbus-1-dev``, ``libxcursor-dev``, ``libxrandr-dev``, ``libxi-dev``, ``libxinerama-dev``,
-  ``libgl1-mesa-dev``, ``libxkbcommon-x11-dev``, ``libfontconfig-dev``, ``libx11-xcb-dev``,
-  ``liblcms2-dev``, and ``libpython3-dev``, if they are not already installed by your distro.
+* For building on Linux in addition to the above dependencies you might also need to install the following packages, if they are not already installed by your distro:
+
+  - ``libdbus-1-dev``
+  - ``libxcursor-dev``
+  - ``libxrandr-dev``
+  - ``libxi-dev``
+  - ``libxinerama-dev``
+  - ``libgl1-mesa-dev``
+  - ``libxkbcommon-x11-dev``
+  - ``libfontconfig-dev``
+  - ``libx11-xcb-dev``
+  - ``liblcms2-dev``
+  - ``libpython3-dev``
+  - ``librsync-dev``
 
 
 Install and run from source
@@ -84,12 +99,17 @@ you might have to rebuild the app.
    `bypy framework <https://github.com/kovidgoyal/bypy>`_ however, that is
    designed to run on Linux and is not for the faint of heart.
 
-
 .. note::
    Apple disallows certain functionality, such as notifications for unsigned applications.
    If you need this functionality, you can try signing the built kitty.app with
    a self signed certificate, see for example, `here
    <https://stackoverflow.com/questions/27474751/how-can-i-codesign-an-app-without-being-in-the-mac-developer-program/27474942>`_.
+
+.. note::
+   If you are facing issues with ``linker`` while building,
+   try with a ``brew`` installed python instead, see :iss:`289`
+   for more discussion.
+
 
 Build and run from source with Nix
 -------------------------------------------
@@ -105,7 +125,9 @@ make them available in the newly spawned shell.
 Then proceed with ``make`` or ``make app`` according to the platform specific instructions above.
 
 
-Note for Linux/macOS packagers
+.. _packagers:
+
+Notes for Linux/macOS packagers
 ----------------------------------
 
 The released |kitty| source code is available as a `tarball`_ from
@@ -125,10 +147,21 @@ with :file:`linux-package/bin/kitty`.  All the files needed to run kitty will be
 installed. You can choose a different staging area, by passing the ``--prefix``
 argument to :file:`setup.py`.
 
-You should probably split |kitty| into two packages, :file:`kitty-terminfo` that
-installs the terminfo file and :file:`kitty` that installs the main program.
-This allows users to install the terminfo file on servers into which they ssh,
-without needing to install all of |kitty|.
+You should probably split |kitty| into three packages:
+
+:code:`kitty-terminfo`
+    installs the terminfo file
+
+:code:`kitty-shell-integration`
+    installs the shell integration scripts (the contents of the
+    shell-integration directory in the kitty source code, probably to
+    :file:`/usr/share/kitty/shell-integration`
+
+:code:`kitty`
+    installs the main program
+
+This allows users to install the terminfo and shell integration files on
+servers into which they ssh, without needing to install all of |kitty|.
 
 .. note::
    You need a couple of extra dependencies to build linux-package.
@@ -143,7 +176,29 @@ This applies to creating packages for |kitty| for macOS package managers such as
 brew or MacPorts as well.
 
 
-.. note::
+Changing defaults for packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|kitty| has its defaults chosen to be suitable for a standalone distributable.
+If you are packaging it a few of these might need to be changed.
+
+update-checking
    |kitty| has its own update check mechanism, if you would like to turn
-   it off for your package, use
-   ``python3 setup.py linux-package --update-check-interval=0``
+   it off for your package, use::
+
+       ./setup.py linux-package --update-check-interval=0
+
+shell-integration
+   |kitty| by default injects its :ref:`shell_integration` code into the user's
+   shell using environment variables or (for bash only) modifying
+   the user's :file:`~/.bashrc` file.
+   For a package, it might make more sense to distribute the shell
+   integration scripts into the system-wide shell vendor locations. The
+   shell integration files are found in the :file:`shell-integration`
+   directory. Copy them to the system wide shell vendor locations for each
+   shell, and use::
+
+       ./setup.py linux-package --shell-integration=enabled\ no-rc
+
+   This will prevent kitty from modifying the user's shell environment to load
+   the integration scripts.

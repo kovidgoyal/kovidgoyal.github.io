@@ -47,10 +47,16 @@ import tempfile
 py3 = sys.version_info[0] > 2
 is64bit = platform.architecture()[0] == '64bit'
 is_macos = 'darwin' in sys.platform.lower()
+is_linux_arm = is_linux_arm64 = False
 if is_macos:
     mac_ver = tuple(map(int, platform.mac_ver()[0].split('.')))
     if mac_ver[:2] < (10, 12):
         raise SystemExit('Your version of macOS is too old, at least 10.12 is required')
+else:
+    machine = (os.uname()[4] or '').lower()
+    if machine.startswith('arm') or machine.startswith('aarch64'):
+        is_linux_arm = True
+        is_linux_arm64 = machine.startswith('arm64') or machine.startswith('aarch64')
 
 try:
     __file__
@@ -100,9 +106,11 @@ class Reporter:  # {{{
 # }}}
 
 
-def get_latest_release_data():
+def get_release_data(relname='latest'):
     print('Checking for latest release on GitHub...')
-    req = urllib.Request('https://api.github.com/repos/kovidgoyal/kitty/releases/latest', headers={'Accept': 'application/vnd.github.v3+json'})
+    req = urllib.Request(
+        'https://api.github.com/repos/kovidgoyal/kitty/releases/' + relname,
+        headers={'Accept': 'application/vnd.github.v3+json'})
     try:
         res = urllib.urlopen(req).read().decode('utf-8')
     except Exception as err:
@@ -117,7 +125,8 @@ def get_latest_release_data():
         else:
             if name.endswith('.txz'):
                 if is64bit:
-                    if name.endswith('-x86_64.txz'):
+                    q = '-arm64.txz' if is_linux_arm64 else '-x86_64.txz'
+                    if name.endswith(q):
                         return html_url + '/' + name, asset['size']
                 else:
                     if name.endswith('-i686.txz'):
@@ -211,19 +220,22 @@ def main(dest=None, launch=True, installer=None):
             dest = '/Applications'
         else:
             dest = os.path.expanduser('~/.local')
-    machine = os.uname()[4]
-    if machine and machine.lower().startswith('arm'):
+    if is_linux_arm and not is_linux_arm64:
         raise SystemExit(
-            'You are running on an ARM system. The kitty binaries are only'
-            ' available for x86 systems. You will have to build from'
+            'You are running on a 32-bit ARM system. The kitty binaries are only'
+            ' available for 64 bit ARM systems. You will have to build from'
             ' source.')
     if not installer:
-        url, size = get_latest_release_data()
+        url, size = get_release_data()
         installer = download_installer(url, size)
     else:
-        installer = os.path.abspath(installer)
-        if not os.access(installer, os.R_OK):
-            raise SystemExit('Could not read from: {}'.format(installer))
+        if installer == 'nightly':
+            url, size = get_release_data('tags/nightly')
+            installer = download_installer(url, size)
+        else:
+            installer = os.path.abspath(installer)
+            if not os.access(installer, os.R_OK):
+                raise SystemExit('Could not read from: {}'.format(installer))
     if is_macos:
         macos_install(installer, dest=dest, launch=launch)
     else:
@@ -254,7 +266,7 @@ def script_launch():
     main(**kwargs)
 
 
-def update_intaller_wrapper():
+def update_installer_wrapper():
     # To run: python3 -c "import runpy; runpy.run_path('installer.py', run_name='update_wrapper')" installer.sh
     with open(__file__, 'rb') as f:
         src = f.read().decode('utf-8')
@@ -271,7 +283,7 @@ def update_intaller_wrapper():
 if __name__ == '__main__' and from_file:
     main()
 elif __name__ == 'update_wrapper':
-    update_intaller_wrapper()
+    update_installer_wrapper()
 elif __name__ == 'script_launch':
     script_launch()
 

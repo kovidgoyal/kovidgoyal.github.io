@@ -79,7 +79,7 @@ Extending kitty
 kitty has a powerful framework for scripting. You can create small terminal
 programs called :doc:`kittens <kittens_intro>`. These can used to add features
 to kitty, for example, :doc:`editing remote files <kittens/remote_file>` or
-:doc:`inputting unicode characters <kittens/unicode-input>`. They can also be
+:doc:`inputting unicode characters <kittens/unicode_input>`. They can also be
 used to create programs that leverage kitty's powerful features, for example,
 :doc:`viewing images <kittens/icat>` or :doc:`diffing files with images
 <kittens/diff>`.
@@ -191,8 +191,10 @@ Mouse features
   platforms with a primary clipboard).
 * You can middle click to paste from the primary clipboard (on platforms
   with a primary clipboard).
+* You can right click while holding :kbd:`ctrl+shift` to open the output
+  of the clicked on command in a pager (requires :ref:`shell_integration`)
 * You can select text with kitty even when a terminal program has grabbed
-  the mouse by holding down the :kbd:`shift` key.
+  the mouse by holding down the :kbd:`shift` key
 
 All these actions can be customized in :file:`kitty.conf` as described
 :ref:`here <conf-kitty-mouse.mousemap>`.
@@ -242,15 +244,31 @@ for example::
    map f1 launch --stdin-source=@screen_scrollback --stdin-add-formatting less +G -R
 
 Would open the scrollback buffer in a new :term:`window` when you press the :kbd:`F1`
-key. See :sc:`show_scrollback` for details.
+key. See :sc:`show_scrollback <show_scrollback>` for details.
 
 If you want to use it with an editor such as vim to get more powerful features,
 you can see tips for doing so, in
 `this thread <https://github.com/kovidgoyal/kitty/issues/719>`_.
 
 If you wish to store very large amounts of scrollback to view using the piping or
-:sc:`show_scrollback` features, you can use the :opt:`scrollback_pager_history_size`
-option.
+:sc:`show_scrollback <show_scrollback>` features, you can use the
+:opt:`scrollback_pager_history_size` option.
+
+
+Integration with shells
+---------------------------------
+
+kitty has the ability to integrate closely within common shells, such as `zsh
+<https://www.zsh.org/>`_, `fish <https://fishshell.com>`_ and `bash
+<https://www.gnu.org/software/bash/>`_ to enable features such as jumping to
+previous prompts in the scrollback, viewing the output of the last command in
+:program:`less`, using the mouse to move the cursor while editing prompts, etc.
+See :doc:`shell-integration` for details.
+
+.. toctree::
+   :hidden:
+
+   shell-integration
 
 .. _cpbuf:
 
