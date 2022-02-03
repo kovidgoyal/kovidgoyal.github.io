@@ -9,7 +9,7 @@
   <meta property="og:description" content="kitty is a feature-rich, cross-platform, fast, GPU based terminal. To update kitty, follow the instructions. Recent major new features: A demo video: A new video showcasing some of kitty’s many pro..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Integrations with other tools" href="../integrations/" /><link rel="prev" title="Performance" href="../performance/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.3.2, furo 2022.01.02"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
         <title>Changelog - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
@@ -246,6 +246,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../conf/#all-mappable-actions">All mappable actions</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../actions/">Mappable actions</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../actions/#copy-paste">Copy/paste</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#clear-selection">clear_selection</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#copy-and-clear-or-interrupt">copy_and_clear_or_interrupt</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#copy-or-interrupt">copy_or_interrupt</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#copy-to-clipboard">copy_to_clipboard</a></li>
@@ -298,6 +299,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../actions/#open-url-with-hints">open_url_with_hints</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#remote-control">remote_control</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#set-colors">set_colors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#toggle-macos-secure-keyboard-entry">toggle_macos_secure_keyboard_entry</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#no-op">no_op</a></li>
 </ul>
 </li>
@@ -712,6 +714,7 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#mouse-features">Mouse features</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a><input class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" role="switch" type="checkbox"/><label for="toctree-checkbox-85"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../open_actions/#matching-criteria">Matching criteria</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../open_actions/#scripting-the-opening-of-files-with-kitty-on-macos">Scripting the opening of files with kitty on macOS</a></li>
 </ul>
 </li>
 </ul>
@@ -727,6 +730,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
 </ul>
 </li>
@@ -772,72 +776,73 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-92" name="toctree-checkbox-92" role="switch" type="checkbox"/><label for="toctree-checkbox-92"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id23">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id24">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id25">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id26">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id27">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id28">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id29">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id30">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id31">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id32">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id33">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id34">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id35">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id36">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id37">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id38">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id39">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id40">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id41">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id42">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id43">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id44">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id45">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id46">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id47">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id48">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id49">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id50">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id51">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id52">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id53">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id54">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id55">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id56">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id57">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id58">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id59">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id60">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id61">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id62">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id63">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id64">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id65">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id66">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id32">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id37">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id43">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id45">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id46">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id47">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id48">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id49">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id50">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id51">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id52">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id53">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id54">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id55">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id56">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id57">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id58">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id59">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id60">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id61">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id62">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id63">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id64">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id65">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id66">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id67">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -946,6 +951,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../deccara/">Setting text styles/colors in arbitrary regions of the screen</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../press-mentions/">Press mentions of kitty</a></li>
 </ul>
 
 </div>
@@ -981,7 +987,7 @@ To update <em>kitty</em>, <a class="reference internal" href="../binary/"><span 
 <div class="section" id="a-demo-video">
 <h3>A demo video<a class="headerlink" href="#a-demo-video" title="Permalink to this headline">¶</a></h3>
 <p>A new video showcasing some of kitty’s many productivity enhancing features.</p>
-<video controls="" height="360" width="640">
+<video controls="" height="360" poster="../_static/poster.png" width="640">
 <source src="https://download.calibre-ebook.com/videos/kitty.mp4" type="video/mp4"/>
 <source src="https://download.calibre-ebook.com/videos/kitty.webm" type="video/webm"/>
 </video><p class="caption caption-text">Watch kitty in action!</p>
@@ -1002,9 +1008,9 @@ of any kitty window to serve as a <em>logo</em> for quick window identification.
 Can be controlled via <a class="reference internal" href="../conf/#opt-kitty.window_logo_path"><code class="xref std std-opt docutils literal notranslate"><span class="pre">window_logo_path</span></code></a> and also and changed via
 the <a class="reference internal" href="../remote-control/#at-set-window-logo"><span class="std std-ref">kitty @ set-window-logo</span></a> remote control command.
 Useful to quickly identify special windows or just for some <em>bling</em>.</p>
-<div class="figure align-center" id="id67">
+<div class="figure align-center" id="id68">
 <a class="reference internal image-reference" href="../_images/window-logo.png"><img alt="A screenshot of the kitty shell window showing the kitty logo" src="../_images/window-logo.png" style="width: 100%;"/></a>
-<p class="caption"><span class="caption-text">A screenshot of the kitty shell window showing the kitty logo</span><a class="headerlink" href="#id67" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">A screenshot of the kitty shell window showing the kitty logo</span><a class="headerlink" href="#id68" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="visual-keyboard-based-window-select">
@@ -1013,16 +1019,63 @@ Useful to quickly identify special windows or just for some <em>bling</em>.</p>
 <a class="reference internal" href="../kittens/hints/"><span class="doc">Hints</span></a>, but for kitty windows. Can also be used from shell
 scripts/third party integrations via the <a class="reference internal" href="../remote-control/#at-select-window"><span class="std std-ref">kitty @ select-window</span></a> remote control
 command.</p>
-<div class="figure align-center" id="id68">
+<div class="figure align-center" id="id69">
 <a class="reference internal image-reference" href="../_images/select-window.png"><img alt="A screenshot of the kitty select window function" src="../_images/select-window.png" style="width: 100%;"/></a>
-<p class="caption"><span class="caption-text">Hints for selecting kitty windows visually</span><a class="headerlink" href="#id68" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Hints for selecting kitty windows visually</span><a class="headerlink" href="#id69" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
 <div class="section" id="detailed-list-of-changes">
 <h2>Detailed list of changes<a class="headerlink" href="#detailed-list-of-changes" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
-<h3>0.24.1 [2022-01-06]<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>0.24.2 [2022-02-03]<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>macOS: Allow opening text files, images and directories with kitty when
+launched using “Open with” in Finder (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4460">#4460</a>)</p></li>
+<li><p>Allow including config files matching glob patterns in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4533">#4533</a>)</p></li>
+<li><p>Shell integration: Fix bash integration not working when <code class="docutils literal notranslate"><span class="pre">PROMPT_COMMAND</span></code>
+is used to change the prompt variables (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4476">#4476</a>)</p></li>
+<li><p>Shell integration: Fix cursor shape not being restored to default when
+running commands in the shell</p></li>
+<li><p>Improve the UI of the ask kitten (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4545">#4545</a>)</p></li>
+<li><p>Allow customizing the placement and formatting of the
+<a class="reference internal" href="../conf/#opt-kitty.tab_activity_symbol"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_activity_symbol</span></code></a> and <a class="reference internal" href="../conf/#opt-kitty.bell_on_tab"><code class="xref std std-opt docutils literal notranslate"><span class="pre">bell_on_tab</span></code></a> symbols
+by adding them to the <a class="reference internal" href="../conf/#opt-kitty.tab_title_template"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_title_template</span></code></a> (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4581">#4581</a>, <a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/4507">#4507</a>)</p></li>
+<li><p>macOS: Persist “Secure Keyboard Entry” across restarts to match the behavior
+of Terminal.app (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4471">#4471</a>)</p></li>
+<li><p>hints kitten: Fix common single letter extension files not being detected
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4491">#4491</a>)</p></li>
+<li><p>Support dotted and dashed underline styles (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/4529">#4529</a>)</p></li>
+<li><p>For the vertical and horizontal layouts have the windows arranged on a ring
+rather than a plane. This means the first and last window are considered
+neighbors (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4494">#4494</a>)</p></li>
+<li><p>A new action to clear the current selection (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4600">#4600</a>)</p></li>
+<li><p>Shell integration: fish: Fix cursor shape not working with fish’s vi mode
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4508">#4508</a>)</p></li>
+<li><p>Shell integration: fish: Dont override fish’s native title setting functionality.
+See <a class="reference external" href="https://github.com/fish-shell/fish-shell/issues/8641">discussion</a>.</p></li>
+<li><p>macOS: Fix hiding via <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">cmd</kbd>+<kbd class="kbd docutils literal notranslate">h</kbd></kbd> not working on macOS 10.15.7 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4472">#4472</a>)</p></li>
+<li><p>Draw the dots for braille characters more evenly spaced at all font sizes (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4499">#4499</a>)</p></li>
+<li><p>icat kitten: Add options to mirror images and remove their transparency
+before displaying them (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4513">#4513</a>)</p></li>
+<li><p>macOS: Respect the users system-wide global keyboard shortcut preferences
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4501">#4501</a>)</p></li>
+<li><p>macOS: Fix a few key-presses causing beeps from Cocoa’s text input system
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4489">#4489</a>)</p></li>
+<li><p>macOS: Fix using shortcuts from the global menu bar as subsequent key presses
+in a multi key mapping not working (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4519">#4519</a>)</p></li>
+<li><p>Fix getting last command output not working correctly when the screen is
+scrolled (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/4522">#4522</a>)</p></li>
+<li><p>Show number of windows per tab in the <abbr>select_tab</abbr> action (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/4523">#4523</a>)</p></li>
+<li><p>macOS: Fix the shift key not clearing pre-edit text in IME (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4541">#4541</a>)</p></li>
+<li><p>Fix clicking in a window to focus it and typing immediately sometimes having
+unexpected effects if at a shell prompt (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4128">#4128</a>)</p></li>
+<li><p>themes kitten: Allow writing to a different file than <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>0.24.1 [2022-01-06]<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Shell integration: Work around conflicts with some zsh plugins (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4428">#4428</a>)</p></li>
 <li><p>Have the zero width space and various other characters from the <em>Other,
@@ -1034,8 +1087,8 @@ formatting</em> Unicode category be treated as combining characters (<a class="r
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4444">#4444</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h3>0.24.0 [2022-01-04]<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>0.24.0 [2022-01-04]<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Integrate kitty closely with common shells such as zsh, fish and bash.
 This allows lots of niceties such as jumping to previous prompts, opening the
@@ -1141,8 +1194,8 @@ in focus. (<a class="reference external" href="https://github.com/kovidgoyal/kit
 <a class="reference internal" href="../conf/#opt-kitty.macos_titlebar_color"><code class="xref std std-opt docutils literal notranslate"><span class="pre">macos_titlebar_color</span></code></a> and used in kitty themes. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/4378">#4378</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id3">
-<h3>0.23.1 [2021-08-17]<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>0.23.1 [2021-08-17]<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>macOS: Fix themes kitten failing to download themes because of missing SSL
 root certificates (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3936">#3936</a>)</p></li>
@@ -1156,8 +1209,8 @@ the previous window/tab and so on</p></li>
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3938">#3938</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id4">
-<h3>0.23.0 [2021-08-16]<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>0.23.0 [2021-08-16]<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>A new <a class="reference internal" href="../kittens/themes/"><span class="doc">themes kitten</span></a> to easily change kitty themes.
 Choose from almost two hundred themes in the <a class="reference external" href="https://github.com/kovidgoyal/kitty-themes">kitty themes repository</a></p></li>
@@ -1190,8 +1243,8 @@ never deselected. This matches behavior in most other programs (<a class="refere
 <a class="reference internal" href="../kittens/hints/#cmdoption-kitty-kitten-hints-linenum-action"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">hints</span> <span class="pre">--linenum-action</span></code></a> (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3931">#3931</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id5">
-<h3>0.22.2 [2021-08-02]<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>0.22.2 [2021-08-02]<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>macOS: Fix a long standing bug that could cause kitty windows to stop
 updating, that got worse in the previous release (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3890">#3890</a> and
@@ -1200,8 +1253,8 @@ updating, that got worse in the previous release (<a class="reference external" 
 decorations on and off (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3888">#3888</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h3>0.22.1 [2021-07-31]<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>0.22.1 [2021-07-31]<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fix a regression in the previous release that broke <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--help</span></code> (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3869">#3869</a>)</p></li>
 <li><p>Graphics protocol: Fix composing onto currently displayed frame not updating the frame on the GPU (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3874">#3874</a>)</p></li>
@@ -1216,8 +1269,8 @@ keys, such as backspace</p></li>
 them on do not draw client side decorations (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3888">#3888</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id7">
-<h3>0.22.0 [2021-07-26]<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>0.22.0 [2021-07-26]<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add a new <a class="reference internal" href="../actions/#action-toggle-layout"><span class="std std-ref">toggle_layout</span></a> action to easily zoom/unzoom a window</p></li>
 <li><p>When right clicking to extend a selection, move the nearest selection
@@ -1267,8 +1320,8 @@ use the family name as the full face name of the regular font not working
 <a class="reference internal" href="../kittens/clipboard/#cmdoption-kitty-kitten-clipboard-wait-for-completion"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">clipboard</span> <span class="pre">--wait-for-completion</span></code></a> option</p></li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h3>0.21.2 [2021-06-28]<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>0.21.2 [2021-06-28]<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>A new <a class="reference internal" href="../conf/#opt-kitty.adjust_baseline"><code class="xref std std-opt docutils literal notranslate"><span class="pre">adjust_baseline</span></code></a> option to adjust the vertical alignment of text
 inside a line (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3734">#3734</a>)</p></li>
@@ -1296,8 +1349,8 @@ option enabled for less (<a class="reference external" href="https://github.com/
 <li><p>Unicode input kitten: Fix searching when a word has more than 1024 matches (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3773">#3773</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id9">
-<h3>0.21.1 [2021-06-14]<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>0.21.1 [2021-06-14]<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>macOS: Fix a regression in the previous release that broke rendering of
 strikeout (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3717">#3717</a>)</p></li>
@@ -1307,8 +1360,8 @@ strikeout (<a class="reference external" href="https://github.com/kovidgoyal/kit
 changing layouts and mousing (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3713">#3713</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id10">
-<h3>0.21.0 [2021-06-12]<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>0.21.0 [2021-06-12]<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Allow reloading the <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> config file by pressing
 <a class="reference internal" href="../conf/#shortcut-kitty.Reload-kitty.conf"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f5</span></code></a>. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1292">#1292</a>)</p></li>
@@ -1371,8 +1424,8 @@ Window (<a class="reference external" href="https://github.com/kovidgoyal/kitty/
 true color not being copied (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/312">#312</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id11">
-<h3>0.20.3 [2021-05-06]<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>0.20.3 [2021-05-06]<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>macOS: Distribute universal binaries with both ARM and Intel architectures</p></li>
 <li><p>A new <code class="docutils literal notranslate"><span class="pre">show_key</span></code> kitten to easily see the bytes generated by the terminal
@@ -1387,8 +1440,8 @@ there is activity in a tab (<a class="reference external" href="https://github.c
 because of the previously focused window being closed (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3571">#3571</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id12">
-<h3>0.20.2 [2021-04-28]<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>0.20.2 [2021-04-28]<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>A new protocol extension to <a class="reference internal" href="../unscroll/#unscroll"><span class="std std-ref">unscroll</span></a> text from the
 scrollback buffer onto the screen. Useful, for example, to restore
@@ -1416,8 +1469,8 @@ kitty window title bar</p></li>
 <li><p>Fix <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">@</span> <span class="pre">set-colors</span></code> not working for the <a class="reference internal" href="../conf/#opt-kitty.active_tab_foreground"><code class="xref std std-opt docutils literal notranslate"><span class="pre">active_tab_foreground</span></code></a>.</p></li>
 </ul>
 </div>
-<div class="section" id="id13">
-<h3>0.20.1 [2021-04-19]<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>0.20.1 [2021-04-19]<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>icat: Fix some broken GIF images with no frame delays not being animated
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3498">#3498</a>)</p></li>
@@ -1427,8 +1480,8 @@ kitty window title bar</p></li>
 be drawn even when compositor supports server side decorations (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3501">#3501</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id14">
-<h3>0.20.0 [2021-04-19]<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>0.20.0 [2021-04-19]<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Support display of animated images <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">icat</span> <span class="pre">animation.gif</span></code>. See
 <a class="reference internal" href="../graphics-protocol/#animation-protocol"><span class="std std-ref">Animation</span></a> for details on animation support in the kitty
@@ -1511,8 +1564,8 @@ the selection is in progress (<a class="reference external" href="https://github
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3473">#3473</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id15">
-<h3>0.19.3 [2020-12-19]<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>0.19.3 [2020-12-19]<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Happy holidays to all kitty users!</p></li>
 <li><p>A new <a class="reference internal" href="../kittens/broadcast/"><span class="doc">broadcast</span></a> kitten to type in all kitty windows
@@ -1554,8 +1607,8 @@ undefined (<a class="reference external" href="https://github.com/kovidgoyal/kit
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3176">#3176</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id16">
-<h3>0.19.2 [2020-11-13]<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>0.19.2 [2020-11-13]<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>A new <a class="reference internal" href="../kittens/query_terminal/"><span class="doc">Query terminal</span></a> kitten to easily query the running kitty
 via escape codes to detect its version, and the values of
@@ -1585,8 +1638,8 @@ new line (<a class="reference external" href="https://github.com/kovidgoyal/kitt
 <li><p>Don’t restrict the ICH,DCH,REP control codes to only the current scroll region  (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3090">#3090</a>, <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/3096">#3096</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id17">
-<h3>0.19.1 [2020-10-06]<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>0.19.1 [2020-10-06]<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>hints kitten: Add an <code class="docutils literal notranslate"><span class="pre">ip</span></code> type for easy selection of IP addresses
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3009">#3009</a>)</p></li>
@@ -1595,8 +1648,8 @@ new line (<a class="reference external" href="https://github.com/kovidgoyal/kitt
 <li><p>Fix update available notifications repeating (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3006">#3006</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id18">
-<h3>0.19.0 [2020-10-04]<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h3>0.19.0 [2020-10-04]<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add support for <a class="reference external" href="https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda">hyperlinks from terminal programs</a>.
 Controlled via <a class="reference internal" href="../conf/#opt-kitty.allow_hyperlinks"><code class="xref std std-opt docutils literal notranslate"><span class="pre">allow_hyperlinks</span></code></a> (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/68">#68</a>)</p></li>
@@ -1645,8 +1698,8 @@ family name (<a class="reference external" href="https://github.com/kovidgoyal/k
 window resize/font size change (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2619">#2619</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id19">
-<h3>0.18.3 [2020-08-11]<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id20">
+<h3>0.18.3 [2020-08-11]<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>hints kitten: Allow customizing hint colors (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/2894">#2894</a>)</p></li>
 <li><p>Wayland: Fix a typo in the previous release that broke reading mouse cursor size (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2895">#2895</a>)</p></li>
@@ -1661,8 +1714,8 @@ dimensions or the thickness of the line is an odd number of pixels
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2908">#2908</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id20">
-<h3>0.18.2 [2020-07-28]<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id21">
+<h3>0.18.2 [2020-07-28]<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>X11: Improve handling of multiple keyboards. Now pressing a modifier key in
 one keyboard and a normal key in another works (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2362">#2362</a>). Don’t rebuild
@@ -1705,14 +1758,14 @@ cursors in some rare circumstances (<a class="reference external" href="https://
 reported to the kernel (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2880">#2880</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id21">
-<h3>0.18.1 [2020-06-23]<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id22">
+<h3>0.18.1 [2020-06-23]<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>macOS: Fix for diff kitten not working with python 3.8 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2780">#2780</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id22">
-<h3>0.18.0 [2020-06-20]<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id23">
+<h3>0.18.0 [2020-06-20]<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Allow multiple overlay windows per normal window</p></li>
 <li><p>Add an option <a class="reference internal" href="../conf/#opt-kitty.confirm_os_window_close"><code class="xref std std-opt docutils literal notranslate"><span class="pre">confirm_os_window_close</span></code></a> to ask for confirmation
@@ -1745,8 +1798,8 @@ configurations once (<a class="reference external" href="https://github.com/kovi
 <a class="reference internal" href="../conf/#opt-kitty.allow_remote_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">allow_remote_control</span></code></a> to be turned on.</p></li>
 </ul>
 </div>
-<div class="section" id="id23">
-<h3>0.17.4 [2020-05-09]<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id24">
+<h3>0.17.4 [2020-05-09]<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Allow showing the name of the current layout and the number of windows
 in tab titles (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2634">#2634</a>)</p></li>
@@ -1764,8 +1817,8 @@ the stack layout to switch the window to the first window (<a class="reference e
 <li><p>Fix <a class="reference internal" href="../conf/#opt-kitty.background_tint"><code class="xref std std-opt docutils literal notranslate"><span class="pre">background_tint</span></code></a> making the window semi-transparent (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2618">#2618</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id24">
-<h3>0.17.3 [2020-04-23]<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id25">
+<h3>0.17.3 [2020-04-23]<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Allow individually setting margins and padding for each edge (left, right,
 top, bottom). Margins can also be controlled per window via remote control
@@ -1801,8 +1854,8 @@ globally. Also allow using environment variables in this option (<a class="refer
 <li><p>Fix <a class="reference internal" href="../generated/launch/#cmdoption-title"><code class="xref std std-option docutils literal notranslate"><span class="pre">--title</span></code></a> not being applied at window creation time (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2570">#2570</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id25">
-<h3>0.17.2 [2020-03-29]<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id26">
+<h3>0.17.2 [2020-03-29]<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add a <a class="reference internal" href="../launch/#cmdoption-launch-watcher"><code class="xref std std-option docutils literal notranslate"><span class="pre">launch</span> <span class="pre">--watcher</span></code></a> option that allows defining callbacks
 that are called for various events in the window’s life-cycle (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2440">#2440</a>)</p></li>
@@ -1824,8 +1877,8 @@ also broke the --tab-title option when creating a new tab. (<a class="reference 
 the normal width faces (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2491">#2491</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id26">
-<h3>0.17.1 [2020-03-24]<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id27">
+<h3>0.17.1 [2020-03-24]<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fix <a class="reference internal" href="../conf/#opt-kitty.cursor_underline_thickness"><code class="xref std std-opt docutils literal notranslate"><span class="pre">cursor_underline_thickness</span></code></a> not working (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2465">#2465</a>)</p></li>
 <li><p>Fix a regression in 0.17 that caused tab bar background to be rendered after
@@ -1836,8 +1889,8 @@ automatically selected for some fonts (<a class="reference external" href="https
 cursor_text_color (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2470">#2470</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id27">
-<h3>0.17.0 [2020-03-24]<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id28">
+<h3>0.17.0 [2020-03-24]<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="../layouts/#splits-layout"><span class="std std-ref">The Splits Layout</span></a> to arrange windows in arbitrary splits
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2308">#2308</a>)</p></li>
@@ -1897,8 +1950,8 @@ colors using escape codes (<a class="reference external" href="https://github.co
 wheel/touchpad</p></li>
 </ul>
 </div>
-<div class="section" id="id28">
-<h3>0.16.0 [2020-01-28]<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id29">
+<h3>0.16.0 [2020-01-28]<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>A new <a class="reference internal" href="../marks/"><span class="doc">Mark text on screen</span></a> feature that allows highlighting and scrolling to arbitrary
 text in the terminal window.</p></li>
@@ -1931,8 +1984,8 @@ of the first line to match the rest on the left (<a class="reference external" h
 them. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2310">#2310</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id29">
-<h3>0.15.1 [2019-12-21]<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id30">
+<h3>0.15.1 [2019-12-21]<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fix a crash/incorrect rendering when detaching a window in some circumstances
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2173">#2173</a>)</p></li>
@@ -1950,8 +2003,8 @@ images on a transparent window (<a class="reference external" href="https://gith
 received from child process (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2216">#2216</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id30">
-<h3>0.15.0 [2019-11-27]<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id31">
+<h3>0.15.0 [2019-11-27]<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add a new action <a class="reference internal" href="../invocation/#detach-window"><span class="std std-ref">detach_window</span></a> that can be used to move the current
 window into a different tab (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1310">#1310</a>)</p></li>
@@ -1986,8 +2039,8 @@ with and without spaces to be identical (<a class="reference external" href="htt
 on Cocoa is too much effort (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2158">#2158</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id31">
-<h3>0.14.6 [2019-09-25]<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id32">
+<h3>0.14.6 [2019-09-25]<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>macOS: Fix a regression in the previous release that caused a crash when
 pressing a unprintable key, such as the POWER key (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1997">#1997</a>)</p></li>
@@ -1995,8 +2048,8 @@ pressing a unprintable key, such as the POWER key (<a class="reference external"
 respond to DPI changes (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/1999">#1999</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id32">
-<h3>0.14.5 [2019-09-23]<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id33">
+<h3>0.14.5 [2019-09-23]<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Implement a hack to (mostly) preserve tabs when cat-ting a file with them and then
 copying the text or passing screen contents to another program (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1829">#1829</a>)</p></li>
@@ -2013,8 +2066,8 @@ spacing=100 (<a class="reference external" href="https://github.com/kovidgoyal/k
 <li><p>Use selection foreground color for underlines as well (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1982">#1982</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id33">
-<h3>0.14.4 [2019-08-31]<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id34">
+<h3>0.14.4 [2019-08-31]<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>hints kitten: Add a <a class="reference internal" href="../kittens/hints/#cmdoption-kitty-kitten-hints-alphabet"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">hints</span> <span class="pre">--alphabet</span></code></a> option to
 control what alphabets are used for hints (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1879">#1879</a>)</p></li>
@@ -2041,8 +2094,8 @@ for the text, do not exhaust the list of fallback fonts (<a class="reference ext
 buffer as ANSI (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1924">#1924</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id34">
-<h3>0.14.3 [2019-07-29]<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id35">
+<h3>0.14.3 [2019-07-29]<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Remote control: Add a command <cite>kitty @ scroll-window</cite> to scroll windows</p></li>
 <li><p>Allow passing a <code class="docutils literal notranslate"><span class="pre">!neighbor</span></code> argument to the new_window mapping to open a
@@ -2079,8 +2132,8 @@ continuously, wasting CPU even when idle (<a class="reference external" href="ht
 <li><p>Fix a crash when displaying very large number of images (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1825">#1825</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id35">
-<h3>0.14.2 [2019-06-09]<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id36">
+<h3>0.14.2 [2019-06-09]<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add an option <a class="reference internal" href="../conf/#opt-kitty.placement_strategy"><code class="xref std std-opt docutils literal notranslate"><span class="pre">placement_strategy</span></code></a> to control how the cell area is
 aligned inside the window when the window size is not an exact multiple
@@ -2111,8 +2164,8 @@ correctly (<a class="reference external" href="https://github.com/kovidgoyal/kit
 <li><p>Wayland: Fix crash when enabling disabling monitors on sway (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1696">#1696</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id36">
-<h3>0.14.1 [2019-05-29]<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id37">
+<h3>0.14.1 [2019-05-29]<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add an option <a class="reference internal" href="../conf/#opt-kitty.command_on_bell"><code class="xref std std-opt docutils literal notranslate"><span class="pre">command_on_bell</span></code></a> to run an arbitrary command when
 a bell occurs (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1660">#1660</a>)</p></li>
@@ -2137,8 +2190,8 @@ server side window decorations, such a GNOME or Weston not working
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1662">#1662</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id37">
-<h3>0.14.0 [2019-05-24]<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id38">
+<h3>0.14.0 [2019-05-24]<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>macOS: The default behavior of the Option key has changed. It now generates
 unicode characters rather than acting as the <kbd class="kbd docutils literal notranslate">Alt</kbd> modifier. See
@@ -2230,8 +2283,8 @@ making windows full-screen (<a class="reference external" href="https://github.c
 characters not working well (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1616">#1616</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id38">
-<h3>0.13.3 [2019-01-19]<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id39">
+<h3>0.13.3 [2019-01-19]<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>icat kitten: Add a <code class="docutils literal notranslate"><span class="pre">--stdin</span></code> option to control if image data is read from
 STDIN (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1308">#1308</a>)</p></li>
@@ -2257,8 +2310,8 @@ Apple shortcuts for these actions (<a class="reference external" href="https://g
 <li><p>macOS: Fix some kittens causing 100% CPU usage</p></li>
 </ul>
 </div>
-<div class="section" id="id39">
-<h3>0.13.2 [2019-01-04]<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id40">
+<h3>0.13.2 [2019-01-04]<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add a new option <a class="reference internal" href="../conf/#opt-kitty.tab_title_template"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_title_template</span></code></a> to control how tab titles
 are formatted. In particular the template can be used to display
@@ -2287,8 +2340,8 @@ non-neighboring tabs (<a class="reference external" href="https://github.com/kov
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1267">#1267</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id40">
-<h3>0.13.1 [2018-12-06]<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id41">
+<h3>0.13.1 [2018-12-06]<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fix passing input via the pipe action to a program without a window not
 working.</p></li>
@@ -2299,8 +2352,8 @@ work (<a class="reference external" href="https://github.com/kovidgoyal/kitty/is
 be properly unwrapped (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1206">#1206</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id41">
-<h3>0.13.0 [2018-12-05]<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id42">
+<h3>0.13.0 [2018-12-05]<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add an option <a class="reference internal" href="../conf/#opt-kitty.scrollback_pager_history_size"><code class="xref std std-opt docutils literal notranslate"><span class="pre">scrollback_pager_history_size</span></code></a> to tell kitty to store
 extended scrollback to use when viewing the scrollback buffer in a pager
@@ -2366,16 +2419,16 @@ other (<a class="reference external" href="https://github.com/kovidgoyal/kitty/i
 and slash characters in short URLs (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1201">#1201</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id42">
-<h3>0.12.3 [2018-09-29]<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id43">
+<h3>0.12.3 [2018-09-29]<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>macOS: Fix kitty window not being rendered on macOS Mojave until the window is
 moved or resized at least once (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/887">#887</a>)</p></li>
 <li><p>Unicode input: Fix an error when searching for the string ‘fir’ (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1035">#1035</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id43">
-<h3>0.12.2 [2018-09-24]<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id44">
+<h3>0.12.2 [2018-09-24]<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>A new <code class="docutils literal notranslate"><span class="pre">last_used_layout</span></code> function that can be mapped to a shortcut to
 switch to the previously used window layout (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/870">#870</a>)</p></li>
@@ -2423,8 +2476,8 @@ top-level OS window of the specified kitty window (<a class="reference external"
 mouse to malfunction when using multiple kitty windows (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/1002">#1002</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id44">
-<h3>0.12.1 [2018-09-08]<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id45">
+<h3>0.12.1 [2018-09-08]<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add a new <code class="docutils literal notranslate"><span class="pre">--start-in-fullscreen</span></code> command line flag to start
 kitty in full screen mode (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/856">#856</a>)</p></li>
@@ -2452,8 +2505,8 @@ top level-window after creating a second top-level window. (<a class="reference 
 a bug in the 0.12.0 macOS package</p></li>
 </ul>
 </div>
-<div class="section" id="id45">
-<h3>0.12.0 [2018-09-01]<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id46">
+<h3>0.12.0 [2018-09-01]<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Preserve the mouse selection even when the contents of the screen are
 scrolled or overwritten provided the new text does not intersect the
@@ -2504,8 +2557,8 @@ joysticks. Since kitty does not use joysticks, disable joystick support.
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/830">#830</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id46">
-<h3>0.11.3 [2018-07-10]<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id47">
+<h3>0.11.3 [2018-07-10]<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Draw only the minimum borders needed for inactive windows. That is only the borders
 that separate the inactive window from a neighbor. Note that setting
@@ -2530,8 +2583,8 @@ starting the selection just outside the window.</p></li>
 of text to be duplicated (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/709">#709</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id47">
-<h3>0.11.2 [2018-07-01]<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id48">
+<h3>0.11.2 [2018-07-01]<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Linux: Allow using XKB key names to bind shortcuts to keys not supported by GLFW (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/665">#665</a>)</p></li>
 <li><p>kitty shell: Ignore failure to read readline history file. Happens if the
@@ -2554,8 +2607,8 @@ when only a single window is visible in the layout (<a class="reference external
 <code class="docutils literal notranslate"><span class="pre">--debug-config</span></code> with custom key mappings (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/695">#695</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id48">
-<h3>0.11.1 [2018-06-17]<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id49">
+<h3>0.11.1 [2018-06-17]<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>diff kitten: Implement searching for text in the diff (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/574">#574</a>)</p></li>
 <li><p>Add an option <a class="reference internal" href="../conf/#opt-kitty.startup_session"><code class="xref std std-opt docutils literal notranslate"><span class="pre">startup_session</span></code></a> to <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> to specify a
@@ -2574,8 +2627,8 @@ present (<a class="reference external" href="https://github.com/kovidgoyal/kitty
 <li><p>Clear scrollback on reset (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/631">#631</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id49">
-<h3>0.11.0 [2018-06-12]<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id50">
+<h3>0.11.0 [2018-06-12]<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>A new tab bar style “fade” in which each tab’s edges fade into the background.
 See <a class="reference internal" href="../conf/#opt-kitty.tab_bar_style"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_bar_style</span></code></a> and <a class="reference internal" href="../conf/#opt-kitty.tab_fade"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_fade</span></code></a> for details. The old look can be
@@ -2637,8 +2690,8 @@ kitty. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/
 irssi when used inside screen. (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/621">#621</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id50">
-<h3>0.10.1 [2018-05-24]<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id51">
+<h3>0.10.1 [2018-05-24]<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add a kitten to easily ssh into servers that automatically copies the
 terminfo files over. <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">ssh</span> <span class="pre">myserver</span></code>.</p></li>
@@ -2656,8 +2709,8 @@ be disabled for all OS windows in a kitty instance after the first window
 (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/562">#562</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id51">
-<h3>0.10.0 [2018-05-21]<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id52">
+<h3>0.10.0 [2018-05-21]<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>A diff kitten to show side-by-side diffs with syntax highlighting and support
 for images. See <a class="reference internal" href="../kittens/diff/"><span class="doc">diff kitten</span></a>.</p></li>
@@ -2692,8 +2745,8 @@ that do not have a primary selection such as Wayland and macOS
 <li><p>Fix cursor_stop_blinking_after=0 not working (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/530">#530</a>)</p></li>
 </ul>
 </div>
-<div class="section" id="id52">
-<h3>0.9.1 [2018-05-05]<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id53">
+<h3>0.9.1 [2018-05-05]<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Show a bell symbol on the tab if a bell occurs in one of the windows in the tab and
 the window is not the currently focused window</p></li>
@@ -2738,8 +2791,8 @@ with broken software that assumes terminals should run with an -e option to
 execute commands instead of just passing the commands as arguments.</p></li>
 </ul>
 </div>
-<div class="section" id="id53">
-<h3>0.9.0 [2018-04-15]<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id54">
+<h3>0.9.0 [2018-04-15]<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>A new kitty command shell to allow controlling kitty via commands. Press
 <cite>ctrl+shift+escape</cite> to run the shell.</p></li>
@@ -2770,8 +2823,8 @@ rectangle select modifiers even when the terminal program has grabbed the
 mouse.</p></li>
 </ul>
 </div>
-<div class="section" id="id54">
-<h3>0.8.4 [2018-03-31]<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id55">
+<h3>0.8.4 [2018-03-31]<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fix presence of XDG_CONFIG_DIRS and absence of XDG_CONFIG_HOME preventing
 kitty from starting</p></li>
@@ -2779,8 +2832,8 @@ kitty from starting</p></li>
 the right edges of characters that overflow the cell by at most two pixels</p></li>
 </ul>
 </div>
-<div class="section" id="id55">
-<h3>0.8.3 [2018-03-29]<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id56">
+<h3>0.8.3 [2018-03-29]<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fix a regression that broke the visual bell and invert screen colors escape
 code</p></li>
@@ -2797,8 +2850,8 @@ kitty configuration.</p></li>
 <li><p>Wayland: Fix auto-repeat of keys not working</p></li>
 </ul>
 </div>
-<div class="section" id="id56">
-<h3>0.8.2 [2018-03-17]<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id57">
+<h3>0.8.2 [2018-03-17]<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Allow extending existing selections by right clicking</p></li>
 <li><p>Add a configurable keyboard shortcut and remote command to set the font size to a specific value</p></li>
@@ -2812,8 +2865,8 @@ kitty configuration.</p></li>
 <li><p>Fix a crash when getting the contents of the scrollback buffer as text</p></li>
 </ul>
 </div>
-<div class="section" id="id57">
-<h3>0.8.1 [2018-03-09]<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id58">
+<h3>0.8.1 [2018-03-09]<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Extend kitty’s remote control feature to work over both UNIX and TCP sockets,
 so now you can control kitty from across the internet, if you want to.</p></li>
@@ -2834,8 +2887,8 @@ This matches other terminals’ behavior.</p></li>
 <li><p>macOS: Output errors into console.app when running as a bundle</p></li>
 </ul>
 </div>
-<div class="section" id="id58">
-<h3>0.8.0 [2018-02-24]<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id59">
+<h3>0.8.0 [2018-02-24]<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>A framework for kittens, that is, small terminal programs designed to run
 inside kitty and extend its capabilities. Examples include unicode input and
@@ -2868,8 +2921,8 @@ rare circumstances.</p></li>
 new window/tab.</p></li>
 </ul>
 </div>
-<div class="section" id="id59">
-<h3>0.7.1 [2018-01-31]<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id60">
+<h3>0.7.1 [2018-01-31]<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add an option to adjust the width of character cells</p></li>
 <li><p>Fix selecting text with the mouse in the scrollback buffer selecting text
@@ -2878,8 +2931,8 @@ from the line above the actually selected line</p></li>
 unnecessarily</p></li>
 </ul>
 </div>
-<div class="section" id="id60">
-<h3>0.7.0 [2018-01-24]<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id61">
+<h3>0.7.0 [2018-01-24]<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Allow controlling kitty from the shell prompt/scripts. You can
 open/close/rename windows and tabs and even send input to specific windows.
@@ -2907,8 +2960,8 @@ copy the visible part of the selection</p></li>
 <li><p>Drop the dependency on libunistring</p></li>
 </ul>
 </div>
-<div class="section" id="id61">
-<h3>0.6.1 [2017-12-28]<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id62">
+<h3>0.6.1 [2017-12-28]<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add an option to fade the text in inactive windows</p></li>
 <li><p>Add new actions to open windows/tabs/etc. with the working directory set to
@@ -2926,8 +2979,8 @@ mouse.</p></li>
 <li><p>Fix regression that broke drawing of hollow cursor when window loses focus</p></li>
 </ul>
 </div>
-<div class="section" id="id62">
-<h3>0.6.0 [2017-12-18]<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id63">
+<h3>0.6.0 [2017-12-18]<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Support background transparency via the background_opacity option. Provided
 that your OS/window manager supports transparency, you can now have kitty
@@ -2961,8 +3014,8 @@ processes</p></li>
 the mouse.</p></li>
 </ul>
 </div>
-<div class="section" id="id63">
-<h3>0.5.1 [2017-12-01]<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id64">
+<h3>0.5.1 [2017-12-01]<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add an option to control the thickness of lines in box drawing characters</p></li>
 <li><p>Increase max. allowed ligature length to nine characters</p></li>
@@ -2973,8 +3026,8 @@ the mouse.</p></li>
 scrolling properly</p></li>
 </ul>
 </div>
-<div class="section" id="id64">
-<h3>0.5.0 [2017-11-19]<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id65">
+<h3>0.5.0 [2017-11-19]<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Add support for ligature fonts such as Fira Code, Hasklig, etc. kitty now
 uses harfbuzz for text shaping which allow it to support advanced OpenType
@@ -2997,8 +3050,8 @@ protocols</p></li>
 <li><p>Linux: no longer require glew as a dependency</p></li>
 </ul>
 </div>
-<div class="section" id="id65">
-<h3>0.4.2 [2017-10-23]<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id66">
+<h3>0.4.2 [2017-10-23]<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fix a regression in 0.4.0 that broke custom key mappings</p></li>
 <li><p>Fix a regression in 0.4.0 that broke support for non-QWERTY keyboard layouts</p></li>
@@ -3006,8 +3059,8 @@ protocols</p></li>
 hanging if the open program hangs when clicking on a URL.</p></li>
 </ul>
 </div>
-<div class="section" id="id66">
-<h3>0.4.0 [2017-10-22]<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id67">
+<h3>0.4.0 [2017-10-22]<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Support for drawing arbitrary raster graphics (images) in the terminal via a
 new graphics protocol. kitty can draw images with full 32-bit color using both
@@ -3095,72 +3148,73 @@ contents of the screen + scrollback buffer as stdin to the command.</p></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#detailed-list-of-changes">Detailed list of changes</a><ul>
-<li><a class="reference internal" href="#id1">0.24.1 [2022-01-06]</a></li>
-<li><a class="reference internal" href="#id2">0.24.0 [2022-01-04]</a></li>
-<li><a class="reference internal" href="#id3">0.23.1 [2021-08-17]</a></li>
-<li><a class="reference internal" href="#id4">0.23.0 [2021-08-16]</a></li>
-<li><a class="reference internal" href="#id5">0.22.2 [2021-08-02]</a></li>
-<li><a class="reference internal" href="#id6">0.22.1 [2021-07-31]</a></li>
-<li><a class="reference internal" href="#id7">0.22.0 [2021-07-26]</a></li>
-<li><a class="reference internal" href="#id8">0.21.2 [2021-06-28]</a></li>
-<li><a class="reference internal" href="#id9">0.21.1 [2021-06-14]</a></li>
-<li><a class="reference internal" href="#id10">0.21.0 [2021-06-12]</a></li>
-<li><a class="reference internal" href="#id11">0.20.3 [2021-05-06]</a></li>
-<li><a class="reference internal" href="#id12">0.20.2 [2021-04-28]</a></li>
-<li><a class="reference internal" href="#id13">0.20.1 [2021-04-19]</a></li>
-<li><a class="reference internal" href="#id14">0.20.0 [2021-04-19]</a></li>
-<li><a class="reference internal" href="#id15">0.19.3 [2020-12-19]</a></li>
-<li><a class="reference internal" href="#id16">0.19.2 [2020-11-13]</a></li>
-<li><a class="reference internal" href="#id17">0.19.1 [2020-10-06]</a></li>
-<li><a class="reference internal" href="#id18">0.19.0 [2020-10-04]</a></li>
-<li><a class="reference internal" href="#id19">0.18.3 [2020-08-11]</a></li>
-<li><a class="reference internal" href="#id20">0.18.2 [2020-07-28]</a></li>
-<li><a class="reference internal" href="#id21">0.18.1 [2020-06-23]</a></li>
-<li><a class="reference internal" href="#id22">0.18.0 [2020-06-20]</a></li>
-<li><a class="reference internal" href="#id23">0.17.4 [2020-05-09]</a></li>
-<li><a class="reference internal" href="#id24">0.17.3 [2020-04-23]</a></li>
-<li><a class="reference internal" href="#id25">0.17.2 [2020-03-29]</a></li>
-<li><a class="reference internal" href="#id26">0.17.1 [2020-03-24]</a></li>
-<li><a class="reference internal" href="#id27">0.17.0 [2020-03-24]</a></li>
-<li><a class="reference internal" href="#id28">0.16.0 [2020-01-28]</a></li>
-<li><a class="reference internal" href="#id29">0.15.1 [2019-12-21]</a></li>
-<li><a class="reference internal" href="#id30">0.15.0 [2019-11-27]</a></li>
-<li><a class="reference internal" href="#id31">0.14.6 [2019-09-25]</a></li>
-<li><a class="reference internal" href="#id32">0.14.5 [2019-09-23]</a></li>
-<li><a class="reference internal" href="#id33">0.14.4 [2019-08-31]</a></li>
-<li><a class="reference internal" href="#id34">0.14.3 [2019-07-29]</a></li>
-<li><a class="reference internal" href="#id35">0.14.2 [2019-06-09]</a></li>
-<li><a class="reference internal" href="#id36">0.14.1 [2019-05-29]</a></li>
-<li><a class="reference internal" href="#id37">0.14.0 [2019-05-24]</a></li>
-<li><a class="reference internal" href="#id38">0.13.3 [2019-01-19]</a></li>
-<li><a class="reference internal" href="#id39">0.13.2 [2019-01-04]</a></li>
-<li><a class="reference internal" href="#id40">0.13.1 [2018-12-06]</a></li>
-<li><a class="reference internal" href="#id41">0.13.0 [2018-12-05]</a></li>
-<li><a class="reference internal" href="#id42">0.12.3 [2018-09-29]</a></li>
-<li><a class="reference internal" href="#id43">0.12.2 [2018-09-24]</a></li>
-<li><a class="reference internal" href="#id44">0.12.1 [2018-09-08]</a></li>
-<li><a class="reference internal" href="#id45">0.12.0 [2018-09-01]</a></li>
-<li><a class="reference internal" href="#id46">0.11.3 [2018-07-10]</a></li>
-<li><a class="reference internal" href="#id47">0.11.2 [2018-07-01]</a></li>
-<li><a class="reference internal" href="#id48">0.11.1 [2018-06-17]</a></li>
-<li><a class="reference internal" href="#id49">0.11.0 [2018-06-12]</a></li>
-<li><a class="reference internal" href="#id50">0.10.1 [2018-05-24]</a></li>
-<li><a class="reference internal" href="#id51">0.10.0 [2018-05-21]</a></li>
-<li><a class="reference internal" href="#id52">0.9.1 [2018-05-05]</a></li>
-<li><a class="reference internal" href="#id53">0.9.0 [2018-04-15]</a></li>
-<li><a class="reference internal" href="#id54">0.8.4 [2018-03-31]</a></li>
-<li><a class="reference internal" href="#id55">0.8.3 [2018-03-29]</a></li>
-<li><a class="reference internal" href="#id56">0.8.2 [2018-03-17]</a></li>
-<li><a class="reference internal" href="#id57">0.8.1 [2018-03-09]</a></li>
-<li><a class="reference internal" href="#id58">0.8.0 [2018-02-24]</a></li>
-<li><a class="reference internal" href="#id59">0.7.1 [2018-01-31]</a></li>
-<li><a class="reference internal" href="#id60">0.7.0 [2018-01-24]</a></li>
-<li><a class="reference internal" href="#id61">0.6.1 [2017-12-28]</a></li>
-<li><a class="reference internal" href="#id62">0.6.0 [2017-12-18]</a></li>
-<li><a class="reference internal" href="#id63">0.5.1 [2017-12-01]</a></li>
-<li><a class="reference internal" href="#id64">0.5.0 [2017-11-19]</a></li>
-<li><a class="reference internal" href="#id65">0.4.2 [2017-10-23]</a></li>
-<li><a class="reference internal" href="#id66">0.4.0 [2017-10-22]</a></li>
+<li><a class="reference internal" href="#id1">0.24.2 [2022-02-03]</a></li>
+<li><a class="reference internal" href="#id2">0.24.1 [2022-01-06]</a></li>
+<li><a class="reference internal" href="#id3">0.24.0 [2022-01-04]</a></li>
+<li><a class="reference internal" href="#id4">0.23.1 [2021-08-17]</a></li>
+<li><a class="reference internal" href="#id5">0.23.0 [2021-08-16]</a></li>
+<li><a class="reference internal" href="#id6">0.22.2 [2021-08-02]</a></li>
+<li><a class="reference internal" href="#id7">0.22.1 [2021-07-31]</a></li>
+<li><a class="reference internal" href="#id8">0.22.0 [2021-07-26]</a></li>
+<li><a class="reference internal" href="#id9">0.21.2 [2021-06-28]</a></li>
+<li><a class="reference internal" href="#id10">0.21.1 [2021-06-14]</a></li>
+<li><a class="reference internal" href="#id11">0.21.0 [2021-06-12]</a></li>
+<li><a class="reference internal" href="#id12">0.20.3 [2021-05-06]</a></li>
+<li><a class="reference internal" href="#id13">0.20.2 [2021-04-28]</a></li>
+<li><a class="reference internal" href="#id14">0.20.1 [2021-04-19]</a></li>
+<li><a class="reference internal" href="#id15">0.20.0 [2021-04-19]</a></li>
+<li><a class="reference internal" href="#id16">0.19.3 [2020-12-19]</a></li>
+<li><a class="reference internal" href="#id17">0.19.2 [2020-11-13]</a></li>
+<li><a class="reference internal" href="#id18">0.19.1 [2020-10-06]</a></li>
+<li><a class="reference internal" href="#id19">0.19.0 [2020-10-04]</a></li>
+<li><a class="reference internal" href="#id20">0.18.3 [2020-08-11]</a></li>
+<li><a class="reference internal" href="#id21">0.18.2 [2020-07-28]</a></li>
+<li><a class="reference internal" href="#id22">0.18.1 [2020-06-23]</a></li>
+<li><a class="reference internal" href="#id23">0.18.0 [2020-06-20]</a></li>
+<li><a class="reference internal" href="#id24">0.17.4 [2020-05-09]</a></li>
+<li><a class="reference internal" href="#id25">0.17.3 [2020-04-23]</a></li>
+<li><a class="reference internal" href="#id26">0.17.2 [2020-03-29]</a></li>
+<li><a class="reference internal" href="#id27">0.17.1 [2020-03-24]</a></li>
+<li><a class="reference internal" href="#id28">0.17.0 [2020-03-24]</a></li>
+<li><a class="reference internal" href="#id29">0.16.0 [2020-01-28]</a></li>
+<li><a class="reference internal" href="#id30">0.15.1 [2019-12-21]</a></li>
+<li><a class="reference internal" href="#id31">0.15.0 [2019-11-27]</a></li>
+<li><a class="reference internal" href="#id32">0.14.6 [2019-09-25]</a></li>
+<li><a class="reference internal" href="#id33">0.14.5 [2019-09-23]</a></li>
+<li><a class="reference internal" href="#id34">0.14.4 [2019-08-31]</a></li>
+<li><a class="reference internal" href="#id35">0.14.3 [2019-07-29]</a></li>
+<li><a class="reference internal" href="#id36">0.14.2 [2019-06-09]</a></li>
+<li><a class="reference internal" href="#id37">0.14.1 [2019-05-29]</a></li>
+<li><a class="reference internal" href="#id38">0.14.0 [2019-05-24]</a></li>
+<li><a class="reference internal" href="#id39">0.13.3 [2019-01-19]</a></li>
+<li><a class="reference internal" href="#id40">0.13.2 [2019-01-04]</a></li>
+<li><a class="reference internal" href="#id41">0.13.1 [2018-12-06]</a></li>
+<li><a class="reference internal" href="#id42">0.13.0 [2018-12-05]</a></li>
+<li><a class="reference internal" href="#id43">0.12.3 [2018-09-29]</a></li>
+<li><a class="reference internal" href="#id44">0.12.2 [2018-09-24]</a></li>
+<li><a class="reference internal" href="#id45">0.12.1 [2018-09-08]</a></li>
+<li><a class="reference internal" href="#id46">0.12.0 [2018-09-01]</a></li>
+<li><a class="reference internal" href="#id47">0.11.3 [2018-07-10]</a></li>
+<li><a class="reference internal" href="#id48">0.11.2 [2018-07-01]</a></li>
+<li><a class="reference internal" href="#id49">0.11.1 [2018-06-17]</a></li>
+<li><a class="reference internal" href="#id50">0.11.0 [2018-06-12]</a></li>
+<li><a class="reference internal" href="#id51">0.10.1 [2018-05-24]</a></li>
+<li><a class="reference internal" href="#id52">0.10.0 [2018-05-21]</a></li>
+<li><a class="reference internal" href="#id53">0.9.1 [2018-05-05]</a></li>
+<li><a class="reference internal" href="#id54">0.9.0 [2018-04-15]</a></li>
+<li><a class="reference internal" href="#id55">0.8.4 [2018-03-31]</a></li>
+<li><a class="reference internal" href="#id56">0.8.3 [2018-03-29]</a></li>
+<li><a class="reference internal" href="#id57">0.8.2 [2018-03-17]</a></li>
+<li><a class="reference internal" href="#id58">0.8.1 [2018-03-09]</a></li>
+<li><a class="reference internal" href="#id59">0.8.0 [2018-02-24]</a></li>
+<li><a class="reference internal" href="#id60">0.7.1 [2018-01-31]</a></li>
+<li><a class="reference internal" href="#id61">0.7.0 [2018-01-24]</a></li>
+<li><a class="reference internal" href="#id62">0.6.1 [2017-12-28]</a></li>
+<li><a class="reference internal" href="#id63">0.6.0 [2017-12-18]</a></li>
+<li><a class="reference internal" href="#id64">0.5.1 [2017-12-01]</a></li>
+<li><a class="reference internal" href="#id65">0.5.0 [2017-11-19]</a></li>
+<li><a class="reference internal" href="#id66">0.4.2 [2017-10-23]</a></li>
+<li><a class="reference internal" href="#id67">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>

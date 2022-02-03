@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="../search/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.3.2, furo 2022.01.02"/><title>Index - kitty</title>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/><title>Index - kitty</title>
 <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -240,6 +240,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../conf/#all-mappable-actions">All mappable actions</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../actions/">Mappable actions</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../actions/#copy-paste">Copy/paste</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#clear-selection">clear_selection</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#copy-and-clear-or-interrupt">copy_and_clear_or_interrupt</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#copy-or-interrupt">copy_or_interrupt</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#copy-to-clipboard">copy_to_clipboard</a></li>
@@ -292,6 +293,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../actions/#open-url-with-hints">open_url_with_hints</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#remote-control">remote_control</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#set-colors">set_colors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#toggle-macos-secure-keyboard-entry">toggle_macos_secure_keyboard_entry</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#no-op">no_op</a></li>
 </ul>
 </li>
@@ -706,6 +708,7 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#mouse-features">Mouse features</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a><input class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" role="switch" type="checkbox"/><label for="toctree-checkbox-85"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../open_actions/#matching-criteria">Matching criteria</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../open_actions/#scripting-the-opening-of-files-with-kitty-on-macos">Scripting the opening of files with kitty on macOS</a></li>
 </ul>
 </li>
 </ul>
@@ -721,6 +724,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
 </ul>
 </li>
@@ -766,72 +770,73 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-92" name="toctree-checkbox-92" role="switch" type="checkbox"/><label for="toctree-checkbox-92"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -940,6 +945,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../deccara/">Setting text styles/colors in arbitrary regions of the screen</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../press-mentions/">Press mentions of kitty</a></li>
 </ul>
 
 </div>
@@ -976,7 +982,7 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li>
-    --action &lt;ACTION&gt;
+    --action
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-action">kitty-@-resize-os-window command line option</a>
@@ -990,7 +996,7 @@
 </li>
         </ul></li>
         <li>
-    --add-trailing-space &lt;ADD_TRAILING_SPACE&gt;
+    --add-trailing-space
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-add-trailing-space">kitty-+kitten-hints command line option</a>
@@ -1004,7 +1010,7 @@
 </li>
         </ul></li>
         <li>
-    --align &lt;ALIGN&gt;
+    --align
 
         <ul>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-align">kitty-+kitten-icat command line option</a>
@@ -1050,14 +1056,14 @@
 </li>
         </ul></li>
         <li>
-    --alpha &lt;ALPHA&gt;
+    --alpha
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-set-window-logo-alpha">kitty-@-set-window-logo command line option</a>
 </li>
         </ul></li>
         <li>
-    --alphabet &lt;ALPHABET&gt;
+    --alphabet
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-alphabet">kitty-+kitten-hints command line option</a>
@@ -1078,21 +1084,28 @@
 </li>
         </ul></li>
         <li>
-    --axis &lt;AXIS&gt;
+    --axis
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-resize-window-axis">kitty-@-resize-window command line option</a>
 </li>
         </ul></li>
         <li>
-    --cache-age &lt;CACHE_AGE&gt;
+    --background
+
+        <ul>
+          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-background">kitty-+kitten-icat command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --cache-age
 
         <ul>
           <li><a href="../kittens/themes/#cmdoption-kitty-kitten-themes-cache-age">kitty-+kitten-themes command line option</a>
 </li>
         </ul></li>
         <li>
-    --class &lt;CLS&gt;
+    --class
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-class">kitty command line option</a>
@@ -1108,7 +1121,14 @@
 </li>
         </ul></li>
         <li>
-    --color &lt;COLOR&gt;
+    --clear-selection
+
+        <ul>
+          <li><a href="../remote-control/#cmdoption-kitty-get-text-clear-selection">kitty-@-get-text command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --color
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-color">command line option</a>
@@ -1119,14 +1139,14 @@
 </li>
         </ul></li>
         <li>
-    --columns &lt;COLUMNS&gt;
+    --columns
 
         <ul>
           <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-columns">kitty-+kitten-panel command line option</a>
 </li>
         </ul></li>
         <li>
-    --config &lt;CONFIG&gt;
+    --config
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-config">kitty command line option</a>
@@ -1134,6 +1154,13 @@
           <li><a href="../kittens/diff/#cmdoption-kitty-kitten-diff-config">kitty-+kitten-diff command line option</a>
 </li>
           <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-config">kitty-+kitten-panel command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --config-file-name
+
+        <ul>
+          <li><a href="../kittens/themes/#cmdoption-kitty-kitten-themes-config-file-name">kitty-+kitten-themes command line option</a>
 </li>
         </ul></li>
         <li>
@@ -1159,7 +1186,7 @@
 </li>
         </ul></li>
         <li>
-    --context &lt;CONTEXT&gt;
+    --context
 
         <ul>
           <li><a href="../kittens/diff/#cmdoption-kitty-kitten-diff-context">kitty-+kitten-diff command line option</a>
@@ -1199,14 +1226,14 @@
 </li>
         </ul></li>
         <li>
-    --customize-processing &lt;CUSTOMIZE_PROCESSING&gt;
+    --customize-processing
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-customize-processing">kitty-+kitten-hints command line option</a>
 </li>
         </ul></li>
         <li>
-    --cwd &lt;CWD&gt;
+    --cwd
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-cwd">command line option</a>
@@ -1268,21 +1295,21 @@
 </li>
         </ul></li>
         <li>
-    --detection-timeout &lt;DETECTION_TIMEOUT&gt;
+    --detection-timeout
 
         <ul>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-detection-timeout">kitty-+kitten-icat command line option</a>
 </li>
         </ul></li>
         <li>
-    --direction &lt;DIRECTION&gt;
+    --direction
 
         <ul>
           <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-direction">kitty-+kitten-transfer command line option</a>
 </li>
         </ul></li>
         <li>
-    --directory &lt;DIRECTORY&gt;
+    --directory
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-directory">kitty command line option</a>
@@ -1296,11 +1323,13 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-launch-dont-take-focus">kitty-@-launch command line option</a>
 </li>
+          <li><a href="../remote-control/#cmdoption-kitty-new-window-dont-take-focus">kitty-@-new-window command line option</a>
+</li>
           <li><a href="../launch/#cmdoption-launch-dont-take-focus">launch command line option</a>
 </li>
         </ul></li>
         <li>
-    --dump-bytes &lt;DUMP_BYTES&gt;
+    --dump-bytes
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-dump-bytes">kitty command line option</a>
@@ -1321,21 +1350,21 @@
 </li>
         </ul></li>
         <li>
-    --edge &lt;EDGE&gt;
+    --edge
 
         <ul>
           <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-edge">kitty-+kitten-panel command line option</a>
 </li>
         </ul></li>
         <li>
-    --emoji-variation &lt;EMOJI_VARIATION&gt;
+    --emoji-variation
 
         <ul>
           <li><a href="../kittens/unicode_input/#cmdoption-kitty-kitten-unicode_input-emoji-variation">kitty-+kitten-unicode_input command line option</a>
 </li>
         </ul></li>
         <li>
-    --env &lt;ENV&gt;
+    --env
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-env">command line option</a>
@@ -1355,14 +1384,14 @@
 </li>
         </ul></li>
         <li>
-    --extent &lt;EXTENT&gt;
+    --extent
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-get-text-extent">kitty-@-get-text command line option</a>
 </li>
         </ul></li>
         <li>
-    --from-file &lt;FROM_FILE&gt;
+    --from-file
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-send-text-from-file">kitty-@-send-text command line option</a>
@@ -1376,35 +1405,35 @@
 </li>
         </ul></li>
         <li>
-    --height &lt;HEIGHT&gt;
+    --height
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-height">kitty-@-resize-os-window command line option</a>
 </li>
         </ul></li>
         <li>
-    --hints-background-color &lt;HINTS_BACKGROUND_COLOR&gt;
+    --hints-background-color
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-hints-background-color">kitty-+kitten-hints command line option</a>
 </li>
         </ul></li>
         <li>
-    --hints-foreground-color &lt;HINTS_FOREGROUND_COLOR&gt;
+    --hints-foreground-color
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-hints-foreground-color">kitty-+kitten-hints command line option</a>
 </li>
         </ul></li>
         <li>
-    --hints-offset &lt;HINTS_OFFSET&gt;
+    --hints-offset
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-hints-offset">kitty-+kitten-hints command line option</a>
 </li>
         </ul></li>
         <li>
-    --hints-text-color &lt;HINTS_TEXT_COLOR&gt;
+    --hints-text-color
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-hints-text-color">kitty-+kitten-hints command line option</a>
@@ -1414,13 +1443,19 @@
     --hold
 
         <ul>
+          <li><a href="../generated/launch/#cmdoption-hold">command line option</a>
+</li>
           <li><a href="../invocation/#cmdoption-kitty-hold">kitty command line option</a>
 </li>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-hold">kitty-+kitten-icat command line option</a>
 </li>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-hold">kitty-@-launch command line option</a>
+</li>
+          <li><a href="../launch/#cmdoption-launch-hold">launch command line option</a>
+</li>
         </ul></li>
         <li>
-    --increment &lt;INCREMENT&gt;
+    --increment
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-resize-window-increment">kitty-@-resize-window command line option</a>
@@ -1434,7 +1469,7 @@
 </li>
         </ul></li>
         <li>
-    --instance-group &lt;INSTANCE_GROUP&gt;
+    --instance-group
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-instance-group">kitty command line option</a>
@@ -1448,41 +1483,41 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-launch-dont-take-focus">kitty-@-launch command line option</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-new-window-keep-focus">kitty-@-new-window command line option</a>
+          <li><a href="../remote-control/#cmdoption-kitty-new-window-dont-take-focus">kitty-@-new-window command line option</a>
 </li>
           <li><a href="../launch/#cmdoption-launch-dont-take-focus">launch command line option</a>
 </li>
         </ul></li>
         <li>
-    --layout &lt;LAYOUT&gt;
+    --layout
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-set-background-image-layout">kitty-@-set-background-image command line option</a>
 </li>
         </ul></li>
         <li>
-    --linenum-action &lt;LINENUM_ACTION&gt;
+    --linenum-action
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-linenum-action">kitty-+kitten-hints command line option</a>
 </li>
         </ul></li>
         <li>
-    --lines &lt;LINES&gt;
+    --lines
 
         <ul>
           <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-lines">kitty-+kitten-panel command line option</a>
 </li>
         </ul></li>
         <li>
-    --listen-on &lt;LISTEN_ON&gt;
+    --listen-on
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-listen-on">kitty command line option</a>
 </li>
         </ul></li>
         <li>
-    --location &lt;LOCATION&gt;
+    --location
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-location">command line option</a>
@@ -1493,7 +1528,7 @@
 </li>
         </ul></li>
         <li>
-    --logo &lt;LOGO&gt;
+    --logo
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-logo">command line option</a>
@@ -1504,7 +1539,7 @@
 </li>
         </ul></li>
         <li>
-    --logo-alpha &lt;LOGO_ALPHA&gt;
+    --logo-alpha
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-logo-alpha">command line option</a>
@@ -1515,7 +1550,7 @@
 </li>
         </ul></li>
         <li>
-    --logo-position &lt;LOGO_POSITION&gt;
+    --logo-position
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-logo-position">command line option</a>
@@ -1526,14 +1561,14 @@
 </li>
         </ul></li>
         <li>
-    --loop &lt;LOOP&gt;
+    --loop
 
         <ul>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-loop">kitty-+kitten-icat command line option</a>
 </li>
         </ul></li>
         <li>
-    --marker &lt;MARKER&gt;
+    --marker
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-marker">command line option</a>
@@ -1544,7 +1579,7 @@
 </li>
         </ul></li>
         <li>
-    --match &lt;MATCH&gt;
+    --match
 
         <ul>
           <li><a href="../kittens/broadcast/#cmdoption-kitty-kitten-broadcast-match">kitty-+kitten-broadcast command line option</a>
@@ -1613,7 +1648,7 @@
 </li>
         </ul></li>
         <li>
-    --match-tab &lt;MATCH_TAB&gt;
+    --match-tab
 
         <ul>
           <li><a href="../kittens/broadcast/#cmdoption-kitty-kitten-broadcast-match-tab">kitty-+kitten-broadcast command line option</a>
@@ -1630,14 +1665,21 @@
 </li>
         </ul></li>
         <li>
-    --minimum-match-length &lt;MINIMUM_MATCH_LENGTH&gt;
+    --minimum-match-length
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-minimum-match-length">kitty-+kitten-hints command line option</a>
 </li>
         </ul></li>
         <li>
-    --mode &lt;MODE&gt;
+    --mirror
+
+        <ul>
+          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-mirror">kitty-+kitten-icat command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --mode
 
         <ul>
           <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-mode">kitty-+kitten-transfer command line option</a>
@@ -1651,14 +1693,16 @@
 </li>
         </ul></li>
         <li>
-    --multiple-joiner &lt;MULTIPLE_JOINER&gt;
+    --multiple-joiner
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-multiple-joiner">kitty-+kitten-hints command line option</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
-    --name &lt;NAME&gt;
+    --name
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-name">kitty command line option</a>
@@ -1694,10 +1738,8 @@
           <li><a href="../remote-control/#cmdoption-kitty-set-window-logo-no-response">kitty-@-set-window-logo command line option</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
-    --os-window-class &lt;OS_WINDOW_CLASS&gt;
+    --os-window-class
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-os-window-class">command line option</a>
@@ -1708,7 +1750,7 @@
 </li>
         </ul></li>
         <li>
-    --os-window-name &lt;OS_WINDOW_NAME&gt;
+    --os-window-name
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-os-window-name">command line option</a>
@@ -1719,7 +1761,7 @@
 </li>
         </ul></li>
         <li>
-    --os-window-title &lt;OS_WINDOW_TITLE&gt;
+    --os-window-title
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-os-window-title">command line option</a>
@@ -1730,7 +1772,7 @@
 </li>
         </ul></li>
         <li>
-    --override &lt;OVERRIDE&gt;
+    --override
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-override">kitty command line option</a>
@@ -1741,21 +1783,21 @@
 </li>
         </ul></li>
         <li>
-    --permissions-bypass &lt;PERMISSIONS_BYPASS&gt;
+    --permissions-bypass
 
         <ul>
           <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-permissions-bypass">kitty-+kitten-transfer command line option</a>
 </li>
         </ul></li>
         <li>
-    --place &lt;PLACE&gt;
+    --place
 
         <ul>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-place">kitty-+kitten-icat command line option</a>
 </li>
         </ul></li>
         <li>
-    --position &lt;POSITION&gt;
+    --position
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-set-window-logo-position">kitty-@-set-window-logo command line option</a>
@@ -1769,7 +1811,7 @@
 </li>
         </ul></li>
         <li>
-    --program &lt;PROGRAM&gt;
+    --program
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-program">kitty-+kitten-hints command line option</a>
@@ -1783,21 +1825,21 @@
 </li>
         </ul></li>
         <li>
-    --regex &lt;REGEX&gt;
+    --regex
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-regex">kitty-+kitten-hints command line option</a>
 </li>
         </ul></li>
         <li>
-    --reload-in &lt;RELOAD_IN&gt;
+    --reload-in
 
         <ul>
           <li><a href="../kittens/themes/#cmdoption-kitty-kitten-themes-reload-in">kitty-+kitten-themes command line option</a>
 </li>
         </ul></li>
         <li>
-    --replay-commands &lt;REPLAY_COMMANDS&gt;
+    --replay-commands
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-replay-commands">kitty command line option</a>
@@ -1811,7 +1853,7 @@
 </li>
         </ul></li>
         <li>
-    --response-timeout &lt;RESPONSE_TIMEOUT&gt;
+    --response-timeout
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-select-window-response-timeout">kitty-@-select-window command line option</a>
@@ -1856,7 +1898,7 @@
 </li>
         </ul></li>
         <li>
-    --session &lt;SESSION&gt;
+    --session
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-session">kitty command line option</a>
@@ -1877,7 +1919,7 @@
 </li>
         </ul></li>
         <li>
-    --start-as &lt;START_AS&gt;
+    --start-as
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-start-as">kitty command line option</a>
@@ -1887,14 +1929,9 @@
     --stdin
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-send-text-stdin">kitty-@-send-text command line option</a>
-</li>
-        </ul></li>
-        <li>
-    --stdin &lt;STDIN&gt;
-
-        <ul>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-stdin">kitty-+kitten-icat command line option</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitty-send-text-stdin">kitty-@-send-text command line option</a>
 </li>
         </ul></li>
         <li>
@@ -1920,7 +1957,7 @@
 </li>
         </ul></li>
         <li>
-    --stdin-source &lt;STDIN_SOURCE&gt;
+    --stdin-source
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-stdin-source">command line option</a>
@@ -1931,7 +1968,7 @@
 </li>
         </ul></li>
         <li>
-    --tab-title &lt;TAB_TITLE&gt;
+    --tab-title
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-tab-title">command line option</a>
@@ -1944,7 +1981,7 @@
 </li>
         </ul></li>
         <li>
-    --target-tab &lt;TARGET_TAB&gt;
+    --target-tab
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-detach-tab-target-tab">kitty-@-detach-tab command line option</a>
@@ -1960,36 +1997,31 @@
 </li>
         </ul></li>
         <li>
-    --title &lt;TITLE&gt;
+    --title
 
         <ul>
+          <li><a href="../generated/launch/#cmdoption-title">command line option</a>
+</li>
           <li><a href="../invocation/#cmdoption-kitty-title">kitty command line option</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-title">kitty-@-launch command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-new-window-title">kitty-@-new-window command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-select-window-title">kitty-@-select-window command line option</a>
 </li>
-        </ul></li>
-        <li>
-    --title &lt;WINDOW_TITLE&gt;
-
-        <ul>
-          <li><a href="../generated/launch/#cmdoption-title">command line option</a>
-</li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-title">kitty-@-launch command line option</a>
-</li>
           <li><a href="../launch/#cmdoption-launch-title">launch command line option</a>
 </li>
         </ul></li>
         <li>
-    --to &lt;TO&gt;
+    --to
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-to">kitty-@ command line option</a>
 </li>
         </ul></li>
         <li>
-    --transfer-mode &lt;TRANSFER_MODE&gt;
+    --transfer-mode
 
         <ul>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-transfer-mode">kitty-+kitten-icat command line option</a>
@@ -2003,7 +2035,7 @@
 </li>
         </ul></li>
         <li>
-    --type &lt;TYPE&gt;
+    --type
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-type">command line option</a>
@@ -2016,14 +2048,14 @@
 </li>
         </ul></li>
         <li>
-    --unit &lt;UNIT&gt;
+    --unit
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-unit">kitty-@-resize-os-window command line option</a>
 </li>
         </ul></li>
         <li>
-    --url-prefixes &lt;URL_PREFIXES&gt;
+    --url-prefixes
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-url-prefixes">kitty-+kitten-hints command line option</a>
@@ -2044,7 +2076,7 @@
 </li>
         </ul></li>
         <li>
-    --wait-for &lt;WAIT_FOR&gt;
+    --wait-for
 
         <ul>
           <li><a href="../kittens/query_terminal/#cmdoption-kitty-kitten-query_terminal-wait-for">kitty-+kitten-query_terminal command line option</a>
@@ -2065,7 +2097,7 @@
 </li>
         </ul></li>
         <li>
-    --watcher &lt;WATCHER&gt;
+    --watcher
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-watcher">command line option</a>
@@ -2078,14 +2110,14 @@
 </li>
         </ul></li>
         <li>
-    --width &lt;WIDTH&gt;
+    --width
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-width">kitty-@-resize-os-window command line option</a>
 </li>
         </ul></li>
         <li>
-    --window-title &lt;WINDOW_TITLE&gt;
+    --window-title
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-title">command line option</a>
@@ -2098,28 +2130,28 @@
 </li>
         </ul></li>
         <li>
-    --window-type &lt;WINDOW_TYPE&gt;
+    --window-type
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-new-window-window-type">kitty-@-new-window command line option</a>
 </li>
         </ul></li>
         <li>
-    --word-characters &lt;WORD_CHARACTERS&gt;
+    --word-characters
 
         <ul>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-word-characters">kitty-+kitten-hints command line option</a>
 </li>
         </ul></li>
         <li>
-    --working-directory &lt;DIRECTORY&gt;
+    --working-directory
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-directory">kitty command line option</a>
 </li>
         </ul></li>
         <li>
-    --z-index &lt;Z_INDEX&gt;
+    --z-index
 
         <ul>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-z-index">kitty-+kitten-icat command line option</a>
@@ -2140,6 +2172,8 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-last-used-layout-all">kitty-@-last-used-layout command line option</a>
 </li>
+          <li><a href="../remote-control/#cmdoption-kitty-resize-window-axis">kitty-@-resize-window command line option</a>
+</li>
           <li><a href="../remote-control/#cmdoption-kitty-set-background-image-all">kitty-@-set-background-image command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-background-opacity-all">kitty-@-set-background-opacity command line option</a>
@@ -2152,16 +2186,13 @@
 </li>
         </ul></li>
         <li>
-    -a &lt;AXIS&gt;
-
-        <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-resize-window-axis">kitty-@-resize-window command line option</a>
-</li>
-        </ul></li>
-        <li>
     -c
 
         <ul>
+          <li><a href="../invocation/#cmdoption-kitty-config">kitty command line option</a>
+</li>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-config">kitty-+kitten-panel command line option</a>
+</li>
           <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-confirm-paths">kitty-+kitten-transfer command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-get-colors-configured">kitty-@-get-colors command line option</a>
@@ -2174,47 +2205,35 @@
 </li>
         </ul></li>
         <li>
-    -c &lt;CONFIG&gt;
-
-        <ul>
-          <li><a href="../invocation/#cmdoption-kitty-config">kitty command line option</a>
-</li>
-          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-config">kitty-+kitten-panel command line option</a>
-</li>
-        </ul></li>
-        <li>
-    -d &lt;DIRECTION&gt;
-
-        <ul>
-          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-direction">kitty-+kitten-transfer command line option</a>
-</li>
-        </ul></li>
-        <li>
-    -d &lt;DIRECTORY&gt;
+    -d
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-directory">kitty command line option</a>
 </li>
+          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-direction">kitty-+kitten-transfer command line option</a>
+</li>
         </ul></li>
         <li>
-    -i &lt;INCREMENT&gt;
+    -i
 
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-resize-window-increment">kitty-@-resize-window command line option</a>
 </li>
         </ul></li>
         <li>
-    -l &lt;LOOP&gt;
+    -l
 
         <ul>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-loop">kitty-+kitten-icat command line option</a>
 </li>
         </ul></li>
         <li>
-    -m &lt;MATCH&gt;
+    -m
 
         <ul>
           <li><a href="../kittens/broadcast/#cmdoption-kitty-kitten-broadcast-match">kitty-+kitten-broadcast command line option</a>
+</li>
+          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-mode">kitty-+kitten-transfer command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-close-tab-match">kitty-@-close-tab command line option</a>
 </li>
@@ -2280,14 +2299,7 @@
 </li>
         </ul></li>
         <li>
-    -m &lt;MODE&gt;
-
-        <ul>
-          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-mode">kitty-+kitten-transfer command line option</a>
-</li>
-        </ul></li>
-        <li>
-    -o &lt;OVERRIDE&gt;
+    -o
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-override">kitty command line option</a>
@@ -2298,17 +2310,28 @@
 </li>
         </ul></li>
         <li>
-    -p &lt;PERMISSIONS_BYPASS&gt;
+    -p
 
         <ul>
           <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-permissions-bypass">kitty-+kitten-transfer command line option</a>
 </li>
         </ul></li>
         <li>
-    -t &lt;MATCH_TAB&gt;
+    -T
+
+        <ul>
+          <li><a href="../invocation/#cmdoption-kitty-title">kitty command line option</a>
+</li>
+        </ul></li>
+        <li>
+    -t
 
         <ul>
           <li><a href="../kittens/broadcast/#cmdoption-kitty-kitten-broadcast-match-tab">kitty-+kitten-broadcast command line option</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitty-detach-tab-target-tab">kitty-@-detach-tab command line option</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitty-detach-window-target-tab">kitty-@-detach-window command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-disable-ligatures-match-tab">kitty-@-disable-ligatures command line option</a>
 </li>
@@ -2322,22 +2345,6 @@
 </li>
         </ul></li>
         <li>
-    -t &lt;TARGET_TAB&gt;
-
-        <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-detach-tab-target-tab">kitty-@-detach-tab command line option</a>
-</li>
-          <li><a href="../remote-control/#cmdoption-kitty-detach-window-target-tab">kitty-@-detach-window command line option</a>
-</li>
-        </ul></li>
-        <li>
-    -T &lt;TITLE&gt;
-
-        <ul>
-          <li><a href="../invocation/#cmdoption-kitty-title">kitty command line option</a>
-</li>
-        </ul></li>
-        <li>
     -v
 
         <ul>
@@ -2345,7 +2352,7 @@
 </li>
         </ul></li>
         <li>
-    -w &lt;WATCHER&gt;
+    -w
 
         <ul>
           <li><a href="../generated/launch/#cmdoption-watcher">command line option</a>
@@ -2363,7 +2370,7 @@
 </li>
         </ul></li>
         <li>
-    -z &lt;Z_INDEX&gt;
+    -z
 
         <ul>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-z-index">kitty-+kitten-icat command line option</a>
@@ -2383,7 +2390,7 @@
         <ul>
           <li><a href="../generated/launch/#cmdoption-allow-remote-control">--allow-remote-control</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-color">--color &lt;COLOR&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-color">--color</a>
 </li>
           <li><a href="../generated/launch/#cmdoption-copy-cmdline">--copy-cmdline</a>
 </li>
@@ -2391,47 +2398,49 @@
 </li>
           <li><a href="../generated/launch/#cmdoption-copy-env">--copy-env</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-cwd">--cwd &lt;CWD&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-cwd">--cwd</a>
 </li>
           <li><a href="../generated/launch/#cmdoption-dont-take-focus">--dont-take-focus</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-env">--env &lt;ENV&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-env">--env</a>
+</li>
+          <li><a href="../generated/launch/#cmdoption-hold">--hold</a>
 </li>
           <li><a href="../generated/launch/#cmdoption-dont-take-focus">--keep-focus</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-location">--location &lt;LOCATION&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-location">--location</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-logo">--logo &lt;LOGO&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-logo">--logo</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-logo-alpha">--logo-alpha &lt;LOGO_ALPHA&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-logo-alpha">--logo-alpha</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-logo-position">--logo-position &lt;LOGO_POSITION&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-logo-position">--logo-position</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-marker">--marker &lt;MARKER&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-marker">--marker</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-os-window-class">--os-window-class &lt;OS_WINDOW_CLASS&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-os-window-class">--os-window-class</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-os-window-name">--os-window-name &lt;OS_WINDOW_NAME&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-os-window-name">--os-window-name</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-os-window-title">--os-window-title &lt;OS_WINDOW_TITLE&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-os-window-title">--os-window-title</a>
 </li>
           <li><a href="../generated/launch/#cmdoption-stdin-add-formatting">--stdin-add-formatting</a>
 </li>
           <li><a href="../generated/launch/#cmdoption-stdin-add-line-wrap-markers">--stdin-add-line-wrap-markers</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-stdin-source">--stdin-source &lt;STDIN_SOURCE&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-stdin-source">--stdin-source</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-tab-title">--tab-title &lt;TAB_TITLE&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-tab-title">--tab-title</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-title">--title &lt;WINDOW_TITLE&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-title">--title</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-type">--type &lt;TYPE&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-type">--type</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-watcher">--watcher &lt;WATCHER&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-watcher">--watcher</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-title">--window-title &lt;WINDOW_TITLE&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-title">--window-title</a>
 </li>
-          <li><a href="../generated/launch/#cmdoption-watcher">-w &lt;WATCHER&gt;</a>
+          <li><a href="../generated/launch/#cmdoption-watcher">-w</a>
 </li>
         </ul></li>
         <li>
@@ -2773,7 +2782,7 @@
 </li>
           <li><a href="../glossary/#envvar-KITTY_CONFIG_DIRECTORY">KITTY_CONFIG_DIRECTORY</a>, <a href="../invocation/#index-0">[1]</a>, <a href="../kittens/diff/#index-0">[2]</a>
 </li>
-          <li><a href="../glossary/#envvar-KITTY_INSTALLATION_DIR">KITTY_INSTALLATION_DIR</a>
+          <li><a href="../glossary/#envvar-KITTY_INSTALLATION_DIR">KITTY_INSTALLATION_DIR</a>, <a href="../shell-integration/#index-3">[1]</a>
 </li>
           <li><a href="../glossary/#envvar-KITTY_LISTEN_ON">KITTY_LISTEN_ON</a>
 </li>
@@ -3024,6 +3033,8 @@
 </li>
           <li><a href="../conf/#shortcut-kitty.Toggle-fullscreen">kitty.Toggle fullscreen</a>
 </li>
+          <li><a href="../conf/#shortcut-kitty.Toggle-macOS-secure-keyboard-entry">kitty.Toggle macOS secure keyboard entry</a>
+</li>
           <li><a href="../conf/#shortcut-kitty.Toggle-maximized">kitty.Toggle maximized</a>
 </li>
           <li><a href="../conf/#shortcut-kitty.Unicode-input">kitty.Unicode input</a>
@@ -3268,9 +3279,9 @@
     kitty command line option
 
         <ul>
-          <li><a href="../invocation/#cmdoption-kitty-class">--class &lt;CLS&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-class">--class</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-config">--config &lt;CONFIG&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-config">--config</a>
 </li>
           <li><a href="../invocation/#cmdoption-kitty-debug-font-fallback">--debug-font-fallback</a>
 </li>
@@ -3284,49 +3295,49 @@
 </li>
           <li><a href="../invocation/#cmdoption-kitty-detach">--detach</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-directory">--directory &lt;DIRECTORY&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-directory">--directory</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-dump-bytes">--dump-bytes &lt;DUMP_BYTES&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-dump-bytes">--dump-bytes</a>
 </li>
           <li><a href="../invocation/#cmdoption-kitty-dump-commands">--dump-commands</a>
 </li>
           <li><a href="../invocation/#cmdoption-kitty-hold">--hold</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-instance-group">--instance-group &lt;INSTANCE_GROUP&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-instance-group">--instance-group</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-listen-on">--listen-on &lt;LISTEN_ON&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-listen-on">--listen-on</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-name">--name &lt;NAME&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-name">--name</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-override">--override &lt;OVERRIDE&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-override">--override</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-replay-commands">--replay-commands &lt;REPLAY_COMMANDS&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-replay-commands">--replay-commands</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-session">--session &lt;SESSION&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-session">--session</a>
 </li>
           <li><a href="../invocation/#cmdoption-kitty-single-instance">--single-instance</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-start-as">--start-as &lt;START_AS&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-start-as">--start-as</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-title">--title &lt;TITLE&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-title">--title</a>
 </li>
           <li><a href="../invocation/#cmdoption-kitty-version">--version</a>
 </li>
           <li><a href="../invocation/#cmdoption-kitty-wait-for-single-instance-window-close">--wait-for-single-instance-window-close</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-watcher">--watcher &lt;WATCHER&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-watcher">--watcher</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-directory">--working-directory &lt;DIRECTORY&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-directory">--working-directory</a>
 </li>
           <li><a href="../invocation/#cmdoption-kitty-single-instance">-1</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-config">-c &lt;CONFIG&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-config">-c</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-directory">-d &lt;DIRECTORY&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-directory">-d</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-override">-o &lt;OVERRIDE&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-override">-o</a>
 </li>
-          <li><a href="../invocation/#cmdoption-kitty-title">-T &lt;TITLE&gt;</a>
+          <li><a href="../invocation/#cmdoption-kitty-title">-T</a>
 </li>
           <li><a href="../invocation/#cmdoption-kitty-version">-v</a>
 </li>
@@ -3335,13 +3346,13 @@
     kitty-+kitten-broadcast command line option
 
         <ul>
-          <li><a href="../kittens/broadcast/#cmdoption-kitty-kitten-broadcast-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../kittens/broadcast/#cmdoption-kitty-kitten-broadcast-match">--match</a>
 </li>
-          <li><a href="../kittens/broadcast/#cmdoption-kitty-kitten-broadcast-match-tab">--match-tab &lt;MATCH_TAB&gt;</a>
+          <li><a href="../kittens/broadcast/#cmdoption-kitty-kitten-broadcast-match-tab">--match-tab</a>
 </li>
-          <li><a href="../kittens/broadcast/#cmdoption-kitty-kitten-broadcast-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../kittens/broadcast/#cmdoption-kitty-kitten-broadcast-match">-m</a>
 </li>
-          <li><a href="../kittens/broadcast/#cmdoption-kitty-kitten-broadcast-match-tab">-t &lt;MATCH_TAB&gt;</a>
+          <li><a href="../kittens/broadcast/#cmdoption-kitty-kitten-broadcast-match-tab">-t</a>
 </li>
         </ul></li>
         <li>
@@ -3359,73 +3370,77 @@
     kitty-+kitten-diff command line option
 
         <ul>
-          <li><a href="../kittens/diff/#cmdoption-kitty-kitten-diff-config">--config &lt;CONFIG&gt;</a>
+          <li><a href="../kittens/diff/#cmdoption-kitty-kitten-diff-config">--config</a>
 </li>
-          <li><a href="../kittens/diff/#cmdoption-kitty-kitten-diff-context">--context &lt;CONTEXT&gt;</a>
+          <li><a href="../kittens/diff/#cmdoption-kitty-kitten-diff-context">--context</a>
 </li>
-          <li><a href="../kittens/diff/#cmdoption-kitty-kitten-diff-override">--override &lt;OVERRIDE&gt;</a>
+          <li><a href="../kittens/diff/#cmdoption-kitty-kitten-diff-override">--override</a>
 </li>
-          <li><a href="../kittens/diff/#cmdoption-kitty-kitten-diff-override">-o &lt;OVERRIDE&gt;</a>
+          <li><a href="../kittens/diff/#cmdoption-kitty-kitten-diff-override">-o</a>
 </li>
         </ul></li>
         <li>
     kitty-+kitten-hints command line option
 
         <ul>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-add-trailing-space">--add-trailing-space &lt;ADD_TRAILING_SPACE&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-add-trailing-space">--add-trailing-space</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-alphabet">--alphabet &lt;ALPHABET&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-alphabet">--alphabet</a>
 </li>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-ascending">--ascending</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-customize-processing">--customize-processing &lt;CUSTOMIZE_PROCESSING&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-customize-processing">--customize-processing</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-hints-background-color">--hints-background-color &lt;HINTS_BACKGROUND_COLOR&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-hints-background-color">--hints-background-color</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-hints-foreground-color">--hints-foreground-color &lt;HINTS_FOREGROUND_COLOR&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-hints-foreground-color">--hints-foreground-color</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-hints-offset">--hints-offset &lt;HINTS_OFFSET&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-hints-offset">--hints-offset</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-hints-text-color">--hints-text-color &lt;HINTS_TEXT_COLOR&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-hints-text-color">--hints-text-color</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-linenum-action">--linenum-action &lt;LINENUM_ACTION&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-linenum-action">--linenum-action</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-minimum-match-length">--minimum-match-length &lt;MINIMUM_MATCH_LENGTH&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-minimum-match-length">--minimum-match-length</a>
 </li>
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-multiple">--multiple</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-multiple-joiner">--multiple-joiner &lt;MULTIPLE_JOINER&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-multiple-joiner">--multiple-joiner</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-program">--program &lt;PROGRAM&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-program">--program</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-regex">--regex &lt;REGEX&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-regex">--regex</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-type">--type &lt;TYPE&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-type">--type</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-url-prefixes">--url-prefixes &lt;URL_PREFIXES&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-url-prefixes">--url-prefixes</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-window-title">--window-title &lt;WINDOW_TITLE&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-window-title">--window-title</a>
 </li>
-          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-word-characters">--word-characters &lt;WORD_CHARACTERS&gt;</a>
+          <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-word-characters">--word-characters</a>
 </li>
         </ul></li>
         <li>
     kitty-+kitten-icat command line option
 
         <ul>
-          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-align">--align &lt;ALIGN&gt;</a>
+          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-align">--align</a>
+</li>
+          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-background">--background</a>
 </li>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-clear">--clear</a>
 </li>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-detect-support">--detect-support</a>
 </li>
-          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-detection-timeout">--detection-timeout &lt;DETECTION_TIMEOUT&gt;</a>
+          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-detection-timeout">--detection-timeout</a>
 </li>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-hold">--hold</a>
 </li>
-          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-loop">--loop &lt;LOOP&gt;</a>
+          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-loop">--loop</a>
 </li>
-          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-place">--place &lt;PLACE&gt;</a>
+          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-mirror">--mirror</a>
+</li>
+          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-place">--place</a>
 </li>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-print-window-size">--print-window-size</a>
 </li>
@@ -3433,56 +3448,58 @@
 </li>
           <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-silent">--silent</a>
 </li>
-          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-stdin">--stdin &lt;STDIN&gt;</a>
+          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-stdin">--stdin</a>
 </li>
-          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-transfer-mode">--transfer-mode &lt;TRANSFER_MODE&gt;</a>
+          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-transfer-mode">--transfer-mode</a>
 </li>
-          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-z-index">--z-index &lt;Z_INDEX&gt;</a>
+          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-z-index">--z-index</a>
 </li>
-          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-loop">-l &lt;LOOP&gt;</a>
+          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-loop">-l</a>
 </li>
-          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-z-index">-z &lt;Z_INDEX&gt;</a>
+          <li><a href="../kittens/icat/#cmdoption-kitty-kitten-icat-z-index">-z</a>
 </li>
         </ul></li>
         <li>
     kitty-+kitten-panel command line option
 
         <ul>
-          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-class">--class &lt;CLS&gt;</a>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-class">--class</a>
 </li>
-          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-columns">--columns &lt;COLUMNS&gt;</a>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-columns">--columns</a>
 </li>
-          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-config">--config &lt;CONFIG&gt;</a>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-config">--config</a>
 </li>
-          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-edge">--edge &lt;EDGE&gt;</a>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-edge">--edge</a>
 </li>
-          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-lines">--lines &lt;LINES&gt;</a>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-lines">--lines</a>
 </li>
-          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-name">--name &lt;NAME&gt;</a>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-name">--name</a>
 </li>
-          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-override">--override &lt;OVERRIDE&gt;</a>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-override">--override</a>
 </li>
-          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-config">-c &lt;CONFIG&gt;</a>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-config">-c</a>
 </li>
-          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-override">-o &lt;OVERRIDE&gt;</a>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-override">-o</a>
 </li>
         </ul></li>
         <li>
     kitty-+kitten-query_terminal command line option
 
         <ul>
-          <li><a href="../kittens/query_terminal/#cmdoption-kitty-kitten-query_terminal-wait-for">--wait-for &lt;WAIT_FOR&gt;</a>
+          <li><a href="../kittens/query_terminal/#cmdoption-kitty-kitten-query_terminal-wait-for">--wait-for</a>
 </li>
         </ul></li>
         <li>
     kitty-+kitten-themes command line option
 
         <ul>
-          <li><a href="../kittens/themes/#cmdoption-kitty-kitten-themes-cache-age">--cache-age &lt;CACHE_AGE&gt;</a>
+          <li><a href="../kittens/themes/#cmdoption-kitty-kitten-themes-cache-age">--cache-age</a>
+</li>
+          <li><a href="../kittens/themes/#cmdoption-kitty-kitten-themes-config-file-name">--config-file-name</a>
 </li>
           <li><a href="../kittens/themes/#cmdoption-kitty-kitten-themes-dump-theme">--dump-theme</a>
 </li>
-          <li><a href="../kittens/themes/#cmdoption-kitty-kitten-themes-reload-in">--reload-in &lt;RELOAD_IN&gt;</a>
+          <li><a href="../kittens/themes/#cmdoption-kitty-kitten-themes-reload-in">--reload-in</a>
 </li>
         </ul></li>
         <li>
@@ -3491,21 +3508,21 @@
         <ul>
           <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-confirm-paths">--confirm-paths</a>
 </li>
-          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-direction">--direction &lt;DIRECTION&gt;</a>
+          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-direction">--direction</a>
 </li>
-          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-mode">--mode &lt;MODE&gt;</a>
+          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-mode">--mode</a>
 </li>
-          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-permissions-bypass">--permissions-bypass &lt;PERMISSIONS_BYPASS&gt;</a>
+          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-permissions-bypass">--permissions-bypass</a>
 </li>
           <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-transmit-deltas">--transmit-deltas</a>
 </li>
           <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-confirm-paths">-c</a>
 </li>
-          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-direction">-d &lt;DIRECTION&gt;</a>
+          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-direction">-d</a>
 </li>
-          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-mode">-m &lt;MODE&gt;</a>
+          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-mode">-m</a>
 </li>
-          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-permissions-bypass">-p &lt;PERMISSIONS_BYPASS&gt;</a>
+          <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-permissions-bypass">-p</a>
 </li>
           <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-transmit-deltas">-x</a>
 </li>
@@ -3514,77 +3531,77 @@
     kitty-+kitten-unicode_input command line option
 
         <ul>
-          <li><a href="../kittens/unicode_input/#cmdoption-kitty-kitten-unicode_input-emoji-variation">--emoji-variation &lt;EMOJI_VARIATION&gt;</a>
+          <li><a href="../kittens/unicode_input/#cmdoption-kitty-kitten-unicode_input-emoji-variation">--emoji-variation</a>
 </li>
         </ul></li>
         <li>
     kitty-@ command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-to">--to &lt;TO&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-to">--to</a>
 </li>
         </ul></li>
         <li>
     kitty-@-close-tab command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-close-tab-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-close-tab-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-close-tab-self">--self</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-close-tab-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-close-tab-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-close-window command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-close-window-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-close-window-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-close-window-self">--self</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-close-window-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-close-window-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-create-marker command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-create-marker-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-create-marker-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-create-marker-self">--self</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-create-marker-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-create-marker-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-detach-tab command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-detach-tab-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-detach-tab-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-detach-tab-self">--self</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-detach-tab-target-tab">--target-tab &lt;TARGET_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-detach-tab-target-tab">--target-tab</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-detach-tab-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-detach-tab-match">-m</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-detach-tab-target-tab">-t &lt;TARGET_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-detach-tab-target-tab">-t</a>
 </li>
         </ul></li>
         <li>
     kitty-@-detach-window command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-detach-window-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-detach-window-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-detach-window-self">--self</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-detach-window-target-tab">--target-tab &lt;TARGET_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-detach-window-target-tab">--target-tab</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-detach-window-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-detach-window-match">-m</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-detach-window-target-tab">-t &lt;TARGET_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-detach-window-target-tab">-t</a>
 </li>
         </ul></li>
         <li>
@@ -3593,37 +3610,37 @@
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-disable-ligatures-all">--all</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-disable-ligatures-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-disable-ligatures-match">--match</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-disable-ligatures-match-tab">--match-tab &lt;MATCH_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-disable-ligatures-match-tab">--match-tab</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-disable-ligatures-all">-a</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-disable-ligatures-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-disable-ligatures-match">-m</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-disable-ligatures-match-tab">-t &lt;MATCH_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-disable-ligatures-match-tab">-t</a>
 </li>
         </ul></li>
         <li>
     kitty-@-focus-tab command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-focus-tab-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-focus-tab-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-focus-tab-no-response">--no-response</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-focus-tab-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-focus-tab-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-focus-window command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-focus-window-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-focus-window-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-focus-window-no-response">--no-response</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-focus-window-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-focus-window-match">-m</a>
 </li>
         </ul></li>
         <li>
@@ -3632,11 +3649,11 @@
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-get-colors-configured">--configured</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-get-colors-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-get-colors-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-get-colors-configured">-c</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-get-colors-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-get-colors-match">-m</a>
 </li>
         </ul></li>
         <li>
@@ -3649,31 +3666,33 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-get-text-ansi">--ansi</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-get-text-extent">--extent &lt;EXTENT&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-get-text-clear-selection">--clear-selection</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-get-text-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-get-text-extent">--extent</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitty-get-text-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-get-text-self">--self</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-get-text-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-get-text-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-goto-layout command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-goto-layout-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-goto-layout-match">--match</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-goto-layout-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-goto-layout-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-kitten command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-kitten-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-kitten-match">--match</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-kitten-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-kitten-match">-m</a>
 </li>
         </ul></li>
         <li>
@@ -3682,13 +3701,13 @@
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-last-used-layout-all">--all</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-last-used-layout-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-last-used-layout-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-last-used-layout-no-response">--no-response</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-last-used-layout-all">-a</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-last-used-layout-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-last-used-layout-match">-m</a>
 </li>
         </ul></li>
         <li>
@@ -3697,7 +3716,7 @@
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-launch-allow-remote-control">--allow-remote-control</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-color">--color &lt;COLOR&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-color">--color</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-launch-copy-cmdline">--copy-cmdline</a>
 </li>
@@ -3705,33 +3724,35 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-launch-copy-env">--copy-env</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-cwd">--cwd &lt;CWD&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-cwd">--cwd</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-launch-dont-take-focus">--dont-take-focus</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-env">--env &lt;ENV&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-env">--env</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-hold">--hold</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-launch-dont-take-focus">--keep-focus</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-location">--location &lt;LOCATION&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-location">--location</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-logo">--logo &lt;LOGO&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-logo">--logo</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-logo-alpha">--logo-alpha &lt;LOGO_ALPHA&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-logo-alpha">--logo-alpha</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-logo-position">--logo-position &lt;LOGO_POSITION&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-logo-position">--logo-position</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-marker">--marker &lt;MARKER&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-marker">--marker</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-launch-no-response">--no-response</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-os-window-class">--os-window-class &lt;OS_WINDOW_CLASS&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-os-window-class">--os-window-class</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-os-window-name">--os-window-name &lt;OS_WINDOW_NAME&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-os-window-name">--os-window-name</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-os-window-title">--os-window-title &lt;OS_WINDOW_TITLE&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-os-window-title">--os-window-title</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-launch-self">--self</a>
 </li>
@@ -3739,21 +3760,21 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-launch-stdin-add-line-wrap-markers">--stdin-add-line-wrap-markers</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-stdin-source">--stdin-source &lt;STDIN_SOURCE&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-stdin-source">--stdin-source</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-tab-title">--tab-title &lt;TAB_TITLE&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-tab-title">--tab-title</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-title">--title &lt;WINDOW_TITLE&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-title">--title</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-type">--type &lt;TYPE&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-type">--type</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-watcher">--watcher &lt;WATCHER&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-watcher">--watcher</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-title">--window-title &lt;WINDOW_TITLE&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-title">--window-title</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-match">-m</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-launch-watcher">-w &lt;WATCHER&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-launch-watcher">-w</a>
 </li>
         </ul></li>
         <li>
@@ -3767,85 +3788,87 @@
     kitty-@-new-window command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-new-window-cwd">--cwd &lt;CWD&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-new-window-cwd">--cwd</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-new-window-keep-focus">--keep-focus</a>
+          <li><a href="../remote-control/#cmdoption-kitty-new-window-dont-take-focus">--dont-take-focus</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-new-window-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-new-window-dont-take-focus">--keep-focus</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitty-new-window-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-new-window-new-tab">--new-tab</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-new-window-no-response">--no-response</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-new-window-tab-title">--tab-title &lt;TAB_TITLE&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-new-window-tab-title">--tab-title</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-new-window-title">--title &lt;TITLE&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-new-window-title">--title</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-new-window-window-type">--window-type &lt;WINDOW_TYPE&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-new-window-window-type">--window-type</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-new-window-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-new-window-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-remove-marker command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-remove-marker-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-remove-marker-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-remove-marker-self">--self</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-remove-marker-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-remove-marker-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-resize-os-window command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-action">--action &lt;ACTION&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-action">--action</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-height">--height &lt;HEIGHT&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-height">--height</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-incremental">--incremental</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-no-response">--no-response</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-self">--self</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-unit">--unit &lt;UNIT&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-unit">--unit</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-width">--width &lt;WIDTH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-width">--width</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-resize-os-window-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-resize-window command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-resize-window-axis">--axis &lt;AXIS&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-resize-window-axis">--axis</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-resize-window-increment">--increment &lt;INCREMENT&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-resize-window-increment">--increment</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-resize-window-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-resize-window-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-resize-window-self">--self</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-resize-window-axis">-a &lt;AXIS&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-resize-window-axis">-a</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-resize-window-increment">-i &lt;INCREMENT&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-resize-window-increment">-i</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-resize-window-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-resize-window-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-scroll-window command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-scroll-window-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-scroll-window-match">--match</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-scroll-window-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-scroll-window-match">-m</a>
 </li>
         </ul></li>
         <li>
@@ -3854,17 +3877,17 @@
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-select-window-exclude-active">--exclude-active</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-select-window-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-select-window-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-select-window-reactivate-prev-tab">--reactivate-prev-tab</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-select-window-response-timeout">--response-timeout &lt;RESPONSE_TIMEOUT&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-select-window-response-timeout">--response-timeout</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-select-window-self">--self</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-select-window-title">--title &lt;TITLE&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-select-window-title">--title</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-select-window-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-select-window-match">-m</a>
 </li>
         </ul></li>
         <li>
@@ -3875,17 +3898,17 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-send-text-exclude-active">--exclude-active</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-send-text-from-file">--from-file &lt;FROM_FILE&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-send-text-from-file">--from-file</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-send-text-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-send-text-match">--match</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-send-text-match-tab">--match-tab &lt;MATCH_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-send-text-match-tab">--match-tab</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-send-text-stdin">--stdin</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-send-text-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-send-text-match">-m</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-send-text-match-tab">-t &lt;MATCH_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-send-text-match-tab">-t</a>
 </li>
         </ul></li>
         <li>
@@ -3896,9 +3919,9 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-background-image-configured">--configured</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-background-image-layout">--layout &lt;LAYOUT&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-background-image-layout">--layout</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-background-image-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-background-image-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-background-image-no-response">--no-response</a>
 </li>
@@ -3906,7 +3929,7 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-background-image-configured">-c</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-background-image-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-background-image-match">-m</a>
 </li>
         </ul></li>
         <li>
@@ -3915,15 +3938,15 @@
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-set-background-opacity-all">--all</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-background-opacity-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-background-opacity-match">--match</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-background-opacity-match-tab">--match-tab &lt;MATCH_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-background-opacity-match-tab">--match-tab</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-background-opacity-all">-a</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-background-opacity-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-background-opacity-match">-m</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-background-opacity-match-tab">-t &lt;MATCH_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-background-opacity-match-tab">-t</a>
 </li>
         </ul></li>
         <li>
@@ -3934,9 +3957,9 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-colors-configured">--configured</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-colors-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-colors-match">--match</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-colors-match-tab">--match-tab &lt;MATCH_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-colors-match-tab">--match-tab</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-colors-reset">--reset</a>
 </li>
@@ -3944,9 +3967,9 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-colors-configured">-c</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-colors-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-colors-match">-m</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-colors-match-tab">-t &lt;MATCH_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-colors-match-tab">-t</a>
 </li>
         </ul></li>
         <li>
@@ -3955,9 +3978,9 @@
         <ul>
           <li><a href="../remote-control/#cmdoption-kitty-set-enabled-layouts-configured">--configured</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-enabled-layouts-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-enabled-layouts-match">--match</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-enabled-layouts-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-enabled-layouts-match">-m</a>
 </li>
         </ul></li>
         <li>
@@ -3977,17 +4000,17 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-spacing-configured">--configured</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-spacing-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-spacing-match">--match</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-spacing-match-tab">--match-tab &lt;MATCH_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-spacing-match-tab">--match-tab</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-spacing-all">-a</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-spacing-configured">-c</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-spacing-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-spacing-match">-m</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-spacing-match-tab">-t &lt;MATCH_TAB&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-spacing-match-tab">-t</a>
 </li>
         </ul></li>
     </ul></td>
@@ -3996,57 +4019,57 @@
     kitty-@-set-tab-color command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-set-tab-color-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-tab-color-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-tab-color-self">--self</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-tab-color-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-tab-color-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-set-tab-title command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-set-tab-title-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-tab-title-match">--match</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-tab-title-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-tab-title-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-set-window-logo command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-set-window-logo-alpha">--alpha &lt;ALPHA&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-window-logo-alpha">--alpha</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-window-logo-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-window-logo-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-window-logo-no-response">--no-response</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-window-logo-position">--position &lt;POSITION&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-window-logo-position">--position</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-window-logo-self">--self</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-window-logo-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-window-logo-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-set-window-title command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-set-window-title-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-window-title-match">--match</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-set-window-title-temporary">--temporary</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-set-window-title-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-set-window-title-match">-m</a>
 </li>
         </ul></li>
         <li>
     kitty-@-signal-child command line option
 
         <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-signal-child-match">--match &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-signal-child-match">--match</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-signal-child-match">-m &lt;MATCH&gt;</a>
+          <li><a href="../remote-control/#cmdoption-kitty-signal-child-match">-m</a>
 </li>
         </ul></li>
         <li>
@@ -5471,6 +5494,13 @@
 </li>
         </ul></li>
         <li>
+    kitty.Toggle macOS secure keyboard entry
+
+        <ul>
+          <li><a href="../conf/#shortcut-kitty.Toggle-macOS-secure-keyboard-entry">Keyboard Shortcut</a>
+</li>
+        </ul></li>
+        <li>
     kitty.Toggle maximized
 
         <ul>
@@ -5635,6 +5665,8 @@
 </li>
         <li><a href="../invocation/#index-0">KITTY_CONFIG_DIRECTORY</a>, <a href="../kittens/diff/#index-0">[1]</a>
 </li>
+        <li><a href="../shell-integration/#index-3">KITTY_INSTALLATION_DIR</a>
+</li>
         <li><a href="../launch/#index-0">KITTY_PIPE_DATA</a>
 </li>
         <li><a href="../shell-integration/#index-0">KITTY_SHELL_INTEGRATION</a>, <a href="../shell-integration/#index-1">[1]</a>, <a href="../shell-integration/#index-2">[2]</a>
@@ -5655,7 +5687,7 @@
         <ul>
           <li><a href="../launch/#cmdoption-launch-allow-remote-control">--allow-remote-control</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-color">--color &lt;COLOR&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-color">--color</a>
 </li>
           <li><a href="../launch/#cmdoption-launch-copy-cmdline">--copy-cmdline</a>
 </li>
@@ -5663,47 +5695,49 @@
 </li>
           <li><a href="../launch/#cmdoption-launch-copy-env">--copy-env</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-cwd">--cwd &lt;CWD&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-cwd">--cwd</a>
 </li>
           <li><a href="../launch/#cmdoption-launch-dont-take-focus">--dont-take-focus</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-env">--env &lt;ENV&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-env">--env</a>
+</li>
+          <li><a href="../launch/#cmdoption-launch-hold">--hold</a>
 </li>
           <li><a href="../launch/#cmdoption-launch-dont-take-focus">--keep-focus</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-location">--location &lt;LOCATION&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-location">--location</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-logo">--logo &lt;LOGO&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-logo">--logo</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-logo-alpha">--logo-alpha &lt;LOGO_ALPHA&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-logo-alpha">--logo-alpha</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-logo-position">--logo-position &lt;LOGO_POSITION&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-logo-position">--logo-position</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-marker">--marker &lt;MARKER&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-marker">--marker</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-os-window-class">--os-window-class &lt;OS_WINDOW_CLASS&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-os-window-class">--os-window-class</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-os-window-name">--os-window-name &lt;OS_WINDOW_NAME&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-os-window-name">--os-window-name</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-os-window-title">--os-window-title &lt;OS_WINDOW_TITLE&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-os-window-title">--os-window-title</a>
 </li>
           <li><a href="../launch/#cmdoption-launch-stdin-add-formatting">--stdin-add-formatting</a>
 </li>
           <li><a href="../launch/#cmdoption-launch-stdin-add-line-wrap-markers">--stdin-add-line-wrap-markers</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-stdin-source">--stdin-source &lt;STDIN_SOURCE&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-stdin-source">--stdin-source</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-tab-title">--tab-title &lt;TAB_TITLE&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-tab-title">--tab-title</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-title">--title &lt;WINDOW_TITLE&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-title">--title</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-type">--type &lt;TYPE&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-type">--type</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-watcher">--watcher &lt;WATCHER&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-watcher">--watcher</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-title">--window-title &lt;WINDOW_TITLE&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-title">--window-title</a>
 </li>
-          <li><a href="../launch/#cmdoption-launch-watcher">-w &lt;WATCHER&gt;</a>
+          <li><a href="../launch/#cmdoption-launch-watcher">-w</a>
 </li>
         </ul></li>
     </ul></td>

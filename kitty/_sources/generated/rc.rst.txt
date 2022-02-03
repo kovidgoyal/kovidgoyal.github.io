@@ -140,7 +140,7 @@ get-text
 Fields are:
 
 :code:`match (default: None)`
-  The tab to focus
+  The window to get text from
 
 :code:`extent (default: screen)`
   One of :code:`screen`, :code:`first_cmd_output_on_screen`, :code:`last_cmd_output`,             :code:`last_visited_cmd_output`, :code:`all`, or :code:`selection`
@@ -153,6 +153,9 @@ Fields are:
 
 :code:`wrap_markers (optional)`
   Boolean, if True add wrap markers to output
+
+:code:`clear_selection (default: None)`
+  Boolean, if True clear the selection in the matched window
 
 :code:`self (default: False)`
   Boolean, if True use window command was run in
@@ -238,6 +241,9 @@ Fields are:
 
 :code:`copy_env (default: False)`
   Boolean indicating whether to copy the environ from the current window
+
+:code:`hold (default: False)`
+  Boolean indicating whether to keep window open after cmd exits
 
 :code:`location (default: default)`
   Where in the tab to open the new window

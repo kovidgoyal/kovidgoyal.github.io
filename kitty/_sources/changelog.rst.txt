@@ -4,6 +4,8 @@ Changelog
 |kitty| is a feature-rich, cross-platform, *fast*, GPU based terminal.
 To update |kitty|, :doc:`follow the instructions <binary>`.
 
+.. recent major features {{{
+
 Recent major new features
 ---------------------------
 
@@ -16,7 +18,7 @@ Recent major new features
 
    .. raw:: html
 
-        <video controls width="640" height="360">
+        <video controls width="640" height="360" poster="../_static/poster.png">
             <source src="https://download.calibre-ebook.com/videos/kitty.mp4" type="video/mp4">
             <source src="https://download.calibre-ebook.com/videos/kitty.webm" type="video/webm">
         </video>
@@ -68,10 +70,80 @@ command.
 
     Hints for selecting kitty windows visually
 
-
+.. }}}
 
 Detailed list of changes
 -------------------------------------
+
+0.24.2 [2022-02-03]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- macOS: Allow opening text files, images and directories with kitty when
+  launched using "Open with" in Finder (:iss:`4460`)
+
+- Allow including config files matching glob patterns in :file:`kitty.conf`
+  (:iss:`4533`)
+
+- Shell integration: Fix bash integration not working when ``PROMPT_COMMAND``
+  is used to change the prompt variables (:iss:`4476`)
+
+- Shell integration: Fix cursor shape not being restored to default when
+  running commands in the shell
+
+- Improve the UI of the ask kitten (:iss:`4545`)
+
+- Allow customizing the placement and formatting of the
+  :opt:`tab_activity_symbol` and :opt:`bell_on_tab` symbols
+  by adding them to the :opt:`tab_title_template` (:iss:`4581`, :pull:`4507`)
+
+- macOS: Persist "Secure Keyboard Entry" across restarts to match the behavior
+  of Terminal.app (:iss:`4471`)
+
+- hints kitten: Fix common single letter extension files not being detected
+  (:iss:`4491`)
+
+- Support dotted and dashed underline styles (:pull:`4529`)
+
+- For the vertical and horizontal layouts have the windows arranged on a ring
+  rather than a plane. This means the first and last window are considered
+  neighbors (:iss:`4494`)
+
+- A new action to clear the current selection (:iss:`4600`)
+
+- Shell integration: fish: Fix cursor shape not working with fish's vi mode
+  (:iss:`4508`)
+
+- Shell integration: fish: Dont override fish's native title setting functionality.
+  See `discussion <https://github.com/fish-shell/fish-shell/issues/8641>`__.
+
+- macOS: Fix hiding via :kbd:`cmd+h` not working on macOS 10.15.7 (:iss:`4472`)
+
+- Draw the dots for braille characters more evenly spaced at all font sizes (:iss:`4499`)
+
+- icat kitten: Add options to mirror images and remove their transparency
+  before displaying them (:iss:`4513`)
+
+- macOS: Respect the users system-wide global keyboard shortcut preferences
+  (:iss:`4501`)
+
+- macOS: Fix a few key-presses causing beeps from Cocoa's text input system
+  (:iss:`4489`)
+
+- macOS: Fix using shortcuts from the global menu bar as subsequent key presses
+  in a multi key mapping not working (:iss:`4519`)
+
+- Fix getting last command output not working correctly when the screen is
+  scrolled (:pull:`4522`)
+
+- Show number of windows per tab in the :ac:`select_tab` action (:pull:`4523`)
+
+- macOS: Fix the shift key not clearing pre-edit text in IME (:iss:`4541`)
+
+- Fix clicking in a window to focus it and typing immediately sometimes having
+  unexpected effects if at a shell prompt (:iss:`4128`)
+
+- themes kitten: Allow writing to a different file than :file:`kitty.conf`.
+
 
 0.24.1 [2022-01-06]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

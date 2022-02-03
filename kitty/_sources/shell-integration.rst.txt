@@ -26,7 +26,7 @@ Features
   to view it in a pager
 
 * The current working directory or the command being executed are automatically
-  displayed in the kitty window titlebar/tab title.
+  displayed in the kitty window titlebar/tab title
 
 * The text cursor is changed to a bar when editing commands at the shell prompt
 
@@ -58,7 +58,9 @@ no-cursor
     Turn off changing of the text cursor to a bar when editing text
 
 no-title
-    Turn off setting the kitty window/tab title based on shell state
+    Turn off setting the kitty window/tab title based on shell state.
+    Note that for the ``fish`` shell kitty relies on fish's native title
+    setting functionality instead.
 
 no-prompt-mark
     Turn off marking of prompts. This disables jumping to prompt, browsing
@@ -66,6 +68,8 @@ no-prompt-mark
 
 no-complete
     Turn off completion for the kitty command.
+    Note that for the ``fish`` shell this does not take effect, since fish
+    already comes with a kitty completion script.
 
 
 More ways to browse command output
@@ -169,6 +173,7 @@ code used for each shell below:
 
     .. literalinclude:: ../shell-integration/fish/vendor_conf.d/kitty-shell-integration.fish
         :language: fish
+        :force:
 
 .. tab:: bash
 
@@ -235,9 +240,18 @@ completely, in which case simply do not set the
 :envvar:`KITTY_SHELL_INTEGRATION` variable at all.
 
 If you want this to work while SSHing into a remote system, then you will
-need to add some code to the snippets above to check if :code:`KITTY_INSTALLATION_DIR`
+need to add some code to the snippets above to check if :envvar:`KITTY_INSTALLATION_DIR`
 is empty and if so to set it to some hard coded location with the shell
 integration scripts that need to be copied onto the remote system.
+
+
+Integration with other shells
+-------------------------------
+
+There exist third-party integrations to use these features for various other shells:
+
+* Jupyter console via a patch (:iss:`4475`)
+* `xonsh <https://github.com/xonsh/xonsh/issues/4623>`__
 
 
 Notes for shell developers

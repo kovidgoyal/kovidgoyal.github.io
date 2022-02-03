@@ -9,7 +9,7 @@
   <meta property="og:description" content="kitty has the ability to integrate closely within common shells, such as zsh, fish and bash to enable features such as jumping to previous prompts in the scrollback, viewing the output of the last ..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Mark text on screen" href="../marks/" /><link rel="prev" title="Scripting the mouse click" href="../open_actions/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.3.2, furo 2022.01.02"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
         <title>Shell integration - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
@@ -246,6 +246,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../conf/#all-mappable-actions">All mappable actions</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../actions/">Mappable actions</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../actions/#copy-paste">Copy/paste</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#clear-selection">clear_selection</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#copy-and-clear-or-interrupt">copy_and_clear_or_interrupt</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#copy-or-interrupt">copy_or_interrupt</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#copy-to-clipboard">copy_to_clipboard</a></li>
@@ -298,6 +299,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../actions/#open-url-with-hints">open_url_with_hints</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#remote-control">remote_control</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#set-colors">set_colors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../actions/#toggle-macos-secure-keyboard-entry">toggle_macos_secure_keyboard_entry</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../actions/#no-op">no_op</a></li>
 </ul>
 </li>
@@ -712,6 +714,7 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#mouse-features">Mouse features</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a><input class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" role="switch" type="checkbox"/><label for="toctree-checkbox-85"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../open_actions/#matching-criteria">Matching criteria</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../open_actions/#scripting-the-opening-of-files-with-kitty-on-macos">Scripting the opening of files with kitty on macOS</a></li>
 </ul>
 </li>
 </ul>
@@ -727,6 +730,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#manual-shell-integration">Manual shell integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#notes-for-shell-developers">Notes for shell developers</a></li>
 </ul>
 </li>
@@ -772,72 +776,73 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-92" name="toctree-checkbox-92" role="switch" type="checkbox"/><label for="toctree-checkbox-92"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -946,6 +951,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../deccara/">Setting text styles/colors in arbitrary regions of the screen</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../press-mentions/">Press mentions of kitty</a></li>
 </ul>
 
 </div>
@@ -992,7 +998,7 @@ previous prompts in the scrollback, viewing the output of the last command in
 <li><p>Hold <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd></kbd> and right-click on any command output in the scrollback
 to view it in a pager</p></li>
 <li><p>The current working directory or the command being executed are automatically
-displayed in the kitty window titlebar/tab title.</p></li>
+displayed in the kitty window titlebar/tab title</p></li>
 <li><p>The text cursor is changed to a bar when editing commands at the shell prompt</p></li>
 <li><p>Glitch free window resizing even with complex prompts. Achieved by erasing
 the prompt on resize and allowing the shell to redraw it cleanly.</p></li>
@@ -1015,12 +1021,16 @@ to <a class="reference internal" href="#manual-shell-integration"><span class="s
 </dd>
 <dt>no-cursor</dt><dd><p>Turn off changing of the text cursor to a bar when editing text</p>
 </dd>
-<dt>no-title</dt><dd><p>Turn off setting the kitty window/tab title based on shell state</p>
+<dt>no-title</dt><dd><p>Turn off setting the kitty window/tab title based on shell state.
+Note that for the <code class="docutils literal notranslate"><span class="pre">fish</span></code> shell kitty relies on fish’s native title
+setting functionality instead.</p>
 </dd>
 <dt>no-prompt-mark</dt><dd><p>Turn off marking of prompts. This disables jumping to prompt, browsing
 output of last command and click to move cursor functionality.</p>
 </dd>
-<dt>no-complete</dt><dd><p>Turn off completion for the kitty command.</p>
+<dt>no-complete</dt><dd><p>Turn off completion for the kitty command.
+Note that for the <code class="docutils literal notranslate"><span class="pre">fish</span></code> shell this does not take effect, since fish
+already comes with a kitty completion script.</p>
 </dd>
 </dl>
 <div class="section" id="more-ways-to-browse-command-output">
@@ -1215,21 +1225,6 @@ _ksi_deferred_init<span class="o">()</span> <span class="o">{</span>
         <span class="nv">fpath</span><span class="o">=(</span><span class="nv">$comp_dir</span> <span class="si">${</span><span class="nv">fpath</span><span class="p">:#</span><span class="nv">$comp_dir</span><span class="si">}</span><span class="o">)</span>
     <span class="k">fi</span>
 
-    <span class="c1"># Enable cursor shape changes depending on the current keymap.</span>
-    <span class="k">if</span> <span class="o">((</span> ! opt<span class="o">[(</span>Ie<span class="o">)</span>no-cursor<span class="o">]</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
-        <span class="c1"># This implementation leaks blinking block cursor into external commands</span>
-        <span class="c1"># executed from zle. For example, users of fzf-based widgets may find</span>
-        <span class="c1"># themselves with a blinking block cursor within fzf.</span>
-        _ksi_zle_line_init _ksi_zle_line_finish _ksi_zle_keymap_select<span class="o">()</span> <span class="o">{</span>
-            <span class="k">case</span> <span class="si">${</span><span class="nv">KEYMAP</span><span class="p">-</span><span class="si">}</span> <span class="k">in</span>
-                <span class="c1"># Blinking block cursor.</span>
-                vicmd<span class="p">|</span>visual<span class="o">)</span> <span class="nb">builtin</span> print -nu <span class="s2">"</span><span class="nv">$_ksi_fd</span><span class="s2">"</span> <span class="s1">'\e[1 q'</span><span class="p">;;</span>
-                <span class="c1"># Blinking bar cursor.</span>
-                *<span class="o">)</span>            <span class="nb">builtin</span> print -nu <span class="s2">"</span><span class="nv">$_ksi_fd</span><span class="s2">"</span> <span class="s1">'\e[5 q'</span><span class="p">;;</span>
-            <span class="k">esac</span>
-        <span class="o">}</span>
-    <span class="k">fi</span>
-
     <span class="c1"># Enable semantic markup with OSC 133.</span>
     <span class="k">if</span> <span class="o">((</span> ! opt<span class="o">[(</span>Ie<span class="o">)</span>no-prompt-mark<span class="o">]</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
         _ksi_precmd<span class="o">()</span> <span class="o">{</span>
@@ -1349,6 +1344,25 @@ _ksi_deferred_init<span class="o">()</span> <span class="o">{</span>
 <span class="s2">            builtin print -rnu </span><span class="nv">$_ksi_fd</span><span class="s2"> \$'\\e]2;'\"\${(V)1}\"\$'\\a'"</span>
     <span class="k">fi</span>
 
+    <span class="c1"># Enable cursor shape changes depending on the current keymap.</span>
+    <span class="k">if</span> <span class="o">((</span> ! opt<span class="o">[(</span>Ie<span class="o">)</span>no-cursor<span class="o">]</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+        <span class="c1"># This implementation leaks blinking block cursor into external commands</span>
+        <span class="c1"># executed from zle. For example, users of fzf-based widgets may find</span>
+        <span class="c1"># themselves with a blinking block cursor within fzf.</span>
+        _ksi_zle_line_init _ksi_zle_line_finish _ksi_zle_keymap_select<span class="o">()</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="si">${</span><span class="nv">KEYMAP</span><span class="p">-</span><span class="si">}</span> <span class="k">in</span>
+                <span class="c1"># Blinking block cursor.</span>
+                vicmd<span class="p">|</span>visual<span class="o">)</span> <span class="nb">builtin</span> print -nu <span class="s2">"</span><span class="nv">$_ksi_fd</span><span class="s2">"</span> <span class="s1">'\e[1 q'</span><span class="p">;;</span>
+                <span class="c1"># Blinking bar cursor.</span>
+                *<span class="o">)</span>            <span class="nb">builtin</span> print -nu <span class="s2">"</span><span class="nv">$_ksi_fd</span><span class="s2">"</span> <span class="s1">'\e[5 q'</span><span class="p">;;</span>
+            <span class="k">esac</span>
+        <span class="o">}</span>
+        <span class="c1"># Restore the blinking default shape before executing an external command</span>
+        functions<span class="o">[</span>_ksi_preexec<span class="o">]</span>+<span class="o">=</span><span class="s2">"</span>
+<span class="s2">            builtin print -rnu </span><span class="nv">$_ksi_fd</span><span class="s2"> \$'\\e[0 q'"</span>
+    <span class="k">fi</span>
+
+
     <span class="c1"># Some zsh users manually run `source ~/.zshrc` in order to apply rc file</span>
     <span class="c1"># changes to the current shell. This is a terrible practice that breaks many</span>
     <span class="c1"># things, including our shell integration. For example, Oh My Zsh and Prezto</span>
@@ -1393,7 +1407,7 @@ _ksi_deferred_init<span class="o">()</span> <span class="o">{</span>
                     <span class="nv">flag</span><span class="o">=</span>w
                 <span class="k">fi</span>
                 functions<span class="o">[</span><span class="nv">$func</span><span class="o">]</span>+<span class="o">=</span><span class="s2">"</span>
-<span class="s2">                    builtin zle </span><span class="nv">$orig_widget</span><span class="s2"> -N</span><span class="nv">$flag</span><span class="s2"> -- \"</span><span class="nv">$@</span><span class="s2">\""</span>
+<span class="s2">                    builtin zle </span><span class="nv">$orig_widget</span><span class="s2"> -N</span><span class="nv">$flag</span><span class="s2"> -- \"\$@\""</span>
             <span class="k">fi</span>
             <span class="nb">builtin</span> zle -N <span class="nv">$widget</span> <span class="nv">$func</span>
         <span class="k">fi</span>
@@ -1423,132 +1437,143 @@ _ksi_deferred_init<span class="o">()</span> <span class="o">{</span>
 <input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"/><label class="tab-label" for="tab-set--1-input--2">fish</label><div class="tab-content docutils container">
 <div class="highlight-fish notranslate"><div class="highlight"><pre><span></span><span class="c">#!/bin/fish</span>
 
-<span class="k">function</span> _ksi_main
-    <span class="k">test</span> -z <span class="s2">"</span><span class="nv">$KITTY_SHELL_INTEGRATION</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="k">return</span>
+<span class="nb">status </span>is-interactive <span class="o">||</span> <span class="k">exit</span> 0
+<span class="k">not</span> <span class="nb">functions</span> -q __ksi_schedule <span class="o">||</span> <span class="k">exit</span> 0
+
+<span class="k">function</span> __ksi_schedule --on-event <span class="nb">fish_prompt</span> -d <span class="s2">"Setup kitty integration after other scripts have run, we hope"</span>
+    <span class="nb">functions</span> --erase __ksi_schedule
+    <span class="k">test</span> -n <span class="s2">"</span><span class="nv">$KITTY_SHELL_INTEGRATION</span><span class="s2">"</span> <span class="o">||</span> <span class="k">return</span> 0
+
+    <span class="c"># To use fish's autoloading feature, kitty prepends the vendored integration script directory to XDG_DATA_DIRS.</span>
+    <span class="c"># The original paths needs to be restored here to not affect other programs.</span>
+    <span class="c"># In particular, if the original XDG_DATA_DIRS does not exist, it needs to be removed.</span>
     <span class="k">if</span> <span class="k">set</span> -q XDG_DATA_DIRS KITTY_FISH_XDG_DATA_DIR
         <span class="k">set</span> --global --export --path XDG_DATA_DIRS <span class="s2">"</span><span class="nv">$XDG_DATA_DIRS</span><span class="s2">"</span>
         <span class="k">if</span> <span class="k">set</span> -l index <span class="o">(</span><span class="nb">contains</span> -i <span class="s2">"</span><span class="nv">$KITTY_FISH_XDG_DATA_DIR</span><span class="s2">"</span> <span class="nv">$XDG_DATA_DIRS</span><span class="o">)</span>
             <span class="k">set</span> --erase --global XDG_DATA_DIRS<span class="o">[</span><span class="nv">$index</span><span class="o">]</span>
-            <span class="k">test</span> -z <span class="s2">"</span><span class="nv">$XDG_DATA_DIRS</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="k">set</span> --erase --global XDG_DATA_DIRS
+            <span class="k">test</span> -n <span class="s2">"</span><span class="nv">$XDG_DATA_DIRS</span><span class="s2">"</span> <span class="o">||</span> <span class="k">set</span> --erase --global XDG_DATA_DIRS
         <span class="k">end</span>
         <span class="k">if</span> <span class="k">set</span> -q XDG_DATA_DIRS
             <span class="k">set</span> --global --export --unpath XDG_DATA_DIRS <span class="s2">"</span><span class="nv">$XDG_DATA_DIRS</span><span class="s2">"</span>
         <span class="k">end</span>
     <span class="k">end</span>
     <span class="k">set</span> --local _ksi <span class="o">(</span>string split <span class="s2">" "</span> -- <span class="s2">"</span><span class="nv">$KITTY_SHELL_INTEGRATION</span><span class="s2">"</span><span class="o">)</span>
-    <span class="k">set</span> --erase KITTY_SHELL_INTEGRATION
-    <span class="k">set</span> --erase KITTY_FISH_XDG_DATA_DIR
+    <span class="k">set</span> --erase KITTY_SHELL_INTEGRATION KITTY_FISH_XDG_DATA_DIR
 
-    <span class="k">function</span> _ksi_osc
-        <span class="nb">printf</span> <span class="s2">"\e]%s\a"</span> <span class="s2">"</span><span class="nv">$argv</span><span class="s2">[1]"</span>
-    <span class="k">end</span>
-
-    <span class="k">if</span> <span class="k">not</span> <span class="nb">contains</span> <span class="s2">"no-complete"</span> <span class="nv">$_ksi</span>
-        <span class="k">function</span> _ksi_completions
-            <span class="k">set</span> --local ct <span class="o">(</span><span class="nb">commandline</span> --current-token<span class="o">)</span>
-            <span class="k">set</span> --local tokens <span class="o">(</span><span class="nb">commandline</span> --tokenize --cut-at-cursor --current-process<span class="o">)</span>
-            <span class="nb">printf</span> <span class="s2">"%s\n"</span> <span class="nv">$tokens</span> <span class="nv">$ct</span> <span class="o">|</span> kitty +complete fish2
-        <span class="k">end</span>
-    <span class="k">end</span>
-
+    <span class="c"># Enable cursor shape changes for default mode and vi mode</span>
     <span class="k">if</span> <span class="k">not</span> <span class="nb">contains</span> <span class="s2">"no-cursor"</span> <span class="nv">$_ksi</span>
-        <span class="k">function</span> _ksi_bar_cursor --on-event <span class="nb">fish_prompt</span>
-<span class="nb">            printf</span> <span class="s2">"\e[5 q"</span>
-        <span class="k">end</span>
-        <span class="k">function</span> _ksi_block_cursor --on-event fish_preexec
-            <span class="nb">printf</span> <span class="s2">"\e[2 q"</span>
-        <span class="k">end</span>
-        _ksi_bar_cursor
-    <span class="k">end</span>
+        <span class="k">and</span> <span class="k">not</span> <span class="nb">functions</span> -q __ksi_set_cursor
 
-    <span class="k">if</span> <span class="k">not</span> <span class="nb">contains</span> <span class="s2">"no-title"</span> <span class="nv">$_ksi</span>
-        <span class="k">function</span> fish_title
-            <span class="k">if</span> <span class="k">set</span> -q argv<span class="o">[</span>1<span class="o">]</span>
-                <span class="k">echo</span> <span class="nv">$argv</span><span class="o">[</span>1<span class="o">]</span>
+        <span class="k">function</span> __ksi_block_cursor --on-event fish_preexec -d <span class="s2">"Set cursor shape to blinking default shape before executing command"</span>
+            <span class="nb">printf</span> <span class="s2">"\e[0 q"</span>
+        <span class="k">end</span>
+
+        <span class="k">function</span> __ksi_set_cursor --on-variable fish_key_bindings -d <span class="s2">"Set the cursor shape for different modes when switching key bindings"</span>
+            <span class="k">if</span> <span class="k">test</span> <span class="s2">"</span><span class="nv">$fish_key_bindings</span><span class="s2">"</span> <span class="o">=</span> fish_default_key_bindings
+                <span class="k">not</span> <span class="nb">functions</span> -q __ksi_bar_cursor <span class="o">||</span> <span class="k">return</span>
+                <span class="k">function</span> __ksi_bar_cursor --on-event <span class="nb">fish_prompt</span> -d <span class="s2">"Set cursor shape to blinking bar on prompt"</span>
+                    <span class="nb">printf</span> <span class="s2">"\e[5 q"</span>
+                <span class="k">end</span>
             <span class="k">else</span>
-                prompt_pwd
+                <span class="nb">functions</span> --erase __ksi_bar_cursor
+                <span class="nb">contains</span> <span class="s2">"</span><span class="nv">$fish_key_bindings</span><span class="s2">"</span> fish_vi_key_bindings fish_hybrid_key_bindings
+                <span class="k">and</span> __ksi_set_vi_cursor
             <span class="k">end</span>
         <span class="k">end</span>
+
+        <span class="k">function</span> __ksi_set_vi_cursor -d <span class="s2">"Set the vi mode cursor shapes"</span>
+            <span class="c"># Set the vi mode cursor shapes only when none of them are configured</span>
+            <span class="k">set</span> --local vi_modes fish_cursor_<span class="err">{</span>default,insert,replace_one,visual<span class="err">}</span>
+            <span class="k">set</span> -q <span class="nv">$vi_modes</span>
+            <span class="k">test</span> <span class="s2">"</span><span class="nv">$status</span><span class="s2">"</span> -eq <span class="m">4</span> <span class="o">||</span> <span class="k">return</span>
+
+            <span class="k">set</span> --local vi_cursor_shapes <span class="k">block</span> line underscore <span class="k">block</span>
+            <span class="k">for</span> i <span class="k">in</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> 4
+                <span class="k">set</span> --global <span class="nv">$vi_modes</span><span class="o">[</span><span class="nv">$i</span><span class="o">]</span> <span class="nv">$vi_cursor_shapes</span><span class="o">[</span><span class="nv">$i</span><span class="o">]</span> blink
+            <span class="k">end</span>
+
+            <span class="c"># Change the cursor shape for current mode</span>
+            <span class="k">test</span> <span class="s2">"</span><span class="nv">$fish_bind_mode</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"insert"</span> <span class="o">&amp;&amp;</span> <span class="nb">printf</span> <span class="s2">"\e[5 q"</span> <span class="o">||</span> <span class="nb">printf</span> <span class="s2">"\e[1 q"</span>
+        <span class="k">end</span>
+
+        __ksi_set_cursor
+        <span class="nb">functions</span> -q __ksi_bar_cursor
+        <span class="k">and</span> __ksi_bar_cursor
     <span class="k">end</span>
 
+    <span class="c"># Enable prompt marking with OSC 133</span>
     <span class="k">if</span> <span class="k">not</span> <span class="nb">contains</span> <span class="s2">"no-prompt-mark"</span> <span class="nv">$_ksi</span>
-        <span class="k">set</span> --global _ksi_prompt_state <span class="s2">"first-run"</span>
+        <span class="k">and</span> <span class="k">not</span> <span class="k">set</span> -q __ksi_prompt_state
+        <span class="k">set</span> --global __ksi_prompt_state first-run
 
-        <span class="k">function</span> _ksi_function_is_not_empty -d <span class="s2">"Check if the specified function exists and is not empty"</span>
-            <span class="nb">functions</span> <span class="nv">$argv</span><span class="o">[</span>1<span class="o">]</span> <span class="o">|</span> string match -qnvr <span class="s1">'^ *(#|function |end$|$)'</span>
+        <span class="k">function</span> __ksi_function_is_not_empty -d <span class="s2">"Check if the specified function exists and is not empty"</span>
+            <span class="nb">functions</span> --no-details <span class="nv">$argv</span><span class="o">[</span>1<span class="o">]</span> <span class="o">|</span> string match -qnvr <span class="s1">'^ *(#|function |end$|$)'</span>
         <span class="k">end</span>
 
-        <span class="k">function</span> _ksi_mark -d <span class="s2">"tell kitty to mark the current cursor position using OSC 133"</span>
-            _ksi_osc <span class="s2">"133;</span><span class="nv">$argv</span><span class="s2">[1]"</span>
+        <span class="k">function</span> __ksi_mark -d <span class="s2">"Tell kitty to mark the current cursor position using OSC 133"</span>
+            <span class="nb">printf</span> <span class="s2">"\e]133;%s\a"</span> <span class="s2">"</span><span class="nv">$argv</span><span class="s2">[1]"</span>
         <span class="k">end</span>
 
-        <span class="k">function</span> _ksi_start_prompt
-            <span class="k">set</span> --local cmd_status <span class="s2">"</span><span class="nv">$status</span><span class="s2">"</span>
-            <span class="k">if</span> <span class="k">test</span> <span class="s2">"</span><span class="nv">$_ksi_prompt_state</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"postexec"</span> -a <span class="s2">"</span><span class="nv">$_ksi_prompt_state</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"first-run"</span>
-                _ksi_mark <span class="s2">"D"</span>
+        <span class="k">function</span> __ksi_prompt_start
+            <span class="c"># Preserve the command exit code from $status</span>
+            <span class="k">set</span> --local cmd_status <span class="nv">$status</span>
+            <span class="k">if</span> <span class="nb">contains</span> <span class="s2">"</span><span class="nv">$__ksi_prompt_state</span><span class="s2">"</span> post-exec first-run
+                __ksi_mark D
             <span class="k">end</span>
-            <span class="k">set</span> --global _ksi_prompt_state <span class="s2">"prompt_start"</span>
-            _ksi_mark <span class="s2">"A"</span>
-            <span class="k">return</span> <span class="s2">"</span><span class="nv">$cmd_status</span><span class="s2">"</span> <span class="c"># preserve the value of $status</span>
+            <span class="k">set</span> --global __ksi_prompt_state prompt-start
+            __ksi_mark A
+            <span class="k">return</span> <span class="nv">$cmd_status</span>
         <span class="k">end</span>
 
-        <span class="k">function</span> _ksi_end_prompt
-            <span class="k">set</span> --local cmd_status <span class="s2">"</span><span class="nv">$status</span><span class="s2">"</span>
+        <span class="k">function</span> __ksi_prompt_end
+            <span class="k">set</span> --local cmd_status <span class="nv">$status</span>
             <span class="c"># fish trims one trailing newline from the output of fish_prompt, so</span>
             <span class="c"># we need to do the same. See https://github.com/kovidgoyal/kitty/issues/4032</span>
-            <span class="k">set</span> --local op <span class="o">(</span>_ksi_original_fish_prompt<span class="o">)</span> <span class="c"># op is an array because fish splits on newlines in command substitution</span>
+            <span class="k">set</span> --local op <span class="o">(</span>__ksi_original_fish_prompt<span class="o">)</span> <span class="c"># op is a list because fish splits on newlines in command substitution</span>
             <span class="k">if</span> <span class="k">set</span> -q op<span class="o">[</span>2<span class="o">]</span>
-                <span class="nb">printf</span> <span class="s1">'%s\n'</span> <span class="nv">$op</span><span class="o">[</span>1..-2<span class="o">]</span> <span class="c"># print all but last element of array, each followed by a new line</span>
+                <span class="nb">printf</span> <span class="s1">'%s\n'</span> <span class="nv">$op</span><span class="o">[</span>1..-2<span class="o">]</span> <span class="c"># print all but last element of the list, each followed by a new line</span>
             <span class="k">end</span>
             <span class="nb">printf</span> <span class="s1">'%s'</span> <span class="nv">$op</span><span class="o">[</span>-1<span class="o">]</span> <span class="c"># print the last component without a newline</span>
-            <span class="k">set</span> --global _ksi_prompt_state <span class="s2">"prompt_end"</span>
-            _ksi_mark <span class="s2">"B"</span>
-            <span class="k">return</span> <span class="s2">"</span><span class="nv">$cmd_status</span><span class="s2">"</span> <span class="c"># preserve the value of $status</span>
+            <span class="k">set</span> --global __ksi_prompt_state prompt-end
+            __ksi_mark B
+            <span class="k">return</span> <span class="nv">$cmd_status</span>
         <span class="k">end</span>
 
-        <span class="nb">functions</span> -c <span class="nb">fish_prompt </span>_ksi_original_fish_prompt
+        <span class="nb">functions</span> -c <span class="nb">fish_prompt </span>__ksi_original_fish_prompt
 
-        <span class="k">if</span> _ksi_function_is_not_empty fish_mode_prompt
-            <span class="c"># see https://github.com/starship/starship/issues/1283</span>
+        <span class="k">if</span> __ksi_function_is_not_empty fish_mode_prompt
+            <span class="c"># See https://github.com/starship/starship/issues/1283</span>
             <span class="c"># for why we have to test for a non-empty fish_mode_prompt</span>
-            <span class="nb">functions</span> -c fish_mode_prompt _ksi_original_fish_mode_prompt
+            <span class="nb">functions</span> -c fish_mode_prompt __ksi_original_fish_mode_prompt
             <span class="k">function</span> fish_mode_prompt
-                _ksi_start_prompt
-                _ksi_original_fish_mode_prompt
+                __ksi_prompt_start
+                __ksi_original_fish_mode_prompt
             <span class="k">end</span>
             <span class="k">function</span> <span class="nb">fish_prompt</span>
-<span class="nb">                </span>_ksi_end_prompt
+<span class="nb">                </span>__ksi_prompt_end
             <span class="k">end</span>
         <span class="k">else</span>
             <span class="k">function</span> <span class="nb">fish_prompt</span>
-<span class="nb">                </span>_ksi_start_prompt
-                _ksi_end_prompt
+<span class="nb">                </span>__ksi_prompt_start
+                __ksi_prompt_end
             <span class="k">end</span>
         <span class="k">end</span>
 
-        <span class="k">function</span> _ksi_mark_output_start --on-event fish_preexec
-            <span class="k">set</span> --global _ksi_prompt_state <span class="s2">"preexec"</span>
-            _ksi_mark <span class="s2">"C"</span>
+        <span class="k">function</span> __ksi_mark_output_start --on-event fish_preexec
+            <span class="k">set</span> --global __ksi_prompt_state pre-exec
+            __ksi_mark C
         <span class="k">end</span>
 
-        <span class="k">function</span> _ksi_mark_output_end --on-event fish_postexec
-            <span class="k">set</span> --global _ksi_prompt_state <span class="s2">"postexec"</span>
-            _ksi_mark <span class="s2">"D;</span><span class="nv">$status</span><span class="s2">"</span>
+        <span class="k">function</span> __ksi_mark_output_end --on-event fish_postexec
+            <span class="k">set</span> --global __ksi_prompt_state post-exec
+            __ksi_mark <span class="s2">"D;</span><span class="nv">$status</span><span class="s2">"</span>
         <span class="k">end</span>
-        <span class="c"># with prompt marking kitty clears the current prompt on resize so we need</span>
+        <span class="c"># With prompt marking kitty clears the current prompt on resize so we need</span>
         <span class="c"># fish to redraw it</span>
         <span class="k">set</span> --global fish_handle_reflow 1
-    <span class="k">end</span>
-    <span class="nb">functions</span> --erase _ksi_main
-    <span class="nb">functions</span> --erase _ksi_schedule
-<span class="k">end</span>
 
-<span class="k">if</span> <span class="nb">status</span> --is-interactive
-    <span class="k">function</span> _ksi_schedule --on-event <span class="nb">fish_prompt</span> -d <span class="s2">"Setup kitty integration after other scripts have run, we hope"</span>
-        _ksi_main
+        <span class="nb">functions</span> --erase __ksi_function_is_not_empty
     <span class="k">end</span>
-<span class="k">else</span>
-    <span class="nb">functions</span> --erase _ksi_main
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -1556,70 +1581,154 @@ _ksi_deferred_init<span class="o">()</span> <span class="o">{</span>
 <input class="tab-input" id="tab-set--1-input--3" name="tab-set--1" type="radio"/><label class="tab-label" for="tab-set--1-input--3">bash</label><div class="tab-content docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$-</span> !<span class="o">=</span> *i* <span class="o">]]</span> <span class="p">;</span> <span class="k">then</span> <span class="nb">builtin</span> <span class="k">return</span><span class="p">;</span> <span class="k">fi</span>  <span class="c1"># check in interactive mode</span>
+<span class="k">if</span> <span class="o">[[</span> -z <span class="s2">"</span><span class="nv">$KITTY_SHELL_INTEGRATION</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> <span class="nb">builtin</span> <span class="k">return</span><span class="p">;</span> <span class="k">fi</span>
+
+<span class="c1"># this is defined outside _ksi_main to make it global without using declare -g</span>
+<span class="c1"># which is not available on older bash</span>
+<span class="nb">builtin</span> <span class="nb">declare</span> -A _ksi_prompt
+<span class="nv">_ksi_prompt</span><span class="o">=(</span> <span class="o">[</span>cursor<span class="o">]=</span><span class="s1">'y'</span> <span class="o">[</span>title<span class="o">]=</span><span class="s1">'y'</span> <span class="o">[</span>mark<span class="o">]=</span><span class="s1">'y'</span> <span class="o">[</span>complete<span class="o">]=</span><span class="s1">'y'</span> <span class="o">[</span>ps0<span class="o">]=</span><span class="s1">''</span> <span class="o">[</span>ps0_suffix<span class="o">]=</span><span class="s1">''</span> <span class="o">[</span>ps1<span class="o">]=</span><span class="s1">''</span> <span class="o">[</span>ps1_suffix<span class="o">]=</span><span class="s1">''</span> <span class="o">[</span>ps2<span class="o">]=</span><span class="s1">''</span> <span class="o">)</span>
+
 _ksi_main<span class="o">()</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">[[</span> <span class="nv">$-</span> !<span class="o">=</span> *i* <span class="o">]]</span> <span class="p">;</span> <span class="k">then</span> <span class="k">return</span><span class="p">;</span> <span class="k">fi</span>  <span class="c1"># check in interactive mode</span>
-    <span class="k">if</span> <span class="o">[[</span> -z <span class="s2">"</span><span class="nv">$KITTY_SHELL_INTEGRATION</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> <span class="k">return</span><span class="p">;</span> <span class="k">fi</span>
-    <span class="nb">declare</span> -A <span class="nv">_ksi_prompt</span><span class="o">=(</span> <span class="o">[</span>cursor<span class="o">]=</span><span class="s1">'y'</span> <span class="o">[</span>title<span class="o">]=</span><span class="s1">'y'</span> <span class="o">[</span>mark<span class="o">]=</span><span class="s1">'y'</span> <span class="o">[</span>complete<span class="o">]=</span><span class="s1">'y'</span> <span class="o">)</span>
-    <span class="nb">set</span> -f
     <span class="k">for</span> i <span class="k">in</span> <span class="si">${</span><span class="nv">KITTY_SHELL_INTEGRATION</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
-        <span class="nb">set</span> +f
         <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"no-cursor"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> _ksi_prompt<span class="o">[</span>cursor<span class="o">]=</span><span class="s1">'n'</span><span class="p">;</span> <span class="k">fi</span>
         <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"no-title"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> _ksi_prompt<span class="o">[</span>title<span class="o">]=</span><span class="s1">'n'</span><span class="p">;</span> <span class="k">fi</span>
         <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"no-prompt-mark"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> _ksi_prompt<span class="o">[</span>mark<span class="o">]=</span><span class="s1">'n'</span><span class="p">;</span> <span class="k">fi</span>
         <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"no-complete"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> _ksi_prompt<span class="o">[</span>complete<span class="o">]=</span><span class="s1">'n'</span><span class="p">;</span> <span class="k">fi</span>
     <span class="k">done</span>
-    <span class="nb">set</span> +f
 
-    <span class="nb">unset</span> KITTY_SHELL_INTEGRATION
+    <span class="nb">builtin</span> <span class="nb">unset</span> KITTY_SHELL_INTEGRATION
 
     _ksi_debug_print<span class="o">()</span> <span class="o">{</span>
         <span class="c1"># print a line to STDOUT of parent kitty process</span>
-        <span class="nb">local</span> <span class="nv">b</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span> <span class="s2">"%s\n"</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="p">|</span> base64 <span class="p">|</span> tr -d <span class="se">\\</span>n<span class="k">)</span>
-        <span class="nb">printf</span> <span class="s2">"\eP@kitty-print|%s\e\\"</span> <span class="s2">"</span><span class="nv">$b</span><span class="s2">"</span> 
+        <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">b</span><span class="o">=</span><span class="k">$(</span><span class="nb">command</span> base64 <span class="o">&lt;&lt;&lt;</span> <span class="s2">"</span><span class="si">${</span><span class="p">@</span><span class="si">}</span><span class="s2">"</span> <span class="p">|</span> tr -d <span class="se">\\</span>n<span class="k">)</span>
+        <span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">"\eP@kitty-print|%s\e\\"</span> <span class="s2">"</span><span class="nv">$b</span><span class="s2">"</span> 
         <span class="c1"># "</span>
     <span class="o">}</span>
 
+    _ksi_set_mark<span class="o">()</span> <span class="o">{</span> 
+        _ksi_prompt<span class="o">[</span><span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">_mark"</span><span class="o">]=</span><span class="s2">"\[\e]133;k;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">_kitty\a\]"</span> 
+    <span class="o">}</span>
+
+    _ksi_set_mark start
+    _ksi_set_mark end
+    _ksi_set_mark start_secondary
+    _ksi_set_mark end_secondary
+    _ksi_set_mark start_suffix
+    _ksi_set_mark end_suffix
+    <span class="nb">builtin</span> <span class="nb">unset</span> -f _ksi_set_mark
+    _ksi_prompt<span class="o">[</span>secondary_prompt<span class="o">]=</span><span class="s2">"\n</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[start_secondary_mark]</span><span class="si">}</span><span class="s2">\[\e]133;A;k=s\a\]</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[end_secondary_mark]</span><span class="si">}</span><span class="s2">"</span>
+
+    _ksi_prompt_command<span class="o">()</span> <span class="o">{</span>
+        <span class="c1"># we first remove any previously added kitty code from the prompt variables and then add</span>
+        <span class="c1"># it back, to ensure we have only a single instance</span>
+        <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps0]</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nv">PS0</span><span class="o">=</span><span class="si">${</span><span class="nv">PS0</span><span class="p">//</span><span class="se">\\\[\\</span><span class="nv">e</span><span class="se">\]</span><span class="nv">133</span><span class="p">;k;start_kitty</span><span class="se">\\</span><span class="nv">a</span><span class="se">\\\]</span><span class="p">*end_kitty</span><span class="se">\\</span><span class="nv">a</span><span class="se">\\\]</span><span class="si">}</span>
+            <span class="nv">PS0</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps0]</span><span class="si">}</span><span class="nv">$PS0</span><span class="s2">"</span>
+        <span class="k">fi</span>
+        <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps0_suffix]</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nv">PS0</span><span class="o">=</span><span class="si">${</span><span class="nv">PS0</span><span class="p">//</span><span class="se">\\\[\\</span><span class="nv">e</span><span class="se">\]</span><span class="nv">133</span><span class="p">;k;start_suffix_kitty</span><span class="se">\\</span><span class="nv">a</span><span class="se">\\\]</span><span class="p">*end_suffix_kitty</span><span class="se">\\</span><span class="nv">a</span><span class="se">\\\]</span><span class="si">}</span>
+            <span class="nv">PS0</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">PS0</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[ps0_suffix]</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">fi</span>
+        <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps1]</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nv">PS1</span><span class="o">=</span><span class="si">${</span><span class="nv">PS1</span><span class="p">//</span><span class="se">\\\[\\</span><span class="nv">e</span><span class="se">\]</span><span class="nv">133</span><span class="p">;k;start_kitty</span><span class="se">\\</span><span class="nv">a</span><span class="se">\\\]</span><span class="p">*end_kitty</span><span class="se">\\</span><span class="nv">a</span><span class="se">\\\]</span><span class="si">}</span>
+            <span class="nv">PS1</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps1]</span><span class="si">}</span><span class="nv">$PS1</span><span class="s2">"</span>
+            <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[mark]</span><span class="si">}</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"y"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
+                <span class="c1"># bash does not redraw the leading lines in a multiline prompt so</span>
+                <span class="c1"># mark them as secondary prompts</span>
+                <span class="nv">PS1</span><span class="o">=</span><span class="si">${</span><span class="nv">PS1</span><span class="p">//</span><span class="se">\\\[\\</span><span class="nv">e</span><span class="se">\]</span><span class="nv">133</span><span class="p">;k;start_secondary_kitty</span><span class="se">\\</span><span class="nv">a</span><span class="se">\\\]</span><span class="p">*end_secondary_kitty</span><span class="se">\\</span><span class="nv">a</span><span class="se">\\\]</span><span class="si">}</span>
+                <span class="nv">PS1</span><span class="o">=</span><span class="si">${</span><span class="nv">PS1</span><span class="p">//</span><span class="s2">"\n"</span><span class="p">/</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[secondary_prompt]</span><span class="si">}}</span>
+            <span class="k">fi</span>
+        <span class="k">fi</span>
+        <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps1_suffix]</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nv">PS1</span><span class="o">=</span><span class="si">${</span><span class="nv">PS1</span><span class="p">//</span><span class="se">\\\[\\</span><span class="nv">e</span><span class="se">\]</span><span class="nv">133</span><span class="p">;k;start_suffix_kitty</span><span class="se">\\</span><span class="nv">a</span><span class="se">\\\]</span><span class="p">*end_suffix_kitty</span><span class="se">\\</span><span class="nv">a</span><span class="se">\\\]</span><span class="si">}</span>
+            <span class="nv">PS1</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">PS1</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[ps1_suffix]</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">fi</span>
+        <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps2]</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nv">PS2</span><span class="o">=</span><span class="si">${</span><span class="nv">PS2</span><span class="p">//</span><span class="se">\\\[\\</span><span class="nv">e</span><span class="se">\]</span><span class="nv">133</span><span class="p">;k;start_kitty</span><span class="se">\\</span><span class="nv">a</span><span class="se">\\\]</span><span class="p">*end_kitty</span><span class="se">\\</span><span class="nv">a</span><span class="se">\\\]</span><span class="si">}</span>
+            <span class="nv">PS2</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps2]</span><span class="si">}</span><span class="nv">$PS2</span><span class="s2">"</span>
+        <span class="k">fi</span>
+    <span class="o">}</span>
+
     <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[cursor]</span><span class="si">}</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"y"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
-        <span class="nv">PS1</span><span class="o">=</span><span class="s2">"\[\e[5 q\]</span><span class="nv">$PS1</span><span class="s2">"</span>  <span class="c1"># blinking bar cursor</span>
-        <span class="nv">PS0</span><span class="o">=</span><span class="s2">"\[\e[1 q\]</span><span class="nv">$PS0</span><span class="s2">"</span>  <span class="c1"># blinking block cursor</span>
+        _ksi_prompt<span class="o">[</span>ps1_suffix<span class="o">]</span>+<span class="o">=</span><span class="s2">"\[\e[5 q\]"</span>  <span class="c1"># blinking bar cursor</span>
+        _ksi_prompt<span class="o">[</span>ps0_suffix<span class="o">]</span>+<span class="o">=</span><span class="s2">"\[\e[0 q\]"</span>  <span class="c1"># blinking default cursor</span>
     <span class="k">fi</span>
 
     <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[title]</span><span class="si">}</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"y"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
         <span class="c1"># see https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html#Controlling-the-Prompt</span>
-        <span class="nv">PS1</span><span class="o">=</span><span class="s2">"\[\e]2;\w\a\]</span><span class="nv">$PS1</span><span class="s2">"</span>
+        <span class="c1"># we use suffix here because some distros add title setting to their bashrc files by default</span>
+        _ksi_prompt<span class="o">[</span>ps1_suffix<span class="o">]</span>+<span class="o">=</span><span class="s2">"\[\e]2;\w\a\]"</span>
         <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$HISTCONTROL</span><span class="s2">"</span> <span class="o">==</span> *<span class="s2">"ignoreboth"</span>* <span class="o">]]</span> <span class="o">||</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$HISTCONTROL</span><span class="s2">"</span> <span class="o">==</span> *<span class="s2">"ignorespace"</span>* <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
             _ksi_debug_print <span class="s2">"ignoreboth or ignorespace present in bash HISTCONTROL setting, showing running command in window title will not be robust"</span>
         <span class="k">fi</span>
-        <span class="nb">local</span> <span class="nv">orig_ps0</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PS0</span><span class="s2">"</span>
-        <span class="nv">PS0</span><span class="o">=</span><span class="s1">'$(printf "\e]2;%s\a" "$(HISTTIMEFORMAT= history 1 | sed -e "s/^[ ]*[0-9]*[ ]*//")")'</span>
-        <span class="nv">PS0</span><span class="o">+=</span><span class="s2">"</span><span class="nv">$orig_ps0</span><span class="s2">"</span>
+        _ksi_get_current_command<span class="o">()</span> <span class="o">{</span>
+            <span class="nb">local</span> <span class="nv">last_cmd</span><span class="o">=</span><span class="k">$(</span><span class="nv">HISTTIMEFORMAT</span><span class="o">=</span> <span class="nb">builtin</span> <span class="nb">history</span> <span class="m">1</span><span class="k">)</span>
+            <span class="nv">last_cmd</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">last_cmd</span><span class="p">#*[[:</span><span class="nv">digit</span><span class="p">:]]*[[:</span><span class="nv">space</span><span class="p">:]]</span><span class="si">}</span><span class="s2">"</span>  <span class="c1"># remove leading history number</span>
+            <span class="nv">last_cmd</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">last_cmd</span><span class="p">#</span><span class="s2">"</span><span class="si">${</span><span class="nv">last_cmd</span><span class="p">%%[![:</span><span class="nv">space</span><span class="p">:]]*</span><span class="si">}</span><span class="s2">"</span><span class="si">}</span><span class="s2">"</span>  <span class="c1"># remove remaining leading whitespace</span>
+            <span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">"\e]2;%s\a"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">last_cmd</span><span class="si">}</span><span class="s2">"</span>
+        <span class="o">}</span>
+        _ksi_prompt<span class="o">[</span>ps0_suffix<span class="o">]</span>+<span class="o">=</span><span class="s1">'$(_ksi_get_current_command)'</span>
     <span class="k">fi</span>
 
     <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[mark]</span><span class="si">}</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"y"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
-        <span class="c1"># bash does not redraw the leading lines in a multiline prompt so</span>
-        <span class="c1"># mark them as secondary prompts</span>
-        <span class="nb">local</span> <span class="nv">secondary_prompt</span><span class="o">=</span><span class="s2">"\n\[\e]133;A;k=s\a\]"</span>
-        <span class="nv">PS1</span><span class="o">=</span><span class="si">${</span><span class="nv">PS1</span><span class="p">//</span><span class="s2">"\n"</span><span class="p">/</span><span class="s2">"</span><span class="nv">$secondary_prompt</span><span class="s2">"</span><span class="si">}</span>
-        <span class="nv">PS1</span><span class="o">=</span><span class="s2">"\[\e]133;A\a\]</span><span class="nv">$PS1</span><span class="s2">"</span>
-        <span class="nv">PS2</span><span class="o">=</span><span class="s2">"\[\e]133;A;k=s\a\]</span><span class="nv">$PS2</span><span class="s2">"</span>
-        <span class="nv">PS0</span><span class="o">=</span><span class="s2">"\[\e]133;C\a\]</span><span class="nv">$PS0</span><span class="s2">"</span>
+        _ksi_prompt<span class="o">[</span>ps1<span class="o">]</span>+<span class="o">=</span><span class="s2">"\[\e]133;A\a\]"</span>
+        _ksi_prompt<span class="o">[</span>ps2<span class="o">]</span>+<span class="o">=</span><span class="s2">"\[\e]133;A;k=s\a\]"</span>
+        _ksi_prompt<span class="o">[</span>ps0<span class="o">]</span>+<span class="o">=</span><span class="s2">"\[\e]133;C\a\]"</span>
     <span class="k">fi</span>
 
     <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[complete]</span><span class="si">}</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"y"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
         _ksi_completions<span class="o">()</span> <span class="o">{</span>
-            <span class="nb">local</span> src
-            <span class="nb">local</span> limit
+            <span class="nb">builtin</span> <span class="nb">local</span> src
+            <span class="nb">builtin</span> <span class="nb">local</span> limit
             <span class="c1"># Send all words up to the word the cursor is currently on</span>
-            <span class="nb">let</span> <span class="nv">limit</span><span class="o">=</span><span class="m">1</span>+<span class="nv">$COMP_CWORD</span>
-            <span class="nv">src</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span> <span class="s2">"%s\n"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">COMP_WORDS</span><span class="p">[@]: 0:</span><span class="nv">$limit</span><span class="si">}</span><span class="s2">"</span> <span class="p">|</span> kitty +complete bash<span class="k">)</span>
+            <span class="nb">builtin</span> <span class="nb">let</span> <span class="nv">limit</span><span class="o">=</span><span class="m">1</span>+<span class="nv">$COMP_CWORD</span>
+            <span class="nv">src</span><span class="o">=</span><span class="k">$(</span><span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">"%s\n"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">COMP_WORDS</span><span class="p">[@]:</span><span class="nv">0</span><span class="p">:</span><span class="nv">$limit</span><span class="si">}</span><span class="s2">"</span> <span class="p">|</span> <span class="nb">command</span> kitty +complete bash<span class="k">)</span>
             <span class="k">if</span> <span class="o">[[</span> <span class="nv">$?</span> <span class="o">==</span> <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-                <span class="nb">eval</span> <span class="si">${</span><span class="nv">src</span><span class="si">}</span>
+                <span class="nb">builtin</span> <span class="nb">eval</span> <span class="si">${</span><span class="nv">src</span><span class="si">}</span>
             <span class="k">fi</span>
         <span class="o">}</span>
-        <span class="nb">complete</span> -o nospace -F _ksi_completions kitty
+        <span class="nb">builtin</span> <span class="nb">complete</span> -o nospace -F _ksi_completions kitty
+    <span class="k">fi</span>
+
+    <span class="c1"># wrap our prompt additions in markers we can use to remove them using</span>
+    <span class="c1"># bash's anemic pattern substitution</span>
+    <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps0]</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
+        _ksi_prompt<span class="o">[</span>ps0<span class="o">]=</span><span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[start_mark]</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[ps0]</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[end_mark]</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">fi</span>
+    <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps0_suffix]</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
+        _ksi_prompt<span class="o">[</span>ps0_suffix<span class="o">]=</span><span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[start_suffix_mark]</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[ps0_suffix]</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[end_suffix_mark]</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">fi</span>
+    <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps1]</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
+        _ksi_prompt<span class="o">[</span>ps1<span class="o">]=</span><span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[start_mark]</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[ps1]</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[end_mark]</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">fi</span>
+    <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps1_suffix]</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
+        _ksi_prompt<span class="o">[</span>ps1_suffix<span class="o">]=</span><span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[start_suffix_mark]</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[ps1_suffix]</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[end_suffix_mark]</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">fi</span>
+    <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps2]</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> 
+        _ksi_prompt<span class="o">[</span>ps2<span class="o">]=</span><span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[start_mark]</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[ps2]</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[end_mark]</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">fi</span>
+    <span class="nb">builtin</span> <span class="nb">unset</span> _ksi_prompt<span class="o">[</span>start_mark<span class="o">]</span>
+    <span class="nb">builtin</span> <span class="nb">unset</span> _ksi_prompt<span class="o">[</span>end_mark<span class="o">]</span>
+    <span class="nb">builtin</span> <span class="nb">unset</span> _ksi_prompt<span class="o">[</span>start_suffix_mark<span class="o">]</span>
+    <span class="nb">builtin</span> <span class="nb">unset</span> _ksi_prompt<span class="o">[</span>end_suffix_mark<span class="o">]</span>
+    <span class="nb">builtin</span> <span class="nb">unset</span> _ksi_prompt<span class="o">[</span>start_secondary_mark<span class="o">]</span>
+    <span class="nb">builtin</span> <span class="nb">unset</span> _ksi_prompt<span class="o">[</span>end_secondary_mark<span class="o">]</span>
+
+    <span class="c1"># install our prompt command, using an array if it is unset or already an array,</span>
+    <span class="c1"># otherwise append a string</span>
+    <span class="k">if</span> <span class="o">[[</span> -z <span class="s2">"</span><span class="si">${</span><span class="nv">PROMPT_COMMAND</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nv">PROMPT_COMMAND</span><span class="o">=([</span><span class="m">0</span><span class="o">]=</span><span class="s2">"_ksi_prompt_command"</span><span class="o">)</span>
+    <span class="k">elif</span> <span class="o">[[</span> <span class="k">$(</span><span class="nb">builtin</span> <span class="nb">declare</span> -p PROMPT_COMMAND <span class="m">2</span>&gt; /dev/null<span class="k">)</span> <span class="o">=</span>~ <span class="s1">'declare -a PROMPT_COMMAND'</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nv">PROMPT_COMMAND</span><span class="o">+=(</span><span class="s2">"_ksi_prompt_command"</span><span class="o">)</span>
+    <span class="k">else</span>
+        <span class="nv">PROMPT_COMMAND</span><span class="o">+=</span><span class="s2">"; _ksi_prompt_command"</span>
     <span class="k">fi</span>
 <span class="o">}</span>
 _ksi_main
+<span class="nb">builtin</span> <span class="nb">unset</span> -f _ksi_main
+<span class="c1"># freeze _ksi_prompt to prevent it from being changed</span>
+<span class="nb">builtin</span> <span class="nb">declare</span> -r _ksi_prompt
 </pre></div>
 </div>
 </div>
@@ -1670,9 +1779,17 @@ to your shells startup files to load the shell integration script.</p>
 completely, in which case simply do not set the
 <span class="target" id="index-2"></span><a class="reference internal" href="../glossary/#envvar-KITTY_SHELL_INTEGRATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_SHELL_INTEGRATION</span></code></a> variable at all.</p>
 <p>If you want this to work while SSHing into a remote system, then you will
-need to add some code to the snippets above to check if <code class="code docutils literal notranslate"><span class="pre">KITTY_INSTALLATION_DIR</span></code>
+need to add some code to the snippets above to check if <span class="target" id="index-3"></span><a class="reference internal" href="../glossary/#envvar-KITTY_INSTALLATION_DIR"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_INSTALLATION_DIR</span></code></a>
 is empty and if so to set it to some hard coded location with the shell
 integration scripts that need to be copied onto the remote system.</p>
+</div>
+<div class="section" id="integration-with-other-shells">
+<h1>Integration with other shells<a class="headerlink" href="#integration-with-other-shells" title="Permalink to this headline">¶</a></h1>
+<p>There exist third-party integrations to use these features for various other shells:</p>
+<ul class="simple">
+<li><p>Jupyter console via a patch (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4475">#4475</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/xonsh/xonsh/issues/4623">xonsh</a></p></li>
+</ul>
 </div>
 <div class="section" id="notes-for-shell-developers">
 <h1>Notes for shell developers<a class="headerlink" href="#notes-for-shell-developers" title="Permalink to this headline">¶</a></h1>
@@ -1751,6 +1868,7 @@ full protocol, that also marks the command region, see <a class="reference exter
 </li>
 <li><a class="reference internal" href="#how-it-works">How it works</a></li>
 <li><a class="reference internal" href="#manual-shell-integration">Manual shell integration</a></li>
+<li><a class="reference internal" href="#integration-with-other-shells">Integration with other shells</a></li>
 <li><a class="reference internal" href="#notes-for-shell-developers">Notes for shell developers</a></li>
 </ul>
 
