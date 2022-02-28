@@ -102,14 +102,38 @@ lines. The various available criteria are:
     ``image-??.png``
 
 
+.. _launch_actions:
+
 Scripting the opening of files with kitty on macOS
 -------------------------------------------------------
 
-On macOS you can use :guilabel:`Open With` in Finder or drag and drop files
-onto the kitty dock icon to open them with kitty. The default action
-is to open text files in your editor and images using the icat kitten.
-Shell scripts are run in a shell. You can customize these actions by creating
-a :file:`launch-actions.conf` file in the kitty config directory, just like
+On macOS you can use :guilabel:`Open With` in Finder or drag and drop files and
+URLs onto the kitty dock icon to open them with kitty. The default actions are:
+
+* Open text files in your editor and images using the icat kitten.
+* Run shell scripts in a shell
+* Open SSH urls using the ssh command
+
+These actions can also be executed from the command line by running::
+
+    open -a kitty.app file_or_url ... (on macOS only)
+    or
+    kitty +open file_or_url ...
+
+Since macOS lacks an official interface to set default URL scheme handlers,
+kitty has a command you can use for it. The first argument for is the URL
+scheme, and the second optional argument is the bundle id of the app, which
+defaults to kitty, if not specified. For example:
+
+.. code-block:: sh
+
+    # Set kitty as the handler for ssh:// URLs
+    kitty +runpy 'from kitty.fast_data_types import cocoa_set_url_handler; import sys; cocoa_set_url_handler(*sys.argv[1:]); print("OK")' ssh
+    # Set someapp as the handler for xyz:// URLs
+    kitty +runpy 'from kitty.fast_data_types import cocoa_set_url_handler; import sys; cocoa_set_url_handler(*sys.argv[1:]); print("OK")' xyz someapp.bundle.identifier
+
+You can customize these actions by creating a :file:`launch-actions.conf` file
+in the kitty config directory, just like
 the :file:`open-actions.conf` file above. For example:
 
 .. code:: conf
@@ -138,3 +162,7 @@ the :file:`open-actions.conf` file above. For example:
     protocol file
     mime image/*
     action launch --type=os-window kitty +kitten icat --hold $FILE_PATH
+
+    # Open ssh URLs with ssh command
+    protocol ssh
+    action launch --type=os-window ssh $URL

@@ -48,11 +48,16 @@ off or it can be disabled entirely as well. The :opt:`shell_integration` option
 takes a space separated list of keywords:
 
 disabled
-    Turn off all shell integration
+    Turn off all shell integration. The shell's launch environment is not
+    modified and :envvar:`KITTY_SHELL_INTEGRATION` is not set. Useful for
+    :ref:`manual integration <manual_shell_integration>`.
 
 no-rc
     Do not modify the shell's launch environment to enable integration. Useful if you prefer
-    to :ref:`manually enable integration <manual_shell_integration>`.
+    to load the kitty shell integration code yourself, either as part of
+    :ref:`manually integration <manual_shell_integration>` or because you have
+    some other software that sets up shell integration.
+    This will still set the :envvar:`KITTY_SHELL_INTEGRATION` environment variable when kitty runs the shell.
 
 no-cursor
     Turn off changing of the text cursor to a bar when editing text
@@ -88,7 +93,7 @@ to be copied.
 
 The feature to jump to previous prompts (
 :sc:`scroll_to_previous_prompt` and :sc:`scroll_to_next_prompt`) and mouse
-actions (:ref:`action-mouse_select_command_output` and :ref:`action-mouse_show_command_output`) can
+actions (:ac:`mouse_select_command_output` and :ac:`mouse_show_command_output`) can
 be integrated with browsing command output as well. For example, define the
 following mapping in :file:`kitty.conf`:
 
@@ -137,14 +142,18 @@ different shells.
 
     For fish, to make it automatically load the integration code provided by
     kitty, the integration script directory path is prepended to the
-    :code:`XDG_DATA_DIRS` environment variable. This is only applied to the fish
+    ``XDG_DATA_DIRS`` environment variable. This is only applied to the fish
     process and will be cleaned up by the integration script after startup. No files
     are added or modified.
 
 .. tab:: bash
 
-    For bash, kitty adds a couple of lines to the bottom of :file:`~/.bashrc`
-    (in an atomic manner) to load the shell integration code.
+    For bash, kitty starts bash in POSIX mode, using the environment variable
+    ``ENV`` to load the shell integrtion script. This prevents bash from
+    loading any startup files itself. The loading of the startup files is done
+    by the integration script, after disabling POSIX mode. From the
+    perspective of those scripts there should be no difference to running
+    vanilla bash.
 
 
 Then, when launching the shell, kitty sets the environment variable

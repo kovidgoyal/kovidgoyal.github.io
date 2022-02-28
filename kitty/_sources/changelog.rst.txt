@@ -75,6 +75,97 @@ command.
 Detailed list of changes
 -------------------------------------
 
+0.24.3 [2022-02-28]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Bash integration: No longer modify :file:`~/.bashrc` to load :ref:`shell integration <shell_integration>`.
+  It is recommended to remove the lines used to load the shell integration from :file:`~/.bashrc` as they are no-ops.
+
+- macOS: Allow kitty to handle various URL types. Can be configured via
+  :ref:`launch_actions` (:pull:`4618`)
+
+- macOS: Add a new service ``Open with kitty`` to open file types that are not
+  recognized by the system (:pull:`4641`)
+
+- Splits layout: A new value for :option:`launch --location` to auto-select the split axis when splitting existing windows.
+  Wide windows are split side-by-side and tall windows are split one-above-the-other
+
+- hints kitten: Fix a regression that broke recognition of path:linenumber:colnumber (:iss:`4675`)
+
+- Fix a regression in the previous release that broke :opt:`active_tab_foreground` (:iss:`4620`)
+
+- Fix :ac:`show_last_command_output` not working when the output is stored
+  partially in the scrollback pager history buffer (:iss:`4435`)
+
+- When dropping URLs/files onto kitty at a shell prompt insert them appropriately quoted and space
+  separated (:iss:`4734`)
+
+- Improve CWD detection when there are multiple foreground processes in the TTY process group
+
+- A new option :opt:`narrow_symbols` to turn off opportunistic wide rendering of private use codepoints
+
+- ssh kitten: Fix location of generated terminfo files on NetBSD (:iss:`4622`)
+
+- A new action to clear the screen up to the line containing the cursor, see
+  :ac:`clear_terminal`
+
+- A new action :ac:`copy_ansi_to_clipboard` to copy the current selection with ANSI formatting codes
+  (:iss:`4665`)
+
+- Linux: Do not rescale fallback fonts to match the main font cell height, instead just
+  set the font size and let FreeType take care of it. This matches
+  rendering on macOS (:iss:`4707`)
+
+- macOS: Fix a regression in the previous release that broke switching input
+  sources by keyboard (:iss:`4621`)
+
+- macOS: Add the default shortcut :kbd:`cmd+k` to clear the terminal screen and
+  scrollback up to the cursor (:iss:`4625`)
+
+- Fix a regression in the previous release that broke strikethrough (:disc:`4632`)
+
+- A new action :ac:`scroll_prompt_to_bottom` to move the current prompt
+  to the bottom, filling in the window from the scrollback (:pull:`4634`)
+
+- Add two special arguments ``@first-line-on-screen`` and ``@last-line-on-screen``
+  for the :doc:`launch <launch>` command to be used for pager positioning.
+  (:iss:`4462`)
+
+- Linux: Fix rendering of emoji when using scalable fonts such as Segoe UI Emoji
+
+- Shell integration: bash: Dont fail if an existing PROMPT_COMMAND ends with a semi-colon (:iss:`4645`)
+
+- Shell integration: bash: Fix rendering of multiline prompts with more than two lines (:iss:`4681`)
+
+- Shell integration: fish: Check fish version 3.3.0+ and exit on outdated versions (:pull:`4745`)
+
+- Shell integration: fish: Fix pipestatus being overwritten (:pull:`4756`)
+
+- Linux: Fix fontconfig alias not being used if the aliased font is dual spaced instead of monospaced (:iss:`4649`)
+
+- macOS: Add an option :opt:`macos_menubar_title_max_length` to control the max length of the window title displayed in the global menubar (:iss:`2132`)
+
+- Fix :opt:`touch_scroll_multiplier` also taking effect in terminal programs such as vim that handle mouse events themselves (:iss:`4680`)
+
+- Fix symbol/PUA glyphs loaded via :opt:`symbol_map` instead of as fallbacks not using following spaces to render larger versions (:iss:`4670`)
+
+- macOS: Fix regression in previous release that caused Apple's global shortcuts to not work if they had never been configured on a particular machine (:iss:`4657`)
+
+- Fix a fast *click, move mouse, click* sequence causing the first click event to be discarded (:iss:`4603`)
+
+- Wayland: Fix wheel mice with line based scrolling being incorrectly handled as high precision devices (:iss:`4694`)
+
+- Wayland: Fix touchpads and high resolution wheels not scrolling at the same speed on monitors with different scales (:iss:`4703`)
+
+- Add an option :opt:`wheel_scroll_min_lines` to set the minimum number of lines for mouse wheel scrolling when using a mouse with a wheel that generates very small offsets when slow scrolling (:pull:`4710`)
+
+- macOS: Make the shortcut to toggle full screen configurable (:pull:`4714`)
+
+- macOS: Fix the mouse cursor being set to arrow after switching desktops or toggling full screen (:pull:`4716`)
+
+- Fix copying of selection after selection has been scrolled off history buffer raising an error (:iss:`4713`)
+
+
 0.24.2 [2022-02-03]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -420,7 +511,7 @@ Detailed list of changes
 0.22.0 [2021-07-26]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Add a new :ref:`action-toggle_layout` action to easily zoom/unzoom a window
+- Add a new :ac:`toggle_layout` action to easily zoom/unzoom a window
 
 - When right clicking to extend a selection, move the nearest selection
   boundary rather than the end of the selection. To restore previous behavior
