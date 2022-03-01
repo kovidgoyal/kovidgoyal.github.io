@@ -66,4 +66,5 @@ EOF
 ln -sf /run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
 wpa_passphrase KovidTheGreat >> "/mnt/etc/wpa_supplicant/$(ip a | grep -o ': wl.\+\?:' | cut -d' ' -f2 | cut -d: -f1).conf"
 genfstab -U /mnt >> /mnt/etc/fstab
+curl 'https://github.com/kovidgoyal/kovidgoyal.github.io/raw/master/setup-laptop2.sh' > /mnt/root/setup-laptop.sh
 arch-chroot /mnt
