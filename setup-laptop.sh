@@ -6,6 +6,9 @@
 # Distributed under terms of the MIT license.
 #
 
+set -o nounset
+set -o errexit
+
 cat << EOF > /mnt/etc/systemd/network/20-wired.network
 [Match]
 Name=en*
@@ -62,5 +65,5 @@ EOF
 
 ln -sf /run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
 wpa_passphrase KovidTheGreat >> "/mnt/etc/wpa_supplicant/$(ip a | grep -o ': wl.\+\?:' | cut -d' ' -f2 | cut -d: -f1).conf"
-
-
+genfstab -U /mnt >> /mnt/etc/fstab
+arch-chroot /mnt
