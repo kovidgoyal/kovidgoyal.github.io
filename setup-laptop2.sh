@@ -43,7 +43,7 @@ pacman -S  python-pyinotify mutt alsa-plugins mlocate gnome-themes-standard lynx
 pacman -S gnome-shell xdg-desktop-portal xdg-desktop-portal-gnome gnome-session gnome-terminal
 
 # KDE Applications
-pacman -S dolphin ark okteta okular kde-cli-tools ffmpegthumbs plasma-workspace kdegraphics-thumbnailers konsole
+pacman -S dolphin ark okteta okular kde-cli-tools ffmpegthumbs plasma-workspace kdegraphics-thumbnailers konsole plasma-wayland-session
 # polib and requests stubs
 sudo python -m pip install polib types-requests
 
