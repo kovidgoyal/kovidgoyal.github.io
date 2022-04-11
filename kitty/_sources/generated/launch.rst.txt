@@ -12,11 +12,11 @@ Options
 ______________________________
 .. option:: --title <WINDOW_TITLE>, --window-title <WINDOW_TITLE>
 
-    The title to set for the new window. By default, title is controlled by the child process.
+    The title to set for the new window. By default, title is controlled by the child process. The special value :code:`current` will copy the title from the currently active window.
 
 .. option:: --tab-title <TAB_TITLE>
 
-    The title for the new tab if launching in a new tab. By default, the title of the active window in the tab is used as the tab title.
+    The title for the new tab if launching in a new tab. By default, the title of the active window in the tab is used as the tab title. The special value :code:`current` will copy the title form the title of the currently active tab.
 
 .. option:: --type <TYPE>
 
@@ -30,7 +30,7 @@ ______________________________
 
 .. option:: --cwd <CWD>
 
-    The working directory for the newly launched child. Use the special value :code:`current` to use the working directory of the currently active window.
+    The working directory for the newly launched child. Use the special value :code:`current` to use the working directory of the currently active window. The special value :code:`last_reported` uses the last working directory reported by the shell (needs :ref:`shell_integration` to work).
 
 .. option:: --env <ENV>
 
@@ -90,7 +90,7 @@ ______________________________
 
 .. option:: --os-window-title <OS_WINDOW_TITLE>
 
-    Set the title for the newly created OS window. This title will override any titles set by programs running in kitty.
+    Set the title for the newly created OS window. This title will override any titles set by programs running in kitty. The special value :code:`current` will use the title of the current OS Window, if any.
 
 .. option:: --logo <LOGO>
 

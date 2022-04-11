@@ -9,23 +9,14 @@ To update |kitty|, :doc:`follow the instructions <binary>`.
 Recent major new features
 ---------------------------
 
-.. only:: dirhtml
+Truly convenient SSH
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-   A demo video
-   ~~~~~~~~~~~~~~~~
+The :doc:`ssh kitten <kittens/ssh>` is redesigned with powerful new features:
 
-   A new video showcasing some of kitty's many productivity enhancing features.
-
-   .. raw:: html
-
-        <video controls width="640" height="360" poster="../_static/poster.png">
-            <source src="https://download.calibre-ebook.com/videos/kitty.mp4" type="video/mp4">
-            <source src="https://download.calibre-ebook.com/videos/kitty.webm" type="video/webm">
-        </video>
-
-   .. rst-class:: caption caption-text
-
-       Watch kitty in action!
+* Automatic :ref:`shell_integration` on remote machines
+* Easily :ref:`clone local shell/editor config <real_world_ssh_kitten_config>` on remote machines
+* Automatic :opt:`re-use of existing connections <kitten-ssh.share_connections>` to avoid connection setup latency
 
 
 Shell integration
@@ -38,42 +29,56 @@ scrollback by pressing :sc:`scroll_to_previous_prompt` and clicking with the
 mouse anywhere in the current command to move the cursor there. See
 :doc:`shell-integration` for details.
 
-Logos for windows
-~~~~~~~~~~~~~~~~~~~~
-
-kitty has the ability to display arbitrary ``PNG`` images at the corner
-of any kitty window to serve as a *logo* for quick window identification.
-Can be controlled via :opt:`window_logo_path` and also and changed via
-the :ref:`at_set-window-logo` remote control command.
-Useful to quickly identify special windows or just for some *bling*.
-
-.. figure:: screenshots/window-logo.png
-    :alt: A screenshot of the kitty shell window showing the kitty logo
-    :align: center
-    :width: 100%
-
-    A screenshot of the kitty shell window showing the kitty logo
-
-
-Visual keyboard based window select
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Select a kitty window visually using the keyboard, like the
-:doc:`kittens/hints`, but for kitty windows. Can also be used from shell
-scripts/third party integrations via the :ref:`at_select-window` remote control
-command.
-
-.. figure:: screenshots/select-window.png
-    :alt: A screenshot of the kitty select window function
-    :align: center
-    :width: 100%
-
-    Hints for selecting kitty windows visually
-
 .. }}}
 
 Detailed list of changes
 -------------------------------------
+
+0.25.0 [2022-04-11]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- :doc:`kittens/ssh`: automatic shell integration when using SSH. Easily
+  clone local shell and editor configuration on remote machines, and automatic
+  re-use of existing connections to avoid connection setup latency.
+
+- When pasting URLs at shell prompts automatically quote them. Also allow filtering pasted text and confirm pastes. See :opt:`paste_actions` for details. (:iss:`4873`)
+
+- macOS: When using Apple's less as the pager for viewing scrollback strip out OSC codes as it cant parse them (:iss:`4788`)
+
+- diff kitten: Fix incorrect rendering in rare circumstances when scrolling after changing the context size (:iss:`4831`)
+
+- icat kitten: Fix a regression that broke :option:`kitty +kitten icat --print-window-size` (:pull:`4818`)
+
+- Wayland: Fix :opt:`hide_window_decorations` causing docked windows to be resized on blur (:iss:`4797`)
+
+- Bash integration: Prevent shell integration code from running twice if user enables both automatic and manual integration
+
+- Bash integration: Handle existing PROMPT_COMMAND ending with a literal newline
+
+- Fix continued lines not having their continued status reset on line feed (:iss:`4837`)
+
+- macOS: Allow the New kitty Tab/Window Here services to open multiple selected folders.  (:pull:`4848`)
+
+- Wayland: Fix a regression that broke IME when changing windows/tabs (:iss:`4853`)
+
+- macOS: Fix Unicode paths not decoded correctly when dropping files (:pull:`4879`)
+
+- Avoid flicker when starting kittens such as the hints kitten (:iss:`4674`)
+
+- A new action :ac:`scroll_prompt_to_top` to move the current prompt to the top (:pull:`4891`)
+
+- :ac:`select_tab`: Use stable numbers when selecting the tab (:iss:`4792`)
+
+- Only check for updates in the official binary builds. Distro packages or source builds will no longer check for updates, regardless of the
+  value of :opt:`update_check_interval`.
+
+- Fix :opt:`inactive_text_alpha` still being applied to the cursor hidden window after focus (:iss:`4928`)
+
+- Fix resizing window that is extra tall/wide because of left-over cells not
+  working reliably (:iss:`4913`)
+
+- A new action :ac:`close_other_tabs_in_os_window` to close other tabs in the active OS window (:pull:`4944`)
+
 
 0.24.4 [2022-03-03]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

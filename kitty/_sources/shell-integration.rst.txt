@@ -67,6 +67,14 @@ no-title
     Note that for the ``fish`` shell kitty relies on fish's native title
     setting functionality instead.
 
+no-cwd
+    Turn off reporting the current working directory. This is used to allow
+    :ac:`new_window_with_cwd` and similar to open windows logged
+    into remote machines using the :doc:`ssh kitten <kittens/ssh>`
+    automatically with the same working directory as the current window.
+    Note that for the ``fish`` shell this will not disable its built-in current
+    working directory reporting.
+
 no-prompt-mark
     Turn off marking of prompts. This disables jumping to prompt, browsing
     output of last command and click to move cursor functionality.
@@ -149,7 +157,7 @@ different shells.
 .. tab:: bash
 
     For bash, kitty starts bash in POSIX mode, using the environment variable
-    ``ENV`` to load the shell integrtion script. This prevents bash from
+    ``ENV`` to load the shell integration script. This prevents bash from
     loading any startup files itself. The loading of the startup files is done
     by the integration script, after disabling POSIX mode. From the
     perspective of those scripts there should be no difference to running
@@ -160,8 +168,7 @@ Then, when launching the shell, kitty sets the environment variable
 :envvar:`KITTY_SHELL_INTEGRATION` to the value of the :opt:`shell_integration`
 option. The shell integration code reads the environment variable, turns on the
 specified integration functionality and then unsets the variable so as to not
-pollute the system. This has the nice effect that the changes to the shell's rc
-files become no-ops when running the shell in anything other than kitty itself.
+pollute the system.
 
 The actual shell integration code uses hooks provided by each shell to send
 special escape codes to kitty, to perform the various tasks. You can see the
@@ -194,13 +201,27 @@ code used for each shell below:
    </details>
 
 
+Shell integration over SSH
+----------------------------
+
+The easiest way to have shell integration work when SSHing into remote systems
+is to use the :doc:`ssh kitten <kittens/ssh>`. Simply run::
+
+    kitty +kitten ssh hostname
+
+And, by magic, you will be logged into the remote system with fully functional
+shell integration. Alternately, you can :ref:`setup shell integration manually
+<manual_shell_integration>`, by copying the kitty shell integration scripts to
+the remote server and editing the shell rc files there, as described below.
+
+
 .. _manual_shell_integration:
 
 Manual shell integration
 ----------------------------
 
 The automatic shell integration is designed to be minimally intrusive, as such
-it wont work for sub-shells, terminal multiplexers, containers, remote systems, etc.
+it wont work for sub-shells, terminal multiplexers, containers, etc.
 For such systems, you should setup manual shell integration by adding some code
 to your shells startup files to load the shell integration script.
 
@@ -248,11 +269,9 @@ The value of :envvar:`KITTY_SHELL_INTEGRATION` is the same as that for
 completely, in which case simply do not set the
 :envvar:`KITTY_SHELL_INTEGRATION` variable at all.
 
-If you want this to work while SSHing into a remote system, then you will
-need to add some code to the snippets above to check if :envvar:`KITTY_INSTALLATION_DIR`
-is empty and if so to set it to some hard coded location with the shell
-integration scripts that need to be copied onto the remote system.
-
+In a container, you will need to install the kitty shell integration scripts
+and make sure the :envvar:`KITTY_INSTALLATION_DIR` environment variable is set
+to point to the location of the scripts.
 
 Integration with other shells
 -------------------------------
