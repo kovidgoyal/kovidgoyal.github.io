@@ -407,7 +407,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#allowing-only-some-windows-to-control-kitty">Allowing only some windows to control kitty</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#mapping-key-presses-to-remote-control-commands">Mapping key presses to remote control commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#broadcasting-what-you-type-to-all-kitty-windows">Broadcasting what you type to all kitty windows</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#the-remote-control-protocol">The remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#the-remote-control-protocol">The remote control protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#matching-windows-and-tabs">Matching windows and tabs</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../rc_protocol/">The kitty remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-tab">close-tab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-window">close-window</a></li>
@@ -618,6 +619,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#shell-integration-over-ssh">Shell integration over SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -663,76 +665,77 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -894,11 +897,13 @@ previous prompts in the scrollback, viewing the output of the last command in
 <li><p>Jump to the previous/next prompt in the scrollback
 (<a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-previous-shell-prompt"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+z</span></code></a> /  <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-next-shell-prompt"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+x</span></code></a>)</p></li>
 <li><p>Click with the mouse anywhere in the current command to move the cursor there</p></li>
-<li><p>Hold <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd></kbd> and right-click on any command output in the scrollback
+<li><p>Hold <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd></kbd> and right-click on any command output in the scrollback
 to view it in a pager</p></li>
 <li><p>The current working directory or the command being executed are automatically
 displayed in the kitty window titlebar/tab title</p></li>
 <li><p>The text cursor is changed to a bar when editing commands at the shell prompt</p></li>
+<li><p><a class="reference internal" href="#clone-shell"><span class="std std-ref">Clone the current shell into a new window</span></a> with all environment variables and the working directory
+copied</p></li>
 <li><p>Glitch free window resizing even with complex prompts. Achieved by erasing
 the prompt on resize and allowing the shell to redraw it cleanly.</p></li>
 <li><p>Sophisticated completion for the <strong class="program">kitty</strong> command in the shell.</p></li>
@@ -909,7 +914,7 @@ it is optionally, not counted (see <a class="reference internal" href="../conf/#
 <div class="section" id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">#</a></h1>
 <p>Shell integration is controlled by the <a class="reference internal" href="../conf/#opt-kitty.shell_integration"><code class="xref std std-opt docutils literal notranslate"><span class="pre">shell_integration</span></code></a> option. By
-default, all shell integration is enabled. Individual features can be turned
+default, all integration features are enabled. Individual features can be turned
 off or it can be disabled entirely as well. The <a class="reference internal" href="../conf/#opt-kitty.shell_integration"><code class="xref std std-opt docutils literal notranslate"><span class="pre">shell_integration</span></code></a> option
 takes a space separated list of keywords:</p>
 <dl class="simple">
@@ -917,38 +922,40 @@ takes a space separated list of keywords:</p>
 modified and <span class="target" id="index-0"></span><a class="reference internal" href="../glossary/#envvar-KITTY_SHELL_INTEGRATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_SHELL_INTEGRATION</span></code></a> is not set. Useful for
 <a class="reference internal" href="#manual-shell-integration"><span class="std std-ref">manual integration</span></a>.</p>
 </dd>
-<dt>no-rc</dt><dd><p>Do not modify the shell’s launch environment to enable integration. Useful if you prefer
-to load the kitty shell integration code yourself, either as part of
-<a class="reference internal" href="#manual-shell-integration"><span class="std std-ref">manually integration</span></a> or because you have
-some other software that sets up shell integration.
-This will still set the <span class="target" id="index-1"></span><a class="reference internal" href="../glossary/#envvar-KITTY_SHELL_INTEGRATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_SHELL_INTEGRATION</span></code></a> environment variable when kitty runs the shell.</p>
+<dt>no-rc</dt><dd><p>Do not modify the shell’s launch environment to enable integration. Useful
+if you prefer to load the kitty shell integration code yourself, either as
+part of <a class="reference internal" href="#manual-shell-integration"><span class="std std-ref">manually integration</span></a> or because
+you have some other software that sets up shell integration.
+This will still set the <span class="target" id="index-1"></span><a class="reference internal" href="../glossary/#envvar-KITTY_SHELL_INTEGRATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_SHELL_INTEGRATION</span></code></a> environment
+variable when kitty runs the shell.</p>
 </dd>
-<dt>no-cursor</dt><dd><p>Turn off changing of the text cursor to a bar when editing text</p>
+<dt>no-cursor</dt><dd><p>Turn off changing of the text cursor to a bar when editing shell command
+line.</p>
 </dd>
 <dt>no-title</dt><dd><p>Turn off setting the kitty window/tab title based on shell state.
-Note that for the <code class="docutils literal notranslate"><span class="pre">fish</span></code> shell kitty relies on fish’s native title
-setting functionality instead.</p>
+Note that for the fish shell kitty relies on fish’s native title setting
+functionality instead.</p>
 </dd>
 <dt>no-cwd</dt><dd><p>Turn off reporting the current working directory. This is used to allow
-<a class="reference internal" href="../actions/#action-new_window_with_cwd"><code class="xref std std-ac docutils literal notranslate"><span class="pre">new_window_with_cwd</span></code></a> and similar to open windows logged
-into remote machines using the <a class="reference internal" href="../kittens/ssh/"><span class="doc">ssh kitten</span></a>
-automatically with the same working directory as the current window.
-Note that for the <code class="docutils literal notranslate"><span class="pre">fish</span></code> shell this will not disable its built-in current
+<a class="reference internal" href="../actions/#action-new_window_with_cwd"><code class="xref std std-ac docutils literal notranslate"><span class="pre">new_window_with_cwd</span></code></a> and similar to open windows logged into remote
+machines using the <a class="reference internal" href="../kittens/ssh/"><span class="doc">ssh kitten</span></a> automatically with the
+same working directory as the current window.
+Note that for the fish shell this will not disable its built-in current
 working directory reporting.</p>
 </dd>
 <dt>no-prompt-mark</dt><dd><p>Turn off marking of prompts. This disables jumping to prompt, browsing
 output of last command and click to move cursor functionality.</p>
 </dd>
 <dt>no-complete</dt><dd><p>Turn off completion for the kitty command.
-Note that for the <code class="docutils literal notranslate"><span class="pre">fish</span></code> shell this does not take effect, since fish
-already comes with a kitty completion script.</p>
+Note that for the fish shell this does not take effect, since fish already
+comes with a kitty completion script.</p>
 </dd>
 </dl>
 <div class="section" id="more-ways-to-browse-command-output">
 <h2>More ways to browse command output<a class="headerlink" href="#more-ways-to-browse-command-output" title="Permalink to this headline">#</a></h2>
 <p>You can add further key and mouse bindings to browse the output of commands
-easily. For example to select the output of a command by right clicking the mouse
-on the output, define the following in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>:</p>
+easily. For example to select the output of a command by right clicking the
+mouse on the output, define the following in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">mouse_map</span><span class="w"> </span><span class="s">right</span><span class="w"> </span><span class="nv">press</span><span class="w"> </span><span class="s">ungrabbed</span><span class="w"> </span><span class="nf">mouse_select_command_output</span><span class="w"></span>
 </pre></div>
 </div>
@@ -956,8 +963,8 @@ on the output, define the following in <code class="file docutils literal notran
 to be copied.</p>
 <p>The feature to jump to previous prompts (
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-previous-shell-prompt"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+z</span></code></a> and <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-next-shell-prompt"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+x</span></code></a>) and mouse
-actions (<a class="reference internal" href="../actions/#action-mouse_select_command_output"><code class="xref std std-ac docutils literal notranslate"><span class="pre">mouse_select_command_output</span></code></a> and <a class="reference internal" href="../actions/#action-mouse_show_command_output"><code class="xref std std-ac docutils literal notranslate"><span class="pre">mouse_show_command_output</span></code></a>) can
-be integrated with browsing command output as well. For example, define the
+actions (<a class="reference internal" href="../actions/#action-mouse_select_command_output"><code class="xref std std-ac docutils literal notranslate"><span class="pre">mouse_select_command_output</span></code></a> and <a class="reference internal" href="../actions/#action-mouse_show_command_output"><code class="xref std std-ac docutils literal notranslate"><span class="pre">mouse_show_command_output</span></code></a>)
+can be integrated with browsing command output as well. For example, define the
 following mapping in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f1</span><span class="w"> </span><span class="nf">show_last_visited_command_output</span><span class="w"></span>
 </pre></div>
@@ -981,34 +988,34 @@ define the following in <code class="file docutils literal notranslate"><span cl
 <div class="section" id="how-it-works">
 <h1>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">#</a></h1>
 <p>At startup, kitty detects if the shell you have configured (either system wide
-or in kitty.conf) is a supported shell. If so, kitty injects some shell specific
-code into the shell, to enable shell integration. How it does so varies for
-different shells.</p>
+or the <a class="reference internal" href="../conf/#opt-kitty.shell"><code class="xref std std-opt docutils literal notranslate"><span class="pre">shell</span></code></a> option in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>) is a supported shell. If so,
+kitty injects some shell specific code into the shell, to enable shell
+integration. How it does so varies for different shells.</p>
 <div class="tab-set docutils container">
 <input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"/><label class="tab-label" for="tab-set--0-input--1">zsh</label><div class="tab-content docutils container">
-<p>For zsh, kitty sets the <code class="docutils literal notranslate"><span class="pre">ZDOTDIR</span></code> environment variable to make zsh load
-kitty’s <code class="file docutils literal notranslate"><span class="pre">.zshenv</span></code> which restores the original value of <code class="docutils literal notranslate"><span class="pre">ZDOTDIR</span></code>
-and sources the original <code class="file docutils literal notranslate"><span class="pre">.zshenv</span></code>. It then loads the shell integration code.
-The remainder of zsh’s startup process proceeds as normal.</p>
+<p>For zsh, kitty sets the <span class="target" id="index-2"></span><a class="reference internal" href="../glossary/#envvar-ZDOTDIR"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">ZDOTDIR</span></code></a> environment variable to make zsh
+load kitty’s <code class="file docutils literal notranslate"><span class="pre">.zshenv</span></code> which restores the original value of
+<span class="target" id="index-3"></span><a class="reference internal" href="../glossary/#envvar-ZDOTDIR"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">ZDOTDIR</span></code></a> and sources the original <code class="file docutils literal notranslate"><span class="pre">.zshenv</span></code>. It then loads
+the shell integration code. The remainder of zsh’s startup process proceeds
+as normal.</p>
 </div>
 <input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"/><label class="tab-label" for="tab-set--0-input--2">fish</label><div class="tab-content docutils container">
 <p>For fish, to make it automatically load the integration code provided by
 kitty, the integration script directory path is prepended to the
-<code class="docutils literal notranslate"><span class="pre">XDG_DATA_DIRS</span></code> environment variable. This is only applied to the fish
-process and will be cleaned up by the integration script after startup. No files
-are added or modified.</p>
+<span class="target" id="index-4"></span><a class="reference internal" href="../glossary/#envvar-XDG_DATA_DIRS"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">XDG_DATA_DIRS</span></code></a> environment variable. This is only applied to the
+fish process and will be cleaned up by the integration script after startup.
+No files are added or modified.</p>
 </div>
 <input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio"/><label class="tab-label" for="tab-set--0-input--3">bash</label><div class="tab-content docutils container">
 <p>For bash, kitty starts bash in POSIX mode, using the environment variable
-<code class="docutils literal notranslate"><span class="pre">ENV</span></code> to load the shell integration script. This prevents bash from
+<span class="target" id="index-5"></span><a class="reference internal" href="../glossary/#envvar-ENV"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">ENV</span></code></a> to load the shell integration script. This prevents bash from
 loading any startup files itself. The loading of the startup files is done
-by the integration script, after disabling POSIX mode. From the
-perspective of those scripts there should be no difference to running
-vanilla bash.</p>
+by the integration script, after disabling POSIX mode. From the perspective
+of those scripts there should be no difference to running vanilla bash.</p>
 </div>
 </div>
 <p>Then, when launching the shell, kitty sets the environment variable
-<span class="target" id="index-2"></span><a class="reference internal" href="../glossary/#envvar-KITTY_SHELL_INTEGRATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_SHELL_INTEGRATION</span></code></a> to the value of the <a class="reference internal" href="../conf/#opt-kitty.shell_integration"><code class="xref std std-opt docutils literal notranslate"><span class="pre">shell_integration</span></code></a>
+<span class="target" id="index-6"></span><a class="reference internal" href="../glossary/#envvar-KITTY_SHELL_INTEGRATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_SHELL_INTEGRATION</span></code></a> to the value of the <a class="reference internal" href="../conf/#opt-kitty.shell_integration"><code class="xref std std-opt docutils literal notranslate"><span class="pre">shell_integration</span></code></a>
 option. The shell integration code reads the environment variable, turns on the
 specified integration functionality and then unsets the variable so as to not
 pollute the system.</p>
@@ -1369,10 +1376,78 @@ _ksi_deferred_init<span class="o">()</span> <span class="o">{</span>
         <span class="nv">precmd_functions</span><span class="o">=(</span><span class="si">${</span><span class="nv">precmd_functions</span><span class="p">:#_ksi_deferred_init</span><span class="si">}</span><span class="o">)</span>
     <span class="k">fi</span>
 
+    <span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">KITTY_IS_CLONE_LAUNCH</span><span class="si">}</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">orig_conda_env</span><span class="o">=</span><span class="s2">"</span><span class="nv">$CONDA_DEFAULT_ENV</span><span class="s2">"</span>
+        <span class="nb">builtin</span> <span class="nb">eval</span> <span class="s2">"</span><span class="si">${</span><span class="nv">KITTY_IS_CLONE_LAUNCH</span><span class="si">}</span><span class="s2">"</span>
+        <span class="nb">builtin</span> <span class="nb">hash</span> -r <span class="m">2</span>&gt; /dev/null <span class="m">1</span>&gt; /dev/null
+        <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">venv</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">VIRTUAL_ENV</span><span class="si">}</span><span class="s2">/bin/activate"</span>
+        <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">sourced</span><span class="o">=</span><span class="s2">""</span>
+        _ksi_s_is_ok<span class="o">()</span> <span class="o">{</span>
+            <span class="o">[[</span> -z <span class="s2">"</span><span class="nv">$sourced</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="s2">"</span><span class="nv">$KITTY_CLONE_SOURCE_STRATEGIES</span><span class="s2">"</span> <span class="o">==</span> *<span class="s2">",</span><span class="nv">$1</span><span class="s2">,"</span>* <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="k">return</span> <span class="m">0</span>
+            <span class="k">return</span> <span class="m">1</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span> _ksi_s_is_ok <span class="s2">"venv"</span> <span class="o">&amp;&amp;</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">VIRTUAL_ENV</span><span class="si">}</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> -r <span class="s2">"</span><span class="nv">$venv</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nv">sourced</span><span class="o">=</span><span class="s2">"y"</span>
+            <span class="nb">builtin</span> <span class="nb">unset</span> VIRTUAL_ENV
+            <span class="nb">builtin</span> <span class="nb">source</span> <span class="s2">"</span><span class="nv">$venv</span><span class="s2">"</span>
+        <span class="k">fi</span><span class="p">;</span> <span class="k">if</span> _ksi_s_is_ok <span class="s2">"conda"</span> <span class="o">&amp;&amp;</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">CONDA_DEFAULT_ENV</span><span class="si">}</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="o">((</span> $+commands<span class="o">[</span>conda<span class="o">]</span> <span class="o">))</span> <span class="o">&amp;&amp;</span> <span class="s2">"</span><span class="si">${</span><span class="nv">CONDA_DEFAULT_ENV</span><span class="si">}</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"</span><span class="nv">$orig_conda_env</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nv">sourced</span><span class="o">=</span><span class="s2">"y"</span>
+            conda activate <span class="s2">"</span><span class="si">${</span><span class="nv">CONDA_DEFAULT_ENV</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">fi</span><span class="p">;</span> <span class="k">if</span> _ksi_s_is_ok <span class="s2">"env_var"</span> <span class="o">&amp;&amp;</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">KITTY_CLONE_SOURCE_CODE</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nv">sourced</span><span class="o">=</span><span class="s2">"y"</span>
+            <span class="nb">builtin</span> <span class="nb">eval</span> <span class="s2">"</span><span class="si">${</span><span class="nv">KITTY_CLONE_SOURCE_CODE</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">fi</span><span class="p">;</span> <span class="k">if</span> _ksi_s_is_ok <span class="s2">"path"</span> <span class="o">&amp;&amp;</span> <span class="o">[[</span> -r <span class="s2">"</span><span class="si">${</span><span class="nv">KITTY_CLONE_SOURCE_PATH</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nv">sourced</span><span class="o">=</span><span class="s2">"y"</span>
+            <span class="nb">builtin</span> <span class="nb">source</span> <span class="s2">"</span><span class="si">${</span><span class="nv">KITTY_CLONE_SOURCE_PATH</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">fi</span>
+        <span class="nb">builtin</span> unfunction _ksi_s_is_ok
+        <span class="c1"># Ensure PATH has no duplicate entries</span>
+        <span class="nb">builtin</span> <span class="nb">typeset</span> -gxU <span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PATH</span><span class="s2">"</span>
+    <span class="k">fi</span>
+    <span class="nb">builtin</span> <span class="nb">unset</span> KITTY_IS_CLONE_LAUNCH KITTY_CLONE_SOURCE_STRATEGIES
+
     <span class="c1"># Unfunction _ksi_deferred_init to save memory. Don't unfunction</span>
     <span class="c1"># kitty-integration though because decent public functions aren't supposed to</span>
     <span class="c1"># to unfunction themselves when invoked. Unfunctioning is done by calling code.</span>
     <span class="nb">builtin</span> unfunction _ksi_deferred_init
+<span class="o">}</span>
+
+clone-in-kitty<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">data</span><span class="o">=</span><span class="s2">"shell=zsh,pid=</span><span class="nv">$$</span><span class="s2">,cwd=</span><span class="k">$(</span><span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">"%s"</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span> <span class="p">|</span> <span class="nb">builtin</span> <span class="nb">command</span> base64<span class="k">)</span><span class="s2">"</span>
+    <span class="k">while</span> :<span class="p">;</span> <span class="k">do</span>
+        <span class="k">case</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="k">in</span>
+            <span class="s2">""</span><span class="o">)</span> break<span class="p">;;</span>
+            -h<span class="p">|</span>--help<span class="o">)</span> 
+                <span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">"%s\n\n%s\n"</span> <span class="s2">"Clone the current zsh session into a new kitty window."</span> <span class="s2">"For usage instructions see: https://sw.kovidgoyal.net/kitty/shell-integration/#clone-shell"</span>
+                <span class="k">return</span>
+                <span class="p">;;</span>
+            *<span class="o">)</span> <span class="nv">data</span><span class="o">=</span><span class="s2">"</span><span class="nv">$data</span><span class="s2">,a=</span><span class="k">$(</span><span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">"%s"</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="p">|</span> <span class="nb">builtin</span> <span class="nb">command</span> base64<span class="k">)</span><span class="s2">"</span><span class="p">;;</span>
+        <span class="k">esac</span>
+        <span class="nb">shift</span>
+    <span class="k">done</span>
+    <span class="nb">builtin</span> <span class="nb">local</span> env
+    <span class="nb">builtin</span> <span class="nb">local</span> env_vars
+    <span class="nb">builtin</span> <span class="nb">local</span> varname
+    <span class="nv">env_vars</span><span class="o">=(</span><span class="si">${</span><span class="p">(f)</span><span class="s2">"</span><span class="k">$(</span><span class="nb">builtin</span> <span class="nb">export</span><span class="k">)</span><span class="s2">"</span><span class="si">}</span><span class="o">)</span>
+    <span class="k">for</span> i <span class="k">in</span> <span class="nv">$env_vars</span><span class="p">;</span> <span class="k">do</span>
+        <span class="nv">varname</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">i</span><span class="p">%%=*</span><span class="si">}</span><span class="s2">"</span>
+        <span class="nv">env</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">env</span><span class="si">}</span><span class="k">$(</span><span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">"%s=%s\0"</span> <span class="s2">"</span><span class="nv">$varname</span><span class="s2">"</span> <span class="s2">"</span><span class="si">${</span><span class="p">(P)varname</span><span class="si">}</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+    <span class="k">done</span>
+    <span class="nv">data</span><span class="o">=</span><span class="s2">"</span><span class="nv">$data</span><span class="s2">,env=</span><span class="k">$(</span><span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">"%s"</span> <span class="s2">"</span><span class="nv">$env</span><span class="s2">"</span> <span class="p">|</span> <span class="nb">builtin</span> <span class="nb">command</span> base64<span class="k">)</span><span class="s2">"</span>
+
+    <span class="nv">data</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">data</span><span class="p">//[[:</span><span class="nv">space</span><span class="p">:]]</span><span class="si">}</span><span class="s2">"</span>
+    <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">pos</span><span class="o">=</span><span class="m">0</span>
+    <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">chunk_num</span><span class="o">=</span><span class="m">0</span>
+    <span class="k">while</span> <span class="o">[</span> <span class="nv">$pos</span> -lt <span class="si">${#</span><span class="nv">data</span><span class="si">}</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+        <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">chunk</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">data</span><span class="p">:</span><span class="nv">$pos</span><span class="p">:</span><span class="nv">2048</span><span class="si">}</span><span class="s2">"</span>
+        <span class="nv">pos</span><span class="o">=</span><span class="k">$((</span><span class="nv">$pos</span><span class="o">+</span><span class="m">2048</span><span class="k">))</span>
+        <span class="nb">builtin</span> print -nu <span class="s2">"</span><span class="nv">$_ksi_fd</span><span class="s2">"</span> -f <span class="s1">'\eP@kitty-clone|%s:%s\e\\'</span> <span class="s2">"</span><span class="si">${</span><span class="nv">chunk_num</span><span class="si">}</span><span class="s2">"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">chunk</span><span class="si">}</span><span class="s2">"</span>
+        <span class="nv">chunk_num</span><span class="o">=</span><span class="k">$((</span><span class="nv">$chunk_num</span><span class="o">+</span><span class="m">1</span><span class="k">))</span>
+    <span class="k">done</span>
+    <span class="c1"># save history so it is available in new shell</span>
+    <span class="nb">builtin</span> <span class="nb">fc</span> -AI
+    <span class="nb">builtin</span> print -nu <span class="s2">"</span><span class="nv">$_ksi_fd</span><span class="s2">"</span> <span class="s1">'\eP@kitty-clone|\e\\'</span>
 <span class="o">}</span>
 </pre></div>
 </div>
@@ -1386,7 +1461,7 @@ _ksi_deferred_init<span class="o">()</span> <span class="o">{</span>
 <span class="k">if</span> <span class="k">set</span> -q KITTY_FISH_XDG_DATA_DIR
     <span class="k">if</span> <span class="k">set</span> -q XDG_DATA_DIRS
         <span class="k">set</span> --global --export --path XDG_DATA_DIRS <span class="s2">"</span><span class="nv">$XDG_DATA_DIRS</span><span class="s2">"</span>
-        <span class="k">if</span> <span class="k">set</span> -l index <span class="o">(</span><span class="nb">contains</span> -i <span class="s2">"</span><span class="nv">$KITTY_FISH_XDG_DATA_DIR</span><span class="s2">"</span> <span class="nv">$XDG_DATA_DIRS</span><span class="o">)</span>
+        <span class="k">if</span> <span class="k">set</span> --local index <span class="o">(</span><span class="nb">contains</span> --index <span class="s2">"</span><span class="nv">$KITTY_FISH_XDG_DATA_DIR</span><span class="s2">"</span> <span class="nv">$XDG_DATA_DIRS</span><span class="o">)</span>
             <span class="k">set</span> --erase --global XDG_DATA_DIRS<span class="o">[</span><span class="nv">$index</span><span class="o">]</span>
             <span class="k">test</span> -n <span class="s2">"</span><span class="nv">$XDG_DATA_DIRS</span><span class="s2">"</span> <span class="o">||</span> <span class="k">set</span> --erase --global XDG_DATA_DIRS
         <span class="k">end</span>
@@ -1402,7 +1477,7 @@ _ksi_deferred_init<span class="o">()</span> <span class="o">{</span>
 <span class="c"># Check fish version 3.3.0+ efficiently and fallback to check the minimum working version 3.2.0, exit on outdated versions.</span>
 <span class="c"># "Warning: Update fish to version 3.3.0+ to enable kitty shell integration.\n"</span>
 <span class="k">set</span> -q fish_killring <span class="o">||</span> <span class="k">set</span> -q status_generation <span class="o">||</span> string match -qnv <span class="s2">"3.1.*"</span> <span class="s2">"</span><span class="nv">$version</span><span class="s2">"</span>
-<span class="k">or</span> <span class="k">echo</span> -en <span class="s2">"\eP@kitty-print|V2FybmluZzogVXBkYXRlIGZpc2ggdG8gdmVyc2lvbiAzLjMuMCsgdG8gZW5hYmxlIGtpdHR5IHNoZWxsIGludGVncmF0aW9uLgo=\e\\"</span> <span class="o">&amp;&amp;</span> <span class="k">exit</span> <span class="m">0</span> <span class="o">||</span> <span class="k">exit</span> 0
+<span class="k">or</span> <span class="k">echo</span> -en <span class="se">\e</span>P@kitty-print<span class="se">\|</span><span class="nv">V2FybmluZzogVXBkYXRlIGZpc2ggdG8gdmVyc2lvbiAzLjMuMCsgdG8gZW5hYmxlIGtpdHR5IHNoZWxsIGludGVncmF0aW9uLgo</span><span class="o">=</span><span class="se">\e\\</span> <span class="o">&amp;&amp;</span> <span class="k">exit</span> <span class="m">0</span> <span class="o">||</span> <span class="k">exit</span> 0
 
 <span class="k">function</span> __ksi_schedule --on-event <span class="nb">fish_prompt</span> -d <span class="s2">"Setup kitty integration after other scripts have run, we hope"</span>
     <span class="nb">functions</span> --erase __ksi_schedule
@@ -1486,6 +1561,84 @@ _ksi_deferred_init<span class="o">()</span> <span class="o">{</span>
         <span class="k">end</span>
         __update_cwd_osc
     <span class="k">end</span>
+
+    <span class="c"># Handle clone launches</span>
+    <span class="k">if</span> <span class="k">test</span> -n <span class="s2">"</span><span class="nv">$KITTY_IS_CLONE_LAUNCH</span><span class="s2">"</span>
+        <span class="k">set</span> --local orig_conda_env <span class="s2">"</span><span class="nv">$CONDA_DEFAULT_ENV</span><span class="s2">"</span>
+        <span class="nb">eval</span> <span class="s2">"</span><span class="nv">$KITTY_IS_CLONE_LAUNCH</span><span class="s2">"</span>
+        <span class="k">set</span> --local venv <span class="s2">"</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">/bin/activate.fish"</span>
+        <span class="k">set</span> --global _ksi_sourced
+        <span class="k">function</span> _ksi_s_is_ok
+            <span class="k">test</span> -z <span class="s2">"</span><span class="nv">$_ksi_sourced</span><span class="s2">"</span>
+            <span class="k">and</span> string match -q -- <span class="s2">"*,</span><span class="nv">$argv</span><span class="s2">[1],*"</span> <span class="s2">"</span><span class="nv">$KITTY_CLONE_SOURCE_STRATEGIES</span><span class="s2">"</span>
+            <span class="k">and</span> <span class="k">return</span> 0
+            <span class="k">return</span> 1
+        <span class="k">end</span>
+        <span class="k">if</span> _ksi_s_is_ok <span class="s2">"venv"</span> 
+            <span class="k">and</span> <span class="k">test</span> -n <span class="s2">"</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">"</span> -a -r <span class="s2">"</span><span class="nv">$venv</span><span class="s2">"</span> 
+            <span class="k">set</span> _ksi_sourced <span class="s2">"y"</span>
+            <span class="k">set</span> --erase VIRTUAL_ENV _OLD_FISH_PROMPT_OVERRIDE  <span class="c"># activate.fish stupidly exports _OLD_FISH_PROMPT_OVERRIDE</span>
+            <span class="nb">source</span> <span class="s2">"</span><span class="nv">$venv</span><span class="s2">"</span>
+        <span class="k">end</span>
+        <span class="k">if</span> _ksi_s_is_ok <span class="s2">"conda"</span>
+            <span class="k">and</span> <span class="k">test</span> -n <span class="s2">"</span><span class="nv">$CONDA_DEFAULT_ENV</span><span class="s2">"</span> -a <span class="s2">"</span><span class="nv">$CONDA_DEFAULT_ENV</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"</span><span class="nv">$orig_conda_env</span><span class="s2">"</span>
+            <span class="k">and</span> <span class="nb">functions</span> -q conda
+            <span class="k">set</span> _ksi_sourced <span class="s2">"y"</span>
+            conda activate <span class="s2">"</span><span class="nv">$CONDA_DEFAULT_ENV</span><span class="s2">"</span>
+        <span class="k">end</span>
+        <span class="k">if</span> _ksi_s_is_ok <span class="s2">"env_var"</span>
+            <span class="k">and</span> <span class="k">test</span> -n <span class="s2">"</span><span class="nv">$KITTY_CLONE_SOURCE_CODE</span><span class="s2">"</span>
+            <span class="k">set</span> _ksi_sourced <span class="s2">"y"</span>
+            <span class="nb">eval</span> <span class="s2">"</span><span class="nv">$KITTY_CLONE_SOURCE_CODE</span><span class="s2">"</span>
+        <span class="k">end</span>
+        <span class="k">if</span> _ksi_s_is_ok <span class="s2">"path"</span>
+            <span class="k">and</span> <span class="k">test</span> -r <span class="s2">"</span><span class="nv">$KITTY_CLONE_SOURCE_PATH</span><span class="s2">"</span>
+            <span class="k">set</span> _ksi_sourced <span class="s2">"y"</span>
+            <span class="nb">source</span> <span class="s2">"</span><span class="nv">$KITTY_CLONE_SOURCE_PATH</span><span class="s2">"</span>
+        <span class="k">end</span>
+        <span class="k">set</span> --erase KITTY_IS_CLONE_LAUNCH KITTY_CLONE_SOURCE_STRATEGIES _ksi_sourced
+        <span class="nb">functions</span> --erase _ksi_s_is_ok
+
+        <span class="c"># Ensure PATH has no duplicate entries</span>
+        <span class="k">set</span> --local --path new_path
+        <span class="k">for</span> p <span class="k">in</span> <span class="nv">$PATH</span>
+            <span class="nb">contains</span> -- <span class="s2">"</span><span class="nv">$p</span><span class="s2">"</span> <span class="nv">$new_path</span>
+            <span class="k">or</span> <span class="k">set</span> --append new_path <span class="s2">"</span><span class="nv">$p</span><span class="s2">"</span>
+        <span class="k">end</span>
+        <span class="k">test</span> <span class="o">(</span><span class="k">count</span> <span class="nv">$new_path</span><span class="o">)</span> -eq <span class="o">(</span><span class="k">count</span> <span class="nv">$PATH</span><span class="o">)</span>
+        <span class="k">or</span> <span class="k">set</span> --global --export --path PATH <span class="nv">$new_path</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">function</span> clone-in-kitty -d <span class="s2">"Clone the current fish session into a new kitty window"</span>
+    <span class="k">set</span> --local data
+    <span class="k">for</span> a <span class="k">in</span> <span class="nv">$argv</span>
+        <span class="k">if</span> <span class="nb">contains</span> -- <span class="s2">"</span><span class="nv">$a</span><span class="s2">"</span> -h --help
+            <span class="k">echo</span> <span class="s2">"Clone the current fish session into a new kitty window."</span>
+            <span class="k">echo</span>
+            <span class="k">echo</span> <span class="s2">"For usage instructions see: https://sw.kovidgoyal.net/kitty/shell-integration/#clone-shell"</span>
+            <span class="k">return</span>
+        <span class="k">end</span>
+        <span class="k">set</span> --local ea <span class="o">(</span><span class="nb">printf</span> <span class="s2">"%s"</span> <span class="s2">"</span><span class="nv">$a</span><span class="s2">"</span> <span class="o">|</span> base64<span class="o">)</span>
+        <span class="k">set</span> --append data <span class="s2">"a=</span><span class="nv">$ea</span><span class="s2">"</span>
+    <span class="k">end</span>
+    <span class="k">set</span> --local envs
+    <span class="k">for</span> e <span class="k">in</span> <span class="o">(</span><span class="k">set</span> --export --names<span class="o">)</span>
+        <span class="k">set</span> --append envs <span class="s2">"</span><span class="nv">$e</span><span class="s2">=</span><span class="nv">$$</span><span class="s2">e"</span>
+    <span class="k">end</span>
+    <span class="k">set</span> --local b64_envs <span class="o">(</span>string join0 -- <span class="nv">$envs</span> <span class="o">|</span> base64<span class="o">)</span>
+    <span class="k">set</span> --local b64_cwd <span class="o">(</span><span class="nb">printf</span> <span class="s2">"%s"</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span> <span class="o">|</span> base64<span class="o">)</span>
+    <span class="k">set</span> --prepend data <span class="s2">"shell=fish"</span> <span class="s2">"pid=</span><span class="nv">$fish_pid</span><span class="s2">"</span> <span class="s2">"cwd=</span><span class="nv">$b64_cwd</span><span class="s2">"</span> <span class="s2">"env=</span><span class="nv">$b64_envs</span><span class="s2">"</span>
+    <span class="k">set</span> data <span class="o">(</span>string join <span class="s2">","</span> -- <span class="nv">$data</span> <span class="o">|</span> tr -d <span class="s2">"\t\n\r "</span><span class="o">)</span>
+    <span class="k">set</span> --local data_len <span class="o">(</span>string length -- <span class="s2">"</span><span class="nv">$data</span><span class="s2">"</span><span class="o">)</span>
+    <span class="k">set</span> --local pos 1
+    <span class="k">set</span> --local chunk_num 0
+    <span class="k">while</span> <span class="k">test</span> <span class="s2">"</span><span class="nv">$pos</span><span class="s2">"</span> -le <span class="nv">$data_len</span>
+        <span class="nb">printf</span> <span class="se">\e</span>P@kitty-clone<span class="se">\|</span>%s:%s<span class="se">\e\\</span> <span class="s2">"</span><span class="nv">$chunk_num</span><span class="s2">"</span> <span class="o">(</span>string sub --start <span class="nv">$pos</span> --length <span class="m">2048</span> -- <span class="nv">$data</span> <span class="o">|</span> string collect<span class="o">)</span>
+        <span class="k">set</span> pos <span class="o">(</span><span class="nb">math</span> <span class="nv">$pos</span> + 2048<span class="o">)</span>
+        <span class="k">set</span> chunk_num <span class="o">(</span><span class="nb">math</span> <span class="nv">$chunk_num</span> + 1<span class="o">)</span>
+    <span class="k">end</span>
+    <span class="k">echo</span> -en <span class="se">\e</span>P@kitty-clone<span class="se">\|\e\\</span>
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -1500,8 +1653,9 @@ _ksi_inject<span class="o">()</span> <span class="o">{</span>
     <span class="c1"># Load the normal bash startup files</span>
     <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="nv">$KITTY_BASH_INJECT</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
         <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">kitty_bash_inject</span><span class="o">=</span><span class="s2">"</span><span class="nv">$KITTY_BASH_INJECT</span><span class="s2">"</span>
-        <span class="nb">builtin</span> <span class="nb">unset</span> KITTY_BASH_INJECT
-        <span class="nb">builtin</span> <span class="nb">unset</span> ENV
+        <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">ksi_val</span><span class="o">=</span><span class="s2">"</span><span class="nv">$KITTY_SHELL_INTEGRATION</span><span class="s2">"</span>
+        <span class="nb">builtin</span> <span class="nb">unset</span> KITTY_SHELL_INTEGRATION  <span class="c1"># ensure manual sourcing of this file in bashrc does not have any effect</span>
+        <span class="nb">builtin</span> <span class="nb">unset</span> KITTY_BASH_INJECT ENV
         <span class="k">if</span> <span class="o">[[</span> -z <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> <span class="nv">HOME</span><span class="o">=</span>~<span class="p">;</span> <span class="k">fi</span>
         <span class="k">if</span> <span class="o">[[</span> -z <span class="s2">"</span><span class="nv">$KITTY_BASH_ETC_LOCATION</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> <span class="nv">KITTY_BASH_ETC_LOCATION</span><span class="o">=</span><span class="s2">"/etc"</span><span class="p">;</span> <span class="k">fi</span>
 
@@ -1541,10 +1695,9 @@ _ksi_inject<span class="o">()</span> <span class="o">{</span>
                 <span class="k">fi</span>
             <span class="k">fi</span>
         <span class="k">fi</span>
-        <span class="nb">builtin</span> <span class="nb">unset</span> KITTY_BASH_RCFILE
-        <span class="nb">builtin</span> <span class="nb">unset</span> KITTY_BASH_POSIX_ENV
-        <span class="nb">builtin</span> <span class="nb">unset</span> KITTY_BASH_ETC_LOCATION
+        <span class="nb">builtin</span> <span class="nb">unset</span> KITTY_BASH_RCFILE KITTY_BASH_POSIX_ENV KITTY_BASH_ETC_LOCATION
         <span class="nb">builtin</span> <span class="nb">unset</span> -f _ksi_safe_source
+        <span class="nb">builtin</span> <span class="nb">export</span> <span class="nv">KITTY_SHELL_INTEGRATION</span><span class="o">=</span><span class="s2">"</span><span class="nv">$ksi_val</span><span class="s2">"</span>
     <span class="k">fi</span>
 <span class="o">}</span>
 _ksi_inject
@@ -1571,6 +1724,8 @@ _ksi_inject
 <span class="o">)</span>
 
 _ksi_main<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">ifs</span><span class="o">=</span><span class="s2">"</span><span class="nv">$IFS</span><span class="s2">"</span>
+    <span class="nv">IFS</span><span class="o">=</span><span class="s2">" "</span>
     <span class="k">for</span> i <span class="k">in</span> <span class="si">${</span><span class="nv">KITTY_SHELL_INTEGRATION</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
         <span class="k">case</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="k">in</span>
             <span class="s2">"no-cursor"</span><span class="o">)</span> _ksi_prompt<span class="o">[</span>cursor<span class="o">]=</span><span class="s1">'n'</span><span class="p">;;</span>
@@ -1580,6 +1735,7 @@ _ksi_main<span class="o">()</span> <span class="o">{</span>
             <span class="s2">"no-cwd"</span><span class="o">)</span> _ksi_prompt<span class="o">[</span>cwd<span class="o">]=</span><span class="s1">'n'</span><span class="p">;;</span>
         <span class="k">esac</span>
     <span class="k">done</span>
+    <span class="nv">IFS</span><span class="o">=</span><span class="s2">"</span><span class="nv">$ifs</span><span class="s2">"</span>
 
     <span class="nb">builtin</span> <span class="nb">unset</span> KITTY_SHELL_INTEGRATION
 
@@ -1705,7 +1861,7 @@ _ksi_main<span class="o">()</span> <span class="o">{</span>
             <span class="nb">builtin</span> <span class="nb">let</span> <span class="nv">limit</span><span class="o">=</span><span class="m">1</span>+<span class="nv">$COMP_CWORD</span>
             <span class="nv">src</span><span class="o">=</span><span class="k">$(</span><span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">"%s\n"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">COMP_WORDS</span><span class="p">[@]:</span><span class="nv">0</span><span class="p">:</span><span class="nv">$limit</span><span class="si">}</span><span class="s2">"</span> <span class="p">|</span> <span class="nb">builtin</span> <span class="nb">command</span> kitty +complete bash<span class="k">)</span>
             <span class="k">if</span> <span class="o">[[</span> <span class="nv">$?</span> <span class="o">==</span> <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-                <span class="nb">builtin</span> <span class="nb">eval</span> <span class="si">${</span><span class="nv">src</span><span class="si">}</span>
+                <span class="nb">builtin</span> <span class="nb">eval</span> <span class="s2">"</span><span class="si">${</span><span class="nv">src</span><span class="si">}</span><span class="s2">"</span>
             <span class="k">fi</span>
         <span class="o">}</span>
         <span class="nb">builtin</span> <span class="nb">complete</span> -o nospace -F _ksi_completions kitty
@@ -1728,12 +1884,7 @@ _ksi_main<span class="o">()</span> <span class="o">{</span>
     <span class="k">if</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[ps2]</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
         _ksi_prompt<span class="o">[</span>ps2<span class="o">]=</span><span class="s2">"</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[start_mark]</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[ps2]</span><span class="si">}${</span><span class="nv">_ksi_prompt</span><span class="p">[end_mark]</span><span class="si">}</span><span class="s2">"</span>
     <span class="k">fi</span>
-    <span class="nb">builtin</span> <span class="nb">unset</span> _ksi_prompt<span class="o">[</span>start_mark<span class="o">]</span>
-    <span class="nb">builtin</span> <span class="nb">unset</span> _ksi_prompt<span class="o">[</span>end_mark<span class="o">]</span>
-    <span class="nb">builtin</span> <span class="nb">unset</span> _ksi_prompt<span class="o">[</span>start_suffix_mark<span class="o">]</span>
-    <span class="nb">builtin</span> <span class="nb">unset</span> _ksi_prompt<span class="o">[</span>end_suffix_mark<span class="o">]</span>
-    <span class="nb">builtin</span> <span class="nb">unset</span> _ksi_prompt<span class="o">[</span>start_secondary_mark<span class="o">]</span>
-    <span class="nb">builtin</span> <span class="nb">unset</span> _ksi_prompt<span class="o">[</span>end_secondary_mark<span class="o">]</span>
+    <span class="nb">builtin</span> <span class="nb">unset</span> _ksi_prompt<span class="o">[</span>start_mark<span class="o">]</span> _ksi_prompt<span class="o">[</span>end_mark<span class="o">]</span> _ksi_prompt<span class="o">[</span>start_suffix_mark<span class="o">]</span> _ksi_prompt<span class="o">[</span>end_suffix_mark<span class="o">]</span> _ksi_prompt<span class="o">[</span>start_secondary_mark<span class="o">]</span> _ksi_prompt<span class="o">[</span>end_secondary_mark<span class="o">]</span>
 
     <span class="c1"># install our prompt command, using an array if it is unset or already an array,</span>
     <span class="c1"># otherwise append a string. We check if _ksi_prompt_command exists as some shell</span>
@@ -1754,9 +1905,83 @@ _ksi_main<span class="o">()</span> <span class="o">{</span>
         <span class="nb">builtin</span> <span class="nb">eval</span> <span class="s2">"</span><span class="nv">$oldval</span><span class="s2">"</span>
         <span class="nv">PROMPT_COMMAND</span><span class="o">+=</span><span class="s2">"; </span><span class="nv">$pc</span><span class="s2">"</span>
     <span class="k">fi</span>
+    <span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">KITTY_IS_CLONE_LAUNCH</span><span class="si">}</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">orig_conda_env</span><span class="o">=</span><span class="s2">"</span><span class="nv">$CONDA_DEFAULT_ENV</span><span class="s2">"</span>
+        <span class="nb">builtin</span> <span class="nb">eval</span> <span class="s2">"</span><span class="si">${</span><span class="nv">KITTY_IS_CLONE_LAUNCH</span><span class="si">}</span><span class="s2">"</span>
+        <span class="nb">builtin</span> <span class="nb">hash</span> -r <span class="m">2</span>&gt; /dev/null <span class="m">1</span>&gt; /dev/null
+        <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">venv</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">VIRTUAL_ENV</span><span class="si">}</span><span class="s2">/bin/activate"</span>
+        <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">sourced</span><span class="o">=</span><span class="s2">""</span>
+        _ksi_s_is_ok<span class="o">()</span> <span class="o">{</span>
+            <span class="o">[[</span> -z <span class="s2">"</span><span class="nv">$sourced</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="s2">"</span><span class="nv">$KITTY_CLONE_SOURCE_STRATEGIES</span><span class="s2">"</span> <span class="o">==</span> *<span class="s2">",</span><span class="nv">$1</span><span class="s2">,"</span>* <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="k">return</span> <span class="m">0</span>
+            <span class="k">return</span> <span class="m">1</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span> _ksi_s_is_ok <span class="s2">"venv"</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">VIRTUAL_ENV</span><span class="si">}</span><span class="s2">"</span> -a -r <span class="s2">"</span><span class="nv">$venv</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nv">sourced</span><span class="o">=</span><span class="s2">"y"</span>
+            <span class="nb">builtin</span> <span class="nb">unset</span> VIRTUAL_ENV
+            <span class="nb">builtin</span> <span class="nb">source</span> <span class="s2">"</span><span class="nv">$venv</span><span class="s2">"</span>
+        <span class="k">fi</span><span class="p">;</span> <span class="k">if</span> _ksi_s_is_ok <span class="s2">"conda"</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">CONDA_DEFAULT_ENV</span><span class="si">}</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">builtin</span> <span class="nb">command</span> -v conda &gt;/dev/null <span class="m">2</span>&gt;/dev/null <span class="o">&amp;&amp;</span> <span class="o">[</span> <span class="s2">"</span><span class="si">${</span><span class="nv">CONDA_DEFAULT_ENV</span><span class="si">}</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"</span><span class="nv">$orig_conda_env</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nv">sourced</span><span class="o">=</span><span class="s2">"y"</span>
+            conda activate <span class="s2">"</span><span class="si">${</span><span class="nv">CONDA_DEFAULT_ENV</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">fi</span><span class="p">;</span> <span class="k">if</span> _ksi_s_is_ok <span class="s2">"env_var"</span> <span class="o">&amp;&amp;</span> <span class="o">[[</span> -n <span class="s2">"</span><span class="si">${</span><span class="nv">KITTY_CLONE_SOURCE_CODE</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nv">sourced</span><span class="o">=</span><span class="s2">"y"</span>
+            <span class="nb">builtin</span> <span class="nb">eval</span> <span class="s2">"</span><span class="si">${</span><span class="nv">KITTY_CLONE_SOURCE_CODE</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">fi</span><span class="p">;</span> <span class="k">if</span> _ksi_s_is_ok <span class="s2">"path"</span> <span class="o">&amp;&amp;</span> <span class="o">[[</span> -r <span class="s2">"</span><span class="si">${</span><span class="nv">KITTY_CLONE_SOURCE_PATH</span><span class="si">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nv">sourced</span><span class="o">=</span><span class="s2">"y"</span>
+            <span class="nb">builtin</span> <span class="nb">source</span> <span class="s2">"</span><span class="si">${</span><span class="nv">KITTY_CLONE_SOURCE_PATH</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">fi</span>
+        <span class="nb">builtin</span> <span class="nb">unset</span> -f _ksi_s_is_ok
+        <span class="c1"># Ensure PATH has no duplicate entries</span>
+        <span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="nv">$PATH</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+            <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">old_PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="p">;</span> <span class="nv">PATH</span><span class="o">=</span>
+            <span class="k">while</span> <span class="o">[</span> -n <span class="s2">"</span><span class="nv">$old_PATH</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+                <span class="nb">builtin</span> <span class="nb">local</span> x
+                <span class="nv">x</span><span class="o">=</span><span class="si">${</span><span class="nv">old_PATH</span><span class="p">%%:*</span><span class="si">}</span>
+                <span class="k">case</span> <span class="nv">$PATH</span>: <span class="k">in</span>
+                    *:<span class="s2">"</span><span class="nv">$x</span><span class="s2">"</span>:*<span class="o">)</span> <span class="p">;;</span>
+                    *<span class="o">)</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$x</span><span class="p">;;</span>
+                <span class="k">esac</span>
+                <span class="nv">old_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">old_PATH</span><span class="p">#*:</span><span class="si">}</span>
+            <span class="k">done</span>
+            <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">PATH</span><span class="p">#:</span><span class="si">}</span>
+        <span class="k">fi</span>
+    <span class="k">fi</span>
+    <span class="nb">builtin</span> <span class="nb">unset</span> KITTY_IS_CLONE_LAUNCH KITTY_CLONE_SOURCE_STRATEGIES
 <span class="o">}</span>
 _ksi_main
 <span class="nb">builtin</span> <span class="nb">unset</span> -f _ksi_main
+
+<span class="k">case</span> :<span class="nv">$SHELLOPTS</span>: <span class="k">in</span>
+  *:posix:*<span class="o">)</span> <span class="p">;;</span>
+  *<span class="o">)</span>
+clone-in-kitty<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">data</span><span class="o">=</span><span class="s2">"shell=bash,pid=</span><span class="nv">$$</span><span class="s2">,cwd=</span><span class="k">$(</span><span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">"%s"</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span> <span class="p">|</span> <span class="nb">builtin</span> <span class="nb">command</span> base64<span class="k">)</span><span class="s2">,envfmt=bash,env=</span><span class="k">$(</span><span class="nb">builtin</span> <span class="nb">export</span> <span class="p">|</span> <span class="nb">builtin</span> <span class="nb">command</span> base64<span class="k">)</span><span class="s2">"</span>
+    <span class="k">while</span> :<span class="p">;</span> <span class="k">do</span>
+        <span class="k">case</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="k">in</span>
+            <span class="s2">""</span><span class="o">)</span> break<span class="p">;;</span>
+            -h<span class="p">|</span>--help<span class="o">)</span>
+                <span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">"%s\n\n%s\n"</span> <span class="s2">"Clone the current bash session into a new kitty window."</span> <span class="s2">"For usage instructions see: https://sw.kovidgoyal.net/kitty/shell-integration/#clone-shell"</span>
+                <span class="k">return</span>
+                <span class="p">;;</span>
+            *<span class="o">)</span> <span class="nv">data</span><span class="o">=</span><span class="s2">"</span><span class="nv">$data</span><span class="s2">,a=</span><span class="k">$(</span><span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">"%s"</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="p">|</span> <span class="nb">builtin</span> <span class="nb">command</span> base64<span class="k">)</span><span class="s2">"</span><span class="p">;;</span>
+        <span class="k">esac</span>
+        <span class="nb">shift</span>
+    <span class="k">done</span>
+    <span class="nv">data</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">data</span><span class="p">//[[:</span><span class="nv">space</span><span class="p">:]]</span><span class="si">}</span><span class="s2">"</span>
+    <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">pos</span><span class="o">=</span><span class="m">0</span>
+    <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">chunk_num</span><span class="o">=</span><span class="m">0</span>
+    <span class="k">while</span> <span class="o">[</span> <span class="nv">$pos</span> -lt <span class="si">${#</span><span class="nv">data</span><span class="si">}</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+        <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">chunk</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">data</span><span class="p">:</span><span class="nv">$pos</span><span class="p">:</span><span class="nv">2048</span><span class="si">}</span><span class="s2">"</span>
+        <span class="nv">pos</span><span class="o">=</span><span class="k">$((</span><span class="nv">$pos</span><span class="o">+</span><span class="m">2048</span><span class="k">))</span>
+        <span class="nb">builtin</span> <span class="nb">printf</span> <span class="s1">'\eP@kitty-clone|%s:%s\e\\'</span> <span class="s2">"</span><span class="si">${</span><span class="nv">chunk_num</span><span class="si">}</span><span class="s2">"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">chunk</span><span class="si">}</span><span class="s2">"</span>
+        <span class="nv">chunk_num</span><span class="o">=</span><span class="k">$((</span><span class="nv">$chunk_num</span><span class="o">+</span><span class="m">1</span><span class="k">))</span>
+    <span class="k">done</span>
+    <span class="c1"># append current commands to history file</span>
+    <span class="nb">builtin</span> <span class="nb">history</span> -a
+    <span class="nb">builtin</span> <span class="nb">printf</span> <span class="s1">'\eP@kitty-clone|\e\\'</span>
+<span class="o">}</span>
+      <span class="p">;;</span>
+<span class="k">esac</span>
 </pre></div>
 </div>
 </div>
@@ -1772,6 +1997,37 @@ is to use the <a class="reference internal" href="../kittens/ssh/"><span class="
 <p>And, by magic, you will be logged into the remote system with fully functional
 shell integration. Alternately, you can <a class="reference internal" href="#manual-shell-integration"><span class="std std-ref">setup shell integration manually</span></a>, by copying the kitty shell integration scripts to
 the remote server and editing the shell rc files there, as described below.</p>
+</div>
+<div class="section" id="clone-the-current-shell-into-a-new-window">
+<span id="clone-shell"></span><h1>Clone the current shell into a new window<a class="headerlink" href="#clone-the-current-shell-into-a-new-window" title="Permalink to this headline">#</a></h1>
+<p>You can clone the current shell into a new kitty window by simply running the
+<strong class="command">clone-in-kitty</strong> command, for example:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>clone-in-kitty
+clone-in-kitty --type<span class="o">=</span>tab
+clone-in-kitty --title <span class="s2">"I am a clone"</span>
+</pre></div>
+</div>
+<p>This will open a new window running a new shell instance but with all
+environment variables and the current working directory copied. This even works
+over SSH when using <a class="reference internal" href="../kittens/ssh/"><span class="doc">Truly convenient SSH</span></a>.</p>
+<p>The <strong class="command">clone-in-kitty</strong> command takes almost all the same arguments as the
+<a class="reference internal" href="../launch/"><span class="doc">launch</span></a> command, so you can open a new tab instead or a new OS
+window, etc. Arguments of launch that can cause code execution or that don’t
+make sense when cloning are ignored. Most prominently, the following options are
+ignored: <a class="reference internal" href="../launch/#cmdoption-launch-allow-remote-control"><code class="xref std std-option docutils literal notranslate"><span class="pre">--allow-remote-control</span></code></a>,
+<a class="reference internal" href="../launch/#cmdoption-launch-copy-cmdline"><code class="xref std std-option docutils literal notranslate"><span class="pre">--copy-cmdline</span></code></a>, <a class="reference internal" href="../launch/#cmdoption-launch-copy-env"><code class="xref std std-option docutils literal notranslate"><span class="pre">--copy-env</span></code></a>, <a class="reference internal" href="../launch/#cmdoption-launch-stdin-source"><code class="xref std std-option docutils literal notranslate"><span class="pre">--stdin-source</span></code></a>,
+<a class="reference internal" href="../launch/#cmdoption-launch-marker"><code class="xref std std-option docutils literal notranslate"><span class="pre">--marker</span></code></a> and <a class="reference internal" href="../launch/#cmdoption-launch-watcher"><code class="xref std std-option docutils literal notranslate"><span class="pre">--watcher</span></code></a>.</p>
+<p><strong class="command">clone-in-kitty</strong> can be configured to source arbitrary code in the
+cloned window using environment variables. It will automatically clone virtual
+environments created by the <a class="reference external" href="https://docs.python.org/3/library/venv.html">Python venv module</a> or <a class="reference external" href="https://conda.io/">Conda</a>. In addition, setting the
+env var <span class="target" id="index-7"></span><a class="reference internal" href="../glossary/#envvar-KITTY_CLONE_SOURCE_CODE"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_CLONE_SOURCE_CODE</span></code></a> to some shell code will cause that
+code to be run in the cloned window with <code class="code docutils literal notranslate"><span class="pre">eval</span></code>. Similarly, setting
+<span class="target" id="index-8"></span><a class="reference internal" href="../glossary/#envvar-KITTY_CLONE_SOURCE_PATH"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_CLONE_SOURCE_PATH</span></code></a> to the path of a file will cause that file to
+be sourced in the cloned window. This can be controlled by
+<a class="reference internal" href="../conf/#opt-kitty.clone_source_strategies"><code class="xref std std-opt docutils literal notranslate"><span class="pre">clone_source_strategies</span></code></a>.</p>
+<p><strong class="command">clone-in-kitty</strong> works by asking the shell to serialize its internal
+state (mainly CWD and env vars) and this state is transmitted to kitty and
+restored by the shell integration scripts in the cloned window.</p>
 </div>
 <div class="section" id="manual-shell-integration">
 <span id="id2"></span><h1>Manual shell integration<a class="headerlink" href="#manual-shell-integration" title="Permalink to this headline">#</a></h1>
@@ -1813,19 +2069,20 @@ to your shells startup files to load the shell integration script.</p>
 </div>
 </div>
 </div>
-<p>The value of <span class="target" id="index-3"></span><a class="reference internal" href="../glossary/#envvar-KITTY_SHELL_INTEGRATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_SHELL_INTEGRATION</span></code></a> is the same as that for
+<p>The value of <span class="target" id="index-9"></span><a class="reference internal" href="../glossary/#envvar-KITTY_SHELL_INTEGRATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_SHELL_INTEGRATION</span></code></a> is the same as that for
 <a class="reference internal" href="../conf/#opt-kitty.shell_integration"><code class="xref std std-opt docutils literal notranslate"><span class="pre">shell_integration</span></code></a>, except if you want to disable shell integration
 completely, in which case simply do not set the
-<span class="target" id="index-4"></span><a class="reference internal" href="../glossary/#envvar-KITTY_SHELL_INTEGRATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_SHELL_INTEGRATION</span></code></a> variable at all.</p>
+<span class="target" id="index-10"></span><a class="reference internal" href="../glossary/#envvar-KITTY_SHELL_INTEGRATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_SHELL_INTEGRATION</span></code></a> variable at all.</p>
 <p>In a container, you will need to install the kitty shell integration scripts
-and make sure the <span class="target" id="index-5"></span><a class="reference internal" href="../glossary/#envvar-KITTY_INSTALLATION_DIR"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_INSTALLATION_DIR</span></code></a> environment variable is set
+and make sure the <span class="target" id="index-11"></span><a class="reference internal" href="../glossary/#envvar-KITTY_INSTALLATION_DIR"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_INSTALLATION_DIR</span></code></a> environment variable is set
 to point to the location of the scripts.</p>
 </div>
 <div class="section" id="integration-with-other-shells">
 <h1>Integration with other shells<a class="headerlink" href="#integration-with-other-shells" title="Permalink to this headline">#</a></h1>
-<p>There exist third-party integrations to use these features for various other shells:</p>
+<p>There exist third-party integrations to use these features for various other
+shells:</p>
 <ul class="simple">
-<li><p>Jupyter console via a patch (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4475">#4475</a>)</p></li>
+<li><p>Jupyter console and IPython via a patch (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/4475">#4475</a>)</p></li>
 <li><p><a class="reference external" href="https://github.com/xonsh/xonsh/issues/4623">xonsh</a></p></li>
 </ul>
 </div>
@@ -1915,6 +2172,7 @@ full protocol, that also marks the command region, see <a class="reference exter
 </li>
 <li><a class="reference internal" href="#how-it-works">How it works</a></li>
 <li><a class="reference internal" href="#shell-integration-over-ssh">Shell integration over SSH</a></li>
+<li><a class="reference internal" href="#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
 <li><a class="reference internal" href="#manual-shell-integration">Manual shell integration</a></li>
 <li><a class="reference internal" href="#integration-with-other-shells">Integration with other shells</a></li>
 <li><a class="reference internal" href="#notes-for-shell-developers">Notes for shell developers</a></li>

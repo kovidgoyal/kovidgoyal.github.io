@@ -407,7 +407,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#allowing-only-some-windows-to-control-kitty">Allowing only some windows to control kitty</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#mapping-key-presses-to-remote-control-commands">Mapping key presses to remote control commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#broadcasting-what-you-type-to-all-kitty-windows">Broadcasting what you type to all kitty windows</a></li>
-<li class="toctree-l3 current has-children"><a class="reference internal" href="../remote-control/#the-remote-control-protocol">The remote control protocol</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#the-remote-control-protocol">The remote control protocol</a></li>
+<li class="toctree-l3 current has-children"><a class="reference internal" href="../remote-control/#matching-windows-and-tabs">Matching windows and tabs</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l4 current has-children current-page"><a class="current reference internal" href="#">The kitty remote control protocol</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="#close-tab">close-tab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#close-window">close-window</a></li>
@@ -618,6 +619,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -663,76 +665,77 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -894,22 +897,22 @@ form:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">version</span></code> above is an array of the form <code class="code docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">14,</span> <span class="pre">2]</span></code>. If you are developing a
-standalone client, use the kitty version that you are developing against. Using
-a version greater than the version of the kitty instance you are talking to,
-will cause a failure.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">version</span></code> above is an array of the form <code class="code docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">14,</span> <span class="pre">2]</span></code>. If you are
+developing a standalone client, use the kitty version that you are developing
+against. Using a version greater than the version of the kitty instance you are
+talking to, will cause a failure.</p>
 <p>Set <code class="docutils literal notranslate"><span class="pre">no_response</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> if you don’t want a response from kitty.</p>
-<p>The optional payload is a JSON object that is specific to the actual command being sent.
-The fields in the object for every command are documented below.</p>
+<p>The optional payload is a JSON object that is specific to the actual command
+being sent. The fields in the object for every command are documented below.</p>
 <p>As a quick example showing how easy to use this protocol is, we will implement
-the <code class="docutils literal notranslate"><span class="pre">@</span> <span class="pre">ls</span></code> command from the shell using only shell tools. First, run kitty
-as:</p>
+the <code class="docutils literal notranslate"><span class="pre">@</span> <span class="pre">ls</span></code> command from the shell using only shell tools.</p>
+<p>First, run kitty as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitty</span> <span class="o">-</span><span class="n">o</span> <span class="n">allow_remote_control</span><span class="o">=</span><span class="n">socket</span><span class="o">-</span><span class="n">only</span> <span class="o">--</span><span class="n">listen</span><span class="o">-</span><span class="n">on</span> <span class="n">unix</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">test</span>
 </pre></div>
 </div>
 <p>Now, in a different terminal, you can get the pretty printed <code class="docutils literal notranslate"><span class="pre">@</span> <span class="pre">ls</span></code> output
 with the following command line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo -en '\eP@kitty-cmd{"cmd":"ls","version":[0,14,2]}\e\' | socat - unix:/tmp/test | awk '{ print substr($0, 13, length($0) - 14) }' | jq -c '.data | fromjson' | jq .
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="o">-</span><span class="n">en</span> <span class="s1">'\eP@kitty-cmd{"cmd":"ls","version":[0,14,2]}\e</span><span class="se">\\</span><span class="s1">'</span> <span class="o">|</span> <span class="n">socat</span> <span class="o">-</span> <span class="n">unix</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">test</span> <span class="o">|</span> <span class="n">awk</span> <span class="s1">'{ print substr($0, 13, length($0) - 14) }'</span> <span class="o">|</span> <span class="n">jq</span> <span class="o">-</span><span class="n">c</span> <span class="s1">'.data | fromjson'</span> <span class="o">|</span> <span class="n">jq</span> <span class="o">.</span>
 </pre></div>
 </div>
 <div class="section" id="close-tab">
@@ -919,8 +922,6 @@ with the following command line:</p>
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which tab to close</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to close the tab of the window the command is run in</p>
-</dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">target_group</span> <span class="pre">(default:</span> <span class="pre">none)</span></code></dt><dd><p>The target group to close</p>
 </dd>
 </dl>
 </div>
@@ -952,7 +953,7 @@ with the following command line:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which tab to detach</p>
 </dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">target_tab</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which OS Window that containing the target tab to move the detached tab to</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">target_tab</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which tab to move the detached tab to the OS window it is run in</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to detach the tab the command is run in</p>
 </dd>
@@ -988,7 +989,7 @@ with the following command line:</p>
 <h2>env<a class="headerlink" href="#env" title="Permalink to this headline">#</a></h2>
 <p>Fields are:</p>
 <dl class="simple">
-<dt><code class="code docutils literal notranslate"><span class="pre">env</span> <span class="pre">(required)</span></code></dt><dd><p>dictionary of environment variables to values. Empty values cause the variable to be deleted.</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">env</span> <span class="pre">(required)</span></code></dt><dd><p>Dictionary of environment variables to values. Empty values cause the variable to be removed.</p>
 </dd>
 </dl>
 </div>
@@ -1034,7 +1035,7 @@ with the following command line:</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">clear_selection</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Boolean, if True clear the selection in the matched window</p>
 </dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean, if True use window command was run in</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean, if True use window the command was run in</p>
 </dd>
 </dl>
 </div>
@@ -1126,7 +1127,7 @@ with the following command line:</p>
 <h2>ls<a class="headerlink" href="#ls" title="Permalink to this headline">#</a></h2>
 <p>Fields are:</p>
 <dl class="simple">
-<dt><code class="code docutils literal notranslate"><span class="pre">all_env_vars</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Whether to send all environment variables for ever window rather than just differing ones</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">all_env_vars</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Whether to send all environment variables for every window rather than just differing ones</p>
 </dd>
 </dl>
 </div>
@@ -1319,13 +1320,13 @@ with the following command line:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">settings</span> <span class="pre">(required)</span></code></dt><dd><p>An object mapping margins/paddings using canonical form {‘margin-top’: 50, ‘padding-left’: null} etc</p>
 </dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">match_window</span> <span class="pre">(optional)</span></code></dt><dd><p>Window to change colors in</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">match_window</span> <span class="pre">(optional)</span></code></dt><dd><p>Window to change paddings and margins in</p>
 </dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">match_tab</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Tab to change colors in</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">match_tab</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Tab to change paddings and margins in</p>
 </dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">all</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating change colors everywhere or not</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">all</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating change paddings and margins everywhere or not</p>
 </dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">configured</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to change the configured colors. Must be True if reset is True</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">configured</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to change the configured paddings and margins. Must be True if reset is True</p>
 </dd>
 </dl>
 </div>
@@ -1355,11 +1356,11 @@ with the following command line:</p>
 <h2>set-window-logo<a class="headerlink" href="#set-window-logo" title="Permalink to this headline">#</a></h2>
 <p>Fields are:</p>
 <dl class="simple">
-<dt><code class="code docutils literal notranslate"><span class="pre">data</span> <span class="pre">(required)</span></code></dt><dd><p>Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value - to indicate image must be removed.</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">data</span> <span class="pre">(required)</span></code></dt><dd><p>Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value <code class="code docutils literal notranslate"><span class="pre">-</span></code> to indicate image must be removed.</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">position</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>The logo position as a string, empty string means default</p>
 </dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">alpha</span> <span class="pre">(default:</span> <span class="pre">-1.0)</span></code></dt><dd><p>The logo alpha between 0 and 1. -1 means use default</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">alpha</span> <span class="pre">(default:</span> <span class="pre">-1.0)</span></code></dt><dd><p>The logo alpha between <code class="code docutils literal notranslate"><span class="pre">0</span></code> and <code class="code docutils literal notranslate"><span class="pre">1</span></code>. <code class="code docutils literal notranslate"><span class="pre">-1</span></code> means use default</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to change the logo in</p>
 </dd>
@@ -1383,9 +1384,9 @@ with the following command line:</p>
 <h2>signal-child<a class="headerlink" href="#signal-child" title="Permalink to this headline">#</a></h2>
 <p>Fields are:</p>
 <dl class="simple">
-<dt><code class="code docutils literal notranslate"><span class="pre">signals</span> <span class="pre">(optional)</span></code></dt><dd><p>The signals, a list of names, such as SIGTERM, SIGKILL, SIGUSR1, etc.</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">signals</span> <span class="pre">(optional)</span></code></dt><dd><p>The signals, a list of names, such as <code class="code docutils literal notranslate"><span class="pre">SIGTERM</span></code>, <code class="code docutils literal notranslate"><span class="pre">SIGKILL</span></code>, <code class="code docutils literal notranslate"><span class="pre">SIGUSR1</span></code>, etc.</p>
 </dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which windows to change the title in</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which windows to send the signals to</p>
 </dd>
 </dl>
 </div>

@@ -9,7 +9,7 @@
   
 <meta property="og:url" content="https://sw.kovidgoyal.net/kitty/kittens/broadcast/" />
   
-<meta property="og:description" content="Type text in all kitty windows simultaneously The broadcast kitten can be used to type text simultaneously in all kitty windows (or a subset as desired). To use it, simply create a mapping in kitty..." />
+<meta property="og:description" content="Type text in all kitty windows simultaneously The broadcast kitten can be used to type text simultaneously in all kitty windows(or a subset as desired). To use it, simply create a mapping in kitty...." />
   <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="clipboard" href="../clipboard/" /><link rel="prev" title="Custom kittens" href="../custom/" />
 
     <link rel="shortcut icon" href="../../_static/kitty.svg"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
@@ -407,7 +407,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../../remote-control/#allowing-only-some-windows-to-control-kitty">Allowing only some windows to control kitty</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../remote-control/#mapping-key-presses-to-remote-control-commands">Mapping key presses to remote control commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../remote-control/#broadcasting-what-you-type-to-all-kitty-windows">Broadcasting what you type to all kitty windows</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../../remote-control/#the-remote-control-protocol">The remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../remote-control/#the-remote-control-protocol">The remote control protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../remote-control/#matching-windows-and-tabs">Matching windows and tabs</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../rc_protocol/">The kitty remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../rc_protocol/#close-tab">close-tab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../rc_protocol/#close-window">close-window</a></li>
@@ -618,6 +619,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -663,76 +665,77 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id4">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id5">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id6">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id7">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id8">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id9">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id10">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id11">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id12">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id13">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id14">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id15">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id16">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id17">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id18">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id19">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id20">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id21">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id22">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id23">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id24">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id25">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id26">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id27">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id28">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id29">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id30">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id31">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id32">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id33">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id34">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id35">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id36">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id37">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id38">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id39">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id40">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id41">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id42">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id43">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id44">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id45">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id46">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id47">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id48">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id49">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id50">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id51">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id52">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id53">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id54">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id55">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id56">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id57">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id58">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id59">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id60">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id61">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id62">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id63">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id64">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id65">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id66">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id67">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id68">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id69">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id70">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id4">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id5">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id6">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id7">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id8">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id9">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id10">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id11">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id12">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id13">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id14">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id15">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id16">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id17">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id18">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id19">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id20">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id21">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id22">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id23">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id24">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id25">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id26">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id27">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id28">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id29">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id30">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id31">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id32">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id33">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id34">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id35">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id36">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id37">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id38">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id39">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id40">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id41">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id42">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id43">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id44">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id45">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id46">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id47">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id48">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id49">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id50">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id51">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id52">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id53">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id54">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id55">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id56">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id57">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id58">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id59">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id60">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id61">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id62">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id63">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id64">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id65">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id66">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id67">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id68">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id69">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id70">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id71">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -880,16 +883,19 @@
           <div class="section" id="broadcast">
 <h1>broadcast<a class="headerlink" href="#broadcast" title="Permalink to this headline">#</a></h1>
 <p><em>Type text in all kitty windows simultaneously</em></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">broadcast</span></code> kitten can be used to type text simultaneously in
-all kitty windows (or a subset as desired).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">broadcast</span></code> kitten can be used to type text simultaneously in all
+<a class="reference internal" href="../../glossary/#term-window"><span class="xref std std-term">kitty windows</span></a> (or a subset as desired).</p>
 <p>To use it, simply create a mapping in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> such as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">F1</span> <span class="n">launch</span> <span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">remote</span><span class="o">-</span><span class="n">control</span> <span class="n">kitty</span> <span class="o">+</span><span class="n">kitten</span> <span class="n">broadcast</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f1</span> <span class="n">launch</span> <span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">remote</span><span class="o">-</span><span class="n">control</span> <span class="n">kitty</span> <span class="o">+</span><span class="n">kitten</span> <span class="n">broadcast</span>
 </pre></div>
 </div>
-<p>Then press the <kbd class="kbd docutils literal notranslate">F1</kbd> key and whatever you type in the newly created widow
+<p>Then press the <kbd class="kbd docutils literal notranslate">F1</kbd> key and whatever you type in the newly created window
 will be sent to all kitty windows.</p>
-<p>You can use the options described below to control which windows
-are selected.</p>
+<p>You can use the options described below to control which windows are selected.</p>
+<p>For example, only broadcast to other windows in the current tab:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f1</span> <span class="n">launch</span> <span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">remote</span><span class="o">-</span><span class="n">control</span> <span class="n">kitty</span> <span class="o">+</span><span class="n">kitten</span> <span class="n">broadcast</span> <span class="o">--</span><span class="n">match</span><span class="o">-</span><span class="n">tab</span> <span class="n">state</span><span class="p">:</span><span class="n">focused</span>
+</pre></div>
+</div>
 <div class="section" id="source-code-for-broadcast">
 <h2>Source code for broadcast<a class="headerlink" href="#source-code-for-broadcast" title="Permalink to this headline">#</a></h2>
 <p>The source code for this kitten is <a class="reference external" href="https://github.com/kovidgoyal/kitty/tree/master/kittens/broadcast">available on GitHub</a>.</p>
@@ -899,18 +905,34 @@ are selected.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten broadcast <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>initial text to send ...<span class="o">]</span>
 </pre></div>
 </div>
-<p>Broadcast typed text to all kitty windows. By default text is sent to all windows, unless one of the matching options is specified</p>
+<p>Broadcast typed text to kitty windows. By default text is sent to all windows, unless one of the matching options is specified</p>
 <div class="section" id="options">
 <h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">#</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-broadcast-match">
 <span id="cmdoption-kitty-kitten-broadcast-m"></span><span class="sig-name descname"><span class="pre">--match</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-m</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;MATCH&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-broadcast-match" title="Permalink to this definition">#</a></dt>
-<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, title, pid, cwd, cmdline, num, env and recent. You can use the <span class="italic">ls</span> command to get a list of windows. Note that for numeric fields such as id, pid, recent and num the expression is interpreted as a number, not a regular expression. The field num refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command). The window id of the current window is available as the KITTY_WINDOW_ID environment variable. The field recent refers to recently active windows in the currently active tab, with zero being the currently active window, one being the previously active window and so on. When using the <span class="italic">env</span> field to match on environment variables you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span></p>
+<dd><p>The window to match. Match specifications are of the form: <span class="italic">field:query</span>. Where <span class="italic">field</span> can be one of: <code class="code docutils literal notranslate"><span class="pre">id</span></code>, <code class="code docutils literal notranslate"><span class="pre">title</span></code>, <code class="code docutils literal notranslate"><span class="pre">pid</span></code>, <code class="code docutils literal notranslate"><span class="pre">cwd</span></code>, <code class="code docutils literal notranslate"><span class="pre">cmdline</span></code>, <code class="code docutils literal notranslate"><span class="pre">num</span></code>, <code class="code docutils literal notranslate"><span class="pre">env</span></code>, <code class="code docutils literal notranslate"><span class="pre">state</span></code> and <code class="code docutils literal notranslate"><span class="pre">recent</span></code>. <span class="italic">query</span> is the expression to match. Expressions can be either a number or a regular expression, and can be <a class="reference internal" href="../../remote-control/#search-syntax"><span class="std std-ref">combined using Boolean operators</span></a>.</p>
+<p>The special value <code class="code docutils literal notranslate"><span class="pre">all</span></code> matches all windows.</p>
+<p>For numeric fields: <code class="code docutils literal notranslate"><span class="pre">id</span></code>, <code class="code docutils literal notranslate"><span class="pre">pid</span></code>, <code class="code docutils literal notranslate"><span class="pre">num</span></code> and <code class="code docutils literal notranslate"><span class="pre">recent</span></code>, the expression is interpreted as a number, not a regular expression.</p>
+<p>The field <code class="code docutils literal notranslate"><span class="pre">num</span></code> refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command).</p>
+<p>The window id of the current window is available as the <span class="target" id="index-0"></span><a class="reference internal" href="../../glossary/#envvar-KITTY_WINDOW_ID"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_WINDOW_ID</span></code></a> environment variable.</p>
+<p>The field <code class="code docutils literal notranslate"><span class="pre">recent</span></code> refers to recently active windows in the currently active tab, with zero being the currently active window, one being the previously active window and so on.</p>
+<p>When using the <code class="code docutils literal notranslate"><span class="pre">env</span></code> field to match on environment variables, you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span>.</p>
+<p>The field <code class="code docutils literal notranslate"><span class="pre">state</span></code> matches on the state of the window. Supported states are: <code class="code docutils literal notranslate"><span class="pre">active</span></code>, <code class="code docutils literal notranslate"><span class="pre">focused</span></code>, <code class="code docutils literal notranslate"><span class="pre">needs_attention</span></code>, <code class="code docutils literal notranslate"><span class="pre">parent_active</span></code> and <code class="code docutils literal notranslate"><span class="pre">parent_focused</span></code>. Active windows are the windows that are active in their parent tab. There is only one focused window and it is the window to which keyboard events are delivered.</p>
+<p>Note that you can use the <a class="reference internal" href="../../remote-control/#at-ls"><span class="std std-ref">kitty @ ls</span></a> command to get a list of windows.</p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-broadcast-match-tab">
 <span id="cmdoption-kitty-kitten-broadcast-t"></span><span class="sig-name descname"><span class="pre">--match-tab</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;MATCH_TAB&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-t</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;MATCH_TAB&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-broadcast-match-tab" title="Permalink to this definition">#</a></dt>
-<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:regexp</span>. Where field can be one of: id, index, title, window_id, window_title, pid, cwd, env, cmdline and recent. You can use the <span class="italic">ls</span> command to get a list of tabs. Note that for numeric fields such as id, recent, index and pid the expression is interpreted as a number, not a regular expression. When using title or id, first a matching tab is looked for and if not found a matching window is looked for, and the tab for that window is used. You can also use window_id and window_title to match the tab that contains the window with the specified id or title. The index number is used to match the nth tab in the currently active OS window. The recent number matches recently active tabs in the currently active OS window, with zero being the currently active tab, one the previously active tab and so on.</p>
+<dd><p>The tab to match. Match specifications are of the form: <span class="italic">field:query</span>. Where <span class="italic">field</span> can be one of: <code class="code docutils literal notranslate"><span class="pre">id</span></code>, <code class="code docutils literal notranslate"><span class="pre">index</span></code>, <code class="code docutils literal notranslate"><span class="pre">title</span></code>, <code class="code docutils literal notranslate"><span class="pre">window_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">window_title</span></code>, <code class="code docutils literal notranslate"><span class="pre">pid</span></code>, <code class="code docutils literal notranslate"><span class="pre">cwd</span></code>, <code class="code docutils literal notranslate"><span class="pre">cmdline</span></code> <code class="code docutils literal notranslate"><span class="pre">env</span></code>, <code class="code docutils literal notranslate"><span class="pre">state</span></code> and <code class="code docutils literal notranslate"><span class="pre">recent</span></code>. <span class="italic">query</span> is the expression to match. Expressions can be either a number or a regular expression, and can be <a class="reference internal" href="../../remote-control/#search-syntax"><span class="std std-ref">combined using Boolean operators</span></a>.</p>
+<p>The special value <code class="code docutils literal notranslate"><span class="pre">all</span></code> matches all tabs.</p>
+<p>For numeric fields: <code class="code docutils literal notranslate"><span class="pre">id</span></code>, <code class="code docutils literal notranslate"><span class="pre">index</span></code>, <code class="code docutils literal notranslate"><span class="pre">window_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">pid</span></code> and <code class="code docutils literal notranslate"><span class="pre">recent</span></code>, the expression is interpreted as a number, not a regular expression.</p>
+<p>When using <code class="code docutils literal notranslate"><span class="pre">title</span></code> or <code class="code docutils literal notranslate"><span class="pre">id</span></code>, first a matching tab is looked for, and if not found a matching window is looked for, and the tab for that window is used.</p>
+<p>You can also use <code class="code docutils literal notranslate"><span class="pre">window_id</span></code> and <code class="code docutils literal notranslate"><span class="pre">window_title</span></code> to match the tab that contains the window with the specified id or title.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">index</span></code> number is used to match the nth tab in the currently active OS window. The <code class="code docutils literal notranslate"><span class="pre">recent</span></code> number matches recently active tabs in the currently active OS window, with zero being the currently active tab, one the previously active tab and so on.</p>
+<p>When using the <code class="code docutils literal notranslate"><span class="pre">env</span></code> field to match on environment variables, you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span>. Tabs containing any window with the specified environment variables are matched.</p>
+<p>The field <code class="code docutils literal notranslate"><span class="pre">state</span></code> matches on the state of the tab. Supported states are: <code class="code docutils literal notranslate"><span class="pre">active</span></code>, <code class="code docutils literal notranslate"><span class="pre">focused</span></code>, <code class="code docutils literal notranslate"><span class="pre">needs_attention</span></code>, <code class="code docutils literal notranslate"><span class="pre">parent_active</span></code> and <code class="code docutils literal notranslate"><span class="pre">parent_focused</span></code>. Active tabs are the tabs that are active in their parent OS window. There is only one focused tab and it is the tab to which keyboard events are delivered.</p>
+<p>Note that you can use the <a class="reference internal" href="../../remote-control/#at-ls"><span class="std std-ref">kitty @ ls</span></a> command to get a list of tabs.</p>
 </dd></dl>
 </div>
 </div>

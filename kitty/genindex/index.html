@@ -398,7 +398,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#allowing-only-some-windows-to-control-kitty">Allowing only some windows to control kitty</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#mapping-key-presses-to-remote-control-commands">Mapping key presses to remote control commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#broadcasting-what-you-type-to-all-kitty-windows">Broadcasting what you type to all kitty windows</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#the-remote-control-protocol">The remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#the-remote-control-protocol">The remote control protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#matching-windows-and-tabs">Matching windows and tabs</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../rc_protocol/">The kitty remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-tab">close-tab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-window">close-window</a></li>
@@ -609,6 +610,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -654,76 +656,77 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -871,7 +874,7 @@
           
 <section class="genindex-section">
   <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"><a href="#Symbols"><strong>Symbols</strong></a> | <a href="#A"><strong>A</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#K"><strong>K</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#Q"><strong>Q</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
+  <div class="genindex-jumpbox"><a href="#Symbols"><strong>Symbols</strong></a> | <a href="#A"><strong>A</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#K"><strong>K</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#Q"><strong>Q</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a> | <a href="#X"><strong>X</strong></a> | <a href="#Z"><strong>Z</strong></a></div>
 </section>
 <section id="Symbols" class="genindex-section">
   <h2>Symbols</h2>
@@ -1602,6 +1605,8 @@
           <li><a href="../kittens/transfer/#cmdoption-kitty-kitten-transfer-mode">kitty-+kitten-transfer command line option</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     --multiple
 
@@ -1609,8 +1614,6 @@
           <li><a href="../kittens/hints/#cmdoption-kitty-kitten-hints-multiple">kitty-+kitten-hints command line option</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     --multiple-joiner
 
@@ -1895,13 +1898,6 @@
           <li><a href="../remote-control/#cmdoption-kitty-new-window-tab-title">kitty-@-new-window command line option</a>
 </li>
           <li><a href="../launch/#cmdoption-launch-tab-title">launch command line option</a>
-</li>
-        </ul></li>
-        <li>
-    --target-group
-
-        <ul>
-          <li><a href="../remote-control/#cmdoption-kitty-close-tab-target-group">kitty-@-close-tab command line option</a>
 </li>
         </ul></li>
         <li>
@@ -2440,6 +2436,8 @@
 </li>
           <li><a href="../actions/#action-nth_window">nth_window</a>
 </li>
+          <li><a href="../actions/#action-open_url">open_url</a>
+</li>
           <li><a href="../actions/#action-open_url_with_hints">open_url_with_hints</a>
 </li>
           <li><a href="../actions/#action-pass_selection_to_program">pass_selection_to_program</a>
@@ -2755,6 +2753,8 @@
 </li>
           <li><a href="../conf/#opt-kitty.adjust_line_height">kitty.adjust_line_height</a>
 </li>
+          <li><a href="../conf/#opt-kitty.allow_cloning">kitty.allow_cloning</a>
+</li>
           <li><a href="../conf/#opt-kitty.allow_hyperlinks">kitty.allow_hyperlinks</a>
 </li>
           <li><a href="../conf/#opt-kitty.allow_remote_control">kitty.allow_remote_control</a>
@@ -2786,6 +2786,8 @@
           <li><a href="../conf/#opt-kitty.clipboard_control">kitty.clipboard_control</a>
 </li>
           <li><a href="../conf/#opt-kitty.clipboard_max_size">kitty.clipboard_max_size</a>
+</li>
+          <li><a href="../conf/#opt-kitty.clone_source_strategies">kitty.clone_source_strategies</a>
 </li>
           <li><a href="../conf/#opt-kitty.close_on_child_death">kitty.close_on_child_death</a>
 </li>
@@ -2877,6 +2879,8 @@
 </li>
           <li><a href="../conf/#opt-kitty.listen_on">kitty.listen_on</a>
 </li>
+          <li><a href="../conf/#opt-kitty.macos_colorspace">kitty.macos_colorspace</a>
+</li>
           <li><a href="../conf/#opt-kitty.macos_custom_beam_cursor">kitty.macos_custom_beam_cursor</a>
 </li>
           <li><a href="../conf/#opt-kitty.macos_hide_from_tasks">kitty.macos_hide_from_tasks</a>
@@ -2942,6 +2946,8 @@
           <li><a href="../conf/#opt-kitty.scrollback_pager_history_size">kitty.scrollback_pager_history_size</a>
 </li>
           <li><a href="../conf/#opt-kitty.select_by_word_characters">kitty.select_by_word_characters</a>
+</li>
+          <li><a href="../conf/#opt-kitty.select_by_word_characters_forward">kitty.select_by_word_characters_forward</a>
 </li>
           <li><a href="../conf/#opt-kitty.selection_foreground">kitty.selection_foreground</a>
 </li>
@@ -3141,7 +3147,7 @@
           <li><a href="../actions/#action-edit_config_file">Action</a>
 </li>
         </ul></li>
-        <li><a href="../conf/#index-2">EDITOR</a>, <a href="../conf/#index-4">[1]</a>, <a href="../kittens/remote_file/#index-0">[2]</a>
+        <li><a href="../conf/#index-3">EDITOR</a>, <a href="../conf/#index-5">[1]</a>, <a href="../kittens/remote_file/#index-0">[2]</a>
 </li>
         <li>
     eighth_window
@@ -3150,25 +3156,35 @@
           <li><a href="../actions/#action-eighth_window">Action</a>
 </li>
         </ul></li>
+        <li><a href="../shell-integration/#index-5">ENV</a>
+</li>
         <li>
     environment variable
 
         <ul>
           <li><a href="../glossary/#envvar-COLORTERM">COLORTERM</a>
 </li>
-          <li><a href="../conf/#index-2">EDITOR</a>, <a href="../conf/#index-4">[1]</a>, <a href="../glossary/#envvar-EDITOR">[2]</a>, <a href="../kittens/remote_file/#index-0">[3]</a>
+          <li><a href="../conf/#index-3">EDITOR</a>, <a href="../conf/#index-5">[1]</a>, <a href="../glossary/#envvar-EDITOR">[2]</a>, <a href="../kittens/remote_file/#index-0">[3]</a>
+</li>
+          <li><a href="../glossary/#envvar-ENV">ENV</a>, <a href="../shell-integration/#index-5">[1]</a>
 </li>
           <li><a href="../glossary/#envvar-GLFW_IM_MODULE">GLFW_IM_MODULE</a>
 </li>
           <li><a href="../glossary/#envvar-KITTY_CACHE_DIRECTORY">KITTY_CACHE_DIRECTORY</a>
 </li>
-          <li><a href="../conf/#index-0">KITTY_CHILD_CMDLINE</a>, <a href="../glossary/#envvar-KITTY_CHILD_CMDLINE">[1]</a>
+          <li><a href="../conf/#index-1">KITTY_CHILD_CMDLINE</a>, <a href="../glossary/#envvar-KITTY_CHILD_CMDLINE">[1]</a>
+</li>
+          <li><a href="../conf/#index-6">KITTY_CLONE_SOURCE_CODE</a>, <a href="../glossary/#envvar-KITTY_CLONE_SOURCE_CODE">[1]</a>, <a href="../shell-integration/#index-7">[2]</a>
+</li>
+          <li><a href="../conf/#index-7">KITTY_CLONE_SOURCE_PATH</a>, <a href="../glossary/#envvar-KITTY_CLONE_SOURCE_PATH">[1]</a>, <a href="../shell-integration/#index-8">[2]</a>
 </li>
           <li><a href="../glossary/#envvar-KITTY_COMMON_OPTS">KITTY_COMMON_OPTS</a>
 </li>
-          <li><a href="../glossary/#envvar-KITTY_CONFIG_DIRECTORY">KITTY_CONFIG_DIRECTORY</a>, <a href="../invocation/#index-0">[1]</a>, <a href="../kittens/diff/#index-0">[2]</a>
+          <li><a href="../conf/#index-0">KITTY_CONFIG_DIRECTORY</a>, <a href="../faq/#index-7">[1]</a>, <a href="../glossary/#envvar-KITTY_CONFIG_DIRECTORY">[2]</a>, <a href="../invocation/#index-0">[3]</a>, <a href="../kittens/diff/#index-0">[4]</a>
 </li>
-          <li><a href="../glossary/#envvar-KITTY_INSTALLATION_DIR">KITTY_INSTALLATION_DIR</a>, <a href="../shell-integration/#index-5">[1]</a>
+          <li><a href="../build/#index-0">KITTY_DEVELOP_FROM</a>, <a href="../glossary/#envvar-KITTY_DEVELOP_FROM">[1]</a>
+</li>
+          <li><a href="../glossary/#envvar-KITTY_INSTALLATION_DIR">KITTY_INSTALLATION_DIR</a>, <a href="../shell-integration/#index-11">[1]</a>
 </li>
           <li><a href="../glossary/#envvar-KITTY_LISTEN_ON">KITTY_LISTEN_ON</a>
 </li>
@@ -3178,21 +3194,29 @@
 </li>
           <li><a href="../glossary/#envvar-KITTY_RUNTIME_DIRECTORY">KITTY_RUNTIME_DIRECTORY</a>
 </li>
-          <li><a href="../glossary/#envvar-KITTY_SHELL_INTEGRATION">KITTY_SHELL_INTEGRATION</a>, <a href="../shell-integration/#index-0">[1]</a>, <a href="../shell-integration/#index-1">[2]</a>, <a href="../shell-integration/#index-2">[3]</a>, <a href="../shell-integration/#index-3">[4]</a>, <a href="../shell-integration/#index-4">[5]</a>
+          <li><a href="../glossary/#envvar-KITTY_SHELL_INTEGRATION">KITTY_SHELL_INTEGRATION</a>, <a href="../shell-integration/#index-0">[1]</a>, <a href="../shell-integration/#index-1">[2]</a>, <a href="../shell-integration/#index-10">[3]</a>, <a href="../shell-integration/#index-6">[4]</a>, <a href="../shell-integration/#index-9">[5]</a>
 </li>
           <li><a href="../glossary/#envvar-KITTY_WAYLAND_DETECT_MODIFIERS">KITTY_WAYLAND_DETECT_MODIFIERS</a>
 </li>
-          <li><a href="../glossary/#envvar-KITTY_WINDOW_ID">KITTY_WINDOW_ID</a>
+          <li><a href="../glossary/#envvar-KITTY_WINDOW_ID">KITTY_WINDOW_ID</a>, <a href="../kittens/broadcast/#index-0">[1]</a>, <a href="../remote-control/#index-0">[2]</a>, <a href="../remote-control/#index-1">[3]</a>, <a href="../remote-control/#index-10">[4]</a>, <a href="../remote-control/#index-11">[5]</a>, <a href="../remote-control/#index-12">[6]</a>, <a href="../remote-control/#index-13">[7]</a>, <a href="../remote-control/#index-14">[8]</a>, <a href="../remote-control/#index-15">[9]</a>, <a href="../remote-control/#index-16">[10]</a>, <a href="../remote-control/#index-17">[11]</a>, <a href="../remote-control/#index-18">[12]</a>, <a href="../remote-control/#index-19">[13]</a>, <a href="../remote-control/#index-2">[14]</a>, <a href="../remote-control/#index-3">[15]</a>, <a href="../remote-control/#index-4">[16]</a>, <a href="../remote-control/#index-5">[17]</a>, <a href="../remote-control/#index-6">[18]</a>, <a href="../remote-control/#index-7">[19]</a>, <a href="../remote-control/#index-8">[20]</a>, <a href="../remote-control/#index-9">[21]</a>
 </li>
-          <li><a href="../changelog/#index-0">LANG</a>, <a href="../glossary/#envvar-LANG">[1]</a>
+          <li><a href="../changelog/#index-0">LANG</a>, <a href="../faq/#index-6">[1]</a>, <a href="../glossary/#envvar-LANG">[2]</a>
 </li>
-          <li><a href="../glossary/#envvar-TERM">TERM</a>
+          <li><a href="../binary/#index-0">PATH</a>, <a href="../faq/#index-5">[1]</a>, <a href="../glossary/#envvar-PATH">[2]</a>, <a href="../kittens/hyperlinked_grep/#index-0">[3]</a>, <a href="../launch/#index-1">[4]</a>, <a href="../launch/#index-2">[5]</a>, <a href="../launch/#index-3">[6]</a>
 </li>
-          <li><a href="../glossary/#envvar-TERMINFO">TERMINFO</a>
+          <li><a href="../glossary/#envvar-SSH_ASKPASS">SSH_ASKPASS</a>, <a href="../kittens/ssh/#index-0">[1]</a>
 </li>
-          <li><a href="../conf/#index-1">VISUAL</a>, <a href="../conf/#index-3">[1]</a>, <a href="../glossary/#envvar-VISUAL">[2]</a>, <a href="../glossary/#index-0">[3]</a>, <a href="../glossary/#index-1">[4]</a>
+          <li><a href="../conf/#index-8">TERM</a>, <a href="../conf/#index-9">[1]</a>, <a href="../faq/#index-0">[2]</a>, <a href="../faq/#index-1">[3]</a>, <a href="../faq/#index-8">[4]</a>, <a href="../glossary/#envvar-TERM">[5]</a>
+</li>
+          <li><a href="../faq/#index-2">TERMINFO</a>, <a href="../faq/#index-3">[1]</a>, <a href="../faq/#index-4">[2]</a>, <a href="../glossary/#envvar-TERMINFO">[3]</a>
+</li>
+          <li><a href="../conf/#index-2">VISUAL</a>, <a href="../conf/#index-4">[1]</a>, <a href="../glossary/#envvar-VISUAL">[2]</a>, <a href="../glossary/#index-0">[3]</a>, <a href="../glossary/#index-1">[4]</a>
 </li>
           <li><a href="../glossary/#envvar-WINDOWID">WINDOWID</a>
+</li>
+          <li><a href="../glossary/#envvar-XDG_DATA_DIRS">XDG_DATA_DIRS</a>, <a href="../shell-integration/#index-4">[1]</a>
+</li>
+          <li><a href="../glossary/#envvar-ZDOTDIR">ZDOTDIR</a>, <a href="../shell-integration/#index-2">[1]</a>, <a href="../shell-integration/#index-3">[2]</a>
 </li>
         </ul></li>
     </ul></td>
@@ -3412,6 +3436,8 @@
 </li>
           <li><a href="../conf/#shortcut-kitty.Ninth-window">kitty.Ninth window</a>
 </li>
+          <li><a href="../conf/#shortcut-kitty.Open-kitty-Website">kitty.Open kitty Website</a>
+</li>
           <li><a href="../conf/#shortcut-kitty.Open-selected-path">kitty.Open selected path</a>
 </li>
           <li><a href="../conf/#shortcut-kitty.Open-the-kitty-command-shell">kitty.Open the kitty command shell</a>
@@ -3506,7 +3532,7 @@
 </li>
           <li><a href="../conf/#shortcut-kitty.Unicode-input">kitty.Unicode input</a>
 </li>
-          <li><a href="../conf/#shortcut-kitty.Visually-select-focus-window">kitty.Visually select focus window</a>
+          <li><a href="../conf/#shortcut-kitty.Visually-select-and-focus-window">kitty.Visually select and focus window</a>
 </li>
           <li><a href="../conf/#shortcut-kitty.Visually-swap-window-with-another">kitty.Visually swap window with another</a>
 </li>
@@ -4107,8 +4133,6 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitty-close-tab-self">--self</a>
 </li>
-          <li><a href="../remote-control/#cmdoption-kitty-close-tab-target-group">--target-group</a>
-</li>
           <li><a href="../remote-control/#cmdoption-kitty-close-tab-match">-m</a>
 </li>
         </ul></li>
@@ -4552,8 +4576,6 @@
           <li><a href="../remote-control/#cmdoption-kitty-set-font-size-all">-a</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     kitty-@-set-spacing command line option
 
@@ -4575,6 +4597,8 @@
           <li><a href="../remote-control/#cmdoption-kitty-set-spacing-match-tab">-t</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     kitty-@-set-tab-color command line option
 
@@ -4672,6 +4696,13 @@
 
         <ul>
           <li><a href="../conf/#opt-kitty.adjust_line_height">Config Setting</a>
+</li>
+        </ul></li>
+        <li>
+    kitty.allow_cloning
+
+        <ul>
+          <li><a href="../conf/#opt-kitty.allow_cloning">Config Setting</a>
 </li>
         </ul></li>
         <li>
@@ -4826,6 +4857,13 @@
 
         <ul>
           <li><a href="../conf/#opt-kitty.clipboard_max_size">Config Setting</a>
+</li>
+        </ul></li>
+        <li>
+    kitty.clone_source_strategies
+
+        <ul>
+          <li><a href="../conf/#opt-kitty.clone_source_strategies">Config Setting</a>
 </li>
         </ul></li>
         <li>
@@ -5291,6 +5329,13 @@
 </li>
         </ul></li>
         <li>
+    kitty.macos_colorspace
+
+        <ul>
+          <li><a href="../conf/#opt-kitty.macos_colorspace">Config Setting</a>
+</li>
+        </ul></li>
+        <li>
     kitty.macos_custom_beam_cursor
 
         <ul>
@@ -5505,6 +5550,13 @@
 
         <ul>
           <li><a href="../conf/#shortcut-kitty.Ninth-window">Keyboard Shortcut</a>
+</li>
+        </ul></li>
+        <li>
+    kitty.Open kitty Website
+
+        <ul>
+          <li><a href="../conf/#shortcut-kitty.Open-kitty-Website">Keyboard Shortcut</a>
 </li>
         </ul></li>
         <li>
@@ -5827,6 +5879,13 @@
 
         <ul>
           <li><a href="../conf/#opt-kitty.select_by_word_characters">Config Setting</a>
+</li>
+        </ul></li>
+        <li>
+    kitty.select_by_word_characters_forward
+
+        <ul>
+          <li><a href="../conf/#opt-kitty.select_by_word_characters_forward">Config Setting</a>
 </li>
         </ul></li>
         <li>
@@ -6159,10 +6218,10 @@
 </li>
         </ul></li>
         <li>
-    kitty.Visually select focus window
+    kitty.Visually select and focus window
 
         <ul>
-          <li><a href="../conf/#shortcut-kitty.Visually-select-focus-window">Keyboard Shortcut</a>
+          <li><a href="../conf/#shortcut-kitty.Visually-select-and-focus-window">Keyboard Shortcut</a>
 </li>
         </ul></li>
         <li>
@@ -6256,11 +6315,17 @@
           <li><a href="../conf/#opt-kitty.window_resize_step_cells">Config Setting</a>
 </li>
         </ul></li>
-        <li><a href="../conf/#index-0">KITTY_CHILD_CMDLINE</a>
+        <li><a href="../conf/#index-1">KITTY_CHILD_CMDLINE</a>
 </li>
-        <li><a href="../invocation/#index-0">KITTY_CONFIG_DIRECTORY</a>, <a href="../kittens/diff/#index-0">[1]</a>
+        <li><a href="../conf/#index-6">KITTY_CLONE_SOURCE_CODE</a>, <a href="../shell-integration/#index-7">[1]</a>
 </li>
-        <li><a href="../shell-integration/#index-5">KITTY_INSTALLATION_DIR</a>
+        <li><a href="../conf/#index-7">KITTY_CLONE_SOURCE_PATH</a>, <a href="../shell-integration/#index-8">[1]</a>
+</li>
+        <li><a href="../conf/#index-0">KITTY_CONFIG_DIRECTORY</a>, <a href="../faq/#index-7">[1]</a>, <a href="../invocation/#index-0">[2]</a>, <a href="../kittens/diff/#index-0">[3]</a>
+</li>
+        <li><a href="../build/#index-0">KITTY_DEVELOP_FROM</a>
+</li>
+        <li><a href="../shell-integration/#index-11">KITTY_INSTALLATION_DIR</a>
 </li>
         <li><a href="../launch/#index-0">KITTY_PIPE_DATA</a>
 </li>
@@ -6271,7 +6336,9 @@
           <li><a href="../actions/#action-kitty_shell">Action</a>
 </li>
         </ul></li>
-        <li><a href="../shell-integration/#index-0">KITTY_SHELL_INTEGRATION</a>, <a href="../shell-integration/#index-1">[1]</a>, <a href="../shell-integration/#index-2">[2]</a>, <a href="../shell-integration/#index-3">[3]</a>, <a href="../shell-integration/#index-4">[4]</a>
+        <li><a href="../shell-integration/#index-0">KITTY_SHELL_INTEGRATION</a>, <a href="../shell-integration/#index-1">[1]</a>, <a href="../shell-integration/#index-10">[2]</a>, <a href="../shell-integration/#index-6">[3]</a>, <a href="../shell-integration/#index-9">[4]</a>
+</li>
+        <li><a href="../kittens/broadcast/#index-0">KITTY_WINDOW_ID</a>, <a href="../remote-control/#index-0">[1]</a>, <a href="../remote-control/#index-1">[2]</a>, <a href="../remote-control/#index-10">[3]</a>, <a href="../remote-control/#index-11">[4]</a>, <a href="../remote-control/#index-12">[5]</a>, <a href="../remote-control/#index-13">[6]</a>, <a href="../remote-control/#index-14">[7]</a>, <a href="../remote-control/#index-15">[8]</a>, <a href="../remote-control/#index-16">[9]</a>, <a href="../remote-control/#index-17">[10]</a>, <a href="../remote-control/#index-18">[11]</a>, <a href="../remote-control/#index-19">[12]</a>, <a href="../remote-control/#index-2">[13]</a>, <a href="../remote-control/#index-3">[14]</a>, <a href="../remote-control/#index-4">[15]</a>, <a href="../remote-control/#index-5">[16]</a>, <a href="../remote-control/#index-6">[17]</a>, <a href="../remote-control/#index-7">[18]</a>, <a href="../remote-control/#index-8">[19]</a>, <a href="../remote-control/#index-9">[20]</a>
 </li>
     </ul></td>
   </tr></table>
@@ -6281,7 +6348,7 @@
   <h2>L</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../changelog/#index-0">LANG</a>
+        <li><a href="../changelog/#index-0">LANG</a>, <a href="../faq/#index-6">[1]</a>
 </li>
         <li>
     last_used_layout
@@ -6585,6 +6652,13 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li>
+    open_url
+
+        <ul>
+          <li><a href="../actions/#action-open_url">Action</a>
+</li>
+        </ul></li>
+        <li>
     open_url_with_hints
 
         <ul>
@@ -6656,6 +6730,8 @@
           <li><a href="../actions/#action-paste_selection_or_clipboard">Action</a>
 </li>
         </ul></li>
+        <li><a href="../binary/#index-0">PATH</a>, <a href="../faq/#index-5">[1]</a>, <a href="../kittens/hyperlinked_grep/#index-0">[2]</a>, <a href="../launch/#index-1">[3]</a>, <a href="../launch/#index-2">[4]</a>, <a href="../launch/#index-3">[5]</a>
+</li>
         <li>
     previous_tab
 
@@ -6908,6 +6984,8 @@
           <li><a href="../actions/#action-sixth_window">Action</a>
 </li>
         </ul></li>
+        <li><a href="../kittens/ssh/#index-0">SSH_ASKPASS</a>
+</li>
         <li>
     start_resizing_window
 
@@ -6939,6 +7017,10 @@
           <li><a href="../actions/#action-tenth_window">Action</a>
 </li>
         </ul></li>
+        <li><a href="../conf/#index-8">TERM</a>, <a href="../conf/#index-9">[1]</a>, <a href="../faq/#index-0">[2]</a>, <a href="../faq/#index-1">[3]</a>, <a href="../faq/#index-8">[4]</a>
+</li>
+        <li><a href="../faq/#index-2">TERMINFO</a>, <a href="../faq/#index-3">[1]</a>, <a href="../faq/#index-4">[2]</a>
+</li>
         <li>
     third_window
 
@@ -6991,7 +7073,7 @@
   <h2>V</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../conf/#index-1">VISUAL</a>, <a href="../conf/#index-3">[1]</a>, <a href="../glossary/#index-0">[2]</a>, <a href="../glossary/#index-1">[3]</a>
+        <li><a href="../conf/#index-2">VISUAL</a>, <a href="../conf/#index-4">[1]</a>, <a href="../glossary/#index-0">[2]</a>, <a href="../glossary/#index-1">[3]</a>
 </li>
     </ul></td>
   </tr></table>
@@ -7002,6 +7084,26 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="../glossary/#term-window"><strong>window</strong></a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="X" class="genindex-section">
+  <h2>X</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="../shell-integration/#index-4">XDG_DATA_DIRS</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="Z" class="genindex-section">
+  <h2>Z</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="../shell-integration/#index-2">ZDOTDIR</a>, <a href="../shell-integration/#index-3">[1]</a>
 </li>
     </ul></td>
   </tr></table>

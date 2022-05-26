@@ -407,7 +407,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../../remote-control/#allowing-only-some-windows-to-control-kitty">Allowing only some windows to control kitty</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../remote-control/#mapping-key-presses-to-remote-control-commands">Mapping key presses to remote control commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../remote-control/#broadcasting-what-you-type-to-all-kitty-windows">Broadcasting what you type to all kitty windows</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../../remote-control/#the-remote-control-protocol">The remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../remote-control/#the-remote-control-protocol">The remote control protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../remote-control/#matching-windows-and-tabs">Matching windows and tabs</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../rc_protocol/">The kitty remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../rc_protocol/#close-tab">close-tab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../rc_protocol/#close-window">close-window</a></li>
@@ -618,6 +619,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -663,76 +665,77 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id4">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id5">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id6">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id7">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id8">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id9">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id10">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id11">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id12">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id13">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id14">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id15">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id16">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id17">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id18">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id19">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id20">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id21">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id22">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id23">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id24">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id25">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id26">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id27">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id28">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id29">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id30">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id31">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id32">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id33">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id34">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id35">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id36">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id37">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id38">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id39">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id40">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id41">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id42">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id43">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id44">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id45">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id46">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id47">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id48">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id49">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id50">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id51">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id52">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id53">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id54">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id55">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id56">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id57">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id58">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id59">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id60">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id61">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id62">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id63">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id64">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id65">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id66">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id67">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id68">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id69">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id70">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id4">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id5">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id6">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id7">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id8">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id9">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id10">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id11">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id12">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id13">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id14">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id15">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id16">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id17">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id18">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id19">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id20">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id21">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id22">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id23">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id24">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id25">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id26">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id27">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id28">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id29">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id30">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id31">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id32">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id33">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id34">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id35">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id36">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id37">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id38">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id39">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id40">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id41">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id42">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id43">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id44">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id45">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id46">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id47">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id48">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id49">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id50">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id51">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id52">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id53">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id54">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id55">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id56">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id57">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id58">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id59">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id60">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id61">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id62">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id63">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id64">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id65">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id66">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id67">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id68">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id69">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id70">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id71">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -890,22 +893,21 @@
 <p><span class="versionmodified added">New in version 0.25.0: </span>Automatic shell integration, file transfer and reuse of connections</p>
 </div>
 <p>The ssh kitten allows you to login easily to remote hosts, and automatically
-setup the environment there to be as comfortable as your local shell. You
-can specify environment variables to set on the remote host and
-files to copy there, making your remote experience just like your
-local shell. Additionally, it automatically sets up <a class="reference internal" href="../../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> on
-the remote host and copies the kitty terminfo database there.</p>
+setup the environment there to be as comfortable as your local shell. You can
+specify environment variables to set on the remote host and files to copy there,
+making your remote experience just like your local shell. Additionally, it
+automatically sets up <a class="reference internal" href="../../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> on the remote host and copies the
+kitty terminfo database there.</p>
 <p>The ssh kitten is a thin wrapper around the traditional <a class="reference external" href="https://man.openbsd.org/ssh">ssh</a>
 command line program and supports all the same options and arguments and configuration.
-In interactive usage scenarios it is a drop in replacement for <code class="docutils literal notranslate"><span class="pre">ssh</span></code>. To try it
-out, simply run:</p>
+In interactive usage scenarios it is a drop in replacement for <strong class="program">ssh</strong>.
+To try it out, simply run:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten ssh some-hostname-to-connect-to
 </pre></div>
 </div>
-<p>You should end up at a shell prompt on the remote host, with shell
-integration enabled. If you like it you can add an alias to it in your shell’s
-rc files:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> <span class="nv">s</span><span class="o">=</span>kitty +kitten ssh
+<p>You should end up at a shell prompt on the remote host, with shell integration
+enabled. If you like it you can add an alias to it in your shell’s rc files:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> <span class="nv">s</span><span class="o">=</span><span class="s2">"kitty +kitten ssh"</span>
 </pre></div>
 </div>
 <p>So now you can just type <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">hostname</span></code> to connect.</p>
@@ -913,12 +915,11 @@ rc files:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f1</span> <span class="n">new_window_with_cwd</span>
 </pre></div>
 </div>
-<p>Then, pressing <kbd class="kbd docutils literal notranslate">F1</kbd> will open a new window automatically logged
-into the same host using the ssh kitten, at the same directory.</p>
-<p>The ssh kitten can be configured using the <code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/ssh.conf</span></code>
-file where you can specify environment variables to set on the remote host
-and files to copy from the local to the remote host. Let’s see a
-quick example:</p>
+<p>Then, pressing <kbd class="kbd docutils literal notranslate">F1</kbd> will open a new window automatically logged into the
+same host using the ssh kitten, at the same directory.</p>
+<p>The ssh kitten can be configured using the <code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/ssh.conf</span></code> file
+where you can specify environment variables to set on the remote host and files
+to copy from the local to the remote host. Let’s see a quick example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy the files and directories needed to setup some common tools</span><span class="w"></span>
 <span class="nv">copy</span><span class="w"> </span><span class="mf">.</span><span class="s">zshrc .vimrc .vim</span><span class="w"></span>
 <span class="c1"># Setup some environment variables</span><span class="w"></span>
@@ -943,8 +944,9 @@ Additionally, you can pass config options on the command line:</p>
 </div>
 <p>The <code class="code docutils literal notranslate"><span class="pre">--kitten</span></code> argument can be specified multiple times, with directives
 from <code class="file docutils literal notranslate"><span class="pre">ssh.conf</span></code>. These are merged with <code class="file docutils literal notranslate"><span class="pre">ssh.conf</span></code> as if they were
-appended to the end of that file. They apply only to the host being SSHed to
-by this invocation, so any <a class="reference internal" href="#opt-kitten-ssh.hostname"><code class="xref std std-opt docutils literal notranslate"><span class="pre">hostname</span></code></a> directives are ignored.</p>
+appended to the end of that file. They apply only to the host being SSHed to by
+this invocation, so any <a class="reference internal" href="#opt-kitten-ssh.hostname"><code class="xref std std-opt docutils literal notranslate"><span class="pre">hostname</span></code></a> directives are
+ignored.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Due to limitations in the design of SSH, any typing you do before the
@@ -956,8 +958,8 @@ the shell prompt. 😇</p>
 <p>Suppose you often SSH into a production server, and you would like to setup
 your shell and editor there using your custom settings. However, other people
 could SSH in as well and you don’t want to clobber their settings. Here is how
-this could be achieved using the ssh kitten with zsh and vim as the shell and
-editor, respectively:</p>
+this could be achieved using the ssh kitten with <strong class="program">zsh</strong> and
+<strong class="program">vim</strong> as the shell and editor, respectively:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="c1"># Have these settings apply to servers in my organization</span><span class="w"></span>
 <span class="nv">hostname</span><span class="w"> </span><span class="s">myserver-*</span><span class="w"></span>
 
@@ -980,21 +982,23 @@ editor, respectively:</p>
 <p>The ssh kitten works by having SSH transmit and execute a POSIX sh (or
 <a class="reference internal" href="#opt-kitten-ssh.interpreter"><code class="xref std std-opt docutils literal notranslate"><span class="pre">optionally</span></code></a> Python) bootstrap script on the
 remote host using an <a class="reference internal" href="#opt-kitten-ssh.interpreter"><code class="xref std std-opt docutils literal notranslate"><span class="pre">interpreter</span></code></a>. This script
-reads setup data over the tty device, which kitty sends as a base64 encoded
+reads setup data over the TTY device, which kitty sends as a Base64 encoded
 compressed tarball. The script extracts it and places the <a class="reference internal" href="#opt-kitten-ssh.copy"><code class="xref std std-opt docutils literal notranslate"><span class="pre">files</span></code></a>
 and sets the <a class="reference internal" href="#opt-kitten-ssh.env"><code class="xref std std-opt docutils literal notranslate"><span class="pre">environment</span> <span class="pre">variables</span></code></a> before finally
 launching the <a class="reference internal" href="#opt-kitten-ssh.login_shell"><code class="xref std std-opt docutils literal notranslate"><span class="pre">login</span> <span class="pre">shell</span></code></a> with <a class="reference internal" href="#opt-kitten-ssh.shell_integration"><code class="xref std std-opt docutils literal notranslate"><span class="pre">shell</span>
 <span class="pre">integration</span></code></a> enabled. The data is requested by
 the kitten over the TTY with a random one time password. kitty reads the request
 and if the password matches a password pre-stored in shared memory on the
-localhost by the kitten, the transmission is allowed. If your OpenSSH version is
-&gt;= 8.4 then the data is transmitted instantly without any roundtrip delay.</p>
+localhost by the kitten, the transmission is allowed. If your local
+<a class="reference external" href="https://www.openssh.com/">OpenSSH</a> version is &gt;= 8.4 then the data is
+transmitted instantly without any roundtrip delay.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When connecting to BSD hosts, it is possible the bootstrap script will
-fail or run slowly, because the default shells are crippled in various ways.
+<p>When connecting to BSD hosts, it is possible the bootstrap script will fail
+or run slowly, because the default shells are crippled in various ways.
 Your best bet is to install Python on the remote, make sure the login shell
-is something POSIX sh compliant, and use <code class="code docutils literal notranslate"><span class="pre">python</span></code> as the <a class="reference internal" href="#opt-kitten-ssh.interpreter"><code class="xref std std-opt docutils literal notranslate"><span class="pre">interpreter</span></code></a> in <code class="file docutils literal notranslate"><span class="pre">ssh.conf</span></code>.</p>
+is something POSIX sh compliant, and use <code class="code docutils literal notranslate"><span class="pre">python</span></code> as the
+<a class="reference internal" href="#opt-kitten-ssh.interpreter"><code class="xref std std-opt docutils literal notranslate"><span class="pre">interpreter</span></code></a> in <code class="file docutils literal notranslate"><span class="pre">ssh.conf</span></code>.</p>
 </div>
 </div>
 <div class="section" id="host-bootstrap-configuration">
@@ -1006,14 +1010,14 @@ is something POSIX sh compliant, and use <code class="code docutils literal notr
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">hostname</span><span class="w"> </span><span class="s">*</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The hostname that the following options apply to. A glob pattern to match multiple
-hosts can be used. Multiple hostnames can also be specified separated by spaces.
-The hostname can include an optional username in the form <code class="code docutils literal notranslate"><span class="pre">user@host</span></code>.
-When not specified options apply to all hosts, until the
-first hostname specification is found. Note that matching of hostname is done against
-the name you specify on the command line to connect to the remote host.
-If you wish to include the same basic configuration for many
-different hosts, you can do so with the <a class="reference internal" href="../../conf/#include"><span class="std std-ref">include</span></a> directive.</p>
+<p>The hostname that the following options apply to. A glob pattern to match
+multiple hosts can be used. Multiple hostnames can also be specified, separated
+by spaces. The hostname can include an optional username in the form
+<code class="code docutils literal notranslate"><span class="pre">user@host</span></code>. When not specified options apply to all hosts, until the
+first hostname specification is found. Note that matching of hostname is done
+against the name you specify on the command line to connect to the remote host.
+If you wish to include the same basic configuration for many different hosts,
+you can do so with the <a class="reference internal" href="../../conf/#include"><span class="std std-ref">include</span></a> directive.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-ssh.interpreter">
 <span class="sig-name descname"><span class="pre">interpreter</span></span><a class="headerlink" href="#opt-kitten-ssh.interpreter" title="Permalink to this definition">#</a></dt>
@@ -1021,9 +1025,9 @@ different hosts, you can do so with the <a class="reference internal" href="../.
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">interpreter</span><span class="w"> </span><span class="s">sh</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The interpreter to use on the remote host. Must be either a POSIX complaint shell
-or a python executable. If the default sh is not available or broken, using
-an alternate interpreter can be useful.</p>
+<p>The interpreter to use on the remote host. Must be either a POSIX complaint
+shell or a <strong class="program">python</strong> executable. If the default <strong class="program">sh</strong> is not
+available or broken, using an alternate interpreter can be useful.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-ssh.remote_dir">
 <span class="sig-name descname"><span class="pre">remote_dir</span></span><a class="headerlink" href="#opt-kitten-ssh.remote_dir" title="Permalink to this definition">#</a></dt>
@@ -1031,9 +1035,9 @@ an alternate interpreter can be useful.</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">remote_dir</span><span class="w"> </span><span class="mf">.</span><span class="s">local/share/kitty-ssh-kitten</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The location on the remote host where the files needed for this kitten
-are installed. The location is relative to the HOME directory. Absolute paths or paths
-that resolve to a location outside the HOME are not allowed.</p>
+<p>The location on the remote host where the files needed for this kitten are
+installed. The location is relative to the HOME directory. Absolute paths or
+paths that resolve to a location outside the HOME are not allowed.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-ssh.copy">
 <span class="sig-name descname"><span class="pre">copy</span></span><a class="headerlink" href="#opt-kitten-ssh.copy" title="Permalink to this definition">#</a></dt>
@@ -1048,8 +1052,7 @@ copied as is. For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">copy</span><span class="w"> </span><span class="mf">.</span><span class="s">vimrc .zshrc .config/some-dir</span><span class="w"></span>
 </pre></div>
 </div>
-<p>If a file should be copied to some other destination on the remote host,
-use <code class="code docutils literal notranslate"><span class="pre">--dest</span></code>:</p>
+<p>Use <code class="code docutils literal notranslate"><span class="pre">--dest</span></code> to copy a file to some other destination on the remote host:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">copy</span><span class="w"> </span><span class="s">--dest some-other-name some-file</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1084,8 +1087,8 @@ integration on a per-host basis.</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">login_shell</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The login shell to execute on the remote host. By default, the remote user account’s
-login shell is used.</p>
+<p>The login shell to execute on the remote host. By default, the remote user
+account’s login shell is used.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-ssh.env">
 <span class="sig-name descname"><span class="pre">env</span></span><a class="headerlink" href="#opt-kitten-ssh.env" title="Permalink to this definition">#</a></dt>
@@ -1093,17 +1096,18 @@ login shell is used.</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">env</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Specify environment variables to set on the remote host. Note that
-environment variables can refer to each other, so if you use:</p>
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">env</span><span class="w"> </span><span class="s">MYVAR1=a</span><span class="w"></span>
-<span class="nv">env</span><span class="w"> </span><span class="s">MYVAR2=$MYVAR1/$HOME/b</span><span class="w"></span>
+<p>Specify the environment variables to be set on the remote host. Using the
+name with an equal sign (e.g. <code class="code docutils literal notranslate"><span class="pre">env</span> <span class="pre">VAR=</span></code>) will set it to the empty string.
+Specifying only the name (e.g. <code class="code docutils literal notranslate"><span class="pre">env</span> <span class="pre">VAR</span></code>) will remove the variable from
+the remote shell environment. The special value <code class="code docutils literal notranslate"><span class="pre">_kitty_copy_env_var_</span></code>
+will cause the value of the variable to be copied from the local environment.
+The definitions are processed alphabetically. Note that environment variables
+are expanded recursively, for example:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">env</span><span class="w"> </span><span class="s">VAR1=a</span><span class="w"></span>
+<span class="nv">env</span><span class="w"> </span><span class="s">VAR2=${HOME}/${VAR1}/b</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The value of MYVAR2 will be <code class="code docutils literal notranslate"><span class="pre">a/&lt;path</span> <span class="pre">to</span> <span class="pre">home</span> <span class="pre">directory&gt;/b</span></code>. Using
-<code class="code docutils literal notranslate"><span class="pre">VAR=</span></code> will set it to the empty string and using just <code class="code docutils literal notranslate"><span class="pre">VAR</span></code>
-will delete the variable from the child process’ environment. The definitions
-are processed alphabetically. The special value <code class="code docutils literal notranslate"><span class="pre">_kitty_copy_env_var_</span></code>
-will cause the value of the variable to be copied from the local environment.</p>
+<p>The value of <code class="code docutils literal notranslate"><span class="pre">VAR2</span></code> will be <code class="code docutils literal notranslate"><span class="pre">&lt;path</span> <span class="pre">to</span> <span class="pre">home</span> <span class="pre">directory&gt;/a/b</span></code>.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-ssh.cwd">
 <span class="sig-name descname"><span class="pre">cwd</span></span><a class="headerlink" href="#opt-kitten-ssh.cwd" title="Permalink to this definition">#</a></dt>
@@ -1111,9 +1115,9 @@ will cause the value of the variable to be copied from the local environment.</p
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">cwd</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The working directory on the remote host to change to. Env vars in this
-value are expanded. The default is empty so no changing is done, which
-usually means the home directory is used.</p>
+<p>The working directory on the remote host to change to. Environment variables in
+this value are expanded. The default is empty so no changing is done, which
+usually means the HOME directory is used.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-ssh.color_scheme">
 <span class="sig-name descname"><span class="pre">color_scheme</span></span><a class="headerlink" href="#opt-kitten-ssh.color_scheme" title="Permalink to this definition">#</a></dt>
@@ -1121,12 +1125,12 @@ usually means the home directory is used.</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">color_scheme</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Specify a color scheme to use when connecting to the remote host.  If the
-color_scheme ends with <code class="code docutils literal notranslate"><span class="pre">.conf</span></code> it is assumed to be the name of a config
-file to load from the kitty config directory, otherwise it is assumed to be the
-name of a color theme to load via the themes kitten. Note that only colors
-applying to the text/background are changed, other config settings in the .conf
-files/themes are ignored.</p>
+<p>Specify a color scheme to use when connecting to the remote host. If this option
+ends with <code class="code docutils literal notranslate"><span class="pre">.conf</span></code>, it is assumed to be the name of a config file to load
+from the kitty config directory, otherwise it is assumed to be the name of a
+color theme to load via the <a class="reference internal" href="../themes/"><span class="doc">themes kitten</span></a>. Note that
+only colors applying to the text/background are changed, other config settings
+in the .conf files/themes are ignored.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-ssh.remote_kitty">
 <span class="sig-name descname"><span class="pre">remote_kitty</span></span><a class="headerlink" href="#opt-kitten-ssh.remote_kitty" title="Permalink to this definition">#</a></dt>
@@ -1134,17 +1138,18 @@ files/themes are ignored.</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">remote_kitty</span><span class="w"> </span><span class="s">if-needed</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Make kitty available on the remote server. Useful to run kittens such as the
-icat kitten to display images or the transfer file kitten to transfer files.
-Only works if the remote server has an architecture for which pre-compiled
-kitty binaries are available. Note that kitty is not actually copied to the
-remote server, instead a small bootstrap script is copied which will download
-and run kitty when kitty is first executed on the remote server. A value of
-<code class="code docutils literal notranslate"><span class="pre">if-needed</span></code> means kitty is installed only if not already present in the
-system-wide PATH. A value of <code class="code docutils literal notranslate"><span class="pre">yes</span></code> means that kitty is installed even if
-already present, and the installed kitty takes precedence. Finally, <code class="code docutils literal notranslate"><span class="pre">no</span></code>
-means no kitty is installed on the remote machine. The installed kitty
-can be updated by running: <code class="code docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+update-kitty</span></code> on the remote machine.</p>
+<p>Make <strong class="program">kitty</strong> available on the remote host. Useful to run kittens such
+as the <a class="reference internal" href="../icat/"><span class="doc">icat kitten</span></a> to display images or the
+<a class="reference internal" href="../transfer/"><span class="doc">transfer file kitten</span></a> to transfer files. Only works if
+the remote host has an architecture for which <a class="reference external" href="https://github.com/kovidgoyal/kitty/releases">pre-compiled kitty binaries</a> are available. Note that kitty
+is not actually copied to the remote host, instead a small bootstrap script is
+copied which will download and run kitty when kitty is first executed on the
+remote host. A value of <code class="code docutils literal notranslate"><span class="pre">if-needed</span></code> means kitty is installed only if not
+already present in the system-wide PATH. A value of <code class="code docutils literal notranslate"><span class="pre">yes</span></code> means that kitty
+is installed even if already present, and the installed kitty takes precedence.
+Finally, <code class="code docutils literal notranslate"><span class="pre">no</span></code> means no kitty is installed on the remote host. The
+installed kitty can be updated by running: <code class="code docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+update-kitty</span></code> on the
+remote host.</p>
 </div>
 <div class="section" id="ssh-configuration">
 <span id="conf-kitten-ssh-ssh"></span><h2>SSH configuration<a class="headerlink" href="#ssh-configuration" title="Permalink to this headline">#</a></h2>
@@ -1156,9 +1161,11 @@ can be updated by running: <code class="code docutils literal notranslate"><span
 </pre></div>
 </div>
 <p>Within a single kitty instance, all connections to a particular server can be
-shared. This reduces startup latency for subsequent connections and means that you have
-to enter the password only once. Under the hood, it uses SSH ControlMasters and
-these are automatically cleaned up by kitty when it quits.</p>
+shared. This reduces startup latency for subsequent connections and means that
+you have to enter the password only once. Under the hood, it uses SSH
+ControlMasters and these are automatically cleaned up by kitty when it quits.
+You can map a shortcut to <a class="reference internal" href="../../actions/#action-close_shared_ssh_connections"><code class="xref std std-ac docutils literal notranslate"><span class="pre">close_shared_ssh_connections</span></code></a> to disconnect all
+active shared connections.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-ssh.askpass">
 <span class="sig-name descname"><span class="pre">askpass</span></span><a class="headerlink" href="#opt-kitten-ssh.askpass" title="Permalink to this definition">#</a></dt>
@@ -1167,14 +1174,15 @@ these are automatically cleaned up by kitty when it quits.</p>
 </pre></div>
 </div>
 <p>Control the program SSH uses to ask for passwords or confirmation of host keys
-etc. The default is to use kitty’s native askpass, unless the SSH_ASKPASS
-environment variable is set. Set it to <code class="code docutils literal notranslate"><span class="pre">ssh</span></code> to not interfere with the
-normal ssh askpass mechanism at all, which typically means that ssh will prompt
-at the terminal. Set it to <code class="code docutils literal notranslate"><span class="pre">native</span></code> to always use kitty’s native,
-built-in askpass implementation. Note that not using the kitty askpass implementation
-means that SSH might need to use the terminal before the connection is established
-so the kitten cannot use the terminal to send data without an extra roundtrip,
-adding to initial connection latency.</p>
+etc. The default is to use kitty’s native <strong class="program">askpass</strong>, unless the
+<span class="target" id="index-0"></span><a class="reference internal" href="../../glossary/#envvar-SSH_ASKPASS"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">SSH_ASKPASS</span></code></a> environment variable is set. Set this option to
+<code class="code docutils literal notranslate"><span class="pre">ssh</span></code> to not interfere with the normal ssh askpass mechanism at all, which
+typically means that ssh will prompt at the terminal. Set it to <code class="code docutils literal notranslate"><span class="pre">native</span></code>
+to always use kitty’s native, built-in askpass implementation. Note that not
+using the kitty askpass implementation means that SSH might need to use the
+terminal before the connection is established, so the kitten cannot use the
+terminal to send data without an extra roundtrip, adding to initial connection
+latency.</p>
 </div>
 <div class="section" id="the-copy-command">
 <span id="ssh-copy-command"></span><h2>The copy command<a class="headerlink" href="#the-copy-command" title="Permalink to this headline">#</a></h2>

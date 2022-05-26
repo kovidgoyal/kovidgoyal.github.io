@@ -9,9 +9,6 @@ Fields are:
 :code:`self (default: False)`
   Boolean indicating whether to close the tab of the window the command is run in
 
-:code:`target_group (default: none)`
-  The target group to close
-
 
 
 close-window
@@ -52,7 +49,7 @@ Fields are:
   Which tab to detach
 
 :code:`target_tab (default: None)`
-  Which OS Window that containing the target tab to move the detached tab to
+  Which tab to move the detached tab to the OS window it is run in
 
 :code:`self (default: False)`
   Boolean indicating whether to detach the tab the command is run in
@@ -100,7 +97,7 @@ env
 Fields are:
 
 :code:`env (required)`
-  dictionary of environment variables to values. Empty values cause the variable to be deleted.
+  Dictionary of environment variables to values. Empty values cause the variable to be removed.
 
 
 
@@ -161,7 +158,7 @@ Fields are:
   Boolean, if True clear the selection in the matched window
 
 :code:`self (default: False)`
-  Boolean, if True use window command was run in
+  Boolean, if True use window the command was run in
 
 
 
@@ -289,7 +286,7 @@ ls
 Fields are:
 
 :code:`all_env_vars (default: False)`
-  Whether to send all environment variables for ever window rather than just differing ones
+  Whether to send all environment variables for every window rather than just differing ones
 
 
 
@@ -549,16 +546,16 @@ Fields are:
   An object mapping margins/paddings using canonical form {'margin-top': 50, 'padding-left': null} etc
 
 :code:`match_window (optional)`
-  Window to change colors in
+  Window to change paddings and margins in
 
 :code:`match_tab (default: None)`
-  Tab to change colors in
+  Tab to change paddings and margins in
 
 :code:`all (default: False)`
-  Boolean indicating change colors everywhere or not
+  Boolean indicating change paddings and margins everywhere or not
 
 :code:`configured (default: False)`
-  Boolean indicating whether to change the configured colors. Must be True if reset is True
+  Boolean indicating whether to change the configured paddings and margins. Must be True if reset is True
 
 
 
@@ -597,13 +594,13 @@ set-window-logo
 Fields are:
 
 :code:`data (required)`
-  Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value - to indicate image must be removed.
+  Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value :code:`-` to indicate image must be removed.
 
 :code:`position (default: None)`
   The logo position as a string, empty string means default
 
 :code:`alpha (default: -1.0)`
-  The logo alpha between 0 and 1. -1 means use default
+  The logo alpha between :code:`0` and :code:`1`. :code:`-1` means use default
 
 :code:`match (default: None)`
   Which window to change the logo in
@@ -635,10 +632,10 @@ signal-child
 Fields are:
 
 :code:`signals (optional)`
-  The signals, a list of names, such as SIGTERM, SIGKILL, SIGUSR1, etc.
+  The signals, a list of names, such as :code:`SIGTERM`, :code:`SIGKILL`, :code:`SIGUSR1`, etc.
 
 :code:`match (default: None)`
-  Which windows to change the title in
+  Which windows to send the signals to
 
 
 

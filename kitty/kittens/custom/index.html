@@ -407,7 +407,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../../remote-control/#allowing-only-some-windows-to-control-kitty">Allowing only some windows to control kitty</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../remote-control/#mapping-key-presses-to-remote-control-commands">Mapping key presses to remote control commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../remote-control/#broadcasting-what-you-type-to-all-kitty-windows">Broadcasting what you type to all kitty windows</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../../remote-control/#the-remote-control-protocol">The remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../remote-control/#the-remote-control-protocol">The remote control protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../remote-control/#matching-windows-and-tabs">Matching windows and tabs</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../rc_protocol/">The kitty remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../rc_protocol/#close-tab">close-tab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../rc_protocol/#close-window">close-window</a></li>
@@ -618,6 +619,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -663,76 +665,77 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id4">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id5">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id6">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id7">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id8">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id9">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id10">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id11">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id12">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id13">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id14">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id15">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id16">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id17">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id18">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id19">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id20">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id21">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id22">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id23">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id24">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id25">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id26">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id27">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id28">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id29">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id30">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id31">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id32">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id33">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id34">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id35">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id36">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id37">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id38">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id39">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id40">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id41">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id42">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id43">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id44">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id45">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id46">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id47">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id48">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id49">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id50">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id51">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id52">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id53">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id54">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id55">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id56">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id57">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id58">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id59">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id60">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id61">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id62">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id63">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id64">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id65">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id66">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id67">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id68">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id69">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id70">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id4">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id5">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id6">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id7">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id8">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id9">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id10">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id11">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id12">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id13">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id14">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id15">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id16">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id17">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id18">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id19">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id20">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id21">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id22">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id23">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id24">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id25">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id26">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id27">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id28">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id29">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id30">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id31">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id32">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id33">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id34">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id35">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id36">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id37">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id38">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id39">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id40">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id41">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id42">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id43">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id44">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id45">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id46">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id47">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id48">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id49">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id50">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id51">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id52">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id53">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id54">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id55">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id56">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id57">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id58">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id59">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id60">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id61">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id62">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id63">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id64">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id65">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id66">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id67">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id68">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id69">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id70">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id71">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -879,19 +882,17 @@
         <article role="main">
           <div class="section" id="custom-kittens">
 <h1>Custom kittens<a class="headerlink" href="#custom-kittens" title="Permalink to this headline">#</a></h1>
-<p>You can easily create your own kittens to extend kitty. They are just
-terminal programs written in Python. When launching a kitten, kitty will
-open an overlay window over the current window and optionally pass the
-contents of the current window/scrollback to the kitten over its <code class="file docutils literal notranslate"><span class="pre">STDIN</span></code>.
-The kitten can then perform whatever actions it likes, just as a normal
-terminal program. After execution of the kitten is complete, it has access
-to the running kitty instance so it can perform arbitrary actions
-such as closing windows, pasting text, etc.</p>
+<p>You can easily create your own kittens to extend kitty. They are just terminal
+programs written in Python. When launching a kitten, kitty will open an overlay
+window over the current window and optionally pass the contents of the current
+window/scrollback to the kitten over its <code class="file docutils literal notranslate"><span class="pre">STDIN</span></code>. The kitten can then
+perform whatever actions it likes, just as a normal terminal program. After
+execution of the kitten is complete, it has access to the running kitty instance
+so it can perform arbitrary actions such as closing windows, pasting text, etc.</p>
 <p>Let’s see a simple example of creating a kitten. It will ask the user for some
 input and paste it into the terminal window.</p>
-<p>Create a file in the kitty config folder, <code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/mykitten.py</span></code>
-(you might need to adjust the path to wherever the kitty config folder is on
-your machine).</p>
+<p>Create a file in the kitty config directory, <code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/mykitten.py</span></code>
+(you might need to adjust the path to wherever the <a class="reference internal" href="../../conf/#confloc"><span class="std std-ref">kitty config directory</span></a> is on your machine).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 <span class="kn">from</span> <span class="nn">kitty.boss</span> <span class="kn">import</span> <span class="n">Boss</span>
 
@@ -914,11 +915,10 @@ your machine).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">k</span> <span class="n">kitten</span> <span class="n">mykitten</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>Start kitty and press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">k</kbd></kbd> and you should see the kitten running.
-The best way to develop your own kittens is to modify one of the built in
-kittens. Look in the kittens sub-directory of the kitty source code for those.
-Or see below for a list of <a class="reference internal" href="#external-kittens"><span class="std std-ref">third-party kittens</span></a>,
-that other kitty users have created.</p>
+<p>Start kitty and press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">K</kbd></kbd> and you should see the kitten running.
+The best way to develop your own kittens is to modify one of the built-in
+kittens. Look in the <a class="reference external" href="https://github.com/kovidgoyal/kitty/tree/master/kittens">kittens sub-directory</a> of the kitty source
+code for those. Or see below for a list of <a class="reference internal" href="#external-kittens"><span class="std std-ref">third-party kittens</span></a>, that other kitty users have created.</p>
 <div class="section" id="passing-arguments-to-kittens">
 <h2>Passing arguments to kittens<a class="headerlink" href="#passing-arguments-to-kittens" title="Permalink to this headline">#</a></h2>
 <p>You can pass arguments to kittens by defining them in the map directive in
@@ -928,31 +928,35 @@ that other kitty users have created.</p>
 </div>
 <p>These will be available as the <code class="docutils literal notranslate"><span class="pre">args</span></code> parameter in the <code class="docutils literal notranslate"><span class="pre">main()</span></code> and
 <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> functions. Note also that the current working directory
-of the kitten is set to the working directory of whatever program is
-running in the active kitty window. The special argument <code class="docutils literal notranslate"><span class="pre">@selection</span></code>
-is replaced by the currently selected text in the active kitty window.</p>
+of the kitten is set to the working directory of whatever program is running in
+the active kitty window. The special argument <code class="docutils literal notranslate"><span class="pre">@selection</span></code> is replaced by the
+currently selected text in the active kitty window.</p>
 </div>
 <div class="section" id="passing-the-contents-of-the-screen-to-the-kitten">
 <h2>Passing the contents of the screen to the kitten<a class="headerlink" href="#passing-the-contents-of-the-screen-to-the-kitten" title="Permalink to this headline">#</a></h2>
 <p>If you would like your kitten to have access to the contents of the screen
-and/or the scrollback buffer, you just need to add an annotation to the <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code>
-function, telling kitty what kind of input your kitten would like. For example:</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># in main, STDIN is for the kitten process and will contain</span>
+and/or the scrollback buffer, you just need to add an annotation to the
+<code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> function, telling kitty what kind of input your kitten would
+like. For example:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">kitty.boss</span> <span class="kn">import</span> <span class="n">Boss</span>
+
+<span class="c1"># in main, STDIN is for the kitten process and will contain</span>
 <span class="c1"># the contents of the screen</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
 <span class="c1"># in handle_result, STDIN is for the kitty process itself, rather</span>
 <span class="c1"># than the kitten process and should not be read from.</span>
 <span class="kn">from</span> <span class="nn">kittens.tui.handler</span> <span class="kn">import</span> <span class="n">result_handler</span>
 <span class="nd">@result_handler</span><span class="p">(</span><span class="n">type_of_input</span><span class="o">=</span><span class="s1">'text'</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">handle_result</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">stdin_data</span><span class="p">,</span> <span class="n">target_window_id</span><span class="p">,</span> <span class="n">boss</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">handle_result</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">stdin_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target_window_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">boss</span><span class="p">:</span> <span class="n">Boss</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 <p>This will send the plain text of the active window to the kitten’s
-<code class="file docutils literal notranslate"><span class="pre">STDIN</span></code>. There are many other types of input you can ask for,
-described in the table below:</p>
+<code class="file docutils literal notranslate"><span class="pre">STDIN</span></code>. There are many other types of input you can ask for, described in
+the table below:</p>
 <div class="table-wrapper"><table class="docutils align-left" id="id1">
 <caption><span class="caption-text">Types of input to kittens</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
 <colgroup>
@@ -1012,25 +1016,29 @@ and <code class="docutils literal notranslate"><span class="pre">first_output</s
 These can also be combined with <code class="docutils literal notranslate"><span class="pre">screen</span></code> and <code class="docutils literal notranslate"><span class="pre">ansi</span></code> for formatting.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For the types based on the output of a command,
-<a class="reference internal" href="../../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> is required.</p>
+<p>For the types based on the output of a command, <a class="reference internal" href="../../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> is
+required.</p>
 </div>
 </div>
 <div class="section" id="using-kittens-to-script-kitty-without-any-terminal-ui">
 <h2>Using kittens to script kitty, without any terminal UI<a class="headerlink" href="#using-kittens-to-script-kitty-without-any-terminal-ui" title="Permalink to this headline">#</a></h2>
 <p>If you would like your kitten to script kitty, without bothering to write a
-terminal program, you can tell the kittens system to run the
-<code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> function without first running the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function.</p>
-<p>For example, here is a kitten that “zooms/unzooms” the current terminal window
-by switching to the stack layout or back to the previous layout. This is
+terminal program, you can tell the kittens system to run the <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code>
+function without first running the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function.</p>
+<p>For example, here is a kitten that “zooms in/zooms out” the current terminal
+window by switching to the stack layout or back to the previous layout. This is
 equivalent to the builtin <a class="reference internal" href="../../actions/#action-toggle_layout"><code class="xref std std-ac docutils literal notranslate"><span class="pre">toggle_layout</span></code></a> action.</p>
-<p>Create a file in the kitty config folder, <code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/zoom_toggle.py</span></code></p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<p>Create a Python file in the <a class="reference internal" href="../../conf/#confloc"><span class="std std-ref">kitty config directory</span></a>,
+<code class="file docutils literal notranslate"><span class="pre">~/.config/kitty/zoom_toggle.py</span></code></p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">kitty.boss</span> <span class="kn">import</span> <span class="n">Boss</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">pass</span>
 
 <span class="kn">from</span> <span class="nn">kittens.tui.handler</span> <span class="kn">import</span> <span class="n">result_handler</span>
 <span class="nd">@result_handler</span><span class="p">(</span><span class="n">no_ui</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">handle_result</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">answer</span><span class="p">,</span> <span class="n">target_window_id</span><span class="p">,</span> <span class="n">boss</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">handle_result</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">answer</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target_window_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">boss</span><span class="p">:</span> <span class="n">Boss</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">tab</span> <span class="o">=</span> <span class="n">boss</span><span class="o">.</span><span class="n">active_tab</span>
     <span class="k">if</span> <span class="n">tab</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">tab</span><span class="o">.</span><span class="n">current_layout</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">'stack'</span><span class="p">:</span>
@@ -1039,7 +1047,7 @@ equivalent to the builtin <a class="reference internal" href="../../actions/#act
             <span class="n">tab</span><span class="o">.</span><span class="n">goto_layout</span><span class="p">(</span><span class="s1">'stack'</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now in kitty.conf add:</p>
+<p>Now in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> add:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f11</span> <span class="n">kitten</span> <span class="n">zoom_toggle</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
@@ -1049,11 +1057,11 @@ layout, by simply adding the line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boss</span><span class="o">.</span><span class="n">toggle_fullscreen</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>To the <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> function, above.</p>
+<p>to the <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> function, above.</p>
 </div>
 <div class="section" id="sending-mouse-events">
 <span id="send-mouse-event"></span><h2>Sending mouse events<a class="headerlink" href="#sending-mouse-events" title="Permalink to this headline">#</a></h2>
-<p>If the program running in a window is receiving mouse events you can simulate
+<p>If the program running in a window is receiving mouse events, you can simulate
 those using:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kitty.fast_data_types</span> <span class="kn">import</span> <span class="n">send_mouse_event</span>
 <span class="n">send_mouse_event</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">button</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">mods</span><span class="p">)</span>
@@ -1077,15 +1085,15 @@ that type, and will return <code class="docutils literal notranslate"><span clas
 </div>
 <div class="section" id="debugging-kittens">
 <h2>Debugging kittens<a class="headerlink" href="#debugging-kittens" title="Permalink to this headline">#</a></h2>
-<p>The part of the kitten that runs in <code class="docutils literal notranslate"><span class="pre">main()</span></code> is just a normal program and
-the output of print statements will be visible in the kitten window. Or
-alternately, you can use:</p>
+<p>The part of the kitten that runs in <code class="docutils literal notranslate"><span class="pre">main()</span></code> is just a normal program and the
+output of print statements will be visible in the kitten window. Or alternately,
+you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kittens.tui.loop</span> <span class="kn">import</span> <span class="n">debug</span>
 <span class="n">debug</span><span class="p">(</span><span class="s1">'whatever'</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">debug()</span></code> function is just like <code class="docutils literal notranslate"><span class="pre">print()</span></code> except that the output
-will appear in the <code class="docutils literal notranslate"><span class="pre">STDOUT</span></code> of the kitty process inside which the kitten is
+<p>The <code class="docutils literal notranslate"><span class="pre">debug()</span></code> function is just like <code class="docutils literal notranslate"><span class="pre">print()</span></code> except that the output will
+appear in the <code class="docutils literal notranslate"><span class="pre">STDOUT</span></code> of the kitty process inside which the kitten is
 running.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">handle_result()</span></code> part of the kitten runs inside the kitty process.
 The output of print statements will go to the <code class="docutils literal notranslate"><span class="pre">STDOUT</span></code> of the kitty process.
@@ -1095,8 +1103,8 @@ in the first kitty instance.</p>
 <div class="section" id="adding-options-to-kittens">
 <h2>Adding options to kittens<a class="headerlink" href="#adding-options-to-kittens" title="Permalink to this headline">#</a></h2>
 <p>If you would like to use kitty’s config framework to make your kittens
-configurable, you will need some boilerplate. In the directory
-of your kitten make the following files.</p>
+configurable, you will need some boilerplate. Put the following files in the
+directory of your kitten.</p>
 <p><code class="file docutils literal notranslate"><span class="pre">kitten_options_definition.py</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kitty.conf.types</span> <span class="kn">import</span> <span class="n">Action</span><span class="p">,</span> <span class="n">Definition</span>
 
@@ -1178,13 +1186,15 @@ of your kitten make the following files.</p>
     <span class="k">return</span> <span class="n">opts</span>
 </pre></div>
 </div>
-<p>See the code for the builtin diff kitten for examples of creating more options
-and keyboard shortcuts.</p>
+<p>See <a class="reference external" href="https://github.com/kovidgoyal/kitty/tree/master/kittens/diff">the code</a>
+for the builtin <a class="reference internal" href="../diff/"><span class="doc">diff kitten</span></a> for examples of creating more
+options and keyboard shortcuts.</p>
 </div>
 <div class="section" id="kittens-created-by-kitty-users">
 <span id="external-kittens"></span><h2>Kittens created by kitty users<a class="headerlink" href="#kittens-created-by-kitty-users" title="Permalink to this headline">#</a></h2>
 <dl class="simple">
-<dt><a class="reference external" href="https://github.com/knubie/vim-kitty-navigator">vim-kitty-navigator</a></dt><dd><p>Allows you to navigate seamlessly between vim and kitty splits using a consistent set of hotkeys.</p>
+<dt><a class="reference external" href="https://github.com/knubie/vim-kitty-navigator">vim-kitty-navigator</a></dt><dd><p>Allows you to navigate seamlessly between vim and kitty splits using a
+consistent set of hotkeys.</p>
 </dd>
 <dt><a class="reference external" href="https://github.com/yurikhan/kitty-smart-scroll">smart-scroll</a></dt><dd><p>Makes the kitty scroll bindings work in full screen applications</p>
 </dd>

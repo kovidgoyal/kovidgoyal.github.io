@@ -34,6 +34,51 @@ mouse anywhere in the current command to move the cursor there. See
 Detailed list of changes
 -------------------------------------
 
+0.25.1 [2022-05-26]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Shell integration: Add a command to :ref:`clone_shell`
+
+- Remote control: Allow using :ref:`Boolean operators <search_syntax>` when constructing queries to match windows or tabs
+
+- Sessions: Fix :code:`os_window_size` and :code:`os_window_class` not applying to the first OS Window (:iss:`4957`)
+
+- Allow using the cwd of the oldest as well as the newest foreground process for :option:`launch --cwd` (:disc:`4869`)
+
+- Bash integration: Fix the value of :opt:`shell_integration` not taking effect if the integration script is sourced in bashrc (:pull:`4964`)
+
+- Fix a regression in the previous release that caused mouse move events to be incorrectly reported as drag events even when a button is not pressed (:iss:`4992`)
+
+- remote file kitten: Integrate with the ssh kitten for improved performance
+  and robustness. Re-uses the control master connection of the ssh kitten to
+  avoid round-trip latency.
+
+- Fix tab selection when closing a new tab not correct in some scenarios (:iss:`4987`)
+
+- A new action :ac:`open_url` to open the specified URL (:pull:`5004`)
+
+- A new option :opt:`select_by_word_characters_forward` that allows changing
+  which characters are considered part of a word to the right when double clicking to select
+  words (:pull:`5103`)
+
+- macOS: Make the global menu shortcut to open kitty website configurable (:pull:`5004`)
+
+- macOS: Add the :opt:`macos_colorspace` option to control what color space colors are rendered in (:iss:`4686`)
+
+- Fix reloading of config not working when :file:`kitty.conf` does not exist when kitty is launched (:iss:`5071`)
+
+- Fix deleting images by row not calculating image bounds correctly (:iss:`5081`)
+
+- Increase the max number of combining chars per cell from two to three, without increasing memory usage.
+
+- Linux: Load libfontconfig at runtime to allow the binaries to work for
+  running kittens on servers without FontConfig
+
+- GNOME: Fix for high CPU usage caused by GNOME's text input subsystem going
+  into an infinite loop when IME cursor position is updated after a done event
+  (:iss:`5105`)
+
+
 0.25.0 [2022-04-11]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -42,6 +87,10 @@ Detailed list of changes
   re-use of existing connections to avoid connection setup latency.
 
 - When pasting URLs at shell prompts automatically quote them. Also allow filtering pasted text and confirm pastes. See :opt:`paste_actions` for details. (:iss:`4873`)
+
+- Change the default value of :opt:`confirm_os_window_close` to ask for confirmation when closing windows that are not sitting at shell prompts
+
+- A new value :code:`last_reported` for :option:`launch --cwd` to use the current working directory last reported by the program running in the terminal
 
 - macOS: When using Apple's less as the pager for viewing scrollback strip out OSC codes as it cant parse them (:iss:`4788`)
 

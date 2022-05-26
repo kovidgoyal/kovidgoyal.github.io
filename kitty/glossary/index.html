@@ -407,7 +407,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#allowing-only-some-windows-to-control-kitty">Allowing only some windows to control kitty</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#mapping-key-presses-to-remote-control-commands">Mapping key presses to remote control commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#broadcasting-what-you-type-to-all-kitty-windows">Broadcasting what you type to all kitty windows</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#the-remote-control-protocol">The remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#the-remote-control-protocol">The remote control protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#matching-windows-and-tabs">Matching windows and tabs</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../rc_protocol/">The kitty remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-tab">close-tab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-window">close-window</a></li>
@@ -618,6 +619,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -663,76 +665,77 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -905,12 +908,14 @@ to display <a class="reference internal" href="../kittens/hints/"><span class="d
 </dd>
 <dt id="term-hyperlinks">hyperlinks<a class="headerlink" href="#term-hyperlinks" title="Permalink to this term">#</a></dt><dd><p>Terminals can have hyperlinks, just like the internet. In kitty you can
 <a class="reference internal" href="../open_actions/"><span class="doc">control exactly what happens</span></a> when clicking on a
-hyperlink, based on the type of link and its URL.</p>
+hyperlink, based on the type of link and its URL. See also <a class="reference external" href="https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda">Hyperlinks in terminal
+emulators</a>.</p>
 </dd>
 </dl>
 <div class="section" id="environment-variables">
 <span id="env-vars"></span><h2>Environment variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">#</a></h2>
-<p>Variables that influence kitty behavior</p>
+<div class="section" id="variables-that-influence-kitty-behavior">
+<h3>Variables that influence kitty behavior<a class="headerlink" href="#variables-that-influence-kitty-behavior" title="Permalink to this headline">#</a></h3>
 <dl class="std envvar">
 <dt class="sig sig-object std" id="envvar-KITTY_CONFIG_DIRECTORY">
 <span class="sig-name descname"><span class="pre">KITTY_CONFIG_DIRECTORY</span></span><a class="headerlink" href="#envvar-KITTY_CONFIG_DIRECTORY" title="Permalink to this definition">#</a></dt>
@@ -934,8 +939,9 @@ otherwise the run directory inside the kitty cache directory is used.</p>
 <dl class="std envvar">
 <dt class="sig sig-object std" id="envvar-VISUAL">
 <span class="sig-name descname"><span class="pre">VISUAL</span></span><a class="headerlink" href="#envvar-VISUAL" title="Permalink to this definition">#</a></dt>
-<dd><p>The terminal editor (such as <code class="docutils literal notranslate"><span class="pre">vi</span></code> or <code class="docutils literal notranslate"><span class="pre">nano</span></code>) kitty uses, when, for
-instance, opening <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> in response to <a class="reference internal" href="../conf/#shortcut-kitty.Edit-config-file"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f2</span></code></a>.</p>
+<dd><p>The terminal based text editor (such as <strong class="program">vi</strong> or <strong class="program">nano</strong>)
+kitty uses, when, for instance, opening <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> in response to
+<a class="reference internal" href="../conf/#shortcut-kitty.Edit-config-file"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f2</span></code></a>.</p>
 </dd></dl>
 <dl class="std envvar">
 <dt class="sig sig-object std" id="envvar-EDITOR">
@@ -955,12 +961,45 @@ under Wayland. This is useful if using non-standard modifers like hyper. It
 is possible for the autodiscovery to fail; the default Wayland XKB mappings
 are used in this case. See <a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/3943">#3943</a> for details.</p>
 </dd></dl>
-<p>Variables that kitty sets when running child programs</p>
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-SSH_ASKPASS">
+<span class="sig-name descname"><span class="pre">SSH_ASKPASS</span></span><a class="headerlink" href="#envvar-SSH_ASKPASS" title="Permalink to this definition">#</a></dt>
+<dd><p>Specify the program for SSH to ask for passwords. When this is set, <a class="reference internal" href="../kittens/ssh/"><span class="doc">ssh
+kitten</span></a> will use this environment variable by default. See
+<a class="reference internal" href="../kittens/ssh/#opt-kitten-ssh.askpass"><code class="xref std std-opt docutils literal notranslate"><span class="pre">askpass</span></code></a> for details.</p>
+</dd></dl>
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-KITTY_CLONE_SOURCE_CODE">
+<span class="sig-name descname"><span class="pre">KITTY_CLONE_SOURCE_CODE</span></span><a class="headerlink" href="#envvar-KITTY_CLONE_SOURCE_CODE" title="Permalink to this definition">#</a></dt>
+<dd><p>Set this to some shell code that will be executed in the cloned window with
+<code class="code docutils literal notranslate"><span class="pre">eval</span></code> when <a class="reference internal" href="../shell-integration/#clone-shell"><span class="std std-ref">clone-in-kitty</span></a> is used.</p>
+</dd></dl>
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-KITTY_CLONE_SOURCE_PATH">
+<span class="sig-name descname"><span class="pre">KITTY_CLONE_SOURCE_PATH</span></span><a class="headerlink" href="#envvar-KITTY_CLONE_SOURCE_PATH" title="Permalink to this definition">#</a></dt>
+<dd><p>Set this to the path of a file that will be sourced in the cloned window when
+<a class="reference internal" href="../shell-integration/#clone-shell"><span class="std std-ref">clone-in-kitty</span></a> is used.</p>
+</dd></dl>
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-KITTY_DEVELOP_FROM">
+<span class="sig-name descname"><span class="pre">KITTY_DEVELOP_FROM</span></span><a class="headerlink" href="#envvar-KITTY_DEVELOP_FROM" title="Permalink to this definition">#</a></dt>
+<dd><p>Set this to the directory path of the kitty source code and its Python code
+will be loaded from there. Only works with official binary builds.</p>
+</dd></dl>
+</div>
+<div class="section" id="variables-that-kitty-sets-when-running-child-programs">
+<h3>Variables that kitty sets when running child programs<a class="headerlink" href="#variables-that-kitty-sets-when-running-child-programs" title="Permalink to this headline">#</a></h3>
 <dl class="std envvar">
 <dt class="sig sig-object std" id="envvar-LANG">
 <span class="sig-name descname"><span class="pre">LANG</span></span><a class="headerlink" href="#envvar-LANG" title="Permalink to this definition">#</a></dt>
-<dd><p>This is set only on macOS, and only if the country and language from the
-macOS user settings form a valid locale.</p>
+<dd><p>This is only set on macOS. If the country and language from the macOS user
+settings form an invalid locale, it will be set to <code class="code docutils literal notranslate"><span class="pre">en_US.UTF-8</span></code>.</p>
+</dd></dl>
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-PATH">
+<span class="sig-name descname"><span class="pre">PATH</span></span><a class="headerlink" href="#envvar-PATH" title="Permalink to this definition">#</a></dt>
+<dd><p>kitty prepends itself to the PATH of its own environment to ensure the
+functions calling <strong class="program">kitty</strong> will work properly.</p>
 </dd></dl>
 <dl class="std envvar">
 <dt class="sig sig-object std" id="envvar-KITTY_WINDOW_ID">
@@ -1007,7 +1046,7 @@ colors.</p>
 <span class="sig-name descname"><span class="pre">KITTY_LISTEN_ON</span></span><a class="headerlink" href="#envvar-KITTY_LISTEN_ON" title="Permalink to this definition">#</a></dt>
 <dd><p>Set when the <a class="reference internal" href="../remote-control/"><span class="doc">remote control</span></a> facility is enabled and
 the a socket is used for control via <a class="reference internal" href="../invocation/#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a> or <a class="reference internal" href="../conf/#opt-kitty.listen_on"><code class="xref std std-opt docutils literal notranslate"><span class="pre">listen_on</span></code></a>.
-Contains the path to the socket. Avoids needs to use <a class="reference internal" href="../remote-control/#cmdoption-kitty-to"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">@</span> <span class="pre">--to</span></code></a> when
+Contains the path to the socket. Avoid the need to use <a class="reference internal" href="../remote-control/#cmdoption-kitty-to"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">@</span> <span class="pre">--to</span></code></a> when
 issuing remote control commands.</p>
 </dd></dl>
 <dl class="std envvar">
@@ -1028,7 +1067,7 @@ window when calling the notification callback program on terminal bell, see
 <dt class="sig sig-object std" id="envvar-KITTY_COMMON_OPTS">
 <span class="sig-name descname"><span class="pre">KITTY_COMMON_OPTS</span></span><a class="headerlink" href="#envvar-KITTY_COMMON_OPTS" title="Permalink to this definition">#</a></dt>
 <dd><p>Set with the values of some common kitty options when running
-kittens, so kittens can use them without needing to load kitty.conf.</p>
+kittens, so kittens can use them without needing to load <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.</p>
 </dd></dl>
 <dl class="std envvar">
 <dt class="sig sig-object std" id="envvar-KITTY_SHELL_INTEGRATION">
@@ -1036,6 +1075,25 @@ kittens, so kittens can use them without needing to load kitty.conf.</p>
 <dd><p>Set when enabling <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a>. It is automatically removed by
 the shell integration scripts.</p>
 </dd></dl>
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ZDOTDIR">
+<span class="sig-name descname"><span class="pre">ZDOTDIR</span></span><a class="headerlink" href="#envvar-ZDOTDIR" title="Permalink to this definition">#</a></dt>
+<dd><p>Set when enabling <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> with <strong class="program">zsh</strong>, allowing
+<strong class="program">zsh</strong> to automatically load the integration script.</p>
+</dd></dl>
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-XDG_DATA_DIRS">
+<span class="sig-name descname"><span class="pre">XDG_DATA_DIRS</span></span><a class="headerlink" href="#envvar-XDG_DATA_DIRS" title="Permalink to this definition">#</a></dt>
+<dd><p>Set when enabling <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> with <strong class="program">fish</strong>, allowing
+<strong class="program">fish</strong> to automatically load the integration script.</p>
+</dd></dl>
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-ENV">
+<span class="sig-name descname"><span class="pre">ENV</span></span><a class="headerlink" href="#envvar-ENV" title="Permalink to this definition">#</a></dt>
+<dd><p>Set when enabling <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> with <strong class="program">bash</strong>, allowing
+<strong class="program">bash</strong> to automatically load the integration script.</p>
+</dd></dl>
+</div>
 </div>
 </div>
 
@@ -1078,7 +1136,11 @@ the shell integration scripts.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Glossary</a><ul>
-<li><a class="reference internal" href="#environment-variables">Environment variables</a></li>
+<li><a class="reference internal" href="#environment-variables">Environment variables</a><ul>
+<li><a class="reference internal" href="#variables-that-influence-kitty-behavior">Variables that influence kitty behavior</a></li>
+<li><a class="reference internal" href="#variables-that-kitty-sets-when-running-child-programs">Variables that kitty sets when running child programs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

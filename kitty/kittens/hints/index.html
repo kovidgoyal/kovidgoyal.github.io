@@ -407,7 +407,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../../remote-control/#allowing-only-some-windows-to-control-kitty">Allowing only some windows to control kitty</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../remote-control/#mapping-key-presses-to-remote-control-commands">Mapping key presses to remote control commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../remote-control/#broadcasting-what-you-type-to-all-kitty-windows">Broadcasting what you type to all kitty windows</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../../remote-control/#the-remote-control-protocol">The remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../remote-control/#the-remote-control-protocol">The remote control protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../remote-control/#matching-windows-and-tabs">Matching windows and tabs</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../rc_protocol/">The kitty remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../rc_protocol/#close-tab">close-tab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../rc_protocol/#close-window">close-window</a></li>
@@ -618,6 +619,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -663,76 +665,77 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id4">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id5">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id6">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id7">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id8">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id9">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id10">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id11">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id12">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id13">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id14">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id15">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id16">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id17">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id18">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id19">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id20">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id21">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id22">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id23">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id24">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id25">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id26">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id27">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id28">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id29">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id30">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id31">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id32">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id33">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id34">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id35">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id36">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id37">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id38">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id39">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id40">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id41">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id42">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id43">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id44">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id45">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id46">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id47">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id48">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id49">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id50">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id51">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id52">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id53">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id54">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id55">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id56">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id57">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id58">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id59">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id60">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id61">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id62">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id63">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id64">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id65">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id66">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id67">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id68">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id69">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id70">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id4">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id5">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id6">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id7">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id8">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id9">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id10">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id11">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id12">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id13">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id14">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id15">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id16">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id17">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id18">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id19">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id20">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id21">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id22">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id23">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id24">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id25">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id26">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id27">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id28">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id29">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id30">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id31">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id32">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id33">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id34">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id35">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id36">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id37">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id38">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id39">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id40">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id41">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id42">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id43">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id44">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id45">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id46">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id47">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id48">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id49">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id50">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id51">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id52">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id53">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id54">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id55">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id56">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id57">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id58">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id59">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id60">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id61">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id62">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id63">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id64">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id65">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id66">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id67">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id68">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id69">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id70">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id71">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -879,31 +882,32 @@
         <article role="main">
           <div class="section" id="hints">
 <h1>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">#</a></h1>
-<p><em>kitty</em> has a <em>hints mode</em> to select and act on arbitrary text snippets currently
-visible on the screen.  For example, you can press <a class="reference internal" href="../../conf/#shortcut-kitty.Open-URL"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+e</span></code></a>
-to choose any URL visible on the screen and then open it using your system
+<p><em>kitty</em> has a <em>hints mode</em> to select and act on arbitrary text snippets
+currently visible on the screen.  For example, you can press <a class="reference internal" href="../../conf/#shortcut-kitty.Open-URL"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+e</span></code></a>
+to choose any URL visible on the screen and then open it using your default web
 browser.</p>
 <div class="figure align-center" id="id1">
 <a class="reference internal image-reference" href="../../_images/hints_mode.png"><img alt="URL hints mode" src="../../_images/hints_mode.png" style="width: 100%;"/></a>
 <p class="caption"><span class="caption-text">URL hints mode</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </div>
-<p>Similarly, you can press <a class="reference internal" href="../../conf/#shortcut-kitty.Insert-selected-path"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;f</span></code></a> to
-select anything that looks like a path or filename and then insert it into the
-terminal, very useful for picking files from the output of a <code class="docutils literal notranslate"><span class="pre">git</span></code> or <code class="docutils literal notranslate"><span class="pre">ls</span></code> command and
-adding them to the command line for the next command.</p>
-<p>You can also press <a class="reference internal" href="../../conf/#shortcut-kitty.Open-the-selected-file-at-the-selected-line"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;n</span></code></a> to select anything that looks
-like a path or filename followed by a colon and a line number and open
-the file in vim at the specified line number. The patterns and editor
-to be used can be modified using options passed to the kitten. For example:</p>
+<p>Similarly, you can press <a class="reference internal" href="../../conf/#shortcut-kitty.Insert-selected-path"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;f</span></code></a> to select anything that
+looks like a path or filename and then insert it into the terminal, very useful
+for picking files from the output of a <strong class="program">git</strong> or <strong class="program">ls</strong> command
+and adding them to the command line for the next command.</p>
+<p>You can also press <a class="reference internal" href="../../conf/#shortcut-kitty.Open-the-selected-file-at-the-selected-line"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;n</span></code></a> to select anything that looks like a
+path or filename followed by a colon and a line number and open the file in
+<strong class="program">vim</strong> at the specified line number. The patterns and editor to be used
+can be modified using options passed to the kitten. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">g</span> <span class="n">kitten</span> <span class="n">hints</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">linenum</span> <span class="o">--</span><span class="n">linenum</span><span class="o">-</span><span class="n">action</span><span class="o">=</span><span class="n">tab</span> <span class="n">nvim</span> <span class="o">+</span><span class="p">{</span><span class="n">line</span><span class="p">}</span> <span class="p">{</span><span class="n">path</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>will open the selected file in a new tab inside neovim when you press
-<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">g</kbd></kbd>.</p>
-<p>Pressing <a class="reference internal" href="../../conf/#shortcut-kitty.Open-the-selected-hyperlink"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;y</span></code></a> will open hyperlinks, i.e. a URL
+<p>will open the selected file in a new tab inside <a class="reference external" href="https://neovim.io/">Neovim</a>
+when you press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">G</kbd></kbd>.</p>
+<p>Pressing <a class="reference internal" href="../../conf/#shortcut-kitty.Open-the-selected-hyperlink"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+p&gt;y</span></code></a> will open <a class="reference internal" href="../../glossary/#term-hyperlinks"><span class="xref std std-term">hyperlinks</span></a>, i.e. a URL
 that has been marked as such by the program running in the terminal,
-for example, by <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">--hyperlink=auto</span></code>. You can also <a class="reference internal" href="../../open_actions/"><span class="doc">customize what actions are
-taken for different types of URLs</span></a>.</p>
+for example, by <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">--hyperlink=auto</span></code>. If <strong class="program">ls</strong> comes with your OS
+does not support hyperlink, you may need to install <a class="reference external" href="https://www.gnu.org/software/coreutils/">GNU Coreutils</a>.</p>
+<p>You can also <a class="reference internal" href="../../open_actions/"><span class="doc">customize what actions are taken for different types of URLs</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If there are more hints than letters, hints will use multiple
@@ -918,13 +922,12 @@ create mappings in <code class="file docutils literal notranslate"><span class="
 snippets. See <a class="reference internal" href="../../conf/#shortcut-kitty.Insert-selected-path"><code class="xref std std-sc docutils literal notranslate"><span class="pre">insert_selected_path</span></code></a> for examples.</p>
 <div class="section" id="completely-customizing-the-matching-and-actions-of-the-kitten">
 <h2>Completely customizing the matching and actions of the kitten<a class="headerlink" href="#completely-customizing-the-matching-and-actions-of-the-kitten" title="Permalink to this headline">#</a></h2>
-<p>The hints kitten supports writing simple python scripts that can be used to
+<p>The hints kitten supports writing simple Python scripts that can be used to
 completely customize how it finds matches and what happens when a match is
-selected. This allows the hints kitten to provide the user interface, while
-you can provide the logic for finding matches and performing actions on them.
-This is best illustrated with an example. Create the file
-<code class="file docutils literal notranslate"><span class="pre">custom-hints.py</span></code> in the kitty config directory with the following
-contents:</p>
+selected. This allows the hints kitten to provide the user interface, while you
+can provide the logic for finding matches and performing actions on them. This
+is best illustrated with an example. Create the file <code class="file docutils literal notranslate"><span class="pre">custom-hints.py</span></code> in
+the <a class="reference internal" href="../../conf/#confloc"><span class="std std-ref">kitty config directory</span></a> with the following contents:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 
 <span class="k">def</span> <span class="nf">mark</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">Mark</span><span class="p">,</span> <span class="n">extra_cli_args</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">):</span>
@@ -977,38 +980,38 @@ look it up in the Google dictionary.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-program">
 <span class="sig-name descname"><span class="pre">--program</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;PROGRAM&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-program" title="Permalink to this definition">#</a></dt>
-<dd><p>What program to use to open matched text. Defaults to the default open program for the operating system. Use a value of <code class="file docutils literal notranslate"><span class="pre">-</span></code> to paste the match into the terminal window instead. A value of <code class="file docutils literal notranslate"><span class="pre">@</span></code> will copy the match to the clipboard. A value of <code class="file docutils literal notranslate"><span class="pre">*</span></code> will copy the match to the primary selection (on systems that support primary selections). A value of <code class="file docutils literal notranslate"><span class="pre">default</span></code> will run the default open program. Can be specified multiple times to run multiple programs.</p>
+<dd><p>What program to use to open matched text. Defaults to the default open program for the operating system. Use a value of <code class="code docutils literal notranslate"><span class="pre">-</span></code> to paste the match into the terminal window instead. A value of <code class="code docutils literal notranslate"><span class="pre">@</span></code> will copy the match to the clipboard. A value of <code class="code docutils literal notranslate"><span class="pre">*</span></code> will copy the match to the primary selection (on systems that support primary selections). A value of <code class="code docutils literal notranslate"><span class="pre">default</span></code> will run the default open program. Can be specified multiple times to run multiple programs.</p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-type">
 <span class="sig-name descname"><span class="pre">--type</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;TYPE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-type" title="Permalink to this definition">#</a></dt>
-<dd><p>The type of text to search for. A value of <code class="code docutils literal notranslate"><span class="pre">linenum</span></code> is special, it looks for error messages using the pattern specified with <a class="reference internal" href="#cmdoption-kitty-kitten-hints-regex"><code class="xref std std-option docutils literal notranslate"><span class="pre">--regex</span></code></a>, which must have the named groups, <code class="code docutils literal notranslate"><span class="pre">path</span></code> and <code class="code docutils literal notranslate"><span class="pre">line</span></code>. If not specified, will look for <code class="code docutils literal notranslate"><span class="pre">path:line</span></code>. The <a class="reference internal" href="#cmdoption-kitty-kitten-hints-linenum-action"><code class="xref std std-option docutils literal notranslate"><span class="pre">--linenum-action</span></code></a> option controls where to display the selected error message, other options are ignored.
+<dd><p>The type of text to search for. A value of <code class="code docutils literal notranslate"><span class="pre">linenum</span></code> is special, it looks for error messages using the pattern specified with <a class="reference internal" href="#cmdoption-kitty-kitten-hints-regex"><code class="xref std std-option docutils literal notranslate"><span class="pre">--regex</span></code></a>, which must have the named groups: <code class="code docutils literal notranslate"><span class="pre">path</span></code> and <code class="code docutils literal notranslate"><span class="pre">line</span></code>. If not specified, will look for <code class="code docutils literal notranslate"><span class="pre">path:line</span></code>. The <a class="reference internal" href="#cmdoption-kitty-kitten-hints-linenum-action"><code class="xref std std-option docutils literal notranslate"><span class="pre">--linenum-action</span></code></a> option controls where to display the selected error message, other options are ignored.
 Default: <code class="code docutils literal notranslate"><span class="pre">url</span></code>
 Choices: <code class="code docutils literal notranslate"><span class="pre">hash</span></code>, <code class="code docutils literal notranslate"><span class="pre">hyperlink</span></code>, <code class="code docutils literal notranslate"><span class="pre">ip</span></code>, <code class="code docutils literal notranslate"><span class="pre">line</span></code>, <code class="code docutils literal notranslate"><span class="pre">linenum</span></code>, <code class="code docutils literal notranslate"><span class="pre">path</span></code>, <code class="code docutils literal notranslate"><span class="pre">regex</span></code>, <code class="code docutils literal notranslate"><span class="pre">url</span></code>, <code class="code docutils literal notranslate"><span class="pre">word</span></code></p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-regex">
 <span class="sig-name descname"><span class="pre">--regex</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;REGEX&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-regex" title="Permalink to this definition">#</a></dt>
-<dd><p>The regular expression to use when <a class="reference internal" href="#cmdoption-kitty-kitten-hints-type"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">hints</span> <span class="pre">--type</span></code></a><code class="code docutils literal notranslate"><span class="pre">=regex</span></code>. The regular expression is in python syntax. If you specify a numbered group in the regular expression only the group will be matched. This allow you to match text ignoring a prefix/suffix, as needed. The default expression matches lines. To match text over multiple lines you should prefix the regular expression with <code class="code docutils literal notranslate"><span class="pre">(?ms)</span></code>, which turns on MULTILINE and DOTALL modes for the regex engine. If you specify named groups and a <a class="reference internal" href="#cmdoption-kitty-kitten-hints-program"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">hints</span> <span class="pre">--program</span></code></a> then the program will be passed arguments corresponding to each named group of the form key=value.
+<dd><p>The regular expression to use when option <a class="reference internal" href="#cmdoption-kitty-kitten-hints-type"><code class="xref std std-option docutils literal notranslate"><span class="pre">--type</span></code></a> is set to <code class="code docutils literal notranslate"><span class="pre">regex</span></code>, in python syntax. If you specify a numbered group in the regular expression, only the group will be matched. This allow you to match text ignoring a prefix/suffix, as needed. The default expression matches lines. To match text over multiple lines, you should prefix the regular expression with <code class="code docutils literal notranslate"><span class="pre">(?ms)</span></code>, which turns on MULTILINE and DOTALL modes for the regex engine. If you specify named groups and a <a class="reference internal" href="#cmdoption-kitty-kitten-hints-program"><code class="xref std std-option docutils literal notranslate"><span class="pre">--program</span></code></a>, then the program will be passed arguments corresponding to each named group of the form <code class="code docutils literal notranslate"><span class="pre">key=value</span></code>.
 Default: <code class="code docutils literal notranslate"><span class="pre">(?m)^\s*(.+)\s*$</span></code></p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-linenum-action">
 <span class="sig-name descname"><span class="pre">--linenum-action</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;LINENUM_ACTION&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-linenum-action" title="Permalink to this definition">#</a></dt>
-<dd><p>Where to perform the action on matched errors. <code class="code docutils literal notranslate"><span class="pre">self</span></code> means the current window, <code class="code docutils literal notranslate"><span class="pre">window</span></code> a new kitty window, <code class="code docutils literal notranslate"><span class="pre">tab</span></code> a new tab, <code class="code docutils literal notranslate"><span class="pre">os_window</span></code> a new OS window and <code class="code docutils literal notranslate"><span class="pre">background</span></code> run in the background. The actual action is whatever arguments are provided to the kitten, for example: <code class="code docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+</span> <span class="pre">kitten</span> <span class="pre">hints</span> <span class="pre">--type=linenum</span> <span class="pre">--linenum-action=tab</span> <span class="pre">vim</span> <span class="pre">+{line}</span> <span class="pre">{path}</span></code> will open the matched path at the matched line number in vim in a new kitty tab. Note that only when using <code class="code docutils literal notranslate"><span class="pre">self</span></code> are the special values for <a class="reference internal" href="#cmdoption-kitty-kitten-hints-program"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">hints</span> <span class="pre">--program</span></code></a> to copy/paste the text respected.
+<dd><p>Where to perform the action on matched errors. <code class="code docutils literal notranslate"><span class="pre">self</span></code> means the current window, <code class="code docutils literal notranslate"><span class="pre">window</span></code> a new kitty window, <code class="code docutils literal notranslate"><span class="pre">tab</span></code> a new tab, <code class="code docutils literal notranslate"><span class="pre">os_window</span></code> a new OS window and <code class="code docutils literal notranslate"><span class="pre">background</span></code> run in the background. The actual action is whatever arguments are provided to the kitten, for example: <code class="code docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+kitten</span> <span class="pre">hints</span> <span class="pre">--type=linenum</span> <span class="pre">--linenum-action=tab</span> <span class="pre">vim</span> <span class="pre">+{line}</span> <span class="pre">{path}</span></code> will open the matched path at the matched line number in vim in a new kitty tab. Note that in order to use <a class="reference internal" href="#cmdoption-kitty-kitten-hints-program"><code class="xref std std-option docutils literal notranslate"><span class="pre">--program</span></code></a> to copy or paste text, you need to use the special value <code class="code docutils literal notranslate"><span class="pre">self</span></code>.
 Default: <code class="code docutils literal notranslate"><span class="pre">self</span></code>
 Choices: <code class="code docutils literal notranslate"><span class="pre">background</span></code>, <code class="code docutils literal notranslate"><span class="pre">os_window</span></code>, <code class="code docutils literal notranslate"><span class="pre">self</span></code>, <code class="code docutils literal notranslate"><span class="pre">tab</span></code>, <code class="code docutils literal notranslate"><span class="pre">window</span></code></p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-url-prefixes">
 <span class="sig-name descname"><span class="pre">--url-prefixes</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;URL_PREFIXES&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-url-prefixes" title="Permalink to this definition">#</a></dt>
-<dd><p>Comma separated list of recognized URL prefixes. Defaults, to the list of prefixes defined in kitty.conf.
+<dd><p>Comma separated list of recognized URL prefixes. Defaults to the list of prefixes defined by the <a class="reference internal" href="../../conf/#opt-kitty.url_prefixes"><code class="xref std std-opt docutils literal notranslate"><span class="pre">url_prefixes</span></code></a> option in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.
 Default: <code class="code docutils literal notranslate"><span class="pre">default</span></code></p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-word-characters">
 <span class="sig-name descname"><span class="pre">--word-characters</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;WORD_CHARACTERS&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-word-characters" title="Permalink to this definition">#</a></dt>
-<dd><p>Characters to consider as part of a word. In addition, all characters marked as alphanumeric in the unicode database will be considered as word characters. Defaults to the select_by_word_characters setting from kitty.conf.</p>
+<dd><p>Characters to consider as part of a word. In addition, all characters marked as alphanumeric in the Unicode database will be considered as word characters. Defaults to the <a class="reference internal" href="../../conf/#opt-kitty.select_by_word_characters"><code class="xref std std-opt docutils literal notranslate"><span class="pre">select_by_word_characters</span></code></a> option from <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.</p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-minimum-match-length">
@@ -1024,13 +1027,13 @@ Default: <code class="code docutils literal notranslate"><span class="pre">3</sp
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-multiple-joiner">
 <span class="sig-name descname"><span class="pre">--multiple-joiner</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;MULTIPLE_JOINER&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-multiple-joiner" title="Permalink to this definition">#</a></dt>
-<dd><p>String to use to join multiple selections when copying to the clipboard or inserting into the terminal. The special strings: “space”, “newline”, “empty”, “json” and “auto” are interpreted as a space character, a newline an empty joiner, a JSON serialized list and an automatic choice, based on the type of text being selected. In addition, integers are interpreted as zero-based indices into the list of selections. You can use 0 for the first selection and -1 for the last.
+<dd><p>String for joining multiple selections when copying to the clipboard or inserting into the terminal. The special values are: <code class="code docutils literal notranslate"><span class="pre">space</span></code> - a space character, <code class="code docutils literal notranslate"><span class="pre">newline</span></code> - a newline, <code class="code docutils literal notranslate"><span class="pre">empty</span></code> - an empty joiner, <code class="code docutils literal notranslate"><span class="pre">json</span></code> - a JSON serialized list, <code class="code docutils literal notranslate"><span class="pre">auto</span></code> - an automatic choice, based on the type of text being selected. In addition, integers are interpreted as zero-based indices into the list of selections. You can use <code class="code docutils literal notranslate"><span class="pre">0</span></code> for the first selection and <code class="code docutils literal notranslate"><span class="pre">-1</span></code> for the last.
 Default: <code class="code docutils literal notranslate"><span class="pre">auto</span></code></p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-add-trailing-space">
 <span class="sig-name descname"><span class="pre">--add-trailing-space</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;ADD_TRAILING_SPACE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-add-trailing-space" title="Permalink to this definition">#</a></dt>
-<dd><p>Add trailing space after matched text. Defaults to auto, which adds the space when used together with <a class="reference internal" href="#cmdoption-kitty-kitten-hints-multiple"><code class="xref std std-option docutils literal notranslate"><span class="pre">--multiple</span></code></a>.
+<dd><p>Add trailing space after matched text. Defaults to <code class="code docutils literal notranslate"><span class="pre">auto</span></code>, which adds the space when used together with <a class="reference internal" href="#cmdoption-kitty-kitten-hints-multiple"><code class="xref std std-option docutils literal notranslate"><span class="pre">--multiple</span></code></a>.
 Default: <code class="code docutils literal notranslate"><span class="pre">auto</span></code>
 Choices: <code class="code docutils literal notranslate"><span class="pre">always</span></code>, <code class="code docutils literal notranslate"><span class="pre">auto</span></code>, <code class="code docutils literal notranslate"><span class="pre">never</span></code></p>
 </dd></dl>
@@ -1043,46 +1046,47 @@ Default: <code class="code docutils literal notranslate"><span class="pre">1</sp
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-alphabet">
 <span class="sig-name descname"><span class="pre">--alphabet</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;ALPHABET&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-alphabet" title="Permalink to this definition">#</a></dt>
-<dd><p>The list of characters to use for hints. The default is to use numbers and lowercase English alphabets. Specify your preference as a string of characters. Note that unless you specify the hints offset as zero the first match will be highlighted with the second character you specify.</p>
+<dd><p>The list of characters to use for hints. The default is to use numbers and lowercase English alphabets. Specify your preference as a string of characters. Note that you need to specify the <a class="reference internal" href="#cmdoption-kitty-kitten-hints-hints-offset"><code class="xref std std-option docutils literal notranslate"><span class="pre">--hints-offset</span></code></a> as zero to use the first character to highlight the first match, otherwise it will start with the second character by default.</p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-ascending">
 <span class="sig-name descname"><span class="pre">--ascending</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-ascending" title="Permalink to this definition">#</a></dt>
-<dd><p>Have the hints increase from top to bottom instead of decreasing from top to bottom.</p>
+<dd><p>Make the hints increase from top to bottom, instead of decreasing from top to bottom.</p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-hints-foreground-color">
 <span class="sig-name descname"><span class="pre">--hints-foreground-color</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;HINTS_FOREGROUND_COLOR&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-hints-foreground-color" title="Permalink to this definition">#</a></dt>
-<dd><p>The foreground color for hints
+<dd><p>The foreground color for hints.
 Default: <code class="code docutils literal notranslate"><span class="pre">black</span></code></p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-hints-background-color">
 <span class="sig-name descname"><span class="pre">--hints-background-color</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;HINTS_BACKGROUND_COLOR&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-hints-background-color" title="Permalink to this definition">#</a></dt>
-<dd><p>The background color for hints
+<dd><p>The background color for hints.
 Default: <code class="code docutils literal notranslate"><span class="pre">green</span></code></p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-hints-text-color">
 <span class="sig-name descname"><span class="pre">--hints-text-color</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;HINTS_TEXT_COLOR&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-hints-text-color" title="Permalink to this definition">#</a></dt>
-<dd><p>The foreground color for text pointed to by the hints
+<dd><p>The foreground color for text pointed to by the hints.
 Default: <code class="code docutils literal notranslate"><span class="pre">gray</span></code></p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-customize-processing">
 <span class="sig-name descname"><span class="pre">--customize-processing</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CUSTOMIZE_PROCESSING&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-customize-processing" title="Permalink to this definition">#</a></dt>
-<dd><p>Name of a python file in the kitty config directory which will be imported to provide custom implementations for pattern finding and performing actions on selected matches. See <a class="reference external" href="https://sw.kovidgoyal.net/kitty/kittens/hints/">https://sw.kovidgoyal.net/kitty/kittens/hints/</a> for details. You can also specify absolute paths to load the script from elsewhere.</p>
+<dd><p>Name of a python file in the kitty config directory which will be imported to provide custom implementations for pattern finding and performing actions on selected matches. You can also specify absolute paths to load the script from elsewhere. See <a class="reference external" href="https://sw.kovidgoyal.net/kitty/kittens/hints/">https://sw.kovidgoyal.net/kitty/kittens/hints/</a> for details.</p>
 </dd></dl>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-hints-window-title">
 <span class="sig-name descname"><span class="pre">--window-title</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;WINDOW_TITLE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-hints-window-title" title="Permalink to this definition">#</a></dt>
-<dd><p>The window title for the hints window, default title is selected based on the type of text being hinted.</p>
+<dd><p>The title for the hints window, default title is based on the type of text being hinted.</p>
 </dd></dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To avoid having to specify the same command line options on every invocation,
-you can use the <a class="reference internal" href="../../conf/#opt-kitty.action_alias"><code class="xref std std-opt docutils literal notranslate"><span class="pre">action_alias</span></code></a> option in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>, creating aliases
-that have common sets of options. For example:</p>
+<p>To avoid having to specify the same command line options on every
+invocation, you can use the <a class="reference internal" href="../../conf/#opt-kitty.action_alias"><code class="xref std std-opt docutils literal notranslate"><span class="pre">action_alias</span></code></a> option in
+<code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>, creating aliases that have common sets of options.
+For example:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>action_alias myhints kitten hints --alphabet qfjdkslaureitywovmcxzpq1234567890
 map f1 myhints --customize-processing custom-hints.py
 </pre></div>

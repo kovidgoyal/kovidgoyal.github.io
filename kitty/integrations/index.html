@@ -407,7 +407,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#allowing-only-some-windows-to-control-kitty">Allowing only some windows to control kitty</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#mapping-key-presses-to-remote-control-commands">Mapping key presses to remote control commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../remote-control/#broadcasting-what-you-type-to-all-kitty-windows">Broadcasting what you type to all kitty windows</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#the-remote-control-protocol">The remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../remote-control/#the-remote-control-protocol">The remote control protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#matching-windows-and-tabs">Matching windows and tabs</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../rc_protocol/">The kitty remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-tab">close-tab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-window">close-window</a></li>
@@ -618,6 +619,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -663,76 +665,77 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -880,8 +883,8 @@
           <div class="section" id="integrations-with-other-tools">
 <h1>Integrations with other tools<a class="headerlink" href="#integrations-with-other-tools" title="Permalink to this headline">#</a></h1>
 <p>kitty provides extremely powerful interfaces such as <a class="reference internal" href="../remote-control/"><span class="doc">Control kitty from scripts</span></a> and
-<a class="reference internal" href="../kittens/custom/"><span class="doc">Custom kittens</span></a> and <a class="reference internal" href="../kittens/icat/"><span class="doc">icat</span></a>
-that allow it to be integrated with other tools seamlessly.</p>
+<a class="reference internal" href="../kittens/custom/"><span class="doc">Custom kittens</span></a> and <a class="reference internal" href="../kittens/icat/"><span class="doc">icat</span></a> that allow it to be integrated
+with other tools seamlessly.</p>
 <div class="section" id="image-and-document-viewers">
 <h2>Image and document viewers<a class="headerlink" href="#image-and-document-viewers" title="Permalink to this headline">#</a></h2>
 <p>Powered by kitty’s <a class="reference internal" href="../graphics-protocol/"><span class="doc">Terminal graphics protocol</span></a> there exist many tools for viewing
@@ -896,15 +899,18 @@ images and other types of documents directly in your terminal, even over SSH.</p
 </div>
 <div class="section" id="tool-ranger">
 <span id="id3"></span><h3><a class="reference external" href="https://github.com/ranger/ranger">ranger</a><a class="headerlink" href="#tool-ranger" title="Permalink to this headline">#</a></h3>
-<p>A terminal file manager, with previews of file contents powered by kitty’s graphics protocol.</p>
+<p>A terminal file manager, with previews of file contents powered by kitty’s
+graphics protocol.</p>
 </div>
 <div class="section" id="tool-nnn">
 <span id="id4"></span><h3><a class="reference external" href="https://github.com/jarun/nnn/">nnn</a><a class="headerlink" href="#tool-nnn" title="Permalink to this headline">#</a></h3>
-<p>Another terminal file manager, with previews of file contents powered by kitty’s graphics protocol.</p>
+<p>Another terminal file manager, with previews of file contents powered by kitty’s
+graphics protocol.</p>
 </div>
 <div class="section" id="tool-hunter">
 <span id="id5"></span><h3><a class="reference external" href="https://github.com/rabite0/hunter">hunter</a><a class="headerlink" href="#tool-hunter" title="Permalink to this headline">#</a></h3>
-<p>Another terminal file manager, with previews of file contents powered by kitty’s graphics protocol.</p>
+<p>Another terminal file manager, with previews of file contents powered by kitty’s
+graphics protocol.</p>
 </div>
 <div class="section" id="tool-koneko">
 <span id="id6"></span><h3><a class="reference external" href="https://github.com/twenty5151/koneko">koneko</a><a class="headerlink" href="#tool-koneko" title="Permalink to this headline">#</a></h3>
@@ -916,8 +922,8 @@ images and other types of documents directly in your terminal, even over SSH.</p
 </div>
 <div class="section" id="tool-nb">
 <span id="id8"></span><h3><a class="reference external" href="https://github.com/xwmx/nb">nb</a><a class="headerlink" href="#tool-nb" title="Permalink to this headline">#</a></h3>
-<p>command line and local web note-taking, bookmarking, archiving, and
-knowledge base application that uses kitty’s graphics protocol for images.</p>
+<p>Command line and local web note-taking, bookmarking, archiving, and knowledge
+base application that uses kitty’s graphics protocol for images.</p>
 </div>
 <div class="section" id="tool-w3m">
 <span id="id9"></span><h3><a class="reference external" href="https://github.com/tats/w3m">w3m</a><a class="headerlink" href="#tool-w3m" title="Permalink to this headline">#</a></h3>
@@ -926,16 +932,17 @@ images.</p>
 </div>
 <div class="section" id="tool-timg">
 <span id="id10"></span><h3><a class="reference external" href="https://github.com/hzeller/timg">timg</a><a class="headerlink" href="#tool-timg" title="Permalink to this headline">#</a></h3>
-<p>A terminal image and video viewer, that displays static and animated
-images or plays videos. Fast multi-threaded loading, JPEG exif rotation,
-grid view and connecting to the webcam make it a versatile terminal utility.</p>
+<p>A terminal image and video viewer, that displays static and animated images or
+plays videos. Fast multi-threaded loading, JPEG exif rotation, grid view and
+connecting to the webcam make it a versatile terminal utility.</p>
 </div>
 </div>
 <div class="section" id="system-and-data-visualisation-tools">
 <h2>System and data visualisation tools<a class="headerlink" href="#system-and-data-visualisation-tools" title="Permalink to this headline">#</a></h2>
 <div class="section" id="tool-neofetch">
 <span id="id11"></span><h3><a class="reference external" href="https://github.com/dylanaraps/neofetch">neofetch</a><a class="headerlink" href="#tool-neofetch" title="Permalink to this headline">#</a></h3>
-<p>A command line system information tool that shows images using kitty’s graphics protocol</p>
+<p>A command line system information tool that shows images using kitty’s graphics
+protocol</p>
 </div>
 <div class="section" id="tool-matplotlib">
 <span id="id12"></span><h3><a class="reference external" href="https://github.com/jktr/matplotlib-backend-kitty">matplotlib</a><a class="headerlink" href="#tool-matplotlib" title="Permalink to this headline">#</a></h3>
@@ -947,13 +954,13 @@ grid view and connecting to the webcam make it a versatile terminal utility.</p>
 </div>
 <div class="section" id="tool-euporie">
 <span id="id14"></span><h3><a class="reference external" href="https://github.com/joouha/euporie">euporie</a><a class="headerlink" href="#tool-euporie" title="Permalink to this headline">#</a></h3>
-<p>A text-based user interface for running and editing Jupyter notebooks,
-powered by kitty’s graphics protocol for displaying plots</p>
+<p>A text-based user interface for running and editing Jupyter notebooks, powered
+by kitty’s graphics protocol for displaying plots</p>
 </div>
 <div class="section" id="tool-gnuplot">
 <span id="id15"></span><h3><a class="reference external" href="http://www.gnuplot.info/">gnuplot</a><a class="headerlink" href="#tool-gnuplot" title="Permalink to this headline">#</a></h3>
-<p>A graphing and data visualization tool that can be made to display its
-output in kitty with the following bash snippet:</p>
+<p>A graphing and data visualization tool that can be made to display its output in
+kitty with the following bash snippet:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> iplot <span class="o">{</span>
     cat <span class="s">&lt;&lt;EOF | gnuplot</span>
 <span class="s">    set terminal pngcairo enhanced font 'Fira Sans,10'</span>
@@ -996,19 +1003,21 @@ images</p>
 </div>
 <div class="section" id="editor-integration">
 <h2>Editor integration<a class="headerlink" href="#editor-integration" title="Permalink to this headline">#</a></h2>
-<p><em>kitty</em> can be integrated into many different terminal editors to add features
-such a split windows, previews, REPLs etc.</p>
+<p><em>kitty</em> can be integrated into many different terminal based text editors to add
+features such a split windows, previews, REPLs etc.</p>
 <div class="section" id="id21">
 <h3><a class="reference external" href="https://kakoune.org/">kakoune</a><a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
-<p>integrates with kitty to use native kitty windows for its windows/panels and REPLs.</p>
+<p>Integrates with kitty to use native kitty windows for its windows/panels and
+REPLs.</p>
 </div>
 <div class="section" id="id22">
 <h3><a class="reference external" href="https://github.com/jpalardy/vim-slime#kitty">vim-slime</a><a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
-<p>uses kitty remote control for a Lisp REPL.</p>
+<p>Uses kitty remote control for a Lisp REPL.</p>
 </div>
 <div class="section" id="id23">
 <h3><a class="reference external" href="https://github.com/knubie/vim-kitty-navigator">vim-kitty-navigator</a><a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
-<p>allows you to navigate seamlessly between vim and kitty splits using a consistent set of hotkeys.</p>
+<p>Allows you to navigate seamlessly between vim and kitty splits using a
+consistent set of hotkeys.</p>
 </div>
 <div class="section" id="id24">
 <h3><a class="reference external" href="https://github.com/vim-test/vim-test">vim-test</a><a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h3>
@@ -1016,7 +1025,7 @@ such a split windows, previews, REPLs etc.</p>
 </div>
 <div class="section" id="id25">
 <h3><a class="reference external" href="https://github.com/edluffy/hologram.nvim">hologram.nvim</a><a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h3>
-<p>Terminal image viewer for nvim</p>
+<p>Terminal image viewer for Neovim</p>
 </div>
 </div>
 <div class="section" id="scrollback-manipulation">
@@ -1034,17 +1043,17 @@ such a split windows, previews, REPLs etc.</p>
 <h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">#</a></h2>
 <div class="section" id="id28">
 <h3><a class="reference external" href="https://github.com/yurikhan/kitty-smart-tab">kitty-smart-tab</a><a class="headerlink" href="#id28" title="Permalink to this headline">#</a></h3>
-<p>use keys to either control tabs or pass them onto running applications if
-no tabs are present</p>
+<p>Use keys to either control tabs or pass them onto running applications if no
+tabs are present</p>
 </div>
 <div class="section" id="id29">
 <h3><a class="reference external" href="https://github.com/yurikhan/kitty-smart-scroll">kitty-smart-scroll</a><a class="headerlink" href="#id29" title="Permalink to this headline">#</a></h3>
-<p>use keys to either scroll or pass them onto running applications if
-no scrollback buffer is present</p>
+<p>Use keys to either scroll or pass them onto running applications if no
+scrollback buffer is present</p>
 </div>
 <div class="section" id="id30">
 <h3><a class="reference external" href="https://github.com/LandingEllipse/kitti3">kitti3</a><a class="headerlink" href="#id30" title="Permalink to this headline">#</a></h3>
-<p>allow using kitty as a drop-down terminal under the i3 window manager</p>
+<p>Allow using kitty as a drop-down terminal under the i3 window manager</p>
 </div>
 <div class="section" id="id31">
 <h3><a class="reference external" href="https://github.com/GermainZ/kitty-weechat-hints">weechat-hints</a><a class="headerlink" href="#id31" title="Permalink to this headline">#</a></h3>
