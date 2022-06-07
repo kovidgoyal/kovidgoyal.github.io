@@ -1,8 +1,9 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
 <meta property="og:title" content="Comprehensive keyboard handling in terminals" />
   
 <meta property="og:type" content="website" />
@@ -12,10 +13,10 @@
 <meta property="og:description" content="There are various problems with the current state of keyboard handling in terminals. They include: No way to use modifiers other than ctrl and alt, No way to reliably use multiple modifier keys, ot..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="File transfer over the TTY" href="../file-transfer-protocol/" /><link rel="prev" title="Terminal graphics protocol" href="../graphics-protocol/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Comprehensive keyboard handling in terminals - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -620,6 +621,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#edit-files-in-new-kitty-windows-even-over-ssh">Edit files in new kitty windows even over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -665,77 +667,78 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.1 [2022-05-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.2 [2022-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -866,7 +869,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -880,8 +884,8 @@
           </label>
         </div>
         <article role="main">
-          <div class="section" id="comprehensive-keyboard-handling-in-terminals">
-<h1>Comprehensive keyboard handling in terminals<a class="headerlink" href="#comprehensive-keyboard-handling-in-terminals" title="Permalink to this headline">#</a></h1>
+          <section id="comprehensive-keyboard-handling-in-terminals">
+<h1>Comprehensive keyboard handling in terminals<a class="headerlink" href="#comprehensive-keyboard-handling-in-terminals" title="Permalink to this heading">#</a></h1>
 <p>There are various problems with the current state of keyboard handling in
 terminals. They include:</p>
 <ul class="simple">
@@ -916,8 +920,8 @@ issues in that proposal, listed at the <a class="reference internal" href="#fixt
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.20.0.</span></p>
 </div>
-<div class="section" id="quickstart">
-<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">#</a></h2>
+<section id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">#</a></h2>
 <p>If you are an application or library developer just interested in using this
 protocol to make keyboard handling simpler and more robust in your application,
 without too many changes, do the following:</p>
@@ -955,9 +959,9 @@ parameters are omitted entirely giving an escape code of the form <code class="d
 events, alternate keys for shortcut matching et cetera, these can be turned on
 using <a class="reference internal" href="#progressive-enhancement"><span class="std std-ref">Progressive enhancement</span></a> as documented in the rest of this
 specification.</p>
-</div>
-<div class="section" id="an-overview">
-<h2>An overview<a class="headerlink" href="#an-overview" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="an-overview">
+<h2>An overview<a class="headerlink" href="#an-overview" title="Permalink to this heading">#</a></h2>
 <p>Key events are divided into two types, those that produce text and those that
 do not. When a key event produces text, the text is sent directly as UTF-8
 encoded bytes. This is safe as UTF-8 contains no C0 control codes.
@@ -978,8 +982,8 @@ key events.</p>
 are separated by the semi-colon and sub-fields by the colon. Only the
 <code class="docutils literal notranslate"><span class="pre">unicode-key-code</span></code> field is mandatory, everything else is optional. The
 escape code is terminated by the <code class="docutils literal notranslate"><span class="pre">u</span></code> character (the byte <code class="docutils literal notranslate"><span class="pre">0x75</span></code>).</p>
-<div class="section" id="key-codes">
-<span id="id1"></span><h3>Key codes<a class="headerlink" href="#key-codes" title="Permalink to this headline">#</a></h3>
+<section id="key-codes">
+<span id="id1"></span><h3>Key codes<a class="headerlink" href="#key-codes" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">unicode-key-code</span></code> above is the Unicode codepoint representing the key, as a
 decimal number. For example, the <kbd class="kbd docutils literal notranslate">A</kbd> key is represented as <code class="docutils literal notranslate"><span class="pre">97</span></code> which is
 the unicode code for lowercase <code class="docutils literal notranslate"><span class="pre">a</span></code>. Note that the codepoint used is <em>always</em>
@@ -1006,9 +1010,9 @@ sub-field for the shifted key, like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="n">unicode</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">code</span><span class="p">::</span><span class="n">base</span><span class="o">-</span><span class="n">layout</span><span class="o">-</span><span class="n">key</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="modifiers">
-<span id="id2"></span><h3>Modifiers<a class="headerlink" href="#modifiers" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="modifiers">
+<span id="id2"></span><h3>Modifiers<a class="headerlink" href="#modifiers" title="Permalink to this heading">#</a></h3>
 <p>This protocol supports six modifier keys, <kbd class="kbd docutils literal notranslate">shift</kbd>, <kbd class="kbd docutils literal notranslate">alt</kbd>,
 <kbd class="kbd docutils literal notranslate">ctrl</kbd>, <kbd class="kbd docutils literal notranslate">super</kbd>, <kbd class="kbd docutils literal notranslate">hyper</kbd>, <kbd class="kbd docutils literal notranslate">meta</kbd>, <kbd class="kbd docutils literal notranslate">num_lock</kbd> and
 <kbd class="kbd docutils literal notranslate">caps_lock</kbd>. Here <kbd class="kbd docutils literal notranslate">super</kbd> is either the <em>Windows/Linux</em> key or the
@@ -1031,9 +1035,9 @@ bit field with:</p>
 <span class="pre">1</span> <span class="pre">=</span> <span class="pre">2</span></code>, to represent <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd></kbd> the value would be <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">0b101</span> <span class="pre">=</span> <span class="pre">6</span></code>
 and so on. If the modifier field is not present in the escape code, its default
 value is <code class="docutils literal notranslate"><span class="pre">1</span></code> which means no modifiers.</p>
-</div>
-<div class="section" id="event-types">
-<span id="id3"></span><h3>Event types<a class="headerlink" href="#event-types" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="event-types">
+<span id="id3"></span><h3>Event types<a class="headerlink" href="#event-types" title="Permalink to this heading">#</a></h3>
 <p>There are three key event types: <code class="docutils literal notranslate"><span class="pre">press,</span> <span class="pre">repeat</span> <span class="pre">and</span> <span class="pre">release</span></code>. They are
 reported (if requested <code class="docutils literal notranslate"><span class="pre">0b10</span></code>) as a sub-field of the modifiers field
 (separated by a colon). If no modifiers are present, the modifiers field must
@@ -1054,31 +1058,31 @@ field is present. The <code class="docutils literal notranslate"><span class="pr
 events are not supported for them, unless the application requests <em>key
 report mode</em>, see below.</p>
 </div>
-</div>
-<div class="section" id="text-as-code-points">
-<span id="text-as-codepoints"></span><h3>Text as code points<a class="headerlink" href="#text-as-code-points" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="text-as-code-points">
+<span id="text-as-codepoints"></span><h3>Text as code points<a class="headerlink" href="#text-as-code-points" title="Permalink to this heading">#</a></h3>
 <p>The terminal can optionally send the text associated with key events as a
 sequence of Unicode code points. This behavior is opt-in by the <a class="reference internal" href="#progressive-enhancement"><span class="std std-ref">progressive
 enhancement</span></a> mechanism described below. Some examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shift</span><span class="o">+</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">CSI</span> <span class="mi">97</span> <span class="p">;</span> <span class="mi">2</span> <span class="p">;</span> <span class="mi">65</span> <span class="n">u</span>  <span class="c1"># The text 'A' is reported as 65</span>
-<span class="n">option</span><span class="o">+</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">CSI</span> <span class="mi">97</span> <span class="p">;</span> <span class="p">;</span> <span class="mi">229</span> <span class="n">u</span>  <span class="c1"># The text 'å' is reported as 229</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shift</span><span class="o">+</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">CSI</span> <span class="mi">97</span> <span class="p">;</span> <span class="mi">2</span> <span class="p">;</span> <span class="mi">65</span> <span class="n">u</span>  <span class="c1"># The text &#39;A&#39; is reported as 65</span>
+<span class="n">option</span><span class="o">+</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">CSI</span> <span class="mi">97</span> <span class="p">;</span> <span class="p">;</span> <span class="mi">229</span> <span class="n">u</span>  <span class="c1"># The text &#39;å&#39; is reported as 229</span>
 </pre></div>
 </div>
 <p>If multiple code points are present, they must be separated by colons.
 If no known key is associated with the text the key number <code class="docutils literal notranslate"><span class="pre">0</span></code> must be used.</p>
-</div>
-<div class="section" id="non-unicode-keys">
-<h3>Non-Unicode keys<a class="headerlink" href="#non-unicode-keys" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="non-unicode-keys">
+<h3>Non-Unicode keys<a class="headerlink" href="#non-unicode-keys" title="Permalink to this heading">#</a></h3>
 <p>There are many keys that don’t correspond to letters from human languages, and
 thus aren’t represented in Unicode. Think of functional keys, such as
 <kbd class="kbd docutils literal notranslate">Escape</kbd>, <kbd class="kbd docutils literal notranslate">Play</kbd>, <kbd class="kbd docutils literal notranslate">Pause</kbd>, <kbd class="kbd docutils literal notranslate">F1</kbd>, <kbd class="kbd docutils literal notranslate">Home</kbd>, etc. These
 are encoded using Unicode code points from the Private Use Area (<code class="docutils literal notranslate"><span class="pre">57344</span> <span class="pre">-</span>
 <span class="pre">63743</span></code>). The mapping of key names to code points for these keys is in the
 <a class="reference internal" href="#functional"><span class="std std-ref">Functional key definition table below</span></a>.</p>
-</div>
-</div>
-<div class="section" id="progressive-enhancement">
-<span id="id4"></span><h2>Progressive enhancement<a class="headerlink" href="#progressive-enhancement" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="progressive-enhancement">
+<span id="id4"></span><h2>Progressive enhancement<a class="headerlink" href="#progressive-enhancement" title="Permalink to this heading">#</a></h2>
 <p>While, in theory, every key event could be completely represented by this
 protocol and all would be hunk-dory, in reality there is a vast universe of
 existing terminal programs that expect legacy control codes for key events and
@@ -1096,12 +1100,9 @@ optional (defaulting to <code class="docutils literal notranslate"><span class="
 The value <code class="docutils literal notranslate"><span class="pre">1</span></code> means all set bits are set and all unset bits are reset.
 The value <code class="docutils literal notranslate"><span class="pre">2</span></code> means all set bits are set, unset bits are left unchanged.
 The value <code class="docutils literal notranslate"><span class="pre">3</span></code> means all set bits are reset, unset bits are left unchanged.</p>
-<div class="table-wrapper"><table class="docutils align-default" id="id5">
+<div class="table-wrapper docutils container" id="id5">
+<table class="docutils align-default" id="id5">
 <caption><span class="caption-text">The progressive enhancement flags</span><a class="headerlink" href="#id5" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 50%"/>
-<col style="width: 50%"/>
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Bit</p></th>
 <th class="head"><p>Meaning</p></th>
@@ -1124,7 +1125,8 @@ The value <code class="docutils literal notranslate"><span class="pre">3</span><
 <td><p><a class="reference internal" href="#report-text"><span class="std std-ref">Report associated text</span></a></p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <p>The program running in the terminal can query the terminal for the
 current values of the flags by sending:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CSI ? u
@@ -1156,8 +1158,8 @@ implemented for keyboard modes (such as in some legacy terminal emulators)
 the editor would have to somehow know what the keyboard mode of the main
 screen is and restore to that mode on exit.</p>
 </div>
-<div class="section" id="disambiguate-escape-codes">
-<span id="disambiguate"></span><h3>Disambiguate escape codes<a class="headerlink" href="#disambiguate-escape-codes" title="Permalink to this headline">#</a></h3>
+<section id="disambiguate-escape-codes">
+<span id="disambiguate"></span><h3>Disambiguate escape codes<a class="headerlink" href="#disambiguate-escape-codes" title="Permalink to this heading">#</a></h3>
 <p>This type of progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b1</span></code>) fixes the problem of some legacy key press
 encodings overlapping with other control codes. For instance, pressing the
 <kbd class="kbd docutils literal notranslate">Esc</kbd> key generates the byte <code class="docutils literal notranslate"><span class="pre">0x1b</span></code> which also is used to indicate the
@@ -1182,22 +1184,22 @@ are the <kbd class="kbd docutils literal notranslate">Enter</kbd>, <kbd class="k
 bytes as in legacy mode this is to allow the user to type and execute commands
 in the shell such as <code class="docutils literal notranslate"><span class="pre">reset</span></code> after a program that sets this mode crashes
 without clearing it.</p>
-</div>
-<div class="section" id="report-event-types">
-<span id="report-events"></span><h3>Report event types<a class="headerlink" href="#report-event-types" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="report-event-types">
+<span id="report-events"></span><h3>Report event types<a class="headerlink" href="#report-event-types" title="Permalink to this heading">#</a></h3>
 <p>This progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b10</span></code>) causes the terminal to report key repeat
 and key release events. Normally only key press events are reported and key
 repeat events are treated as key press events. See <a class="reference internal" href="#event-types"><span class="std std-ref">Event types</span></a> for
 details on how these are reported.</p>
-</div>
-<div class="section" id="report-alternate-keys">
-<span id="report-alternates"></span><h3>Report alternate keys<a class="headerlink" href="#report-alternate-keys" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="report-alternate-keys">
+<span id="report-alternates"></span><h3>Report alternate keys<a class="headerlink" href="#report-alternate-keys" title="Permalink to this heading">#</a></h3>
 <p>This progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b100</span></code>) causes the terminal to report
 alternate key values in addition to the main value, to aid in shortcut
 matching. See <a class="reference internal" href="#key-codes"><span class="std std-ref">Key codes</span></a> for details on how these are reported.</p>
-</div>
-<div class="section" id="report-all-keys-as-escape-codes">
-<span id="report-all-keys"></span><h3>Report all keys as escape codes<a class="headerlink" href="#report-all-keys-as-escape-codes" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="report-all-keys-as-escape-codes">
+<span id="report-all-keys"></span><h3>Report all keys as escape codes<a class="headerlink" href="#report-all-keys-as-escape-codes" title="Permalink to this heading">#</a></h3>
 <p>Key events that generate text, such as plain key presses without modifiers,
 result in just the text being sent, in the legacy protocol. There is no way to
 be notified of key repeat/release events. These types of events are needed for
@@ -1209,24 +1211,24 @@ Report associated text enhancement below.</p>
 <p>Additionally, with this mode, events for pressing modifier keys are reported.
 Note that <em>all</em> keys are reported as escape codes, including <kbd class="kbd docutils literal notranslate">Enter</kbd>,
 <kbd class="kbd docutils literal notranslate">Tab</kbd>, <kbd class="kbd docutils literal notranslate">Backspace</kbd> etc.</p>
-</div>
-<div class="section" id="report-associated-text">
-<span id="report-text"></span><h3>Report associated text<a class="headerlink" href="#report-associated-text" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="report-associated-text">
+<span id="report-text"></span><h3>Report associated text<a class="headerlink" href="#report-associated-text" title="Permalink to this heading">#</a></h3>
 <p>This progressive enhancement (<code class="docutils literal notranslate"><span class="pre">0b10000</span></code>) causes key events that generate text
 to be reported as <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> escape codes with the text embedded in the escape
 code. See <a class="reference internal" href="#text-as-codepoints"><span class="std std-ref">Text as code points</span></a> above for details on the mechanism.</p>
-</div>
-</div>
-<div class="section" id="detection-of-support-for-this-protocol">
-<span id="detection"></span><h2>Detection of support for this protocol<a class="headerlink" href="#detection-of-support-for-this-protocol" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="detection-of-support-for-this-protocol">
+<span id="detection"></span><h2>Detection of support for this protocol<a class="headerlink" href="#detection-of-support-for-this-protocol" title="Permalink to this heading">#</a></h2>
 <p>An application can query the terminal for support of this protocol by sending
 the escape code querying for the <a class="reference internal" href="#progressive-enhancement"><span class="std std-ref">current progressive enhancement</span></a> status
 followed by request for the <a class="reference external" href="https://vt100.net/docs/vt510-rm/DA1.html">primary device attributes</a>. If an answer for the device
 attributes is received without getting back an answer for the progressive
 enhancement the terminal does not support this protocol.</p>
-</div>
-<div class="section" id="legacy-key-event-encoding">
-<h2>Legacy key event encoding<a class="headerlink" href="#legacy-key-event-encoding" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="legacy-key-event-encoding">
+<h2>Legacy key event encoding<a class="headerlink" href="#legacy-key-event-encoding" title="Permalink to this heading">#</a></h2>
 <p>In the default mode, the terminal uses a legacy encoding for key events. In
 this encoding, only key press and repeat events are sent and there is no
 way to distinguish between them. Text is sent directly as UTF-8 bytes.</p>
@@ -1234,8 +1236,8 @@ way to distinguish between them. Text is sent directly as UTF-8 bytes.</p>
 <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> encoding. This includes keys that are not encodable in the legacy
 encoding, thereby increasing the space of usable key combinations even without
 progressive enhancement.</p>
-<div class="section" id="legacy-functional-keys">
-<h3>Legacy functional keys<a class="headerlink" href="#legacy-functional-keys" title="Permalink to this headline">#</a></h3>
+<section id="legacy-functional-keys">
+<h3>Legacy functional keys<a class="headerlink" href="#legacy-functional-keys" title="Permalink to this heading">#</a></h3>
 <p>These keys are encoded using three schemes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSI</span> <span class="n">number</span> <span class="p">;</span> <span class="n">modifier</span> <span class="o">~</span>
 <span class="n">CSI</span> <span class="mi">1</span> <span class="p">;</span> <span class="n">modifier</span> <span class="p">{</span><span class="n">ABCDEFHPQRS</span><span class="p">}</span>
@@ -1254,13 +1256,9 @@ escape code is present in its terminfo database for the key.
 Some keys have an alternate representation when the terminal is in <em>cursor key
 mode</em> (the <code class="docutils literal notranslate"><span class="pre">smkx/rmkx</span></code> terminfo capabilities). This form is used only in
 <em>cursor key mode</em> and only when no modifiers are present.</p>
-<div class="table-wrapper"><table class="docutils align-default" id="id6">
+<div class="table-wrapper docutils container" id="id6">
+<table class="docutils align-default" id="id6">
 <caption><span class="caption-text">Legacy functional encoding</span><a class="headerlink" href="#id6" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 33%"/>
-<col style="width: 33%"/>
-<col style="width: 33%"/>
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p>Terminfo name</p></th>
@@ -1361,22 +1359,14 @@ mode</em> (the <code class="docutils literal notranslate"><span class="pre">smkx
 <td><p>CSI 29 ~</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <p>There are a few more functional keys that have special cased legacy encodings.
 These are present because they are commonly used and for the sake of legacy
 terminal applications that get confused when seeing CSI u escape codes:</p>
-<div class="table-wrapper"><table class="docutils align-default" id="id7">
+<div class="table-wrapper docutils container" id="id7">
+<table class="docutils align-default" id="id7">
 <caption><span class="caption-text">C0 controls</span><a class="headerlink" href="#id7" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>No mods</p></th>
@@ -1435,15 +1425,16 @@ terminal applications that get confused when seeing CSI u escape codes:</p>
 <td><p>0x1b 0x0</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <p>Note that <kbd class="kbd docutils literal notranslate">Backspace</kbd> and <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Backspace</kbd></kbd> are swapped in some
 terminals, this can be detected using the <code class="docutils literal notranslate"><span class="pre">kbs</span></code> terminfo property that
 must correspond to the <kbd class="kbd docutils literal notranslate">Backspace</kbd> key.</p>
 <p>All keypad keys are reported as their equivalent non-keypad keys. To
 distinguish these, use the <a class="reference internal" href="#disambiguate"><span class="std std-ref">disambiguate</span></a> flag.</p>
-</div>
-<div class="section" id="legacy-text-keys">
-<span id="legacy-text"></span><h3>Legacy text keys<a class="headerlink" href="#legacy-text-keys" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="legacy-text-keys">
+<span id="legacy-text"></span><h3>Legacy text keys<a class="headerlink" href="#legacy-text-keys" title="Permalink to this heading">#</a></h3>
 <p>For legacy compatibility, the keys <kbd class="kbd docutils literal notranslate">a</kbd>-<kbd class="kbd docutils literal notranslate">z</kbd> <kbd class="kbd docutils literal notranslate">0</kbd>-<kbd class="kbd docutils literal notranslate">9</kbd>
 <kbd class="kbd docutils literal notranslate">`</kbd> <kbd class="kbd docutils literal notranslate">-</kbd> <kbd class="kbd docutils literal notranslate">=</kbd> <kbd class="kbd docutils literal notranslate">[</kbd> <kbd class="kbd docutils literal notranslate">]</kbd> <kbd class="kbd docutils literal notranslate">\</kbd> <kbd class="kbd docutils literal notranslate">;</kbd> <kbd class="kbd docutils literal notranslate">'</kbd>
 <kbd class="kbd docutils literal notranslate">,</kbd> <kbd class="kbd docutils literal notranslate">.</kbd> <kbd class="kbd docutils literal notranslate">/</kbd> with the modifiers <kbd class="kbd docutils literal notranslate">shift</kbd>, <kbd class="kbd docutils literal notranslate">alt</kbd>,
@@ -1460,18 +1451,9 @@ for example, <code class="docutils literal notranslate"><span class="pre">A</spa
 <p>Additionally, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">space</kbd></kbd> is output as the NULL byte <code class="docutils literal notranslate"><span class="pre">(0x0)</span></code>.</p>
 <p>Any other combination of modifiers with these keys is output as the appropriate
 <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">u</span></code> escape code.</p>
-<div class="table-wrapper"><table class="docutils align-default" id="id8">
+<div class="table-wrapper docutils container" id="id8">
+<table class="docutils align-default" id="id8">
 <caption><span class="caption-text">Example encodings</span><a class="headerlink" href="#id8" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-<col style="width: 13%"/>
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Plain</p></th>
@@ -1512,7 +1494,8 @@ for example, <code class="docutils literal notranslate"><span class="pre">A</spa
 <td><p>CSI 59; 6 u</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Many of the legacy escape codes are ambiguous with multiple different key
@@ -1521,21 +1504,16 @@ same as <kbd class="kbd docutils literal notranslate">tab</kbd>, <kbd class="kbd
 is the same <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">shift</kbd>+<kbd class="kbd docutils literal notranslate">r</kbd></kbd>, etc. To resolve these use the
 <a class="reference internal" href="#disambiguate"><span class="std std-ref">disambiguate progressive enhancement</span></a>.</p>
 </div>
-</div>
-</div>
-<div class="section" id="functional-key-definitions">
-<span id="functional"></span><h2>Functional key definitions<a class="headerlink" href="#functional-key-definitions" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="functional-key-definitions">
+<span id="functional"></span><h2>Functional key definitions<a class="headerlink" href="#functional-key-definitions" title="Permalink to this heading">#</a></h2>
 <p>All numbers are in the Unicode Private Use Area (<code class="docutils literal notranslate"><span class="pre">57344</span> <span class="pre">-</span> <span class="pre">63743</span></code>) except
 for a handful of keys that use numbers under 32 and 127 (C0 control codes) for legacy
 compatibility reasons.</p>
-<div class="table-wrapper"><table class="docutils align-default" id="id9">
+<div class="table-wrapper docutils container" id="id9">
+<table class="docutils align-default" id="id9">
 <caption><span class="caption-text">Functional key codes</span><a class="headerlink" href="#id9" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 25%"/>
-<col style="width: 25%"/>
-<col style="width: 25%"/>
-<col style="width: 25%"/>
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p>CSI</p></th>
@@ -1825,12 +1803,13 @@ compatibility reasons.</p>
 <td></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <p>Note that the escape codes above of the form <code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">1</span> <span class="pre">letter</span></code> will omit the
 <code class="docutils literal notranslate"><span class="pre">1</span></code> if there are no modifiers, since <code class="docutils literal notranslate"><span class="pre">1</span></code> is the default value.</p>
-</div>
-<div class="section" id="legacy-ctrl-mapping-of-ascii-keys">
-<span id="ctrl-mapping"></span><h2>Legacy <kbd class="kbd docutils literal notranslate">ctrl</kbd> mapping of ASCII keys<a class="headerlink" href="#legacy-ctrl-mapping-of-ascii-keys" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="legacy-ctrl-mapping-of-ascii-keys">
+<span id="ctrl-mapping"></span><h2>Legacy <kbd class="kbd docutils literal notranslate">ctrl</kbd> mapping of ASCII keys<a class="headerlink" href="#legacy-ctrl-mapping-of-ascii-keys" title="Permalink to this heading">#</a></h2>
 <p>When the <kbd class="kbd docutils literal notranslate">ctrl</kbd> key and another key are pressed on the keyboard, terminals
 map the result <em>for some keys</em> to a <em>C0 control code</em> i.e. an value from <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">-</span>
 <span class="pre">31</span></code>. This mapping was historically dependent on the layout of hardware
@@ -1838,16 +1817,9 @@ terminal keyboards and is not specified anywhere, completely. The best known
 reference is <a class="reference external" href="https://vt100.net/docs/vt100-ug/chapter3.html">Table 3-5 in the VT-100 docs</a>.</p>
 <p>The table below provides a mapping that is a commonly used superset of the table above.
 Any ASCII keys not in the table must be left untouched by <kbd class="kbd docutils literal notranslate">ctrl</kbd>.</p>
-<div class="table-wrapper"><table class="docutils align-default" id="id10">
+<div class="table-wrapper docutils container" id="id10">
+<table class="docutils align-default" id="id10">
 <caption><span class="caption-text">Emitted bytes when <kbd class="kbd docutils literal notranslate">ctrl</kbd> is held down and a key is pressed</span><a class="headerlink" href="#id10" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 17%"/>
-<col style="width: 17%"/>
-<col style="width: 17%"/>
-<col style="width: 17%"/>
-<col style="width: 17%"/>
-<col style="width: 17%"/>
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Byte</p></th>
@@ -1888,7 +1860,7 @@ Any ASCII keys not in the table must be left untouched by <kbd class="kbd docuti
 </tr>
 <tr class="row-even"><td><p>?</p></td>
 <td><p>127</p></td>
-<td><p>@</p></td>
+<td><p>&#64;</p></td>
 <td><p>0</p></td>
 <td><p>[</p></td>
 <td><p>27</p></td>
@@ -1971,10 +1943,11 @@ Any ASCII keys not in the table must be left untouched by <kbd class="kbd docuti
 <td></td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
-<div class="section" id="bugs-in-fixterms">
-<span id="fixterms-bugs"></span><h2>Bugs in fixterms<a class="headerlink" href="#bugs-in-fixterms" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="bugs-in-fixterms">
+<span id="fixterms-bugs"></span><h2>Bugs in fixterms<a class="headerlink" href="#bugs-in-fixterms" title="Permalink to this heading">#</a></h2>
 <p>The following is a list of errata in the <a class="reference external" href="http://www.leonerd.org.uk/hacks/fixterms/">original fixterms proposal</a>, corrected in this
 specification.</p>
 <ul class="simple">
@@ -2008,8 +1981,8 @@ to the terminal not from the terminal.</p></li>
 does this only for some keys. The action of <kbd class="kbd docutils literal notranslate">ctrl</kbd> is not specified and
 varies between terminals, historically because of different keyboard layouts.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
         </article>
       </div>
@@ -2108,6 +2081,7 @@ varies between terminals, historically because of different keyboard layouts.</p
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>

@@ -1,8 +1,9 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
 <meta property="og:title" content="Terminal graphics protocol" />
   
 <meta property="og:type" content="website" />
@@ -12,10 +13,10 @@
 <meta property="og:description" content="The goal of this specification is to create a flexible and performant protocol that allows the program running in the terminal, hereafter called the client, to render arbitrary pixel (raster) graph..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Comprehensive keyboard handling in terminals" href="../keyboard-protocol/" /><link rel="prev" title="Colored and styled underlines" href="../underlines/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Terminal graphics protocol - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -620,6 +621,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#edit-files-in-new-kitty-windows-even-over-ssh">Edit files in new kitty windows even over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -665,77 +667,78 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.1 [2022-05-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.2 [2022-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -866,7 +869,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -880,8 +884,8 @@
           </label>
         </div>
         <article role="main">
-          <div class="section" id="terminal-graphics-protocol">
-<h1>Terminal graphics protocol<a class="headerlink" href="#terminal-graphics-protocol" title="Permalink to this headline">#</a></h1>
+          <section id="terminal-graphics-protocol">
+<h1>Terminal graphics protocol<a class="headerlink" href="#terminal-graphics-protocol" title="Permalink to this heading">#</a></h1>
 <p>The goal of this specification is to create a flexible and performant protocol
 that allows the program running in the terminal, hereafter called the <em>client</em>,
 to render arbitrary pixel (raster) graphics to the screen of the terminal
@@ -900,7 +904,7 @@ below as well as above the text, with alpha blending. The graphics should also s
 </div>
 <p>You can also see a screenshot with more sophisticated features such as
 alpha-blending and text over graphics.</p>
-<img alt="Demo of graphics rendering in kitty" class="align-center" src="https://user-images.githubusercontent.com/1308621/31647475-1188ab66-b326-11e7-8d26-24b937f1c3e8.png"/>
+<img alt="Demo of graphics rendering in kitty" class="align-center" src="https://user-images.githubusercontent.com/1308621/31647475-1188ab66-b326-11e7-8d26-24b937f1c3e8.png" />
 <p>Some programs and libraries that use the kitty graphics protocol:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/dsanson/termpdf.py">termpdf.py</a> - a terminal PDF/DJVU/CBR viewer</p></li>
@@ -926,14 +930,14 @@ information tool</p></li>
 <li><p><a class="reference external" href="https://invent.kde.org/utilities/konsole/-/merge_requests/594">Konsole</a></p></li>
 <li><p><a class="reference external" href="https://github.com/91861/wayst">wayst</a></p></li>
 </ul>
-<div class="section" id="getting-the-window-size">
-<h2>Getting the window size<a class="headerlink" href="#getting-the-window-size" title="Permalink to this headline">#</a></h2>
+<section id="getting-the-window-size">
+<h2>Getting the window size<a class="headerlink" href="#getting-the-window-size" title="Permalink to this heading">#</a></h2>
 <p>In order to know what size of images to display and how to position them, the
 client must be able to get the window size in pixels and the number of cells
 per row and column. This can be done by using the <code class="docutils literal notranslate"><span class="pre">TIOCGWINSZ</span></code> ioctl.  Some
 code to demonstrate its use</p>
 <div class="tab-set docutils container">
-<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"/><label class="tab-label" for="tab-set--0-input--1">C</label><div class="tab-content docutils container">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">C</label><div class="tab-content docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/ioctl.h&gt;</span><span class="cp"></span>
 
@@ -941,20 +945,20 @@ code to demonstrate its use</p>
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">winsize</span><span class="w"> </span><span class="n">sz</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">ioctl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">TIOCGWINSZ</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sz</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="s">"number of rows: %i, number of columns: %i, screen width: %i, screen height: %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;number of rows: %i, number of columns: %i, screen width: %i, screen height: %i</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="n">sz</span><span class="p">.</span><span class="n">ws_row</span><span class="p">,</span><span class="w"> </span><span class="n">sz</span><span class="p">.</span><span class="n">ws_col</span><span class="p">,</span><span class="w"> </span><span class="n">sz</span><span class="p">.</span><span class="n">ws_xpixel</span><span class="p">,</span><span class="w"> </span><span class="n">sz</span><span class="p">.</span><span class="n">ws_ypixel</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
-<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"/><label class="tab-label" for="tab-set--0-input--2">Python</label><div class="tab-content docutils container">
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">Python</label><div class="tab-content docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">array</span><span class="o">,</span> <span class="nn">fcntl</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">termios</span>
-<span class="n">buf</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'H'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">buf</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 <span class="n">fcntl</span><span class="o">.</span><span class="n">ioctl</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TIOCGWINSZ</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">((</span>
-    <span class="s1">'number of rows: </span><span class="si">{}</span><span class="s1"> number of columns: </span><span class="si">{}</span><span class="s1">'</span>
-    <span class="s1">'screen width: </span><span class="si">{}</span><span class="s1"> screen height: </span><span class="si">{}</span><span class="s1">'</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">buf</span><span class="p">))</span>
+    <span class="s1">&#39;number of rows: </span><span class="si">{}</span><span class="s1"> number of columns: </span><span class="si">{}</span><span class="s1">&#39;</span>
+    <span class="s1">&#39;screen width: </span><span class="si">{}</span><span class="s1"> screen height: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">buf</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -967,9 +971,9 @@ terminals that return correct values: <code class="docutils literal notranslate"
 <code class="docutils literal notranslate"><span class="pre">&lt;ESC&gt;[4;&lt;height&gt;;&lt;width&gt;t</span></code> where <code class="docutils literal notranslate"><span class="pre">height</span></code> and <code class="docutils literal notranslate"><span class="pre">width</span></code> are the window
 size in pixels. This escape code is supported in many terminals, not just
 kitty.</p>
-</div>
-<div class="section" id="a-minimal-example">
-<h2>A minimal example<a class="headerlink" href="#a-minimal-example" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="a-minimal-example">
+<h2>A minimal example<a class="headerlink" href="#a-minimal-example" title="Permalink to this heading">#</a></h2>
 <p>Some minimal python code to display PNG images in kitty, using the most basic
 features of the graphics protocol:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
@@ -977,20 +981,20 @@ features of the graphics protocol:</p>
 
 
 <span class="k">def</span> <span class="nf">serialize_gr_command</span><span class="p">(</span><span class="o">**</span><span class="n">cmd</span><span class="p">):</span>
-    <span class="n">payload</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">'payload'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">cmd</span> <span class="o">=</span> <span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">=</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">'</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cmd</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;payload&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">=</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cmd</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
     <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">w</span> <span class="o">=</span> <span class="n">ans</span><span class="o">.</span><span class="n">append</span>
-    <span class="n">w</span><span class="p">(</span><span class="sa">b</span><span class="s1">'</span><span class="se">\033</span><span class="s1">_G'</span><span class="p">),</span> <span class="n">w</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'ascii'</span><span class="p">))</span>
+    <span class="n">w</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">_G&#39;</span><span class="p">),</span> <span class="n">w</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">payload</span><span class="p">:</span>
-        <span class="n">w</span><span class="p">(</span><span class="sa">b</span><span class="s1">';'</span><span class="p">)</span>
+        <span class="n">w</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
         <span class="n">w</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-    <span class="n">w</span><span class="p">(</span><span class="sa">b</span><span class="s1">'</span><span class="se">\033\\</span><span class="s1">'</span><span class="p">)</span>
-    <span class="k">return</span> <span class="sa">b</span><span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+    <span class="n">w</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\033\\</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">write_chunked</span><span class="p">(</span><span class="o">**</span><span class="n">cmd</span><span class="p">):</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">standard_b64encode</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">'data'</span><span class="p">))</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">standard_b64encode</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">))</span>
     <span class="k">while</span> <span class="n">data</span><span class="p">:</span>
         <span class="n">chunk</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="mi">4096</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="mi">4096</span><span class="p">:]</span>
         <span class="n">m</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">data</span> <span class="k">else</span> <span class="mi">0</span>
@@ -1000,8 +1004,8 @@ features of the graphics protocol:</p>
         <span class="n">cmd</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">write_chunked</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">write_chunked</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>Save this script as <code class="file docutils literal notranslate"><span class="pre">png.py</span></code>, then you can use it to display any PNG
@@ -1009,9 +1013,9 @@ file in kitty as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">png</span><span class="o">.</span><span class="n">py</span> <span class="n">file</span><span class="o">.</span><span class="n">png</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-graphics-escape-code">
-<h2>The graphics escape code<a class="headerlink" href="#the-graphics-escape-code" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="the-graphics-escape-code">
+<h2>The graphics escape code<a class="headerlink" href="#the-graphics-escape-code" title="Permalink to this heading">#</a></h2>
 <p>All graphics escape codes are of the form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_G</span><span class="o">&lt;</span><span class="n">control</span> <span class="n">data</span><span class="o">&gt;</span><span class="p">;</span><span class="o">&lt;</span><span class="n">payload</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
 </pre></div>
@@ -1023,9 +1027,9 @@ is arbitrary binary data, base64-encoded to prevent interoperation problems
 with legacy terminals that get confused by control codes within an APC code.
 The meaning of the payload is interpreted based on the control data.</p>
 <p>The first step is to transmit the actual image data.</p>
-</div>
-<div class="section" id="transferring-pixel-data">
-<span id="id1"></span><h2>Transferring pixel data<a class="headerlink" href="#transferring-pixel-data" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="transferring-pixel-data">
+<span id="id1"></span><h2>Transferring pixel data<a class="headerlink" href="#transferring-pixel-data" title="Permalink to this heading">#</a></h2>
 <p>The first consideration when transferring data between the client and the
 terminal emulator is the format in which to do so. Since there is a vast and
 growing number of image formats in existence, it does not make sense to have
@@ -1038,8 +1042,8 @@ PNG. This is specified using the <code class="docutils literal notranslate"><spa
 default) indicates 32-bit RGBA data and <code class="docutils literal notranslate"><span class="pre">f=24</span></code> indicates 24-bit RGB data and <code class="docutils literal notranslate"><span class="pre">f=100</span></code>
 indicates PNG data. The PNG format is supported for convenience and a compact way
 of transmitting paletted images.</p>
-<div class="section" id="rgb-and-rgba-data">
-<h3>RGB and RGBA data<a class="headerlink" href="#rgb-and-rgba-data" title="Permalink to this headline">#</a></h3>
+<section id="rgb-and-rgba-data">
+<h3>RGB and RGBA data<a class="headerlink" href="#rgb-and-rgba-data" title="Permalink to this heading">#</a></h3>
 <p>In these formats the pixel data is stored directly as 3 or 4 bytes per pixel,
 respectively. The colors in the data <strong>must</strong> be in the <em>sRGB color space</em>.  When
 specifying images in this format, the image dimensions <strong>must</strong> be sent in the
@@ -1050,9 +1054,9 @@ control data. For example:</p>
 <p>Here the width and height are specified using the <code class="docutils literal notranslate"><span class="pre">s</span></code> and <code class="docutils literal notranslate"><span class="pre">v</span></code> keys respectively. Since
 <code class="docutils literal notranslate"><span class="pre">f=24</span></code> there are three bytes per pixel and therefore the pixel data must be <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">10</span> <span class="pre">*</span> <span class="pre">20</span> <span class="pre">=</span> <span class="pre">600</span></code>
 bytes.</p>
-</div>
-<div class="section" id="png-data">
-<h3>PNG data<a class="headerlink" href="#png-data" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="png-data">
+<h3>PNG data<a class="headerlink" href="#png-data" title="Permalink to this heading">#</a></h3>
 <p>In this format any PNG image can be transmitted directly.  For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Gf</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span><span class="o">&lt;</span><span class="n">payload</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
 </pre></div>
@@ -1060,9 +1064,9 @@ bytes.</p>
 <p>The PNG format is specified using the <code class="docutils literal notranslate"><span class="pre">f=100</span></code> key. The width and height of
 the image will be read from the PNG data itself. Note that if you use both PNG and
 compression, then you must provide the <code class="docutils literal notranslate"><span class="pre">S</span></code> key with the size of the PNG data.</p>
-</div>
-<div class="section" id="compression">
-<h3>Compression<a class="headerlink" href="#compression" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="compression">
+<h3>Compression<a class="headerlink" href="#compression" title="Permalink to this heading">#</a></h3>
 <p>The client can send compressed image data to the terminal emulator, by
 specifying the <code class="docutils literal notranslate"><span class="pre">o</span></code> key. Currently, only <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc1950.html"><strong>RFC 1950</strong></a> ZLIB based deflate
 compression is supported, which is specified using <code class="docutils literal notranslate"><span class="pre">o=z</span></code>. For example:</p>
@@ -1074,16 +1078,13 @@ payload is now compressed using deflate (this occurs prior to base64-encoding).
 The terminal emulator will decompress it before rendering. You can specify
 compression for any format. The terminal emulator will decompress before
 interpreting the pixel data.</p>
-</div>
-<div class="section" id="the-transmission-medium">
-<h3>The transmission medium<a class="headerlink" href="#the-transmission-medium" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="the-transmission-medium">
+<h3>The transmission medium<a class="headerlink" href="#the-transmission-medium" title="Permalink to this heading">#</a></h3>
 <p>The transmission medium is specified using the <code class="docutils literal notranslate"><span class="pre">t</span></code> key. The <code class="docutils literal notranslate"><span class="pre">t</span></code> key defaults to <code class="docutils literal notranslate"><span class="pre">d</span></code>
 and can take the values:</p>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 14%"/>
-<col style="width: 86%"/>
-</colgroup>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Value of <cite>t</cite></p></th>
 <th class="head"><p>Meaning</p></th>
@@ -1113,12 +1114,13 @@ object and then unlink and close it on POSIX and just
 close it on Windows.</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <p>When opening files, the terminal emulator must follow symlinks. In case of
 symlink loops or too many symlinks, it should fail and respond with an error,
 similar to reporting any other kind of I/O error.</p>
-<div class="section" id="local-client">
-<h4>Local client<a class="headerlink" href="#local-client" title="Permalink to this headline">#</a></h4>
+<section id="local-client">
+<h4>Local client<a class="headerlink" href="#local-client" title="Permalink to this heading">#</a></h4>
 <p>First let us consider the local client techniques (files and shared memory). Some examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Gf</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="n">f</span><span class="p">;</span><span class="o">&lt;</span><span class="n">encoded</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">png</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
 </pre></div>
@@ -1138,9 +1140,9 @@ keys respectively. For example:</p>
 </div>
 <p>This tells the terminal emulator to read <code class="docutils literal notranslate"><span class="pre">80</span></code> bytes starting from the offset <code class="docutils literal notranslate"><span class="pre">10</span></code>
 inside the specified shared memory buffer.</p>
-</div>
-<div class="section" id="remote-client">
-<h4>Remote client<a class="headerlink" href="#remote-client" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="remote-client">
+<h4>Remote client<a class="headerlink" href="#remote-client" title="Permalink to this heading">#</a></h4>
 <p>Remote clients, those that are unable to use the filesystem/shared memory to
 transmit data, must send the pixel data directly using escape codes. Since
 escape codes are of limited maximum length, the data will need to be chunked up
@@ -1162,10 +1164,10 @@ before sending any other graphics related escape codes. Note that the cursor
 position used to display the image <strong>must</strong> be the position when the final chunk is
 received. Finally, terminals must not display anything, until the entire sequence is
 received and validated.</p>
-</div>
-</div>
-<div class="section" id="querying-support-and-available-transmission-mediums">
-<h3>Querying support and available transmission mediums<a class="headerlink" href="#querying-support-and-available-transmission-mediums" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="querying-support-and-available-transmission-mediums">
+<h3>Querying support and available transmission mediums<a class="headerlink" href="#querying-support-and-available-transmission-mediums" title="Permalink to this heading">#</a></h3>
 <p>Since a client has no a-priori knowledge of whether it shares a filesystem/shared memory
 with the terminal emulator, it can send an id with the control data, using the <code class="docutils literal notranslate"><span class="pre">i</span></code> key
 (which can be an arbitrary positive integer up to 4294967295, it must not be zero).
@@ -1206,10 +1208,10 @@ terminal emulators handle input in a FIFO manner, anyway.</p>
 <p>If you get back a response to the graphics query, the terminal emulator supports
 the protocol, if you get back a response to the device attributes query without
 a response to the graphics query, it does not.</p>
-</div>
-</div>
-<div class="section" id="display-images-on-screen">
-<h2>Display images on screen<a class="headerlink" href="#display-images-on-screen" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="display-images-on-screen">
+<h2>Display images on screen<a class="headerlink" href="#display-images-on-screen" title="Permalink to this heading">#</a></h2>
 <p>Every transmitted image can be displayed an arbitrary number of times on the
 screen, in different locations, using different parts of the source image, as
 needed. Each such display of an image is called a <em>placement</em>.  You can either
@@ -1234,7 +1236,9 @@ id. To do so add the <code class="docutils literal notranslate"><span class="pre
 When you specify a placement id, it will be added to the acknowledgement code
 above. Every placement is uniquely identified by the pair of the <code class="docutils literal notranslate"><span class="pre">image</span> <span class="pre">id</span></code>
 and the <code class="docutils literal notranslate"><span class="pre">placement</span> <span class="pre">id</span></code>. If you specify a placement id for an image that does
-not have an id, it will be ignored. An example response:</p>
+not have an id (i.e. has id=0), it will be ignored. In particular this means
+there can exist multiple images with <code class="docutils literal notranslate"><span class="pre">image</span> <span class="pre">id=0,</span> <span class="pre">placement</span> <span class="pre">id=0</span></code>.
+An example response:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Gi</span><span class="o">=&lt;</span><span class="n">image</span> <span class="nb">id</span><span class="o">&gt;</span><span class="p">,</span><span class="n">p</span><span class="o">=&lt;</span><span class="n">placement</span> <span class="nb">id</span><span class="o">&gt;</span><span class="p">;</span><span class="n">OK</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
 </pre></div>
 </div>
@@ -1244,8 +1248,8 @@ placements around the screen, without flicker.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.19.3: </span>Support for specifying placement ids (see <a class="reference internal" href="../kittens/query_terminal/"><span class="doc">Query terminal</span></a> to query kitty version)</p>
 </div>
-<div class="section" id="controlling-displayed-image-layout">
-<h3>Controlling displayed image layout<a class="headerlink" href="#controlling-displayed-image-layout" title="Permalink to this headline">#</a></h3>
+<section id="controlling-displayed-image-layout">
+<h3>Controlling displayed image layout<a class="headerlink" href="#controlling-displayed-image-layout" title="Permalink to this heading">#</a></h3>
 <p>The image is rendered at the current cursor position, from the upper left corner of
 the current cell. You can also specify extra <code class="docutils literal notranslate"><span class="pre">X=3</span></code> and <code class="docutils literal notranslate"><span class="pre">Y=4</span></code> pixel offsets to display from
 a different origin within the cell. Note that the offsets must be smaller that the size of the cell.</p>
@@ -1279,10 +1283,10 @@ to no movement for placing the current image.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.20.0: </span>Support for the C=1 cursor movement policy</p>
 </div>
-</div>
-</div>
-<div class="section" id="deleting-images">
-<h2>Deleting images<a class="headerlink" href="#deleting-images" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="deleting-images">
+<h2>Deleting images<a class="headerlink" href="#deleting-images" title="Permalink to this heading">#</a></h2>
 <p>Images can be deleted by using the delete action <code class="docutils literal notranslate"><span class="pre">a=d</span></code>. If specified without any
 other keys, it will delete all images visible on screen. To delete specific images,
 use the <cite>d</cite> key as described in the table below. Note that each value of d has
@@ -1292,11 +1296,8 @@ re-displayed without needing to resend the data. The uppercase variants will del
 the image data as well, provided that the image is not referenced elsewhere, such as in the
 scrollback buffer. The values of the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> keys are the same as cursor positions (i.e.
 <code class="docutils literal notranslate"><span class="pre">x=1,</span> <span class="pre">y=1</span></code> is the top left cell).</p>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 7%"/>
-<col style="width: 93%"/>
-</colgroup>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Value of <code class="docutils literal notranslate"><span class="pre">d</span></code></p></th>
 <th class="head"><p>Meaning</p></th>
@@ -1335,7 +1336,8 @@ placement id as well, then only the placement with the specified number and plac
 <td><p>Delete all placements that have the specified z-index, specified using the <code class="docutils literal notranslate"><span class="pre">z</span></code> key.</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <p>Note when all placements for an image have been deleted, the image is also
 deleted, if the capital letter form above is specified. Also, when the terminal
 is running out of quota space for new images, existing images without
@@ -1348,9 +1350,9 @@ placements will be preferentially deleted.</p>
 <span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="n">p</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\  <span class="c1"># delete all placements that intersect the cell at (3, 4), without freeing data</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="suppressing-responses-from-the-terminal">
-<h2>Suppressing responses from the terminal<a class="headerlink" href="#suppressing-responses-from-the-terminal" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="suppressing-responses-from-the-terminal">
+<h2>Suppressing responses from the terminal<a class="headerlink" href="#suppressing-responses-from-the-terminal" title="Permalink to this heading">#</a></h2>
 <p>If you are using the graphics protocol from a limited client, such as a shell
 script, it might be useful to avoid having to process responses from the
 terminal. For this, you can use the <code class="docutils literal notranslate"><span class="pre">q</span></code> key. Set it to <code class="docutils literal notranslate"><span class="pre">1</span></code> to suppress
@@ -1358,9 +1360,9 @@ terminal. For this, you can use the <code class="docutils literal notranslate"><
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.19.3: </span>The ability to suppress responses (see <a class="reference internal" href="../kittens/query_terminal/"><span class="doc">Query terminal</span></a> to query kitty version)</p>
 </div>
-</div>
-<div class="section" id="requesting-image-ids-from-the-terminal">
-<h2>Requesting image ids from the terminal<a class="headerlink" href="#requesting-image-ids-from-the-terminal" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="requesting-image-ids-from-the-terminal">
+<h2>Requesting image ids from the terminal<a class="headerlink" href="#requesting-image-ids-from-the-terminal" title="Permalink to this heading">#</a></h2>
 <p>If you are writing a program that is going to share the screen with other
 programs and you still want to use image ids, it is not possible to know
 what image ids are free to use. In this case, instead of using the <code class="docutils literal notranslate"><span class="pre">i</span></code>
@@ -1389,9 +1391,9 @@ terminal must reply with an EINVAL error message, unless silenced.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.19.3: </span>The ability to use image numbers (see <a class="reference internal" href="../kittens/query_terminal/"><span class="doc">Query terminal</span></a> to query kitty version)</p>
 </div>
-</div>
-<div class="section" id="animation">
-<span id="animation-protocol"></span><h2>Animation<a class="headerlink" href="#animation" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="animation">
+<span id="animation-protocol"></span><h2>Animation<a class="headerlink" href="#animation" title="Permalink to this heading">#</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.20.0: </span>Animation support (see <a class="reference internal" href="../kittens/query_terminal/"><span class="doc">Query terminal</span></a> to query kitty version)</p>
 </div>
@@ -1411,8 +1413,8 @@ first a normal image is created as described earlier. Then animation frames are
 added to the image to make it into an animation. Since every animation is
 associated with a single image, all animation escape codes must specify either
 the <code class="docutils literal notranslate"><span class="pre">i</span></code> or <code class="docutils literal notranslate"><span class="pre">I</span></code> keys to identify the image being operated on.</p>
-<div class="section" id="transferring-animation-frame-data">
-<h3>Transferring animation frame data<a class="headerlink" href="#transferring-animation-frame-data" title="Permalink to this headline">#</a></h3>
+<section id="transferring-animation-frame-data">
+<h3>Transferring animation frame data<a class="headerlink" href="#transferring-animation-frame-data" title="Permalink to this heading">#</a></h3>
 <p>Transferring animation frame data is very similar to
 <a class="reference internal" href="#transferring-pixel-data"><span class="std std-ref">Transferring pixel data</span></a> above. The main difference is that the image
 the frame belongs to must be specified and it is possible to transmit data for
@@ -1457,9 +1459,9 @@ frames are not displayed to the user since they are instantly skipped over,
 however they can be useful as the base data for subsequent frames. For example,
 for an animation where the background remains the same and a small object or two
 move.</p>
-</div>
-<div class="section" id="controlling-animations">
-<h3>Controlling animations<a class="headerlink" href="#controlling-animations" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="controlling-animations">
+<h3>Controlling animations<a class="headerlink" href="#controlling-animations" title="Permalink to this heading">#</a></h3>
 <p>Clients can control animations by using the <code class="docutils literal notranslate"><span class="pre">a=a</span></code> key in the escape code sent
 to the terminal.</p>
 <p>The simplest is client driven animations, where the client transmits the frame
@@ -1499,9 +1501,9 @@ for subsequent frames, such as in an animation with an object moving against a
 static background.</p>
 <p>In particular, the first frame or <em>root frame</em> is created with the base image
 data and has no gap, so its gap must be set using this control code.</p>
-</div>
-<div class="section" id="composing-animation-frames">
-<h3>Composing animation frames<a class="headerlink" href="#composing-animation-frames" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="composing-animation-frames">
+<h3>Composing animation frames<a class="headerlink" href="#composing-animation-frames" title="Permalink to this heading">#</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.22.0: </span>Support for frame composition</p>
 </div>
@@ -1534,10 +1536,10 @@ potentially increasing its storage requirements, when the frame was previously
 stored as a set of operations on other frames. If this happens and there
 is not enough storage space, kitty will respond with ENOSPC.</p>
 </div>
-</div>
-</div>
-<div class="section" id="image-persistence-and-storage-quotas">
-<h2>Image persistence and storage quotas<a class="headerlink" href="#image-persistence-and-storage-quotas" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="image-persistence-and-storage-quotas">
+<h2>Image persistence and storage quotas<a class="headerlink" href="#image-persistence-and-storage-quotas" title="Permalink to this heading">#</a></h2>
 <p>In order to avoid <em>Denial-of-Service</em> attacks, terminal emulators should have a
 maximum storage quota for image data. It should allow at least a few full
 screen images.  For example the quota in kitty is 320MB per buffer. When adding
@@ -1545,18 +1547,13 @@ a new image, if the total size exceeds the quota, the terminal emulator should
 delete older images to make space for the new one. In kitty, for animations,
 the additional frame data is stored on disk and has a separate, larger quota of
 five times the base quota.</p>
-</div>
-<div class="section" id="control-data-reference">
-<h2>Control data reference<a class="headerlink" href="#control-data-reference" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="control-data-reference">
+<h2>Control data reference<a class="headerlink" href="#control-data-reference" title="Permalink to this heading">#</a></h2>
 <p>The table below shows all the control data keys as well as what values they can
 take, and the default value they take when missing. All integers are 32-bit.</p>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 5%"/>
-<col style="width: 14%"/>
-<col style="width: 7%"/>
-<col style="width: 74%"/>
-</colgroup>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Value</p></th>
@@ -1829,10 +1826,11 @@ means play that number <code class="docutils literal notranslate"><span class="p
 <td><p>What to delete.</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
-<div class="section" id="interaction-with-other-terminal-actions">
-<h2>Interaction with other terminal actions<a class="headerlink" href="#interaction-with-other-terminal-actions" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="interaction-with-other-terminal-actions">
+<h2>Interaction with other terminal actions<a class="headerlink" href="#interaction-with-other-terminal-actions" title="Permalink to this heading">#</a></h2>
 <p>When resetting the terminal, all images that are visible on the screen must be
 cleared.  When switching from the main screen to the alternate screen buffer
 (1049 private mode) all images in the alternate screen must be cleared, just as
@@ -1846,8 +1844,8 @@ text. When page margins are defined and the index commands are used, only
 images that are entirely within the page area (between the margins) must be
 scrolled. When scrolling them would cause them to extend outside the page area,
 they must be clipped.</p>
-</div>
-</div>
+</section>
+</section>
 
         </article>
       </div>
@@ -1951,6 +1949,7 @@ they must be clipped.</p>
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>

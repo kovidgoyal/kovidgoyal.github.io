@@ -1,8 +1,9 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
 <meta property="og:title" content="The kitty command line interface" />
   
 <meta property="og:type" content="website" />
@@ -12,10 +13,10 @@
 <meta property="og:description" content="Run the kitty terminal emulator. You can also specify the program to run inside kitty as normal arguments following the options. For example: kitty --hold sh -c “echo hello, world” For comprehensiv..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>The kitty command line interface - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -620,6 +621,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#edit-files-in-new-kitty-windows-even-over-ssh">Edit files in new kitty windows even over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -665,77 +667,78 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.1 [2022-05-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.2 [2022-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -866,7 +869,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -880,8 +884,8 @@
           </label>
         </div>
         <article role="main">
-          <div class="section" id="the-kitty-command-line-interface">
-<h1>The kitty command line interface<a class="headerlink" href="#the-kitty-command-line-interface" title="Permalink to this headline">#</a></h1>
+          <section id="the-kitty-command-line-interface">
+<h1>The kitty command line interface<a class="headerlink" href="#the-kitty-command-line-interface" title="Permalink to this heading">#</a></h1>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>program-to-run ...<span class="o">]</span>
 </pre></div>
 </div>
@@ -890,24 +894,27 @@
 following the <span class="italic">options</span>.
 For example: kitty --hold sh -c “echo hello, world”</p>
 <p>For comprehensive documentation for kitty, please see: <a class="reference external" href="https://sw.kovidgoyal.net/kitty/">https://sw.kovidgoyal.net/kitty/</a></p>
-<div class="section" id="options">
-<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">#</a></h2>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">#</a></h2>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-class">
 <span class="sig-name descname"><span class="pre">--class</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CLS&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-class" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the class part of the <span class="italic">WM_CLASS</span> window property. On Wayland, it sets the app id.
 Default: <code class="code docutils literal notranslate"><span class="pre">kitty</span></code></p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-name">
 <span class="sig-name descname"><span class="pre">--name</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-name" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the name part of the <span class="italic">WM_CLASS</span> property. Defaults to using the value from <a class="reference internal" href="#cmdoption-kitty-class"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--class</span></code></a>.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-title">
 <span id="cmdoption-kitty-T"></span><span id="cmdoption-kitty-t"></span><span class="sig-name descname"><span class="pre">--title</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;TITLE&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-T</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;TITLE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-title" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the OS window title. This will override any title set by the program running inside kitty, permanently fixing the OS window’s title. So only use this if you are running a program that does not set titles.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-config">
 <span id="cmdoption-kitty-c"></span><span class="sig-name descname"><span class="pre">--config</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-config" title="Permalink to this definition">#</a></dt>
@@ -916,52 +923,62 @@ Default: <code class="code docutils literal notranslate"><span class="pre">kitty
 <p>If the environment variable <span class="target" id="index-0"></span><a class="reference internal" href="../glossary/#envvar-KITTY_CONFIG_DIRECTORY"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_CONFIG_DIRECTORY</span></code></a> is specified, that directory is always used and the above searching does not happen.</p>
 <p>If <code class="file docutils literal notranslate"><span class="pre">/etc/xdg/kitty/kitty.conf</span></code> exists, it is merged before (i.e. with lower priority) than any user config files. It can be used to specify system-wide defaults for all users. You can use either <code class="code docutils literal notranslate"><span class="pre">-</span></code> or <code class="file docutils literal notranslate"><span class="pre">/dev/stdin</span></code> to read the config from STDIN.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-override">
 <span id="cmdoption-kitty-o"></span><span class="sig-name descname"><span class="pre">--override</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-override" title="Permalink to this definition">#</a></dt>
 <dd><p>Override individual configuration options, can be specified multiple times. Syntax: <span class="italic">name=value</span>. For example: <a class="reference internal" href="#cmdoption-kitty-override"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">-o</span></code></a> font_size=20</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-directory">
 <span id="cmdoption-kitty-working-directory"></span><span id="cmdoption-kitty-d"></span><span class="sig-name descname"><span class="pre">--directory</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;DIRECTORY&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--working-directory</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;DIRECTORY&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-d</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;DIRECTORY&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-directory" title="Permalink to this definition">#</a></dt>
 <dd><p>Change to the specified directory when launching.
 Default: <code class="code docutils literal notranslate"><span class="pre">.</span></code></p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-detach">
 <span class="sig-name descname"><span class="pre">--detach</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-detach" title="Permalink to this definition">#</a></dt>
 <dd><p>Detach from the controlling terminal, if any.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-session">
 <span class="sig-name descname"><span class="pre">--session</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;SESSION&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-session" title="Permalink to this definition">#</a></dt>
 <dd><p>Path to a file containing the startup <span class="italic">session</span> (tabs, windows, layout, programs). Use - to read from STDIN. See the <code class="file docutils literal notranslate"><span class="pre">README</span></code> file for details and an example.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-hold">
 <span class="sig-name descname"><span class="pre">--hold</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-hold" title="Permalink to this definition">#</a></dt>
 <dd><p>Remain open after child process exits. Note that this only affects the first window. You can quit by either using the close window shortcut or pressing any key.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-single-instance">
 <span id="cmdoption-kitty-1"></span><span class="sig-name descname"><span class="pre">--single-instance</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-1</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-single-instance" title="Permalink to this definition">#</a></dt>
 <dd><p>If specified only a single instance of <span class="italic">kitty</span> will run. New invocations will instead create a new top-level window in the existing <span class="italic">kitty</span> instance. This allows <span class="italic">kitty</span> to share a single sprite cache on the GPU and also reduces startup time. You can also have separate groups of <span class="italic">kitty</span> instances by using the <a class="reference internal" href="#cmdoption-kitty-instance-group"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--instance-group</span></code></a> option.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-instance-group">
 <span class="sig-name descname"><span class="pre">--instance-group</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;INSTANCE_GROUP&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-instance-group" title="Permalink to this definition">#</a></dt>
 <dd><p>Used in combination with the <a class="reference internal" href="#cmdoption-kitty-single-instance"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--single-instance</span></code></a> option. All <span class="italic">kitty</span> invocations with the same <a class="reference internal" href="#cmdoption-kitty-instance-group"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--instance-group</span></code></a> will result in new windows being created in the first <span class="italic">kitty</span> instance within that group.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-wait-for-single-instance-window-close">
 <span class="sig-name descname"><span class="pre">--wait-for-single-instance-window-close</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-wait-for-single-instance-window-close" title="Permalink to this definition">#</a></dt>
 <dd><p>Normally, when using <a class="reference internal" href="#cmdoption-kitty-single-instance"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--single-instance</span></code></a>, <span class="italic">kitty</span> will open a new window in an existing instance and quit immediately. With this option, it will not quit till the newly opened window is closed. Note that if no previous instance is found, then <span class="italic">kitty</span> will wait anyway, regardless of this option.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-listen-on">
 <span class="sig-name descname"><span class="pre">--listen-on</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;LISTEN_ON&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-listen-on" title="Permalink to this definition">#</a></dt>
-<dd><p>Listen on the specified socket address for control messages. For example, <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a><code class="code docutils literal notranslate"><span class="pre">=unix:/tmp/mykitty</span></code> or <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a><code class="code docutils literal notranslate"><span class="pre">=tcp:localhost:12345</span></code>. On Linux systems, you can also use abstract UNIX sockets, not associated with a file, like this: <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a><code class="code docutils literal notranslate"><span class="pre">=unix:@mykitty</span></code>. Environment variables are expanded and relative paths are resolved with respect to the temporary directory. To control kitty, you can send commands to it with <span class="italic">kitty @</span> using the <a class="reference internal" href="../remote-control/#cmdoption-kitty-to"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">@</span> <span class="pre">--to</span></code></a> option to specify this address. Unless you enabled <a class="reference internal" href="../conf/#opt-kitty.allow_remote_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">allow_remote_control</span></code></a> in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>, this option will be ignored. Note that if you run <span class="italic">kitty @</span> within a kitty window, there is no need to specify the <a class="reference internal" href="../remote-control/#cmdoption-kitty-to"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">@</span> <span class="pre">--to</span></code></a> option as it will automatically read from the environment. For UNIX sockets, this can also be specified in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.</p>
+<dd><p>Listen on the specified socket address for control messages. For example, <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a><code class="code docutils literal notranslate"><span class="pre">=unix:/tmp/mykitty</span></code> or <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a><code class="code docutils literal notranslate"><span class="pre">=tcp:localhost:12345</span></code>. On Linux systems, you can also use abstract UNIX sockets, not associated with a file, like this: <a class="reference internal" href="#cmdoption-kitty-listen-on"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--listen-on</span></code></a><code class="code docutils literal notranslate"><span class="pre">=unix:&#64;mykitty</span></code>. Environment variables are expanded and relative paths are resolved with respect to the temporary directory. To control kitty, you can send commands to it with <span class="italic">kitty &#64;</span> using the <a class="reference internal" href="../remote-control/#cmdoption-kitty-to"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">--to</span></code></a> option to specify this address. Unless you enabled <a class="reference internal" href="../conf/#opt-kitty.allow_remote_control"><code class="xref std std-opt docutils literal notranslate"><span class="pre">allow_remote_control</span></code></a> in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>, this option will be ignored. Note that if you run <span class="italic">kitty &#64;</span> within a kitty window, there is no need to specify the <a class="reference internal" href="../remote-control/#cmdoption-kitty-to"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">&#64;</span> <span class="pre">--to</span></code></a> option as it will automatically read from the environment. For UNIX sockets, this can also be specified in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-start-as">
 <span class="sig-name descname"><span class="pre">--start-as</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;START_AS&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-start-as" title="Permalink to this definition">#</a></dt>
@@ -969,68 +986,74 @@ Default: <code class="code docutils literal notranslate"><span class="pre">.</sp
 Default: <code class="code docutils literal notranslate"><span class="pre">normal</span></code>
 Choices: <code class="code docutils literal notranslate"><span class="pre">fullscreen</span></code>, <code class="code docutils literal notranslate"><span class="pre">maximized</span></code>, <code class="code docutils literal notranslate"><span class="pre">minimized</span></code>, <code class="code docutils literal notranslate"><span class="pre">normal</span></code></p>
 </dd></dl>
-<div class="section" id="debugging-options">
-<h3>Debugging options<a class="headerlink" href="#debugging-options" title="Permalink to this headline">#</a></h3>
+
+<section id="debugging-options">
+<h3>Debugging options<a class="headerlink" href="#debugging-options" title="Permalink to this heading">#</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-version">
 <span id="cmdoption-kitty-v"></span><span class="sig-name descname"><span class="pre">--version</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-v</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-version" title="Permalink to this definition">#</a></dt>
 <dd><p>The current kitty version.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-dump-commands">
 <span class="sig-name descname"><span class="pre">--dump-commands</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-dump-commands" title="Permalink to this definition">#</a></dt>
 <dd><p>Output commands received from child process to STDOUT.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-replay-commands">
 <span class="sig-name descname"><span class="pre">--replay-commands</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;REPLAY_COMMANDS&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-replay-commands" title="Permalink to this definition">#</a></dt>
 <dd><p>Replay previously dumped commands. Specify the path to a dump file previously created by <a class="reference internal" href="#cmdoption-kitty-dump-commands"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--dump-commands</span></code></a>. You can open a new kitty window to replay the commands with:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty sh -c <span class="s2">"kitty --replay-commands /path/to/dump/file; read"</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty sh -c <span class="s2">&quot;kitty --replay-commands /path/to/dump/file; read&quot;</span>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-dump-bytes">
 <span class="sig-name descname"><span class="pre">--dump-bytes</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;DUMP_BYTES&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-dump-bytes" title="Permalink to this definition">#</a></dt>
 <dd><p>Path to file in which to store the raw bytes received from the child process.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-debug-gl">
 <span id="cmdoption-kitty-debug-rendering"></span><span class="sig-name descname"><span class="pre">--debug-gl</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--debug-rendering</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-debug-gl" title="Permalink to this definition">#</a></dt>
 <dd><p>Debug rendering commands. This will cause all OpenGL calls to check for errors instead of ignoring them. Also prints out miscellaneous debug information. Useful when debugging rendering problems.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-debug-input">
 <span id="cmdoption-kitty-debug-keyboard"></span><span class="sig-name descname"><span class="pre">--debug-input</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--debug-keyboard</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-debug-input" title="Permalink to this definition">#</a></dt>
 <dd><p>Print out key and mouse events as they are received.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-debug-font-fallback">
 <span class="sig-name descname"><span class="pre">--debug-font-fallback</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-debug-font-fallback" title="Permalink to this definition">#</a></dt>
 <dd><p>Print out information about the selection of fallback fonts for characters not present in the main font.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-watcher">
 <span class="sig-name descname"><span class="pre">--watcher</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;WATCHER&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-watcher" title="Permalink to this definition">#</a></dt>
 <dd><p>This option is deprecated in favor of the <a class="reference internal" href="../conf/#opt-kitty.watcher"><code class="xref std std-opt docutils literal notranslate"><span class="pre">watcher</span></code></a> option in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> and should not be used.</p>
 </dd></dl>
-</div>
-</div>
-<div class="section" id="tabs-and-windows">
-<h2>Tabs and Windows<a class="headerlink" href="#tabs-and-windows" title="Permalink to this headline">#</a></h2>
+
+</section>
+</section>
+<section id="tabs-and-windows">
+<h2>Tabs and Windows<a class="headerlink" href="#tabs-and-windows" title="Permalink to this heading">#</a></h2>
 <p><em>kitty</em> is capable of running multiple programs organized into tabs and windows.
 The top level of organization is the <a class="reference internal" href="../glossary/#term-os_window"><span class="xref std std-term">OS window</span></a>. Each OS
 window consists of one or more <a class="reference internal" href="../glossary/#term-tab"><span class="xref std std-term">tabs</span></a>. Each tab consists of one or more
 <a class="reference internal" href="../glossary/#term-window"><span class="xref std std-term">kitty windows</span></a>. The kitty windows can be arranged in multiple
 different <a class="reference internal" href="../glossary/#term-layout"><span class="xref std std-term">layouts</span></a>, like windows are organized in a tiling
 window manager. The keyboard controls (which are <a class="reference internal" href="../conf/#conf-kitty-shortcuts"><span class="std std-ref">all customizable</span></a>) for tabs and windows are:</p>
-<div class="section" id="scrolling">
-<h3>Scrolling<a class="headerlink" href="#scrolling" title="Permalink to this headline">#</a></h3>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 27%"/>
-<col style="width: 73%"/>
-</colgroup>
+<section id="scrolling">
+<h3>Scrolling<a class="headerlink" href="#scrolling" title="Permalink to this heading">#</a></h3>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Action</p></th>
 <th class="head"><p>Shortcut</p></th>
@@ -1068,15 +1091,13 @@ window manager. The keyboard controls (which are <a class="reference internal" h
 <td><p><a class="reference internal" href="../conf/#shortcut-kitty.Browse-output-of-the-last-shell-command-in-pager"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+g</span></code></a> (see <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a>)</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
-<div class="section" id="tabs">
-<h3>Tabs<a class="headerlink" href="#tabs" title="Permalink to this headline">#</a></h3>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 27%"/>
-<col style="width: 73%"/>
-</colgroup>
+</section>
+<section id="tabs">
+<h3>Tabs<a class="headerlink" href="#tabs" title="Permalink to this heading">#</a></h3>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Action</p></th>
 <th class="head"><p>Shortcut</p></th>
@@ -1108,15 +1129,13 @@ window manager. The keyboard controls (which are <a class="reference internal" h
 <td><p><a class="reference internal" href="../conf/#shortcut-kitty.Set-tab-title"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+alt+t</span></code></a> (also <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⇧</kbd>+<kbd class="kbd docutils literal notranslate">⌘</kbd>+<kbd class="kbd docutils literal notranslate">i</kbd></kbd> on macOS)</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
-<div class="section" id="windows">
-<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">#</a></h3>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 28%"/>
-<col style="width: 72%"/>
-</colgroup>
+</section>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">#</a></h3>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Action</p></th>
 <th class="head"><p>Shortcut</p></th>
@@ -1159,7 +1178,8 @@ window manager. The keyboard controls (which are <a class="reference internal" h
 (clockwise from the top-left)</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <p>Additionally, you can define shortcuts in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> to focus
 neighboring windows and move windows around (similar to window movement in
 <strong class="program">vim</strong>):</p>
@@ -1204,17 +1224,14 @@ currently active window:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>map f9 close_other_windows_in_tab
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="other-keyboard-shortcuts">
-<h2>Other keyboard shortcuts<a class="headerlink" href="#other-keyboard-shortcuts" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="other-keyboard-shortcuts">
+<h2>Other keyboard shortcuts<a class="headerlink" href="#other-keyboard-shortcuts" title="Permalink to this heading">#</a></h2>
 <p>The full list of actions that can be mapped to key presses is available
 <a class="reference internal" href="../actions/"><span class="doc">here</span></a>.</p>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 35%"/>
-<col style="width: 65%"/>
-</colgroup>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Action</p></th>
 <th class="head"><p>Shortcut</p></th>
@@ -1282,13 +1299,14 @@ currently active window:</p>
 <td><p><a class="reference internal" href="../conf/#shortcut-kitty.Reset-background-opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;d</span></code></a></p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
-<div class="section" id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading">#</a></h2>
 <p>See kitty.conf(5)</p>
-</div>
-</div>
+</section>
+</section>
 
         </article>
       </div>
@@ -1355,6 +1373,7 @@ currently active window:</p>
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>

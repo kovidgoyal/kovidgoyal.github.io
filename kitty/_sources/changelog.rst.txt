@@ -16,6 +16,7 @@ The :doc:`ssh kitten <kittens/ssh>` is redesigned with powerful new features:
 
 * Automatic :ref:`shell_integration` on remote machines
 * Easily :ref:`clone local shell/editor config <real_world_ssh_kitten_config>` on remote machines
+* Easily :ref:`edit files in your local editor <edit_file>` on remote machines
 * Automatic :opt:`re-use of existing connections <kitten-ssh.share_connections>` to avoid connection setup latency
 
 
@@ -33,6 +34,44 @@ mouse anywhere in the current command to move the cursor there. See
 
 Detailed list of changes
 -------------------------------------
+
+0.25.2 [2022-06-07]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- A new command :command:`edit-in-kitty` to :ref:`edit_file`
+
+- Allow getting the last non-empty command output easily via an action or
+  remote control (:pull:`4973`)
+
+- Fix a bug that caused :opt:`macos_colorspace` to always be ``default`` regardless of its actual value (:iss:`5129`)
+
+- diff kitten: A new option :opt:`kitten-diff.ignore_name` to exclude files and directories from being scanned (:pull:`5171`)
+
+- ssh kitten: Fix bash not being executed as a login shell since kitty 0.25.0 (:iss:`5130`)
+
+- macOS: When pasting text and the clipboard has a filesystem path, paste the
+  full path instead of the text, which is sometimes just the file name (:pull:`5142`)
+
+- macOS: Allow opening executables without a file extension with kitty as well
+  (:iss:`5160`)
+
+- Themes kitten: Add a tab to show user defined custom color themes separately
+  (:pull:`5150`)
+
+- Iosevka: Fix incorrect rendering when there is a combining char that does not
+  group with its neighbors (:iss:`5153`)
+
+- Weston: Fix client side decorations flickering on slow computers during
+  window resize (:iss:`5162`)
+
+- Remote control: Fix commands with large or asynchronous payloads like
+  :command:`kitty @ set-backround-image`, :command:`kitty @ set-window-logo`
+  and :command:`kitty @ select-window` not working correctly
+  when using a socket (:iss:`5165`)
+
+- hints kitten: Fix surrounding quotes/brackets and embedded carriage returns
+  not being removed when using line number processing (:iss:`5170`)
+
 
 0.25.1 [2022-05-26]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

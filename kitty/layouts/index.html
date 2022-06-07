@@ -1,8 +1,9 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
 <meta property="og:title" content="Arrange windows" />
   
 <meta property="og:type" content="website" />
@@ -12,10 +13,10 @@
 <meta property="og:description" content="kitty has the ability to define its own windows that can be tiled next to each other in arbitrary arrangements, based on Layouts, see below for examples: Screenshot, showing three programs in the '..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Extend with kittens" href="../kittens_intro/" /><link rel="prev" title="Mappable actions" href="../actions/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Arrange windows - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -160,7 +161,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -620,6 +621,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#edit-files-in-new-kitty-windows-even-over-ssh">Edit files in new kitty windows even over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -665,77 +667,78 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.1 [2022-05-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.2 [2022-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -866,7 +869,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -874,42 +878,46 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <div class="section" id="arrange-windows">
-<h1>Arrange windows<a class="headerlink" href="#arrange-windows" title="Permalink to this headline">#</a></h1>
+          <section id="arrange-windows">
+<h1>Arrange windows<a class="headerlink" href="#arrange-windows" title="Permalink to this heading">#</a></h1>
 <p>kitty has the ability to define its own windows that can be tiled next to each
 other in arbitrary arrangements, based on <em>Layouts</em>, see below for examples:</p>
-<div class="figure align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/screenshot.png"><img alt="Screenshot, showing three programs in the 'Tall' layout" src="../_images/screenshot.png" style="width: 100%;"/></a>
-<p class="caption"><span class="caption-text">Screenshot, showing <strong class="program">vim</strong>, <strong class="program">tig</strong> and <strong class="program">git</strong>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/screenshot.png"><img alt="Screenshot, showing three programs in the 'Tall' layout" src="../_images/screenshot.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">Screenshot, showing <strong class="program">vim</strong>, <strong class="program">tig</strong> and <strong class="program">git</strong>
 running in <em>kitty</em> with the <em>Tall</em> layout</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</div>
-<div class="figure align-center" id="id2">
-<a class="reference internal image-reference" href="../_images/splits.png"><img alt="Screenshot, showing windows in the 'Splits' layout" src="../_images/splits.png" style="width: 100%;"/></a>
-<p class="caption"><span class="caption-text">Screenshot, showing windows with arbitrary arrangement in the <em>Splits</em>
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/splits.png"><img alt="Screenshot, showing windows in the 'Splits' layout" src="../_images/splits.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">Screenshot, showing windows with arbitrary arrangement in the <em>Splits</em>
 layout</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</div>
+</figcaption>
+</figure>
 <p>There are many different layouts available. They are all enabled by default, you
 can switch layouts using <a class="reference internal" href="../actions/#action-next_layout"><code class="xref std std-ac docutils literal notranslate"><span class="pre">next_layout</span></code></a> (<a class="reference internal" href="../conf/#shortcut-kitty.Next-layout"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+l</span></code></a> by default). To
 control which layouts are available use <a class="reference internal" href="../conf/#opt-kitty.enabled_layouts"><code class="xref std std-opt docutils literal notranslate"><span class="pre">enabled_layouts</span></code></a>, the first listed
 layout becomes the default. Individual layouts and how to use them are described
 below.</p>
-</div>
-<div class="section" id="the-stack-layout">
-<h1>The Stack Layout<a class="headerlink" href="#the-stack-layout" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="the-stack-layout">
+<h1>The Stack Layout<a class="headerlink" href="#the-stack-layout" title="Permalink to this heading">#</a></h1>
 <p>This is the simplest layout. It displays a single window using all available
 space, other windows are hidden behind it. This layout has no options:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enabled_layouts</span> <span class="n">stack</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-tall-layout">
-<h1>The Tall Layout<a class="headerlink" href="#the-tall-layout" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="the-tall-layout">
+<h1>The Tall Layout<a class="headerlink" href="#the-tall-layout" title="Permalink to this heading">#</a></h1>
 <p>Displays one (or optionally more) full-height windows on the left half of the
 screen. Remaining windows are tiled vertically on the right half of the screen.
 There are options to control how the screen is split horizontally <code class="docutils literal notranslate"><span class="pre">bias</span></code>
@@ -941,9 +949,9 @@ windows, for example:</p>
 <span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="p">]</span> <span class="n">layout_action</span> <span class="n">increase_num_full_size_windows</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-fat-layout">
-<h1>The Fat Layout<a class="headerlink" href="#the-fat-layout" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="the-fat-layout">
+<h1>The Fat Layout<a class="headerlink" href="#the-fat-layout" title="Permalink to this heading">#</a></h1>
 <p>Displays one (or optionally more) full-width windows on the top half of the
 screen. Remaining windows are tiled horizontally on the bottom half of the
 screen. There are options to control how the screen is split vertically <code class="docutils literal notranslate"><span class="pre">bias</span></code>
@@ -969,9 +977,9 @@ on the bottom of the screen instead of the top. The syntax for the options is:</
 </div>
 <p>This layout also supports <code class="docutils literal notranslate"><span class="pre">decrease_num_full_size_windows</span></code> layout action like
 the <em>Tall</em> layout, shown above.</p>
-</div>
-<div class="section" id="the-grid-layout">
-<h1>The Grid Layout<a class="headerlink" href="#the-grid-layout" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="the-grid-layout">
+<h1>The Grid Layout<a class="headerlink" href="#the-grid-layout" title="Permalink to this heading">#</a></h1>
 <p>Display windows in a balanced grid with all windows the same size except the
 last column if there are not enough windows to fill the grid. This layout has no
 options:</p>
@@ -990,9 +998,9 @@ options:</p>
 └─────────┴──────────┴─────────┘
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-splits-layout">
-<span id="splits-layout"></span><h1>The Splits Layout<a class="headerlink" href="#the-splits-layout" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="the-splits-layout">
+<span id="splits-layout"></span><h1>The Splits Layout<a class="headerlink" href="#the-splits-layout" title="Permalink to this heading">#</a></h1>
 <p>This is the most flexible layout. You can create any arrangement of windows
 by splitting exiting windows repeatedly. To best use this layout you should
 define a few extra key bindings in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>:</p>
@@ -1054,9 +1062,9 @@ means the two windows will be placed one on top of the other. By default:</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.17.0: </span>The Splits layout</p>
 </div>
-</div>
-<div class="section" id="the-horizontal-layout">
-<h1>The Horizontal Layout<a class="headerlink" href="#the-horizontal-layout" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="the-horizontal-layout">
+<h1>The Horizontal Layout<a class="headerlink" href="#the-horizontal-layout" title="Permalink to this heading">#</a></h1>
 <p>All windows are shown side by side. This layout has no options:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enabled_layouts horizontal
 
@@ -1073,9 +1081,9 @@ means the two windows will be placed one on top of the other. By default:</p>
 └─────────┴──────────┴─────────┘
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-vertical-layout">
-<h1>The Vertical Layout<a class="headerlink" href="#the-vertical-layout" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="the-vertical-layout">
+<h1>The Vertical Layout<a class="headerlink" href="#the-vertical-layout" title="Permalink to this heading">#</a></h1>
 <p>All windows are shown one below the other. This layout has no options:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enabled_layouts vertical
 
@@ -1094,9 +1102,9 @@ means the two windows will be placed one on top of the other. By default:</p>
 └──────────────────────────────┘
 </pre></div>
 </div>
-</div>
-<div class="section" id="resizing-windows">
-<span id="window-resizing"></span><h1>Resizing windows<a class="headerlink" href="#resizing-windows" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="resizing-windows">
+<span id="window-resizing"></span><h1>Resizing windows<a class="headerlink" href="#resizing-windows" title="Permalink to this heading">#</a></h1>
 <p>You can resize windows inside layouts. Press <a class="reference internal" href="../conf/#shortcut-kitty.Start-resizing-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+r</span></code></a> (also
 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⌘</kbd>+<kbd class="kbd docutils literal notranslate">r</kbd></kbd> on macOS) to enter resizing mode and follow the on-screen
 instructions. In a given window layout only some operations may be possible for
@@ -1130,7 +1138,7 @@ and <code class="docutils literal notranslate"><span class="pre">90</span></code
 is some layout you want, take a look at one of the existing layouts in the
 <a class="reference external" href="https://github.com/kovidgoyal/kitty/tree/master/kitty/layout">layout</a>
 package and submit a pull request!</p>
-</div>
+</section>
 
         </article>
       </div>
@@ -1176,32 +1184,8 @@ package and submit a pull request!</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Arrange windows</a></li>
-<li><a class="reference internal" href="#the-stack-layout">The Stack Layout</a></li>
-<li><a class="reference internal" href="#the-tall-layout">The Tall Layout</a></li>
-<li><a class="reference internal" href="#the-fat-layout">The Fat Layout</a></li>
-<li><a class="reference internal" href="#the-grid-layout">The Grid Layout</a></li>
-<li><a class="reference internal" href="#the-splits-layout">The Splits Layout</a></li>
-<li><a class="reference internal" href="#the-horizontal-layout">The Horizontal Layout</a></li>
-<li><a class="reference internal" href="#the-vertical-layout">The Vertical Layout</a></li>
-<li><a class="reference internal" href="#resizing-windows">Resizing windows</a></li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
@@ -1209,6 +1193,7 @@ package and submit a pull request!</p>
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>

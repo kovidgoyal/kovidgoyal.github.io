@@ -1,8 +1,9 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
 <meta property="og:title" content="close-tab" />
   
 <meta property="og:type" content="website" />
@@ -12,10 +13,10 @@
 <meta property="og:description" content="Fields are: match (default: None), Which tab to close,, self (default: False), Boolean indicating whether to close the tab of the window the command is run in,. close-window: Fields are: match (def..." />
   <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" />
 
-    <link rel="shortcut icon" href="../../_static/kitty.svg"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>close-tab - kitty</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -160,7 +161,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -620,6 +621,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#edit-files-in-new-kitty-windows-even-over-ssh">Edit files in new kitty windows even over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -665,77 +667,78 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.25.1 [2022-05-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id4">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id5">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id6">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id7">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id8">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id9">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id10">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id11">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id12">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id13">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id14">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id15">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id16">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id17">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id18">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id19">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id20">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id21">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id22">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id23">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id24">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id25">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id26">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id27">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id28">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id29">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id30">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id31">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id32">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id33">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id34">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id35">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id36">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id37">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id38">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id39">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id40">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id41">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id42">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id43">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id44">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id45">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id46">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id47">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id48">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id49">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id50">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id51">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id52">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id53">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id54">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id55">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id56">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id57">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id58">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id59">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id60">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id61">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id62">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id63">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id64">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id65">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id66">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id67">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id68">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id69">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id70">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id71">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.25.2 [2022-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id4">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id5">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id6">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id7">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id8">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id9">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id10">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id11">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id12">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id13">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id14">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id15">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id16">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id17">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id18">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id19">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id20">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id21">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id22">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id23">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id24">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id25">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id26">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id27">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id28">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id29">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id30">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id31">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id32">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id33">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id34">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id35">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id36">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id37">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id38">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id39">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id40">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id41">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id42">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id43">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id44">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id45">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id46">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id47">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id48">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id49">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id50">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id51">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id52">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id53">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id54">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id55">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id56">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id57">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id58">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id59">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id60">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id61">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id62">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id63">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id64">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id65">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id66">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id67">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id68">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id69">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id70">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id71">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id72">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -866,7 +869,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -874,14 +878,14 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <div class="section" id="close-tab">
-<h1>close-tab<a class="headerlink" href="#close-tab" title="Permalink to this headline">#</a></h1>
+          <section id="close-tab">
+<h1>close-tab<a class="headerlink" href="#close-tab" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which tab to close</p>
@@ -889,9 +893,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to close the tab of the window the command is run in</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="close-window">
-<h1>close-window<a class="headerlink" href="#close-window" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="close-window">
+<h1>close-window<a class="headerlink" href="#close-window" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to close</p>
@@ -899,9 +903,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to close the window the command is run in</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="create-marker">
-<h1>create-marker<a class="headerlink" href="#create-marker" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="create-marker">
+<h1>create-marker<a class="headerlink" href="#create-marker" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to create the marker in</p>
@@ -911,9 +915,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">marker_spec</span> <span class="pre">(optional)</span></code></dt><dd><p>A list or arguments that define the marker specification, for example: [‘text’, ‘1’, ‘ERROR’]</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="detach-tab">
-<h1>detach-tab<a class="headerlink" href="#detach-tab" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="detach-tab">
+<h1>detach-tab<a class="headerlink" href="#detach-tab" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which tab to detach</p>
@@ -923,9 +927,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to detach the tab the command is run in</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="detach-window">
-<h1>detach-window<a class="headerlink" href="#detach-window" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="detach-window">
+<h1>detach-window<a class="headerlink" href="#detach-window" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to detach</p>
@@ -935,9 +939,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to detach the window the command is run in</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="disable-ligatures">
-<h1>disable-ligatures<a class="headerlink" href="#disable-ligatures" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="disable-ligatures">
+<h1>disable-ligatures<a class="headerlink" href="#disable-ligatures" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">strategy</span> <span class="pre">(required)</span></code></dt><dd><p>One of <code class="code docutils literal notranslate"><span class="pre">never</span></code>, <code class="code docutils literal notranslate"><span class="pre">always</span></code> or <code class="code docutils literal notranslate"><span class="pre">cursor</span></code></p>
@@ -949,33 +953,33 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">all</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating operate on all windows</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="env">
-<h1>env<a class="headerlink" href="#env" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="env">
+<h1>env<a class="headerlink" href="#env" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">env</span> <span class="pre">(required)</span></code></dt><dd><p>Dictionary of environment variables to values. Empty values cause the variable to be removed.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="focus-tab">
-<h1>focus-tab<a class="headerlink" href="#focus-tab" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="focus-tab">
+<h1>focus-tab<a class="headerlink" href="#focus-tab" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>The tab to focus</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="focus-window">
-<h1>focus-window<a class="headerlink" href="#focus-window" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="focus-window">
+<h1>focus-window<a class="headerlink" href="#focus-window" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>The window to focus</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="get-colors">
-<h1>get-colors<a class="headerlink" href="#get-colors" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="get-colors">
+<h1>get-colors<a class="headerlink" href="#get-colors" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>The window to get the colors for</p>
@@ -983,9 +987,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">configured</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to get configured or current colors</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="get-text">
-<h1>get-text<a class="headerlink" href="#get-text" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="get-text">
+<h1>get-text<a class="headerlink" href="#get-text" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>The window to get text from</p>
@@ -1003,9 +1007,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean, if True use window the command was run in</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="goto-layout">
-<h1>goto-layout<a class="headerlink" href="#goto-layout" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="goto-layout">
+<h1>goto-layout<a class="headerlink" href="#goto-layout" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">layout</span> <span class="pre">(required)</span></code></dt><dd><p>The new layout name</p>
@@ -1013,9 +1017,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which tab to change the layout of</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="kitten">
-<h1>kitten<a class="headerlink" href="#kitten" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="kitten">
+<h1>kitten<a class="headerlink" href="#kitten" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">kitten</span> <span class="pre">(required)</span></code></dt><dd><p>The name of the kitten to run</p>
@@ -1025,9 +1029,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>The window to run the kitten over</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="last-used-layout">
-<h1>last-used-layout<a class="headerlink" href="#last-used-layout" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="last-used-layout">
+<h1>last-used-layout<a class="headerlink" href="#last-used-layout" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which tab to change the layout of</p>
@@ -1035,9 +1039,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">all</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean to match all tabs</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="launch">
-<h1>launch<a class="headerlink" href="#launch" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="launch">
+<h1>launch<a class="headerlink" href="#launch" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">args</span> <span class="pre">(required)</span></code></dt><dd><p>The command line to run in the new window, as a list, use an empty list to run the default shell</p>
@@ -1087,17 +1091,17 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean, if True use tab the command was run in</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="ls">
-<h1>ls<a class="headerlink" href="#ls" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="ls">
+<h1>ls<a class="headerlink" href="#ls" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">all_env_vars</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Whether to send all environment variables for every window rather than just differing ones</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="new-window">
-<h1>new-window<a class="headerlink" href="#new-window" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="new-window">
+<h1>new-window<a class="headerlink" href="#new-window" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">args</span> <span class="pre">(required)</span></code></dt><dd><p>The command line to run in the new window, as a list, use an empty list to run the default shell</p>
@@ -1115,9 +1119,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">keep_focus</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether the current window should retain focus or not</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="remove-marker">
-<h1>remove-marker<a class="headerlink" href="#remove-marker" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="remove-marker">
+<h1>remove-marker<a class="headerlink" href="#remove-marker" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to remove the marker from</p>
@@ -1125,9 +1129,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to detach the window the command is run in</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="resize-os-window">
-<h1>resize-os-window<a class="headerlink" href="#resize-os-window" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="resize-os-window">
+<h1>resize-os-window<a class="headerlink" href="#resize-os-window" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to resize</p>
@@ -1145,9 +1149,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">height</span> <span class="pre">(default:</span> <span class="pre">0)</span></code></dt><dd><p>Integer indicating desired window height</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="resize-window">
-<h1>resize-window<a class="headerlink" href="#resize-window" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="resize-window">
+<h1>resize-window<a class="headerlink" href="#resize-window" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which window to resize</p>
@@ -1159,9 +1163,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">axis</span> <span class="pre">(default:</span> <span class="pre">horizontal)</span></code></dt><dd><p>One of <code class="code docutils literal notranslate"><span class="pre">horizontal,</span> <span class="pre">vertical</span></code> or <code class="code docutils literal notranslate"><span class="pre">reset</span></code></p>
 </dd>
 </dl>
-</div>
-<div class="section" id="scroll-window">
-<h1>scroll-window<a class="headerlink" href="#scroll-window" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="scroll-window">
+<h1>scroll-window<a class="headerlink" href="#scroll-window" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>for unscrolling by lines.</p>
 </div></blockquote>
@@ -1172,9 +1176,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>The window to scroll</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="select-window">
-<h1>select-window<a class="headerlink" href="#select-window" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="select-window">
+<h1>select-window<a class="headerlink" href="#select-window" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>The tab to open the new window in</p>
@@ -1188,9 +1192,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">reactivate_prev_tab</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Reactivate the previously activated tab when finished</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="send-text">
-<h1>send-text<a class="headerlink" href="#send-text" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="send-text">
+<h1>send-text<a class="headerlink" href="#send-text" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">data</span> <span class="pre">(required)</span></code></dt><dd><p>The data being sent. Can be either: text: followed by text or base64: followed by standard base64 encoded bytes</p>
@@ -1206,9 +1210,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">session_id</span> <span class="pre">(optional)</span></code></dt><dd><p>A string that identifies a “broadcast session”</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="set-background-image">
-<h1>set-background-image<a class="headerlink" href="#set-background-image" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="set-background-image">
+<h1>set-background-image<a class="headerlink" href="#set-background-image" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">data</span> <span class="pre">(required)</span></code></dt><dd><p>Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value - to indicate image must be removed.</p>
@@ -1222,9 +1226,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">configured</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating if the configured value should be changed</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="set-background-opacity">
-<h1>set-background-opacity<a class="headerlink" href="#set-background-opacity" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="set-background-opacity">
+<h1>set-background-opacity<a class="headerlink" href="#set-background-opacity" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">opacity</span> <span class="pre">(required)</span></code></dt><dd><p>A number between 0.1 and 1</p>
@@ -1236,9 +1240,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">all</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating operate on all windows</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="set-colors">
-<h1>set-colors<a class="headerlink" href="#set-colors" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="set-colors">
+<h1>set-colors<a class="headerlink" href="#set-colors" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">colors</span> <span class="pre">(required)</span></code></dt><dd><p>An object mapping names to colors as 24-bit RGB integers or null for nullable colors</p>
@@ -1254,9 +1258,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">reset</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating colors should be reset to startup values</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="set-enabled-layouts">
-<h1>set-enabled-layouts<a class="headerlink" href="#set-enabled-layouts" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="set-enabled-layouts">
+<h1>set-enabled-layouts<a class="headerlink" href="#set-enabled-layouts" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">layouts</span> <span class="pre">(required)</span></code></dt><dd><p>The list of layout names</p>
@@ -1266,9 +1270,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">configured</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to change the configured value</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="set-font-size">
-<h1>set-font-size<a class="headerlink" href="#set-font-size" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="set-font-size">
+<h1>set-font-size<a class="headerlink" href="#set-font-size" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">size</span> <span class="pre">(required)</span></code></dt><dd><p>The new font size in pts (a positive number)</p>
@@ -1278,9 +1282,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">increment_op</span> <span class="pre">(optional)</span></code></dt><dd><p>The string <code class="docutils literal notranslate"><span class="pre">+</span></code> or <code class="docutils literal notranslate"><span class="pre">-</span></code> to interpret size as an increment</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="set-spacing">
-<h1>set-spacing<a class="headerlink" href="#set-spacing" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="set-spacing">
+<h1>set-spacing<a class="headerlink" href="#set-spacing" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">settings</span> <span class="pre">(required)</span></code></dt><dd><p>An object mapping margins/paddings using canonical form {‘margin-top’: 50, ‘padding-left’: null} etc</p>
@@ -1294,9 +1298,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">configured</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to change the configured paddings and margins. Must be True if reset is True</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="set-tab-color">
-<h1>set-tab-color<a class="headerlink" href="#set-tab-color" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="set-tab-color">
+<h1>set-tab-color<a class="headerlink" href="#set-tab-color" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">colors</span> <span class="pre">(required)</span></code></dt><dd><p>An object mapping names to colors as 24-bit RGB integers. A color value of null indicates it should be unset.</p>
@@ -1306,9 +1310,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to use the tab of the window the command is run in</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="set-tab-title">
-<h1>set-tab-title<a class="headerlink" href="#set-tab-title" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="set-tab-title">
+<h1>set-tab-title<a class="headerlink" href="#set-tab-title" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">title</span> <span class="pre">(required)</span></code></dt><dd><p>The new title</p>
@@ -1316,9 +1320,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which tab to change the title of</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="set-window-logo">
-<h1>set-window-logo<a class="headerlink" href="#set-window-logo" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="set-window-logo">
+<h1>set-window-logo<a class="headerlink" href="#set-window-logo" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">data</span> <span class="pre">(required)</span></code></dt><dd><p>Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value <code class="code docutils literal notranslate"><span class="pre">-</span></code> to indicate image must be removed.</p>
@@ -1332,9 +1336,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">self</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating whether to act on the window the command is run in</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="set-window-title">
-<h1>set-window-title<a class="headerlink" href="#set-window-title" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="set-window-title">
+<h1>set-window-title<a class="headerlink" href="#set-window-title" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">title</span> <span class="pre">(optional)</span></code></dt><dd><p>The new title</p>
@@ -1344,9 +1348,9 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">temporary</span> <span class="pre">(default:</span> <span class="pre">False)</span></code></dt><dd><p>Boolean indicating if the change is temporary or permanent</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="signal-child">
-<h1>signal-child<a class="headerlink" href="#signal-child" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="signal-child">
+<h1>signal-child<a class="headerlink" href="#signal-child" title="Permalink to this heading">#</a></h1>
 <p>Fields are:</p>
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">signals</span> <span class="pre">(optional)</span></code></dt><dd><p>The signals, a list of names, such as <code class="code docutils literal notranslate"><span class="pre">SIGTERM</span></code>, <code class="code docutils literal notranslate"><span class="pre">SIGKILL</span></code>, <code class="code docutils literal notranslate"><span class="pre">SIGUSR1</span></code>, etc.</p>
@@ -1354,7 +1358,7 @@
 <dt><code class="code docutils literal notranslate"><span class="pre">match</span> <span class="pre">(default:</span> <span class="pre">None)</span></code></dt><dd><p>Which windows to send the signals to</p>
 </dd>
 </dl>
-</div>
+</section>
 
         </article>
       </div>
@@ -1382,57 +1386,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">close-tab</a></li>
-<li><a class="reference internal" href="#close-window">close-window</a></li>
-<li><a class="reference internal" href="#create-marker">create-marker</a></li>
-<li><a class="reference internal" href="#detach-tab">detach-tab</a></li>
-<li><a class="reference internal" href="#detach-window">detach-window</a></li>
-<li><a class="reference internal" href="#disable-ligatures">disable-ligatures</a></li>
-<li><a class="reference internal" href="#env">env</a></li>
-<li><a class="reference internal" href="#focus-tab">focus-tab</a></li>
-<li><a class="reference internal" href="#focus-window">focus-window</a></li>
-<li><a class="reference internal" href="#get-colors">get-colors</a></li>
-<li><a class="reference internal" href="#get-text">get-text</a></li>
-<li><a class="reference internal" href="#goto-layout">goto-layout</a></li>
-<li><a class="reference internal" href="#kitten">kitten</a></li>
-<li><a class="reference internal" href="#last-used-layout">last-used-layout</a></li>
-<li><a class="reference internal" href="#launch">launch</a></li>
-<li><a class="reference internal" href="#ls">ls</a></li>
-<li><a class="reference internal" href="#new-window">new-window</a></li>
-<li><a class="reference internal" href="#remove-marker">remove-marker</a></li>
-<li><a class="reference internal" href="#resize-os-window">resize-os-window</a></li>
-<li><a class="reference internal" href="#resize-window">resize-window</a></li>
-<li><a class="reference internal" href="#scroll-window">scroll-window</a></li>
-<li><a class="reference internal" href="#select-window">select-window</a></li>
-<li><a class="reference internal" href="#send-text">send-text</a></li>
-<li><a class="reference internal" href="#set-background-image">set-background-image</a></li>
-<li><a class="reference internal" href="#set-background-opacity">set-background-opacity</a></li>
-<li><a class="reference internal" href="#set-colors">set-colors</a></li>
-<li><a class="reference internal" href="#set-enabled-layouts">set-enabled-layouts</a></li>
-<li><a class="reference internal" href="#set-font-size">set-font-size</a></li>
-<li><a class="reference internal" href="#set-spacing">set-spacing</a></li>
-<li><a class="reference internal" href="#set-tab-color">set-tab-color</a></li>
-<li><a class="reference internal" href="#set-tab-title">set-tab-title</a></li>
-<li><a class="reference internal" href="#set-window-logo">set-window-logo</a></li>
-<li><a class="reference internal" href="#set-window-title">set-window-title</a></li>
-<li><a class="reference internal" href="#signal-child">signal-child</a></li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
@@ -1440,6 +1395,7 @@
 </div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
     <script src="../../_static/clipboard.min.js"></script>

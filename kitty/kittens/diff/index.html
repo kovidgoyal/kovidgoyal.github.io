@@ -1,8 +1,9 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
 <meta property="og:title" content="kitty-diff" />
   
 <meta property="og:type" content="website" />
@@ -12,10 +13,10 @@
 <meta property="og:description" content="A fast side-by-side diff tool with syntax highlighting and images Major Features: Displays diffs side-by-side in the kitty terminal, Does syntax highlighting of the displayed diffs, asynchronously,..." />
   <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Unicode input" href="../unicode_input/" /><link rel="prev" title="icat" href="../icat/" />
 
-    <link rel="shortcut icon" href="../../_static/kitty.svg"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>kitty-diff - kitty</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -620,6 +621,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#edit-files-in-new-kitty-windows-even-over-ssh">Edit files in new kitty windows even over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -665,77 +667,78 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.25.1 [2022-05-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id4">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id5">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id6">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id7">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id8">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id9">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id10">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id11">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id12">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id13">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id14">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id15">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id16">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id17">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id18">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id19">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id20">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id21">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id22">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id23">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id24">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id25">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id26">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id27">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id28">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id29">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id30">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id31">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id32">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id33">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id34">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id35">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id36">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id37">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id38">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id39">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id40">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id41">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id42">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id43">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id44">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id45">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id46">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id47">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id48">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id49">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id50">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id51">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id52">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id53">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id54">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id55">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id56">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id57">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id58">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id59">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id60">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id61">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id62">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id63">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id64">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id65">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id66">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id67">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id68">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id69">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id70">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id71">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.25.2 [2022-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id4">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id5">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id6">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id7">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id8">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id9">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id10">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id11">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id12">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id13">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id14">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id15">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id16">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id17">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id18">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id19">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id20">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id21">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id22">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id23">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id24">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id25">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id26">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id27">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id28">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id29">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id30">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id31">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id32">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id33">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id34">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id35">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id36">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id37">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id38">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id39">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id40">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id41">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id42">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id43">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id44">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id45">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id46">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id47">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id48">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id49">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id50">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id51">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id52">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id53">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id54">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id55">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id56">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id57">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id58">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id59">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id60">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id61">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id62">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id63">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id64">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id65">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id66">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id67">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id68">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id69">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id70">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id71">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#id72">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -866,7 +869,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -880,11 +884,11 @@
           </label>
         </div>
         <article role="main">
-          <div class="section" id="kitty-diff">
-<h1>kitty-diff<a class="headerlink" href="#kitty-diff" title="Permalink to this headline">#</a></h1>
+          <section id="kitty-diff">
+<h1>kitty-diff<a class="headerlink" href="#kitty-diff" title="Permalink to this heading">#</a></h1>
 <p><em>A fast side-by-side diff tool with syntax highlighting and images</em></p>
-<div class="section" id="major-features">
-<h2>Major Features<a class="headerlink" href="#major-features" title="Permalink to this headline">#</a></h2>
+<section id="major-features">
+<h2>Major Features<a class="headerlink" href="#major-features" title="Permalink to this heading">#</a></h2>
 <div class="major-features docutils container">
 <ul class="simple">
 <li><p>Displays diffs side-by-side in the kitty terminal</p></li>
@@ -894,19 +898,21 @@ maximum speed</p></li>
 <li><p>Does recursive directory diffing</p></li>
 </ul>
 </div>
-<div class="figure align-center" id="id1">
-<a class="reference internal image-reference" href="../../_images/diff.png"><img alt="Screenshot, showing a sample diff" src="../../_images/diff.png" style="width: 100%;"/></a>
-<p class="caption"><span class="caption-text">Screenshot, showing a sample diff</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</div>
-</div>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../_images/diff.png"><img alt="Screenshot, showing a sample diff" src="../../_images/diff.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">Screenshot, showing a sample diff</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
 <p>Simply <a class="reference internal" href="../../quickstart/#quickstart"><span class="std std-ref">install kitty</span></a>.  You also need to have either the <a class="reference external" href="https://git-scm.com/">git</a> program or the <strong class="program">diff</strong> program installed.
 Additionally, for syntax highlighting to work, <a class="reference external" href="https://pygments.org/">pygments</a> must be installed (note that pygments is included in
 the official kitty binary builds).</p>
-</div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h2>
 <p>In the kitty terminal, run:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten diff file1 file2
 </pre></div>
@@ -914,7 +920,7 @@ the official kitty binary builds).</p>
 <p>to see the diff between <code class="file docutils literal notranslate"><span class="pre">file1</span></code> and <code class="file docutils literal notranslate"><span class="pre">file2</span></code>.</p>
 <p>Create an alias in your shell’s startup file to shorten the command, for
 example:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> <span class="nv">d</span><span class="o">=</span><span class="s2">"kitty +kitten diff"</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> <span class="nv">d</span><span class="o">=</span><span class="s2">&quot;kitty +kitten diff&quot;</span>
 </pre></div>
 </div>
 <p>Now all you need to do to diff two files is:</p>
@@ -923,14 +929,11 @@ example:</p>
 </div>
 <p>You can also pass directories instead of files to see the recursive diff of the
 directory contents.</p>
-</div>
-<div class="section" id="keyboard-controls">
-<h2>Keyboard controls<a class="headerlink" href="#keyboard-controls" title="Permalink to this headline">#</a></h2>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 42%"/>
-<col style="width: 58%"/>
-</colgroup>
+</section>
+<section id="keyboard-controls">
+<h2>Keyboard controls<a class="headerlink" href="#keyboard-controls" title="Permalink to this heading">#</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Action</p></th>
 <th class="head"><p>Shortcut</p></th>
@@ -998,10 +1001,11 @@ directory contents.</p>
 <td><p><kbd class="kbd docutils literal notranslate">&lt;</kbd>, <kbd class="kbd docutils literal notranslate">,</kbd></p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
-<div class="section" id="integrating-with-git">
-<h2>Integrating with git<a class="headerlink" href="#integrating-with-git" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="integrating-with-git">
+<h2>Integrating with git<a class="headerlink" href="#integrating-with-git" title="Permalink to this heading">#</a></h2>
 <p>Add the following to <code class="file docutils literal notranslate"><span class="pre">~/.gitconfig</span></code>:</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[diff]</span><span class="w"></span>
 <span class="w">    </span><span class="na">tool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">kitty</span><span class="w"></span>
@@ -1009,9 +1013,9 @@ directory contents.</p>
 <span class="k">[difftool]</span><span class="w"></span>
 <span class="w">    </span><span class="na">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span><span class="w"></span>
 <span class="w">    </span><span class="na">trustExitCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"></span>
-<span class="k">[difftool "kitty"]</span><span class="w"></span>
+<span class="k">[difftool &quot;kitty&quot;]</span><span class="w"></span>
 <span class="w">    </span><span class="na">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">kitty +kitten diff $LOCAL $REMOTE</span><span class="w"></span>
-<span class="k">[difftool "kitty.gui"]</span><span class="w"></span>
+<span class="k">[difftool &quot;kitty.gui&quot;]</span><span class="w"></span>
 <span class="w">    </span><span class="na">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">kitty kitty +kitten diff $LOCAL $REMOTE</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1020,28 +1024,29 @@ directory contents.</p>
 </pre></div>
 </div>
 <p>Once again, creating an alias for this command is useful.</p>
-</div>
-<div class="section" id="why-does-this-work-only-in-kitty">
-<h2>Why does this work only in kitty?<a class="headerlink" href="#why-does-this-work-only-in-kitty" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="why-does-this-work-only-in-kitty">
+<h2>Why does this work only in kitty?<a class="headerlink" href="#why-does-this-work-only-in-kitty" title="Permalink to this heading">#</a></h2>
 <p>The diff kitten makes use of various features that are <a class="reference internal" href="../../protocol-extensions/"><span class="doc">kitty only</span></a>, such as the <a class="reference internal" href="../../graphics-protocol/"><span class="doc">kitty graphics protocol</span></a>, the <a class="reference internal" href="../../keyboard-protocol/"><span class="doc">extended keyboard protocol</span></a>, etc. It also leverages terminal program infrastructure
 I created for all of kitty’s other kittens to reduce the amount of code needed
 (the entire implementation is under 2000 lines of code).</p>
 <p>And fundamentally, it’s kitty only because I wrote it for myself, and I am
 highly unlikely to use any other terminals :)</p>
-</div>
-<div class="section" id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
 <p>You can configure the colors used, keyboard shortcuts, the diff implementation,
 the default lines of context, etc. by creating a <code class="file docutils literal notranslate"><span class="pre">diff.conf</span></code> file in your
 <a class="reference internal" href="../../conf/#confloc"><span class="std std-ref">kitty config folder</span></a>. See below for the supported configuration
 directives.</p>
-</div>
-<div class="section" id="diffing">
-<span id="conf-kitten-diff-diff"></span><h2>Diffing<a class="headerlink" href="#diffing" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="diffing">
+<span id="conf-kitten-diff-diff"></span><h2>Diffing<a class="headerlink" href="#diffing" title="Permalink to this heading">#</a></h2>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-diff.syntax_aliases">
 <span class="sig-name descname"><span class="pre">syntax_aliases</span></span><a class="headerlink" href="#opt-kitten-diff.syntax_aliases" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">syntax_aliases</span><span class="w"> </span><span class="s">pyj:py pyi:py recipe:py</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1051,6 +1056,7 @@ directives.</p>
 <dt class="sig sig-object std" id="opt-kitten-diff.num_context_lines">
 <span class="sig-name descname"><span class="pre">num_context_lines</span></span><a class="headerlink" href="#opt-kitten-diff.num_context_lines" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">num_context_lines</span><span class="w"> </span><span class="mi">3</span>
 </pre></div>
 </div>
@@ -1059,6 +1065,7 @@ directives.</p>
 <dt class="sig sig-object std" id="opt-kitten-diff.diff_cmd">
 <span class="sig-name descname"><span class="pre">diff_cmd</span></span><a class="headerlink" href="#opt-kitten-diff.diff_cmd" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">diff_cmd</span><span class="w"> </span><span class="s">auto</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1070,17 +1077,35 @@ will be replaced by the number of lines of context. The default special value
 <dt class="sig sig-object std" id="opt-kitten-diff.replace_tab_by">
 <span class="sig-name descname"><span class="pre">replace_tab_by</span></span><a class="headerlink" href="#opt-kitten-diff.replace_tab_by" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">replace_tab_by</span><span class="w"> </span><span class="s">\x20\x20\x20\x20</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The string to replace tabs with. Default is to use four spaces.</p>
+<dl class="std opt">
+<dt class="sig sig-object std" id="opt-kitten-diff.ignore_name">
+<span class="sig-name descname"><span class="pre">ignore_name</span></span><a class="headerlink" href="#opt-kitten-diff.ignore_name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">ignore_name</span><span class="w"></span>
+</pre></div>
 </div>
-<div class="section" id="colors">
-<span id="conf-kitten-diff-colors"></span><h2>Colors<a class="headerlink" href="#colors" title="Permalink to this headline">#</a></h2>
+<p>A glob pattern that is matched against only the filename of files and directories. Matching
+files and directories are ignored when scanning the filesystem to look for files to diff.
+Can be specified multiple times to use multiple patterns. For example:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">ignore_name</span><span class="w"> </span><span class="mf">.</span><span class="s">git</span><span class="w"></span>
+<span class="nv">ignore_name</span><span class="w"> </span><span class="s">*~</span><span class="w"></span>
+<span class="nv">ignore_name</span><span class="w"> </span><span class="s">*.pyc</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="colors">
+<span id="conf-kitten-diff-colors"></span><h2>Colors<a class="headerlink" href="#colors" title="Permalink to this heading">#</a></h2>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-diff.pygments_style">
 <span class="sig-name descname"><span class="pre">pygments_style</span></span><a class="headerlink" href="#opt-kitten-diff.pygments_style" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">pygments_style</span><span class="w"> </span><span class="s">default</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1089,6 +1114,7 @@ will be replaced by the number of lines of context. The default special value
 <dt class="sig sig-object std" id="opt-kitten-diff.foreground">
 <span class="sig-name descname"><span class="pre">foreground</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">background</span></span><a class="headerlink" href="#opt-kitten-diff.foreground" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">foreground</span><span class="w"> </span><span class="s">black</span><span class="w"></span>
 <span class="nv">background</span><span class="w"> </span><span class="s">white</span><span class="w"></span>
 </pre></div>
@@ -1098,6 +1124,7 @@ will be replaced by the number of lines of context. The default special value
 <dt class="sig sig-object std" id="opt-kitten-diff.title_fg">
 <span class="sig-name descname"><span class="pre">title_fg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">title_bg</span></span><a class="headerlink" href="#opt-kitten-diff.title_fg" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">title_fg</span><span class="w"> </span><span class="s">black</span><span class="w"></span>
 <span class="nv">title_bg</span><span class="w"> </span><span class="s">white</span><span class="w"></span>
 </pre></div>
@@ -1107,6 +1134,7 @@ will be replaced by the number of lines of context. The default special value
 <dt class="sig sig-object std" id="opt-kitten-diff.margin_bg">
 <span class="sig-name descname"><span class="pre">margin_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">margin_fg</span></span><a class="headerlink" href="#opt-kitten-diff.margin_bg" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">margin_bg</span><span class="w"> </span><span class="s">#fafbfc</span><span class="w"></span>
 <span class="nv">margin_fg</span><span class="w"> </span><span class="s">#aaaaaa</span>
 </pre></div>
@@ -1116,6 +1144,7 @@ will be replaced by the number of lines of context. The default special value
 <dt class="sig sig-object std" id="opt-kitten-diff.removed_bg">
 <span class="sig-name descname"><span class="pre">removed_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">highlight_removed_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">removed_margin_bg</span></span><a class="headerlink" href="#opt-kitten-diff.removed_bg" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">removed_bg</span><span class="w">           </span><span class="s">#ffeef0</span><span class="w"></span>
 <span class="nv">highlight_removed_bg</span><span class="w"> </span><span class="s">#fdb8c0</span><span class="w"></span>
 <span class="nv">removed_margin_bg</span><span class="w">    </span><span class="s">#ffdce0</span>
@@ -1126,6 +1155,7 @@ will be replaced by the number of lines of context. The default special value
 <dt class="sig sig-object std" id="opt-kitten-diff.added_bg">
 <span class="sig-name descname"><span class="pre">added_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">highlight_added_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">added_margin_bg</span></span><a class="headerlink" href="#opt-kitten-diff.added_bg" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">added_bg</span><span class="w">           </span><span class="s">#e6ffed</span><span class="w"></span>
 <span class="nv">highlight_added_bg</span><span class="w"> </span><span class="s">#acf2bd</span><span class="w"></span>
 <span class="nv">added_margin_bg</span><span class="w">    </span><span class="s">#cdffd8</span>
@@ -1136,6 +1166,7 @@ will be replaced by the number of lines of context. The default special value
 <dt class="sig sig-object std" id="opt-kitten-diff.filler_bg">
 <span class="sig-name descname"><span class="pre">filler_bg</span></span><a class="headerlink" href="#opt-kitten-diff.filler_bg" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">filler_bg</span><span class="w"> </span><span class="s">#fafbfc</span>
 </pre></div>
 </div>
@@ -1144,6 +1175,7 @@ will be replaced by the number of lines of context. The default special value
 <dt class="sig sig-object std" id="opt-kitten-diff.margin_filler_bg">
 <span class="sig-name descname"><span class="pre">margin_filler_bg</span></span><a class="headerlink" href="#opt-kitten-diff.margin_filler_bg" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">margin_filler_bg</span><span class="w"> </span><span class="s">none</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1152,6 +1184,7 @@ will be replaced by the number of lines of context. The default special value
 <dt class="sig sig-object std" id="opt-kitten-diff.hunk_margin_bg">
 <span class="sig-name descname"><span class="pre">hunk_margin_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">hunk_bg</span></span><a class="headerlink" href="#opt-kitten-diff.hunk_margin_bg" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">hunk_margin_bg</span><span class="w"> </span><span class="s">#dbedff</span><span class="w"></span>
 <span class="nv">hunk_bg</span><span class="w">        </span><span class="s">#f1f8ff</span>
 </pre></div>
@@ -1161,6 +1194,7 @@ will be replaced by the number of lines of context. The default special value
 <dt class="sig sig-object std" id="opt-kitten-diff.search_bg">
 <span class="sig-name descname"><span class="pre">search_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">search_fg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">select_bg</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">select_fg</span></span><a class="headerlink" href="#opt-kitten-diff.search_bg" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">search_bg</span><span class="w"> </span><span class="s">#444</span><span class="w"></span>
 <span class="nv">search_fg</span><span class="w"> </span><span class="s">white</span><span class="w"></span>
 <span class="nv">select_bg</span><span class="w"> </span><span class="s">#b4d5fe</span><span class="w"></span>
@@ -1168,167 +1202,187 @@ will be replaced by the number of lines of context. The default special value
 </pre></div>
 </div>
 <p>Highlighting</p>
-</div>
-<div class="section" id="keyboard-shortcuts">
-<span id="conf-kitten-diff-shortcuts"></span><h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="keyboard-shortcuts">
+<span id="conf-kitten-diff-shortcuts"></span><h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this heading">#</a></h2>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Quit">
 <span class="sig-name descname"><span class="pre">Quit</span></span><a class="headerlink" href="#shortcut-kitten-diff.Quit" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">q</span><span class="w"> </span><span class="nf">quit</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">esc</span><span class="w"> </span><span class="nf">quit</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-down">
-<span id="shortcut-kitten-diff.Scroll down"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">down</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-down" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">down</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-down" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">j</span><span class="w"> </span><span class="nf">scroll_by</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">down</span><span class="w"> </span><span class="nf">scroll_by</span><span class="w"> </span><span class="mi">1</span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-up">
-<span id="shortcut-kitten-diff.Scroll up"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">up</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-up" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">up</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-up" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">k</span><span class="w"> </span><span class="nf">scroll_by</span><span class="w"> </span><span class="mi">-1</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">up</span><span class="w"> </span><span class="nf">scroll_by</span><span class="w"> </span><span class="mi">-1</span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-top">
-<span id="shortcut-kitten-diff.Scroll to top"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">top</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-top" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">top</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-top" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">home</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">start</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-bottom">
-<span id="shortcut-kitten-diff.Scroll to bottom"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">bottom</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-bottom" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">bottom</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-bottom" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">end</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">end</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-next-page">
-<span id="shortcut-kitten-diff.Scroll to next page"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">next</span> <span class="pre">page</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-next-page" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">next</span> <span class="pre">page</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-next-page" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">page_down</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">next-page</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">space</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">next-page</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-previous-page">
-<span id="shortcut-kitten-diff.Scroll to previous page"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">previous</span> <span class="pre">page</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-previous-page" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">previous</span> <span class="pre">page</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-previous-page" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">page_up</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">prev-page</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-next-change">
-<span id="shortcut-kitten-diff.Scroll to next change"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">next</span> <span class="pre">change</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-next-change" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">next</span> <span class="pre">change</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-next-change" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">n</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">next-change</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-previous-change">
-<span id="shortcut-kitten-diff.Scroll to previous change"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">previous</span> <span class="pre">change</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-previous-change" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">previous</span> <span class="pre">change</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-previous-change" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">p</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">prev-change</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Show-all-context">
-<span id="shortcut-kitten-diff.Show all context"></span><span class="sig-name descname"><span class="pre">Show</span> <span class="pre">all</span> <span class="pre">context</span></span><a class="headerlink" href="#shortcut-kitten-diff.Show-all-context" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Show</span> <span class="pre">all</span> <span class="pre">context</span></span><a class="headerlink" href="#shortcut-kitten-diff.Show-all-context" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="nf">change_context</span><span class="w"> </span><span class="s">all</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Show-default-context">
-<span id="shortcut-kitten-diff.Show default context"></span><span class="sig-name descname"><span class="pre">Show</span> <span class="pre">default</span> <span class="pre">context</span></span><a class="headerlink" href="#shortcut-kitten-diff.Show-default-context" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Show</span> <span class="pre">default</span> <span class="pre">context</span></span><a class="headerlink" href="#shortcut-kitten-diff.Show-default-context" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">=</span><span class="w"> </span><span class="nf">change_context</span><span class="w"> </span><span class="s">default</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Increase-context">
-<span id="shortcut-kitten-diff.Increase context"></span><span class="sig-name descname"><span class="pre">Increase</span> <span class="pre">context</span></span><a class="headerlink" href="#shortcut-kitten-diff.Increase-context" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Increase</span> <span class="pre">context</span></span><a class="headerlink" href="#shortcut-kitten-diff.Increase-context" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">+</span><span class="w"> </span><span class="nf">change_context</span><span class="w"> </span><span class="mi">5</span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Decrease-context">
-<span id="shortcut-kitten-diff.Decrease context"></span><span class="sig-name descname"><span class="pre">Decrease</span> <span class="pre">context</span></span><a class="headerlink" href="#shortcut-kitten-diff.Decrease-context" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Decrease</span> <span class="pre">context</span></span><a class="headerlink" href="#shortcut-kitten-diff.Decrease-context" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">-</span><span class="w"> </span><span class="nf">change_context</span><span class="w"> </span><span class="mi">-5</span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Search-forward">
-<span id="shortcut-kitten-diff.Search forward"></span><span class="sig-name descname"><span class="pre">Search</span> <span class="pre">forward</span></span><a class="headerlink" href="#shortcut-kitten-diff.Search-forward" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Search</span> <span class="pre">forward</span></span><a class="headerlink" href="#shortcut-kitten-diff.Search-forward" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="nf">start_search</span><span class="w"> </span><span class="s">regex forward</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Search-backward">
-<span id="shortcut-kitten-diff.Search backward"></span><span class="sig-name descname"><span class="pre">Search</span> <span class="pre">backward</span></span><a class="headerlink" href="#shortcut-kitten-diff.Search-backward" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Search</span> <span class="pre">backward</span></span><a class="headerlink" href="#shortcut-kitten-diff.Search-backward" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">?</span><span class="w"> </span><span class="nf">start_search</span><span class="w"> </span><span class="s">regex backward</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-next-search-match">
-<span id="shortcut-kitten-diff.Scroll to next search match"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">next</span> <span class="pre">search</span> <span class="pre">match</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-next-search-match" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">next</span> <span class="pre">search</span> <span class="pre">match</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-next-search-match" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">.</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">next-match</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">&gt;</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">next-match</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Scroll-to-previous-search-match">
-<span id="shortcut-kitten-diff.Scroll to previous search match"></span><span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">previous</span> <span class="pre">search</span> <span class="pre">match</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-previous-search-match" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Scroll</span> <span class="pre">to</span> <span class="pre">previous</span> <span class="pre">search</span> <span class="pre">match</span></span><a class="headerlink" href="#shortcut-kitten-diff.Scroll-to-previous-search-match" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">,</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">prev-match</span><span class="w"></span>
 <span class="kd">map</span><span class="w"> </span><span class="s">&lt;</span><span class="w"> </span><span class="nf">scroll_to</span><span class="w"> </span><span class="s">prev-match</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Search-forward-no-regex">
-<span id="shortcut-kitten-diff.Search forward (no regex)"></span><span class="sig-name descname"><span class="pre">Search</span> <span class="pre">forward</span> <span class="pre">(no</span> <span class="pre">regex)</span></span><a class="headerlink" href="#shortcut-kitten-diff.Search-forward-no-regex" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Search</span> <span class="pre">forward</span> <span class="pre">(no</span> <span class="pre">regex)</span></span><a class="headerlink" href="#shortcut-kitten-diff.Search-forward-no-regex" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f</span><span class="w"> </span><span class="nf">start_search</span><span class="w"> </span><span class="s">substring forward</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="std shortcut">
 <dt class="sig sig-object std" id="shortcut-kitten-diff.Search-backward-no-regex">
-<span id="shortcut-kitten-diff.Search backward (no regex)"></span><span class="sig-name descname"><span class="pre">Search</span> <span class="pre">backward</span> <span class="pre">(no</span> <span class="pre">regex)</span></span><a class="headerlink" href="#shortcut-kitten-diff.Search-backward-no-regex" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">Search</span> <span class="pre">backward</span> <span class="pre">(no</span> <span class="pre">regex)</span></span><a class="headerlink" href="#shortcut-kitten-diff.Search-backward-no-regex" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">b</span><span class="w"> </span><span class="nf">start_search</span><span class="w"> </span><span class="s">substring backward</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="source-code-for-diff">
-<h2>Source code for diff<a class="headerlink" href="#source-code-for-diff" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="source-code-for-diff">
+<h2>Source code for diff<a class="headerlink" href="#source-code-for-diff" title="Permalink to this heading">#</a></h2>
 <p>The source code for this kitten is <a class="reference external" href="https://github.com/kovidgoyal/kitty/tree/master/kittens/diff">available on GitHub</a>.</p>
-</div>
-<div class="section" id="command-line-interface">
-<h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="command-line-interface">
+<h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this heading">#</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten diff <span class="o">[</span>options<span class="o">]</span> file_or_directory_left file_or_directory_right
 </pre></div>
 </div>
 <p>Show a side-by-side diff of the specified files/directories. You can also use <span class="italic">ssh:hostname:remote-file-path</span> to diff remote files.</p>
-<div class="section" id="options">
-<h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">#</a></h3>
+<section id="options">
+<h3>Options<a class="headerlink" href="#options" title="Permalink to this heading">#</a></h3>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-diff-context">
 <span class="sig-name descname"><span class="pre">--context</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CONTEXT&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-diff-context" title="Permalink to this definition">#</a></dt>
 <dd><p>Number of lines of context to show between changes. Negative values use the number set in <code class="file docutils literal notranslate"><span class="pre">diff.conf</span></code>.
 Default: <code class="code docutils literal notranslate"><span class="pre">-1</span></code></p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-diff-config">
 <span class="sig-name descname"><span class="pre">--config</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CONFIG&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-diff-config" title="Permalink to this definition">#</a></dt>
@@ -1337,19 +1391,21 @@ Default: <code class="code docutils literal notranslate"><span class="pre">-1</s
 <p>If the environment variable <span class="target" id="index-0"></span><a class="reference internal" href="../../glossary/#envvar-KITTY_CONFIG_DIRECTORY"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_CONFIG_DIRECTORY</span></code></a> is specified, that directory is always used and the above searching does not happen.</p>
 <p>If <code class="file docutils literal notranslate"><span class="pre">/etc/xdg/kitty/diff.conf</span></code> exists, it is merged before (i.e. with lower priority) than any user config files. It can be used to specify system-wide defaults for all users. You can use either <code class="code docutils literal notranslate"><span class="pre">-</span></code> or <code class="file docutils literal notranslate"><span class="pre">/dev/stdin</span></code> to read the config from STDIN.</p>
 </dd></dl>
+
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-diff-override">
 <span id="cmdoption-kitty-kitten-diff-o"></span><span class="sig-name descname"><span class="pre">--override</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;OVERRIDE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-diff-override" title="Permalink to this definition">#</a></dt>
 <dd><p>Override individual configuration options, can be specified multiple times. Syntax: <span class="italic">name=value</span>. For example: <span class="italic">-o background=gray</span></p>
 </dd></dl>
-</div>
-</div>
-<div class="section" id="sample-diff-conf">
-<h2>Sample diff.conf<a class="headerlink" href="#sample-diff-conf" title="Permalink to this headline">#</a></h2>
+
+</section>
+</section>
+<section id="sample-diff-conf">
+<h2>Sample diff.conf<a class="headerlink" href="#sample-diff-conf" title="Permalink to this heading">#</a></h2>
 <p>You can download a sample <code class="file docutils literal notranslate"><span class="pre">diff.conf</span></code> file with all default settings and
 comments describing each setting by clicking: <a class="reference download internal" download="" href="../../_downloads/a489ebbb52d84eeb19a12b2fda7debda/diff.conf"><code class="xref download docutils literal notranslate"><span class="pre">sample</span> <span class="pre">diff.conf</span></code></a>.</p>
-</div>
-</div>
+</section>
+</section>
 
         </article>
       </div>
@@ -1438,6 +1494,7 @@ comments describing each setting by clicking: <a class="reference download inter
 </div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
     <script src="../../_static/clipboard.min.js"></script>

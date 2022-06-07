@@ -1,8 +1,9 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
 <meta property="og:title" content="Frequently Asked Questions" />
   
 <meta property="og:type" content="website" />
@@ -12,10 +13,10 @@
 <meta property="og:description" content="Some special symbols are rendered small/truncated in kitty?: The number of cells a Unicode character takes up are controlled by the Unicode standard. All characters are rendered in a single cell un..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Support kitty development ❤️" href="../support/" /><link rel="prev" title="Mark text on screen" href="../marks/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Frequently Asked Questions - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -620,6 +621,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#edit-files-in-new-kitty-windows-even-over-ssh">Edit files in new kitty windows even over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -665,77 +667,78 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.1 [2022-05-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.2 [2022-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -866,7 +869,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -880,10 +884,10 @@
           </label>
         </div>
         <article role="main">
-          <div class="section" id="frequently-asked-questions">
-<h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">#</a></h1>
-<div class="section" id="some-special-symbols-are-rendered-small-truncated-in-kitty">
-<h2>Some special symbols are rendered small/truncated in kitty?<a class="headerlink" href="#some-special-symbols-are-rendered-small-truncated-in-kitty" title="Permalink to this headline">#</a></h2>
+          <section id="frequently-asked-questions">
+<h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this heading">#</a></h1>
+<section id="some-special-symbols-are-rendered-small-truncated-in-kitty">
+<h2>Some special symbols are rendered small/truncated in kitty?<a class="headerlink" href="#some-special-symbols-are-rendered-small-truncated-in-kitty" title="Permalink to this heading">#</a></h2>
 <p>The number of cells a Unicode character takes up are controlled by the Unicode
 standard. All characters are rendered in a single cell unless the Unicode
 standard says they should be rendered in two cells. When a symbol does not fit,
@@ -899,21 +903,21 @@ standard, <em>kitty</em> renders them either smaller or truncated. The exception
 these characters are followed by a space or empty cell in which case kitty
 makes use of the extra cell to render them in two cells. This behavior can be
 turned off for specific symbols using <a class="reference internal" href="../conf/#opt-kitty.narrow_symbols"><code class="xref std std-opt docutils literal notranslate"><span class="pre">narrow_symbols</span></code></a>.</p>
-</div>
-<div class="section" id="using-a-color-theme-with-a-background-color-does-not-work-well-in-vim">
-<h2>Using a color theme with a background color does not work well in vim?<a class="headerlink" href="#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="using-a-color-theme-with-a-background-color-does-not-work-well-in-vim">
+<h2>Using a color theme with a background color does not work well in vim?<a class="headerlink" href="#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim" title="Permalink to this heading">#</a></h2>
 <p>First make sure you have not changed the <span class="target" id="index-0"></span><a class="reference internal" href="../glossary/#envvar-TERM"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">TERM</span></code></a> environment variable, it
 should be <code class="docutils literal notranslate"><span class="pre">xterm-kitty</span></code>. vim uses <em>background color erase</em> even if the
 terminfo file does not contain the <code class="docutils literal notranslate"><span class="pre">bce</span></code> capability. This is a bug in vim. You
 can work around it by adding the following to your vimrc:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">let</span> <span class="p">&amp;</span><span class="nv">t_ut</span><span class="o">=</span><span class="s1">''</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">let</span> <span class="p">&amp;</span><span class="nv">t_ut</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
 </pre></div>
 </div>
 <p>See <a class="reference internal" href="../deccara/"><span class="doc">here</span></a> for why <em>kitty</em> does not support background color
 erase.</p>
-</div>
-<div class="section" id="i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer">
-<h2>I get errors about the terminal being unknown or opening the terminal failing when SSHing into a different computer?<a class="headerlink" href="#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer">
+<h2>I get errors about the terminal being unknown or opening the terminal failing when SSHing into a different computer?<a class="headerlink" href="#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer" title="Permalink to this heading">#</a></h2>
 <p>This happens because the <em>kitty</em> terminfo files are not available on the server.
 You can ssh in using the following command which will automatically copy the
 terminfo files to the server:</p>
@@ -923,7 +927,7 @@ terminfo files to the server:</p>
 <p>This <a class="reference internal" href="../kittens/ssh/"><span class="doc">ssh kitten</span></a> takes all the same command line arguments
 as <strong class="program">ssh</strong>, you can alias it to something small in your shell’s rc files
 to avoid having to type it each time:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> <span class="nv">s</span><span class="o">=</span><span class="s2">"kitty +kitten ssh"</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> <span class="nv">s</span><span class="o">=</span><span class="s2">&quot;kitty +kitten ssh&quot;</span>
 </pre></div>
 </div>
 <p>If the ssh kitten fails, use the following one-liner instead (it is slower as it
@@ -952,16 +956,16 @@ command to apply your change (on the server):</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cap_mkdb /usr/share/misc/termcap
 </pre></div>
 </div>
-</div>
-<div class="section" id="keys-such-as-arrow-keys-backspace-delete-home-end-etc-do-not-work-when-using-su-or-sudo">
-<h2>Keys such as arrow keys, backspace, delete, home/end, etc. do not work when using su or sudo?<a class="headerlink" href="#keys-such-as-arrow-keys-backspace-delete-home-end-etc-do-not-work-when-using-su-or-sudo" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="keys-such-as-arrow-keys-backspace-delete-home-end-etc-do-not-work-when-using-su-or-sudo">
+<h2>Keys such as arrow keys, backspace, delete, home/end, etc. do not work when using su or sudo?<a class="headerlink" href="#keys-such-as-arrow-keys-backspace-delete-home-end-etc-do-not-work-when-using-su-or-sudo" title="Permalink to this heading">#</a></h2>
 <p>Make sure the <span class="target" id="index-1"></span><a class="reference internal" href="../glossary/#envvar-TERM"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">TERM</span></code></a> environment variable, is <code class="docutils literal notranslate"><span class="pre">xterm-kitty</span></code>.  And
 either the <span class="target" id="index-2"></span><a class="reference internal" href="../glossary/#envvar-TERMINFO"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">TERMINFO</span></code></a> environment variable points to a directory
 containing <code class="file docutils literal notranslate"><span class="pre">x/xterm-kitty</span></code> or that file is under <code class="file docutils literal notranslate"><span class="pre">~/.terminfo/x/</span></code>.</p>
 <p>For macOS, you may also need to put that file under <code class="file docutils literal notranslate"><span class="pre">~/.terminfo/78/</span></code>:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/.terminfo/<span class="o">{</span><span class="m">78</span>,x<span class="o">}</span>
 ln -snf ../x/xterm-kitty ~/.terminfo/78/xterm-kitty
-tic -x -o ~/.terminfo <span class="s2">"</span><span class="nv">$KITTY_INSTALLATION_DIR</span><span class="s2">/terminfo/kitty.terminfo"</span>
+tic -x -o ~/.terminfo <span class="s2">&quot;</span><span class="nv">$KITTY_INSTALLATION_DIR</span><span class="s2">/terminfo/kitty.terminfo&quot;</span>
 </pre></div>
 </div>
 <p>Note that <strong class="program">sudo</strong> might remove <span class="target" id="index-3"></span><a class="reference internal" href="../glossary/#envvar-TERMINFO"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">TERMINFO</span></code></a>. Then setting it at
@@ -977,7 +981,7 @@ sudo … env <span class="nv">TERMINFO</span><span class="o">=</span><span class
 </div>
 <p>You can configure <strong class="program">sudo</strong> to preserve <span class="target" id="index-4"></span><a class="reference internal" href="../glossary/#envvar-TERMINFO"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">TERMINFO</span></code></a> by running
 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">visudo</span></code> and adding the following line:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Defaults <span class="nv">env_keep</span> <span class="o">+=</span> <span class="s2">"TERM TERMINFO"</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Defaults <span class="nv">env_keep</span> <span class="o">+=</span> <span class="s2">&quot;TERM TERMINFO&quot;</span>
 </pre></div>
 </div>
 <p>If you have double width characters in your prompt, you may also need to
@@ -985,9 +989,9 @@ explicitly set a UTF-8 locale, like:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 <span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF-8
 </pre></div>
 </div>
-</div>
-<div class="section" id="how-do-i-change-the-colors-in-a-running-kitty-instance">
-<h2>How do I change the colors in a running kitty instance?<a class="headerlink" href="#how-do-i-change-the-colors-in-a-running-kitty-instance" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="how-do-i-change-the-colors-in-a-running-kitty-instance">
+<h2>How do I change the colors in a running kitty instance?<a class="headerlink" href="#how-do-i-change-the-colors-in-a-running-kitty-instance" title="Permalink to this heading">#</a></h2>
 <p>The easiest way to do it is to use the <a class="reference internal" href="../kittens/themes/"><span class="doc">themes kitten</span></a>,
 to choose a new color theme. Simply run:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty +kitten themes
@@ -999,24 +1003,24 @@ to choose a new color theme. Simply run:</p>
 </pre></div>
 </div>
 <p>Or you can enable <a class="reference internal" href="../remote-control/"><span class="doc">remote control</span></a> for <em>kitty</em> and use
-<a class="reference internal" href="../remote-control/#at-set-colors"><span class="std std-ref">kitty @ set-colors</span></a>. The shortcut mapping technique has the same syntax as the
-remote control command, for details, see <a class="reference internal" href="../remote-control/#at-set-colors"><span class="std std-ref">kitty @ set-colors</span></a>.</p>
+<a class="reference internal" href="../remote-control/#at-set-colors"><span class="std std-ref">kitty &#64; set-colors</span></a>. The shortcut mapping technique has the same syntax as the
+remote control command, for details, see <a class="reference internal" href="../remote-control/#at-set-colors"><span class="std std-ref">kitty &#64; set-colors</span></a>.</p>
 <p>To change colors when SSHing into a remote host, use the <a class="reference internal" href="../kittens/ssh/#opt-kitten-ssh.color_scheme"><code class="xref std std-opt docutils literal notranslate"><span class="pre">color_scheme</span></code></a> setting for the <a class="reference internal" href="../kittens/ssh/"><span class="doc">ssh kitten</span></a>.</p>
 <p>Additionally, You can use the
 <a class="reference external" href="https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h3-Operating-System-Commands">OSC terminal escape codes</a>
 to set colors. Examples of using OSC escape codes to set colors:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Change the default foreground color:
-<span class="nb">printf</span> <span class="s1">'\x1b]10;#ff0000\x1b\\'</span>
+<span class="nb">printf</span> <span class="s1">&#39;\x1b]10;#ff0000\x1b\\&#39;</span>
 Change the default background color:
-<span class="nb">printf</span> <span class="s1">'\x1b]11;blue\x1b\\'</span>
+<span class="nb">printf</span> <span class="s1">&#39;\x1b]11;blue\x1b\\&#39;</span>
 Change the cursor color:
-<span class="nb">printf</span> <span class="s1">'\x1b]12;blue\x1b\\'</span>
+<span class="nb">printf</span> <span class="s1">&#39;\x1b]12;blue\x1b\\&#39;</span>
 Change the selection background color:
-<span class="nb">printf</span> <span class="s1">'\x1b]17;blue\x1b\\'</span>
+<span class="nb">printf</span> <span class="s1">&#39;\x1b]17;blue\x1b\\&#39;</span>
 Change the selection foreground color:
-<span class="nb">printf</span> <span class="s1">'\x1b]19;blue\x1b\\'</span>
+<span class="nb">printf</span> <span class="s1">&#39;\x1b]19;blue\x1b\\&#39;</span>
 Change the nth color <span class="o">(</span><span class="m">0</span> - <span class="m">255</span><span class="o">)</span>:
-<span class="nb">printf</span> <span class="s1">'\x1b]4;n;green\x1b\\'</span>
+<span class="nb">printf</span> <span class="s1">&#39;\x1b]4;n;green\x1b\\&#39;</span>
 </pre></div>
 </div>
 <p>You can use various syntaxes/names for color specifications in the above
@@ -1024,9 +1028,9 @@ examples. See <a class="reference external" href="https://linux.die.net/man/3/xp
 for full details.</p>
 <p>If a <code class="docutils literal notranslate"><span class="pre">?</span></code> is given rather than a color specification, kitty will respond
 with the current value for the specified color.</p>
-</div>
-<div class="section" id="how-do-i-specify-command-line-options-for-kitty-on-macos">
-<h2>How do I specify command line options for kitty on macOS?<a class="headerlink" href="#how-do-i-specify-command-line-options-for-kitty-on-macos" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="how-do-i-specify-command-line-options-for-kitty-on-macos">
+<h2>How do I specify command line options for kitty on macOS?<a class="headerlink" href="#how-do-i-specify-command-line-options-for-kitty-on-macos" title="Permalink to this heading">#</a></h2>
 <p>Apple does not want you to use command line options with GUI applications. To
 workaround that limitation, <em>kitty</em> will read command line options from the file
 <code class="file docutils literal notranslate"><span class="pre">&lt;kitty</span> <span class="pre">config</span> <span class="pre">dir&gt;/macos-launch-services-cmdline</span></code> when it is launched
@@ -1036,9 +1040,9 @@ from the GUI, i.e. by clicking the <em>kitty</em> application icon or using
 using: <code class="file docutils literal notranslate"><span class="pre">/Applications/kitty.app/Contents/MacOS/kitty</span></code>.</p>
 <p>And within <em>kitty</em> itself, you can always run <em>kitty</em> using just <code class="docutils literal notranslate"><span class="pre">kitty</span></code> as it
 cleverly adds itself to the <span class="target" id="index-5"></span><a class="reference internal" href="../glossary/#envvar-PATH"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code></a>.</p>
-</div>
-<div class="section" id="i-catted-a-binary-file-and-now-kitty-is-hung">
-<h2>I catted a binary file and now kitty is hung?<a class="headerlink" href="#i-catted-a-binary-file-and-now-kitty-is-hung" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="i-catted-a-binary-file-and-now-kitty-is-hung">
+<h2>I catted a binary file and now kitty is hung?<a class="headerlink" href="#i-catted-a-binary-file-and-now-kitty-is-hung" title="Permalink to this heading">#</a></h2>
 <p><strong>Never</strong> output unknown binary data directly into a terminal.</p>
 <p>Terminals have a single channel for both data and control. Certain bytes
 are control codes. Some of these control codes are of arbitrary length, so if
@@ -1046,9 +1050,9 @@ the binary data you output into the terminal happens to contain the starting
 sequence for one of these control codes, the terminal will hang waiting for the
 closing sequence. Press <a class="reference internal" href="../conf/#shortcut-kitty.Reset-the-terminal"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+delete</span></code></a> to reset the terminal.</p>
 <p>If you do want to cat unknown data, use <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">-v</span></code>.</p>
-</div>
-<div class="section" id="kitty-is-not-able-to-use-my-favorite-font">
-<h2>kitty is not able to use my favorite font?<a class="headerlink" href="#kitty-is-not-able-to-use-my-favorite-font" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="kitty-is-not-able-to-use-my-favorite-font">
+<h2>kitty is not able to use my favorite font?<a class="headerlink" href="#kitty-is-not-able-to-use-my-favorite-font" title="Permalink to this heading">#</a></h2>
 <p><em>kitty</em> achieves its stellar performance by caching alpha masks of each rendered
 character on the GPU, and rendering them all in parallel. This means it is a
 strictly character cell based display. As such it can use only monospace fonts,
@@ -1077,14 +1081,14 @@ with:</p>
 widths in the font. If for some reason fontconfig concludes your favorite
 monospace font does not have <code class="docutils literal notranslate"><span class="pre">spacing=100</span></code> you can override it by using the
 following <code class="file docutils literal notranslate"><span class="pre">~/.config/fontconfig/fonts.conf</span></code>:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">"1.0"</span>?&gt;
-&lt;!DOCTYPE fontconfig SYSTEM <span class="s2">"fonts.dtd"</span>&gt;
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span>?&gt;
+&lt;!DOCTYPE fontconfig SYSTEM <span class="s2">&quot;fonts.dtd&quot;</span>&gt;
 &lt;fontconfig&gt;
-&lt;match <span class="nv">target</span><span class="o">=</span><span class="s2">"scan"</span>&gt;
-    &lt;<span class="nb">test</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"family"</span>&gt;
+&lt;match <span class="nv">target</span><span class="o">=</span><span class="s2">&quot;scan&quot;</span>&gt;
+    &lt;<span class="nb">test</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;family&quot;</span>&gt;
         &lt;string&gt;Your Font Family Name&lt;/string&gt;
     &lt;/test&gt;
-    &lt;edit <span class="nv">name</span><span class="o">=</span><span class="s2">"spacing"</span>&gt;
+    &lt;edit <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;spacing&quot;</span>&gt;
         &lt;int&gt;100&lt;/int&gt;
     &lt;/edit&gt;
 &lt;/match&gt;
@@ -1097,23 +1101,23 @@ command to rebuild your fontconfig cache:</p>
 </pre></div>
 </div>
 <p>Then, the font will be available in <code class="docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">+list-fonts</span></code>.</p>
-</div>
-<div class="section" id="how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal">
-<h2>How can I assign a single global shortcut to bring up the kitty terminal?<a class="headerlink" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal">
+<h2>How can I assign a single global shortcut to bring up the kitty terminal?<a class="headerlink" href="#how-can-i-assign-a-single-global-shortcut-to-bring-up-the-kitty-terminal" title="Permalink to this heading">#</a></h2>
 <p>Bringing up applications on a single key press is the job of the window
 manager/desktop environment. For ways to do it with kitty (or indeed any
 terminal) in different environments,
 see <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/45">here</a>.</p>
-</div>
-<div class="section" id="i-do-not-like-the-kitty-icon">
-<h2>I do not like the kitty icon!<a class="headerlink" href="#i-do-not-like-the-kitty-icon" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="i-do-not-like-the-kitty-icon">
+<h2>I do not like the kitty icon!<a class="headerlink" href="#i-do-not-like-the-kitty-icon" title="Permalink to this heading">#</a></h2>
 <p>There are many alternate icons available, click on an icon to visit its
 homepage:</p>
-<a class="reference external image-reference" href="https://github.com/k0nserv/kitty-icon"><img alt="https://github.com/k0nserv/kitty-icon/raw/main/icon_512x512.png" src="https://github.com/k0nserv/kitty-icon/raw/main/icon_512x512.png" style="width: 256px;"/></a>
-<a class="reference external image-reference" href="https://github.com/DinkDonk/kitty-icon"><img alt="https://github.com/DinkDonk/kitty-icon/raw/main/kitty-dark.png" src="https://github.com/DinkDonk/kitty-icon/raw/main/kitty-dark.png" style="width: 256px;"/></a>
-<a class="reference external image-reference" href="https://github.com/DinkDonk/kitty-icon"><img alt="https://github.com/DinkDonk/kitty-icon/raw/main/kitty-light.png" src="https://github.com/DinkDonk/kitty-icon/raw/main/kitty-light.png" style="width: 256px;"/></a>
-<a class="reference external image-reference" href="https://github.com/hristost/kitty-alternative-icon"><img alt="https://github.com/hristost/kitty-alternative-icon/raw/main/kitty_icon.png" src="https://github.com/hristost/kitty-alternative-icon/raw/main/kitty_icon.png" style="width: 256px;"/></a>
-<a class="reference external image-reference" href="https://github.com/igrmk/whiskers"><img alt="https://github.com/igrmk/whiskers/raw/main/whiskers.svg" src="https://github.com/igrmk/whiskers/raw/main/whiskers.svg" width="256"/></a>
+<a class="reference external image-reference" href="https://github.com/k0nserv/kitty-icon"><img alt="https://github.com/k0nserv/kitty-icon/raw/main/icon_512x512.png" src="https://github.com/k0nserv/kitty-icon/raw/main/icon_512x512.png" style="width: 256px;" /></a>
+<a class="reference external image-reference" href="https://github.com/DinkDonk/kitty-icon"><img alt="https://github.com/DinkDonk/kitty-icon/raw/main/kitty-dark.png" src="https://github.com/DinkDonk/kitty-icon/raw/main/kitty-dark.png" style="width: 256px;" /></a>
+<a class="reference external image-reference" href="https://github.com/DinkDonk/kitty-icon"><img alt="https://github.com/DinkDonk/kitty-icon/raw/main/kitty-light.png" src="https://github.com/DinkDonk/kitty-icon/raw/main/kitty-light.png" style="width: 256px;" /></a>
+<a class="reference external image-reference" href="https://github.com/hristost/kitty-alternative-icon"><img alt="https://github.com/hristost/kitty-alternative-icon/raw/main/kitty_icon.png" src="https://github.com/hristost/kitty-alternative-icon/raw/main/kitty_icon.png" style="width: 256px;" /></a>
+<a class="reference external image-reference" href="https://github.com/igrmk/whiskers"><img alt="https://github.com/igrmk/whiskers/raw/main/whiskers.svg" src="https://github.com/igrmk/whiskers/raw/main/whiskers.svg" width="256" /></a>
 <p>On macOS you can change the icon by following the steps:</p>
 <ol class="arabic">
 <li><p>Find <code class="file docutils literal notranslate"><span class="pre">kitty.app</span></code> in the Applications folder, select it and press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⌘</kbd>+<kbd class="kbd docutils literal notranslate">I</kbd></kbd></p></li>
@@ -1124,9 +1128,9 @@ homepage:</p>
 </div>
 </li>
 </ol>
-</div>
-<div class="section" id="how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program">
-<h2>How do I map key presses in kitty to different keys in the terminal program?<a class="headerlink" href="#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program">
+<h2>How do I map key presses in kitty to different keys in the terminal program?<a class="headerlink" href="#how-do-i-map-key-presses-in-kitty-to-different-keys-in-the-terminal-program" title="Permalink to this heading">#</a></h2>
 <p>This is accomplished by using <code class="docutils literal notranslate"><span class="pre">map</span></code> with <a class="reference internal" href="../conf/#shortcut-kitty.Send-arbitrary-text-on-key-presses"><code class="xref std std-sc docutils literal notranslate"><span class="pre">send_text</span></code></a> in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.
 For example:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>map alt+s send_text normal,application <span class="se">\x</span><span class="m">13</span>
@@ -1141,9 +1145,9 @@ the <a class="reference internal" href="../conf/#shortcut-kitty.Send-arbitrary-t
 keys that actually reach the terminal program, in particular, keys mapped to
 actions in kitty will not be shown. To check those first map them to
 <a class="reference internal" href="../actions/#action-no_op"><code class="xref std std-ac docutils literal notranslate"><span class="pre">no_op</span></code></a>.</p>
-</div>
-<div class="section" id="how-do-i-open-a-new-window-or-tab-with-the-same-working-directory-as-the-current-window">
-<h2>How do I open a new window or tab with the same working directory as the current window?<a class="headerlink" href="#how-do-i-open-a-new-window-or-tab-with-the-same-working-directory-as-the-current-window" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="how-do-i-open-a-new-window-or-tab-with-the-same-working-directory-as-the-current-window">
+<h2>How do I open a new window or tab with the same working directory as the current window?<a class="headerlink" href="#how-do-i-open-a-new-window-or-tab-with-the-same-working-directory-as-the-current-window" title="Permalink to this heading">#</a></h2>
 <p>In <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> add the following:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>map f1 launch --cwd<span class="o">=</span>current
 map f2 launch --cwd<span class="o">=</span>current --type<span class="o">=</span>tab
@@ -1152,9 +1156,9 @@ map f2 launch --cwd<span class="o">=</span>current --type<span class="o">=</span
 <p>Pressing <kbd class="kbd docutils literal notranslate">F1</kbd> will open a new kitty window with the same working directory
 as the current window. The <a class="reference internal" href="../launch/"><span class="doc">launch command</span></a> is very powerful,
 explore <a class="reference internal" href="../launch/"><span class="doc">its documentation</span></a>.</p>
-</div>
-<div class="section" id="things-behave-differently-when-running-kitty-from-system-launcher-vs-from-another-terminal">
-<h2>Things behave differently when running kitty from system launcher vs. from another terminal?<a class="headerlink" href="#things-behave-differently-when-running-kitty-from-system-launcher-vs-from-another-terminal" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="things-behave-differently-when-running-kitty-from-system-launcher-vs-from-another-terminal">
+<h2>Things behave differently when running kitty from system launcher vs. from another terminal?<a class="headerlink" href="#things-behave-differently-when-running-kitty-from-system-launcher-vs-from-another-terminal" title="Permalink to this heading">#</a></h2>
 <p>This will be because of environment variables. When you run kitty from the
 system launcher, it gets a default set of system environment variables. When
 you run kitty from another terminal, you are actually running it from a shell,
@@ -1174,9 +1178,9 @@ mapping to <code class="file docutils literal notranslate"><span class="pre">kit
 <p>This problem is most common on macOS, as Apple makes it exceedingly difficult to
 setup environment variables system-wide, so people end up putting them in all
 sorts of places where they may or may not work.</p>
-</div>
-<div class="section" id="i-am-using-tmux-and-have-a-problem">
-<h2>I am using tmux and have a problem<a class="headerlink" href="#i-am-using-tmux-and-have-a-problem" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="i-am-using-tmux-and-have-a-problem">
+<h2>I am using tmux and have a problem<a class="headerlink" href="#i-am-using-tmux-and-have-a-problem" title="Permalink to this heading">#</a></h2>
 <p>First, terminal multiplexers are <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/391#issuecomment-638320745">a bad idea</a>,
 do not use them, if at all possible. kitty contains features that do all of what
 tmux does, but better, with the exception of remote persistence (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/391">#391</a>).
@@ -1191,9 +1195,9 @@ multiple terminfo definitions.</p>
 <p>If you use any of the advanced features that kitty has innovated, such as
 <a class="reference internal" href="../underlines/"><span class="doc">styled underlines</span></a>, <a class="reference internal" href="../desktop-notifications/"><span class="doc">desktop notifications</span></a>, <a class="reference internal" href="../keyboard-protocol/"><span class="doc">extended keyboard support</span></a>, etc. they may or may not work, depending on the whims of
 tmux’s maintainer, your version of tmux, etc.</p>
-</div>
-<div class="section" id="i-opened-and-closed-a-lot-of-windows-tabs-and-top-shows-kitty-s-memory-usage-is-very-high">
-<h2>I opened and closed a lot of windows/tabs and top shows kitty’s memory usage is very high?<a class="headerlink" href="#i-opened-and-closed-a-lot-of-windows-tabs-and-top-shows-kitty-s-memory-usage-is-very-high" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="i-opened-and-closed-a-lot-of-windows-tabs-and-top-shows-kitty-s-memory-usage-is-very-high">
+<h2>I opened and closed a lot of windows/tabs and top shows kitty’s memory usage is very high?<a class="headerlink" href="#i-opened-and-closed-a-lot-of-windows-tabs-and-top-shows-kitty-s-memory-usage-is-very-high" title="Permalink to this heading">#</a></h2>
 <p><strong class="program">top</strong> is not a good way to measure process memory usage. That is
 because on modern systems, when allocating memory to a process, the C library
 functions will typically allocate memory in large blocks, and give the process
@@ -1224,9 +1228,9 @@ The remaining used memory can be investigated using valgrind again, and it will
 come from arenas in the GPU drivers and the per thread arenas glibc’s malloc
 maintains. These too allocate memory in large blocks and don’t release it back
 to the OS immediately.</p>
-</div>
-<div class="section" id="why-does-kitty-sometimes-start-slowly-on-my-linux-system">
-<h2>Why does kitty sometimes start slowly on my Linux system?<a class="headerlink" href="#why-does-kitty-sometimes-start-slowly-on-my-linux-system" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="why-does-kitty-sometimes-start-slowly-on-my-linux-system">
+<h2>Why does kitty sometimes start slowly on my Linux system?<a class="headerlink" href="#why-does-kitty-sometimes-start-slowly-on-my-linux-system" title="Permalink to this heading">#</a></h2>
 <p><em>kitty</em> takes no longer (within 100ms) to start than other similar GPU terminal
 emulators, (and may be faster than some). If <em>kitty</em> occasionally takes a long
 time to start, it could be a power management issue with the graphics card. On
@@ -1247,8 +1251,8 @@ to wake up the dedicated card, which has been reported on at least one system
 system, which will wake the NVIDIA card during device enumeration.
 <code class="docutils literal notranslate"><span class="pre">MESA_LOADER_DRIVER_OVERRIDE</span></code> also assures that Mesa won’t offer any NVIDIA
 card during enumeration, and will instead just use <code class="file docutils literal notranslate"><span class="pre">radeonsi_dri.so</span></code>.</p>
-</div>
-</div>
+</section>
+</section>
 
         </article>
       </div>
@@ -1337,6 +1341,7 @@ card during enumeration, and will instead just use <code class="file docutils li
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>

@@ -1,8 +1,9 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
 <meta property="og:title" content="Mappable actions" />
   
 <meta property="og:type" content="website" />
@@ -12,10 +13,10 @@
 <meta property="og:description" content="The actions described below can be mapped to any key press or mouse action using the map and mouse_map directives in kitty.conf. For configuration examples, see the default shortcut links for each ..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Arrange windows" href="../layouts/" /><link rel="prev" title="kitty.conf" href="../conf/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Mappable actions - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -160,7 +161,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -620,6 +621,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#edit-files-in-new-kitty-windows-even-over-ssh">Edit files in new kitty windows even over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -665,77 +667,78 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.1 [2022-05-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.2 [2022-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -866,7 +869,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -874,44 +878,49 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <div class="section" id="mappable-actions">
-<h1>Mappable actions<a class="headerlink" href="#mappable-actions" title="Permalink to this headline">#</a></h1>
+          <section id="mappable-actions">
+<h1>Mappable actions<a class="headerlink" href="#mappable-actions" title="Permalink to this heading">#</a></h1>
 <p>The actions described below can be mapped to any key press or mouse action
 using the <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">mouse_map</span></code> directives in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>. For
 configuration examples, see the default shortcut links for each action.</p>
-</div>
-<div class="section" id="copy-paste">
-<span id="action-group-cp"></span><h1>Copy/paste<a class="headerlink" href="#copy-paste" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="copy-paste">
+<span id="action-group-cp"></span><h1>Copy/paste<a class="headerlink" href="#copy-paste" title="Permalink to this heading">#</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-clear_selection">
 <span class="sig-name descname"><span class="pre">clear_selection</span></span><a class="headerlink" href="#action-clear_selection" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Clear the current selection</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-copy_and_clear_or_interrupt">
 <span class="sig-name descname"><span class="pre">copy_and_clear_or_interrupt</span></span><a class="headerlink" href="#action-copy_and_clear_or_interrupt" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Copy the selected text from the active window to the clipboard and clear selection, if no selection, send SIGINT (aka <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">c</kbd></kbd>)</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-copy_ansi_to_clipboard">
 <span class="sig-name descname"><span class="pre">copy_ansi_to_clipboard</span></span><a class="headerlink" href="#action-copy_ansi_to_clipboard" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Copy the selected text from the active window to the clipboard with ANSI formatting codes</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-copy_or_interrupt">
 <span class="sig-name descname"><span class="pre">copy_or_interrupt</span></span><a class="headerlink" href="#action-copy_or_interrupt" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Copy the selected text from the active window to the clipboard, if no selection, send SIGINT (aka <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">c</kbd></kbd>)</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-copy_to_clipboard">
 <span class="sig-name descname"><span class="pre">copy_to_clipboard</span></span><a class="headerlink" href="#action-copy_to_clipboard" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Copy the selected text from the active window to the clipboard</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Copy-to-clipboard"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+c</span></code></a></p>
@@ -919,6 +928,7 @@ configuration examples, see the default shortcut links for each action.</p>
 <dt class="sig sig-object std" id="action-pass_selection_to_program">
 <span class="sig-name descname"><span class="pre">pass_selection_to_program</span></span><a class="headerlink" href="#action-pass_selection_to_program" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Pass the selected text from the active window to the specified program</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Pass-selection-to-program"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+o</span></code></a></p>
@@ -926,25 +936,36 @@ configuration examples, see the default shortcut links for each action.</p>
 <dt class="sig sig-object std" id="action-paste">
 <span class="sig-name descname"><span class="pre">paste</span></span><a class="headerlink" href="#action-paste" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Paste the specified text into the current window</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-show_first_command_output_on_screen">
 <span class="sig-name descname"><span class="pre">show_first_command_output_on_screen</span></span><a class="headerlink" href="#action-show_first_command_output_on_screen" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Show output from the first shell command on screen in a pager like less</p>
 <p>Requires <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> to work</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-show_last_command_output">
 <span class="sig-name descname"><span class="pre">show_last_command_output</span></span><a class="headerlink" href="#action-show_last_command_output" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Show output from the last shell command in a pager like less</p>
 <p>Requires <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> to work</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Browse-output-of-the-last-shell-command-in-pager"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+g</span></code></a></p>
 <dl class="std action">
+<dt class="sig sig-object std" id="action-show_last_non_empty_command_output">
+<span class="sig-name descname"><span class="pre">show_last_non_empty_command_output</span></span><a class="headerlink" href="#action-show_last_non_empty_command_output" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<p>Show the last non-empty output from a shell command in a pager like less</p>
+<p>Requires <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> to work</p>
+<dl class="std action">
 <dt class="sig sig-object std" id="action-show_last_visited_command_output">
 <span class="sig-name descname"><span class="pre">show_last_visited_command_output</span></span><a class="headerlink" href="#action-show_last_visited_command_output" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Show the first command output below the last scrolled position via scroll_to_prompt</p>
 <p>or the last mouse clicked command output in a pager like less</p>
 <p>Requires <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> to work</p>
@@ -952,6 +973,7 @@ configuration examples, see the default shortcut links for each action.</p>
 <dt class="sig sig-object std" id="action-show_scrollback">
 <span class="sig-name descname"><span class="pre">show_scrollback</span></span><a class="headerlink" href="#action-show_scrollback" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Show scrollback in a pager like less</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Browse-scrollback-buffer-in-pager"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+h</span></code></a></p>
@@ -959,18 +981,21 @@ configuration examples, see the default shortcut links for each action.</p>
 <dt class="sig sig-object std" id="action-copy_to_buffer">
 <span class="sig-name descname"><span class="pre">copy_to_buffer</span></span><a class="headerlink" href="#action-copy_to_buffer" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Copy the selection from the active window to the specified buffer</p>
 <p>See <a class="reference internal" href="../overview/#cpbuf"><span class="std std-ref">Multiple copy/paste buffers</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-paste_from_buffer">
 <span class="sig-name descname"><span class="pre">paste_from_buffer</span></span><a class="headerlink" href="#action-paste_from_buffer" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Paste from the specified buffer to the active window</p>
 <p>See <a class="reference internal" href="../overview/#cpbuf"><span class="std std-ref">Multiple copy/paste buffers</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-paste_from_clipboard">
 <span class="sig-name descname"><span class="pre">paste_from_clipboard</span></span><a class="headerlink" href="#action-paste_from_clipboard" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Paste from the clipboard to the active window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Paste-from-clipboard"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+v</span></code></a></p>
@@ -978,27 +1003,31 @@ configuration examples, see the default shortcut links for each action.</p>
 <dt class="sig sig-object std" id="action-paste_from_selection">
 <span class="sig-name descname"><span class="pre">paste_from_selection</span></span><a class="headerlink" href="#action-paste_from_selection" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Paste from the primary selection, if present, otherwise the clipboard to the active window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Paste-from-selection"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+s</span></code></a></p>
-</div>
-<div class="section" id="debugging">
-<span id="action-group-debug"></span><h1>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="debugging">
+<span id="action-group-debug"></span><h1>Debugging<a class="headerlink" href="#debugging" title="Permalink to this heading">#</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-dump_lines_with_attrs">
 <span class="sig-name descname"><span class="pre">dump_lines_with_attrs</span></span><a class="headerlink" href="#action-dump_lines_with_attrs" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Show a dump of the current lines in the scrollback + screen with their line attributes</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-close_shared_ssh_connections">
 <span class="sig-name descname"><span class="pre">close_shared_ssh_connections</span></span><a class="headerlink" href="#action-close_shared_ssh_connections" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Close all shared SSH connections</p>
 <p>See <a class="reference internal" href="../kittens/ssh/#opt-kitten-ssh.share_connections"><code class="xref std std-opt docutils literal notranslate"><span class="pre">share_connections</span></code></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-debug_config">
 <span class="sig-name descname"><span class="pre">debug_config</span></span><a class="headerlink" href="#action-debug_config" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Show the effective configuration kitty is running with</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Debug-kitty-configuration"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f6</span></code></a></p>
@@ -1006,14 +1035,16 @@ configuration examples, see the default shortcut links for each action.</p>
 <dt class="sig sig-object std" id="action-show_kitty_env_vars">
 <span class="sig-name descname"><span class="pre">show_kitty_env_vars</span></span><a class="headerlink" href="#action-show_kitty_env_vars" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Show the environment variables that the kitty process sees</p>
-</div>
-<div class="section" id="layouts">
-<span id="action-group-lay"></span><h1>Layouts<a class="headerlink" href="#layouts" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="layouts">
+<span id="action-group-lay"></span><h1>Layouts<a class="headerlink" href="#layouts" title="Permalink to this heading">#</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-goto_layout">
 <span class="sig-name descname"><span class="pre">goto_layout</span></span><a class="headerlink" href="#action-goto_layout" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Switch to the named layout</p>
 <p>For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f1</span><span class="w"> </span><span class="nf">goto_layout</span><span class="w"> </span><span class="s">tall</span><span class="w"></span>
@@ -1023,16 +1054,19 @@ configuration examples, see the default shortcut links for each action.</p>
 <dt class="sig sig-object std" id="action-last_used_layout">
 <span class="sig-name descname"><span class="pre">last_used_layout</span></span><a class="headerlink" href="#action-last_used_layout" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Go to the previously used layout</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-layout_action">
 <span class="sig-name descname"><span class="pre">layout_action</span></span><a class="headerlink" href="#action-layout_action" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Perform a layout specific action. See <a class="reference internal" href="../layouts/"><span class="doc">Arrange windows</span></a> for details</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-next_layout">
 <span class="sig-name descname"><span class="pre">next_layout</span></span><a class="headerlink" href="#action-next_layout" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Go to the next enabled layout</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Next-layout"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+l</span></code></a></p>
@@ -1040,6 +1074,7 @@ configuration examples, see the default shortcut links for each action.</p>
 <dt class="sig sig-object std" id="action-toggle_layout">
 <span class="sig-name descname"><span class="pre">toggle_layout</span></span><a class="headerlink" href="#action-toggle_layout" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Toggle the named layout</p>
 <p>Switches to the named layout if another layout is current, otherwise
 switches to the last used layout. Useful to “zoom” a window temporarily
@@ -1047,36 +1082,41 @@ by switching to the stack layout. For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f1</span><span class="w"> </span><span class="nf">toggle_layout</span><span class="w"> </span><span class="s">stack</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="marks">
-<span id="action-group-mk"></span><h1>Marks<a class="headerlink" href="#marks" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="marks">
+<span id="action-group-mk"></span><h1>Marks<a class="headerlink" href="#marks" title="Permalink to this heading">#</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-remove_marker">
 <span class="sig-name descname"><span class="pre">remove_marker</span></span><a class="headerlink" href="#action-remove_marker" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Remove a previously created marker</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_to_mark">
 <span class="sig-name descname"><span class="pre">scroll_to_mark</span></span><a class="headerlink" href="#action-scroll_to_mark" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Scroll to the next or previous mark of the specified type</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-toggle_marker">
 <span class="sig-name descname"><span class="pre">toggle_marker</span></span><a class="headerlink" href="#action-toggle_marker" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Toggle the current marker on/off</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-create_marker">
 <span class="sig-name descname"><span class="pre">create_marker</span></span><a class="headerlink" href="#action-create_marker" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Create a new marker</p>
-</div>
-<div class="section" id="miscellaneous">
-<span id="action-group-misc"></span><h1>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="miscellaneous">
+<span id="action-group-misc"></span><h1>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading">#</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-send_text">
 <span class="sig-name descname"><span class="pre">send_text</span></span><a class="headerlink" href="#action-send_text" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Send the specified text to the active window</p>
 <p>See <a class="reference internal" href="../conf/#shortcut-kitty.Send-arbitrary-text-on-key-presses"><code class="xref std std-sc docutils literal notranslate"><span class="pre">send_text</span></code></a> for details.</p>
 <p>Default shortcuts using this action:
@@ -1085,6 +1125,7 @@ by switching to the stack layout. For example:</p>
 <dt class="sig sig-object std" id="action-signal_child">
 <span class="sig-name descname"><span class="pre">signal_child</span></span><a class="headerlink" href="#action-signal_child" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Send the specified SIGNAL to the foreground process in the active window</p>
 <p>For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">F1</span><span class="w"> </span><span class="nf">signal_child</span><span class="w"> </span><span class="s">SIGTERM</span><span class="w"></span>
@@ -1094,6 +1135,7 @@ by switching to the stack layout. For example:</p>
 <dt class="sig sig-object std" id="action-clear_terminal">
 <span class="sig-name descname"><span class="pre">clear_terminal</span></span><a class="headerlink" href="#action-clear_terminal" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Clear the terminal</p>
 <p>See <a class="reference internal" href="../conf/#shortcut-kitty.Reset-the-terminal"><code class="xref std std-sc docutils literal notranslate"><span class="pre">reset_terminal</span></code></a> for details. For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset the terminal</span><span class="w"></span>
@@ -1114,6 +1156,7 @@ by switching to the stack layout. For example:</p>
 <dt class="sig sig-object std" id="action-combine">
 <span class="sig-name descname"><span class="pre">combine</span></span><a class="headerlink" href="#action-combine" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Combine multiple actions and map to a single keypress</p>
 <p>The syntax is:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">key</span><span class="w"> </span><span class="nf">combine</span><span class="w"> </span><span class="s">&lt;separator&gt; action1 &lt;separator&gt; action2 &lt;separator&gt; action3 ...</span><span class="w"></span>
@@ -1127,17 +1170,20 @@ by switching to the stack layout. For example:</p>
 <dt class="sig sig-object std" id="action-disable_ligatures_in">
 <span class="sig-name descname"><span class="pre">disable_ligatures_in</span></span><a class="headerlink" href="#action-disable_ligatures_in" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Turn on/off ligatures in the specified window</p>
 <p>See <a class="reference internal" href="../conf/#opt-kitty.disable_ligatures"><code class="xref std std-opt docutils literal notranslate"><span class="pre">disable_ligatures</span></code></a> for details</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-discard_event">
 <span class="sig-name descname"><span class="pre">discard_event</span></span><a class="headerlink" href="#action-discard_event" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Discard this event completely ignoring it</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-edit_config_file">
 <span class="sig-name descname"><span class="pre">edit_config_file</span></span><a class="headerlink" href="#action-edit_config_file" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Edit the kitty.conf config file in your favorite text editor</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Edit-config-file"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f2</span></code></a></p>
@@ -1145,11 +1191,13 @@ by switching to the stack layout. For example:</p>
 <dt class="sig sig-object std" id="action-input_unicode_character">
 <span class="sig-name descname"><span class="pre">input_unicode_character</span></span><a class="headerlink" href="#action-input_unicode_character" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Input an arbitrary unicode character. See <a class="reference internal" href="../kittens/unicode_input/"><span class="doc">Unicode input</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-kitten">
 <span class="sig-name descname"><span class="pre">kitten</span></span><a class="headerlink" href="#action-kitten" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Run the specified kitten. See <a class="reference internal" href="../kittens/custom/"><span class="doc">Custom kittens</span></a> for details</p>
 <p>Default shortcuts using this action:</p>
 <ul class="simple">
@@ -1166,6 +1214,7 @@ by switching to the stack layout. For example:</p>
 <dt class="sig sig-object std" id="action-kitty_shell">
 <span class="sig-name descname"><span class="pre">kitty_shell</span></span><a class="headerlink" href="#action-kitty_shell" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Run the kitty shell to control kitty with commands</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Open-the-kitty-command-shell"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+escape</span></code></a></p>
@@ -1173,12 +1222,14 @@ by switching to the stack layout. For example:</p>
 <dt class="sig sig-object std" id="action-launch">
 <span class="sig-name descname"><span class="pre">launch</span></span><a class="headerlink" href="#action-launch" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Launch the specified program in a new window/tab/etc.</p>
 <p>See <a class="reference internal" href="../launch/"><span class="doc">The launch command</span></a> for details</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-load_config_file">
 <span class="sig-name descname"><span class="pre">load_config_file</span></span><a class="headerlink" href="#action-load_config_file" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Reload the config file</p>
 <p>If mapped without arguments reloads the default config file, otherwise loads
 the specified config files, in order. Loading a config file <em>replaces</em> all
@@ -1192,6 +1243,7 @@ config options. For example:</p>
 <dt class="sig sig-object std" id="action-open_url">
 <span class="sig-name descname"><span class="pre">open_url</span></span><a class="headerlink" href="#action-open_url" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Open the specified URL</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Open-kitty-Website"><code class="xref std std-sc docutils literal notranslate"><span class="pre">shift+cmd+/</span></code></a></p>
@@ -1199,6 +1251,7 @@ config options. For example:</p>
 <dt class="sig sig-object std" id="action-open_url_with_hints">
 <span class="sig-name descname"><span class="pre">open_url_with_hints</span></span><a class="headerlink" href="#action-open_url_with_hints" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Click a URL using the keyboard</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Open-URL"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+e</span></code></a></p>
@@ -1206,6 +1259,7 @@ config options. For example:</p>
 <dt class="sig sig-object std" id="action-remote_control">
 <span class="sig-name descname"><span class="pre">remote_control</span></span><a class="headerlink" href="#action-remote_control" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Run a remote control command</p>
 <p>For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">F1</span><span class="w"> </span><span class="nf">remote_control</span><span class="w"> </span><span class="s">set-spacing margin=30</span><span class="w"></span>
@@ -1216,8 +1270,9 @@ config options. For example:</p>
 <dt class="sig sig-object std" id="action-set_colors">
 <span class="sig-name descname"><span class="pre">set_colors</span></span><a class="headerlink" href="#action-set_colors" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Change colors in the specified windows</p>
-<p>For details, see <a class="reference internal" href="../remote-control/#at-set-colors"><span class="std std-ref">kitty @ set-colors</span></a>. For example:</p>
+<p>For details, see <a class="reference internal" href="../remote-control/#at-set-colors"><span class="std std-ref">kitty &#64; set-colors</span></a>. For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f5</span><span class="w"> </span><span class="nf">set_colors</span><span class="w"> </span><span class="s">--configured /path/to/some/config/file/colors.conf</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1225,6 +1280,7 @@ config options. For example:</p>
 <dt class="sig sig-object std" id="action-toggle_macos_secure_keyboard_entry">
 <span class="sig-name descname"><span class="pre">toggle_macos_secure_keyboard_entry</span></span><a class="headerlink" href="#action-toggle_macos_secure_keyboard_entry" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Toggle macOS secure keyboard entry</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Toggle-macOS-secure-keyboard-entry"><code class="xref std std-sc docutils literal notranslate"><span class="pre">opt+cmd+s</span></code></a></p>
@@ -1232,25 +1288,29 @@ config options. For example:</p>
 <dt class="sig sig-object std" id="action-no_op">
 <span class="sig-name descname"><span class="pre">no_op</span></span><a class="headerlink" href="#action-no_op" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Unbind a shortcut</p>
 <p>Mapping a shortcut to no_op causes kitty to not intercept the key stroke anymore, instead passing it to the program running inside it.</p>
-</div>
-<div class="section" id="mouse-actions">
-<span id="action-group-mouse"></span><h1>Mouse actions<a class="headerlink" href="#mouse-actions" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="mouse-actions">
+<span id="action-group-mouse"></span><h1>Mouse actions<a class="headerlink" href="#mouse-actions" title="Permalink to this heading">#</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-mouse_click_url">
 <span class="sig-name descname"><span class="pre">mouse_click_url</span></span><a class="headerlink" href="#action-mouse_click_url" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Click the URL under the mouse</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-mouse_click_url_or_select">
 <span class="sig-name descname"><span class="pre">mouse_click_url_or_select</span></span><a class="headerlink" href="#action-mouse_click_url_or_select" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Click the URL under the mouse only if the screen has no selection</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-mouse_handle_click">
 <span class="sig-name descname"><span class="pre">mouse_handle_click</span></span><a class="headerlink" href="#action-mouse_handle_click" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Handle a mouse click</p>
 <p>Try to perform the specified actions one after the other till one of them is successful.
 Supported actions are:</p>
@@ -1264,37 +1324,43 @@ Supported actions are:</p>
 <dt class="sig sig-object std" id="action-mouse_select_command_output">
 <span class="sig-name descname"><span class="pre">mouse_select_command_output</span></span><a class="headerlink" href="#action-mouse_select_command_output" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Select clicked command output</p>
 <p>Requires <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> to work</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-mouse_selection">
 <span class="sig-name descname"><span class="pre">mouse_selection</span></span><a class="headerlink" href="#action-mouse_selection" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Manipulate the selection based on the current mouse position</p>
 <p>For examples, see <a class="reference internal" href="../conf/#conf-kitty-mouse-mousemap"><span class="std std-ref">Mouse actions</span></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-mouse_show_command_output">
 <span class="sig-name descname"><span class="pre">mouse_show_command_output</span></span><a class="headerlink" href="#action-mouse_show_command_output" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Show clicked command output in a pager like less</p>
 <p>Requires <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> to work</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-paste_selection">
 <span class="sig-name descname"><span class="pre">paste_selection</span></span><a class="headerlink" href="#action-paste_selection" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Paste the current primary selection</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-paste_selection_or_clipboard">
 <span class="sig-name descname"><span class="pre">paste_selection_or_clipboard</span></span><a class="headerlink" href="#action-paste_selection_or_clipboard" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Paste the current primary selection or the clipboard if no selection is present</p>
-</div>
-<div class="section" id="scrolling">
-<span id="action-group-sc"></span><h1>Scrolling<a class="headerlink" href="#scrolling" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="scrolling">
+<span id="action-group-sc"></span><h1>Scrolling<a class="headerlink" href="#scrolling" title="Permalink to this heading">#</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_end">
 <span class="sig-name descname"><span class="pre">scroll_end</span></span><a class="headerlink" href="#action-scroll_end" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Scroll to the bottom of the scrollback buffer</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-bottom"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+end</span></code></a></p>
@@ -1302,6 +1368,7 @@ Supported actions are:</p>
 <dt class="sig sig-object std" id="action-scroll_home">
 <span class="sig-name descname"><span class="pre">scroll_home</span></span><a class="headerlink" href="#action-scroll_home" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Scroll to the top of the scrollback buffer</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-top"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+home</span></code></a></p>
@@ -1309,6 +1376,7 @@ Supported actions are:</p>
 <dt class="sig sig-object std" id="action-scroll_line_down">
 <span class="sig-name descname"><span class="pre">scroll_line_down</span></span><a class="headerlink" href="#action-scroll_line_down" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Scroll down by one line</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-line-down"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+down</span></code></a></p>
@@ -1316,6 +1384,7 @@ Supported actions are:</p>
 <dt class="sig sig-object std" id="action-scroll_line_up">
 <span class="sig-name descname"><span class="pre">scroll_line_up</span></span><a class="headerlink" href="#action-scroll_line_up" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Scroll up by one line</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-line-up"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+up</span></code></a></p>
@@ -1323,6 +1392,7 @@ Supported actions are:</p>
 <dt class="sig sig-object std" id="action-scroll_page_down">
 <span class="sig-name descname"><span class="pre">scroll_page_down</span></span><a class="headerlink" href="#action-scroll_page_down" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Scroll down by one page</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-page-down"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+page_down</span></code></a></p>
@@ -1330,6 +1400,7 @@ Supported actions are:</p>
 <dt class="sig sig-object std" id="action-scroll_page_up">
 <span class="sig-name descname"><span class="pre">scroll_page_up</span></span><a class="headerlink" href="#action-scroll_page_up" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Scroll up by one page</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-page-up"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+page_up</span></code></a></p>
@@ -1337,16 +1408,19 @@ Supported actions are:</p>
 <dt class="sig sig-object std" id="action-scroll_prompt_to_bottom">
 <span class="sig-name descname"><span class="pre">scroll_prompt_to_bottom</span></span><a class="headerlink" href="#action-scroll_prompt_to_bottom" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Scroll prompt to the bottom of the screen, filling in extra lines from the scrollback buffer</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_prompt_to_top">
 <span class="sig-name descname"><span class="pre">scroll_prompt_to_top</span></span><a class="headerlink" href="#action-scroll_prompt_to_top" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Scroll prompt to the top of the screen, filling screen with empty lines</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_to_prompt">
 <span class="sig-name descname"><span class="pre">scroll_to_prompt</span></span><a class="headerlink" href="#action-scroll_to_prompt" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Scroll to the previous/next shell command prompt</p>
 <p>Allows easy jumping from one command to the next. Requires working
 <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a>. Takes a single, optional, number as argument which is
@@ -1360,18 +1434,20 @@ For example:</p>
 </div>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-next-shell-prompt"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+x</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-previous-shell-prompt"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+z</span></code></a></p>
-</div>
-<div class="section" id="tab-management">
-<span id="action-group-tab"></span><h1>Tab management<a class="headerlink" href="#tab-management" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="tab-management">
+<span id="action-group-tab"></span><h1>Tab management<a class="headerlink" href="#tab-management" title="Permalink to this heading">#</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-close_other_tabs_in_os_window">
 <span class="sig-name descname"><span class="pre">close_other_tabs_in_os_window</span></span><a class="headerlink" href="#action-close_other_tabs_in_os_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Close all the tabs in the current OS window other than the currently active tab</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-close_tab">
 <span class="sig-name descname"><span class="pre">close_tab</span></span><a class="headerlink" href="#action-close_tab" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Close the current tab</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Close-tab"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+q</span></code></a></p>
@@ -1379,18 +1455,21 @@ For example:</p>
 <dt class="sig sig-object std" id="action-detach_tab">
 <span class="sig-name descname"><span class="pre">detach_tab</span></span><a class="headerlink" href="#action-detach_tab" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Detach a tab, moving it to another OS Window</p>
 <p>See <a class="reference internal" href="../overview/#detach-window"><span class="std std-ref">detaching windows</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-goto_tab">
 <span class="sig-name descname"><span class="pre">goto_tab</span></span><a class="headerlink" href="#action-goto_tab" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Go to the specified tab, by number, starting with 1</p>
 <p>Zero and negative numbers go to previously active tabs</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-move_tab_backward">
 <span class="sig-name descname"><span class="pre">move_tab_backward</span></span><a class="headerlink" href="#action-move_tab_backward" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Move the active tab backward</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-tab-backward"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+,</span></code></a></p>
@@ -1398,6 +1477,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-move_tab_forward">
 <span class="sig-name descname"><span class="pre">move_tab_forward</span></span><a class="headerlink" href="#action-move_tab_forward" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Move the active tab forward</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-tab-forward"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+.</span></code></a></p>
@@ -1405,6 +1485,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-new_tab">
 <span class="sig-name descname"><span class="pre">new_tab</span></span><a class="headerlink" href="#action-new_tab" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Create a new tab</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.New-tab"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+t</span></code></a></p>
@@ -1412,11 +1493,13 @@ For example:</p>
 <dt class="sig sig-object std" id="action-new_tab_with_cwd">
 <span class="sig-name descname"><span class="pre">new_tab_with_cwd</span></span><a class="headerlink" href="#action-new_tab_with_cwd" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Create a new tab with working directory for the window in it set to the same as the active window</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-next_tab">
 <span class="sig-name descname"><span class="pre">next_tab</span></span><a class="headerlink" href="#action-next_tab" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Make the next tab active</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Next-tab"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+right</span></code></a></p>
@@ -1424,6 +1507,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-previous_tab">
 <span class="sig-name descname"><span class="pre">previous_tab</span></span><a class="headerlink" href="#action-previous_tab" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Make the previous tab active</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Previous-tab"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+left</span></code></a></p>
@@ -1431,26 +1515,30 @@ For example:</p>
 <dt class="sig sig-object std" id="action-select_tab">
 <span class="sig-name descname"><span class="pre">select_tab</span></span><a class="headerlink" href="#action-select_tab" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Interactively select a tab to switch to</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-set_tab_title">
 <span class="sig-name descname"><span class="pre">set_tab_title</span></span><a class="headerlink" href="#action-set_tab_title" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Change the title of the active tab</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Set-tab-title"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+alt+t</span></code></a></p>
-</div>
-<div class="section" id="window-management">
-<span id="action-group-win"></span><h1>Window management<a class="headerlink" href="#window-management" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="window-management">
+<span id="action-group-win"></span><h1>Window management<a class="headerlink" href="#window-management" title="Permalink to this heading">#</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-close_other_windows_in_tab">
 <span class="sig-name descname"><span class="pre">close_other_windows_in_tab</span></span><a class="headerlink" href="#action-close_other_windows_in_tab" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Close all windows in the tab other than the currently active window</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-eighth_window">
 <span class="sig-name descname"><span class="pre">eighth_window</span></span><a class="headerlink" href="#action-eighth_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the eighth window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Eight-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+8</span></code></a></p>
@@ -1458,6 +1546,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-fifth_window">
 <span class="sig-name descname"><span class="pre">fifth_window</span></span><a class="headerlink" href="#action-fifth_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the fifth window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Fifth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+5</span></code></a></p>
@@ -1465,6 +1554,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-first_window">
 <span class="sig-name descname"><span class="pre">first_window</span></span><a class="headerlink" href="#action-first_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the first window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.First-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+1</span></code></a></p>
@@ -1472,6 +1562,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-focus_visible_window">
 <span class="sig-name descname"><span class="pre">focus_visible_window</span></span><a class="headerlink" href="#action-focus_visible_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus a visible window by pressing the number of the window. Window numbers are displayed</p>
 <p>over the windows for easy selection in this mode. See <a class="reference internal" href="../conf/#opt-kitty.visual_window_select_characters"><code class="xref std std-opt docutils literal notranslate"><span class="pre">visual_window_select_characters</span></code></a>.</p>
 <p>Default shortcuts using this action:
@@ -1480,6 +1571,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-fourth_window">
 <span class="sig-name descname"><span class="pre">fourth_window</span></span><a class="headerlink" href="#action-fourth_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the fourth window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Fourth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+4</span></code></a></p>
@@ -1487,6 +1579,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-move_window">
 <span class="sig-name descname"><span class="pre">move_window</span></span><a class="headerlink" href="#action-move_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Move the window in the specified direction</p>
 <p>For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+left</span><span class="w"> </span><span class="nf">move_window</span><span class="w"> </span><span class="s">left</span><span class="w"></span>
@@ -1497,6 +1590,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-move_window_backward">
 <span class="sig-name descname"><span class="pre">move_window_backward</span></span><a class="headerlink" href="#action-move_window_backward" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Move active window backward (swap it with the previous window)</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-window-backward"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+b</span></code></a></p>
@@ -1504,6 +1598,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-move_window_forward">
 <span class="sig-name descname"><span class="pre">move_window_forward</span></span><a class="headerlink" href="#action-move_window_forward" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Move active window forward (swap it with the next window)</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-window-forward"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f</span></code></a></p>
@@ -1511,6 +1606,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-move_window_to_top">
 <span class="sig-name descname"><span class="pre">move_window_to_top</span></span><a class="headerlink" href="#action-move_window_to_top" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Move active window to the top (make it the first window)</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-window-to-top"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+`</span></code></a></p>
@@ -1518,6 +1614,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-neighboring_window">
 <span class="sig-name descname"><span class="pre">neighboring_window</span></span><a class="headerlink" href="#action-neighboring_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the neighboring window in the current tab</p>
 <p>For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">ctrl+left</span><span class="w"> </span><span class="nf">neighboring_window</span><span class="w"> </span><span class="s">left</span><span class="w"></span>
@@ -1528,6 +1625,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-next_window">
 <span class="sig-name descname"><span class="pre">next_window</span></span><a class="headerlink" href="#action-next_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the next window in the current tab</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Next-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+]</span></code></a></p>
@@ -1535,6 +1633,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-ninth_window">
 <span class="sig-name descname"><span class="pre">ninth_window</span></span><a class="headerlink" href="#action-ninth_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the ninth window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Ninth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+9</span></code></a></p>
@@ -1542,6 +1641,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-nth_window">
 <span class="sig-name descname"><span class="pre">nth_window</span></span><a class="headerlink" href="#action-nth_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the nth window if positive or the previously active windows if negative. When the number is larger</p>
 <p>than the number of windows focus the last window. For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="c1"># focus the previously active window</span><span class="w"></span>
@@ -1554,6 +1654,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-previous_window">
 <span class="sig-name descname"><span class="pre">previous_window</span></span><a class="headerlink" href="#action-previous_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the previous window in the current tab</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Previous-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+[</span></code></a></p>
@@ -1561,17 +1662,20 @@ For example:</p>
 <dt class="sig sig-object std" id="action-reset_window_sizes">
 <span class="sig-name descname"><span class="pre">reset_window_sizes</span></span><a class="headerlink" href="#action-reset_window_sizes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Reset window sizes undoing any dynamic resizing of windows</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-resize_window">
 <span class="sig-name descname"><span class="pre">resize_window</span></span><a class="headerlink" href="#action-resize_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Resize the active window by the specified amount</p>
 <p>See <a class="reference internal" href="../layouts/#window-resizing"><span class="std std-ref">Resizing windows</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-second_window">
 <span class="sig-name descname"><span class="pre">second_window</span></span><a class="headerlink" href="#action-second_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the second window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Second-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+2</span></code></a></p>
@@ -1579,6 +1683,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-seventh_window">
 <span class="sig-name descname"><span class="pre">seventh_window</span></span><a class="headerlink" href="#action-seventh_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the seventh window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Seventh-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+7</span></code></a></p>
@@ -1586,6 +1691,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-sixth_window">
 <span class="sig-name descname"><span class="pre">sixth_window</span></span><a class="headerlink" href="#action-sixth_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the sixth window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Sixth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+6</span></code></a></p>
@@ -1593,6 +1699,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-swap_with_window">
 <span class="sig-name descname"><span class="pre">swap_with_window</span></span><a class="headerlink" href="#action-swap_with_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Swap the current window with another window in the current tab, selected visually. See <a class="reference internal" href="../conf/#opt-kitty.visual_window_select_characters"><code class="xref std std-opt docutils literal notranslate"><span class="pre">visual_window_select_characters</span></code></a></p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Visually-swap-window-with-another"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f8</span></code></a></p>
@@ -1600,6 +1707,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-tenth_window">
 <span class="sig-name descname"><span class="pre">tenth_window</span></span><a class="headerlink" href="#action-tenth_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the tenth window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Tenth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+0</span></code></a></p>
@@ -1607,6 +1715,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-third_window">
 <span class="sig-name descname"><span class="pre">third_window</span></span><a class="headerlink" href="#action-third_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the third window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Third-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+3</span></code></a></p>
@@ -1614,6 +1723,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-change_font_size">
 <span class="sig-name descname"><span class="pre">change_font_size</span></span><a class="headerlink" href="#action-change_font_size" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Change the font size for the current or all OS Windows</p>
 <p>See <a class="reference internal" href="../conf/#conf-kitty-shortcuts-fonts"><span class="std std-ref">Font sizes</span></a> for details.</p>
 <p>Default shortcuts using this action:
@@ -1622,6 +1732,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-close_os_window">
 <span class="sig-name descname"><span class="pre">close_os_window</span></span><a class="headerlink" href="#action-close_os_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Close the currently active OS Window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Close-OS-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">shift+cmd+w</span></code></a></p>
@@ -1629,6 +1740,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-close_window">
 <span class="sig-name descname"><span class="pre">close_window</span></span><a class="headerlink" href="#action-close_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Close the currently active window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Close-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+w</span></code></a></p>
@@ -1636,6 +1748,7 @@ For example:</p>
 <dt class="sig sig-object std" id="action-close_window_with_confirmation">
 <span class="sig-name descname"><span class="pre">close_window_with_confirmation</span></span><a class="headerlink" href="#action-close_window_with_confirmation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Close window with confirmation</p>
 <p>Asks for confirmation before closing the window. If you don’t want the
 confirmation when the window is sitting at a shell prompt
@@ -1647,12 +1760,14 @@ confirmation when the window is sitting at a shell prompt
 <dt class="sig sig-object std" id="action-detach_window">
 <span class="sig-name descname"><span class="pre">detach_window</span></span><a class="headerlink" href="#action-detach_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Detach a window, moving it to another tab or OS Window</p>
 <p>See <a class="reference internal" href="../overview/#detach-window"><span class="std std-ref">detaching windows</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-new_os_window">
 <span class="sig-name descname"><span class="pre">new_os_window</span></span><a class="headerlink" href="#action-new_os_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>New OS Window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.New-OS-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+n</span></code></a></p>
@@ -1660,11 +1775,13 @@ confirmation when the window is sitting at a shell prompt
 <dt class="sig sig-object std" id="action-new_os_window_with_cwd">
 <span class="sig-name descname"><span class="pre">new_os_window_with_cwd</span></span><a class="headerlink" href="#action-new_os_window_with_cwd" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>New OS Window with the same working directory as the currently active window</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-new_window">
 <span class="sig-name descname"><span class="pre">new_window</span></span><a class="headerlink" href="#action-new_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Create a new window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.New-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+enter</span></code></a></p>
@@ -1672,21 +1789,25 @@ confirmation when the window is sitting at a shell prompt
 <dt class="sig sig-object std" id="action-new_window_with_cwd">
 <span class="sig-name descname"><span class="pre">new_window_with_cwd</span></span><a class="headerlink" href="#action-new_window_with_cwd" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Create a new window with working directory same as that of the active window</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-nth_os_window">
 <span class="sig-name descname"><span class="pre">nth_os_window</span></span><a class="headerlink" href="#action-nth_os_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Focus the nth OS window</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-quit">
 <span class="sig-name descname"><span class="pre">quit</span></span><a class="headerlink" href="#action-quit" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Quit, closing all windows</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-set_background_opacity">
 <span class="sig-name descname"><span class="pre">set_background_opacity</span></span><a class="headerlink" href="#action-set_background_opacity" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Set the background opacity for the active OS Window</p>
 <p>For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="s">f1</span><span class="w"> </span><span class="nf">set_background_opacity</span><span class="w"> </span><span class="mf">+0.1</span><span class="w"></span>
@@ -1700,6 +1821,7 @@ confirmation when the window is sitting at a shell prompt
 <dt class="sig sig-object std" id="action-start_resizing_window">
 <span class="sig-name descname"><span class="pre">start_resizing_window</span></span><a class="headerlink" href="#action-start_resizing_window" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Resize the active window interactively</p>
 <p>See <a class="reference internal" href="../layouts/#window-resizing"><span class="std std-ref">Resizing windows</span></a> for details.</p>
 <p>Default shortcuts using this action:
@@ -1708,6 +1830,7 @@ confirmation when the window is sitting at a shell prompt
 <dt class="sig sig-object std" id="action-toggle_fullscreen">
 <span class="sig-name descname"><span class="pre">toggle_fullscreen</span></span><a class="headerlink" href="#action-toggle_fullscreen" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Toggle the fullscreen status of the active OS Window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Toggle-fullscreen"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f11</span></code></a></p>
@@ -1715,10 +1838,11 @@ confirmation when the window is sitting at a shell prompt
 <dt class="sig sig-object std" id="action-toggle_maximized">
 <span class="sig-name descname"><span class="pre">toggle_maximized</span></span><a class="headerlink" href="#action-toggle_maximized" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <p>Toggle the maximized status of the active OS Window</p>
 <p>Default shortcuts using this action:
 <a class="reference internal" href="../conf/#shortcut-kitty.Toggle-maximized"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f10</span></code></a></p>
-</div>
+</section>
 
         </article>
       </div>
@@ -1764,33 +1888,8 @@ confirmation when the window is sitting at a shell prompt
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Mappable actions</a></li>
-<li><a class="reference internal" href="#copy-paste">Copy/paste</a></li>
-<li><a class="reference internal" href="#debugging">Debugging</a></li>
-<li><a class="reference internal" href="#layouts">Layouts</a></li>
-<li><a class="reference internal" href="#marks">Marks</a></li>
-<li><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
-<li><a class="reference internal" href="#mouse-actions">Mouse actions</a></li>
-<li><a class="reference internal" href="#scrolling">Scrolling</a></li>
-<li><a class="reference internal" href="#tab-management">Tab management</a></li>
-<li><a class="reference internal" href="#window-management">Window management</a></li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
@@ -1798,6 +1897,7 @@ confirmation when the window is sitting at a shell prompt
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>

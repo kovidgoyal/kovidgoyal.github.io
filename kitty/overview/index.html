@@ -1,8 +1,9 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
 <meta property="og:title" content="Overview" />
   
 <meta property="og:type" content="website" />
@@ -12,10 +13,10 @@
 <meta property="og:description" content="Design philosophy: kitty is designed for power keyboard users. To that end all its controls work with the keyboard (although it fully supports mouse interactions as well). Its configuration is a si..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="kitty.conf" href="../conf/" /><link rel="prev" title="Build from source" href="../build/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Overview - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -620,6 +621,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#how-it-works">How it works</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#edit-files-in-new-kitty-windows-even-over-ssh">Edit files in new kitty windows even over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -665,77 +667,78 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.1 [2022-05-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.2 [2022-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -866,7 +869,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -880,10 +884,10 @@
           </label>
         </div>
         <article role="main">
-          <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h1>
-<div class="section" id="design-philosophy">
-<h2>Design philosophy<a class="headerlink" href="#design-philosophy" title="Permalink to this headline">#</a></h2>
+          <section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h1>
+<section id="design-philosophy">
+<h2>Design philosophy<a class="headerlink" href="#design-philosophy" title="Permalink to this heading">#</a></h2>
 <p><em>kitty</em> is designed for power keyboard users. To that end all its controls work
 with the keyboard (although it fully supports mouse interactions as well). Its
 configuration is a simple, human editable, single file for easy reproducibility
@@ -898,22 +902,19 @@ It even extends existing text formatting escape codes, to add support for
 features not available elsewhere, such as colored and styled (curly) underlines.
 One of the design goals of <em>kitty</em> is to be easily extensible so that new
 features can be added in the future with relatively little effort.</p>
-</div>
-<div class="section" id="tabs-and-windows">
-<h2>Tabs and Windows<a class="headerlink" href="#tabs-and-windows" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="tabs-and-windows">
+<h2>Tabs and Windows<a class="headerlink" href="#tabs-and-windows" title="Permalink to this heading">#</a></h2>
 <p><em>kitty</em> is capable of running multiple programs organized into tabs and windows.
 The top level of organization is the <a class="reference internal" href="../glossary/#term-os_window"><span class="xref std std-term">OS window</span></a>. Each OS
 window consists of one or more <a class="reference internal" href="../glossary/#term-tab"><span class="xref std std-term">tabs</span></a>. Each tab consists of one or more
 <a class="reference internal" href="../glossary/#term-window"><span class="xref std std-term">kitty windows</span></a>. The kitty windows can be arranged in multiple
 different <a class="reference internal" href="../glossary/#term-layout"><span class="xref std std-term">layouts</span></a>, like windows are organized in a tiling
 window manager. The keyboard controls (which are <a class="reference internal" href="../conf/#conf-kitty-shortcuts"><span class="std std-ref">all customizable</span></a>) for tabs and windows are:</p>
-<div class="section" id="scrolling">
-<h3>Scrolling<a class="headerlink" href="#scrolling" title="Permalink to this headline">#</a></h3>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 27%"/>
-<col style="width: 73%"/>
-</colgroup>
+<section id="scrolling">
+<h3>Scrolling<a class="headerlink" href="#scrolling" title="Permalink to this heading">#</a></h3>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Action</p></th>
 <th class="head"><p>Shortcut</p></th>
@@ -951,15 +952,13 @@ window manager. The keyboard controls (which are <a class="reference internal" h
 <td><p><a class="reference internal" href="../conf/#shortcut-kitty.Browse-output-of-the-last-shell-command-in-pager"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+g</span></code></a> (see <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a>)</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
-<div class="section" id="tabs">
-<h3>Tabs<a class="headerlink" href="#tabs" title="Permalink to this headline">#</a></h3>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 27%"/>
-<col style="width: 73%"/>
-</colgroup>
+</section>
+<section id="tabs">
+<h3>Tabs<a class="headerlink" href="#tabs" title="Permalink to this heading">#</a></h3>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Action</p></th>
 <th class="head"><p>Shortcut</p></th>
@@ -991,15 +990,13 @@ window manager. The keyboard controls (which are <a class="reference internal" h
 <td><p><a class="reference internal" href="../conf/#shortcut-kitty.Set-tab-title"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+alt+t</span></code></a> (also <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⇧</kbd>+<kbd class="kbd docutils literal notranslate">⌘</kbd>+<kbd class="kbd docutils literal notranslate">i</kbd></kbd> on macOS)</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
-<div class="section" id="windows">
-<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">#</a></h3>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 28%"/>
-<col style="width: 72%"/>
-</colgroup>
+</section>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">#</a></h3>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Action</p></th>
 <th class="head"><p>Shortcut</p></th>
@@ -1042,7 +1039,8 @@ window manager. The keyboard controls (which are <a class="reference internal" h
 (clockwise from the top-left)</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <p>Additionally, you can define shortcuts in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> to focus
 neighboring windows and move windows around (similar to window movement in
 <strong class="program">vim</strong>):</p>
@@ -1087,17 +1085,14 @@ currently active window:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">f9</span> <span class="n">close_other_windows_in_tab</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="other-keyboard-shortcuts">
-<h2>Other keyboard shortcuts<a class="headerlink" href="#other-keyboard-shortcuts" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="other-keyboard-shortcuts">
+<h2>Other keyboard shortcuts<a class="headerlink" href="#other-keyboard-shortcuts" title="Permalink to this heading">#</a></h2>
 <p>The full list of actions that can be mapped to key presses is available
 <a class="reference internal" href="../actions/"><span class="doc">here</span></a>.</p>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 35%"/>
-<col style="width: 65%"/>
-</colgroup>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Action</p></th>
 <th class="head"><p>Shortcut</p></th>
@@ -1165,19 +1160,20 @@ currently active window:</p>
 <td><p><a class="reference internal" href="../conf/#shortcut-kitty.Reset-background-opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;d</span></code></a></p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
-<div class="section" id="configuring-kitty">
-<h2>Configuring kitty<a class="headerlink" href="#configuring-kitty" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="configuring-kitty">
+<h2>Configuring kitty<a class="headerlink" href="#configuring-kitty" title="Permalink to this heading">#</a></h2>
 <p><em>kitty</em> is highly configurable, everything from keyboard shortcuts to painting
 frames-per-second. Press <a class="reference internal" href="../conf/#shortcut-kitty.Edit-config-file"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f2</span></code></a> in kitty to open its fully
 commented sample config file in your text editor. For details see the
 <a class="reference internal" href="../conf/"><span class="doc">configuration docs</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="layouts">
-<span id="id1"></span><h2>Layouts<a class="headerlink" href="#layouts" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="layouts">
+<span id="id1"></span><h2>Layouts<a class="headerlink" href="#layouts" title="Permalink to this heading">#</a></h2>
 <p>A <a class="reference internal" href="../glossary/#term-layout"><span class="xref std std-term">layout</span></a> is an arrangement of multiple <a class="reference internal" href="../glossary/#term-window"><span class="xref std std-term">kitty windows</span></a>
 inside a top-level <a class="reference internal" href="../glossary/#term-os_window"><span class="xref std std-term">OS window</span></a>. The layout manages all its
 windows automatically, resizing and moving them as needed. You can create a new
@@ -1203,9 +1199,9 @@ particular layouts, and choose which layouts you want to enable, see
 <p>For more details on the layouts and how to use them see <a class="reference internal" href="../layouts/"><span class="doc">the documentation</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="extending-kitty">
-<h2>Extending kitty<a class="headerlink" href="#extending-kitty" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="extending-kitty">
+<h2>Extending kitty<a class="headerlink" href="#extending-kitty" title="Permalink to this heading">#</a></h2>
 <p>kitty has a powerful framework for scripting. You can create small terminal
 programs called <a class="reference internal" href="../kittens_intro/"><span class="doc">kittens</span></a>. These can used to add features
 to kitty, for example, <a class="reference internal" href="../kittens/remote_file/"><span class="doc">editing remote files</span></a> or
@@ -1216,9 +1212,9 @@ used to create programs that leverage kitty’s powerful features, for example,
 <p>For a list of all the builtin kittens, <a class="reference internal" href="../kittens_intro/#kittens"><span class="std std-ref">see here</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="remote-control">
-<h2>Remote control<a class="headerlink" href="#remote-control" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="remote-control">
+<h2>Remote control<a class="headerlink" href="#remote-control" title="Permalink to this heading">#</a></h2>
 <p><em>kitty</em> has a very powerful system that allows you to control it from the
 <a class="reference internal" href="../remote-control/"><span class="doc">shell prompt, even over SSH</span></a>. You can change colors,
 fonts, open new <a class="reference internal" href="../glossary/#term-window"><span class="xref std std-term">windows</span></a>, <a class="reference internal" href="../glossary/#term-tab"><span class="xref std std-term">tabs</span></a>, set their titles,
@@ -1227,9 +1223,9 @@ The possibilities are endless. See the <a class="reference internal" href="../re
 started.</p>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="startup-sessions">
-<span id="sessions"></span><h2>Startup Sessions<a class="headerlink" href="#startup-sessions" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="startup-sessions">
+<span id="sessions"></span><h2>Startup Sessions<a class="headerlink" href="#startup-sessions" title="Permalink to this heading">#</a></h2>
 <p>You can control the <a class="reference internal" href="../glossary/#term-tab"><span class="xref std std-term">tabs</span></a>, <a class="reference internal" href="../glossary/#term-window"><span class="xref std std-term">kitty window</span></a> layout,
 working directory, startup programs, etc. by creating a <em>session</em> file and using
 the <a class="reference internal" href="../invocation/#cmdoption-kitty-session"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--session</span></code></a> command line flag or the <a class="reference internal" href="../conf/#opt-kitty.startup_session"><code class="xref std std-opt docutils literal notranslate"><span class="pre">startup_session</span></code></a>
@@ -1243,7 +1239,7 @@ option in <code class="file docutils literal notranslate"><span class="pre">kitt
 <span class="c1"># Create a window with some environment variables set and run vim in it</span>
 <span class="nf">launch</span><span class="l"> --env FOO=BAR vim</span>
 <span class="c1"># Set the title for the next window</span>
-<span class="nf">launch</span><span class="l"> --title "Chat with x" irssi --profile x</span>
+<span class="nf">launch</span><span class="l"> --title &quot;Chat with x&quot; irssi --profile x</span>
 
 <span class="c1"># Create a new tab</span>
 <span class="c1"># The part after new_tab is the optional tab title which will be displayed in</span>
@@ -1274,17 +1270,17 @@ option in <code class="file docutils literal notranslate"><span class="pre">kitt
 <p>The <a class="reference internal" href="../launch/"><span class="doc">launch</span></a> command when used in a session file cannot create
 new OS windows, or tabs.</p>
 </div>
-</div>
-<div class="section" id="creating-tabs-windows">
-<h2>Creating tabs/windows<a class="headerlink" href="#creating-tabs-windows" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="creating-tabs-windows">
+<h2>Creating tabs/windows<a class="headerlink" href="#creating-tabs-windows" title="Permalink to this heading">#</a></h2>
 <p>kitty can be told to run arbitrary programs in new <a class="reference internal" href="../glossary/#term-tab"><span class="xref std std-term">tabs</span></a>,
 <a class="reference internal" href="../glossary/#term-window"><span class="xref std std-term">windows</span></a> or <a class="reference internal" href="../glossary/#term-overlay"><span class="xref std std-term">overlays</span></a> at a keypress.
 To learn how to do this, see <a class="reference internal" href="../launch/"><span class="doc">here</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="mouse-features">
-<h2>Mouse features<a class="headerlink" href="#mouse-features" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="mouse-features">
+<h2>Mouse features<a class="headerlink" href="#mouse-features" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>You can click on a URL to open it in a browser.</p></li>
 <li><p>You can double click to select a word and then drag to select more words.</p></li>
@@ -1311,18 +1307,18 @@ in your browser, etc.</p>
 <p>For details, see <a class="reference internal" href="../open_actions/"><span class="doc">here</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="font-control">
-<h2>Font control<a class="headerlink" href="#font-control" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="font-control">
+<h2>Font control<a class="headerlink" href="#font-control" title="Permalink to this heading">#</a></h2>
 <p><em>kitty</em> has extremely flexible and powerful font selection features. You can
 specify individual families for the regular, bold, italic and bold+italic fonts.
 You can even specify specific font families for specific ranges of Unicode
 characters. This allows precise control over text rendering. It can comein handy
 for applications like powerline, without the need to use patched fonts. See the
 various font related configuration directives in <a class="reference internal" href="../conf/#conf-kitty-fonts"><span class="std std-ref">Fonts</span></a>.</p>
-</div>
-<div class="section" id="the-scrollback-buffer">
-<span id="scrollback"></span><h2>The scrollback buffer<a class="headerlink" href="#the-scrollback-buffer" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="the-scrollback-buffer">
+<span id="scrollback"></span><h2>The scrollback buffer<a class="headerlink" href="#the-scrollback-buffer" title="Permalink to this heading">#</a></h2>
 <p><em>kitty</em> supports scrolling back to view history, just like most terminals. You
 can use either keyboard shortcuts or the mouse scroll wheel to do so. However,
 <em>kitty</em> has an extra, neat feature. Sometimes you need to explore the scrollback
@@ -1345,18 +1341,18 @@ features, you can see tips for doing so, in <a class="reference external" href="
 <p>If you wish to store very large amounts of scrollback to view using the piping
 or <a class="reference internal" href="../conf/#shortcut-kitty.Browse-scrollback-buffer-in-pager"><code class="xref std std-sc docutils literal notranslate"><span class="pre">show_scrollback</span></code></a> features, you can use the
 <a class="reference internal" href="../conf/#opt-kitty.scrollback_pager_history_size"><code class="xref std std-opt docutils literal notranslate"><span class="pre">scrollback_pager_history_size</span></code></a> option.</p>
-</div>
-<div class="section" id="integration-with-shells">
-<h2>Integration with shells<a class="headerlink" href="#integration-with-shells" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="integration-with-shells">
+<h2>Integration with shells<a class="headerlink" href="#integration-with-shells" title="Permalink to this heading">#</a></h2>
 <p>kitty has the ability to integrate closely within common shells, such as <a class="reference external" href="https://www.zsh.org/">zsh</a>, <a class="reference external" href="https://fishshell.com">fish</a> and <a class="reference external" href="https://www.gnu.org/software/bash/">bash</a> to enable features such as jumping to
 previous prompts in the scrollback, viewing the output of the last command in
 <strong class="program">less</strong>, using the mouse to move the cursor while editing prompts, etc.
 See <a class="reference internal" href="../shell-integration/"><span class="doc">Shell integration</span></a> for details.</p>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="multiple-copy-paste-buffers">
-<span id="cpbuf"></span><h2>Multiple copy/paste buffers<a class="headerlink" href="#multiple-copy-paste-buffers" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="multiple-copy-paste-buffers">
+<span id="cpbuf"></span><h2>Multiple copy/paste buffers<a class="headerlink" href="#multiple-copy-paste-buffers" title="Permalink to this heading">#</a></h2>
 <p>In addition to being able to copy/paste from the system clipboard, in <em>kitty</em>
 you can also setup an arbitrary number of copy paste buffers. To do so, simply
 add something like the following to your <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>:</p>
@@ -1367,16 +1363,16 @@ add something like the following to your <code class="file docutils literal notr
 <p>This will allow you to press <kbd class="kbd docutils literal notranslate">F1</kbd> to copy the current selection to an
 internal buffer named <code class="docutils literal notranslate"><span class="pre">a</span></code> and <kbd class="kbd docutils literal notranslate">F2</kbd> to paste from that buffer. The buffer
 names are arbitrary strings, so you can define as many such buffers as you need.</p>
-</div>
-<div class="section" id="marks">
-<h2>Marks<a class="headerlink" href="#marks" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="marks">
+<h2>Marks<a class="headerlink" href="#marks" title="Permalink to this heading">#</a></h2>
 <p>kitty has the ability to mark text on the screen based on regular expressions.
 This can be useful to highlight words or phrases when browsing output from long
 running programs or similar. To learn how this feature works, see <a class="reference internal" href="../marks/"><span class="doc">Mark text on screen</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-</div>
+</section>
+</section>
 
         </article>
       </div>
@@ -1469,6 +1465,7 @@ running programs or similar. To learn how this feature works, see <a class="refe
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>
