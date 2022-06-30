@@ -13,7 +13,7 @@
 <meta property="og:description" content="kitty has the ability to integrate closely within common shells, such as zsh, fish and bash to enable features such as jumping to previous prompts in the scrollback, viewing the output of the last ..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Mark text on screen" href="../marks/" /><link rel="prev" title="Scripting the mouse click" href="../open_actions/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.2, furo 2022.06.21"/>
         <title>Shell integration - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -48,18 +48,14 @@
 </style>
 
   
-      <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-20736318-2']);
-      _gaq.push(['_setDomainName', 'none']);
-      _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTJK3R7GF2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+        gtag('config', 'G-XTJK3R7GF2');
     </script>
   </head>
   <body>
@@ -667,6 +663,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#future">0.26.0 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.2 [2022-06-07]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.1 [2022-05-26]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.25.0 [2022-04-11]</a></li>
@@ -913,7 +910,7 @@ copied</p></li>
 the prompt on resize and allowing the shell to redraw it cleanly.</p></li>
 <li><p>Sophisticated completion for the <strong class="program">kitty</strong> command in the shell.</p></li>
 <li><p>When confirming a quit command if a window is sitting at a shell prompt,
-it is optionally, not counted (see <a class="reference internal" href="../conf/#opt-kitty.confirm_os_window_close"><code class="xref std std-opt docutils literal notranslate"><span class="pre">confirm_os_window_close</span></code></a>)</p></li>
+it is not counted (for details, see <a class="reference internal" href="../conf/#opt-kitty.confirm_os_window_close"><code class="xref std std-opt docutils literal notranslate"><span class="pre">confirm_os_window_close</span></code></a>)</p></li>
 </ul>
 </section>
 <section id="configuration">
@@ -1286,7 +1283,7 @@ _ksi_deferred_init<span class="o">()</span> <span class="o">{</span>
             <span class="c1"># OpenSSH&#39;s sshd creates entries in utmp for every login so use those</span>
             <span class="o">[[</span> <span class="s2">&quot;</span><span class="k">$(</span><span class="nb">builtin</span> <span class="nb">command</span> who -m <span class="m">2</span>&gt; /dev/null<span class="k">)</span><span class="s2">&quot;</span> <span class="o">=</span>~ <span class="s2">&quot;\([a-fA-F.:0-9]+\)</span>$<span class="s2">&quot;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">is_ssh_session</span><span class="o">=</span><span class="s2">&quot;y&quot;</span>
         <span class="k">fi</span>
-        
+
         <span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$is_ssh_session</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
             <span class="c1"># show the hostname via %m for SSH sessions</span>
             functions<span class="o">[</span>_ksi_precmd<span class="o">]</span>+<span class="o">=</span><span class="s2">&quot;</span>
@@ -1440,7 +1437,7 @@ clone-in-kitty<span class="o">()</span> <span class="o">{</span>
     <span class="k">while</span> :<span class="p">;</span> <span class="k">do</span>
         <span class="k">case</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> <span class="k">in</span>
             <span class="s2">&quot;&quot;</span><span class="o">)</span> break<span class="p">;;</span>
-            -h<span class="p">|</span>--help<span class="o">)</span> 
+            -h<span class="p">|</span>--help<span class="o">)</span>
                 <span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">&quot;%s\n\n%s\n&quot;</span> <span class="s2">&quot;Clone the current zsh session into a new kitty window.&quot;</span> <span class="s2">&quot;For usage instructions see: https://sw.kovidgoyal.net/kitty/shell-integration/#clone-shell&quot;</span>
                 <span class="k">return</span>
                 <span class="p">;;</span>
@@ -1460,7 +1457,6 @@ clone-in-kitty<span class="o">()</span> <span class="o">{</span>
     _ksi_transmit_data <span class="s2">&quot;</span><span class="nv">$data</span><span class="s2">&quot;</span> <span class="s2">&quot;clone&quot;</span> <span class="s2">&quot;save_history&quot;</span>
 <span class="o">}</span>
 
-
 edit-in-kitty<span class="o">()</span> <span class="o">{</span>
     <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">data</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
     <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">ed_filename</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
@@ -1469,7 +1465,7 @@ edit-in-kitty<span class="o">()</span> <span class="o">{</span>
     <span class="k">while</span> :<span class="p">;</span> <span class="k">do</span>
         <span class="k">case</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> <span class="k">in</span>
             <span class="s2">&quot;&quot;</span><span class="o">)</span> break<span class="p">;;</span>
-            -h<span class="p">|</span>--help<span class="o">)</span> 
+            -h<span class="p">|</span>--help<span class="o">)</span>
                 <span class="nb">builtin</span> <span class="nb">printf</span> <span class="s2">&quot;%s\n\n%s\n\n%s\n&quot;</span> <span class="s2">&quot;</span><span class="nv">$usage</span><span class="s2">&quot;</span> <span class="s2">&quot;Edit the specified file in a kitty overlay window. Works over SSH as well.&quot;</span> <span class="s2">&quot;For usage instructions see: https://sw.kovidgoyal.net/kitty/shell-integration/#edit-file&quot;</span>
                 <span class="k">return</span>
                 <span class="p">;;</span>
@@ -1495,7 +1491,7 @@ edit-in-kitty<span class="o">()</span> <span class="o">{</span>
     <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">stat_result</span><span class="p">[size]</span><span class="si">}</span><span class="s2">&quot;</span> -gt <span class="k">$((</span><span class="m">8</span> <span class="o">*</span> <span class="m">1024</span> <span class="o">*</span> <span class="m">1024</span><span class="k">))</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span> <span class="nb">builtin</span> <span class="nb">echo</span> <span class="s2">&quot;File is too large for performant editing&quot;</span><span class="p">;</span> <span class="k">return</span> <span class="m">1</span><span class="p">;</span> <span class="o">}</span>
     <span class="nv">data</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$data</span><span class="s2">,file_inode=</span><span class="si">${</span><span class="nv">stat_result</span><span class="p">[device]</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">stat_result</span><span class="p">[inode]</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">stat_result</span><span class="p">[size]</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="nv">data</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$data</span><span class="s2">,file_data=</span><span class="k">$(</span><span class="nb">builtin</span> <span class="nb">command</span> base64 &lt; <span class="s2">&quot;</span><span class="nv">$ed_filename</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
-    _ksi_transmit_data <span class="s2">&quot;</span><span class="nv">$data</span><span class="s2">&quot;</span> <span class="s2">&quot;edit&quot;</span> 
+    _ksi_transmit_data <span class="s2">&quot;</span><span class="nv">$data</span><span class="s2">&quot;</span> <span class="s2">&quot;edit&quot;</span>
     <span class="nv">data</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
     <span class="nb">builtin</span> <span class="nb">echo</span> <span class="s2">&quot;Waiting for editing to be completed...&quot;</span>
     <span class="nb">builtin</span> <span class="nb">local</span> <span class="nv">started</span><span class="o">=</span><span class="s2">&quot;n&quot;</span>
@@ -1701,7 +1697,6 @@ edit-in-kitty<span class="o">()</span> <span class="o">{</span>
         <span class="k">set</span> chunk_num <span class="o">(</span><span class="nb">math</span> <span class="nv">$chunk_num</span> + 1<span class="o">)</span>
     <span class="k">end</span>
     <span class="nb">printf</span> <span class="se">\e</span>P@kitty-%s<span class="se">\|\e\\</span> <span class="s2">&quot;</span><span class="nv">$argv</span><span class="s2">[2]&quot;</span>
-
 <span class="k">end</span>
 
 <span class="k">function</span> clone-in-kitty -d <span class="s2">&quot;Clone the current fish session into a new kitty window&quot;</span>
@@ -1723,8 +1718,7 @@ edit-in-kitty<span class="o">()</span> <span class="o">{</span>
     <span class="k">set</span> --local b64_envs <span class="o">(</span>string join0 -- <span class="nv">$envs</span> <span class="o">|</span> base64<span class="o">)</span>
     <span class="k">set</span> --local b64_cwd <span class="o">(</span><span class="nb">printf</span> <span class="s2">&quot;%s&quot;</span> <span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">&quot;</span> <span class="o">|</span> base64<span class="o">)</span>
     <span class="k">set</span> --prepend data <span class="s2">&quot;shell=fish&quot;</span> <span class="s2">&quot;pid=</span><span class="nv">$fish_pid</span><span class="s2">&quot;</span> <span class="s2">&quot;cwd=</span><span class="nv">$b64_cwd</span><span class="s2">&quot;</span> <span class="s2">&quot;env=</span><span class="nv">$b64_envs</span><span class="s2">&quot;</span>
-    <span class="k">set</span> data <span class="o">(</span>string join <span class="s2">&quot;,&quot;</span> -- <span class="nv">$data</span> <span class="o">|</span> tr -d <span class="s2">&quot;\t\n\r &quot;</span><span class="o">)</span>
-    __ksi_transmit_data <span class="s2">&quot;</span><span class="nv">$data</span><span class="s2">&quot;</span> <span class="s2">&quot;clone&quot;</span>
+    __ksi_transmit_data <span class="o">(</span>string join <span class="s2">&quot;,&quot;</span> -- <span class="nv">$data</span> <span class="o">|</span> tr -d <span class="s2">&quot;\t\n\r &quot;</span><span class="o">)</span> <span class="s2">&quot;clone&quot;</span>
 <span class="k">end</span>
 
 <span class="k">function</span> edit-in-kitty -d <span class="s2">&quot;Edit the specified file in a new kitty overlay using your preferred editor, even over SSH&quot;</span>
@@ -1753,63 +1747,74 @@ edit-in-kitty<span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> 1
     <span class="k">end</span>
     <span class="k">if</span> <span class="k">test</span> ! -f <span class="s2">&quot;</span><span class="nv">$ed_filename</span><span class="s2">&quot;</span>
-        <span class="nb">builtin </span><span class="k">echo</span> <span class="s2">&quot;</span><span class="nv">$ed_filename</span><span class="s2"> is not a file&quot;</span> <span class="o">&gt;</span> /dev/stderr
+        <span class="k">echo</span> <span class="s2">&quot;</span><span class="nv">$ed_filename</span><span class="s2"> is not a file&quot;</span> <span class="o">&gt;</span> /dev/stderr
         <span class="k">return</span> 1
     <span class="k">end</span>
-    <span class="k">set</span> --local stat_result <span class="o">(</span><span class="nb">command </span>stat -L --format <span class="s1">&#39;%d:%i:%s&#39;</span> <span class="s2">&quot;</span><span class="nv">$ed_filename</span><span class="s2">&quot;</span> 2&gt; /dev/null<span class="o">)</span>
-    <span class="k">if</span> <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$status</span><span class="s2">&quot;</span> -ne <span class="s2">&quot;0&quot;</span>
-        <span class="k">set</span> stat_result <span class="o">(</span><span class="nb">command </span>stat -L -f <span class="s1">&#39;%d:%i:%z&#39;</span> <span class="s2">&quot;</span><span class="nv">$ed_filename</span><span class="s2">&quot;</span> 2&gt; /dev/null<span class="o">)</span>
+    <span class="k">set</span> --local stat_result <span class="o">(</span>stat -L --format <span class="s1">&#39;%d:%i:%s&#39;</span> <span class="s2">&quot;</span><span class="nv">$ed_filename</span><span class="s2">&quot;</span> 2&gt; /dev/null<span class="o">)</span>
+    <span class="k">if</span> <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$status</span><span class="s2">&quot;</span> -ne 0
+        <span class="k">set</span> stat_result <span class="o">(</span>stat -L -f <span class="s1">&#39;%d:%i:%z&#39;</span> <span class="s2">&quot;</span><span class="nv">$ed_filename</span><span class="s2">&quot;</span> 2&gt; /dev/null<span class="o">)</span>
     <span class="k">end</span>
-    <span class="k">if</span> <span class="k">test</span> -z <span class="s2">&quot;</span><span class="nv">$stat_result</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$status</span><span class="s2">&quot;</span> -ne <span class="m">0</span> <span class="o">||</span> <span class="k">test</span> -z <span class="s2">&quot;</span><span class="nv">$stat_result</span><span class="s2">&quot;</span>
         <span class="k">echo</span> <span class="s2">&quot;Failed to stat the file: </span><span class="nv">$ed_filename</span><span class="s2">&quot;</span> <span class="o">&gt;</span> /dev/stderr
         <span class="k">return</span> 1
     <span class="k">end</span>
     <span class="k">set</span> --append data <span class="s2">&quot;file_inode=</span><span class="nv">$stat_result</span><span class="s2">&quot;</span>
     <span class="k">set</span> --local file_size <span class="o">(</span>string match -rg <span class="s1">&#39;\d+:\d+:(\d+)&#39;</span> <span class="s2">&quot;</span><span class="nv">$stat_result</span><span class="s2">&quot;</span><span class="o">)</span>
-    <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$file_size</span><span class="s2">&quot;</span> -gt <span class="o">(</span><span class="nb">math</span> <span class="s2">&quot;8 * 1024 * 1024&quot;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="k">begin</span><span class="p">;</span> <span class="k">echo</span> <span class="s2">&quot;File is too large for performant editing&quot;</span><span class="p">;</span> <span class="k">return</span> 1<span class="p">;</span> <span class="k">end</span><span class="p">;</span>
-    <span class="k">set</span> --local file_data <span class="o">(</span><span class="nb">command </span>base64 <span class="o">&lt;</span> <span class="s2">&quot;</span><span class="nv">$ed_filename</span><span class="s2">&quot;</span><span class="o">)</span>
+    <span class="k">if</span> <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$file_size</span><span class="s2">&quot;</span> -gt <span class="o">(</span><span class="nb">math</span> <span class="s2">&quot;8 * 1024 * 1024&quot;</span><span class="o">)</span>
+        <span class="k">echo</span> <span class="s2">&quot;File is too large for performant editing&quot;</span> <span class="o">&gt;</span> /dev/stderr
+        <span class="k">return</span> 1
+    <span class="k">end</span>
+    <span class="k">set</span> --local file_data <span class="o">(</span>base64 <span class="o">&lt;</span> <span class="s2">&quot;</span><span class="nv">$ed_filename</span><span class="s2">&quot;</span><span class="o">)</span>
     <span class="k">set</span> --append data <span class="s2">&quot;file_data=</span><span class="nv">$file_data</span><span class="s2">&quot;</span>
     __ksi_transmit_data <span class="o">(</span>string join <span class="s2">&quot;,&quot;</span> -- <span class="nv">$data</span> <span class="o">|</span> tr -d <span class="s2">&quot;\t\n\r &quot;</span><span class="o">)</span> <span class="s2">&quot;edit&quot;</span>
+    <span class="k">set</span> --erase data
     <span class="k">echo</span> <span class="s2">&quot;Waiting for editing to be completed...&quot;</span>
     <span class="k">set</span> --global __ksi_waiting_for_edit <span class="s2">&quot;y&quot;</span>
-    <span class="k">set</span> --erase data 
-    <span class="k">function</span> __ksi_react_to_interrupt -s SIGINT
+
+    <span class="k">function</span> __ksi_react_to_interrupt --on-signal SIGINT
+        <span class="nb">functions</span> --erase __ksi_react_to_interrupt
         <span class="k">if</span> <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$__ksi_waiting_for_edit</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span>
-            <span class="k">set</span> --erase __ksi_waiting_for_edit 
+            <span class="k">set</span> --erase __ksi_waiting_for_edit
             __ksi_transmit_data <span class="s2">&quot;abort_signaled=interrupt&quot;</span> <span class="s2">&quot;edit&quot;</span>
         <span class="k">end</span>
     <span class="k">end</span>
+
     <span class="k">while</span> <span class="k">true</span>
         <span class="k">set</span> --local started <span class="s2">&quot;n&quot;</span>
         <span class="k">while</span> <span class="k">true</span>
-            <span class="nb">command </span>stty <span class="s2">&quot;-echo&quot;</span><span class="p">;</span> <span class="k">set</span> --local line <span class="o">(</span><span class="nb">command </span>head -n1 <span class="o">&lt;</span> /dev/tty<span class="o">)</span><span class="p">;</span>
+            stty <span class="s2">&quot;-echo&quot;</span>
+            <span class="k">set</span> --local line <span class="o">(</span>head -n1 <span class="o">&lt;</span> /dev/tty<span class="o">)</span>
             <span class="k">test</span> -z <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">break</span>
-            <span class="k">if</span> <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$started</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span> 
-                <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;UPDATE&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">break</span><span class="p">;</span> 
-                <span class="k">if</span> <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;DONE&quot;</span> 
-                    <span class="k">set</span> started <span class="s2">&quot;done&quot;</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span> 
+            <span class="k">if</span> <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$started</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span>
+                <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;UPDATE&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">break</span>
+                <span class="k">if</span> <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;DONE&quot;</span>
+                    <span class="k">set</span> started <span class="s2">&quot;done&quot;</span>
+                    <span class="k">break</span>
                 <span class="k">end</span>
-                <span class="nb">printf</span> <span class="s2">&quot;%s\n&quot;</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="o">&gt;</span> /dev/stderr<span class="p">;</span>
-                <span class="k">return</span> 1<span class="p">;</span>
+                <span class="nb">printf</span> <span class="s2">&quot;%s\n&quot;</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="o">&gt;</span> /dev/stderr
+                <span class="k">set</span> --erase __ksi_waiting_for_edit
+                <span class="nb">functions</span> --erase __ksi_react_to_interrupt
+                <span class="k">return</span> 1
             <span class="k">else</span>
                 <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;KITTY_DATA_START&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">set</span> started <span class="s2">&quot;y&quot;</span>
             <span class="k">end</span>
         <span class="k">end</span>
-        <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$started</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;n&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">continue</span><span class="p">;</span>
+        <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$started</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;n&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">continue</span>
         <span class="k">set</span> --local data <span class="s2">&quot;&quot;</span>
         <span class="k">while</span> <span class="k">true</span>
-            <span class="nb">command </span>stty <span class="s2">&quot;-echo&quot;</span><span class="p">;</span> <span class="k">set</span> --local line <span class="o">(</span><span class="nb">command </span>head -n1 <span class="o">&lt;</span> /dev/tty<span class="o">)</span><span class="p">;</span>
+            stty <span class="s2">&quot;-echo&quot;</span>
+            <span class="k">set</span> --local line <span class="o">(</span>head -n1 <span class="o">&lt;</span> /dev/tty<span class="o">)</span>
             <span class="k">test</span> -z <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">break</span>
-            <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;KITTY_DATA_END&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">break</span><span class="p">;</span>
+            <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;KITTY_DATA_END&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">break</span>
             <span class="k">set</span> data <span class="s2">&quot;</span><span class="nv">$data$line</span><span class="s2">&quot;</span>
         <span class="k">end</span>
-        <span class="k">if</span> <span class="k">test</span> -n <span class="s2">&quot;</span><span class="nv">$data</span><span class="s2">&quot;</span> -a <span class="s2">&quot;</span><span class="nv">$started</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="s2">&quot;done&quot;</span> 
+        <span class="k">if</span> <span class="k">test</span> -n <span class="s2">&quot;</span><span class="nv">$data</span><span class="s2">&quot;</span> -a <span class="s2">&quot;</span><span class="nv">$started</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="s2">&quot;done&quot;</span>
             <span class="k">echo</span> <span class="s2">&quot;Updating </span><span class="nv">$ed_filename</span><span class="s2">...&quot;</span>
-            <span class="nb">printf</span> <span class="s2">&quot;%s&quot;</span> <span class="s2">&quot;</span><span class="nv">$data</span><span class="s2">&quot;</span> <span class="o">|</span> <span class="nb">command </span>base64 -d <span class="o">&gt;</span> <span class="s2">&quot;</span><span class="nv">$ed_filename</span><span class="s2">&quot;</span>
+            <span class="nb">printf</span> <span class="s2">&quot;%s&quot;</span> <span class="s2">&quot;</span><span class="nv">$data</span><span class="s2">&quot;</span> <span class="o">|</span> base64 -d <span class="o">&gt;</span> <span class="s2">&quot;</span><span class="nv">$ed_filename</span><span class="s2">&quot;</span>
         <span class="k">end</span>
-        <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$started</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;done&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">break</span><span class="p">;</span>
+        <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$started</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;done&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">break</span>
     <span class="k">end</span>
-    <span class="k">set</span> --erase __ksi_waiting_for_edit 
+    <span class="k">set</span> --erase __ksi_waiting_for_edit
     <span class="nb">functions</span> --erase __ksi_react_to_interrupt
 <span class="k">end</span>
 </pre></div>
@@ -2290,8 +2295,8 @@ restored by the shell integration scripts in the cloned window.</p>
 <span id="edit-file"></span><h1>Edit files in new kitty windows even over SSH<a class="headerlink" href="#edit-files-in-new-kitty-windows-even-over-ssh" title="Permalink to this heading">#</a></h1>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>edit-in-kitty myfile.txt
 edit-in-kitty --type tab --title <span class="s2">&quot;Editing My File&quot;</span> myfile.txt
-<span class="c1"># open file.txt at line 75 (works with vim, emacs, nano, micro)</span>
-edit-in-kitty +75 file.txt
+<span class="c1"># open myfile.txt at line 75 (works with vim, neovim, emacs, nano, micro)</span>
+edit-in-kitty +75 myfile.txt
 </pre></div>
 </div>
 <p>The <strong class="command">edit-in-kitty</strong> command allows you to seamlessly edit files

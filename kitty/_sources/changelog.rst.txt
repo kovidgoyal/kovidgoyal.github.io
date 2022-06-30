@@ -35,6 +35,34 @@ mouse anywhere in the current command to move the cursor there. See
 Detailed list of changes
 -------------------------------------
 
+0.26.0 [future]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Reduce startup latency by ~50 milliseconds when running kittens via key-bindings or remote control (:iss:`5159`)
+
+- Wayland: Fix a regression in the previous release that caused mouse cursor
+  animation and keyboard repeat to stop working when switching seats (:iss:`5188`)
+
+- Allow resizing windows created in session files (:pull:`5196`)
+
+- Fix horizontal wheel events not being reported to client programs when they grab the mouse (:iss:`2819`)
+
+- macOS: Remote control: Fix unable to launch a new OS window or background process when there is no OS window (:iss:`5210`)
+
+- kitty @ set-colors: Fix changing inactive_tab_foreground not working (:iss:`5214`)
+
+- macOS: Fix a regression that caused switching keyboard input using Eisu and
+  Kana keys not working (:iss:`5232`)
+
+- Wayland: Reduce flicker at startup by not using render frames immediately after a resize (:iss:`5235`)
+
+- Linux: Update cursor position after all key presses not just pre-edit text
+  changes (:iss:`5241`)
+
+- ssh kitten: Allow ssh kitten to work from inside tmux, provided the tmux
+  session inherits the correct KITTY env vars (:iss:`5227`)
+
+
 0.25.2 [2022-06-07]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

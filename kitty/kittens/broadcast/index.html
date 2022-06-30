@@ -13,7 +13,7 @@
 <meta property="og:description" content="Type text in all kitty windows simultaneously The broadcast kitten can be used to type text simultaneously in all kitty windows(or a subset as desired). To use it, simply create a mapping in kitty...." />
   <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="clipboard" href="../clipboard/" /><link rel="prev" title="Custom kittens" href="../custom/" />
 
-    <link rel="shortcut icon" href="../../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
+    <link rel="shortcut icon" href="../../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.2, furo 2022.06.21"/>
         <title>broadcast - kitty</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -48,18 +48,14 @@
 </style>
 
   
-      <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-20736318-2']);
-      _gaq.push(['_setDomainName', 'none']);
-      _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTJK3R7GF2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+        gtag('config', 'G-XTJK3R7GF2');
     </script>
   </head>
   <body>
@@ -667,6 +663,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#future">0.26.0 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.25.2 [2022-06-07]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.25.1 [2022-05-26]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.25.0 [2022-04-11]</a></li>
@@ -918,10 +915,10 @@ will be sent to all kitty windows.</p>
 <dd><p>The window to match. Match specifications are of the form: <span class="italic">field:query</span>. Where <span class="italic">field</span> can be one of: <code class="code docutils literal notranslate"><span class="pre">id</span></code>, <code class="code docutils literal notranslate"><span class="pre">title</span></code>, <code class="code docutils literal notranslate"><span class="pre">pid</span></code>, <code class="code docutils literal notranslate"><span class="pre">cwd</span></code>, <code class="code docutils literal notranslate"><span class="pre">cmdline</span></code>, <code class="code docutils literal notranslate"><span class="pre">num</span></code>, <code class="code docutils literal notranslate"><span class="pre">env</span></code>, <code class="code docutils literal notranslate"><span class="pre">state</span></code> and <code class="code docutils literal notranslate"><span class="pre">recent</span></code>. <span class="italic">query</span> is the expression to match. Expressions can be either a number or a regular expression, and can be <a class="reference internal" href="../../remote-control/#search-syntax"><span class="std std-ref">combined using Boolean operators</span></a>.</p>
 <p>The special value <code class="code docutils literal notranslate"><span class="pre">all</span></code> matches all windows.</p>
 <p>For numeric fields: <code class="code docutils literal notranslate"><span class="pre">id</span></code>, <code class="code docutils literal notranslate"><span class="pre">pid</span></code>, <code class="code docutils literal notranslate"><span class="pre">num</span></code> and <code class="code docutils literal notranslate"><span class="pre">recent</span></code>, the expression is interpreted as a number, not a regular expression.</p>
-<p>The field <code class="code docutils literal notranslate"><span class="pre">num</span></code> refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <span class="italic">ls</span> command).</p>
+<p>The field <code class="code docutils literal notranslate"><span class="pre">num</span></code> refers to the window position in the current tab, starting from zero and counting clockwise (this is the same as the order in which the windows are reported by the <a class="reference internal" href="../../remote-control/#at-ls"><span class="std std-ref">kitty &#64; ls</span></a> command).</p>
 <p>The window id of the current window is available as the <span class="target" id="index-0"></span><a class="reference internal" href="../../glossary/#envvar-KITTY_WINDOW_ID"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">KITTY_WINDOW_ID</span></code></a> environment variable.</p>
 <p>The field <code class="code docutils literal notranslate"><span class="pre">recent</span></code> refers to recently active windows in the currently active tab, with zero being the currently active window, one being the previously active window and so on.</p>
-<p>When using the <code class="code docutils literal notranslate"><span class="pre">env</span></code> field to match on environment variables, you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span>.</p>
+<p>When using the <code class="code docutils literal notranslate"><span class="pre">env</span></code> field to match on environment variables, you can specify only the environment variable name or a name and value, for example, <code class="code docutils literal notranslate"><span class="pre">env:MY_ENV_VAR=2</span></code>.</p>
 <p>The field <code class="code docutils literal notranslate"><span class="pre">state</span></code> matches on the state of the window. Supported states are: <code class="code docutils literal notranslate"><span class="pre">active</span></code>, <code class="code docutils literal notranslate"><span class="pre">focused</span></code>, <code class="code docutils literal notranslate"><span class="pre">needs_attention</span></code>, <code class="code docutils literal notranslate"><span class="pre">parent_active</span></code> and <code class="code docutils literal notranslate"><span class="pre">parent_focused</span></code>. Active windows are the windows that are active in their parent tab. There is only one focused window and it is the window to which keyboard events are delivered.</p>
 <p>Note that you can use the <a class="reference internal" href="../../remote-control/#at-ls"><span class="std std-ref">kitty &#64; ls</span></a> command to get a list of windows.</p>
 </dd></dl>
@@ -935,7 +932,7 @@ will be sent to all kitty windows.</p>
 <p>When using <code class="code docutils literal notranslate"><span class="pre">title</span></code> or <code class="code docutils literal notranslate"><span class="pre">id</span></code>, first a matching tab is looked for, and if not found a matching window is looked for, and the tab for that window is used.</p>
 <p>You can also use <code class="code docutils literal notranslate"><span class="pre">window_id</span></code> and <code class="code docutils literal notranslate"><span class="pre">window_title</span></code> to match the tab that contains the window with the specified id or title.</p>
 <p>The <code class="code docutils literal notranslate"><span class="pre">index</span></code> number is used to match the nth tab in the currently active OS window. The <code class="code docutils literal notranslate"><span class="pre">recent</span></code> number matches recently active tabs in the currently active OS window, with zero being the currently active tab, one the previously active tab and so on.</p>
-<p>When using the <code class="code docutils literal notranslate"><span class="pre">env</span></code> field to match on environment variables, you can specify only the environment variable name or a name and value, for example, <span class="italic">env:MY_ENV_VAR=2</span>. Tabs containing any window with the specified environment variables are matched.</p>
+<p>When using the <code class="code docutils literal notranslate"><span class="pre">env</span></code> field to match on environment variables, you can specify only the environment variable name or a name and value, for example, <code class="code docutils literal notranslate"><span class="pre">env:MY_ENV_VAR=2</span></code>. Tabs containing any window with the specified environment variables are matched.</p>
 <p>The field <code class="code docutils literal notranslate"><span class="pre">state</span></code> matches on the state of the tab. Supported states are: <code class="code docutils literal notranslate"><span class="pre">active</span></code>, <code class="code docutils literal notranslate"><span class="pre">focused</span></code>, <code class="code docutils literal notranslate"><span class="pre">needs_attention</span></code>, <code class="code docutils literal notranslate"><span class="pre">parent_active</span></code> and <code class="code docutils literal notranslate"><span class="pre">parent_focused</span></code>. Active tabs are the tabs that are active in their parent OS window. There is only one focused tab and it is the tab to which keyboard events are delivered.</p>
 <p>Note that you can use the <a class="reference internal" href="../../remote-control/#at-ls"><span class="std std-ref">kitty &#64; ls</span></a> command to get a list of tabs.</p>
 </dd></dl>

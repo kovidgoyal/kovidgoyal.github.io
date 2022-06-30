@@ -13,7 +13,7 @@
 <meta property="og:description" content="kitty is a feature-rich, cross-platform, fast, GPU based terminal. To update kitty, follow the instructions. Recent major new features: Truly convenient SSH: The ssh kitten is redesigned with power..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Integrations with other tools" href="../integrations/" /><link rel="prev" title="Performance" href="../performance/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.2, furo 2022.06.21"/>
         <title>Changelog - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -48,18 +48,14 @@
 </style>
 
   
-      <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-20736318-2']);
-      _gaq.push(['_setDomainName', 'none']);
-      _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTJK3R7GF2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+        gtag('config', 'G-XTJK3R7GF2');
     </script>
   </head>
   <body>
@@ -667,6 +663,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="#future">0.26.0 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">0.25.2 [2022-06-07]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">0.25.1 [2022-05-26]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">0.25.0 [2022-04-11]</a></li>
@@ -912,6 +909,25 @@ mouse anywhere in the current command to move the cursor there. See
 </section>
 <section id="detailed-list-of-changes">
 <h2>Detailed list of changes<a class="headerlink" href="#detailed-list-of-changes" title="Permalink to this heading">#</a></h2>
+<section id="future">
+<h3>0.26.0 [future]<a class="headerlink" href="#future" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Reduce startup latency by ~50 milliseconds when running kittens via key-bindings or remote control (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5159">#5159</a>)</p></li>
+<li><p>Wayland: Fix a regression in the previous release that caused mouse cursor
+animation and keyboard repeat to stop working when switching seats (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5188">#5188</a>)</p></li>
+<li><p>Allow resizing windows created in session files (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/5196">#5196</a>)</p></li>
+<li><p>Fix horizontal wheel events not being reported to client programs when they grab the mouse (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/2819">#2819</a>)</p></li>
+<li><p>macOS: Remote control: Fix unable to launch a new OS window or background process when there is no OS window (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5210">#5210</a>)</p></li>
+<li><p>kitty &#64; set-colors: Fix changing inactive_tab_foreground not working (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5214">#5214</a>)</p></li>
+<li><p>macOS: Fix a regression that caused switching keyboard input using Eisu and
+Kana keys not working (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5232">#5232</a>)</p></li>
+<li><p>Wayland: Reduce flicker at startup by not using render frames immediately after a resize (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5235">#5235</a>)</p></li>
+<li><p>Linux: Update cursor position after all key presses not just pre-edit text
+changes (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5241">#5241</a>)</p></li>
+<li><p>ssh kitten: Allow ssh kitten to work from inside tmux, provided the tmux
+session inherits the correct KITTY env vars (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5227">#5227</a>)</p></li>
+</ul>
+</section>
 <section id="id1">
 <h3>0.25.2 [2022-06-07]<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
@@ -3192,6 +3208,7 @@ contents of the screen + scrollback buffer as stdin to the command.</p></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#detailed-list-of-changes">Detailed list of changes</a><ul>
+<li><a class="reference internal" href="#future">0.26.0 [future]</a></li>
 <li><a class="reference internal" href="#id1">0.25.2 [2022-06-07]</a></li>
 <li><a class="reference internal" href="#id2">0.25.1 [2022-05-26]</a></li>
 <li><a class="reference internal" href="#id3">0.25.0 [2022-04-11]</a></li>

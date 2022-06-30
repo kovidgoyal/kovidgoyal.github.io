@@ -13,7 +13,7 @@
 <meta property="og:description" content="The goal of this specification is to create a flexible and performant protocol that allows the program running in the terminal, hereafter called the client, to render arbitrary pixel (raster) graph..." />
   <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Comprehensive keyboard handling in terminals" href="../keyboard-protocol/" /><link rel="prev" title="Colored and styled underlines" href="../underlines/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><meta name="generator" content="sphinx-5.0.2, furo 2022.06.21"/>
         <title>Terminal graphics protocol - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -48,18 +48,14 @@
 </style>
 
   
-      <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-20736318-2']);
-      _gaq.push(['_setDomainName', 'none']);
-      _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTJK3R7GF2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+        gtag('config', 'G-XTJK3R7GF2');
     </script>
   </head>
   <body>
@@ -667,6 +663,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#future">0.26.0 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.25.2 [2022-06-07]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.25.1 [2022-05-26]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.25.0 [2022-04-11]</a></li>
@@ -923,6 +920,7 @@ information tool</p></li>
 <li><p><a class="reference external" href="https://github.com/BourgeoisBear/rasterm">rasterm</a>  - Go library to display images in the terminal</p></li>
 <li><p><a class="reference external" href="https://github.com/hpjansson/chafa">chafa</a>  - a terminal image viewer</p></li>
 <li><p><a class="reference external" href="https://github.com/edluffy/hologram.nvim">hologram.nvim</a>  - view images inside nvim</p></li>
+<li><p><a class="reference external" href="https://github.com/AnonymouX47/term-image">term-image</a>  - A Python library, CLI and TUI to display and browse images in the terminal</p></li>
 </ul>
 <p>Other terminals that have implemented the graphics protocol:</p>
 <ul class="simple">
@@ -1268,7 +1266,9 @@ they are semi-transparent. You can specify z-index values using the <code class=
 Negative z-index values mean that the images will be drawn under the text. This
 allows rendering of text on top of images. Negative z-index values below
 INT32_MIN/2 (-1,073,741,824) will be drawn under cells with non-default background
-colors.</p>
+colors. If two images with the same z-index overlap then the image with the
+lower id is considered to have the lower z-index. If the images have the same
+z-index and the same id, then the behavior is undefined.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>After placing an image on the screen the cursor must be moved to the
