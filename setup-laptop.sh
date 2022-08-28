@@ -9,6 +9,8 @@
 set -o nounset
 set -o errexit
 
+# Note that currently systemd-networkd has broken matching on SSID, therefore
+# I have added a rule to the router's DHCP server to assign 192.168.1.5 by MAC address
 cat << EOF > /mnt/etc/systemd/network/20-wired.network
 [Match]
 Name=en*
@@ -29,12 +31,11 @@ Name=wl*
 SSID=KovidTheGreat
 
 [Network]
-Address=192.168.1.55
+Address=192.168.1.55/24
 Gateway=192.168.1.1
 DNS=8.8.8.8
 DNS=1.1.1.1
 IgnoreCarrierLoss=3s
-Metric=20
 EOF
 
 cat << EOF > /mnt/etc/systemd/network/30-wireless-dhcp.network
