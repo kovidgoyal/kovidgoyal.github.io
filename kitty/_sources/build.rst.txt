@@ -35,6 +35,7 @@ Run-time dependencies:
 * ``libpng``
 * ``liblcms2``
 * ``librsync``
+* ``openssl``
 * ``freetype`` (not needed on macOS)
 * ``fontconfig`` (not needed on macOS)
 * ``libcanberra`` (not needed on macOS)
@@ -82,13 +83,20 @@ You can run |kitty|, as::
 If that works, you can create a symlink to the launcher in :file:`~/bin` or some
 other directory on your PATH so that you can run |kitty| using just ``kitty``.
 
+To have the kitty documentation available locally, run::
+
+    python3 -m pip install -r docs/requirements.txt && make docs
+
 
 Building kitty.app on macOS from source
 -------------------------------------------
 
 Run::
 
+    python3 -m pip install -r docs/requirements.txt && make docs
     make app
+
+Building the docs needs to be done only once.
 
 This :file:`kitty.app` unlike the released one does not include its own copy of
 Python and the other dependencies. So if you ever un-install/upgrade those
@@ -175,8 +183,11 @@ You should probably split |kitty| into three packages:
 :code:`kitty`
     Installs the main program
 
-This allows users to install the terminfo and shell integration files on servers
-into which they ssh, without needing to install all of |kitty|.
+This allows users to install the terminfo and shell integration files on
+servers into which they ssh, without needing to install all of |kitty|. The
+shell integration files **must** still be present in
+:file:`lib/kitty/shell-integration` when installing the kitty main package as
+the kitty program expects to find them there.
 
 .. note::
    You need a couple of extra dependencies to build linux-package. :file:`tic`
