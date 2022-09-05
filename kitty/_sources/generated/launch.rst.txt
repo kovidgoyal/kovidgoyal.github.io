@@ -34,6 +34,9 @@ ______________________________
     :code:`overlay`
         An :term:`overlay window <overlay>` covering the current active kitty window
 
+    :code:`overlay-main`
+        An :term:`overlay window <overlay>` covering the current active kitty window. Unlike a plain overlay window, this window is considered as a :italic:`main` window which means it is used as the active window for getting the current working directory, the input text for kittens, launch commands, etc. Useful if this overlay is intended to run for a long time as a primary window.
+
     :code:`background`
         The process will be run in the :italic:`background`, without a kitty window.
 
@@ -42,7 +45,7 @@ ______________________________
 
 
     Default: :code:`window`
-    Choices: :code:`background`, :code:`clipboard`, :code:`os-window`, :code:`overlay`, :code:`primary`, :code:`tab`, :code:`window`
+    Choices: :code:`background`, :code:`clipboard`, :code:`os-window`, :code:`overlay`, :code:`overlay-main`, :code:`primary`, :code:`tab`, :code:`window`
 
 .. option:: --dont-take-focus, --keep-focus
 
@@ -85,9 +88,11 @@ ______________________________
 .. option:: --remote-control-password <REMOTE_CONTROL_PASSWORD>
 
     Restrict the actions remote control is allowed to take. This works like :opt:`remote_control_password`. You can specify a password and list of actions just as for :opt:`remote_control_password`. For example::
+
         --remote-control-password '"my passphrase" get-* set-colors'
 
     This password will be in effect for this window only. Note that any passwords you have defined for :opt:`remote_control_password` in :file:`kitty.conf` are also in effect. You can override them by using the same password here. You can also disable all :opt:`remote_control_password` global passwords for this window, by using::
+
         --remote-control-password '!'
 
     This option only takes effect if :option:`--allow-remote-control` is also specified. Can be specified multiple times to create multiple passwords. This option was added to kitty in version 0.26.0
@@ -160,7 +165,13 @@ ______________________________
 
 .. option:: --color <COLOR>
 
-    Change colors in the newly launched window. You can either specify a path to a :file:`.conf` file with the same syntax as :file:`kitty.conf` to read the colors from, or specify them individually, for example: :code:`--color background=white --color foreground=red`.
+    Change colors in the newly launched window. You can either specify a path to a :file:`.conf` file with the same syntax as :file:`kitty.conf` to read the colors from, or specify them individually, for example::
+
+        --color background=white --color foreground=red
+
+.. option:: --spacing <SPACING>
+
+    Set the margin and padding for the newly created window. For example: :code:`margin=20` or :code:`padding-left=10` or :code:`margin-h=30`. The shorthand form sets all values, the :code:`*-h` and :code:`*-v` variants set horizontal and vertical values. Can be specified multiple times.
 
 .. option:: --watcher <WATCHER>, -w <WATCHER>
 
