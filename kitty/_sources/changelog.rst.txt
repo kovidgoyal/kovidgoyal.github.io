@@ -35,6 +35,31 @@ mouse anywhere in the current command to move the cursor there. See
 Detailed list of changes
 -------------------------------------
 
+0.26.3 [2022-09-22]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Wayland: Mark windows in which a bell occurs as urgent on compositors that support the xdg-activation protocol
+
+- Allow passing null bytes through the system clipboard (:iss:`5483`)
+
+- ssh kitten: Fix :envvar:`KITTY_PUBLIC_KEY` not being encoded properly when transmitting (:iss:`5496`)
+
+- Sessions: Allow controlling which OS Window is active via the ``focus_os_window`` directive
+
+- Wayland: Fix for bug in NVIDIA drivers that prevents transparency working (:iss:`5479`)
+
+- Wayland: Fix for a bug that could cause kitty to become non-responsive when
+  using multiple OS windows in a single instance on some compositors (:iss:`5495`)
+
+- Wayland: Fix for a bug preventing kitty from starting on Hyprland when using a non-unit scale (:iss:`5467`)
+
+- Wayland: Generate a XDG_ACTIVATION_TOKEN when opening URLs or running programs in the background via the launch action
+
+- Fix a regression that caused kitty not to restore SIGPIPE after python nukes it when launching children. Affects bash which does not sanitize its signal mask. (:iss:`5500`)
+
+- Fix a use-after-free when handling fake mouse clicks and the action causes windows to be removed/re-allocated (:iss:`5506`)
+
+
 0.26.2 [2022-09-05]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
