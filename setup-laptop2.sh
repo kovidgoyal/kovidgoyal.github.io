@@ -77,6 +77,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQD751ZMQy0/zf169hUZOphZ9fwjz6j4sl5l04zfErCK
 EOF
 chown -R kovid:kovid /home/kovid /t
 
+echo "Copy the wireguard laptop private key to /etc/systemd/network/wg-private.key can be found in srv repo"
 
 # Setup fingerprint login
 # sudo fprintd-enroll kovid

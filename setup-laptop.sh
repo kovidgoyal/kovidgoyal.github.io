@@ -55,6 +55,35 @@ RouteMetric=20
 RouteMetric=20
 EOF
 
+cat << EOF > /etc/systemd/network/wg0.netdev
+[NetDev]
+Name = wg0
+Kind = wireguard
+Description = wg client 192.168.2.2
+
+[WireGuard]
+PrivateKeyFile = /etc/systemd/network/wg-private.key
+
+[WireGuardPeer]
+PublicKey = prdiqU5445tQWAnq/TeVpyVjuYETxvUh+8wNYEhYk3Q=
+AllowedIPs = 192.168.2.0/24
+Endpoint = 141.255.161.172:53
+PersistentKeepalive = 25
+EOF
+
+cat << EOF > /etc/systemd/network/wg0.network
+[Match]
+Name = wg0
+
+[Network]
+Address = 192.168.2.2/32
+
+[Route]
+Gateway = 192.168.2.1
+Destination = 192.168.2.0/24
+GatewayOnlink = true
+EOF
+
 cat << EOF > "/mnt/etc/wpa_supplicant/wpa_supplicant-$(ip a | grep -o ': wl.\+\?:' | cut -d' ' -f2 | cut -d: -f1).conf"
 ctrl_interface=/run/wpa_supplicant
 ctrl_interface_group=wheel
