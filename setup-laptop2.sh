@@ -44,8 +44,6 @@ pacman -S gnome-shell xdg-desktop-portal xdg-desktop-portal-gnome gnome-session 
 
 # KDE Applications
 pacman -S dolphin ark okteta okular kde-cli-tools ffmpegthumbs plasma-workspace kdegraphics-thumbnailers konsole plasma-wayland-session
-# polib and requests stubs
-sudo python -m pip install polib types-requests
 
 set +e
 video=$(lspci | grep VGA | grep -o AMD)
