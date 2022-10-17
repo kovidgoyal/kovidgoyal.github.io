@@ -205,13 +205,15 @@ fonts to be freely resizable, so it does not support bitmapped fonts.
 .. note::
    If you are trying to use a font patched with `Nerd Fonts
    <https://nerdfonts.com/>`__ symbols, don't do that as patching destroys
-   fonts. There is no need, simply install the standalone ``Symbols Nerd Font``
+   fonts. There is no need, simply install the standalone ``Symbols Nerd Font Mono``
    (the file :file:`NerdFontsSymbolsOnly.zip` from the `Nerd Fonts releases page
    <https://github.com/ryanoasis/nerd-fonts/releases>`__). kitty should pick up
    symbols from it automatically, and you can tell it to do so explicitly in
    case it doesn't with the :opt:`symbol_map` directive::
 
-        symbol_map U+23FB-U+23FE,U+2665,U+26A1,U+2B58,U+E000-U+E00A,U+E0A0-U+E0A3,U+E0B0-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E62F,U+E700-U+E7C5,U+F000-U+F2E0,U+F300-U+F31C,U+F400-U+F4A9,U+F500-U+F8FF Symbols Nerd Font
+        # Nerd Fonts v2.2.2
+
+        symbol_map U+23FB-U+23FE,U+2665,U+26A1,U+2B58,U+E000-U+E00A,U+E0A0-U+E0A3,U+E0B0-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E634,U+E700-U+E7C5,U+EA60-U+EBEB,U+F000-U+F2E0,U+F300-U+F32F,U+F400-U+F4A9,U+F500-U+F8FF Symbols Nerd Font Mono
 
    Those Unicode symbols beyond the ``E000-F8FF`` Unicode private use area are
    not included.
@@ -287,13 +289,36 @@ homepage:
    :target: https://github.com/samholmes/whiskers
    :width: 256
 
-On macOS you can change the icon by following the steps:
+On macOS you can put :file:`kitty.app.icns` or :file:`kitty.app.png` in the
+:ref:`kitty configuration directory <confloc>`, and this icon will be applied
+automatically at startup. Unfortunately, Apple's Dock does not change its
+cached icon so the custom icon will revert when kitty is quit. Run the
+following to force the Dock to update its cached icons:
+
+.. code-block:: sh
+
+    rm /var/folders/*/*/*/com.apple.dock.iconcache; killall Dock
+
+If you prefer not to keep a custom icon in the kitty config folder, you can
+also set it with the following command:
+
+.. code-block:: sh
+
+    # Set kitty.icns as the icon for currently running kitty
+    kitty +runpy 'from kitty.fast_data_types import cocoa_set_app_icon; import sys; cocoa_set_app_icon(*sys.argv[1:]); print("OK")' kitty.icns
+
+    # Set the icon for app bundle specified by the path
+    kitty +runpy 'from kitty.fast_data_types import cocoa_set_app_icon; import sys; cocoa_set_app_icon(*sys.argv[1:]); print("OK")' /path/to/icon.png /Applications/kitty.app
+
+You can also change the icon manually by following the steps:
 
 #. Find :file:`kitty.app` in the Applications folder, select it and press :kbd:`⌘+I`
 #. Drag :file:`kitty.icns` onto the application icon in the kitty info pane
-#. Delete the icon cache and restart Dock::
+#. Delete the icon cache and restart Dock:
 
-    $ rm /var/folders/*/*/*/com.apple.dock.iconcache; killall Dock
+.. code-block:: sh
+
+    rm /var/folders/*/*/*/com.apple.dock.iconcache; killall Dock
 
 
 How do I map key presses in kitty to different keys in the terminal program?
