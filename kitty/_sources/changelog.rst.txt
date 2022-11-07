@@ -35,6 +35,27 @@ mouse anywhere in the current command to move the cursor there. See
 Detailed list of changes
 -------------------------------------
 
+0.26.5 [2022-11-07]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Splits layout: Add a new mappable action to move the active window to the screen edge (:iss:`5643`)
+
+- ssh kitten: Allow using absolute paths for the location of transferred data (:iss:`5607`)
+
+- Fix a regression in the previous release that caused a :opt:`resize_draw_strategy` of ``static`` to not work (:iss:`5601`)
+
+- Wayland KDE: Fix abort when pasting into Firefox (:iss:`5603`)
+
+- Wayland GNOME: Fix ghosting when using :opt:`background_tint` (:iss:`5605`)
+
+- Fix cursor position at x=0 changing to x=1 on resize (:iss:`5635`)
+
+- Wayland GNOME: Fix incorrect window size in some circumstances when switching between windows with window decorations disabled (:iss:`4802`)
+
+- Wayland: Fix high CPU usage when using some input methods (:pull:`5369`)
+
+- Remote control: When matching window by `state:focused` and no window currently has keyboard focus, match the window belonging to the OS window that was last focused (:iss:`5602`)
+
 0.26.4 [2022-10-17]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
