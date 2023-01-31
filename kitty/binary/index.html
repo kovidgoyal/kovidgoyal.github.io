@@ -918,7 +918,8 @@ simply re-run the command.</p>
 <p class="admonition-title">Warning</p>
 <p><strong>Do not</strong> copy the kitty binary out of the installation folder. If you want
 to add it to your <span class="target" id="index-0"></span><a class="reference internal" href="../glossary/#envvar-PATH"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code></a>, create a symlink in <code class="file docutils literal notranslate"><span class="pre">~/.local/bin</span></code> or
-<code class="file docutils literal notranslate"><span class="pre">/usr/bin</span></code> or wherever.</p>
+<code class="file docutils literal notranslate"><span class="pre">/usr/bin</span></code> or wherever. You should create a symlink for the <code class="file docutils literal notranslate"><span class="pre">kitten</span></code>
+binary as well.</p>
 </div>
 </section>
 <section id="manually-installing">
@@ -935,9 +936,9 @@ tarball and extract it into a directory. The <em>kitty</em> executable will be i
 present in the menus, you will need to install the <code class="file docutils literal notranslate"><span class="pre">kitty.desktop</span></code> file.
 The details of the following procedure may need to be adjusted for your
 particular desktop, but it should work for most major desktop environments.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a symbolic link to add kitty to PATH (assuming ~/.local/bin is in</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create symbolic links to add kitty and kitten to PATH (assuming ~/.local/bin is in</span>
 <span class="c1"># your system-wide PATH)</span>
-ln<span class="w"> </span>-s<span class="w"> </span>~/.local/kitty.app/bin/kitty<span class="w"> </span>~/.local/bin/
+ln<span class="w"> </span>-sf<span class="w"> </span>~/.local/kitty.app/bin/kitty<span class="w"> </span>~/.local/kitty.app/bin/kitty<span class="w"> </span>~/.local/bin/
 <span class="c1"># Place the kitty.desktop file somewhere it can be found by the OS</span>
 cp<span class="w"> </span>~/.local/kitty.app/share/applications/kitty.desktop<span class="w"> </span>~/.local/share/applications/
 <span class="c1"># If you want to open text files and images in kitty via your file manager also add the kitty-open.desktop file</span>
