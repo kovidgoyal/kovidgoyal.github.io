@@ -53,7 +53,7 @@ ______________________________
 
 .. option:: --cwd <CWD>
 
-    The working directory for the newly launched child. Use the special value :code:`current` to use the working directory of the currently active window. The special value :code:`last_reported` uses the last working directory reported by the shell (needs :ref:`shell_integration` to work). The special value :code:`oldest` works like :code:`current` but uses the working directory of the oldest foreground process associated with the currently active window rather than the newest foreground process.
+    The working directory for the newly launched child. Use the special value :code:`current` to use the working directory of the currently active window. The special value :code:`last_reported` uses the last working directory reported by the shell (needs :ref:`shell_integration` to work). The special value :code:`oldest` works like :code:`current` but uses the working directory of the oldest foreground process associated with the currently active window rather than the newest foreground process. Finally, the special value :code:`root` refers to the process that was originally started when the window was created.
 
 .. option:: --env <ENV>
 
@@ -171,7 +171,7 @@ ______________________________
 
 .. option:: --spacing <SPACING>
 
-    Set the margin and padding for the newly created window. For example: :code:`margin=20` or :code:`padding-left=10` or :code:`margin-h=30`. The shorthand form sets all values, the :code:`*-h` and :code:`*-v` variants set horizontal and vertical values. Can be specified multiple times.
+    Set the margin and padding for the newly created window. For example: :code:`margin=20` or :code:`padding-left=10` or :code:`margin-h=30`. The shorthand form sets all values, the :code:`*-h` and :code:`*-v` variants set horizontal and vertical values. Can be specified multiple times. Note that this is ignored for overlay windows as these use the settings from the base window.
 
 .. option:: --watcher <WATCHER>, -w <WATCHER>
 

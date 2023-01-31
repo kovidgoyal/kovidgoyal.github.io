@@ -39,13 +39,14 @@ Run-time dependencies:
 * ``freetype`` (not needed on macOS)
 * ``fontconfig`` (not needed on macOS)
 * ``libcanberra`` (not needed on macOS)
-* ``ImageMagick`` (optional, needed to use the ``kitty +kitten icat`` tool to display images in the terminal)
+* ``ImageMagick`` (optional, needed to display uncommon image formats in the terminal)
 * ``pygments`` (optional, needed for syntax highlighting in ``kitty +kitten diff``)
 
 
 Build-time dependencies:
 
 * ``gcc`` or ``clang``
+* ``go >= 1.19`` (see :file:`go.mod` for go packages used during building)
 * ``pkg-config``
 * For building on Linux in addition to the above dependencies you might also
   need to install the following packages, if they are not already installed by

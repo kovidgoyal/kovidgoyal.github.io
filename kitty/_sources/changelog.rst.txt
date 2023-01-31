@@ -35,6 +35,71 @@ mouse anywhere in the current command to move the cursor there. See
 Detailed list of changes
 -------------------------------------
 
+0.27.0 [2023-01-31]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- A new statically compiled, standalone executable, ``kitten`` (written in Go)
+  that can be used on all UNIX-like servers for remote control (``kitten @``),
+  viewing images (``kitten icat``), manipulating the clipboard (``kitten clipboard``), etc.
+
+- :doc:`clipboard kitten </kittens/clipboard>`: Allow copying arbitrary data types to/from the clipboard, not just plain text
+
+- Speed up the ``kitty @`` executable by ~10x reducing the time for typical
+  remote control commands from ~50ms to ~5ms
+
+- icat kitten: Speed up by using POSIX shared memory when possible to transfer
+  image data to the terminal. Also support common image formats
+  GIF/PNG/JPEG/WEBP/TIFF/BMP out of the box without needing ImageMagick.
+
+- Option :opt:`show_hyperlink_targets` to show the target of terminal hyperlinks when hovering over them with the mouse (:pull:`5830`)
+
+- Keyboard protocol: Remove ``CSI R`` from the allowed encodings of the :kbd:`F3` key as it conflicts with the *Cursor Position Report* escape code (:disc:`5813`)
+
+- Allow using the cwd of the original process for :option:`launch --cwd` (:iss:`5672`)
+
+- Session files: Expand environment variables (:disc:`5917`)
+
+- Pass key events mapped to scroll actions to the program running in the terminal when the terminal is in alternate screen mode (:iss:`5839`)
+
+- Implement :ref:`edit-in-kitty <edit_file>` using the new ``kitten`` static executable (:iss:`5546`, :iss:`5630`)
+
+- Add an option :opt:`background_tint_gaps` to control background image tinting for window gaps (:iss:`5596`)
+
+- A new option :opt:`undercurl_style` to control the rendering of undercurls (:pull:`5883`)
+
+- Bash integration: Fix ``clone-in-kitty`` not working on bash >= 5.2 if an environment variable values contain newlines or other special characters (:iss:`5629`)
+
+- A new :ac:`sleep` action useful in combine based mappings to make kitty sleep before executing the next action
+
+- Wayland GNOME: Workaround for latest mutter release breaking full screen for semi-transparent kitty windows (:iss:`5677`)
+
+- A new option :opt:`tab_title_max_length` to limit the length of tab (:iss:`5718`)
+
+- When drawing the tab bar have the default left and right margins drawn in a color matching the neighboring tab (:iss:`5719`)
+
+- When using the :code:`include` directive in :file:`kitty.conf` make the environment variable :envvar:`KITTY_OS` available for OS specific config
+
+- Wayland: Fix signal handling not working with some GPU drivers (:iss:`4636`)
+
+- Remote control: When matching windows allow using negative id numbers to match recently created windows (:iss:`5753`)
+
+- ZSH Integration: Bind :kbd:`alt+left` and :kbd:`alt+right` to move by word if not already bound. This mimics the default bindings in Terminal.app (:iss:`5793`)
+
+- macOS: Allow to customize :sc:`Hide <hide_macos_app>`, :sc:`Hide Others <hide_macos_other_apps>`, :sc:`Minimize <minimize_macos_window>`, and :sc:`Quit <quit>` global menu shortcuts. Note that :opt:`clear_all_shortcuts` will remove these shortcuts now (:iss:`948`)
+
+- When a multi-key sequence does not match any action, send all key events to the child program (:pull:`5841`)
+
+- broadcast kitten: Allow pressing a key to stop echoing of input into the broadcast window itself (:disc:`5868`)
+
+- When reporting unused activity in a window, ignore activity that occurs soon after a window resize (:iss:`5881`)
+
+- Fix using :opt:`cursor` = ``none`` not working on text that has reverse video (:iss:`5897`)
+
+- Fix ssh kitten not working on FreeBSD (:iss:`5928`)
+
+- macOS: Export kitty selected text to the system for use with services that accept it (patch by Sertaç Ö. Yıldız)
+
+
 0.26.5 [2022-11-07]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -55,6 +120,7 @@ Detailed list of changes
 - Wayland: Fix high CPU usage when using some input methods (:pull:`5369`)
 
 - Remote control: When matching window by `state:focused` and no window currently has keyboard focus, match the window belonging to the OS window that was last focused (:iss:`5602`)
+
 
 0.26.4 [2022-10-17]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -128,6 +194,7 @@ Detailed list of changes
   code execution if the user clicked on a notification popup from a malicious
   source. Thanks to Carter Sande for discovering this vulnerability.
 
+
 0.26.1 [2022-08-30]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -136,6 +203,7 @@ Detailed list of changes
 - Fix a regression in 0.26.0 that caused kitty to no longer set the ``LANG`` environment variable on macOS (:iss:`5439`)
 
 - Allow specifying a title when using the :ac:`set_tab_title` action (:iss:`5441`)
+
 
 0.26.0 [2022-08-29]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1623,6 +1691,7 @@ Detailed list of changes
 
 - Fix :option:`--title` not being applied at window creation time (:iss:`2570`)
 
+
 0.17.2 [2020-03-29]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1807,6 +1876,7 @@ Detailed list of changes
 - When windows are semi-transparent and all contain graphics, correctly render
   them. (:iss:`2310`)
 
+
 0.15.1 [2019-12-21]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1914,6 +1984,7 @@ Detailed list of changes
   spacing=100 (:iss:`1968`)
 
 - Use selection foreground color for underlines as well (:iss:`1982`)
+
 
 0.14.4 [2019-08-31]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2221,6 +2292,7 @@ Detailed list of changes
 - Mouse selection: When extending by word, fix extending selection to non-word
   characters not working well (:iss:`1616`)
 
+
 0.13.3 [2019-01-19]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -2313,6 +2385,7 @@ Detailed list of changes
 
 - Fix resizing window smaller and then restoring causing some wrapped lines to not
   be properly unwrapped (:iss:`1206`)
+
 
 0.13.0 [2018-12-05]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2411,6 +2484,7 @@ Detailed list of changes
 - Fix hover detection of URLs not working when hovering over the first colon
   and slash characters in short URLs (:iss:`1201`)
 
+
 0.12.3 [2018-09-29]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -2487,6 +2561,7 @@ Detailed list of changes
 - Fix using :opt:`focus_follows_mouse` causing text selection with the
   mouse to malfunction when using multiple kitty windows (:iss:`1002`)
 
+
 0.12.1 [2018-09-08]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -2529,6 +2604,7 @@ Detailed list of changes
 
 - macOS: Diff kitten: Fix syntax highlighting not working because of
   a bug in the 0.12.0 macOS package
+
 
 0.12.0 [2018-09-01]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3040,6 +3116,7 @@ Detailed list of changes
 
 - Fix a crash when getting the contents of the scrollback buffer as text
 
+
 0.8.1 [2018-03-09]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -3116,6 +3193,7 @@ Detailed list of changes
 
 - Browsing the scrollback buffer now happens in an overlay window instead of a
   new window/tab.
+
 
 0.7.1 [2018-01-31]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

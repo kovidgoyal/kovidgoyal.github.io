@@ -6,9 +6,6 @@ Fields are:
 :code:`match (default: None)`
   Which tab to close
 
-:code:`no_response (default: False)`
-  Boolean indicating whether to wait for a response
-
 :code:`self (default: False)`
   Boolean indicating whether to close the tab of the window the command is run in
 
@@ -24,9 +21,6 @@ Fields are:
 
 :code:`match (default: None)`
   Which window to close
-
-:code:`no_response (default: False)`
-  Boolean indicating whether to wait for a response
 
 :code:`self (default: False)`
   Boolean indicating whether to close the window the command is run in
@@ -109,7 +103,7 @@ env
 Fields are:
 
 :code:`env (required)`
-  Dictionary of environment variables to values. Empty values cause the variable to be removed.
+  Dictionary of environment variables to values. When a env var ends with = it is removed from the environment.
 
 
 
@@ -121,9 +115,6 @@ Fields are:
 :code:`match (default: None)`
   The tab to focus
 
-:code:`no_response (default: False)`
-  Boolean indicating whether to wait for a response
-
 
 
 focus-window
@@ -133,9 +124,6 @@ Fields are:
 
 :code:`match (default: None)`
   The window to focus
-
-:code:`no_response (default: False)`
-  Boolean indicating whether to wait for a response
 
 
 
@@ -172,7 +160,7 @@ Fields are:
 :code:`wrap_markers (optional)`
   Boolean, if True add wrap markers to output
 
-:code:`clear_selection (default: None)`
+:code:`clear_selection (default: False)`
   Boolean, if True clear the selection in the matched window
 
 :code:`self (default: False)`
@@ -219,9 +207,6 @@ Fields are:
 
 :code:`all (default: False)`
   Boolean to match all tabs
-
-:code:`no_response (default: False)`
-  Boolean indicating whether to wait for a response
 
 
 
@@ -287,9 +272,6 @@ Fields are:
 :code:`spacing (default: [])`
   A list of spacing specifications, see the docs for the set-spacing command
 
-:code:`no_response (default: False)`
-  Boolean indicating whether to send back the window id
-
 :code:`marker (default: None)`
   Specification for marker for new window, for example: "text 1 ERROR"
 
@@ -304,6 +286,21 @@ Fields are:
 
 :code:`self (default: False)`
   Boolean, if True use tab the command was run in
+
+:code:`os_window_title (default: None)`
+  Title for OS Window
+
+:code:`os_window_name (default: None)`
+  WM_NAME for OS Window
+
+:code:`os_window_class (default: None)`
+  WM_CLASS for OS Window
+
+:code:`color (default: [])`
+  list of color specifications such as foreground=red
+
+:code:`watcher (default: [])`
+  list of paths to watcher files
 
 
 
@@ -345,9 +342,6 @@ Fields are:
 
 :code:`tab_title (default: None)`
   Title for the new tab
-
-:code:`no_response (default: False)`
-  Boolean indicating whether to send back the window id
 
 
 
@@ -423,9 +417,6 @@ Fields are:
 :code:`match (default: None)`
   The window to scroll
 
-:code:`no_response (default: False)`
-  Boolean indicating whether to wait for a response
-
 
 
 select-window
@@ -472,6 +463,28 @@ Fields are:
 
 :code:`session_id (optional)`
   A string that identifies a "broadcast session"
+
+
+
+set-background-image
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`data (required)`
+  Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value - to indicate image must be removed.
+
+:code:`match (default: None)`
+  Window to change opacity in
+
+:code:`layout (default: configured)`
+  The image layout
+
+:code:`all (default: False)`
+  Boolean indicating operate on all windows
+
+:code:`configured (default: False)`
+  Boolean indicating if the configured value should be changed
 
 
 
@@ -608,7 +621,7 @@ set-window-logo
 Fields are:
 
 :code:`data (required)`
-  Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value :code:`-` to indicate image must be removed.
+  Chunk of PNG data, base64 encoded no more than 2048 bytes. Must send an empty chunk to indicate end of image.     Or the special value :code:`-` to indicate image must be removed.
 
 :code:`position (default: None)`
   The logo position as a string, empty string means default
@@ -645,14 +658,11 @@ signal-child
 
 Fields are:
 
-:code:`signals (optional)`
+:code:`signals (required)`
   The signals, a list of names, such as :code:`SIGTERM`, :code:`SIGKILL`, :code:`SIGUSR1`, etc.
 
 :code:`match (default: None)`
   Which windows to send the signals to
-
-:code:`no_response (default: False)`
-  Boolean indicating whether to wait for a response
 
 
 

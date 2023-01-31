@@ -85,7 +85,7 @@ Extending kitty
 ------------------
 
 kitty has a powerful framework for scripting. You can create small terminal
-programs called :doc:`kittens <kittens_intro>`. These can used to add features
+programs called :doc:`kittens <kittens_intro>`. These can be used to add features
 to kitty, for example, :doc:`editing remote files <kittens/remote_file>` or
 :doc:`inputting Unicode characters <kittens/unicode_input>`. They can also be
 used to create programs that leverage kitty's powerful features, for example,
@@ -127,7 +127,7 @@ Startup Sessions
 You can control the :term:`tabs <tab>`, :term:`kitty window <window>` layout,
 working directory, startup programs, etc. by creating a *session* file and using
 the :option:`kitty --session` command line flag or the :opt:`startup_session`
-option in :file:`kitty.conf`. For example:
+option in :file:`kitty.conf`. An example, showing all available commands:
 
 .. code-block:: session
 
@@ -154,7 +154,7 @@ option in :file:`kitty.conf`. For example:
     launch zsh
 
     # Create a new OS window
-    # Any definitions specifed before the first new_os_window will apply to first OS window.
+    # Any definitions specified before the first new_os_window will apply to first OS window.
     new_os_window
     # Set new window size to 80x24 cells
     os_window_size 80c 24c
@@ -172,6 +172,11 @@ option in :file:`kitty.conf`. For example:
 .. note::
     The :doc:`launch <launch>` command when used in a session file cannot create
     new OS windows, or tabs.
+
+.. note::
+   Environment variables of the for :code:`${NAME}` or :code:`$NAME` are
+   expanded in the session file, except in the *arguments* (not options) to the
+   launch command.
 
 
 Creating tabs/windows
