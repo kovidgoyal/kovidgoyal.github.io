@@ -669,6 +669,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" role="switch" type="checkbox"/><label for="toctree-checkbox-85"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#future">0.27.1 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.27.0 [2023-01-31]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.26.5 [2022-11-07]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.26.4 [2022-10-17]</a></li>
@@ -1649,7 +1650,7 @@ clone-in-kitty<span class="o">()</span><span class="w"> </span><span class="o">{
     <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="k">function</span> edit-in-kitty --wraps <span class="s2">&quot;kitten edit-in-kitty&quot;</span>
+<span class="k">function</span> edit-in-kitty --wraps <span class="s2">&quot;kitten edit-in-kitty&quot;</span> -d <span class="s2">&quot;Edit the specified file in a kitty overlay window with your locally installed editor&quot;</span>
     kitten edit-in-kitty <span class="nv">$argv</span>
 <span class="k">end</span>
 
@@ -1902,6 +1903,7 @@ _ksi_main<span class="o">()</span><span class="w"> </span><span class="o">{</spa
 <span class="w">    </span><span class="k">fi</span>
 
 <span class="w">    </span><span class="nb">alias</span><span class="w"> </span>edit-in-kitty<span class="o">=</span><span class="s2">&quot;kitten edit-in-kitty&quot;</span>
+
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">_ksi_prompt</span><span class="p">[complete]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;y&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w">        </span>_ksi_completions<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <span class="w">            </span><span class="nb">builtin</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>src

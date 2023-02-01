@@ -669,6 +669,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" role="switch" type="checkbox"/><label for="toctree-checkbox-85"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="#future">0.27.1 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">0.27.0 [2023-01-31]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">0.26.5 [2022-11-07]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">0.26.4 [2022-10-17]</a></li>
@@ -929,6 +930,16 @@ mouse anywhere in the current command to move the cursor there. See
 </section>
 <section id="detailed-list-of-changes">
 <h2>Detailed list of changes<a class="headerlink" href="#detailed-list-of-changes" title="Permalink to this heading">#</a></h2>
+<section id="future">
+<h3>0.27.1 [future]<a class="headerlink" href="#future" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fix <a class="reference internal" href="../conf/#opt-kitty.modify_font"><code class="xref std std-opt docutils literal notranslate"><span class="pre">modify_font</span></code></a> not working for strikethrough position (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5946">#5946</a>)</p></li>
+<li><p>Fix a regression causing the <code class="docutils literal notranslate"><span class="pre">edit-in-kitty</span></code> command not working if <code class="file docutils literal notranslate"><span class="pre">kitten</span></code> is not added
+to PATH (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5956">#5956</a>)</p></li>
+<li><p>icat kitten: Fix a regression that broke display of animated GIFs over SSH
+(<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5958">#5958</a>)</p></li>
+</ul>
+</section>
 <section id="id1">
 <h3>0.27.0 [2023-01-31]<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
@@ -949,7 +960,7 @@ GIF/PNG/JPEG/WEBP/TIFF/BMP out of the box without needing ImageMagick.</p></li>
 <li><p>Implement <a class="reference internal" href="../shell-integration/#edit-file"><span class="std std-ref">edit-in-kitty</span></a> using the new <code class="docutils literal notranslate"><span class="pre">kitten</span></code> static executable (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5546">#5546</a>, <a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5630">#5630</a>)</p></li>
 <li><p>Add an option <a class="reference internal" href="../conf/#opt-kitty.background_tint_gaps"><code class="xref std std-opt docutils literal notranslate"><span class="pre">background_tint_gaps</span></code></a> to control background image tinting for window gaps (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5596">#5596</a>)</p></li>
 <li><p>A new option <a class="reference internal" href="../conf/#opt-kitty.undercurl_style"><code class="xref std std-opt docutils literal notranslate"><span class="pre">undercurl_style</span></code></a> to control the rendering of undercurls (<a class="reference external" href="https://github.com/kovidgoyal/kitty/pull/5883">#5883</a>)</p></li>
-<li><p>Bash integration: Fix <code class="docutils literal notranslate"><span class="pre">clone-in-kitty</span></code> not working on bash &gt;= 5.2 if an environment variable values contain newlines or other special characters (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5629">#5629</a>)</p></li>
+<li><p>Bash integration: Fix <code class="docutils literal notranslate"><span class="pre">clone-in-kitty</span></code> not working on bash &gt;= 5.2 if environment variable values contain newlines or other special characters (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5629">#5629</a>)</p></li>
 <li><p>A new <a class="reference internal" href="../actions/#action-sleep"><code class="xref std std-ac docutils literal notranslate"><span class="pre">sleep</span></code></a> action useful in combine based mappings to make kitty sleep before executing the next action</p></li>
 <li><p>Wayland GNOME: Workaround for latest mutter release breaking full screen for semi-transparent kitty windows (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5677">#5677</a>)</p></li>
 <li><p>A new option <a class="reference internal" href="../conf/#opt-kitty.tab_title_max_length"><code class="xref std std-opt docutils literal notranslate"><span class="pre">tab_title_max_length</span></code></a> to limit the length of tab (<a class="reference external" href="https://github.com/kovidgoyal/kitty/issues/5718">#5718</a>)</p></li>
@@ -3369,6 +3380,7 @@ contents of the screen + scrollback buffer as stdin to the command.</p></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#detailed-list-of-changes">Detailed list of changes</a><ul>
+<li><a class="reference internal" href="#future">0.27.1 [future]</a></li>
 <li><a class="reference internal" href="#id1">0.27.0 [2023-01-31]</a></li>
 <li><a class="reference internal" href="#id2">0.26.5 [2022-11-07]</a></li>
 <li><a class="reference internal" href="#id3">0.26.4 [2022-10-17]</a></li>

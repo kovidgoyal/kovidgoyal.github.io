@@ -669,6 +669,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" role="switch" type="checkbox"/><label for="toctree-checkbox-85"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#future">0.27.1 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.27.0 [2023-01-31]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.26.5 [2022-11-07]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.26.4 [2022-10-17]</a></li>
@@ -1210,12 +1211,13 @@ sequence of escape codes to the terminal emulator:</p>
 </pre></div>
 </div>
 <p>Note that only the first escape code needs to have the full set of control
-codes such as width, height, format etc. Subsequent chunks <strong>must</strong> have
-only the <code class="docutils literal notranslate"><span class="pre">m</span></code> key. The client <strong>must</strong> finish sending all chunks for a single image
-before sending any other graphics related escape codes. Note that the cursor
-position used to display the image <strong>must</strong> be the position when the final chunk is
-received. Finally, terminals must not display anything, until the entire sequence is
-received and validated.</p>
+codes such as width, height, format, etc. Subsequent chunks <strong>must</strong> have only
+the <code class="docutils literal notranslate"><span class="pre">m</span></code> and optionally <code class="docutils literal notranslate"><span class="pre">q</span></code> keys. When sending animation frame data, subsequent
+chunks <strong>must</strong> also specify the <code class="docutils literal notranslate"><span class="pre">a=f</span></code> key. The client <strong>must</strong> finish sending
+all chunks for a single image before sending any other graphics related escape
+codes. Note that the cursor position used to display the image <strong>must</strong> be the
+position when the final chunk is received. Finally, terminals must not display
+anything, until the entire sequence is received and validated.</p>
 </section>
 </section>
 <section id="querying-support-and-available-transmission-mediums">
