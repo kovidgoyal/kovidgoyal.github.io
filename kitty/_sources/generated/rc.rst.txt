@@ -296,6 +296,9 @@ Fields are:
 :code:`os_window_class (default: None)`
   WM_CLASS for OS Window
 
+:code:`os_window_state (default: normal)`
+  The initial state for OS Window
+
 :code:`color (default: [])`
   list of color specifications such as foreground=red
 
@@ -554,7 +557,7 @@ set-font-size
 Fields are:
 
 :code:`size (required)`
-  The new font size in pts (a positive number)
+  The new font size in pts (a positive number). If absent is assumed to be zero which means reset to default.
 
 :code:`all (default: False)`
   Boolean whether to change font size in the current window or all windows

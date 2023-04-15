@@ -8,13 +8,18 @@
 <meta property="og:url" content="https://sw.kovidgoyal.net/kitty/graphics-protocol/" />
 <meta property="og:site_name" content="kitty" />
 <meta property="og:description" content="The goal of this specification is to create a flexible and performant protocol that allows the program running in the terminal, hereafter called the client, to render arbitrary pixel (raster) graph..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://sw.kovidgoyal.net/kitty/None" />
+<meta property="og:image:alt" content="The goal of this specification is to create a flexible and performant protocol that allows the program running in the terminal, hereafter called the client,..." />
 <meta name="description" content="The goal of this specification is to create a flexible and performant protocol that allows the program running in the terminal, hereafter called the client, to render arbitrary pixel (raster) graph..." />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Comprehensive keyboard handling in terminals" href="../keyboard-protocol/" /><link rel="prev" title="Colored and styled underlines" href="../underlines/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Terminal graphics protocol - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -164,7 +169,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/kitty.svg" alt="Logo"/>
@@ -413,6 +418,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#matching-windows-and-tabs">Matching windows and tabs</a><input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../rc_protocol/">The kitty remote control protocol</a><input class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" role="switch" type="checkbox"/><label for="toctree-checkbox-40"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#encrypted-communication">Encrypted communication</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#async-and-streaming-requests">Async and streaming requests</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-tab">close-tab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#close-window">close-window</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../rc_protocol/#create-marker">create-marker</a></li>
@@ -669,86 +675,87 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" role="switch" type="checkbox"/><label for="toctree-checkbox-85"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.27.1 [2023-02-07]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.27.0 [2023-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.26.5 [2022-11-07]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.26.4 [2022-10-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.26.3 [2022-09-22]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.26.2 [2022-09-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.26.1 [2022-08-30]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.26.0 [2022-08-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.25.2 [2022-06-07]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.25.1 [2022-05-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id73">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id74">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id75">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id76">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id77">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id78">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id79">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id80">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.28.0 [2023-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.27.1 [2023-02-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.27.0 [2023-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.26.5 [2022-11-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.26.4 [2022-10-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.26.3 [2022-09-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.26.2 [2022-09-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.26.1 [2022-08-30]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.26.0 [2022-08-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.25.2 [2022-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id73">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id74">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id75">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id76">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id77">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id78">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id79">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id80">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id81">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -781,6 +788,7 @@
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="#display-images-on-screen">Display images on screen</a><input class="toctree-checkbox" id="toctree-checkbox-91" name="toctree-checkbox-91" role="switch" type="checkbox"/><label for="toctree-checkbox-91"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="#controlling-displayed-image-layout">Controlling displayed image layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unicode-placeholders">Unicode placeholders</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#deleting-images">Deleting images</a></li>
@@ -942,6 +950,7 @@ information tool</p></li>
 <li><p><a class="reference external" href="https://github.com/edluffy/hologram.nvim">hologram.nvim</a>  - view images inside nvim</p></li>
 <li><p><a class="reference external" href="https://github.com/AnonymouX47/term-image">term-image</a>  - A Python library, CLI and TUI to display and browse images in the terminal</p></li>
 <li><p><a class="reference external" href="https://github.com/michaeljclark/glkitty">glkitty</a> - C library to draw OpenGL shaders in the terminal with a glgears demo</p></li>
+<li><p><a class="reference external" href="https://github.com/Xithrius/twitch-tui">twitch-tui</a> - Twitch chat in the terminal</p></li>
 </ul>
 <p>Other terminals that have implemented the graphics protocol:</p>
 <ul class="simple">
@@ -1339,6 +1348,120 @@ to no movement for placing the current image.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.20.0: </span>Support for the C=1 cursor movement policy</p>
 </div>
+</section>
+<section id="unicode-placeholders">
+<span id="graphics-unicode-placeholders"></span><h3>Unicode placeholders<a class="headerlink" href="#unicode-placeholders" title="Permalink to this heading">#</a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.28.0: </span>Support for image display via Unicode placeholders</p>
+</div>
+<p>You can also use a special Unicode character <code class="docutils literal notranslate"><span class="pre">U+10EEEE</span></code> as a placeholder for
+an image. This approach is less flexible, but it allows using images inside
+any host application that supports Unicode and foreground colors (tmux, vim, weechat, etc.)
+and has a way to pass escape codes through to the underlying terminal.</p>
+<p>The central idea is that we use a single <em>Private Use</em> Unicode character as a
+<em>placeholder</em> to indicate to the terminal that an image is supposed to be
+displayed at that cell. Since this character is just normal text, Unicode aware
+application will move it around as needed when they redraw their screens,
+thereby automatically moving the displayed image as well, even though they know
+nothing about the graphics protocol. So an image is first created using the
+normal graphics protocol escape codes (albeit in quiet mode (<code class="docutils literal notranslate"><span class="pre">q=2</span></code>) so that there are
+no responses from the terminal that could confuse the host application). Then,
+the actual image is displayed by getting the host application to emit normal
+text consisting of <code class="docutils literal notranslate"><span class="pre">U+10EEEE</span></code> and various diacritics (Unicode combining
+characters) and colors.</p>
+<p>To use it, first create an image as you would normally with the graphics
+protocol with (<code class="docutils literal notranslate"><span class="pre">q=2</span></code>), but do not create a placement for it, that is, do not
+display it. Then, create a <em>virtual image placement</em> by specifying <code class="docutils literal notranslate"><span class="pre">U=1</span></code> and
+the desired number of lines and columns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span><span class="n">_Ga</span><span class="o">=</span><span class="n">p</span><span class="p">,</span><span class="n">U</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="o">=&lt;</span><span class="n">image_id</span><span class="o">&gt;</span><span class="p">,</span><span class="n">c</span><span class="o">=&lt;</span><span class="n">columns</span><span class="o">&gt;</span><span class="p">,</span><span class="n">r</span><span class="o">=&lt;</span><span class="n">rows</span><span class="o">&gt;&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
+</pre></div>
+</div>
+<p>The creation of the placement need not be a separate escape code, it can be
+combined with <code class="docutils literal notranslate"><span class="pre">a=T</span></code> to both transmit and create the virtual placement with a
+single code.</p>
+<p>The image will eventually be fit to the specified rectangle, its aspect ratio
+preserved. Finally, the image can be actually displayed by using the
+placeholder character, encoding the image ID in its foreground color. The row
+and column values are specified with diacritics listed in
+<a class="reference download internal" download="" href="../_downloads/1792bad15b12979994cd6ecc54c967a6/rowcolumn-diacritics.txt"><code class="xref download docutils literal notranslate"><span class="pre">rowcolumn-diacritics.txt</span></code></a>.  For
+example, here is how you can print a <code class="docutils literal notranslate"><span class="pre">2x2</span></code> placeholder for image ID <code class="docutils literal notranslate"><span class="pre">42</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;\e[38;5;42m\U10EEEE\U0305\U0305\U10EEEE\U0305\U030D\e[39m\n&quot;</span>
+<span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;\e[38;5;42m\U10EEEE\U030D\U0305\U10EEEE\U030D\U030D\e[39m\n&quot;</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">U+305</span></code> is the diacritic corresponding to the number <code class="docutils literal notranslate"><span class="pre">0</span></code>
+and <code class="docutils literal notranslate"><span class="pre">U+30D</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">1</span></code>. So these two commands create the following
+<code class="docutils literal notranslate"><span class="pre">2x2</span></code> placeholder:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>(0, 0)</p></td>
+<td><p>(1, 0)</p></td>
+</tr>
+<tr class="row-even"><td><p>(1, 0)</p></td>
+<td><p>(1, 1)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This will cause the image with ID <code class="docutils literal notranslate"><span class="pre">42</span></code> to be displayed in a <code class="docutils literal notranslate"><span class="pre">2x2</span></code> grid.
+Ideally, you would print out as many cells as the number of rows and columns
+specified when creating the virtual placement, but in case of a mismatch only
+part of the image will be displayed.</p>
+<p>By using only the foreground color for image ID you are limited to either 8-bit IDs in 256 color
+mode or 24-bit IDs in true color mode. Since IDs are in a global namespace
+there can easily be collisions. If you need more bits for the image
+ID, you can specify the most significant byte via a third diacritic. For
+example, this is the placeholder for the image ID <code class="docutils literal notranslate"><span class="pre">33554474</span> <span class="pre">=</span> <span class="pre">42</span> <span class="pre">+</span> <span class="pre">(2</span> <span class="pre">&lt;&lt;</span> <span class="pre">24)</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;\e[38;5;42m\U10EEEE\U0305\U0305\U030E\U10EEEE\U0305\U030D\U030E\n&quot;</span>
+<span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;\e[38;5;42m\U10EEEE\U030D\U0305\U030E\U10EEEE\U030D\U030D\U030E\n&quot;</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">U+30E</span></code> is the diacritic corresponding to the number <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+<p>You can also specify a placement ID using the underline color (if it’s omitted
+or zero, the terminal may choose any virtual placement of the given image). The
+background color is interpreted as the background color, visible if the image is
+transparent. Other text attributes are reserved for future use.</p>
+<p>Row, column and most significant byte diacritics may also be omitted, in which
+case the placeholder cell will inherit the missing values from the placeholder
+cell to the left, following the algorithm:</p>
+<ul class="simple">
+<li><p>If no diacritics are present, and the previous placeholder cell has the same
+foreground and underline colors, then the row of the current cell will be the
+row of the cell to the left, the column will be the column of the cell to the
+left plus one, and the most significant image ID byte will be the most
+significant image ID byte of the cell to the left.</p></li>
+<li><p>If only the row diacritic is present, and the previous placeholder cell has
+the same row and the same foreground and underline colors, then the column of
+the current cell will be the column of the cell to the left plus one, and the
+most significant image ID byte will be the most significant image ID byte of
+the cell to the left.</p></li>
+<li><p>If only the row and column diacritics are present, and the previous
+placeholder cell has the same row, the same foreground and underline colors,
+and its column is one less than the current column, then the most significant
+image ID byte of the current cell will be the most significant image ID byte
+of the cell to the left.</p></li>
+</ul>
+<p>These rules are applied left-to-right, which allows specifying only row
+diacritics of the first column, i.e. here is a 2 rows by 3 columns placeholder:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;\e[38;5;42m\U10EEEE\U0305\U10EEEE\U10EEEE\n&quot;</span>
+<span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;\e[38;5;42m\U10EEEE\U030D\U10EEEE\U10EEEE\n&quot;</span>
+</pre></div>
+</div>
+<p>This will not work for horizontal scrolling and overlapping images since the two
+given rules will fail to guess the missing information. In such cases, the
+terminal may apply other heuristics (but it doesn’t have to).</p>
+<p>It is important to distinguish between virtual image placements and real images
+displayed on top of Unicode placeholders. Virtual placements are invisible and only play
+the role of prototypes for real images. Virtual placements can be deleted by a
+deletion command only when the <cite>d</cite> key is equal to <code class="docutils literal notranslate"><span class="pre">i</span></code>, <code class="docutils literal notranslate"><span class="pre">I</span></code>, <code class="docutils literal notranslate"><span class="pre">n</span></code> or <code class="docutils literal notranslate"><span class="pre">N</span></code>.
+The key values <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, <code class="docutils literal notranslate"><span class="pre">p</span></code>, <code class="docutils literal notranslate"><span class="pre">q</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> and their capital
+variants never affect virtual placements because they do not have a physical
+location on the screen.</p>
+<p>Real images displayed on top of Unicode placeholders are not considered
+placements from the protocol perspective. They cannot be manipulated using
+graphics commands, instead they should be moved, deleted, or modified by
+manipulating the underlying Unicode placeholder as normal text.</p>
 </section>
 </section>
 <section id="deleting-images">
@@ -1745,135 +1868,141 @@ take, and the default value they take when missing. All integers are 32-bit.</p>
 <td><p>Cursor movement policy. <code class="docutils literal notranslate"><span class="pre">0</span></code> is the default, to move the cursor to after the image.
 <code class="docutils literal notranslate"><span class="pre">1</span></code> is to not move the cursor at all when placing the image.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">z</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">U</span></code></p></td>
+<td><p>Positive integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Set to <code class="docutils literal notranslate"><span class="pre">1</span></code> to create a virtual placement for a Unicode placeholder.
+<code class="docutils literal notranslate"><span class="pre">1</span></code> is to not move the cursor at all when placing the image.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">z</span></code></p></td>
 <td><p>32-bit integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The <em>z-index</em> vertical stacking order of the image</p></td>
 </tr>
-<tr class="row-odd"><td colspan="4"><p><strong>Keys for animation frame loading</strong></p></td>
+<tr class="row-even"><td colspan="4"><p><strong>Keys for animation frame loading</strong></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The left edge (in pixels) of where the frame data should be updated</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The top edge (in pixels) of where the frame data should be updated</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The 1-based frame number of the frame whose image data serves as the base data
 when creating a new frame, by default the base data is black, fully transparent pixels</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The 1-based frame number of the frame that is being edited. By default, a new frame is created</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">z</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">z</span></code></p></td>
 <td><p>32-bit integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The gap (in milliseconds) of this frame from the next one. A value of
 zero is ignored. Negative values create a <em>gapless</em> frame. If not specified,
 frames have a default gap of <code class="docutils literal notranslate"><span class="pre">40ms</span></code>. The root frame defaults to zero gap.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The composition mode for blending pixels when creating a new frame or
 editing a frame’s data. The default is full alpha blending. <code class="docutils literal notranslate"><span class="pre">1</span></code> means a
 simple overwrite.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Y</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Y</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The background color for pixels not
 specified in the frame data. Must be in 32-bit RGBA format</p></td>
 </tr>
-<tr class="row-odd"><td colspan="4"><p><strong>Keys for animation frame composition</strong></p></td>
+<tr class="row-even"><td colspan="4"><p><strong>Keys for animation frame composition</strong></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The 1-based frame number of the frame whose image data serves as the overlaid data</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The 1-based frame number of the frame that is being edited.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The left edge (in pixels) of the destination rectangle</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The top edge (in pixels) of the destination rectangle</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">w</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">w</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The width (in pixels) of the source and destination rectangles. By default, the entire width is used</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">h</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">h</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The height (in pixels) of the source and destination rectangles. By default, the entire height is used</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The left edge (in pixels) of the source rectangle</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Y</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Y</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The top edge (in pixels) of the source rectangle</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">C</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">C</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The composition mode for blending
 pixels. Default is full alpha blending. <code class="docutils literal notranslate"><span class="pre">1</span></code> means a simple overwrite.</p></td>
 </tr>
-<tr class="row-odd"><td colspan="4"><p><strong>Keys for animation control</strong></p></td>
+<tr class="row-even"><td colspan="4"><p><strong>Keys for animation control</strong></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> - stop animation, <code class="docutils literal notranslate"><span class="pre">2</span></code> - run animation, but wait for new frames, <code class="docutils literal notranslate"><span class="pre">3</span></code> - run animation</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The 1-based frame number of the frame that is being affected</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">z</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">z</span></code></p></td>
 <td><p>32-bit integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The gap (in milliseconds) of this frame from the next one. A value of
 zero is ignored. Negative values create a <em>gapless</em> frame.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The 1-based frame number of the frame that should be made the current frame</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">v</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">v</span></code></p></td>
 <td><p>Positive integer</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The number of loops to play. <code class="docutils literal notranslate"><span class="pre">0</span></code> is
 ignored, <code class="docutils literal notranslate"><span class="pre">1</span></code> is play infinite and is the default and larger number
 means play that number <code class="docutils literal notranslate"><span class="pre">-1</span></code> loops</p></td>
 </tr>
-<tr class="row-odd"><td colspan="4"><p><strong>Keys for deleting images</strong></p></td>
+<tr class="row-even"><td colspan="4"><p><strong>Keys for deleting images</strong></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
 <td><p>Single character.
 <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">A,</span> <span class="pre">c,</span> <span class="pre">C,</span> <span class="pre">n,</span> <span class="pre">N,</span>
 <span class="pre">i,</span> <span class="pre">I,</span> <span class="pre">p,</span> <span class="pre">P,</span> <span class="pre">q,</span> <span class="pre">Q,</span> <span class="pre">x,</span>
@@ -1982,6 +2111,7 @@ they must be clipped.</p>
 </li>
 <li><a class="reference internal" href="#display-images-on-screen">Display images on screen</a><ul>
 <li><a class="reference internal" href="#controlling-displayed-image-layout">Controlling displayed image layout</a></li>
+<li><a class="reference internal" href="#unicode-placeholders">Unicode placeholders</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#deleting-images">Deleting images</a></li>
@@ -2008,9 +2138,6 @@ they must be clipped.</p>
     </aside>
   </div>
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>

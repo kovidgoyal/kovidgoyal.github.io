@@ -35,6 +35,66 @@ mouse anywhere in the current command to move the cursor there. See
 Detailed list of changes
 -------------------------------------
 
+0.28.0 [2023-04-15]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Text rendering change**: Use sRGB correct linear gamma blending for nicer font
+  rendering and better color accuracy with transparent windows.
+  See the option :opt:`text_composition_strategy` for details.
+  The obsolete :opt:`macos_thicken_font` will make the font too thick and needs to be removed manually
+  if it is configured. (:pull:`5969`)
+
+- icat kitten: Support display of images inside tmux >= 3.3 (:pull:`5664`)
+
+- Graphics protocol: Add support for displaying images inside programs that do not support the protocol such as vim and tmux (:pull:`5664`)
+
+- diff kitten: Add support for selecting multi-line text with the mouse
+
+- Fix a regression in 0.27.0 that broke ``kitty @ set-font-size 0`` (:iss:`5992`)
+
+- launch: When using ``--cwd=current`` for a remote system support running non shell commands as well (:disc:`5987`)
+
+- When changing the cursor color via escape codes or remote control to a fixed color, do not reset cursor_text_color (:iss:`5994`)
+
+- Input Method Extensions: Fix incorrect rendering of IME in-progress and committed text in some situations (:pull:`6049`, :pull:`6087`)
+
+- Linux: Reduce minimum required OpenGL version from 3.3 to 3.1 + extensions (:iss:`2790`)
+
+- Fix a regression that broke drawing of images below cell backgrounds (:iss:`6061`)
+
+- macOS: Fix the window buttons not being hidden after exiting the traditional full screen (:iss:`6009`)
+
+- When reloading configuration, also reload custom MIME types from :file:`mime.types` config file (:pull:`6012`)
+
+- launch: Allow specifying the state (full screen/maximized/minimized) for newly created OS Windows (:iss:`6026`)
+
+- Sessions: Allow specifying the OS window state via the ``os_window_state`` directive (:iss:`5863`)
+
+- macOS: Display the newly created OS window in specified state to avoid or reduce the window transition animations (:pull:`6035`)
+
+- macOS: Fix the maximized window not taking up full space when the title bar is hidden or when :opt:`resize_in_steps` is configured (:iss:`6021`)
+
+- Linux: A new option :opt:`linux_bell_theme` to control which sound theme is used for the bell sound (:pull:`4858`)
+
+- ssh kitten: Change the syntax of glob patterns slightly to match common usage
+  elsewhere. Now the syntax is the same as "extendedglob" in most shells.
+
+- hints kitten: Allow copying matches to named buffers (:disc:`6073`)
+
+- Fix overlay windows not inheriting the per-window padding and margin settings
+  of their parents (:iss:`6063`)
+
+- Wayland KDE: Fix selecting in un-focused OS window not working correctly (:iss:`6095`)
+
+- Linux X11: Fix a crash if the X server requests clipboard data after we have relinquished the clipboard (:iss:`5650`)
+
+- Allow stopping of URL detection at newlines via :opt:`url_excluded_characters` (:iss:`6122`)
+
+- Linux Wayland: Fix animated images not being animated continuously (:iss:`6126`)
+
+- Keyboard input: Fix text not being reported as unicode codepoints for multi-byte characters in the kitty keyboard protocol (:iss:`6167`)
+
+
 0.27.1 [2023-02-07]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

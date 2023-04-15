@@ -10,8 +10,9 @@ configuration is a simple, human editable, single file for easy reproducibility
 (I like to store configuration in source control).
 
 The code in |kitty| is designed to be simple, modular and hackable. It is
-written in a mix of C (for performance sensitive parts) and Python (for easy
-hackability of the UI). It does not depend on any large and complex UI toolkit,
+written in a mix of C (for performance sensitive parts), Python (for easy
+extensibility and flexibility of the UI) and Go (for the command line
+:term:`kittens`).  It does not depend on any large and complex UI toolkit,
 using only OpenGL for rendering everything.
 
 Finally, |kitty| is designed from the ground up to support all modern terminal
@@ -160,6 +161,8 @@ option in :file:`kitty.conf`. An example, showing all available commands:
     os_window_size 80c 24c
     # Set the --class for the new OS window
     os_window_class mywindow
+    # Change the OS window state to normal, fullscreen, maximized or minimized
+    os_window_state normal
     launch sh
     # Resize the current window (see the resize_window action for details)
     resize_window wider 2
@@ -232,9 +235,10 @@ Font control
 |kitty| has extremely flexible and powerful font selection features. You can
 specify individual families for the regular, bold, italic and bold+italic fonts.
 You can even specify specific font families for specific ranges of Unicode
-characters. This allows precise control over text rendering. It can comein handy
-for applications like powerline, without the need to use patched fonts. See the
-various font related configuration directives in :ref:`conf-kitty-fonts`.
+characters. This allows precise control over text rendering. It can come in
+handy for applications like powerline, without the need to use patched fonts.
+See the various font related configuration directives in
+:ref:`conf-kitty-fonts`.
 
 
 .. _scrollback:
