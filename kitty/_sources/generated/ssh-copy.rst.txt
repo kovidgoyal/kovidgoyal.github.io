@@ -12,7 +12,7 @@ Options
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. option:: --glob
 
-    Interpret file arguments as glob patterns. Globbing is based on Based on standard wildcards with the addition that ``/**/`` matches any number of directories. See the :link:`detailed syntax <https://github.com/bmatcuk/doublestar#patterns>`.
+    Interpret file arguments as glob patterns. Globbing is based on standard wildcards with the addition that ``/**/`` matches any number of directories. See the :link:`detailed syntax <https://github.com/bmatcuk/doublestar#patterns>`.
 
 .. option:: --dest <DEST>
 
@@ -20,7 +20,7 @@ Options
 
 .. option:: --exclude <EXCLUDE>
 
-    A glob pattern. Files with names matching this pattern are excluded from being transferred. Useful when adding directories. Can be specified multiple times, if any of the patterns match the file will be excluded. If the pattern includes a :code:`/` then it will match against the full path, not just the filename. In such patterns you can use :code:`/**/` to match zero or more directories. For example, to exclude a directory and everything under it use :code:`**/directory_name`. See the :link:`detailed syntax <https://github.com/bmatcuk/doublestar#patterns>` for how wildcards match.
+    A glob pattern. Files with names matching this pattern are excluded from being transferred. Only used when copying directories. Can be specified multiple times, if any of the patterns match the file will be excluded. If the pattern includes a :code:`/` then it will match against the full path, not just the filename. In such patterns you can use :code:`/**/` to match zero or more directories. For example, to exclude a directory and everything under it use :code:`**/directory_name`. See the :link:`detailed syntax <https://github.com/bmatcuk/doublestar#patterns>` for how wildcards match.
 
 .. option:: --symlink-strategy <SYMLINK_STRATEGY>
 
