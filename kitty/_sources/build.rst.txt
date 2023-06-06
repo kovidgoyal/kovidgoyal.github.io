@@ -61,6 +61,7 @@ Build-time dependencies:
   - ``libfontconfig-dev``
   - ``libx11-xcb-dev``
   - ``liblcms2-dev``
+  - ``libssl-dev``
   - ``libpython3-dev``
   - ``librsync-dev``
 
@@ -86,6 +87,10 @@ other directory on your PATH so that you can run |kitty| using just ``kitty``.
 To have the kitty documentation available locally, run::
 
     python3 -m pip install -r docs/requirements.txt && make docs
+
+To develop the docs, with live reloading, use::
+
+    python3 -m pip install -r docs/requirements.txt && make develop-docs
 
 
 Building kitty.app on macOS from source
