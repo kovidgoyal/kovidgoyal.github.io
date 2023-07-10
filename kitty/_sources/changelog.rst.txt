@@ -35,12 +35,20 @@ mouse anywhere in the current command to move the cursor there. See
 Detailed list of changes
 -------------------------------------
 
-0.28.2 [future]
+0.29.0 [2023-07-10]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - A new escape code ``<ESC>[22J`` that moves the current contents of the screen into the scrollback before clearing it
 
+- A new kitten :ref:`run-shell <run_shell>` to allow creating sub-shells with shell integration enabled
+
+- A new option :opt:`background_blur` to blur the background for transparent windows (:pull:`6135`)
+
+- The :option:`--hold` flag now holds the window open at a shell prompt instead of asking the user to press a key
+
 - A new option :opt:`text_fg_override_threshold` to force text colors to have high contrast regardless of color scheme (:pull:`6283`)
+
+- When resizing OS Windows make the animation less jerky. Also show the window size in cells during the resize (:iss:`6341`)
 
 - unicode_input kitten: Fix a regression in 0.28.0 that caused the order of recent and favorites entries to not be respected (:iss:`6214`)
 
@@ -69,11 +77,19 @@ Detailed list of changes
 
 - ssh kitten: Fix a regression in 0.28.0 that caused interrupt during setup to not be handled gracefully (:iss:`6254`)
 
+- ssh kitten: Allow configuring the ssh kitten to skip some hosts via a new ``delegate`` config directive
+
 - Graphics: Move images up along with text when the window is shrunk vertically (:iss:`6278`)
 
 - Fix a regression in 0.28.0 that caused a buffer overflow when clearing the screen (:iss:`6306`, :pull:`6308`)
 
 - Fix a regression in 0.27.0 that broke setting of specific edge padding/margin via remote control (:iss:`6333`)
+
+- macOS: Fix window shadows not being drawn for transparent windows (:iss:`2827`, :pull:`6416`)
+
+- Do not echo invalid DECRQSS queries back, behavior inherited from xterm (CVE-2008-2383). Similarly, fix an echo
+  bug in the file transfer protocol due to insufficient sanitization of safe strings.
+
 
 0.28.1 [2023-04-21]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -235,7 +251,7 @@ Detailed list of changes
 
 - ssh kitten: Allow using absolute paths for the location of transferred data (:iss:`5607`)
 
-- Fix a regression in the previous release that caused a :opt:`resize_draw_strategy` of ``static`` to not work (:iss:`5601`)
+- Fix a regression in the previous release that caused a ``resize_draw_strategy`` of ``static`` to not work (:iss:`5601`)
 
 - Wayland KDE: Fix abort when pasting into Firefox (:iss:`5603`)
 
@@ -506,7 +522,7 @@ Detailed list of changes
 
 - A new value :code:`last_reported` for :option:`launch --cwd` to use the current working directory last reported by the program running in the terminal
 
-- macOS: When using Apple's less as the pager for viewing scrollback strip out OSC codes as it cant parse them (:iss:`4788`)
+- macOS: When using Apple's less as the pager for viewing scrollback strip out OSC codes as it can't parse them (:iss:`4788`)
 
 - diff kitten: Fix incorrect rendering in rare circumstances when scrolling after changing the context size (:iss:`4831`)
 
@@ -767,7 +783,7 @@ Detailed list of changes
 - A new remote control command to :program:`visually select a window <kitty @
   select-window>` (:iss:`4165`)
 
-- Add support for reporting mouse events with pixel co-ordinates using the
+- Add support for reporting mouse events with pixel coordinates using the
   ``SGR_PIXEL_PROTOCOL`` introduced in xterm 359
 
 - When programs ask to read from the clipboard prompt, ask the user to allow
@@ -931,7 +947,7 @@ Detailed list of changes
   sizes (:iss:`3896`)
 
 - Fix shift+middle click to paste sending a mouse press event but no release
-  event which breaks some applications that grab the mouse but cant handle
+  event which breaks some applications that grab the mouse but can't handle
   mouse events (:iss:`3902`)
 
 - macOS: When the language is set to English and the country to one for which
@@ -1608,7 +1624,7 @@ Detailed list of changes
 - Fix image leaving behind a black rectangle when switch away and back to
   alternate screen (:iss:`2901`)
 
-- Fix one pixel mis-alignment of rounded corners when either the cell
+- Fix one pixel misalignment of rounded corners when either the cell
   dimensions or the thickness of the line is an odd number of pixels
   (:iss:`2907`)
 
@@ -2316,7 +2332,7 @@ Detailed list of changes
   which will cause kitty to not change text color in selections (:iss:`1358`)
 
 - Make live resizing of OS windows smoother and add an option
-  :opt:`resize_draw_strategy` to control what is drawn while a
+  ``resize_draw_strategy`` to control what is drawn while a
   resize is in progress.
 
 - macOS: Improve handling of IME extended input. Compose characters

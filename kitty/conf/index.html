@@ -201,6 +201,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../build/#build-and-run-from-source-with-nix">Build and run from source with Nix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../build/#debug-builds">Debug builds</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../build/#notes-for-linux-macos-packagers">Notes for Linux/macOS packagers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build/#cross-compilation">Cross compilation</a></li>
 </ul>
 </li>
 </ul>
@@ -631,6 +632,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#shell-integration-over-ssh">Shell integration over SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#clone-the-current-shell-into-a-new-window">Clone the current shell into a new window</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#edit-files-in-new-kitty-windows-even-over-ssh">Edit files in new kitty windows even over SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shell-integration/#using-shell-integration-in-sub-shells-containers-etc">Using shell integration in sub-shells, containers, etc.</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#manual-shell-integration">Manual shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#integration-with-other-shells">Integration with other shells</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#notes-for-shell-developers">Notes for shell developers</a></li>
@@ -676,89 +678,89 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" role="switch" type="checkbox"/><label for="toctree-checkbox-85"><div class="visually-hidden">Toggle navigation of Detailed list of changes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#future">0.28.2 [future]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.28.1 [2023-04-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.28.0 [2023-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.27.1 [2023-02-07]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.27.0 [2023-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.26.5 [2022-11-07]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.26.4 [2022-10-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.26.3 [2022-09-22]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.26.2 [2022-09-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.26.1 [2022-08-30]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.26.0 [2022-08-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.25.2 [2022-06-07]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.25.1 [2022-05-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id73">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id74">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id75">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id76">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id77">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id78">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id79">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id80">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id81">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id82">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.29.0 [2023-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.28.1 [2023-04-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.28.0 [2023-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.27.1 [2023-02-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.27.0 [2023-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.26.5 [2022-11-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.26.4 [2022-10-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.26.3 [2022-09-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.26.2 [2022-09-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.26.1 [2022-08-30]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.26.0 [2022-08-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.25.2 [2022-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id73">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id74">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id75">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id76">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id77">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id78">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id79">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id80">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id81">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id82">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id83">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
@@ -1217,9 +1219,7 @@ ranging from <code class="code docutils literal notranslate"><span class="pre">0
 foreground and background is below this threshold, the foreground color will be set
 to white if the background is dark or black if the background is light. The default
 value is <code class="code docutils literal notranslate"><span class="pre">0</span></code>, which means no overriding is performed. Useful when working with applications
-that use colors that do not contrast well with your preferred color scheme. Note that this
-will not work in situations where kitty has to render in multiple passes, for example,
-when rendering with images under text or with non-opaque background and images.</p>
+that use colors that do not contrast well with your preferred color scheme.</p>
 </section>
 <section id="cursor-customization">
 <span id="conf-kitty-cursor"></span><h1>Cursor customization<a class="headerlink" href="#cursor-customization" title="Permalink to this heading">#</a></h1>
@@ -1348,7 +1348,7 @@ output.</p>
 buffer with pager. This separate buffer is not available for interactive
 scrolling but will be piped to the pager program when viewing scrollback buffer
 in a separate window. The current implementation stores the data in UTF-8, so
-approximatively 10000 lines per megabyte at 100 chars per line, for pure ASCII,
+approximately 10000 lines per megabyte at 100 chars per line, for pure ASCII,
 unformatted text. A value of zero or less disables this feature. The maximum
 allowed size is 4GB. Note that on config reload if this is changed it will only
 affect newly created windows, not existing ones.</p>
@@ -2120,7 +2120,9 @@ and one, with zero being fully faded).</p>
 macOS, <code class="code docutils literal notranslate"><span class="pre">titlebar-only</span></code> can be used to only hide the titlebar. Whether this
 works and exactly what effect it has depends on the window manager/operating
 system. Note that the effects of changing this option when reloading config
-are undefined.</p>
+are undefined. When using <code class="code docutils literal notranslate"><span class="pre">titlebar-only</span></code>, it is useful to also set
+<a class="reference internal" href="#opt-kitty.window_margin_width"><code class="xref std std-opt docutils literal notranslate"><span class="pre">window_margin_width</span></code></a> and <a class="reference internal" href="#opt-kitty.placement_strategy"><code class="xref std std-opt docutils literal notranslate"><span class="pre">placement_strategy</span></code></a> to prevent the rounded
+corners from clipping text.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitty.window_logo_path">
 <span class="sig-name descname"><span class="pre">window_logo_path</span></span><a class="headerlink" href="#opt-kitty.window_logo_path" title="Permalink to this definition">#</a></dt>
@@ -2160,25 +2162,18 @@ faded and one being fully opaque.</p>
 <span class="sig-name descname"><span class="pre">resize_debounce_time</span></span><a class="headerlink" href="#opt-kitty.resize_debounce_time" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">resize_debounce_time</span><span class="w"> </span><span class="mf">0.1</span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">resize_debounce_time</span><span class="w"> </span><span class="mi">0</span><span class="mf">.1</span><span class="w"> </span><span class="mf">0.5</span>
 </pre></div>
 </div>
-<p>The time to wait before redrawing the screen when a resize event is received (in
-seconds). On platforms such as macOS, where the operating system sends events
-corresponding to the start and end of a resize, this number is ignored.</p>
-<dl class="std opt">
-<dt class="sig sig-object std" id="opt-kitty.resize_draw_strategy">
-<span class="sig-name descname"><span class="pre">resize_draw_strategy</span></span><a class="headerlink" href="#opt-kitty.resize_draw_strategy" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">resize_draw_strategy</span><span class="w"> </span><span class="s">static</span>
-</pre></div>
-</div>
-<p>Choose how kitty draws a window while a resize is in progress. A value of
-<code class="code docutils literal notranslate"><span class="pre">static</span></code> means draw the current window contents, mostly unchanged. A value
-of <code class="code docutils literal notranslate"><span class="pre">scale</span></code> means draw the current window contents scaled. A value of
-<code class="code docutils literal notranslate"><span class="pre">blank</span></code> means draw a blank window. A value of <code class="code docutils literal notranslate"><span class="pre">size</span></code> means show the
-window size in cells.</p>
+<p>The time to wait before redrawing the screen during a live resize of the OS
+window, when no new resize events have been received, i.e. when resizing is
+either paused or finished. On platforms such as macOS, where the operating
+system sends events corresponding to the start and end of a live resize, the
+second number is used for redraw-after-pause since kitty can distinguish
+between a pause and end of resizing.  On such systems the first number is
+ignored and redraw is immediate after end of resize.  On other systems the
+first number is used so that kitty is “ready” quickly after the end of
+resizing, while not also continuously redrawing, to save energy.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitty.resize_in_steps">
 <span class="sig-name descname"><span class="pre">resize_in_steps</span></span><a class="headerlink" href="#opt-kitty.resize_in_steps" title="Permalink to this definition">#</a></dt>
@@ -2390,7 +2385,7 @@ use <code class="code docutils literal notranslate"><span class="pre">{sup.index
 <dl class="simple">
 <dt><code class="code docutils literal notranslate"><span class="pre">title</span></code></dt><dd><p>The current tab title.</p>
 </dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">index</span></code></dt><dd><p>The tab index useable with <a class="reference internal" href="../actions/#action-goto_tab"><code class="xref std std-ac docutils literal notranslate"><span class="pre">goto_tab</span> <span class="pre">N</span></code></a> shortcuts.</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">index</span></code></dt><dd><p>The tab index usable with <a class="reference internal" href="../actions/#action-goto_tab"><code class="xref std std-ac docutils literal notranslate"><span class="pre">goto_tab</span> <span class="pre">N</span></code></a> shortcuts.</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">layout_name</span></code></dt><dd><p>The current layout name.</p>
 </dd>
@@ -2486,21 +2481,40 @@ color is chosen to match the background color of the neighboring tab.</p>
 </pre></div>
 </div>
 <p>The opacity of the background. A number between zero and one, where one is
-opaque and zero is fully transparent. This will only work if supported by the OS
-(for instance, when using a compositor under X11). Note that it only sets the
-background color’s opacity in cells that have the same background color as the
-default terminal background, so that things like the status bar in vim,
+opaque and zero is fully transparent. This will only work if supported by the
+OS (for instance, when using a compositor under X11). Note that it only sets
+the background color’s opacity in cells that have the same background color as
+the default terminal background, so that things like the status bar in vim,
 powerline prompts, etc. still look good. But it means that if you use a color
 theme with a background color in your editor, it will not be rendered as
 transparent. Instead you should change the default background color in your
 kitty config and not use a background color in the editor color scheme. Or use
-the escape codes to set the terminals default colors in a shell script to launch
-your editor. Be aware that using a value less than 1.0 is a (possibly
-significant) performance hit. If you want to dynamically change transparency of
-windows, set <a class="reference internal" href="#opt-kitty.dynamic_background_opacity"><code class="xref std std-opt docutils literal notranslate"><span class="pre">dynamic_background_opacity</span></code></a> to <code class="code docutils literal notranslate"><span class="pre">yes</span></code> (this is off by
-default as it has a performance cost). Changing this option when reloading the
-config will only work if <a class="reference internal" href="#opt-kitty.dynamic_background_opacity"><code class="xref std std-opt docutils literal notranslate"><span class="pre">dynamic_background_opacity</span></code></a> was enabled in the
-original config.</p>
+the escape codes to set the terminals default colors in a shell script to
+launch your editor. Be aware that using a value less than 1.0 is a (possibly
+significant) performance hit. When using a low value for this setting, it is
+desirable that you set the <a class="reference internal" href="#opt-kitty.foreground"><code class="xref std std-opt docutils literal notranslate"><span class="pre">background</span></code></a> color to a color the matches the
+general color of the desktop background, for best text rendering.  If you want
+to dynamically change transparency of windows, set
+<a class="reference internal" href="#opt-kitty.dynamic_background_opacity"><code class="xref std std-opt docutils literal notranslate"><span class="pre">dynamic_background_opacity</span></code></a> to <code class="code docutils literal notranslate"><span class="pre">yes</span></code> (this is off by default as it
+has a performance cost). Changing this option when reloading the config will
+only work if <a class="reference internal" href="#opt-kitty.dynamic_background_opacity"><code class="xref std std-opt docutils literal notranslate"><span class="pre">dynamic_background_opacity</span></code></a> was enabled in the original
+config.</p>
+<dl class="std opt">
+<dt class="sig sig-object std" id="opt-kitty.background_blur">
+<span class="sig-name descname"><span class="pre">background_blur</span></span><a class="headerlink" href="#opt-kitty.background_blur" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">background_blur</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>Set to a positive value to enable background blur (blurring of the visuals
+behind a transparent window) on platforms that support it. Only takes effect
+when <a class="reference internal" href="#opt-kitty.background_opacity"><code class="xref std std-opt docutils literal notranslate"><span class="pre">background_opacity</span></code></a> is less than one. On macOS, this will also
+control the <span class="italic">blur radius</span> (amount of blurring). Setting it to too high
+a value will cause severe performance issues and/or rendering artifacts.
+Usually, values up to 64 work well. Note that this might cause performance issues,
+depending on how the platform implements it, so use with care. Currently supported
+on macOS and KDE/X11.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitty.background_image">
 <span class="sig-name descname"><span class="pre">background_image</span></span><a class="headerlink" href="#opt-kitty.background_image" title="Permalink to this definition">#</a></dt>
@@ -2570,7 +2584,7 @@ gaps for a <em>separated</em> look.</p>
 <span class="sig-name descname"><span class="pre">dim_opacity</span></span><a class="headerlink" href="#opt-kitty.dim_opacity" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">dim_opacity</span><span class="w"> </span><span class="mf">0.75</span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">dim_opacity</span><span class="w"> </span><span class="mf">0.4</span>
 </pre></div>
 </div>
 <p>How much to dim text that has the DIM/FAINT attribute set. One means no dimming
@@ -3144,8 +3158,7 @@ on macOS.</p>
 </pre></div>
 </div>
 <p>Disable this if you want kitty top-level OS windows to not be resizable on
-macOS. Changing this option by reloading the config will only affect newly
-created OS windows.</p>
+macOS.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitty.macos_thicken_font">
 <span class="sig-name descname"><span class="pre">macos_thicken_font</span></span><a class="headerlink" href="#opt-kitty.macos_thicken_font" title="Permalink to this definition">#</a></dt>
