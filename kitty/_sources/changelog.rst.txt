@@ -35,6 +35,29 @@ mouse anywhere in the current command to move the cursor there. See
 Detailed list of changes
 -------------------------------------
 
+0.29.1 [2023-07-17]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- A new value for :opt:`background_image_layout` to scale the background image while preserving its aspect ratio. Also have centered images work even for images larger than the window size (:pull:`6458`)
+
+- Fix a regression that caused using unicode placeholders to display images to break and also partially offscreen images to sometimes be slightly distorted (:iss:`6467`)
+
+- macOS: Fix a regression that caused rendering to hang when transitioning to full screen with :opt:`macos_colorspace` set to ``default`` (:iss:`6435`)
+
+- macOS: Fix a regression causing *burn-in* of text when resizing semi-transparent OS windows (:iss:`6439`)
+
+- macOS: Add a new value ``titlebar-and-corners`` for :opt:`hide_window_decorations` that emulates the behavior of ``hide_window_decorations yes`` in older versions of kitty
+
+- macOS: Fix a regression in the previous release that caused :opt:`hide_window_decorations` = ``yes`` to prevent window from being resizable (:iss:`6436`)
+
+- macOS: Fix a regression that caused the titlebar to be translucent even for non-translucent windows (:iss:`6450`)
+
+- GNOME: Fix :opt:`wayland_titlebar_color` not being applied until the color is changed at least once (:iss:`6447`)
+
+- Remote control launch: Fix ``--env`` not implemented when using ``--cwd=current`` with the SSH kitten (:iss:`6438`)
+
+- Allow using a custom OS window icon on X11 as well as macOS (:pull:`6475`)
+
 0.29.0 [2023-07-10]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
