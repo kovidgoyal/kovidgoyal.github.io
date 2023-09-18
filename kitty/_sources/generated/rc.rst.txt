@@ -230,6 +230,9 @@ Fields are:
 :code:`env (default: [])`
   List of environment variables of the form NAME=VALUE
 
+:code:`var (default: [])`
+  List of user variables of the form NAME=VALUE
+
 :code:`tab_title (default: None)`
   Title for the new tab
 
@@ -314,6 +317,15 @@ Fields are:
 
 :code:`all_env_vars (default: False)`
   Whether to send all environment variables for every window rather than just differing ones
+
+:code:`match (default: None)`
+  Window to change colors in
+
+:code:`match_tab (default: None)`
+  Tab to change colors in
+
+:code:`self (default: False)`
+  Boolean indicating whether to list only the window the command is run in
 
 
 
@@ -615,6 +627,19 @@ Fields are:
 
 :code:`match (default: None)`
   Which tab to change the title of
+
+
+
+set-user-vars
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`var (optional)`
+  List of user variables of the form NAME=VALUE
+
+:code:`match (default: None)`
+  Which windows to change the title in
 
 
 

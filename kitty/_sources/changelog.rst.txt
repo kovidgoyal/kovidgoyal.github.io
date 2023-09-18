@@ -9,6 +9,25 @@ To update |kitty|, :doc:`follow the instructions <binary>`.
 Recent major new features
 ---------------------------
 
+File transfer over the tty device
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Transfer files to and from remote computers over the ``TTY`` device itself.
+This means that file transfer works over nested SSH sessions, serial links,
+etc. Anywhere you have a terminal device, you can transfer files.
+
+Simply ssh into a remote computer using the :doc:`ssh kitten </kittens/ssh>`
+and run the :doc:`transfer kitten </kittens/transfer>` (which the ssh kitten
+makes available for you on the remote computer automatically). For example, to
+copy a file from a remote computer::
+
+    <local computer>  $ kitten ssh my-remote-computer
+    <remote computer> $ kitten transfer some-file /path/on/local/computer
+
+The kitten can transfer files to and from the remote computer. It supports
+recursive transfer of directories, symlinks and hardlinks. It can even use the
+rsync algorithm to speed up repeated transfers of large files.
+
 Truly convenient SSH
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -19,21 +38,62 @@ The :doc:`ssh kitten <kittens/ssh>` is redesigned with powerful new features:
 * Easily :ref:`edit files in your local editor <edit_file>` on remote machines
 * Automatic :opt:`re-use of existing connections <kitten-ssh.share_connections>` to avoid connection setup latency
 
-
-Shell integration
-~~~~~~~~~~~~~~~~~~~~~
-
-kitty automatically integrates with common shells to allow browsing the
-output of the previous command in a pager by pressing
-:sc:`show_last_command_output`, jumping to previous prompt locations in the
-scrollback by pressing :sc:`scroll_to_previous_prompt` and clicking with the
-mouse anywhere in the current command to move the cursor there. See
-:doc:`shell-integration` for details.
-
 .. }}}
 
 Detailed list of changes
 -------------------------------------
+
+0.30.0 [future]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- A new :doc:`transfer kitten </kittens/transfer>` that can be used to transfer files efficiently over the TTY device
+
+- ssh kitten: A new configuration directive `to automatically forward the kitty remote control socket <kitten-ssh.forward_remote_control>`
+
+- Allow :doc:`easily building kitty from source </build>` needing the installation of only C and Go compilers.
+  All other dependencies are automatically vendored
+
+- kitten @ set-user-vars: New remote control command to set user variables on a
+  window (:iss:`6502`)
+
+- kitten @ ls: Add user variables set on windows to the output (:iss:`6502`)
+
+- kitten @ ls: Allow limiting output to matched windows/tabs (:iss:`6520`)
+
+- kitten icat: Fix image being displayed one cell to the right when using both ``--place`` and ``--unicode-placeholder`` (:iss:`6556`)
+
+- kitten run-shell: Make kitty terminfo database available if needed before starting the shell
+
+- macOS: Fix keyboard shortcuts in the Apple global menubar not being changed when reloading the config
+
+- Fix a crash when resizing an OS Window that is displaying more than one image and the new size is smaller than the image needs (:iss:`6555`)
+
+- Remote control: Allow using a random TCP port as the remote control socket and also allow using TCP sockets in :opt:`listen_on`
+
+- unicode_input kitten: Add an option to specify the startup tab (:iss:`6552`)
+
+- X11: Print an error to :file:`STDERR` instead of refusing to start when the user sets a custom window icon larger than 128x128 (:iss:`6507`)
+
+- Remote control: Allow matching by neighbor of active window. Useful for navigation plugins like vim-kitty-navigator
+
+- Fix a regression that caused changing :opt:`text_fg_override_threshold` or :opt:`text_composition_strategy` via config reload causing incorrect rendering (:iss:`6559`)
+
+- When running a shell for ``--hold`` set the env variable ``KITTY_HOLD=1`` to allow users to customize what happens (:disc:`6587`)
+
+- When multiple confirmable close requests are made focus the existing close confirmation window instead of opening a new one for each request (:iss:`6601`)
+
+- Config file format: allow splitting lines by starting subsequent lines with a backslash (:pull:`6603`)
+
+- ssh kitten: Fix a regression causing hostname directives in :file:`ssh.conf` not matching when username is specified (:disc:`6609`)
+
+- diff kitten: Add support for files that are identical apart from mode changes (:iss:`6611`)
+
+- Wayland: Do not request idle inhibition for full screen windows (:iss:`6613`)
+
+- Adjust the workaround for non-linear blending of transparent pixels in
+  compositors to hopefully further reduce fringing around text with certain
+  color issues (:iss:`6534`)
+
 
 0.29.2 [2023-07-27]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
