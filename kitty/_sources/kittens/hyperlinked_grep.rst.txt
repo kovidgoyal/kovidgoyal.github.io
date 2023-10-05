@@ -1,6 +1,14 @@
 Hyperlinked grep
 =================
 
+.. note::
+
+   As of ripgrep versions newer that 13.0 it supports hyperlinks
+   natively so you can just add the following alias in your shell rc file:
+   ``alias rg="rg --hyperlink-format=kitty"`` no need to use this kitten.
+   But, see below for instructions on how to customize kitty to have it open
+   the hyperlinks from ripgrep in your favorite editor.
+
 This kitten allows you to search your files using `ripgrep
 <https://github.com/BurntSushi/ripgrep>`__ and open the results directly in your
 favorite editor in the terminal, at the line containing the search result,
@@ -26,7 +34,7 @@ following contents:
 
 Now, run a search with::
 
-    kitty +kitten hyperlinked_grep something
+    kitten hyperlinked_grep something
 
 Hold down the :kbd:`Ctrl+Shift` keys and click on any of the result lines, to
 open the file in :program:`vim` at the matching line. If you use some editor
@@ -36,7 +44,7 @@ accordingly.
 Finally, add an alias to your shell's rc files to invoke the kitten as
 :command:`hg`::
 
-    alias hg="kitty +kitten hyperlinked_grep"
+    alias hg="kitten hyperlinked_grep"
 
 
 You can now run searches with::

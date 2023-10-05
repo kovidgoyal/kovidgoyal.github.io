@@ -91,6 +91,10 @@ no-complete
     Note that for the fish shell this does not take effect, since fish already
     comes with a kitty completion script.
 
+no-sudo
+    Do not alias :program:`sudo` to ensure the kitty terminfo files are
+    available in the sudo environment
+
 
 More ways to browse command output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -214,7 +218,7 @@ Shell integration over SSH
 The easiest way to have shell integration work when SSHing into remote systems
 is to use the :doc:`ssh kitten <kittens/ssh>`. Simply run::
 
-    kitty +kitten ssh hostname
+    kitten ssh hostname
 
 And, by magic, you will be logged into the remote system with fully functional
 shell integration. Alternately, you can :ref:`setup shell integration manually
