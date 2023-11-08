@@ -38,7 +38,7 @@ ______________________________
         An :term:`overlay window <overlay>` covering the current active kitty window. Unlike a plain overlay window, this window is considered as a :italic:`main` window which means it is used as the active window for getting the current working directory, the input text for kittens, launch commands, etc. Useful if this overlay is intended to run for a long time as a primary window.
 
     :code:`background`
-        The process will be run in the :italic:`background`, without a kitty window.
+        The process will be run in the :italic:`background`, without a kitty window. Note that if :option:`kitten @ launch --allow-remote-control` is specified the :envvar:`KITTY_LISTEN_ON` environment variable will be set to a dedicated socket pair file descriptor that the process can use for remote control.
 
     :code:`clipboard`, :code:`primary`
         These two are meant to work with :option:`--stdin-source <launch --stdin-source>` to copy data to the :italic:`system clipboard` or :italic:`primary selection`.
@@ -77,7 +77,7 @@ ______________________________
 
 .. option:: --copy-env
 
-    Copy the environment variables from the currently active window into the newly launched child process. Note that this only copies the environment when the window was first created, as it is not possible to get updated environment variables from arbitrary processes. To copy that environment, use either the :ref:`clone-in-kitty <clone_shell>` feature or the kitty remote control feature with :option:`kitty @ launch --copy-env`.
+    Copy the environment variables from the currently active window into the newly launched child process. Note that this only copies the environment when the window was first created, as it is not possible to get updated environment variables from arbitrary processes. To copy that environment, use either the :ref:`clone-in-kitty <clone_shell>` feature or the kitty remote control feature with :option:`kitten @ launch --copy-env`.
 
 .. option:: --location <LOCATION>
 

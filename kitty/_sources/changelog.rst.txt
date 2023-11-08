@@ -43,6 +43,60 @@ The :doc:`ssh kitten <kittens/ssh>` is redesigned with powerful new features:
 Detailed list of changes
 -------------------------------------
 
+0.31.0 [2023-11-08]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Allow :ac:`easily running arbitrarily complex remote control scripts <remote_control_script>` without needing to turn on remote control (:iss:`6712`)
+
+- A new option :opt:`menu_map` that allows adding entries to the global menubar on macOS (:disc:`6680`)
+
+- A new :doc:`escape code <pointer-shapes>` that can be used by programs running in the terminal to change the shape of the mouse pointer (:iss:`6711`)
+
+- Graphics protocol: Support for positioning :ref:`images relative to other images <relative_image_placement>` (:iss:`6400`)
+
+- A new option :opt:`single_window_padding_width` to use a different padding when only a single window is visible (:iss:`6734`)
+
+- A new mouse action ``mouse_selection word_and_line_from_point`` to select the current word under the mouse cursor and extend to end of line (:pull:`6663`)
+
+- A new option :opt:`underline_hyperlinks` to control when hyperlinks are underlined (:iss:`6766`)
+
+- Allow using the full range of standard mouse cursor shapes when customizing the mouse cursor
+
+- macOS: When running the default shell with the login program fix :file:`~/.hushlogin` not being respected when opening windows not in the home directory (:iss:`6689`)
+
+- macOS: Fix poor performance when using ligatures with some fonts, caused by slow harfbuzz shaping (:iss:`6743`)
+
+- :option:`kitten @ set-background-opacity --toggle` - a new flag to easily switch opacity between the specified value and the default (:iss:`6691`)
+
+- Fix a regression caused by rewrite of kittens to Go that made various kittens reset colors in a terminal when the colors were changed by escape code (:iss:`6708`)
+
+- Fix trailing bracket not ignored when detecting a multi-line URL with the trailing bracket as the first character on the last line (:iss:`6710`)
+
+- Fix the :option:`kitten @ launch --copy-env` option not copying current environment variables (:iss:`6724`)
+
+- Fix a regression that broke :program:`kitten update-self` (:iss:`6729`)
+
+- Two new event types for :ref:`watchers <watchers>`, :code:`on_title_change` and :code:`on_set_user_var`
+
+- When pasting, if the text contains terminal control codes ask the user for permission. See :opt:`paste_actions` for details. Thanks to David Leadbeater for discovering this.
+
+- Render Private Use Unicode symbols using two cells if the second cell contains an en-space as well as a normal space
+
+- macOS: Fix a regression in the previous release that caused kitten @ ls to not report the environment variables for the default shell (:iss:`6749`)
+
+- :doc:`Desktop notification protocol </desktop-notifications>`: Allow applications sending notifications to specify that the notification should only be displayed if the window is currently unfocused (:iss:`6755`)
+
+- :doc:`unicode_input kitten </kittens/unicode_input>`: Fix a regression that broke the "Emoticons" tab (:iss:`6760`)
+
+- Shell integration: Fix ``sudo --edit`` not working and also fix completions for sudo not working in zsh (:iss:`6754`, :iss:`6771`)
+
+- A new action :ac:`set_window_title` to interactively change the title of the active window
+
+- ssh kitten: Fix a regression that broken :kbd:`ctrl+space` mapping in zsh (:iss:`6780`)
+
+- Wayland: Fix primary selections not working with the river compositor (:iss:`6785`)
+
+
 0.30.1 [2023-10-05]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1304,10 +1358,10 @@ Detailed list of changes
 - Fix deleting windows that are not the last window via remote control leaving
   no window focused (:iss:`3619`)
 
-- Add an option :option:`kitty @ get-text --add-cursor` to also get the current
+- Add an option :option:`kitten @ get-text --add-cursor` to also get the current
   cursor position and state as ANSI escape codes (:iss:`3625`)
 
-- Add an option :option:`kitty @ get-text --add-wrap-markers` to add line wrap
+- Add an option :option:`kitten @ get-text --add-wrap-markers` to add line wrap
   markers to the output (:pull:`3633`)
 
 - Improve rendering of curly underlines on HiDPI screens (:pull:`3637`)
@@ -2911,7 +2965,7 @@ Detailed list of changes
 - diff kitten: Fix error when right hand side file is binary and left hand side
   file is text (:pull:`752`)
 
-- kitty @ new-window: Add a new option :option:`kitty @ new-window --window-type`
+- kitty @ new-window: Add a new option :option:`kitten @ new-window --window-type`
   to create top-level OS windows (:iss:`770`)
 
 - macOS: The :opt:`focus_follows_mouse` option now also works across top-level kitty OS windows
@@ -3028,7 +3082,7 @@ Detailed list of changes
 - diff kitten: Fix default foreground/background colors not being restored when
   kitten quits (:iss:`637`)
 
-- Fix :option:`kitty @ set-colors --all` not working when more than one window
+- Fix :option:`kitten @ set-colors --all` not working when more than one window
   present (:iss:`632`)
 
 - Fix a regression that broke the legacy increase/decrease_font_size actions

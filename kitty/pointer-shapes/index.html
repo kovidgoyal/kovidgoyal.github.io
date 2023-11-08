@@ -3,21 +3,21 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Arrange windows" />
+<meta property="og:title" content="Mouse pointer shapes" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://sw.kovidgoyal.net/kitty/layouts/" />
+<meta property="og:url" content="https://sw.kovidgoyal.net/kitty/pointer-shapes/" />
 <meta property="og:site_name" content="kitty" />
-<meta property="og:description" content="kitty has the ability to define its own windows that can be tiled next to each other in arbitrary arrangements, based on Layouts, see below for examples: Screenshot, showing three programs in the '..." />
+<meta property="og:description" content="This is a simple escape code that can be used by terminal programs to change the shape of the mouse pointer. This is useful for buttons/links, dragging to resize panes, etc. It is based on the orig..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="https://sw.kovidgoyal.net/kitty/_images/social_previews/summary_layouts_49b07683.png" />
-<meta property="og:image:alt" content="kitty has the ability to define its own windows that can be tiled next to each other in arbitrary arrangements, based on Layouts, see below for examples: Scr..." />
-<meta name="description" content="kitty has the ability to define its own windows that can be tiled next to each other in arbitrary arrangements, based on Layouts, see below for examples: Screenshot, showing three programs in the '..." />
+<meta property="og:image" content="https://sw.kovidgoyal.net/kitty/_images/social_previews/summary_pointer-shapes_96e448ee.png" />
+<meta property="og:image:alt" content="This is a simple escape code that can be used by terminal programs to change the shape of the mouse pointer. This is useful for buttons/links, dragging to re..." />
+<meta name="description" content="This is a simple escape code that can be used by terminal programs to change the shape of the mouse pointer. This is useful for buttons/links, dragging to resize panes, etc. It is based on the orig..." />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Extend with kittens" href="../kittens_intro/" /><link rel="prev" title="Mappable actions" href="../actions/" />
+<link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Unscrolling the screen" href="../unscroll/" /><link rel="prev" title="Desktop notifications" href="../desktop-notifications/" />
 
     <link rel="shortcut icon" href="../_static/kitty.svg"/><!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
-        <title>Arrange windows - kitty</title>
+        <title>Mouse pointer shapes - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -161,7 +161,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -207,7 +207,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../overview/">Overview</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Overview</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../overview/">Overview</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Overview</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview/#design-philosophy">Design philosophy</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#tabs-and-windows">Tabs and Windows</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Tabs and Windows</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../overview/#scrolling">Scrolling</a></li>
@@ -264,16 +264,16 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current has-children"><a class="reference internal" href="../overview/#layouts">Layouts</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of Layouts</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Arrange windows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-stack-layout">The Stack Layout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-tall-layout">The Tall Layout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-fat-layout">The Fat Layout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-grid-layout">The Grid Layout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-splits-layout">The Splits Layout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-horizontal-layout">The Horizontal Layout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-vertical-layout">The Vertical Layout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#resizing-windows">Resizing windows</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#layouts">Layouts</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of Layouts</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/">Arrange windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-stack-layout">The Stack Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-tall-layout">The Tall Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-fat-layout">The Fat Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-grid-layout">The Grid Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-splits-layout">The Splits Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-horizontal-layout">The Horizontal Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#the-vertical-layout">The Vertical Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts/#resizing-windows">Resizing windows</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#extending-kitty">Extending kitty</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of Extending kitty</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -787,7 +787,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../integrations/#miscellaneous">Miscellaneous</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input class="toctree-checkbox" id="toctree-checkbox-90" name="toctree-checkbox-90" role="switch" type="checkbox"/><label for="toctree-checkbox-90"><div class="visually-hidden">Toggle navigation of Terminal protocol extensions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-90" name="toctree-checkbox-90" role="switch" type="checkbox"/><label for="toctree-checkbox-90"><div class="visually-hidden">Toggle navigation of Terminal protocol extensions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../underlines/">Colored and styled underlines</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../graphics-protocol/">Terminal graphics protocol</a><input class="toctree-checkbox" id="toctree-checkbox-91" name="toctree-checkbox-91" role="switch" type="checkbox"/><label for="toctree-checkbox-91"><div class="visually-hidden">Toggle navigation of Terminal graphics protocol</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#getting-the-window-size">Getting the window size</a></li>
@@ -881,13 +881,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../desktop-notifications/">Desktop notifications</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../pointer-shapes/">Mouse pointer shapes</a><input class="toctree-checkbox" id="toctree-checkbox-104" name="toctree-checkbox-104" role="switch" type="checkbox"/><label for="toctree-checkbox-104"><div class="visually-hidden">Toggle navigation of Mouse pointer shapes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pointer-shapes/#setting-the-pointer-shape">Setting the pointer shape</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pointer-shapes/#pushing-and-popping-shapes-onto-the-stack">Pushing and popping shapes onto the stack</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pointer-shapes/#querying-support">Querying support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pointer-shapes/#interaction-with-other-terminal-features">Interaction with other terminal features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pointer-shapes/#pointer-shape-names">Pointer shape names</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pointer-shapes/#legacy-xterm-compatibility">Legacy xterm compatibility</a></li>
+<li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">Mouse pointer shapes</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-104" name="toctree-checkbox-104" role="switch" type="checkbox"/><label for="toctree-checkbox-104"><div class="visually-hidden">Toggle navigation of Mouse pointer shapes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-the-pointer-shape">Setting the pointer shape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pushing-and-popping-shapes-onto-the-stack">Pushing and popping shapes onto the stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#querying-support">Querying support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interaction-with-other-terminal-features">Interaction with other terminal features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pointer-shape-names">Pointer shape names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#legacy-xterm-compatibility">Legacy xterm compatibility</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../unscroll/">Unscrolling the screen</a></li>
@@ -933,281 +933,163 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="arrange-windows">
-<h1>Arrange windows<a class="headerlink" href="#arrange-windows" title="Link to this heading">#</a></h1>
-<p>kitty has the ability to define its own windows that can be tiled next to each
-other in arbitrary arrangements, based on <em>Layouts</em>, see below for examples:</p>
-<figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/screenshot.png"><img alt="Screenshot, showing three programs in the 'Tall' layout" src="../_images/screenshot.png" style="width: 100%;" /></a>
-<figcaption>
-<p><span class="caption-text">Screenshot, showing <strong class="program">vim</strong>, <strong class="program">tig</strong> and <strong class="program">git</strong>
-running in <em>kitty</em> with the <em>Tall</em> layout</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id2">
-<a class="reference internal image-reference" href="../_images/splits.png"><img alt="Screenshot, showing windows in the 'Splits' layout" src="../_images/splits.png" style="width: 100%;" /></a>
-<figcaption>
-<p><span class="caption-text">Screenshot, showing windows with arbitrary arrangement in the <em>Splits</em>
-layout</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>There are many different layouts available. They are all enabled by default, you
-can switch layouts using <a class="reference internal" href="../actions/#action-next_layout"><code class="xref std std-ac docutils literal notranslate"><span class="pre">next_layout</span></code></a> (<a class="reference internal" href="../conf/#shortcut-kitty.Next-layout"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+l</span></code></a> by default). To
-control which layouts are available use <a class="reference internal" href="../conf/#opt-kitty.enabled_layouts"><code class="xref std std-opt docutils literal notranslate"><span class="pre">enabled_layouts</span></code></a>, the first listed
-layout becomes the default. Individual layouts and how to use them are described
-below.</p>
-</section>
-<section id="the-stack-layout">
-<h1>The Stack Layout<a class="headerlink" href="#the-stack-layout" title="Link to this heading">#</a></h1>
-<p>This is the simplest layout. It displays a single window using all available
-space, other windows are hidden behind it. This layout has no options:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enabled_layouts</span> <span class="n">stack</span>
-</pre></div>
-</div>
-</section>
-<section id="the-tall-layout">
-<h1>The Tall Layout<a class="headerlink" href="#the-tall-layout" title="Link to this heading">#</a></h1>
-<p>Displays one (or optionally more) full-height windows on the left half of the
-screen. Remaining windows are tiled vertically on the right half of the screen.
-There are options to control how the screen is split horizontally <code class="docutils literal notranslate"><span class="pre">bias</span></code>
-(an integer between <code class="docutils literal notranslate"><span class="pre">10</span></code> and <code class="docutils literal notranslate"><span class="pre">90</span></code>) and options to control how many
-full-height windows there are <code class="docutils literal notranslate"><span class="pre">full_size</span></code> (a positive integer). The
-<code class="docutils literal notranslate"><span class="pre">mirrored</span></code> option when set to <code class="docutils literal notranslate"><span class="pre">true</span></code> will cause the full-height windows to
-be on the right side of the screen instead of the left. The syntax
-for the options is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enabled_layouts tall:bias=50;full_size=1;mirrored=false
-
-┌──────────────┬───────────────┐
-│              │               │
-│              │               │
-│              │               │
-│              ├───────────────┤
-│              │               │
-│              │               │
-│              │               │
-│              ├───────────────┤
-│              │               │
-│              │               │
-│              │               │
-└──────────────┴───────────────┘
-</pre></div>
-</div>
-<p>In addition, you can map keys to increase or decrease the number of full-height
-windows, or toggle the mirrored setting, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="p">[</span> <span class="n">layout_action</span> <span class="n">decrease_num_full_size_windows</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="p">]</span> <span class="n">layout_action</span> <span class="n">increase_num_full_size_windows</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+/</span> <span class="n">layout_action</span> <span class="n">mirror</span> <span class="n">toggle</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">y</span> <span class="n">layout_action</span> <span class="n">mirror</span> <span class="n">true</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">n</span> <span class="n">layout_action</span> <span class="n">mirror</span> <span class="n">false</span>
-</pre></div>
-</div>
-<p>You can also map a key to change the bias by providing a list of percentages
-and it will rotate through the list as you press the key. If you only provide
-one number it’ll toggle between that percentage and 50, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ctrl</span><span class="o">+.</span> <span class="n">layout_action</span> <span class="n">bias</span> <span class="mi">50</span> <span class="mi">62</span> <span class="mi">70</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="p">,</span> <span class="n">layout_action</span> <span class="n">bias</span> <span class="mi">62</span>
-</pre></div>
-</div>
-</section>
-<section id="the-fat-layout">
-<h1>The Fat Layout<a class="headerlink" href="#the-fat-layout" title="Link to this heading">#</a></h1>
-<p>Displays one (or optionally more) full-width windows on the top half of the
-screen. Remaining windows are tiled horizontally on the bottom half of the
-screen. There are options to control how the screen is split vertically <code class="docutils literal notranslate"><span class="pre">bias</span></code>
-(an integer between <code class="docutils literal notranslate"><span class="pre">10</span></code> and <code class="docutils literal notranslate"><span class="pre">90</span></code>) and options to control how many
-full-width windows there are <code class="docutils literal notranslate"><span class="pre">full_size</span></code> (a positive integer). The
-<code class="docutils literal notranslate"><span class="pre">mirrored</span></code> option when set to <code class="docutils literal notranslate"><span class="pre">true</span></code> will cause the full-width windows to be
-on the bottom of the screen instead of the top. The syntax for the options is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enabled_layouts fat:bias=50;full_size=1;mirrored=false
-
-┌──────────────────────────────┐
-│                              │
-│                              │
-│                              │
-│                              │
-├─────────┬──────────┬─────────┤
-│         │          │         │
-│         │          │         │
-│         │          │         │
-│         │          │         │
-│         │          │         │
-└─────────┴──────────┴─────────┘
-</pre></div>
-</div>
-<p>This layout also supports the same layout actions as the <em>Tall</em> layout, shown above.</p>
-</section>
-<section id="the-grid-layout">
-<h1>The Grid Layout<a class="headerlink" href="#the-grid-layout" title="Link to this heading">#</a></h1>
-<p>Display windows in a balanced grid with all windows the same size except the
-last column if there are not enough windows to fill the grid. This layout has no
-options:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enabled_layouts grid
-
-┌─────────┬──────────┬─────────┐
-│         │          │         │
-│         │          │         │
-│         │          │         │
-│         │          │         │
-├─────────┼──────────┼─────────┤
-│         │          │         │
-│         │          │         │
-│         │          │         │
-│         │          │         │
-└─────────┴──────────┴─────────┘
-</pre></div>
-</div>
-</section>
-<section id="the-splits-layout">
-<span id="splits-layout"></span><h1>The Splits Layout<a class="headerlink" href="#the-splits-layout" title="Link to this heading">#</a></h1>
-<p>This is the most flexible layout. You can create any arrangement of windows
-by splitting exiting windows repeatedly. To best use this layout you should
-define a few extra key bindings in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new window splitting the space used by the existing one so that</span>
-<span class="c1"># the two windows are placed one above the other</span>
-<span class="nb">map</span> <span class="n">f5</span> <span class="n">launch</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="n">hsplit</span>
-
-<span class="c1"># Create a new window splitting the space used by the existing one so that</span>
-<span class="c1"># the two windows are placed side by side</span>
-<span class="nb">map</span> <span class="n">f6</span> <span class="n">launch</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="n">vsplit</span>
-
-<span class="c1"># Create a new window splitting the space used by the existing one so that</span>
-<span class="c1"># the two windows are placed side by side if the existing window is wide or</span>
-<span class="c1"># one above the other if the existing window is tall.</span>
-<span class="nb">map</span> <span class="n">f4</span> <span class="n">launch</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="n">split</span>
-
-<span class="c1"># Rotate the current split, changing its split axis from vertical to</span>
-<span class="c1"># horizontal or vice versa</span>
-<span class="nb">map</span> <span class="n">f7</span> <span class="n">layout_action</span> <span class="n">rotate</span>
-
-<span class="c1"># Move the active window in the indicated direction</span>
-<span class="nb">map</span> <span class="n">shift</span><span class="o">+</span><span class="n">up</span> <span class="n">move_window</span> <span class="n">up</span>
-<span class="nb">map</span> <span class="n">shift</span><span class="o">+</span><span class="n">left</span> <span class="n">move_window</span> <span class="n">left</span>
-<span class="nb">map</span> <span class="n">shift</span><span class="o">+</span><span class="n">right</span> <span class="n">move_window</span> <span class="n">right</span>
-<span class="nb">map</span> <span class="n">shift</span><span class="o">+</span><span class="n">down</span> <span class="n">move_window</span> <span class="n">down</span>
-
-<span class="c1"># Move the active window to the indicated screen edge</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">shift</span><span class="o">+</span><span class="n">up</span> <span class="n">layout_action</span> <span class="n">move_to_screen_edge</span> <span class="n">top</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">shift</span><span class="o">+</span><span class="n">left</span> <span class="n">layout_action</span> <span class="n">move_to_screen_edge</span> <span class="n">left</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">shift</span><span class="o">+</span><span class="n">right</span> <span class="n">layout_action</span> <span class="n">move_to_screen_edge</span> <span class="n">right</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">shift</span><span class="o">+</span><span class="n">down</span> <span class="n">layout_action</span> <span class="n">move_to_screen_edge</span> <span class="n">bottom</span>
-
-<span class="c1"># Switch focus to the neighboring window in the indicated direction</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">left</span> <span class="n">neighboring_window</span> <span class="n">left</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">right</span> <span class="n">neighboring_window</span> <span class="n">right</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">up</span> <span class="n">neighboring_window</span> <span class="n">up</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">down</span> <span class="n">neighboring_window</span> <span class="n">down</span>
-</pre></div>
-</div>
-<p>Windows can be resized using <a class="reference internal" href="#window-resizing"><span class="std std-ref">Resizing windows</span></a>. You can swap the windows
-in a split using the <code class="docutils literal notranslate"><span class="pre">rotate</span></code> action with an argument of <code class="docutils literal notranslate"><span class="pre">180</span></code> and rotate
-and swap with an argument of <code class="docutils literal notranslate"><span class="pre">270</span></code>.</p>
-<p>This layout takes one option, <code class="docutils literal notranslate"><span class="pre">split_axis</span></code> that controls whether new windows
-are placed into vertical or horizontal splits when a <a class="reference internal" href="../launch/#cmdoption-launch-location"><code class="xref std std-option docutils literal notranslate"><span class="pre">--location</span></code></a> is not specified. A value of <code class="docutils literal notranslate"><span class="pre">horizontal</span></code> (same as
-<code class="docutils literal notranslate"><span class="pre">--location=vsplit</span></code>) means when a new split is created the two windows will be
-placed side by side and a value of <code class="docutils literal notranslate"><span class="pre">vertical</span></code> (same as <code class="docutils literal notranslate"><span class="pre">--location=hsplit</span></code>)
-means the two windows will be placed one on top of the other. By default:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enabled_layouts splits:split_axis=horizontal
-
-┌──────────────┬───────────────┐
-│              │               │
-│              │               │
-│              │               │
-│              ├───────┬───────┤
-│              │       │       │
-│              │       │       │
-│              │       │       │
-│              ├───────┴───────┤
-│              │               │
-│              │               │
-│              │               │
-└──────────────┴───────────────┘
-</pre></div>
-</div>
+          <section id="mouse-pointer-shapes">
+<h1>Mouse pointer shapes<a class="headerlink" href="#mouse-pointer-shapes" title="Link to this heading">#</a></h1>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 0.17.0: </span>The Splits layout</p>
+<p><span class="versionmodified added">New in version 0.31.0.</span></p>
+</div>
+<p>This is a simple escape code that can be used by terminal programs to change
+the shape of the mouse pointer. This is useful for buttons/links, dragging to
+resize panes, etc. It is based on the original escape code proposal from xterm
+however, it properly specifies names for the different shapes in a system
+independent manner, adds a stack for easy push/pop of shapes, allows programs
+to query support and specifies interaction with other terminal state.</p>
+<p>The escape code is of the form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">OSC</span><span class="o">&gt;</span> <span class="mi">22</span> <span class="p">;</span> <span class="o">&lt;</span><span class="n">optional</span> <span class="n">first</span> <span class="n">char</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">comma</span><span class="o">-</span><span class="n">separates</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">shape</span> <span class="n">names</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ESC</span><span class="o">&gt;</span>\
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">&lt;OSC&gt;</span></code> is the bytes <code class="docutils literal notranslate"><span class="pre">&lt;ESC&gt;]</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;ESC&gt;</span></code> is the byte <code class="docutils literal notranslate"><span class="pre">0x1b</span></code>.
+Spaces in the above are present for clarity only and should not be actually used.</p>
+<p>First some examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Set the pointer to a pointing hand
+&lt;OSC&gt; 22 ; pointer &lt;ESC&gt;\
+# Reset the pointer to default
+&lt;OSC&gt; 22 ; &lt;ESC&gt;\
+# Push a shape onto the stack making it the current shape
+&lt;OSC&gt; 22 ; &gt;wait &lt;ESC&gt;\
+# Pop a shape off the stack restoring to the previous shape
+&lt;OSC&gt; 22 ; &lt; &lt;ESC&gt;\
+# Query the terminal for what the currently set shape is
+&lt;OSC&gt; 22 ; ?__current__ &lt;ESC&gt;\
+</pre></div>
+</div>
+<p>To demo the various shapes, simply run the following command inside kitty:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitten</span> <span class="n">mouse</span><span class="o">-</span><span class="n">demo</span>
+</pre></div>
+</div>
+<p>For more details see below.</p>
+<section id="setting-the-pointer-shape">
+<h2>Setting the pointer shape<a class="headerlink" href="#setting-the-pointer-shape" title="Link to this heading">#</a></h2>
+<p>For set operations, the optional first char can be either <code class="docutils literal notranslate"><span class="pre">=</span></code> or omitted.
+Follow the first char with the name of the shape. See the
+<a class="reference internal" href="#pointer-shape-names"><span class="std std-ref">Pointer shape names</span></a> table.</p>
+</section>
+<section id="pushing-and-popping-shapes-onto-the-stack">
+<h2>Pushing and popping shapes onto the stack<a class="headerlink" href="#pushing-and-popping-shapes-onto-the-stack" title="Link to this heading">#</a></h2>
+<p>The terminal emulator maintains a stack of shapes. To add shapes to the stack,
+the optional first char must be <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> followed by a comma separated list of
+shape names. See the <a class="reference internal" href="#pointer-shape-names"><span class="std std-ref">Pointer shape names</span></a> table. All the specified names
+are added to the stack, with the last name being the top of the stack and the
+current shape. If the stack is full, the entry at the bottom of the stack is
+evicted. Terminal implementations are free to choose an appropriate maximum
+stack size, with a minimum stack size of 16.</p>
+<p>To pop shapes of the top of the stack the optional first char must be <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>.
+The comma separated list of names is ignored. Once the stack is empty further
+pops have no effect. An empty stack means the terminal is free to use whatever
+pointer shape it likes.</p>
+</section>
+<section id="querying-support">
+<h2>Querying support<a class="headerlink" href="#querying-support" title="Link to this heading">#</a></h2>
+<p>Terminal programs can ask the terminal about this feature by setting the
+optional first char to <code class="docutils literal notranslate"><span class="pre">?</span></code>. The comma separated list of names is then
+considered the query to which the terminal must respond with an OSC 22 code.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;OSC&gt; 22 ; ?__current__ &lt;ESC&gt;\
+results in
+&lt;OSC&gt; 22 ; shape_name &lt;ESC&gt;\
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">shape_name</span></code> will be a name from the table of shape names below or <code class="docutils literal notranslate"><span class="pre">0</span></code>
+if the stack is empty, i.e., no shape is currently set.</p>
+<p>To check if the terminal supports some shapes, pass the shape names and the
+terminal will reply with a comma separated list of zeros and ones where 1 means
+the shape name is supported and zero means it is not. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;OSC&gt; 22 ; ?pointer,crosshair,no-such-name,wait &lt;ESC&gt;\
+results in
+&lt;OSC&gt; 22 ; 1,1,0,1 &lt;ESC&gt;\
+</pre></div>
+</div>
+<p>In addition to <code class="docutils literal notranslate"><span class="pre">__current__</span></code> there are a couple of other special names:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">__default__</span> <span class="o">-</span> <span class="n">The</span> <span class="n">terminal</span> <span class="n">responds</span> <span class="k">with</span> <span class="n">the</span> <span class="n">shape</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">shape</span> <span class="n">used</span> <span class="n">by</span> <span class="n">default</span>
+<span class="n">__grabbed__</span> <span class="o">-</span> <span class="n">The</span> <span class="n">terminal</span> <span class="n">responds</span> <span class="k">with</span> <span class="n">the</span> <span class="n">shape</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">shape</span> <span class="n">used</span> <span class="n">when</span> <span class="n">the</span> <span class="n">mouse</span> <span class="ow">is</span> <span class="s2">&quot;grabbed&quot;</span>
+</pre></div>
 </div>
 </section>
-<section id="the-horizontal-layout">
-<h1>The Horizontal Layout<a class="headerlink" href="#the-horizontal-layout" title="Link to this heading">#</a></h1>
-<p>All windows are shown side by side. This layout has no options:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enabled_layouts horizontal
-
-┌─────────┬──────────┬─────────┐
-│         │          │         │
-│         │          │         │
-│         │          │         │
-│         │          │         │
-│         │          │         │
-│         │          │         │
-│         │          │         │
-│         │          │         │
-│         │          │         │
-└─────────┴──────────┴─────────┘
+<section id="interaction-with-other-terminal-features">
+<h2>Interaction with other terminal features<a class="headerlink" href="#interaction-with-other-terminal-features" title="Link to this heading">#</a></h2>
+<p>The terminal must maintain separate shape stacks for the <em>main</em> and <em>alternate</em>
+screens. This allows full screen programs, which are likely to be the main
+consumers of this feature, to easily temporarily switch back from the alternate screen,
+without needing to worry about pointer shape state. Think of suspending a
+terminal editor to get back to the shell, for example.</p>
+<p>Resetting the terminal must empty both the shape stacks.</p>
+<p>When dragging to select text, the terminal is free to ignore any mouse pointer
+shape specified using this escape code in favor of one appropriate for
+dragging.  Similarly, when hovering over a URL or OSC 8 based hyperlink, the
+terminal may choose to change the mouse pointer regardless of the value set by
+this escape code.</p>
+<p>This feature is independent of mouse reporting. The changed pointer shapes apply
+regardless of whether the terminal program has enabled mouse reporting or not.</p>
+</section>
+<section id="pointer-shape-names">
+<span id="id1"></span><h2>Pointer shape names<a class="headerlink" href="#pointer-shape-names" title="Link to this heading">#</a></h2>
+<p>There is a well defined set of shape names that all conforming terminal
+emulators must support. The list is based on the names used by the <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/cursor">cursor
+property in the CSS standard</a>, click the link to
+see representative images for the names. Valid names must consist of only the
+characters from the set <code class="docutils literal notranslate"><span class="pre">a-z0-9_-</span></code>.</p>
+<ol class="arabic simple">
+<li><p>alias</p></li>
+<li><p>cell</p></li>
+<li><p>copy</p></li>
+<li><p>crosshair</p></li>
+<li><p>default</p></li>
+<li><p>e-resize</p></li>
+<li><p>ew-resize</p></li>
+<li><p>grab</p></li>
+<li><p>grabbing</p></li>
+<li><p>help</p></li>
+<li><p>move</p></li>
+<li><p>n-resize</p></li>
+<li><p>ne-resize</p></li>
+<li><p>nesw-resize</p></li>
+<li><p>no-drop</p></li>
+<li><p>not-allowed</p></li>
+<li><p>ns-resize</p></li>
+<li><p>nw-resize</p></li>
+<li><p>nwse-resize</p></li>
+<li><p>pointer</p></li>
+<li><p>progress</p></li>
+<li><p>s-resize</p></li>
+<li><p>se-resize</p></li>
+<li><p>sw-resize</p></li>
+<li><p>text</p></li>
+<li><p>vertical-text</p></li>
+<li><p>w-resize</p></li>
+<li><p>wait</p></li>
+<li><p>zoom-in</p></li>
+<li><p>zoom-out</p></li>
+</ol>
+<p>To demo the various shapes, simply run the following command inside kitty:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitten</span> <span class="n">mouse</span><span class="o">-</span><span class="n">demo</span>
 </pre></div>
 </div>
 </section>
-<section id="the-vertical-layout">
-<h1>The Vertical Layout<a class="headerlink" href="#the-vertical-layout" title="Link to this heading">#</a></h1>
-<p>All windows are shown one below the other. This layout has no options:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enabled_layouts vertical
-
-┌──────────────────────────────┐
-│                              │
-│                              │
-│                              │
-├──────────────────────────────┤
-│                              │
-│                              │
-│                              │
-├──────────────────────────────┤
-│                              │
-│                              │
-│                              │
-└──────────────────────────────┘
-</pre></div>
-</div>
+<section id="legacy-xterm-compatibility">
+<h2>Legacy xterm compatibility<a class="headerlink" href="#legacy-xterm-compatibility" title="Link to this heading">#</a></h2>
+<p>The original xterm proposal for this escape code used shape names from the
+file:<cite>X11/cursorfont.h</cite> header on X11 based systems. Terminal implementations
+wishing to maintain compatibility with xterm can also implement these names as
+aliases for the CSS based names defined in the <a class="reference internal" href="#pointer-shape-names"><span class="std std-ref">Pointer shape names</span></a> table.</p>
+<p>The simplest mode of operation of this escape code, which is no leading
+optional char and a single shape name is compatible with xterm.</p>
 </section>
-<section id="resizing-windows">
-<span id="window-resizing"></span><h1>Resizing windows<a class="headerlink" href="#resizing-windows" title="Link to this heading">#</a></h1>
-<p>You can resize windows inside layouts. Press <a class="reference internal" href="../conf/#shortcut-kitty.Start-resizing-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+r</span></code></a> (also
-<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⌘</kbd>+<kbd class="kbd docutils literal notranslate">r</kbd></kbd> on macOS) to enter resizing mode and follow the on-screen
-instructions. In a given window layout only some operations may be possible for
-a particular window. For example, in the <em>Tall</em> layout you can make the first
-window wider/narrower, but not taller/shorter. Note that what you are resizing
-is actually not a window, but a row/column in the layout, all windows in that
-row/column will be resized.</p>
-<p>You can also define shortcuts in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code> to make the active window
-wider, narrower, taller, or shorter by mapping to the <a class="reference internal" href="../actions/#action-resize_window"><code class="xref std std-ac docutils literal notranslate"><span class="pre">resize_window</span></code></a>
-action, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">left</span> <span class="n">resize_window</span> <span class="n">narrower</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">right</span> <span class="n">resize_window</span> <span class="n">wider</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">up</span> <span class="n">resize_window</span> <span class="n">taller</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">down</span> <span class="n">resize_window</span> <span class="n">shorter</span> <span class="mi">3</span>
-<span class="c1"># reset all windows in the tab to default sizes</span>
-<span class="nb">map</span> <span class="n">ctrl</span><span class="o">+</span><span class="n">home</span> <span class="n">resize_window</span> <span class="n">reset</span>
-</pre></div>
-</div>
-<p>The <a class="reference internal" href="../actions/#action-resize_window"><code class="xref std std-ac docutils literal notranslate"><span class="pre">resize_window</span></code></a> action has a second optional argument to control
-the resizing increment (a positive integer that defaults to 1).</p>
-<p>Some layouts take options to control their behavior. For example, the <em>Fat</em>
-and <em>Tall</em> layouts accept the <code class="docutils literal notranslate"><span class="pre">bias</span></code> and <code class="docutils literal notranslate"><span class="pre">full_size</span></code> options to control
-how the available space is split up. To specify the option, in <a class="reference internal" href="../conf/#opt-kitty.enabled_layouts"><code class="xref std std-opt docutils literal notranslate"><span class="pre">kitty.conf</span></code></a> use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enabled_layouts</span> <span class="n">tall</span><span class="p">:</span><span class="n">bias</span><span class="o">=</span><span class="mi">70</span><span class="p">;</span><span class="n">full_size</span><span class="o">=</span><span class="mi">2</span>
-</pre></div>
-</div>
-<p>This will have <code class="docutils literal notranslate"><span class="pre">2</span></code> instead of a single tall window, that occupy <code class="docutils literal notranslate"><span class="pre">70%</span></code>
-instead of <code class="docutils literal notranslate"><span class="pre">50%</span></code> of available width. <code class="docutils literal notranslate"><span class="pre">bias</span></code> can be any number between <code class="docutils literal notranslate"><span class="pre">10</span></code>
-and <code class="docutils literal notranslate"><span class="pre">90</span></code>.</p>
-<p>Writing a new layout only requires about two hundred lines of code, so if there
-is some layout you want, take a look at one of the existing layouts in the
-<a class="reference external" href="https://github.com/kovidgoyal/kitty/tree/master/kitty/layout">layout</a>
-package and submit a pull request!</p>
 </section>
 
         </article>
@@ -1215,23 +1097,23 @@ package and submit a pull request!</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../kittens_intro/">
+          <a class="next-page" href="../unscroll/">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Extend with kittens</div>
+                <div class="title">Unscrolling the screen</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../actions/">
+          <a class="prev-page" href="../desktop-notifications/">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Mappable actions</div>
+                <div class="title">Desktop notifications</div>
                 
               </div>
             </a>
@@ -1259,8 +1141,32 @@ package and submit a pull request!</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Mouse pointer shapes</a><ul>
+<li><a class="reference internal" href="#setting-the-pointer-shape">Setting the pointer shape</a></li>
+<li><a class="reference internal" href="#pushing-and-popping-shapes-onto-the-stack">Pushing and popping shapes onto the stack</a></li>
+<li><a class="reference internal" href="#querying-support">Querying support</a></li>
+<li><a class="reference internal" href="#interaction-with-other-terminal-features">Interaction with other terminal features</a></li>
+<li><a class="reference internal" href="#pointer-shape-names">Pointer shape names</a></li>
+<li><a class="reference internal" href="#legacy-xterm-compatibility">Legacy xterm compatibility</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
