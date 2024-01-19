@@ -36,6 +36,8 @@ In addition to kitty, this protocol is also implemented in:
 
 * The `foot terminal <https://codeberg.org/dnkl/foot/issues/319>`__
 * The `WezTerm terminal <https://wezfurlong.org/wezterm/config/lua/config/enable_kitty_keyboard.html>`__
+* The `alacritty terminal <https://github.com/alacritty/alacritty/pull/7125>`__
+* The `rio terminal <https://github.com/raphamorim/rio/commit/cd463ca37677a0fc48daa8795ea46dadc92b1e95>`__
 * The `notcurses library
   <https://github.com/dankamongmen/notcurses/issues/2131>`__
 * The `crossterm library
@@ -184,6 +186,12 @@ In the escape code, the modifier value is encoded as a decimal number which is
 and so on. If the modifier field is not present in the escape code, its default
 value is ``1`` which means no modifiers.
 
+When the key event is related to an actual modifier key, the corresponding
+modifier's bit must be set to the modifier state including the effect for the
+current event. For example, when pressing the :kbd:`LEFT_CONTROL` key, the
+``ctrl`` bit must be set and when releasing it, it must be reset. When both
+left and right control keys are pressed and one is released, the release event
+must have the ``ctrl`` bit set. See :iss:`6913` for discussion of this design.
 
 .. _event_types:
 

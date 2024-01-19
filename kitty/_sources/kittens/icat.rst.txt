@@ -1,12 +1,17 @@
 icat
 ========================================
 
+.. only:: man
+
+    Overview
+    --------------
+
+
 *Display images in the terminal*
 
 The ``icat`` kitten can be used to display arbitrary images in the |kitty|
 terminal. Using it is as simple as::
 
-    kitten icat image.jpeg
     kitten icat image.jpeg
 
 It supports all image types supported by `ImageMagick

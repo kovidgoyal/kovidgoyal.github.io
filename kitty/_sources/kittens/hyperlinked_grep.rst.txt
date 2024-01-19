@@ -1,6 +1,12 @@
 Hyperlinked grep
 =================
 
+.. only:: man
+
+    Overview
+    --------------
+
+
 .. note::
 
    As of ripgrep versions newer that 13.0 it supports hyperlinks
@@ -39,7 +45,8 @@ Now, run a search with::
 Hold down the :kbd:`Ctrl+Shift` keys and click on any of the result lines, to
 open the file in :program:`vim` at the matching line. If you use some editor
 other than :program:`vim`, you should adjust the :file:`open-actions.conf` file
-accordingly.
+accordingly. TO open links with the keyboard instead, use
+:sc:`open_selected_hyperlink`.
 
 Finally, add an alias to your shell's rc files to invoke the kitten as
 :command:`hg`::
