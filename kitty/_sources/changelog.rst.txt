@@ -43,7 +43,38 @@ The :doc:`ssh kitten <kittens/ssh>` is redesigned with powerful new features:
 Detailed list of changes
 -------------------------------------
 
-0.32.1 [2024-02-26]
+0.32.2 [2023-02-12]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- kitten @ load-config: Allow (re)loading kitty.conf via remote control
+
+- Remote control: Allow running mappable actions via remote control (`kitten @ action`)
+
+- kitten @ send-text: Add a new option to automatically wrap the sent text in
+  bracketed paste escape codes if the program in the destination window has
+  turned on bracketed paste.
+
+- Fix a single key mapping not overriding a previously defined multi-key mapping
+
+- macOS: Fix :code:`kitten @ select-window` leaving the keyboard in a partially functional state (:iss:`7074`)
+
+- Graphics protocol: Improve display of images using Unicode placeholders or
+  row/column boxes by resizing them using linear instead of nearest neighbor
+  interpolation on the GPU (:iss:`7070`)
+
+- When matching URLs use the definition of legal characters in URLs from the
+  `WHATWG spec <https://url.spec.whatwg.org/#url-code-points>`__ rather than older standards (:iss:`7095`)
+
+- hints kitten: Respect the kitty :opt:`url_excluded_characters` option
+  (:iss:`7075`)
+
+- macOS: Fix an abort when changing OS window chrome for a full screen window via remote control or the themes kitten (:iss:`7106`)
+
+- Special case rendering of some more box drawing characters using shades from the block of symbols for legacy computing (:iss:`7110`)
+
+- A new :ac:`close_other_os_windows` to close non active OS windows (:disc:`7113`)
+
+0.32.1 [2024-01-26]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - macOS: Fix a regression in the previous release that broke overriding keyboard shortcuts for actions present in the global menu bar (:iss:`7016`)

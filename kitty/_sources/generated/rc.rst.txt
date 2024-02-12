@@ -1,3 +1,19 @@
+action
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`action (required)`
+  The action to perform. Of the form: action [optional args...]
+
+:code:`match_window (optional)`
+  Window to run the action on
+
+:code:`self (default: False)`
+  Whether to use the window this command is run in as the active window
+
+
+
 close-tab
 --------------------------------------------------------------------------------
 
@@ -310,6 +326,22 @@ Fields are:
 
 
 
+load-config
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`paths (optional)`
+  List of config file paths to load
+
+:code:`override (default: [])`
+  List of individual config overrides
+
+:code:`ignore_overrides (default: False)`
+  Whether to apply previous overrides
+
+
+
 ls
 --------------------------------------------------------------------------------
 
@@ -500,6 +532,9 @@ Fields are:
 
 :code:`session_id (optional)`
   A string that identifies a "broadcast session"
+
+:code:`bracketed_paste (default: disable)`
+  Whether to wrap the text in bracketed paste escape codes
 
 
 
