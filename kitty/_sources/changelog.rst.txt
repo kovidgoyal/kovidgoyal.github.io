@@ -47,6 +47,18 @@ rsync algorithm to speed up repeated transfers of large files.
 Detailed list of changes
 -------------------------------------
 
+0.33.1 [2024-03-21]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Fix a regression in the previous release that caused requesting data from the clipboard via OSC 52 to instead return data from the primary selection (:iss:`7213`)
+
+- Splits layout: Allow resizing until one of the halves in a split is minimally sized (:iss:`7220`)
+
+- macOS: Fix text rendered with fallback fonts not respecting bold/italic styling (:disc:`7241`)
+
+- macOS: When CoreText fails to find a fallback font for a character in the first Private Use Unicode Area, preferentially use the NERD font, if available, for it (:iss:`6043`)
+
+
 0.33.0 [2024-03-12]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
