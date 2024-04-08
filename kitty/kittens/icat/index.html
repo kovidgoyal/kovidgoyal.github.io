@@ -719,6 +719,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><div class="visually-hidden">Toggle navigation of Detailed list of changes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#future">0.34.0 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.33.1 [2024-03-21]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.33.0 [2024-03-12]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.32.2 [2024-02-12]</a></li>
@@ -1007,14 +1008,26 @@ whether the multiplexer has added support for it or not.</p>
 from inside other programs to display images. In particular, <a class="reference internal" href="#cmdoption-kitty-kitten-icat-place"><code class="xref std std-option docutils literal notranslate"><span class="pre">--place</span></code></a>,
 <a class="reference internal" href="#cmdoption-kitty-kitten-icat-detect-support"><code class="xref std std-option docutils literal notranslate"><span class="pre">--detect-support</span></code></a> and <a class="reference internal" href="#cmdoption-kitty-kitten-icat-print-window-size"><code class="xref std std-option docutils literal notranslate"><span class="pre">--print-window-size</span></code></a>.</p>
 <p>If you are trying to integrate icat into a complex program like a file manager
-or editor, there are a few things to keep in mind. icat works by communicating
+or editor, there are a few things to keep in mind. icat normally works by communicating
 over the TTY device, it both writes to and reads from the TTY. So it is
 imperative that while it is running the host program does not do any TTY I/O.
 Any key presses or other input from the user on the TTY device will be
-discarded. At a minimum, you should use the <a class="reference internal" href="#cmdoption-kitty-kitten-icat-transfer-mode"><code class="xref std std-option docutils literal notranslate"><span class="pre">--transfer-mode</span></code></a>
-command line arguments. To be really robust you should
-consider writing proper support for the <a class="reference internal" href="../../graphics-protocol/"><span class="doc">kitty graphics protocol</span></a> in the program instead. Nowadays there are many libraries
-that have support for it.</p>
+discarded. If you would instead like to use it just as a backend to generate
+the escape codes for image display, you need to pass it options to tell it the
+window dimensions, where to place the image in the window and the transfer mode
+to use. If you do that, it will not try to communicate with the TTY device at
+all. The requisite options are: <a class="reference internal" href="#cmdoption-kitty-kitten-icat-use-window-size"><code class="xref std std-option docutils literal notranslate"><span class="pre">--use-window-size</span></code></a>, <a class="reference internal" href="#cmdoption-kitty-kitten-icat-place"><code class="xref std std-option docutils literal notranslate"><span class="pre">--place</span></code></a>
+and <a class="reference internal" href="#cmdoption-kitty-kitten-icat-transfer-mode"><code class="xref std std-option docutils literal notranslate"><span class="pre">--transfer-mode</span></code></a>, <a class="reference internal" href="#cmdoption-kitty-kitten-icat-stdin"><code class="xref std std-option docutils literal notranslate"><span class="pre">--stdin=no</span></code></a>.
+For example, to demonstrate usage without access to the TTY:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>zsh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;setsid kitten icat --stdin=no --use-window-size $COLUMNS,$LINES,3000,2000 --transfer-mode=file myimage.png&#39;</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">setsid</span></code> ensures icat has no access to the TTY device.
+The values, 3000, 2000 are made up. They are the window width and height in
+pixels, to obtain which access to the TTY is needed.</p>
+<p>To be really robust you should consider writing proper support for the
+<a class="reference internal" href="../../graphics-protocol/"><span class="doc">kitty graphics protocol</span></a> in the program instead.
+Nowadays there are many libraries that have support for it.</p>
 <section id="source-code-for-icat">
 <h2>Source code for icat<a class="headerlink" href="#source-code-for-icat" title="Link to this heading">#</a></h2>
 <p>The source code for this kitten is <a class="reference external" href="https://github.com/kovidgoyal/kitty/tree/master/kittens/icat">available on GitHub</a>.</p>

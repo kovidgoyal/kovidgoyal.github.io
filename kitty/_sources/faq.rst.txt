@@ -265,7 +265,7 @@ fonts to be freely resizable, so it does not support bitmapped fonts.
 
         # Nerd Fonts v3.1.0
 
-        symbol_map U+e000-U+e00a,U+ea60-U+ebeb,U+e0a0-U+e0c8,U+e0ca,U+e0cc-U+e0d4,U+e200-U+e2a9,U+e300-U+e3e3,U+e5fa-U+e6b1,U+e700-U+e7c5,U+f000-U+f2e0,U+f300-f372,U+f400-U+f532,U+f0001-U+f1af0 Symbols Nerd Font Mono
+        symbol_map U+e000-U+e00a,U+ea60-U+ebeb,U+e0a0-U+e0c8,U+e0ca,U+e0cc-U+e0d4,U+e200-U+e2a9,U+e300-U+e3e3,U+e5fa-U+e6b1,U+e700-U+e7c5,U+f000-U+f2e0,U+f300-U+f372,U+f400-U+f532,U+f0001-U+f1af0 Symbols Nerd Font Mono
 
    Those Unicode symbols not in the `Unicode private use areas
    <https://en.wikipedia.org/wiki/Private_Use_Areas>`__ are
@@ -457,15 +457,17 @@ and then switch to another and these terminals have different :envvar:`TERM`
 variables, tmux will break. You will need to restart it as tmux does not support
 multiple terminfo definitions.
 
-Displaying images with inside programs such nvim or ranger may not work
-depending on whether those programs have adopted support for the unicode
-placeholders workaround that kitty created for tmux refusing to support images.
+Displaying images while inside programs such as nvim or ranger may not work
+depending on whether those programs have adopted support for the :ref:`unicode
+placeholders <graphics_unicode_placeholders>` workaround that kitty created
+for tmux refusing to support images.
 
 If you use any of the advanced features that kitty has innovated, such as
 :doc:`styled underlines </underlines>`, :doc:`desktop notifications
 </desktop-notifications>`, :doc:`extended keyboard support
-</keyboard-protocol>`, etc. they may or may not work, depending on the whims of
-tmux's maintainer, your version of tmux, etc.
+</keyboard-protocol>`, :doc:`file transfer </kittens/transfer>`,  etc.
+they may or may not work, depending on the whims of tmux's maintainer,
+your version of tmux, etc.
 
 
 I opened and closed a lot of windows/tabs and top shows kitty's memory usage is very high?

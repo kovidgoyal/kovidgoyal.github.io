@@ -719,6 +719,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><div class="visually-hidden">Toggle navigation of Detailed list of changes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#future">0.34.0 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.33.1 [2024-03-21]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.33.0 [2024-03-12]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.32.2 [2024-02-12]</a></li>
@@ -1391,6 +1392,18 @@ Note that using very large scrollback is not recommended as it can slow down
 performance of the terminal and also use large amounts of RAM. Instead, consider
 using <a class="reference internal" href="#opt-kitty.scrollback_pager_history_size"><code class="xref std std-opt docutils literal notranslate"><span class="pre">scrollback_pager_history_size</span></code></a>. Note that on config reload if this
 is changed it will only affect newly created windows, not existing ones.</p>
+<dl class="std opt">
+<dt class="sig sig-object std" id="opt-kitty.scrollback_indicator_opacity">
+<span class="sig-name descname"><span class="pre">scrollback_indicator_opacity</span></span><a class="headerlink" href="#opt-kitty.scrollback_indicator_opacity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">scrollback_indicator_opacity</span><span class="w"> </span><span class="mf">1.0</span>
+</pre></div>
+</div>
+<p>The opacity of the scrollback indicator which is a small colored rectangle that moves
+along the right hand side of the window as you scroll, indicating what fraction you
+have scrolled. The default is one which means fully opaque, aka visible.
+Set to a value between zero and one to make the indicator less visible.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitty.scrollback_pager">
 <span class="sig-name descname"><span class="pre">scrollback_pager</span></span><a class="headerlink" href="#opt-kitty.scrollback_pager" title="Link to this definition">#</a></dt>
@@ -2513,6 +2526,8 @@ active window in the tab (expensive, requires syscall). Use
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">max_title_length</span></code></dt><dd><p>The maximum title length available.</p>
 </dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">keyboard_mode</span></code></dt><dd><p>The name of the current <a class="reference internal" href="../mapping/#modal-mappings"><span class="std std-ref">keyboard mode</span></a> or the empty string if no keyboard mode is active.</p>
+</dd>
 </dl>
 <p>Note that formatting is done by Python’s string formatting machinery, so you can
 use, for instance, <code class="code docutils literal notranslate"><span class="pre">{layout_name[:2].upper()}</span></code> to show only the first two
@@ -2624,7 +2639,7 @@ control the <span class="italic">blur radius</span> (amount of blurring). Settin
 a value will cause severe performance issues and/or rendering artifacts.
 Usually, values up to 64 work well. Note that this might cause performance issues,
 depending on how the platform implements it, so use with care. Currently supported
-on macOS and KDE under X11.</p>
+on macOS and KDE.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitty.background_image">
 <span class="sig-name descname"><span class="pre">background_image</span></span><a class="headerlink" href="#opt-kitty.background_image" title="Link to this definition">#</a></dt>
@@ -3236,6 +3251,20 @@ various things from key-presses, to colors, to various advanced features may not
 work. Changing this option by reloading the config will only affect newly
 created windows.</p>
 <dl class="std opt">
+<dt class="sig sig-object std" id="opt-kitty.terminfo_type">
+<span class="sig-name descname"><span class="pre">terminfo_type</span></span><a class="headerlink" href="#opt-kitty.terminfo_type" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">terminfo_type</span><span class="w"> </span><span class="s">path</span>
+</pre></div>
+</div>
+<p>The value of the <span class="target" id="index-11"></span><a class="reference internal" href="../glossary/#envvar-TERMINFO"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">TERMINFO</span></code></a> environment variable to set. This variable is
+used by programs running in the terminal to search for terminfo databases. The default value
+of <code class="code docutils literal notranslate"><span class="pre">path</span></code> causes kitty to set it to a filesystem location containing the
+kitty terminfo database. A value of <code class="code docutils literal notranslate"><span class="pre">direct</span></code> means put the entire database into
+the env var directly. This can be useful when connecting to containers, for example. But,
+note that not all software supports this. A value of <code class="code docutils literal notranslate"><span class="pre">none</span></code> means do not touch the variable.</p>
+<dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitty.forward_stdio">
 <span class="sig-name descname"><span class="pre">forward_stdio</span></span><a class="headerlink" href="#opt-kitty.forward_stdio" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -3274,8 +3303,8 @@ Sub-menus can be created by adding more levels separated by the <code class="cod
 </div>
 <p>The color of the kitty window’s titlebar on Wayland systems with client
 side window decorations such as GNOME. A value of <code class="code docutils literal notranslate"><span class="pre">system</span></code> means to use
-the default system color, a value of <code class="code docutils literal notranslate"><span class="pre">background</span></code> means to use the
-background color of the currently active window and finally you can use an
+the default system colors, a value of <code class="code docutils literal notranslate"><span class="pre">background</span></code> means to use the
+background color of the currently active kitty window and finally you can use an
 arbitrary color, such as <code class="code docutils literal notranslate"><span class="pre">#12af59</span></code> or <code class="code docutils literal notranslate"><span class="pre">red</span></code>.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitty.macos_titlebar_color">
@@ -3434,6 +3463,19 @@ created OS windows.</p>
 based on the system state is chosen automatically. Set it to <code class="code docutils literal notranslate"><span class="pre">x11</span></code> or
 <code class="code docutils literal notranslate"><span class="pre">wayland</span></code> to force the choice. Changing this option by reloading the
 config is not supported.</p>
+<dl class="std opt">
+<dt class="sig sig-object std" id="opt-kitty.wayland_enable_ime">
+<span class="sig-name descname"><span class="pre">wayland_enable_ime</span></span><a class="headerlink" href="#opt-kitty.wayland_enable_ime" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">wayland_enable_ime</span><span class="w"> </span><span class="mb">yes</span>
+</pre></div>
+</div>
+<p>Enable Input Method Extension on Wayland. This is typically used for
+inputting text in East Asian languages. However, its implementation in
+Wayland is often buggy and introduces latency into the input loop,
+so disable this if you know you dont need it. Changing this option
+by reloading the config is not supported, it will not have any effect.</p>
 </section>
 <section id="keyboard-shortcuts">
 <span id="conf-kitty-shortcuts"></span><h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Link to this heading">#</a></h2>

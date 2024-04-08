@@ -719,6 +719,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><div class="visually-hidden">Toggle navigation of Detailed list of changes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#future">0.34.0 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.33.1 [2024-03-21]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.33.0 [2024-03-12]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.32.2 [2024-02-12]</a></li>
@@ -1291,6 +1292,7 @@ To send a pattern of press and release for multiple keys use the <a class="refer
 </div>
 <p>For example:</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="l">kitty_mod+e</span><span class="w"> </span><span class="nf">combine</span><span class="s"> : new_window : next_layout</span>
+<span class="kd">map</span><span class="w"> </span><span class="l">kitty_mod+e</span><span class="w"> </span><span class="nf">combine</span><span class="s"> | new_tab | goto_tab -1</span>
 </pre></div>
 </div>
 <dl class="std action">
@@ -1650,7 +1652,9 @@ For example:</p>
 <dd></dd></dl>
 
 <p>Go to the specified tab, by number, starting with 1</p>
-<p>Zero and negative numbers go to previously active tabs</p>
+<p>Zero and negative numbers go to previously active tabs.
+Use the <a class="reference internal" href="#action-select_tab"><code class="xref std std-ac docutils literal notranslate"><span class="pre">select_tab</span></code></a> action to interactively select a tab
+to go to.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-move_tab_backward">
 <span class="sig-name descname"><span class="pre">move_tab_backward</span></span><a class="headerlink" href="#action-move_tab_backward" title="Link to this definition">#</a></dt>

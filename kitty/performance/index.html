@@ -719,6 +719,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><div class="visually-hidden">Toggle navigation of Detailed list of changes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#future">0.34.0 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.33.1 [2024-03-21]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.33.0 [2024-03-12]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.32.2 [2024-02-12]</a></li>
@@ -1002,6 +1003,14 @@ Keyboard to screen latency, and throughput (processing large amounts of data).</
 <p>This is measured either with dedicated hardware, or software such as <a class="reference external" href="https://pavelfatin.com/typometer/">Typometer</a>. Third party measurements comparing
 kitty with other terminal emulators on various systems show kitty has best in
 class keyboard to screen latency.</p>
+<p>Note that to minimize latency at the expense of more energy usage, use the
+following settings in kitty.conf:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">input_delay</span> <span class="mi">0</span>
+<span class="n">repaint_delay</span> <span class="mi">2</span>
+<span class="n">sync_to_monitor</span> <span class="n">no</span>
+<span class="n">wayland_enable_ime</span> <span class="n">no</span>
+</pre></div>
+</div>
 <p><a class="reference external" href="https://thume.ca/2020/05/20/making-a-latency-tester/">Hardware based measurement on macOS</a> show that kitty and
 Apple’s Terminal.app share the crown for best latency. These
 measurements were done with <a class="reference internal" href="../conf/#opt-kitty.input_delay"><code class="xref std std-opt docutils literal notranslate"><span class="pre">input_delay</span></code></a> at its default value of <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">ms</span></code>

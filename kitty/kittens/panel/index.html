@@ -719,6 +719,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><div class="visually-hidden">Toggle navigation of Detailed list of changes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../changelog/#future">0.34.0 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../changelog/#id1">0.33.1 [2024-03-21]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../changelog/#id2">0.33.0 [2024-03-12]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../changelog/#id3">0.32.2 [2024-02-12]</a></li>
@@ -991,9 +992,14 @@ using terminal programs instead of GUI toolkits.</p>
 <p>The screenshot above shows a sample panel that displays the current desktop and
 window title as well as miscellaneous system information such as network
 activity, CPU load, date/time, etc.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.34.0: </span>Support for Wayland</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This kitten currently only works on X11 desktops</p>
+<p>This kitten currently only works on X11 desktops and Wayland compositors
+that support the <a class="reference external" href="https://wayland.app/protocols/wlr-layer-shell-unstable-v1#compositor-support">wlr layer shell protocol</a>
+(which is almost all of them except the usually crippled GNOME).</p>
 </div>
 <p>Using this kitten is simple, for example:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitty<span class="w"> </span>+kitten<span class="w"> </span>panel<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;printf &quot;\n\n\nHello, world.&quot;; sleep 5s&#39;</span>
@@ -1016,25 +1022,18 @@ you like, as demonstrated in the screenshot above.</p>
 <section id="options">
 <h3>Options<a class="headerlink" href="#options" title="Link to this heading">#</a></h3>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-lines">
-<span class="sig-name descname"><span class="pre">--lines</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;LINES&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-lines" title="Link to this definition">#</a></dt>
-<dd><p>The number of lines shown in the panel (the height of the panel). Applies to horizontal panels.
-Default: <code class="code docutils literal notranslate"><span class="pre">1</span></code></p>
-</dd></dl>
-
-<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-columns">
-<span class="sig-name descname"><span class="pre">--columns</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;COLUMNS&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-columns" title="Link to this definition">#</a></dt>
-<dd><p>The number of columns shown in the panel (the width of the panel). Applies to vertical panels.
-Default: <code class="code docutils literal notranslate"><span class="pre">20</span></code></p>
+<span id="cmdoption-kitty-kitten-panel-lines"></span><span class="sig-name descname"><span class="pre">--columns</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;LINES&gt;</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--lines</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;LINES&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-columns" title="Link to this definition">#</a></dt>
+<dd><p>The number of lines shown in the panel if horizontal otherwise the number of columns shown in the panel. Ignored for background panels.
+Default: <code class="code docutils literal notranslate"><span class="pre">1</span></code></p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-edge">
 <span class="sig-name descname"><span class="pre">--edge</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;EDGE&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-edge" title="Link to this definition">#</a></dt>
-<dd><p>Which edge of the screen to place the panel on. Note that some window managers (such as i3) do not support placing docked windows on the left and right edges.
+<dd><p>Which edge of the screen to place the panel on. Note that some window managers (such as i3) do not support placing docked windows on the left and right edges. The value <code class="code docutils literal notranslate"><span class="pre">background</span></code> means make the panel the “desktop wallpaper”. This is only supported on Wayland, not X11 and note that when using sway if you set a background in your sway config it will cover the background drawn using this kitten.
 Default: <code class="code docutils literal notranslate"><span class="pre">top</span></code>
-Choices: <code class="code docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="code docutils literal notranslate"><span class="pre">left</span></code>, <code class="code docutils literal notranslate"><span class="pre">right</span></code>, <code class="code docutils literal notranslate"><span class="pre">top</span></code></p>
+Choices: <code class="code docutils literal notranslate"><span class="pre">background</span></code>, <code class="code docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="code docutils literal notranslate"><span class="pre">left</span></code>, <code class="code docutils literal notranslate"><span class="pre">right</span></code>, <code class="code docutils literal notranslate"><span class="pre">top</span></code></p>
 </dd></dl>
 
 <dl class="std option">
@@ -1050,6 +1049,12 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">botto
 </dd></dl>
 
 <dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-output-name">
+<span class="sig-name descname"><span class="pre">--output-name</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;OUTPUT_NAME&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-output-name" title="Link to this definition">#</a></dt>
+<dd><p>On Wayland, the panel can only be displayed on a single monitor (output) at a time. This allows you to specify which output is used, by name. If not specified the compositor will choose an output automatically, typically the last output the user interacted with or the primary monitor.</p>
+</dd></dl>
+
+<dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-class">
 <span class="sig-name descname"><span class="pre">--class</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CLS&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-class" title="Link to this definition">#</a></dt>
 <dd><p>Set the class part of the <span class="italic">WM_CLASS</span> window property. On Wayland, it sets the app id.
@@ -1059,7 +1064,13 @@ Default: <code class="code docutils literal notranslate"><span class="pre">kitty
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-name">
 <span class="sig-name descname"><span class="pre">--name</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;</span></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-name" title="Link to this definition">#</a></dt>
-<dd><p>Set the name part of the <span class="italic">WM_CLASS</span> property (defaults to using the value from <a class="reference internal" href="../../invocation/#cmdoption-kitty-class"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--class</span></code></a>)</p>
+<dd><p>Set the name part of the <span class="italic">WM_CLASS</span> property (defaults to using the value from <a class="reference internal" href="../../invocation/#cmdoption-kitty-app-id"><code class="xref std std-option docutils literal notranslate"><span class="pre">kitty</span> <span class="pre">--class</span></code></a>)</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-kitty-kitten-panel-debug-rendering">
+<span class="sig-name descname"><span class="pre">--debug-rendering</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-kitty-kitten-panel-debug-rendering" title="Link to this definition">#</a></dt>
+<dd><p>For internal debugging use.</p>
 </dd></dl>
 
 </section>

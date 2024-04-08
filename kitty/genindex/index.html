@@ -706,6 +706,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><div class="visually-hidden">Toggle navigation of Detailed list of changes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#future">0.34.0 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.33.1 [2024-03-21]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.33.0 [2024-03-12]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.32.2 [2024-02-12]</a></li>
@@ -1076,6 +1077,13 @@
 </li>
         </ul></li>
         <li>
+    --app-id
+
+        <ul>
+          <li><a href="../invocation/#cmdoption-kitty-app-id">kitty command line option</a>
+</li>
+        </ul></li>
+        <li>
     --ascending
 
         <ul>
@@ -1114,7 +1122,7 @@
     --class
 
         <ul>
-          <li><a href="../invocation/#cmdoption-kitty-class">kitty command line option</a>
+          <li><a href="../invocation/#cmdoption-kitty-app-id">kitty command line option</a>
 </li>
           <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-class">kitty-+kitten-panel command line option</a>
 </li>
@@ -1291,6 +1299,8 @@
 
         <ul>
           <li><a href="../invocation/#cmdoption-kitty-debug-gl">kitty command line option</a>
+</li>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-debug-rendering">kitty-+kitten-panel command line option</a>
 </li>
         </ul></li>
         <li>
@@ -1586,7 +1596,7 @@
     --lines
 
         <ul>
-          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-lines">kitty-+kitten-panel command line option</a>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-columns">kitty-+kitten-panel command line option</a>
 </li>
         </ul></li>
         <li>
@@ -1891,6 +1901,13 @@
           <li><a href="../remote-control/#cmdoption-kitten-launch-os-window-title">kitten-@-launch command line option</a>
 </li>
           <li><a href="../launch/#cmdoption-launch-os-window-title">launch command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --output-name
+
+        <ul>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-output-name">kitty-+kitten-panel command line option</a>
 </li>
         </ul></li>
         <li>
@@ -3345,6 +3362,8 @@
 </li>
           <li><a href="../conf/#opt-kitty.scrollback_fill_enlarged_window">kitty.scrollback_fill_enlarged_window</a>
 </li>
+          <li><a href="../conf/#opt-kitty.scrollback_indicator_opacity">kitty.scrollback_indicator_opacity</a>
+</li>
           <li><a href="../conf/#opt-kitty.scrollback_lines">kitty.scrollback_lines</a>
 </li>
           <li><a href="../conf/#opt-kitty.scrollback_pager">kitty.scrollback_pager</a>
@@ -3407,6 +3426,8 @@
 </li>
           <li><a href="../conf/#opt-kitty.term">kitty.term</a>
 </li>
+          <li><a href="../conf/#opt-kitty.terminfo_type">kitty.terminfo_type</a>
+</li>
           <li><a href="../conf/#opt-kitty.text_composition_strategy">kitty.text_composition_strategy</a>
 </li>
           <li><a href="../conf/#opt-kitty.text_fg_override_threshold">kitty.text_fg_override_threshold</a>
@@ -3432,6 +3453,8 @@
           <li><a href="../conf/#opt-kitty.visual_window_select_characters">kitty.visual_window_select_characters</a>
 </li>
           <li><a href="../conf/#opt-kitty.watcher">kitty.watcher</a>
+</li>
+          <li><a href="../conf/#opt-kitty.wayland_enable_ime">kitty.wayland_enable_ime</a>
 </li>
           <li><a href="../conf/#opt-kitty.wayland_titlebar_color">kitty.wayland_titlebar_color</a>
 </li>
@@ -3610,13 +3633,13 @@
 </li>
           <li><a href="../generated/launch/#index-0">KITTY_LISTEN_ON</a>, <a href="../glossary/#envvar-KITTY_LISTEN_ON">[1]</a>, <a href="../kittens/ssh/#index-3">[2]</a>, <a href="../launch/#index-4">[3]</a>, <a href="../remote-control/#index-14">[4]</a>, <a href="../remote-control/#index-3">[5]</a>
 </li>
-          <li><a href="../changelog/#index-0">KITTY_OS</a>, <a href="../conf/#index-1">[1]</a>, <a href="../glossary/#envvar-KITTY_OS">[2]</a>
+          <li><a href="../changelog/#index-1">KITTY_OS</a>, <a href="../conf/#index-1">[1]</a>, <a href="../glossary/#envvar-KITTY_OS">[2]</a>
 </li>
           <li><a href="../glossary/#envvar-KITTY_PID">KITTY_PID</a>, <a href="../kittens/ssh/#index-0">[1]</a>
 </li>
           <li><a href="../glossary/#envvar-KITTY_PIPE_DATA">KITTY_PIPE_DATA</a>, <a href="../launch/#index-0">[1]</a>
 </li>
-          <li><a href="../changelog/#index-1">KITTY_PUBLIC_KEY</a>, <a href="../file-transfer-protocol/#index-1">[1]</a>, <a href="../glossary/#envvar-KITTY_PUBLIC_KEY">[2]</a>, <a href="../rc_protocol/#index-0">[3]</a>, <a href="../rc_protocol/#index-1">[4]</a>, <a href="../remote-control/#index-1">[5]</a>
+          <li><a href="../changelog/#index-2">KITTY_PUBLIC_KEY</a>, <a href="../file-transfer-protocol/#index-1">[1]</a>, <a href="../glossary/#envvar-KITTY_PUBLIC_KEY">[2]</a>, <a href="../rc_protocol/#index-0">[3]</a>, <a href="../rc_protocol/#index-1">[4]</a>, <a href="../remote-control/#index-1">[5]</a>
 </li>
           <li><a href="../glossary/#envvar-KITTY_RC_PASSWORD">KITTY_RC_PASSWORD</a>, <a href="../remote-control/#index-0">[1]</a>, <a href="../remote-control/#index-4">[2]</a>
 </li>
@@ -3630,7 +3653,7 @@
 </li>
           <li><a href="../generated/matching/#index-0">KITTY_WINDOW_ID</a>, <a href="../glossary/#envvar-KITTY_WINDOW_ID">[1]</a>, <a href="../kittens/broadcast/#index-0">[2]</a>, <a href="../kittens/ssh/#index-1">[3]</a>, <a href="../remote-control/#index-10">[4]</a>, <a href="../remote-control/#index-11">[5]</a>, <a href="../remote-control/#index-12">[6]</a>, <a href="../remote-control/#index-13">[7]</a>, <a href="../remote-control/#index-15">[8]</a>, <a href="../remote-control/#index-16">[9]</a>, <a href="../remote-control/#index-17">[10]</a>, <a href="../remote-control/#index-18">[11]</a>, <a href="../remote-control/#index-19">[12]</a>, <a href="../remote-control/#index-2">[13]</a>, <a href="../remote-control/#index-20">[14]</a>, <a href="../remote-control/#index-21">[15]</a>, <a href="../remote-control/#index-22">[16]</a>, <a href="../remote-control/#index-23">[17]</a>, <a href="../remote-control/#index-24">[18]</a>, <a href="../remote-control/#index-25">[19]</a>, <a href="../remote-control/#index-26">[20]</a>, <a href="../remote-control/#index-27">[21]</a>, <a href="../remote-control/#index-28">[22]</a>, <a href="../remote-control/#index-29">[23]</a>, <a href="../remote-control/#index-5">[24]</a>, <a href="../remote-control/#index-6">[25]</a>, <a href="../remote-control/#index-7">[26]</a>, <a href="../remote-control/#index-8">[27]</a>, <a href="../remote-control/#index-9">[28]</a>
 </li>
-          <li><a href="../changelog/#index-2">LANG</a>, <a href="../faq/#index-5">[1]</a>, <a href="../glossary/#envvar-LANG">[2]</a>
+          <li><a href="../changelog/#index-3">LANG</a>, <a href="../faq/#index-5">[1]</a>, <a href="../glossary/#envvar-LANG">[2]</a>
 </li>
           <li><a href="../binary/#index-0">PATH</a>, <a href="../faq/#index-4">[1]</a>, <a href="../glossary/#envvar-PATH">[2]</a>, <a href="../launch/#index-1">[3]</a>, <a href="../launch/#index-2">[4]</a>, <a href="../launch/#index-3">[5]</a>
 </li>
@@ -3638,7 +3661,7 @@
 </li>
           <li><a href="../conf/#index-10">TERM</a>, <a href="../conf/#index-9">[1]</a>, <a href="../faq/#index-1">[2]</a>, <a href="../faq/#index-7">[3]</a>, <a href="../glossary/#envvar-TERM">[4]</a>
 </li>
-          <li><a href="../faq/#index-0">TERMINFO</a>, <a href="../faq/#index-2">[1]</a>, <a href="../faq/#index-3">[2]</a>, <a href="../glossary/#envvar-TERMINFO">[3]</a>
+          <li><a href="../changelog/#index-0">TERMINFO</a>, <a href="../conf/#index-11">[1]</a>, <a href="../faq/#index-0">[2]</a>, <a href="../faq/#index-2">[3]</a>, <a href="../faq/#index-3">[4]</a>, <a href="../glossary/#envvar-TERMINFO">[5]</a>
 </li>
           <li><a href="../conf/#index-3">VISUAL</a>, <a href="../conf/#index-5">[1]</a>, <a href="../glossary/#envvar-VISUAL">[2]</a>, <a href="../glossary/#index-0">[3]</a>, <a href="../glossary/#index-1">[4]</a>
 </li>
@@ -4990,7 +5013,9 @@
     kitty command line option
 
         <ul>
-          <li><a href="../invocation/#cmdoption-kitty-class">--class</a>
+          <li><a href="../invocation/#cmdoption-kitty-app-id">--app-id</a>
+</li>
+          <li><a href="../invocation/#cmdoption-kitty-app-id">--class</a>
 </li>
           <li><a href="../invocation/#cmdoption-kitty-config">--config</a>
 </li>
@@ -5210,11 +5235,15 @@
 </li>
           <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-config">--config</a>
 </li>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-debug-rendering">--debug-rendering</a>
+</li>
           <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-edge">--edge</a>
 </li>
-          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-lines">--lines</a>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-columns">--lines</a>
 </li>
           <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-name">--name</a>
+</li>
+          <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-output-name">--output-name</a>
 </li>
           <li><a href="../kittens/panel/#cmdoption-kitty-kitten-panel-override">--override</a>
 </li>
@@ -6491,6 +6520,13 @@
 </li>
         </ul></li>
         <li>
+    kitty.scrollback_indicator_opacity
+
+        <ul>
+          <li><a href="../conf/#opt-kitty.scrollback_indicator_opacity">Config Setting</a>
+</li>
+        </ul></li>
+        <li>
     kitty.scrollback_lines
 
         <ul>
@@ -6841,6 +6877,13 @@
 </li>
         </ul></li>
         <li>
+    kitty.terminfo_type
+
+        <ul>
+          <li><a href="../conf/#opt-kitty.terminfo_type">Config Setting</a>
+</li>
+        </ul></li>
+        <li>
     kitty.text_composition_strategy
 
         <ul>
@@ -6981,6 +7024,13 @@
 </li>
         </ul></li>
         <li>
+    kitty.wayland_enable_ime
+
+        <ul>
+          <li><a href="../conf/#opt-kitty.wayland_enable_ime">Config Setting</a>
+</li>
+        </ul></li>
+        <li>
     kitty.wayland_titlebar_color
 
         <ul>
@@ -7069,13 +7119,13 @@
 </li>
         <li><a href="../generated/launch/#index-0">KITTY_LISTEN_ON</a>, <a href="../kittens/ssh/#index-3">[1]</a>, <a href="../launch/#index-4">[2]</a>, <a href="../remote-control/#index-14">[3]</a>, <a href="../remote-control/#index-3">[4]</a>
 </li>
-        <li><a href="../changelog/#index-0">KITTY_OS</a>, <a href="../conf/#index-1">[1]</a>
+        <li><a href="../changelog/#index-1">KITTY_OS</a>, <a href="../conf/#index-1">[1]</a>
 </li>
         <li><a href="../kittens/ssh/#index-0">KITTY_PID</a>
 </li>
         <li><a href="../launch/#index-0">KITTY_PIPE_DATA</a>
 </li>
-        <li><a href="../changelog/#index-1">KITTY_PUBLIC_KEY</a>, <a href="../file-transfer-protocol/#index-1">[1]</a>, <a href="../rc_protocol/#index-0">[2]</a>, <a href="../rc_protocol/#index-1">[3]</a>, <a href="../remote-control/#index-1">[4]</a>
+        <li><a href="../changelog/#index-2">KITTY_PUBLIC_KEY</a>, <a href="../file-transfer-protocol/#index-1">[1]</a>, <a href="../rc_protocol/#index-0">[2]</a>, <a href="../rc_protocol/#index-1">[3]</a>, <a href="../remote-control/#index-1">[4]</a>
 </li>
         <li><a href="../remote-control/#index-0">KITTY_RC_PASSWORD</a>, <a href="../remote-control/#index-4">[1]</a>
 </li>
@@ -7098,7 +7148,7 @@
   <h2>L</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../changelog/#index-2">LANG</a>, <a href="../faq/#index-5">[1]</a>
+        <li><a href="../changelog/#index-3">LANG</a>, <a href="../faq/#index-5">[1]</a>
 </li>
         <li>
     last_used_layout
@@ -7849,7 +7899,7 @@
         </ul></li>
         <li><a href="../conf/#index-10">TERM</a>, <a href="../conf/#index-9">[1]</a>, <a href="../faq/#index-1">[2]</a>, <a href="../faq/#index-7">[3]</a>
 </li>
-        <li><a href="../faq/#index-0">TERMINFO</a>, <a href="../faq/#index-2">[1]</a>, <a href="../faq/#index-3">[2]</a>
+        <li><a href="../changelog/#index-0">TERMINFO</a>, <a href="../conf/#index-11">[1]</a>, <a href="../faq/#index-0">[2]</a>, <a href="../faq/#index-2">[3]</a>, <a href="../faq/#index-3">[4]</a>
 </li>
         <li>
     third_window

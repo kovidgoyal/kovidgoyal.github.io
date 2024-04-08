@@ -719,6 +719,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><div class="visually-hidden">Toggle navigation of Detailed list of changes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#future">0.34.0 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.33.1 [2024-03-21]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.33.0 [2024-03-12]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.32.2 [2024-02-12]</a></li>
@@ -1041,7 +1042,9 @@ Note that for the fish shell this will not disable its built-in current
 working directory reporting.</p>
 </dd>
 <dt>no-prompt-mark</dt><dd><p>Turn off marking of prompts. This disables jumping to prompt, browsing
-output of last command and click to move cursor functionality.</p>
+output of last command and click to move cursor functionality.
+Note that for the fish shell this does not take effect, since fish always
+marks prompts.</p>
 </dd>
 <dt>no-complete</dt><dd><p>Turn off completion for the kitty command.
 Note that for the fish shell this does not take effect, since fish already
@@ -1666,29 +1669,43 @@ clone-in-kitty<span class="o">()</span><span class="w"> </span><span class="o">{
     <span class="k">end</span>
 
     <span class="c"># Enable prompt marking with OSC 133</span>
-    <span class="k">if</span> <span class="k">not</span> <span class="nb">contains</span> <span class="s2">&quot;no-prompt-mark&quot;</span> <span class="nv">$_ksi</span>
-        <span class="k">and</span> <span class="k">not</span> <span class="k">set</span> -q __ksi_prompt_state
-        <span class="k">function</span> __ksi_mark_prompt_start --on-event <span class="nb">fish_prompt</span> --on-event fish_cancel --on-event fish_posterror
-            <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$__ksi_prompt_state</span><span class="s2">&quot;</span> !<span class="o">=</span> prompt-start
-            <span class="k">and</span> <span class="k">echo</span> -en <span class="s2">&quot;\e]133;D\a&quot;</span>
-            <span class="k">set</span> --global __ksi_prompt_state prompt-start
-            <span class="k">echo</span> -en <span class="s2">&quot;\e]133;A\a&quot;</span>
+    <span class="k">if</span> <span class="k">not</span> <span class="nb">contains</span> <span class="s2">&quot;no-prompt-mark&quot;</span> <span class="nv">$_ksi</span> <span class="k">and</span> <span class="k">not</span> <span class="k">set</span> -q __ksi_prompt_state
+        <span class="k">set</span> --local suffix <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="nb">bind</span> --function-names <span class="o">|</span> string match -q forward-char-passive
+            <span class="k">set</span> suffix <span class="s1">&#39;-passive&#39;</span>
         <span class="k">end</span>
-        __ksi_mark_prompt_start
+        <span class="c"># fish 3.8 emits prompt markers, so we don&#39;t need to. It also is the</span>
+        <span class="c"># first version to define forward-char-passive so use that as a test to detect it</span>
+        <span class="k">if</span> <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$suffix</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">function</span> __ksi_mark_prompt_start --on-event <span class="nb">fish_prompt</span> --on-event fish_cancel --on-event fish_posterror
+                <span class="k">test</span> <span class="s2">&quot;</span><span class="nv">$__ksi_prompt_state</span><span class="s2">&quot;</span> !<span class="o">=</span> prompt-start
+                <span class="k">and</span> <span class="k">echo</span> -en <span class="s2">&quot;\e]133;D\a&quot;</span>
+                <span class="k">set</span> --global __ksi_prompt_state prompt-start
+                <span class="k">echo</span> -en <span class="s2">&quot;\e]133;A;special_key=1\a&quot;</span>
+            <span class="k">end</span>
+            __ksi_mark_prompt_start
 
-        <span class="k">function</span> __ksi_mark_output_start --on-event fish_preexec
-            <span class="k">set</span> --global __ksi_prompt_state pre-exec
-            <span class="k">echo</span> -en <span class="s2">&quot;\e]133;C\a&quot;</span>
+            <span class="k">function</span> __ksi_mark_output_start --on-event fish_preexec
+                <span class="k">set</span> --global __ksi_prompt_state pre-exec
+                <span class="k">echo</span> -en <span class="s2">&quot;\e]133;C\a&quot;</span>
+            <span class="k">end</span>
+
+            <span class="k">function</span> __ksi_mark_output_end --on-event fish_postexec
+                <span class="k">set</span> --global __ksi_prompt_state post-exec
+                <span class="k">echo</span> -en <span class="s2">&quot;\e]133;D;</span><span class="nv">$status</span><span class="s2">\a&quot;</span>
+            <span class="k">end</span>
+
+            <span class="c"># With prompt marking, kitty clears the current prompt on resize,</span>
+            <span class="c"># so we need fish to redraw it.</span>
+            <span class="k">set</span> --global fish_handle_reflow 1
         <span class="k">end</span>
 
-        <span class="k">function</span> __ksi_mark_output_end --on-event fish_postexec
-            <span class="k">set</span> --global __ksi_prompt_state post-exec
-            <span class="k">echo</span> -en <span class="s2">&quot;\e]133;D;</span><span class="nv">$status</span><span class="s2">\a&quot;</span>
+        <span class="c"># Binding for special key to move cursor on mouse click without triggering any</span>
+        <span class="c"># autocompletion or other effects</span>
+        <span class="k">for</span> mode <span class="k">in</span> <span class="o">(</span><span class="nb">bind</span> --list-modes <span class="o">|</span> string match -v paste<span class="o">)</span>  <span class="c"># bind in all modes except paste</span>
+            <span class="nb">bind</span> --preset -M <span class="s2">&quot;</span><span class="nv">$mode</span><span class="s2">&quot;</span> <span class="se">\e\[</span>1u <span class="s2">&quot;forward-char</span><span class="nv">$suffix</span><span class="s2">&quot;</span>
+            <span class="nb">bind</span> --preset -M <span class="s2">&quot;</span><span class="nv">$mode</span><span class="s2">&quot;</span> <span class="se">\e\[</span>1<span class="se">\;</span>1u <span class="s2">&quot;backward-char</span><span class="nv">$suffix</span><span class="s2">&quot;</span>
         <span class="k">end</span>
-
-        <span class="c"># With prompt marking, kitty clears the current prompt on resize,</span>
-        <span class="c"># so we need fish to redraw it.</span>
-        <span class="k">set</span> --global fish_handle_reflow 1
     <span class="k">end</span>
 
     <span class="c"># Enable CWD reporting</span>
@@ -1708,12 +1725,12 @@ clone-in-kitty<span class="o">()</span><span class="w"> </span><span class="o">{
     <span class="c"># for sudo it will be clobbered by us, so only install this if sudo is not already function</span>
     <span class="k">if</span> <span class="k">not</span> <span class="nb">contains</span> <span class="s2">&quot;no-sudo&quot;</span> <span class="nv">$_ksi</span>
         <span class="k">and</span> <span class="k">test</span> -n <span class="s2">&quot;</span><span class="nv">$TERMINFO</span><span class="s2">&quot;</span> -a <span class="s2">&quot;file&quot;</span> <span class="o">=</span> <span class="o">(</span><span class="nb">type</span> -t sudo 2&gt; /dev/null <span class="o">||</span> <span class="k">echo</span> <span class="s2">&quot;x&quot;</span><span class="o">)</span>
-        <span class="k">and</span> <span class="k">not</span> <span class="k">test</span> -r <span class="s2">&quot;/usr/share/terminfo/x/xterm-kitty&quot;</span> -o -r <span class="s2">&quot;/usr/share/terminfo/78/xterm-kitty&quot;</span> 
+        <span class="k">and</span> <span class="k">not</span> <span class="k">test</span> -r <span class="s2">&quot;/usr/share/terminfo/x/xterm-kitty&quot;</span> -o -r <span class="s2">&quot;/usr/share/terminfo/78/xterm-kitty&quot;</span>
         <span class="c"># Ensure terminfo is available in sudo</span>
         <span class="k">function</span> sudo
             <span class="k">set</span> --local is_sudoedit <span class="s2">&quot;n&quot;</span>
             <span class="k">for</span> arg <span class="k">in</span> <span class="nv">$argv</span>
-                <span class="k">if</span> string match -q -- <span class="s2">&quot;-e&quot;</span> <span class="s2">&quot;</span><span class="nv">$arg</span><span class="s2">&quot;</span> <span class="k">or</span> string match -q -- <span class="s2">&quot;--edit&quot;</span> <span class="s2">&quot;</span><span class="nv">$arg</span><span class="s2">&quot;</span> 
+                <span class="k">if</span> string match -q -- <span class="s2">&quot;-e&quot;</span> <span class="s2">&quot;</span><span class="nv">$arg</span><span class="s2">&quot;</span> <span class="k">or</span> string match -q -- <span class="s2">&quot;--edit&quot;</span> <span class="s2">&quot;</span><span class="nv">$arg</span><span class="s2">&quot;</span>
                     <span class="k">set</span> is_sudoedit <span class="s2">&quot;y&quot;</span>
                     <span class="k">break</span>
                 <span class="k">end</span>
@@ -1741,8 +1758,8 @@ clone-in-kitty<span class="o">()</span><span class="w"> </span><span class="o">{
             <span class="k">and</span> <span class="k">return</span> 0
             <span class="k">return</span> 1
         <span class="k">end</span>
-        <span class="k">if</span> _ksi_s_is_ok <span class="s2">&quot;venv&quot;</span> 
-            <span class="k">and</span> <span class="k">test</span> -n <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span> -a -r <span class="s2">&quot;</span><span class="nv">$venv</span><span class="s2">&quot;</span> 
+        <span class="k">if</span> _ksi_s_is_ok <span class="s2">&quot;venv&quot;</span>
+            <span class="k">and</span> <span class="k">test</span> -n <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span> -a -r <span class="s2">&quot;</span><span class="nv">$venv</span><span class="s2">&quot;</span>
             <span class="k">set</span> _ksi_sourced <span class="s2">&quot;y&quot;</span>
             <span class="k">set</span> --erase VIRTUAL_ENV _OLD_FISH_PROMPT_OVERRIDE  <span class="c"># activate.fish stupidly exports _OLD_FISH_PROMPT_OVERRIDE</span>
             <span class="nb">source</span> <span class="s2">&quot;</span><span class="nv">$venv</span><span class="s2">&quot;</span>
@@ -2275,6 +2292,12 @@ window, etc. Not all arguments are supported, see the discussion in the
 <a class="reference internal" href="#clone-shell"><span class="std std-ref">Clone the current shell into a new window</span></a> section above.</p>
 <p>In order to avoid remote code execution, kitty will only execute the configured
 editor and pass the file path to edit to it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To edit files using sudo the best method is to set the
+<code class="code docutils literal notranslate"><span class="pre">SUDO_EDITOR</span></code> environment variable to <code class="docutils literal notranslate"><span class="pre">kitten</span> <span class="pre">edit-in-kitty</span></code> and
+then edit the file using the <code class="docutils literal notranslate"><span class="pre">sudoedit</span></code> or <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-e</span></code> commands.</p>
+</div>
 </section>
 <section id="using-shell-integration-in-sub-shells-containers-etc">
 <span id="run-shell"></span><h1>Using shell integration in sub-shells, containers, etc.<a class="headerlink" href="#using-shell-integration-in-sub-shells-containers-etc" title="Link to this heading">#</a></h1>
@@ -2377,6 +2400,20 @@ example: kitty, iTerm2, WezTerm, DomTerm</p>
 <p>Here <code class="docutils literal notranslate"><span class="pre">&lt;OSC&gt;</span></code> is the bytes <code class="docutils literal notranslate"><span class="pre">0x1b</span> <span class="pre">0x5d</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;ST&gt;</span></code> is the bytes <code class="docutils literal notranslate"><span class="pre">0x1b</span>
 <span class="pre">0x5c</span></code>. This is exactly what is needed for shell integration in kitty. For the
 full protocol, that also marks the command region, see <a class="reference external" href="https://iterm2.com/documentation-escape-codes.html">the iTerm2 docs</a>.</p>
+<p>kitty additionally supports several extra fields for the <code class="docutils literal notranslate"><span class="pre">&lt;OSC&gt;133;A</span></code> command
+to control its behavior, separated by semi-colons. They are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">redraw</span><span class="o">=</span><span class="mi">0</span> <span class="o">-</span> <span class="n">this</span> <span class="n">tells</span> <span class="n">kitty</span> <span class="n">that</span> <span class="n">the</span> <span class="n">shell</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">redraw</span> <span class="n">the</span> <span class="n">prompt</span> <span class="n">on</span>
+<span class="n">resize</span> <span class="n">so</span> <span class="n">it</span> <span class="n">should</span> <span class="ow">not</span> <span class="n">erase</span> <span class="n">it</span>
+
+<span class="n">special_key</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="n">this</span> <span class="n">tells</span> <span class="n">kitty</span> <span class="n">to</span> <span class="n">use</span> <span class="n">a</span> <span class="n">special</span> <span class="n">key</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">arrow</span> <span class="n">keys</span>
+<span class="n">to</span> <span class="n">move</span> <span class="n">the</span> <span class="n">cursor</span> <span class="n">on</span> <span class="n">mouse</span> <span class="n">click</span><span class="o">.</span> <span class="n">Useful</span> <span class="k">if</span> <span class="n">arrow</span> <span class="n">keys</span> <span class="n">have</span> <span class="n">side</span><span class="o">-</span><span class="n">effects</span>
+<span class="n">like</span> <span class="n">triggering</span> <span class="n">auto</span> <span class="n">complete</span><span class="o">.</span> <span class="n">The</span> <span class="n">shell</span> <span class="n">integration</span> <span class="n">script</span> <span class="n">then</span> <span class="n">binds</span> <span class="n">the</span>
+<span class="n">special</span> <span class="n">key</span><span class="p">,</span> <span class="k">as</span> <span class="n">needed</span><span class="o">.</span>
+
+<span class="n">k</span><span class="o">=</span><span class="n">s</span> <span class="o">-</span> <span class="n">this</span> <span class="n">tells</span> <span class="n">kitty</span> <span class="n">that</span> <span class="n">the</span> <span class="n">secondary</span> <span class="p">(</span><span class="n">PS2</span><span class="p">)</span> <span class="n">prompt</span> <span class="ow">is</span> <span class="n">starting</span> <span class="n">at</span> <span class="n">the</span>
+<span class="n">current</span> <span class="n">line</span><span class="o">.</span>
+</pre></div>
+</div>
 </section>
 
         </article>

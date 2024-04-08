@@ -719,6 +719,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><div class="visually-hidden">Toggle navigation of Detailed list of changes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#future">0.34.0 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.33.1 [2024-03-21]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.33.0 [2024-03-12]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.32.2 [2024-02-12]</a></li>
@@ -1157,14 +1158,14 @@ running an editor:</p>
 <input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">neovim</label><div class="tab-content docutils container">
 <p>In <code class="file docutils literal notranslate"><span class="pre">~/.config/nvim/init.lua</span></code> add:</p>
 <blockquote>
-<div><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">nvim_create_autocmd</span><span class="p">({</span> <span class="s2">&quot;VimEnter&quot;</span> <span class="p">},</span> <span class="p">{</span>
+<div><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">nvim_create_autocmd</span><span class="p">({</span> <span class="s2">&quot;VimEnter&quot;</span><span class="p">,</span> <span class="s2">&quot;VimResume&quot;</span> <span class="p">},</span> <span class="p">{</span>
     <span class="n">group</span> <span class="o">=</span> <span class="n">vim</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">nvim_create_augroup</span><span class="p">(</span><span class="s2">&quot;KittySetVarVimEnter&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="n">clear</span> <span class="o">=</span> <span class="kc">true</span> <span class="p">}),</span>
     <span class="n">callback</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
         <span class="nb">io.stdout</span><span class="p">:</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">]1337;SetUserVar=in_editor=MQo</span><span class="se">\007</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="kr">end</span><span class="p">,</span>
 <span class="p">})</span>
 
-<span class="n">vim</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">nvim_create_autocmd</span><span class="p">({</span> <span class="s2">&quot;VimLeave&quot;</span> <span class="p">},</span> <span class="p">{</span>
+<span class="n">vim</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">nvim_create_autocmd</span><span class="p">({</span> <span class="s2">&quot;VimLeave&quot;</span><span class="p">,</span> <span class="s2">&quot;VimSuspend&quot;</span> <span class="p">},</span> <span class="p">{</span>
     <span class="n">group</span> <span class="o">=</span> <span class="n">vim</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">nvim_create_augroup</span><span class="p">(</span><span class="s2">&quot;KittyUnsetVarVimLeave&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="n">clear</span> <span class="o">=</span> <span class="kc">true</span> <span class="p">}),</span>
     <span class="n">callback</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
         <span class="nb">io.stdout</span><span class="p">:</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">]1337;SetUserVar=in_editor</span><span class="se">\007</span><span class="s2">&quot;</span><span class="p">)</span>

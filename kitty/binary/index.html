@@ -719,6 +719,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><div class="visually-hidden">Toggle navigation of Detailed list of changes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#future">0.34.0 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.33.1 [2024-03-21]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.33.0 [2024-03-12]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.32.2 [2024-02-12]</a></li>
@@ -1008,17 +1009,17 @@ tarball and extract it into a directory. The <em>kitty</em> executable will be i
 <section id="desktop-integration-on-linux">
 <h2>Desktop integration on Linux<a class="headerlink" href="#desktop-integration-on-linux" title="Link to this heading">#</a></h2>
 <p>If you want the kitty icon to appear in the taskbar and an entry for it to be
-present in the menus, you will need to install the <code class="file docutils literal notranslate"><span class="pre">kitty.desktop</span></code> file.
+present in the menus, you will need to install the <code class="file docutils literal notranslate"><span class="pre">kitty-terminal.desktop</span></code> file.
 The details of the following procedure may need to be adjusted for your
 particular desktop, but it should work for most major desktop environments.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create symbolic links to add kitty and kitten to PATH (assuming ~/.local/bin is in</span>
 <span class="c1"># your system-wide PATH)</span>
 ln<span class="w"> </span>-sf<span class="w"> </span>~/.local/kitty.app/bin/kitty<span class="w"> </span>~/.local/kitty.app/bin/kitten<span class="w"> </span>~/.local/bin/
-<span class="c1"># Place the kitty.desktop file somewhere it can be found by the OS</span>
-cp<span class="w"> </span>~/.local/kitty.app/share/applications/kitty.desktop<span class="w"> </span>~/.local/share/applications/
+<span class="c1"># Place the kitty-terminal.desktop file somewhere it can be found by the OS</span>
+cp<span class="w"> </span>~/.local/kitty.app/share/applications/kitty-terminal.desktop<span class="w"> </span>~/.local/share/applications/
 <span class="c1"># If you want to open text files and images in kitty via your file manager also add the kitty-open.desktop file</span>
 cp<span class="w"> </span>~/.local/kitty.app/share/applications/kitty-open.desktop<span class="w"> </span>~/.local/share/applications/
-<span class="c1"># Update the paths to the kitty and its icon in the kitty.desktop file(s)</span>
+<span class="c1"># Update the paths to the kitty and its icon in the kitty desktop file(s)</span>
 sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s|Icon=kitty|Icon=/home/</span><span class="nv">$USER</span><span class="s2">/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g&quot;</span><span class="w"> </span>~/.local/share/applications/kitty*.desktop
 sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s|Exec=kitty|Exec=/home/</span><span class="nv">$USER</span><span class="s2">/.local/kitty.app/bin/kitty|g&quot;</span><span class="w"> </span>~/.local/share/applications/kitty*.desktop
 </pre></div>
@@ -1027,7 +1028,7 @@ sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s|Ex
 <p class="admonition-title">Note</p>
 <p>In <code class="file docutils literal notranslate"><span class="pre">kitty-open.desktop</span></code>, kitty is registered to handle some supported
 MIME types. This will cause kitty to take precedence on some systems where
-the default apps are not explicitly set. For example, you expect to use
+the default apps are not explicitly set. For example, if you expect to use
 other GUI file managers to open dir paths when using commands such as
 <strong class="program">xdg-open</strong>, you should configure the default opener for the MIME
 type <code class="docutils literal notranslate"><span class="pre">inode/directory</span></code>:</p>
