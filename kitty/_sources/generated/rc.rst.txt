@@ -92,6 +92,9 @@ Fields are:
 :code:`self (default: False)`
   Boolean indicating whether to detach the window the command is run in
 
+:code:`stay_in_tab (default: False)`
+  Boolean indicating focus should remain in the active tab after windows are moved
+
 
 
 disable-ligatures
@@ -452,6 +455,28 @@ Fields are:
 
 
 
+run
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`data (required)`
+  Chunk of STDIN data, base64 encoded no more than 4096 bytes. Must send an empty chunk to indicate end of data.
+
+:code:`cmdline (required)`
+  The command line to run
+
+:code:`env (default: [])`
+  List of environment variables of the form NAME=VALUE
+
+:code:`allow_remote_control (default: False)`
+  A boolean indicating whether to allow remote control
+
+:code:`remote_control_password (default: [])`
+  A list of remote control passwords
+
+
+
 scroll-window
 --------------------------------------------------------------------------------
              for unscrolling by lines.
@@ -566,7 +591,7 @@ set-background-opacity
 Fields are:
 
 :code:`opacity (required)`
-  A number between 0.1 and 1
+  A number between 0 and 1
 
 :code:`match_window (optional)`
   Window to change opacity in

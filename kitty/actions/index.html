@@ -16,10 +16,10 @@
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Arrange windows" href="../layouts/" /><link rel="prev" title="kitty.conf" href="../conf/" />
 
-    <link rel="shortcut icon" href="../_static/kitty.svg"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+    <link rel="shortcut icon" href="../_static/kitty.svg"/><!-- Generated with Sphinx 7.3.7 and Furo 2024.05.06 -->
         <title>Mappable actions - kitty</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=387cc868" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -95,7 +95,7 @@
   <symbol id="svg-sun" viewBox="0 0 24 24">
     <title>Light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
       <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -110,7 +110,7 @@
   <symbol id="svg-moon" viewBox="0 0 24 24">
     <title>Dark mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
     </svg>
@@ -118,7 +118,7 @@
   <symbol id="svg-sun-half" viewBox="0 0 24 24">
     <title>Auto light/dark mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <circle cx="12" cy="12" r="9" />
       <path d="M13 12h5" />
@@ -126,6 +126,60 @@
       <path d="M13 18h1" />
       <path d="M13 9h4" />
       <path d="M13 6h1" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" /
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
     </svg>
   </symbol>
 </svg>
@@ -138,6 +192,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -156,7 +212,8 @@
       <div class="theme-toggle-container theme-toggle-header">
         <button class="theme-toggle">
           <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
@@ -452,6 +509,7 @@
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#remove-marker">remove-marker</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#resize-os-window">resize-os-window</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#resize-window">resize-window</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#run">run</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#scroll-window">scroll-window</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#select-window">select-window</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#send-key">send-key</a></li>
@@ -563,87 +621,91 @@
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id21">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-scroll-window">kitten @ scroll-window</a><input class="toctree-checkbox" id="toctree-checkbox-68" name="toctree-checkbox-68" role="switch" type="checkbox"/><label for="toctree-checkbox-68"><div class="visually-hidden">Toggle navigation of kitten @ scroll-window</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-run">kitten @ run</a><input class="toctree-checkbox" id="toctree-checkbox-68" name="toctree-checkbox-68" role="switch" type="checkbox"/><label for="toctree-checkbox-68"><div class="visually-hidden">Toggle navigation of kitten @ run</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id22">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-select-window">kitten @ select-window</a><input class="toctree-checkbox" id="toctree-checkbox-69" name="toctree-checkbox-69" role="switch" type="checkbox"/><label for="toctree-checkbox-69"><div class="visually-hidden">Toggle navigation of kitten @ select-window</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-scroll-window">kitten @ scroll-window</a><input class="toctree-checkbox" id="toctree-checkbox-69" name="toctree-checkbox-69" role="switch" type="checkbox"/><label for="toctree-checkbox-69"><div class="visually-hidden">Toggle navigation of kitten @ scroll-window</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id23">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-send-key">kitten @ send-key</a><input class="toctree-checkbox" id="toctree-checkbox-70" name="toctree-checkbox-70" role="switch" type="checkbox"/><label for="toctree-checkbox-70"><div class="visually-hidden">Toggle navigation of kitten @ send-key</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-select-window">kitten @ select-window</a><input class="toctree-checkbox" id="toctree-checkbox-70" name="toctree-checkbox-70" role="switch" type="checkbox"/><label for="toctree-checkbox-70"><div class="visually-hidden">Toggle navigation of kitten @ select-window</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id24">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-send-text">kitten @ send-text</a><input class="toctree-checkbox" id="toctree-checkbox-71" name="toctree-checkbox-71" role="switch" type="checkbox"/><label for="toctree-checkbox-71"><div class="visually-hidden">Toggle navigation of kitten @ send-text</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-send-key">kitten @ send-key</a><input class="toctree-checkbox" id="toctree-checkbox-71" name="toctree-checkbox-71" role="switch" type="checkbox"/><label for="toctree-checkbox-71"><div class="visually-hidden">Toggle navigation of kitten @ send-key</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id25">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-background-image">kitten @ set-background-image</a><input class="toctree-checkbox" id="toctree-checkbox-72" name="toctree-checkbox-72" role="switch" type="checkbox"/><label for="toctree-checkbox-72"><div class="visually-hidden">Toggle navigation of kitten @ set-background-image</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-send-text">kitten @ send-text</a><input class="toctree-checkbox" id="toctree-checkbox-72" name="toctree-checkbox-72" role="switch" type="checkbox"/><label for="toctree-checkbox-72"><div class="visually-hidden">Toggle navigation of kitten @ send-text</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id26">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-background-opacity">kitten @ set-background-opacity</a><input class="toctree-checkbox" id="toctree-checkbox-73" name="toctree-checkbox-73" role="switch" type="checkbox"/><label for="toctree-checkbox-73"><div class="visually-hidden">Toggle navigation of kitten @ set-background-opacity</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-background-image">kitten @ set-background-image</a><input class="toctree-checkbox" id="toctree-checkbox-73" name="toctree-checkbox-73" role="switch" type="checkbox"/><label for="toctree-checkbox-73"><div class="visually-hidden">Toggle navigation of kitten @ set-background-image</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id27">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-colors">kitten @ set-colors</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle navigation of kitten @ set-colors</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-background-opacity">kitten @ set-background-opacity</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle navigation of kitten @ set-background-opacity</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id28">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-enabled-layouts">kitten @ set-enabled-layouts</a><input class="toctree-checkbox" id="toctree-checkbox-75" name="toctree-checkbox-75" role="switch" type="checkbox"/><label for="toctree-checkbox-75"><div class="visually-hidden">Toggle navigation of kitten @ set-enabled-layouts</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-colors">kitten @ set-colors</a><input class="toctree-checkbox" id="toctree-checkbox-75" name="toctree-checkbox-75" role="switch" type="checkbox"/><label for="toctree-checkbox-75"><div class="visually-hidden">Toggle navigation of kitten @ set-colors</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id29">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-font-size">kitten @ set-font-size</a><input class="toctree-checkbox" id="toctree-checkbox-76" name="toctree-checkbox-76" role="switch" type="checkbox"/><label for="toctree-checkbox-76"><div class="visually-hidden">Toggle navigation of kitten @ set-font-size</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-enabled-layouts">kitten @ set-enabled-layouts</a><input class="toctree-checkbox" id="toctree-checkbox-76" name="toctree-checkbox-76" role="switch" type="checkbox"/><label for="toctree-checkbox-76"><div class="visually-hidden">Toggle navigation of kitten @ set-enabled-layouts</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id30">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-spacing">kitten @ set-spacing</a><input class="toctree-checkbox" id="toctree-checkbox-77" name="toctree-checkbox-77" role="switch" type="checkbox"/><label for="toctree-checkbox-77"><div class="visually-hidden">Toggle navigation of kitten @ set-spacing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-font-size">kitten @ set-font-size</a><input class="toctree-checkbox" id="toctree-checkbox-77" name="toctree-checkbox-77" role="switch" type="checkbox"/><label for="toctree-checkbox-77"><div class="visually-hidden">Toggle navigation of kitten @ set-font-size</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id31">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-tab-color">kitten @ set-tab-color</a><input class="toctree-checkbox" id="toctree-checkbox-78" name="toctree-checkbox-78" role="switch" type="checkbox"/><label for="toctree-checkbox-78"><div class="visually-hidden">Toggle navigation of kitten @ set-tab-color</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-spacing">kitten @ set-spacing</a><input class="toctree-checkbox" id="toctree-checkbox-78" name="toctree-checkbox-78" role="switch" type="checkbox"/><label for="toctree-checkbox-78"><div class="visually-hidden">Toggle navigation of kitten @ set-spacing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id32">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-tab-title">kitten @ set-tab-title</a><input class="toctree-checkbox" id="toctree-checkbox-79" name="toctree-checkbox-79" role="switch" type="checkbox"/><label for="toctree-checkbox-79"><div class="visually-hidden">Toggle navigation of kitten @ set-tab-title</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-tab-color">kitten @ set-tab-color</a><input class="toctree-checkbox" id="toctree-checkbox-79" name="toctree-checkbox-79" role="switch" type="checkbox"/><label for="toctree-checkbox-79"><div class="visually-hidden">Toggle navigation of kitten @ set-tab-color</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id33">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-user-vars">kitten @ set-user-vars</a><input class="toctree-checkbox" id="toctree-checkbox-80" name="toctree-checkbox-80" role="switch" type="checkbox"/><label for="toctree-checkbox-80"><div class="visually-hidden">Toggle navigation of kitten @ set-user-vars</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-tab-title">kitten @ set-tab-title</a><input class="toctree-checkbox" id="toctree-checkbox-80" name="toctree-checkbox-80" role="switch" type="checkbox"/><label for="toctree-checkbox-80"><div class="visually-hidden">Toggle navigation of kitten @ set-tab-title</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id34">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-window-logo">kitten @ set-window-logo</a><input class="toctree-checkbox" id="toctree-checkbox-81" name="toctree-checkbox-81" role="switch" type="checkbox"/><label for="toctree-checkbox-81"><div class="visually-hidden">Toggle navigation of kitten @ set-window-logo</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-user-vars">kitten @ set-user-vars</a><input class="toctree-checkbox" id="toctree-checkbox-81" name="toctree-checkbox-81" role="switch" type="checkbox"/><label for="toctree-checkbox-81"><div class="visually-hidden">Toggle navigation of kitten @ set-user-vars</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id35">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-window-title">kitten @ set-window-title</a><input class="toctree-checkbox" id="toctree-checkbox-82" name="toctree-checkbox-82" role="switch" type="checkbox"/><label for="toctree-checkbox-82"><div class="visually-hidden">Toggle navigation of kitten @ set-window-title</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-window-logo">kitten @ set-window-logo</a><input class="toctree-checkbox" id="toctree-checkbox-82" name="toctree-checkbox-82" role="switch" type="checkbox"/><label for="toctree-checkbox-82"><div class="visually-hidden">Toggle navigation of kitten @ set-window-logo</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id36">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-signal-child">kitten @ signal-child</a><input class="toctree-checkbox" id="toctree-checkbox-83" name="toctree-checkbox-83" role="switch" type="checkbox"/><label for="toctree-checkbox-83"><div class="visually-hidden">Toggle navigation of kitten @ signal-child</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-window-title">kitten @ set-window-title</a><input class="toctree-checkbox" id="toctree-checkbox-83" name="toctree-checkbox-83" role="switch" type="checkbox"/><label for="toctree-checkbox-83"><div class="visually-hidden">Toggle navigation of kitten @ set-window-title</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id37">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-signal-child">kitten @ signal-child</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle navigation of kitten @ signal-child</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id38">Options</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/#startup-sessions">Startup Sessions</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#creating-tabs-windows">Creating tabs/windows</a><input class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><div class="visually-hidden">Toggle navigation of Creating tabs/windows</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#creating-tabs-windows">Creating tabs/windows</a><input class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" role="switch" type="checkbox"/><label for="toctree-checkbox-85"><div class="visually-hidden">Toggle navigation of Creating tabs/windows</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../launch/">The <strong class="command">launch</strong> command</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../launch/#the-piping-environment">The piping environment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../launch/#special-arguments">Special arguments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../launch/#watching-launched-windows">Watching launched windows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../launch/#finding-executables">Finding executables</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../launch/#syntax-reference">Syntax reference</a><input class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" role="switch" type="checkbox"/><label for="toctree-checkbox-85"><div class="visually-hidden">Toggle navigation of Syntax reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../launch/#syntax-reference">Syntax reference</a><input class="toctree-checkbox" id="toctree-checkbox-86" name="toctree-checkbox-86" role="switch" type="checkbox"/><label for="toctree-checkbox-86"><div class="visually-hidden">Toggle navigation of Syntax reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../launch/#options">Options</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#mouse-features">Mouse features</a><input class="toctree-checkbox" id="toctree-checkbox-86" name="toctree-checkbox-86" role="switch" type="checkbox"/><label for="toctree-checkbox-86"><div class="visually-hidden">Toggle navigation of Mouse features</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a><input class="toctree-checkbox" id="toctree-checkbox-87" name="toctree-checkbox-87" role="switch" type="checkbox"/><label for="toctree-checkbox-87"><div class="visually-hidden">Toggle navigation of Scripting the mouse click</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#mouse-features">Mouse features</a><input class="toctree-checkbox" id="toctree-checkbox-87" name="toctree-checkbox-87" role="switch" type="checkbox"/><label for="toctree-checkbox-87"><div class="visually-hidden">Toggle navigation of Mouse features</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a><input class="toctree-checkbox" id="toctree-checkbox-88" name="toctree-checkbox-88" role="switch" type="checkbox"/><label for="toctree-checkbox-88"><div class="visually-hidden">Toggle navigation of Scripting the mouse click</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../open_actions/#matching-criteria">Matching criteria</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../open_actions/#scripting-the-opening-of-files-with-kitty-on-macos">Scripting the opening of files with kitty on macOS</a></li>
 </ul>
@@ -652,10 +714,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/#font-control">Font control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/#the-scrollback-buffer">The scrollback buffer</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#integration-with-shells">Integration with shells</a><input class="toctree-checkbox" id="toctree-checkbox-88" name="toctree-checkbox-88" role="switch" type="checkbox"/><label for="toctree-checkbox-88"><div class="visually-hidden">Toggle navigation of Integration with shells</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#integration-with-shells">Integration with shells</a><input class="toctree-checkbox" id="toctree-checkbox-89" name="toctree-checkbox-89" role="switch" type="checkbox"/><label for="toctree-checkbox-89"><div class="visually-hidden">Toggle navigation of Integration with shells</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/">Shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#features">Features</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../shell-integration/#configuration">Configuration</a><input class="toctree-checkbox" id="toctree-checkbox-89" name="toctree-checkbox-89" role="switch" type="checkbox"/><label for="toctree-checkbox-89"><div class="visually-hidden">Toggle navigation of Configuration</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../shell-integration/#configuration">Configuration</a><input class="toctree-checkbox" id="toctree-checkbox-90" name="toctree-checkbox-90" role="switch" type="checkbox"/><label for="toctree-checkbox-90"><div class="visually-hidden">Toggle navigation of Configuration</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../shell-integration/#more-ways-to-browse-command-output">More ways to browse command output</a></li>
 </ul>
 </li>
@@ -671,7 +733,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/#multiple-copy-paste-buffers">Multiple copy/paste buffers</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#marks">Marks</a><input class="toctree-checkbox" id="toctree-checkbox-90" name="toctree-checkbox-90" role="switch" type="checkbox"/><label for="toctree-checkbox-90"><div class="visually-hidden">Toggle navigation of Marks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#marks">Marks</a><input class="toctree-checkbox" id="toctree-checkbox-91" name="toctree-checkbox-91" role="switch" type="checkbox"/><label for="toctree-checkbox-91"><div class="visually-hidden">Toggle navigation of Marks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../marks/">Mark text on screen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../marks/#examples">Examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../marks/#creating-markers-dynamically">Creating markers dynamically</a></li>
@@ -682,7 +744,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../faq/">Frequently Asked Questions</a><input class="toctree-checkbox" id="toctree-checkbox-91" name="toctree-checkbox-91" role="switch" type="checkbox"/><label for="toctree-checkbox-91"><div class="visually-hidden">Toggle navigation of Frequently Asked Questions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../faq/">Frequently Asked Questions</a><input class="toctree-checkbox" id="toctree-checkbox-92" name="toctree-checkbox-92" role="switch" type="checkbox"/><label for="toctree-checkbox-92"><div class="visually-hidden">Toggle navigation of Frequently Asked Questions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../faq/#some-special-symbols-are-rendered-small-truncated-in-kitty">Some special symbols are rendered small/truncated in kitty?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../faq/#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim">Using a color theme with a background color does not work well in vim?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../faq/#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-or-functional-keys-like-arrow-keys-don-t-work">I get errors about the terminal being unknown or opening the terminal failing or functional keys like arrow keys don’t work?</a></li>
@@ -702,8 +764,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../support/">Support kitty development ❤️</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../performance/">Performance</a><input class="toctree-checkbox" id="toctree-checkbox-92" name="toctree-checkbox-92" role="switch" type="checkbox"/><label for="toctree-checkbox-92"><div class="visually-hidden">Toggle navigation of Performance</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../performance/#benchmarks">Benchmarks</a><input class="toctree-checkbox" id="toctree-checkbox-93" name="toctree-checkbox-93" role="switch" type="checkbox"/><label for="toctree-checkbox-93"><div class="visually-hidden">Toggle navigation of Benchmarks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../performance/">Performance</a><input class="toctree-checkbox" id="toctree-checkbox-93" name="toctree-checkbox-93" role="switch" type="checkbox"/><label for="toctree-checkbox-93"><div class="visually-hidden">Toggle navigation of Performance</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../performance/#benchmarks">Benchmarks</a><input class="toctree-checkbox" id="toctree-checkbox-94" name="toctree-checkbox-94" role="switch" type="checkbox"/><label for="toctree-checkbox-94"><div class="visually-hidden">Toggle navigation of Benchmarks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../performance/#keyboard-to-screen-latency">Keyboard to screen latency</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../performance/#throughput">Throughput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../performance/#energy-usage">Energy usage</a></li>
@@ -712,113 +774,114 @@
 <li class="toctree-l2"><a class="reference internal" href="../performance/#instrumenting-kitty">Instrumenting kitty</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../changelog/">Changelog</a><input class="toctree-checkbox" id="toctree-checkbox-94" name="toctree-checkbox-94" role="switch" type="checkbox"/><label for="toctree-checkbox-94"><div class="visually-hidden">Toggle navigation of Changelog</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#recent-major-new-features">Recent major new features</a><input class="toctree-checkbox" id="toctree-checkbox-95" name="toctree-checkbox-95" role="switch" type="checkbox"/><label for="toctree-checkbox-95"><div class="visually-hidden">Toggle navigation of Recent major new features</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../changelog/">Changelog</a><input class="toctree-checkbox" id="toctree-checkbox-95" name="toctree-checkbox-95" role="switch" type="checkbox"/><label for="toctree-checkbox-95"><div class="visually-hidden">Toggle navigation of Changelog</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#recent-major-new-features">Recent major new features</a><input class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><div class="visually-hidden">Toggle navigation of Recent major new features</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#wayland-goodies-0-34">Wayland goodies [0.34]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#cheetah-speed-0-33">Cheetah speed 🐆 [0.33]</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><div class="visually-hidden">Toggle navigation of Detailed list of changes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.34.1 [2024-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.34.0 [2024-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.33.1 [2024-03-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.33.0 [2024-03-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.32.2 [2024-02-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.32.1 [2024-01-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.32.0 [2024-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.31.0 [2023-11-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.30.1 [2023-10-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.30.0 [2023-09-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.29.2 [2023-07-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.29.1 [2023-07-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.29.0 [2023-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.28.1 [2023-04-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.28.0 [2023-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.27.1 [2023-02-07]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.27.0 [2023-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.26.5 [2022-11-07]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.26.4 [2022-10-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.26.3 [2022-09-22]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.26.2 [2022-09-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.26.1 [2022-08-30]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.26.0 [2022-08-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.25.2 [2022-06-07]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.25.1 [2022-05-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id73">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id74">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id75">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id76">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id77">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id78">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id79">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id80">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id81">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id82">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id83">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id84">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id85">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id86">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id87">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id88">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id89">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id90">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id91">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id92">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id93">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id94">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id95">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-97" name="toctree-checkbox-97" role="switch" type="checkbox"/><label for="toctree-checkbox-97"><div class="visually-hidden">Toggle navigation of Detailed list of changes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.35.0 [2024-05-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.34.1 [2024-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.34.0 [2024-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.33.1 [2024-03-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.33.0 [2024-03-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.32.2 [2024-02-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.32.1 [2024-01-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.32.0 [2024-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.31.0 [2023-11-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.30.1 [2023-10-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.30.0 [2023-09-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.29.2 [2023-07-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.29.1 [2023-07-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.29.0 [2023-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.28.1 [2023-04-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.28.0 [2023-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.27.1 [2023-02-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.27.0 [2023-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.26.5 [2022-11-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.26.4 [2022-10-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.26.3 [2022-09-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.26.2 [2022-09-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.26.1 [2022-08-30]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.26.0 [2022-08-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.25.2 [2022-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id73">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id74">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id75">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id76">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id77">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id78">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id79">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id80">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id81">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id82">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id83">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id84">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id85">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id86">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id87">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id88">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id89">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id90">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id91">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id92">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id93">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id94">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id95">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id96">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../integrations/">Integrations with other tools</a><input class="toctree-checkbox" id="toctree-checkbox-97" name="toctree-checkbox-97" role="switch" type="checkbox"/><label for="toctree-checkbox-97"><div class="visually-hidden">Toggle navigation of Integrations with other tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../integrations/">Integrations with other tools</a><input class="toctree-checkbox" id="toctree-checkbox-98" name="toctree-checkbox-98" role="switch" type="checkbox"/><label for="toctree-checkbox-98"><div class="visually-hidden">Toggle navigation of Integrations with other tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../integrations/#image-and-document-viewers">Image and document viewers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../integrations/#system-and-data-visualisation-tools">System and data visualisation tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../integrations/#editor-integration">Editor integration</a></li>
@@ -826,17 +889,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../integrations/#miscellaneous">Miscellaneous</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input class="toctree-checkbox" id="toctree-checkbox-98" name="toctree-checkbox-98" role="switch" type="checkbox"/><label for="toctree-checkbox-98"><div class="visually-hidden">Toggle navigation of Terminal protocol extensions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input class="toctree-checkbox" id="toctree-checkbox-99" name="toctree-checkbox-99" role="switch" type="checkbox"/><label for="toctree-checkbox-99"><div class="visually-hidden">Toggle navigation of Terminal protocol extensions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../underlines/">Colored and styled underlines</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../graphics-protocol/">Terminal graphics protocol</a><input class="toctree-checkbox" id="toctree-checkbox-99" name="toctree-checkbox-99" role="switch" type="checkbox"/><label for="toctree-checkbox-99"><div class="visually-hidden">Toggle navigation of Terminal graphics protocol</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../graphics-protocol/">Terminal graphics protocol</a><input class="toctree-checkbox" id="toctree-checkbox-100" name="toctree-checkbox-100" role="switch" type="checkbox"/><label for="toctree-checkbox-100"><div class="visually-hidden">Toggle navigation of Terminal graphics protocol</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#getting-the-window-size">Getting the window size</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#a-minimal-example">A minimal example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#the-graphics-escape-code">The graphics escape code</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#transferring-pixel-data">Transferring pixel data</a><input class="toctree-checkbox" id="toctree-checkbox-100" name="toctree-checkbox-100" role="switch" type="checkbox"/><label for="toctree-checkbox-100"><div class="visually-hidden">Toggle navigation of Transferring pixel data</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#transferring-pixel-data">Transferring pixel data</a><input class="toctree-checkbox" id="toctree-checkbox-101" name="toctree-checkbox-101" role="switch" type="checkbox"/><label for="toctree-checkbox-101"><div class="visually-hidden">Toggle navigation of Transferring pixel data</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#rgb-and-rgba-data">RGB and RGBA data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#png-data">PNG data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#compression">Compression</a></li>
-<li class="toctree-l4 has-children"><a class="reference internal" href="../graphics-protocol/#the-transmission-medium">The transmission medium</a><input class="toctree-checkbox" id="toctree-checkbox-101" name="toctree-checkbox-101" role="switch" type="checkbox"/><label for="toctree-checkbox-101"><div class="visually-hidden">Toggle navigation of The transmission medium</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../graphics-protocol/#the-transmission-medium">The transmission medium</a><input class="toctree-checkbox" id="toctree-checkbox-102" name="toctree-checkbox-102" role="switch" type="checkbox"/><label for="toctree-checkbox-102"><div class="visually-hidden">Toggle navigation of The transmission medium</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../graphics-protocol/#local-client">Local client</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../graphics-protocol/#remote-client">Remote client</a></li>
 </ul>
@@ -844,7 +907,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#querying-support-and-available-transmission-mediums">Querying support and available transmission mediums</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#display-images-on-screen">Display images on screen</a><input class="toctree-checkbox" id="toctree-checkbox-102" name="toctree-checkbox-102" role="switch" type="checkbox"/><label for="toctree-checkbox-102"><div class="visually-hidden">Toggle navigation of Display images on screen</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#display-images-on-screen">Display images on screen</a><input class="toctree-checkbox" id="toctree-checkbox-103" name="toctree-checkbox-103" role="switch" type="checkbox"/><label for="toctree-checkbox-103"><div class="visually-hidden">Toggle navigation of Display images on screen</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#controlling-displayed-image-layout">Controlling displayed image layout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#unicode-placeholders">Unicode placeholders</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#relative-placements">Relative placements</a></li>
@@ -853,7 +916,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#deleting-images">Deleting images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#suppressing-responses-from-the-terminal">Suppressing responses from the terminal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#requesting-image-ids-from-the-terminal">Requesting image ids from the terminal</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#animation">Animation</a><input class="toctree-checkbox" id="toctree-checkbox-103" name="toctree-checkbox-103" role="switch" type="checkbox"/><label for="toctree-checkbox-103"><div class="visually-hidden">Toggle navigation of Animation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#animation">Animation</a><input class="toctree-checkbox" id="toctree-checkbox-104" name="toctree-checkbox-104" role="switch" type="checkbox"/><label for="toctree-checkbox-104"><div class="visually-hidden">Toggle navigation of Animation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#transferring-animation-frame-data">Transferring animation frame data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#controlling-animations">Controlling animations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#composing-animation-frames">Composing animation frames</a></li>
@@ -864,9 +927,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#interaction-with-other-terminal-actions">Interaction with other terminal actions</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../keyboard-protocol/">Comprehensive keyboard handling in terminals</a><input class="toctree-checkbox" id="toctree-checkbox-104" name="toctree-checkbox-104" role="switch" type="checkbox"/><label for="toctree-checkbox-104"><div class="visually-hidden">Toggle navigation of Comprehensive keyboard handling in terminals</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../keyboard-protocol/">Comprehensive keyboard handling in terminals</a><input class="toctree-checkbox" id="toctree-checkbox-105" name="toctree-checkbox-105" role="switch" type="checkbox"/><label for="toctree-checkbox-105"><div class="visually-hidden">Toggle navigation of Comprehensive keyboard handling in terminals</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#quickstart">Quickstart</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#an-overview">An overview</a><input class="toctree-checkbox" id="toctree-checkbox-105" name="toctree-checkbox-105" role="switch" type="checkbox"/><label for="toctree-checkbox-105"><div class="visually-hidden">Toggle navigation of An overview</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#an-overview">An overview</a><input class="toctree-checkbox" id="toctree-checkbox-106" name="toctree-checkbox-106" role="switch" type="checkbox"/><label for="toctree-checkbox-106"><div class="visually-hidden">Toggle navigation of An overview</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#key-codes">Key codes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#modifiers">Modifiers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#event-types">Event types</a></li>
@@ -874,7 +937,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#non-unicode-keys">Non-Unicode keys</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#progressive-enhancement">Progressive enhancement</a><input class="toctree-checkbox" id="toctree-checkbox-106" name="toctree-checkbox-106" role="switch" type="checkbox"/><label for="toctree-checkbox-106"><div class="visually-hidden">Toggle navigation of Progressive enhancement</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#progressive-enhancement">Progressive enhancement</a><input class="toctree-checkbox" id="toctree-checkbox-107" name="toctree-checkbox-107" role="switch" type="checkbox"/><label for="toctree-checkbox-107"><div class="visually-hidden">Toggle navigation of Progressive enhancement</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#disambiguate-escape-codes">Disambiguate escape codes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#report-event-types">Report event types</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#report-alternate-keys">Report alternate keys</a></li>
@@ -883,7 +946,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#detection-of-support-for-this-protocol">Detection of support for this protocol</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#legacy-key-event-encoding">Legacy key event encoding</a><input class="toctree-checkbox" id="toctree-checkbox-107" name="toctree-checkbox-107" role="switch" type="checkbox"/><label for="toctree-checkbox-107"><div class="visually-hidden">Toggle navigation of Legacy key event encoding</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#legacy-key-event-encoding">Legacy key event encoding</a><input class="toctree-checkbox" id="toctree-checkbox-108" name="toctree-checkbox-108" role="switch" type="checkbox"/><label for="toctree-checkbox-108"><div class="visually-hidden">Toggle navigation of Legacy key event encoding</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#legacy-functional-keys">Legacy functional keys</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#legacy-text-keys">Legacy text keys</a></li>
 </ul>
@@ -894,8 +957,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#why-xterm-s-modifyotherkeys-should-not-be-used">Why xterm’s modifyOtherKeys should not be used</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../file-transfer-protocol/">File transfer over the TTY</a><input class="toctree-checkbox" id="toctree-checkbox-108" name="toctree-checkbox-108" role="switch" type="checkbox"/><label for="toctree-checkbox-108"><div class="visually-hidden">Toggle navigation of File transfer over the TTY</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#overall-design">Overall design</a><input class="toctree-checkbox" id="toctree-checkbox-109" name="toctree-checkbox-109" role="switch" type="checkbox"/><label for="toctree-checkbox-109"><div class="visually-hidden">Toggle navigation of Overall design</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../file-transfer-protocol/">File transfer over the TTY</a><input class="toctree-checkbox" id="toctree-checkbox-109" name="toctree-checkbox-109" role="switch" type="checkbox"/><label for="toctree-checkbox-109"><div class="visually-hidden">Toggle navigation of File transfer over the TTY</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#overall-design">Overall design</a><input class="toctree-checkbox" id="toctree-checkbox-110" name="toctree-checkbox-110" role="switch" type="checkbox"/><label for="toctree-checkbox-110"><div class="visually-hidden">Toggle navigation of Overall design</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#sending-files-to-the-computer-running-the-terminal-emulator">Sending files to the computer running the terminal emulator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#receiving-files-from-the-computer-running-terminal-emulator">Receiving files from the computer running terminal emulator</a></li>
 </ul>
@@ -903,12 +966,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../file-transfer-protocol/#canceling-a-session">Canceling a session</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../file-transfer-protocol/#quieting-responses-from-the-terminal">Quieting responses from the terminal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../file-transfer-protocol/#file-metadata">File metadata</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#symbolic-and-hard-links">Symbolic and hard links</a><input class="toctree-checkbox" id="toctree-checkbox-110" name="toctree-checkbox-110" role="switch" type="checkbox"/><label for="toctree-checkbox-110"><div class="visually-hidden">Toggle navigation of Symbolic and hard links</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#symbolic-and-hard-links">Symbolic and hard links</a><input class="toctree-checkbox" id="toctree-checkbox-111" name="toctree-checkbox-111" role="switch" type="checkbox"/><label for="toctree-checkbox-111"><div class="visually-hidden">Toggle navigation of Symbolic and hard links</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#sending-links-to-the-terminal-emulator">Sending links to the terminal emulator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#receiving-links-from-the-terminal-emulator">Receiving links from the terminal emulator</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#transmitting-binary-deltas">Transmitting binary deltas</a><input class="toctree-checkbox" id="toctree-checkbox-111" name="toctree-checkbox-111" role="switch" type="checkbox"/><label for="toctree-checkbox-111"><div class="visually-hidden">Toggle navigation of Transmitting binary deltas</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#transmitting-binary-deltas">Transmitting binary deltas</a><input class="toctree-checkbox" id="toctree-checkbox-112" name="toctree-checkbox-112" role="switch" type="checkbox"/><label for="toctree-checkbox-112"><div class="visually-hidden">Toggle navigation of Transmitting binary deltas</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#sending-to-the-terminal-emulator">Sending to the terminal emulator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#receiving-from-the-terminal-emulator">Receiving from the terminal emulator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#the-format-of-signatures-and-deltas">The format of signatures and deltas</a></li>
@@ -920,7 +983,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../desktop-notifications/">Desktop notifications</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../pointer-shapes/">Mouse pointer shapes</a><input class="toctree-checkbox" id="toctree-checkbox-112" name="toctree-checkbox-112" role="switch" type="checkbox"/><label for="toctree-checkbox-112"><div class="visually-hidden">Toggle navigation of Mouse pointer shapes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pointer-shapes/">Mouse pointer shapes</a><input class="toctree-checkbox" id="toctree-checkbox-113" name="toctree-checkbox-113" role="switch" type="checkbox"/><label for="toctree-checkbox-113"><div class="visually-hidden">Toggle navigation of Mouse pointer shapes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../pointer-shapes/#setting-the-pointer-shape">Setting the pointer shape</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pointer-shapes/#pushing-and-popping-shapes-onto-the-stack">Pushing and popping shapes onto the stack</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pointer-shapes/#querying-support">Querying support</a></li>
@@ -932,7 +995,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../unscroll/">Unscrolling the screen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../color-stack/">Saving and restoring colors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deccara/">Setting text styles/colors in arbitrary regions of the screen</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../clipboard/">Copying all data types to the clipboard</a><input class="toctree-checkbox" id="toctree-checkbox-113" name="toctree-checkbox-113" role="switch" type="checkbox"/><label for="toctree-checkbox-113"><div class="visually-hidden">Toggle navigation of Copying all data types to the clipboard</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../clipboard/">Copying all data types to the clipboard</a><input class="toctree-checkbox" id="toctree-checkbox-114" name="toctree-checkbox-114" role="switch" type="checkbox"/><label for="toctree-checkbox-114"><div class="visually-hidden">Toggle navigation of Copying all data types to the clipboard</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../clipboard/#reading-data-from-the-system-clipboard">Reading data from the system clipboard</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../clipboard/#writing-data-to-the-system-clipboard">Writing data to the system clipboard</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../clipboard/#support-for-terminal-multiplexers">Support for terminal multiplexers</a></li>
@@ -940,7 +1003,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../press-mentions/">Press mentions of kitty</a><input class="toctree-checkbox" id="toctree-checkbox-114" name="toctree-checkbox-114" role="switch" type="checkbox"/><label for="toctree-checkbox-114"><div class="visually-hidden">Toggle navigation of Press mentions of kitty</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../press-mentions/">Press mentions of kitty</a><input class="toctree-checkbox" id="toctree-checkbox-115" name="toctree-checkbox-115" role="switch" type="checkbox"/><label for="toctree-checkbox-115"><div class="visually-hidden">Toggle navigation of Press mentions of kitty</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../press-mentions/#video-reviews">Video reviews</a></li>
 </ul>
 </li>
@@ -964,10 +1027,12 @@
         </a>
         <div class="content-icon-container">
           
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
@@ -977,43 +1042,43 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="mappable-actions">
-<h1>Mappable actions<a class="headerlink" href="#mappable-actions" title="Link to this heading">#</a></h1>
+<h1>Mappable actions<a class="headerlink" href="#mappable-actions" title="Link to this heading">¶</a></h1>
 <p>The actions described below can be mapped to any key press or mouse action
 using the <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">mouse_map</span></code> directives in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>. For
 configuration examples, see the default shortcut links for each action.
 To read about keyboard mapping in more detail, see <a class="reference internal" href="../mapping/"><span class="doc">Making your keyboard dance</span></a>.</p>
 </section>
 <section id="copy-paste">
-<span id="action-group-cp"></span><h1>Copy/paste<a class="headerlink" href="#copy-paste" title="Link to this heading">#</a></h1>
+<span id="action-group-cp"></span><h1>Copy/paste<a class="headerlink" href="#copy-paste" title="Link to this heading">¶</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-clear_selection">
-<span class="sig-name descname"><span class="pre">clear_selection</span></span><a class="headerlink" href="#action-clear_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">clear_selection</span></span><a class="headerlink" href="#action-clear_selection" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Clear the current selection</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-copy_and_clear_or_interrupt">
-<span class="sig-name descname"><span class="pre">copy_and_clear_or_interrupt</span></span><a class="headerlink" href="#action-copy_and_clear_or_interrupt" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">copy_and_clear_or_interrupt</span></span><a class="headerlink" href="#action-copy_and_clear_or_interrupt" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Copy the selected text from the active window to the clipboard and clear selection, if no selection, send SIGINT (aka <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">c</kbd></kbd>)</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-copy_ansi_to_clipboard">
-<span class="sig-name descname"><span class="pre">copy_ansi_to_clipboard</span></span><a class="headerlink" href="#action-copy_ansi_to_clipboard" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">copy_ansi_to_clipboard</span></span><a class="headerlink" href="#action-copy_ansi_to_clipboard" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Copy the selected text from the active window to the clipboard with ANSI formatting codes</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-copy_or_interrupt">
-<span class="sig-name descname"><span class="pre">copy_or_interrupt</span></span><a class="headerlink" href="#action-copy_or_interrupt" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">copy_or_interrupt</span></span><a class="headerlink" href="#action-copy_or_interrupt" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Copy the selected text from the active window to the clipboard, if no selection, send SIGINT (aka <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">c</kbd></kbd>)</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-copy_to_clipboard">
-<span class="sig-name descname"><span class="pre">copy_to_clipboard</span></span><a class="headerlink" href="#action-copy_to_clipboard" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">copy_to_clipboard</span></span><a class="headerlink" href="#action-copy_to_clipboard" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Copy the selected text from the active window to the clipboard</p>
@@ -1021,7 +1086,7 @@ To read about keyboard mapping in more detail, see <a class="reference internal"
 <a class="reference internal" href="../conf/#shortcut-kitty.Copy-to-clipboard"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+c</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-pass_selection_to_program">
-<span class="sig-name descname"><span class="pre">pass_selection_to_program</span></span><a class="headerlink" href="#action-pass_selection_to_program" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">pass_selection_to_program</span></span><a class="headerlink" href="#action-pass_selection_to_program" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Pass the selected text from the active window to the specified program</p>
@@ -1029,20 +1094,20 @@ To read about keyboard mapping in more detail, see <a class="reference internal"
 <a class="reference internal" href="../conf/#shortcut-kitty.Pass-selection-to-program"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+o</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-paste">
-<span class="sig-name descname"><span class="pre">paste</span></span><a class="headerlink" href="#action-paste" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">paste</span></span><a class="headerlink" href="#action-paste" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Paste the specified text into the current window. ANSI C escapes are decoded.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-show_first_command_output_on_screen">
-<span class="sig-name descname"><span class="pre">show_first_command_output_on_screen</span></span><a class="headerlink" href="#action-show_first_command_output_on_screen" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">show_first_command_output_on_screen</span></span><a class="headerlink" href="#action-show_first_command_output_on_screen" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Show output from the first shell command on screen in a pager like less</p>
 <p>Requires <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> to work</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-show_last_command_output">
-<span class="sig-name descname"><span class="pre">show_last_command_output</span></span><a class="headerlink" href="#action-show_last_command_output" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">show_last_command_output</span></span><a class="headerlink" href="#action-show_last_command_output" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Show output from the last shell command in a pager like less</p>
@@ -1051,14 +1116,14 @@ To read about keyboard mapping in more detail, see <a class="reference internal"
 <a class="reference internal" href="../conf/#shortcut-kitty.Browse-output-of-the-last-shell-command-in-pager"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+g</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-show_last_non_empty_command_output">
-<span class="sig-name descname"><span class="pre">show_last_non_empty_command_output</span></span><a class="headerlink" href="#action-show_last_non_empty_command_output" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">show_last_non_empty_command_output</span></span><a class="headerlink" href="#action-show_last_non_empty_command_output" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Show the last non-empty output from a shell command in a pager like less</p>
 <p>Requires <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> to work</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-show_last_visited_command_output">
-<span class="sig-name descname"><span class="pre">show_last_visited_command_output</span></span><a class="headerlink" href="#action-show_last_visited_command_output" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">show_last_visited_command_output</span></span><a class="headerlink" href="#action-show_last_visited_command_output" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Show the first command output below the last scrolled position via scroll_to_prompt</p>
@@ -1066,7 +1131,7 @@ To read about keyboard mapping in more detail, see <a class="reference internal"
 <p>Requires <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> to work</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-show_scrollback">
-<span class="sig-name descname"><span class="pre">show_scrollback</span></span><a class="headerlink" href="#action-show_scrollback" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">show_scrollback</span></span><a class="headerlink" href="#action-show_scrollback" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Show scrollback in a pager like less</p>
@@ -1074,21 +1139,21 @@ To read about keyboard mapping in more detail, see <a class="reference internal"
 <a class="reference internal" href="../conf/#shortcut-kitty.Browse-scrollback-buffer-in-pager"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+h</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-copy_to_buffer">
-<span class="sig-name descname"><span class="pre">copy_to_buffer</span></span><a class="headerlink" href="#action-copy_to_buffer" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">copy_to_buffer</span></span><a class="headerlink" href="#action-copy_to_buffer" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Copy the selection from the active window to the specified buffer</p>
 <p>See <a class="reference internal" href="../overview/#cpbuf"><span class="std std-ref">Multiple copy/paste buffers</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-paste_from_buffer">
-<span class="sig-name descname"><span class="pre">paste_from_buffer</span></span><a class="headerlink" href="#action-paste_from_buffer" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">paste_from_buffer</span></span><a class="headerlink" href="#action-paste_from_buffer" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Paste from the specified buffer to the active window</p>
 <p>See <a class="reference internal" href="../overview/#cpbuf"><span class="std std-ref">Multiple copy/paste buffers</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-paste_from_clipboard">
-<span class="sig-name descname"><span class="pre">paste_from_clipboard</span></span><a class="headerlink" href="#action-paste_from_clipboard" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">paste_from_clipboard</span></span><a class="headerlink" href="#action-paste_from_clipboard" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Paste from the clipboard to the active window</p>
@@ -1096,7 +1161,7 @@ To read about keyboard mapping in more detail, see <a class="reference internal"
 <a class="reference internal" href="../conf/#shortcut-kitty.Paste-from-clipboard"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+v</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-paste_from_selection">
-<span class="sig-name descname"><span class="pre">paste_from_selection</span></span><a class="headerlink" href="#action-paste_from_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">paste_from_selection</span></span><a class="headerlink" href="#action-paste_from_selection" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Paste from the primary selection, if present, otherwise the clipboard to the active window</p>
@@ -1104,23 +1169,23 @@ To read about keyboard mapping in more detail, see <a class="reference internal"
 <a class="reference internal" href="../conf/#shortcut-kitty.Paste-from-selection"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+s</span></code></a></p>
 </section>
 <section id="debugging">
-<span id="action-group-debug"></span><h1>Debugging<a class="headerlink" href="#debugging" title="Link to this heading">#</a></h1>
+<span id="action-group-debug"></span><h1>Debugging<a class="headerlink" href="#debugging" title="Link to this heading">¶</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-dump_lines_with_attrs">
-<span class="sig-name descname"><span class="pre">dump_lines_with_attrs</span></span><a class="headerlink" href="#action-dump_lines_with_attrs" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">dump_lines_with_attrs</span></span><a class="headerlink" href="#action-dump_lines_with_attrs" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Show a dump of the current lines in the scrollback + screen with their line attributes</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-close_shared_ssh_connections">
-<span class="sig-name descname"><span class="pre">close_shared_ssh_connections</span></span><a class="headerlink" href="#action-close_shared_ssh_connections" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">close_shared_ssh_connections</span></span><a class="headerlink" href="#action-close_shared_ssh_connections" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Close all shared SSH connections</p>
 <p>See <a class="reference internal" href="../kittens/ssh/#opt-kitten-ssh.share_connections"><code class="xref std std-opt docutils literal notranslate"><span class="pre">share_connections</span></code></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-debug_config">
-<span class="sig-name descname"><span class="pre">debug_config</span></span><a class="headerlink" href="#action-debug_config" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">debug_config</span></span><a class="headerlink" href="#action-debug_config" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Show the effective configuration kitty is running with</p>
@@ -1128,16 +1193,16 @@ To read about keyboard mapping in more detail, see <a class="reference internal"
 <a class="reference internal" href="../conf/#shortcut-kitty.Debug-kitty-configuration"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f6</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-show_kitty_env_vars">
-<span class="sig-name descname"><span class="pre">show_kitty_env_vars</span></span><a class="headerlink" href="#action-show_kitty_env_vars" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">show_kitty_env_vars</span></span><a class="headerlink" href="#action-show_kitty_env_vars" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Show the environment variables that the kitty process sees</p>
 </section>
 <section id="layouts">
-<span id="action-group-lay"></span><h1>Layouts<a class="headerlink" href="#layouts" title="Link to this heading">#</a></h1>
+<span id="action-group-lay"></span><h1>Layouts<a class="headerlink" href="#layouts" title="Link to this heading">¶</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-goto_layout">
-<span class="sig-name descname"><span class="pre">goto_layout</span></span><a class="headerlink" href="#action-goto_layout" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">goto_layout</span></span><a class="headerlink" href="#action-goto_layout" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Switch to the named layout</p>
@@ -1150,19 +1215,19 @@ specify the full layout definition or a unique prefix of the full definition.</p
 </div>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-last_used_layout">
-<span class="sig-name descname"><span class="pre">last_used_layout</span></span><a class="headerlink" href="#action-last_used_layout" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">last_used_layout</span></span><a class="headerlink" href="#action-last_used_layout" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Go to the previously used layout</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-layout_action">
-<span class="sig-name descname"><span class="pre">layout_action</span></span><a class="headerlink" href="#action-layout_action" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">layout_action</span></span><a class="headerlink" href="#action-layout_action" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Perform a layout specific action. See <a class="reference internal" href="../layouts/"><span class="doc">Arrange windows</span></a> for details</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-next_layout">
-<span class="sig-name descname"><span class="pre">next_layout</span></span><a class="headerlink" href="#action-next_layout" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">next_layout</span></span><a class="headerlink" href="#action-next_layout" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Go to the next enabled layout. Can optionally supply an integer to jump by the specified number.</p>
@@ -1170,7 +1235,7 @@ specify the full layout definition or a unique prefix of the full definition.</p
 <a class="reference internal" href="../conf/#shortcut-kitty.Next-layout"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+l</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-toggle_layout">
-<span class="sig-name descname"><span class="pre">toggle_layout</span></span><a class="headerlink" href="#action-toggle_layout" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">toggle_layout</span></span><a class="headerlink" href="#action-toggle_layout" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Toggle the named layout</p>
@@ -1182,37 +1247,37 @@ by switching to the stack layout. For example:</p>
 </div>
 </section>
 <section id="marks">
-<span id="action-group-mk"></span><h1>Marks<a class="headerlink" href="#marks" title="Link to this heading">#</a></h1>
+<span id="action-group-mk"></span><h1>Marks<a class="headerlink" href="#marks" title="Link to this heading">¶</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-remove_marker">
-<span class="sig-name descname"><span class="pre">remove_marker</span></span><a class="headerlink" href="#action-remove_marker" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">remove_marker</span></span><a class="headerlink" href="#action-remove_marker" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Remove a previously created marker</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_to_mark">
-<span class="sig-name descname"><span class="pre">scroll_to_mark</span></span><a class="headerlink" href="#action-scroll_to_mark" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">scroll_to_mark</span></span><a class="headerlink" href="#action-scroll_to_mark" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Scroll to the next or previous mark of the specified type</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-toggle_marker">
-<span class="sig-name descname"><span class="pre">toggle_marker</span></span><a class="headerlink" href="#action-toggle_marker" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">toggle_marker</span></span><a class="headerlink" href="#action-toggle_marker" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Toggle the current marker on/off</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-create_marker">
-<span class="sig-name descname"><span class="pre">create_marker</span></span><a class="headerlink" href="#action-create_marker" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">create_marker</span></span><a class="headerlink" href="#action-create_marker" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Create a new marker</p>
 </section>
 <section id="miscellaneous">
-<span id="action-group-misc"></span><h1>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Link to this heading">#</a></h1>
+<span id="action-group-misc"></span><h1>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Link to this heading">¶</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-send_key">
-<span class="sig-name descname"><span class="pre">send_key</span></span><a class="headerlink" href="#action-send_key" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">send_key</span></span><a class="headerlink" href="#action-send_key" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Send the specified keys to the active window.</p>
@@ -1225,7 +1290,7 @@ To send a pattern of press and release for multiple keys use the <a class="refer
 </div>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-send_text">
-<span class="sig-name descname"><span class="pre">send_text</span></span><a class="headerlink" href="#action-send_text" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">send_text</span></span><a class="headerlink" href="#action-send_text" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Send the specified text to the active window</p>
@@ -1234,7 +1299,7 @@ To send a pattern of press and release for multiple keys use the <a class="refer
 <a class="reference internal" href="../conf/#shortcut-kitty.Send-arbitrary-text-on-key-presses"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+alt+h</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-show_kitty_doc">
-<span class="sig-name descname"><span class="pre">show_kitty_doc</span></span><a class="headerlink" href="#action-show_kitty_doc" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">show_kitty_doc</span></span><a class="headerlink" href="#action-show_kitty_doc" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Display the specified kitty documentation, preferring a local copy, if found.</p>
@@ -1249,7 +1314,7 @@ To send a pattern of press and release for multiple keys use the <a class="refer
 <a class="reference internal" href="../conf/#shortcut-kitty.Show-documentation"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f1</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-signal_child">
-<span class="sig-name descname"><span class="pre">signal_child</span></span><a class="headerlink" href="#action-signal_child" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">signal_child</span></span><a class="headerlink" href="#action-signal_child" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Send the specified SIGNAL to the foreground process in the active window</p>
@@ -1259,7 +1324,7 @@ To send a pattern of press and release for multiple keys use the <a class="refer
 </div>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-clear_terminal">
-<span class="sig-name descname"><span class="pre">clear_terminal</span></span><a class="headerlink" href="#action-clear_terminal" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">clear_terminal</span></span><a class="headerlink" href="#action-clear_terminal" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Clear the terminal</p>
@@ -1272,7 +1337,7 @@ To send a pattern of press and release for multiple keys use the <a class="refer
 <span class="kd">map</span><span class="w"> </span><span class="l">f1</span><span class="w"> </span><span class="nf">clear_terminal</span><span class="s"> scrollback active</span>
 <span class="c1"># Scroll the contents of the screen into the scrollback</span>
 <span class="kd">map</span><span class="w"> </span><span class="l">f1</span><span class="w"> </span><span class="nf">clear_terminal</span><span class="s"> scroll active</span>
-<span class="c1"># Clear everything up to the line with the cursor or the start of the current prompt (needs shell integration)</span>
+<span class="c1"># Clear everything on screen up to the line with the cursor or the start of the current prompt (needs shell integration)</span>
 <span class="c1"># Useful for clearing the screen up to the shell prompt and moving the shell prompt to the top of the screen.</span>
 <span class="kd">map</span><span class="w"> </span><span class="l">f1</span><span class="w"> </span><span class="nf">clear_terminal</span><span class="s"> to_cursor active</span>
 <span class="c1"># Same as above except cleared lines are moved into scrollback</span>
@@ -1283,7 +1348,7 @@ To send a pattern of press and release for multiple keys use the <a class="refer
 <a class="reference internal" href="../conf/#shortcut-kitty.Clear-up-to-cursor-line"><code class="xref std std-sc docutils literal notranslate"><span class="pre">cmd+k</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Reset-the-terminal"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+delete</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-combine">
-<span class="sig-name descname"><span class="pre">combine</span></span><a class="headerlink" href="#action-combine" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">combine</span></span><a class="headerlink" href="#action-combine" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Combine multiple actions and map to a single keypress</p>
@@ -1298,20 +1363,20 @@ To send a pattern of press and release for multiple keys use the <a class="refer
 </div>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-disable_ligatures_in">
-<span class="sig-name descname"><span class="pre">disable_ligatures_in</span></span><a class="headerlink" href="#action-disable_ligatures_in" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">disable_ligatures_in</span></span><a class="headerlink" href="#action-disable_ligatures_in" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Turn on/off ligatures in the specified window</p>
 <p>See <a class="reference internal" href="../conf/#opt-kitty.disable_ligatures"><code class="xref std std-opt docutils literal notranslate"><span class="pre">disable_ligatures</span></code></a> for details</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-discard_event">
-<span class="sig-name descname"><span class="pre">discard_event</span></span><a class="headerlink" href="#action-discard_event" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">discard_event</span></span><a class="headerlink" href="#action-discard_event" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Discard this event completely ignoring it</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-edit_config_file">
-<span class="sig-name descname"><span class="pre">edit_config_file</span></span><a class="headerlink" href="#action-edit_config_file" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">edit_config_file</span></span><a class="headerlink" href="#action-edit_config_file" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Edit the kitty.conf config file in your favorite text editor</p>
@@ -1319,7 +1384,7 @@ To send a pattern of press and release for multiple keys use the <a class="refer
 <a class="reference internal" href="../conf/#shortcut-kitty.Edit-config-file"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f2</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-hide_macos_app">
-<span class="sig-name descname"><span class="pre">hide_macos_app</span></span><a class="headerlink" href="#action-hide_macos_app" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">hide_macos_app</span></span><a class="headerlink" href="#action-hide_macos_app" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Hide macOS kitty application</p>
@@ -1327,7 +1392,7 @@ To send a pattern of press and release for multiple keys use the <a class="refer
 <a class="reference internal" href="../conf/#shortcut-kitty.Hide-macOS-kitty-application"><code class="xref std std-sc docutils literal notranslate"><span class="pre">cmd+h</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-hide_macos_other_apps">
-<span class="sig-name descname"><span class="pre">hide_macos_other_apps</span></span><a class="headerlink" href="#action-hide_macos_other_apps" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">hide_macos_other_apps</span></span><a class="headerlink" href="#action-hide_macos_other_apps" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Hide macOS other applications</p>
@@ -1335,13 +1400,13 @@ To send a pattern of press and release for multiple keys use the <a class="refer
 <a class="reference internal" href="../conf/#shortcut-kitty.Hide-macOS-other-applications"><code class="xref std std-sc docutils literal notranslate"><span class="pre">opt+cmd+h</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-input_unicode_character">
-<span class="sig-name descname"><span class="pre">input_unicode_character</span></span><a class="headerlink" href="#action-input_unicode_character" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">input_unicode_character</span></span><a class="headerlink" href="#action-input_unicode_character" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Input an arbitrary unicode character. See <a class="reference internal" href="../kittens/unicode_input/"><span class="doc">Unicode input</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-kitten">
-<span class="sig-name descname"><span class="pre">kitten</span></span><a class="headerlink" href="#action-kitten" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">kitten</span></span><a class="headerlink" href="#action-kitten" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Run the specified kitten. See <a class="reference internal" href="../kittens/custom/"><span class="doc">Custom kittens</span></a> for details</p>
@@ -1358,7 +1423,7 @@ To send a pattern of press and release for multiple keys use the <a class="refer
 </ul>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-kitty_shell">
-<span class="sig-name descname"><span class="pre">kitty_shell</span></span><a class="headerlink" href="#action-kitty_shell" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">kitty_shell</span></span><a class="headerlink" href="#action-kitty_shell" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Run the kitty shell to control kitty with commands</p>
@@ -1366,14 +1431,14 @@ To send a pattern of press and release for multiple keys use the <a class="refer
 <a class="reference internal" href="../conf/#shortcut-kitty.Open-the-kitty-command-shell"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+escape</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-launch">
-<span class="sig-name descname"><span class="pre">launch</span></span><a class="headerlink" href="#action-launch" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">launch</span></span><a class="headerlink" href="#action-launch" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Launch the specified program in a new window/tab/etc.</p>
 <p>See <a class="reference internal" href="../launch/"><span class="doc">The launch command</span></a> for details</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-load_config_file">
-<span class="sig-name descname"><span class="pre">load_config_file</span></span><a class="headerlink" href="#action-load_config_file" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">load_config_file</span></span><a class="headerlink" href="#action-load_config_file" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Reload the config file</p>
@@ -1387,7 +1452,7 @@ config options. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Reload-kitty.conf"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f5</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-minimize_macos_window">
-<span class="sig-name descname"><span class="pre">minimize_macos_window</span></span><a class="headerlink" href="#action-minimize_macos_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">minimize_macos_window</span></span><a class="headerlink" href="#action-minimize_macos_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Minimize macOS window</p>
@@ -1395,7 +1460,7 @@ config options. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Minimize-macOS-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">cmd+m</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-open_url">
-<span class="sig-name descname"><span class="pre">open_url</span></span><a class="headerlink" href="#action-open_url" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">open_url</span></span><a class="headerlink" href="#action-open_url" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Open the specified URL</p>
@@ -1403,7 +1468,7 @@ config options. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Open-kitty-Website"><code class="xref std std-sc docutils literal notranslate"><span class="pre">shift+cmd+/</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-open_url_with_hints">
-<span class="sig-name descname"><span class="pre">open_url_with_hints</span></span><a class="headerlink" href="#action-open_url_with_hints" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">open_url_with_hints</span></span><a class="headerlink" href="#action-open_url_with_hints" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Click a URL using the keyboard</p>
@@ -1411,19 +1476,19 @@ config options. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Open-URL"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+e</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-pop_keyboard_mode">
-<span class="sig-name descname"><span class="pre">pop_keyboard_mode</span></span><a class="headerlink" href="#action-pop_keyboard_mode" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">pop_keyboard_mode</span></span><a class="headerlink" href="#action-pop_keyboard_mode" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>End the current keyboard mode switching to the previous mode.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-push_keyboard_mode">
-<span class="sig-name descname"><span class="pre">push_keyboard_mode</span></span><a class="headerlink" href="#action-push_keyboard_mode" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">push_keyboard_mode</span></span><a class="headerlink" href="#action-push_keyboard_mode" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Switch to the specified keyboard mode, pushing it onto the stack of keyboard modes.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-remote_control">
-<span class="sig-name descname"><span class="pre">remote_control</span></span><a class="headerlink" href="#action-remote_control" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">remote_control</span></span><a class="headerlink" href="#action-remote_control" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Run a remote control command without needing to allow remote control</p>
@@ -1434,7 +1499,7 @@ config options. For example:</p>
 <p>See <a class="reference internal" href="../remote-control/#rc-mapping"><span class="std std-ref">Mapping key presses to remote control commands</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-remote_control_script">
-<span class="sig-name descname"><span class="pre">remote_control_script</span></span><a class="headerlink" href="#action-remote_control_script" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">remote_control_script</span></span><a class="headerlink" href="#action-remote_control_script" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Run a remote control script without needing to allow remote control</p>
@@ -1445,7 +1510,7 @@ config options. For example:</p>
 <p>See <a class="reference internal" href="../remote-control/#rc-mapping"><span class="std std-ref">Mapping key presses to remote control commands</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-set_colors">
-<span class="sig-name descname"><span class="pre">set_colors</span></span><a class="headerlink" href="#action-set_colors" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_colors</span></span><a class="headerlink" href="#action-set_colors" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Change colors in the specified windows</p>
@@ -1455,19 +1520,19 @@ config options. For example:</p>
 </div>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-show_error">
-<span class="sig-name descname"><span class="pre">show_error</span></span><a class="headerlink" href="#action-show_error" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">show_error</span></span><a class="headerlink" href="#action-show_error" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Show an error message with the specified title and text</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-sleep">
-<span class="sig-name descname"><span class="pre">sleep</span></span><a class="headerlink" href="#action-sleep" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">sleep</span></span><a class="headerlink" href="#action-sleep" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Sleep for the specified time period. Suffix can be s for seconds, m, for minutes, h for hours and d for days. The time can be fractional.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-toggle_macos_secure_keyboard_entry">
-<span class="sig-name descname"><span class="pre">toggle_macos_secure_keyboard_entry</span></span><a class="headerlink" href="#action-toggle_macos_secure_keyboard_entry" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">toggle_macos_secure_keyboard_entry</span></span><a class="headerlink" href="#action-toggle_macos_secure_keyboard_entry" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Toggle macOS secure keyboard entry</p>
@@ -1475,29 +1540,29 @@ config options. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Toggle-macOS-secure-keyboard-entry"><code class="xref std std-sc docutils literal notranslate"><span class="pre">opt+cmd+s</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-no_op">
-<span class="sig-name descname"><span class="pre">no_op</span></span><a class="headerlink" href="#action-no_op" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">no_op</span></span><a class="headerlink" href="#action-no_op" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Unbind a shortcut</p>
 <p>Mapping a shortcut to no_op causes kitty to not intercept the key stroke anymore, instead passing it to the program running inside it.</p>
 </section>
 <section id="mouse-actions">
-<span id="action-group-mouse"></span><h1>Mouse actions<a class="headerlink" href="#mouse-actions" title="Link to this heading">#</a></h1>
+<span id="action-group-mouse"></span><h1>Mouse actions<a class="headerlink" href="#mouse-actions" title="Link to this heading">¶</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-mouse_click_url">
-<span class="sig-name descname"><span class="pre">mouse_click_url</span></span><a class="headerlink" href="#action-mouse_click_url" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">mouse_click_url</span></span><a class="headerlink" href="#action-mouse_click_url" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Click the URL under the mouse</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-mouse_click_url_or_select">
-<span class="sig-name descname"><span class="pre">mouse_click_url_or_select</span></span><a class="headerlink" href="#action-mouse_click_url_or_select" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">mouse_click_url_or_select</span></span><a class="headerlink" href="#action-mouse_click_url_or_select" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Click the URL under the mouse only if the screen has no selection</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-mouse_handle_click">
-<span class="sig-name descname"><span class="pre">mouse_handle_click</span></span><a class="headerlink" href="#action-mouse_handle_click" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">mouse_handle_click</span></span><a class="headerlink" href="#action-mouse_handle_click" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Handle a mouse click</p>
@@ -1511,43 +1576,43 @@ Supported actions are:</p>
 <p>For examples, see <a class="reference internal" href="../conf/#conf-kitty-mouse-mousemap"><span class="std std-ref">Mouse actions</span></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-mouse_select_command_output">
-<span class="sig-name descname"><span class="pre">mouse_select_command_output</span></span><a class="headerlink" href="#action-mouse_select_command_output" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">mouse_select_command_output</span></span><a class="headerlink" href="#action-mouse_select_command_output" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Select clicked command output</p>
 <p>Requires <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> to work</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-mouse_selection">
-<span class="sig-name descname"><span class="pre">mouse_selection</span></span><a class="headerlink" href="#action-mouse_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">mouse_selection</span></span><a class="headerlink" href="#action-mouse_selection" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Manipulate the selection based on the current mouse position</p>
 <p>For examples, see <a class="reference internal" href="../conf/#conf-kitty-mouse-mousemap"><span class="std std-ref">Mouse actions</span></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-mouse_show_command_output">
-<span class="sig-name descname"><span class="pre">mouse_show_command_output</span></span><a class="headerlink" href="#action-mouse_show_command_output" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">mouse_show_command_output</span></span><a class="headerlink" href="#action-mouse_show_command_output" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Show clicked command output in a pager like less</p>
 <p>Requires <a class="reference internal" href="../shell-integration/#shell-integration"><span class="std std-ref">Shell integration</span></a> to work</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-paste_selection">
-<span class="sig-name descname"><span class="pre">paste_selection</span></span><a class="headerlink" href="#action-paste_selection" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">paste_selection</span></span><a class="headerlink" href="#action-paste_selection" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Paste the current primary selection</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-paste_selection_or_clipboard">
-<span class="sig-name descname"><span class="pre">paste_selection_or_clipboard</span></span><a class="headerlink" href="#action-paste_selection_or_clipboard" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">paste_selection_or_clipboard</span></span><a class="headerlink" href="#action-paste_selection_or_clipboard" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Paste the current primary selection or the clipboard if no selection is present</p>
 </section>
 <section id="scrolling">
-<span id="action-group-sc"></span><h1>Scrolling<a class="headerlink" href="#scrolling" title="Link to this heading">#</a></h1>
+<span id="action-group-sc"></span><h1>Scrolling<a class="headerlink" href="#scrolling" title="Link to this heading">¶</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_end">
-<span class="sig-name descname"><span class="pre">scroll_end</span></span><a class="headerlink" href="#action-scroll_end" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">scroll_end</span></span><a class="headerlink" href="#action-scroll_end" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Scroll to the bottom of the scrollback buffer when in main screen</p>
@@ -1555,7 +1620,7 @@ Supported actions are:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-bottom"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+end</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_home">
-<span class="sig-name descname"><span class="pre">scroll_home</span></span><a class="headerlink" href="#action-scroll_home" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">scroll_home</span></span><a class="headerlink" href="#action-scroll_home" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Scroll to the top of the scrollback buffer when in main screen</p>
@@ -1563,7 +1628,7 @@ Supported actions are:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-top"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+home</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_line_down">
-<span class="sig-name descname"><span class="pre">scroll_line_down</span></span><a class="headerlink" href="#action-scroll_line_down" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">scroll_line_down</span></span><a class="headerlink" href="#action-scroll_line_down" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Scroll down by one line when in main screen. To scroll by different amounts, you can map the remote_control scroll-window action.</p>
@@ -1571,7 +1636,7 @@ Supported actions are:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-line-down"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+down</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_line_up">
-<span class="sig-name descname"><span class="pre">scroll_line_up</span></span><a class="headerlink" href="#action-scroll_line_up" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">scroll_line_up</span></span><a class="headerlink" href="#action-scroll_line_up" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Scroll up by one line when in main screen. To scroll by different amounts, you can map the remote_control scroll-window action.</p>
@@ -1579,7 +1644,7 @@ Supported actions are:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-line-up"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+up</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_page_down">
-<span class="sig-name descname"><span class="pre">scroll_page_down</span></span><a class="headerlink" href="#action-scroll_page_down" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">scroll_page_down</span></span><a class="headerlink" href="#action-scroll_page_down" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Scroll down by one page when in main screen. To scroll by different amounts, you can map the remote_control scroll-window action.</p>
@@ -1587,7 +1652,7 @@ Supported actions are:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-page-down"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+page_down</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_page_up">
-<span class="sig-name descname"><span class="pre">scroll_page_up</span></span><a class="headerlink" href="#action-scroll_page_up" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">scroll_page_up</span></span><a class="headerlink" href="#action-scroll_page_up" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Scroll up by one page when in main screen. To scroll by different amounts, you can map the remote_control scroll-window action.</p>
@@ -1595,19 +1660,19 @@ Supported actions are:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-page-up"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+page_up</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_prompt_to_bottom">
-<span class="sig-name descname"><span class="pre">scroll_prompt_to_bottom</span></span><a class="headerlink" href="#action-scroll_prompt_to_bottom" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">scroll_prompt_to_bottom</span></span><a class="headerlink" href="#action-scroll_prompt_to_bottom" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Scroll prompt to the bottom of the screen, filling in extra lines from the scrollback buffer, when in main screen</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_prompt_to_top">
-<span class="sig-name descname"><span class="pre">scroll_prompt_to_top</span></span><a class="headerlink" href="#action-scroll_prompt_to_top" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">scroll_prompt_to_top</span></span><a class="headerlink" href="#action-scroll_prompt_to_top" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Scroll prompt to the top of the screen, filling screen with empty lines, when in main screen. To avoid putting the lines above the prompt into the scrollback use scroll_prompt_to_top y</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-scroll_to_prompt">
-<span class="sig-name descname"><span class="pre">scroll_to_prompt</span></span><a class="headerlink" href="#action-scroll_to_prompt" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">scroll_to_prompt</span></span><a class="headerlink" href="#action-scroll_to_prompt" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Scroll to the previous/next shell command prompt</p>
@@ -1625,16 +1690,16 @@ For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-next-shell-prompt"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+x</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Scroll-to-previous-shell-prompt"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+z</span></code></a></p>
 </section>
 <section id="tab-management">
-<span id="action-group-tab"></span><h1>Tab management<a class="headerlink" href="#tab-management" title="Link to this heading">#</a></h1>
+<span id="action-group-tab"></span><h1>Tab management<a class="headerlink" href="#tab-management" title="Link to this heading">¶</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-close_other_tabs_in_os_window">
-<span class="sig-name descname"><span class="pre">close_other_tabs_in_os_window</span></span><a class="headerlink" href="#action-close_other_tabs_in_os_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">close_other_tabs_in_os_window</span></span><a class="headerlink" href="#action-close_other_tabs_in_os_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Close all the tabs in the current OS window other than the currently active tab</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-close_tab">
-<span class="sig-name descname"><span class="pre">close_tab</span></span><a class="headerlink" href="#action-close_tab" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">close_tab</span></span><a class="headerlink" href="#action-close_tab" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Close the current tab</p>
@@ -1642,14 +1707,14 @@ For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Close-tab"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+q</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-detach_tab">
-<span class="sig-name descname"><span class="pre">detach_tab</span></span><a class="headerlink" href="#action-detach_tab" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">detach_tab</span></span><a class="headerlink" href="#action-detach_tab" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Detach a tab, moving it to another OS Window</p>
-<p>See <a class="reference internal" href="../overview/#detach-window"><span class="std std-ref">detaching windows</span></a> for details.</p>
+<p>See <a class="reference internal" href="../invocation/#detach-window"><span class="std std-ref">detaching windows</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-goto_tab">
-<span class="sig-name descname"><span class="pre">goto_tab</span></span><a class="headerlink" href="#action-goto_tab" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">goto_tab</span></span><a class="headerlink" href="#action-goto_tab" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Go to the specified tab, by number, starting with 1</p>
@@ -1658,7 +1723,7 @@ Use the <a class="reference internal" href="#action-select_tab"><code class="xre
 to go to.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-move_tab_backward">
-<span class="sig-name descname"><span class="pre">move_tab_backward</span></span><a class="headerlink" href="#action-move_tab_backward" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">move_tab_backward</span></span><a class="headerlink" href="#action-move_tab_backward" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Move the active tab backward</p>
@@ -1666,7 +1731,7 @@ to go to.</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-tab-backward"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+,</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-move_tab_forward">
-<span class="sig-name descname"><span class="pre">move_tab_forward</span></span><a class="headerlink" href="#action-move_tab_forward" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">move_tab_forward</span></span><a class="headerlink" href="#action-move_tab_forward" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Move the active tab forward</p>
@@ -1674,7 +1739,7 @@ to go to.</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-tab-forward"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+.</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-new_tab">
-<span class="sig-name descname"><span class="pre">new_tab</span></span><a class="headerlink" href="#action-new_tab" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">new_tab</span></span><a class="headerlink" href="#action-new_tab" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Create a new tab</p>
@@ -1682,13 +1747,13 @@ to go to.</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.New-tab"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+t</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-new_tab_with_cwd">
-<span class="sig-name descname"><span class="pre">new_tab_with_cwd</span></span><a class="headerlink" href="#action-new_tab_with_cwd" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">new_tab_with_cwd</span></span><a class="headerlink" href="#action-new_tab_with_cwd" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Create a new tab with working directory for the window in it set to the same as the active window</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-next_tab">
-<span class="sig-name descname"><span class="pre">next_tab</span></span><a class="headerlink" href="#action-next_tab" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">next_tab</span></span><a class="headerlink" href="#action-next_tab" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Make the next tab active</p>
@@ -1696,7 +1761,7 @@ to go to.</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Next-tab"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+right</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-previous_tab">
-<span class="sig-name descname"><span class="pre">previous_tab</span></span><a class="headerlink" href="#action-previous_tab" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">previous_tab</span></span><a class="headerlink" href="#action-previous_tab" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Make the previous tab active</p>
@@ -1704,13 +1769,13 @@ to go to.</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Previous-tab"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+left</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-select_tab">
-<span class="sig-name descname"><span class="pre">select_tab</span></span><a class="headerlink" href="#action-select_tab" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">select_tab</span></span><a class="headerlink" href="#action-select_tab" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Interactively select a tab to switch to</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-set_tab_title">
-<span class="sig-name descname"><span class="pre">set_tab_title</span></span><a class="headerlink" href="#action-set_tab_title" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_tab_title</span></span><a class="headerlink" href="#action-set_tab_title" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Change the title of the active tab interactively, by typing in the new title.</p>
@@ -1731,10 +1796,10 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Set-tab-title"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+alt+t</span></code></a></p>
 </section>
 <section id="window-management">
-<span id="action-group-win"></span><h1>Window management<a class="headerlink" href="#window-management" title="Link to this heading">#</a></h1>
+<span id="action-group-win"></span><h1>Window management<a class="headerlink" href="#window-management" title="Link to this heading">¶</a></h1>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-set_window_title">
-<span class="sig-name descname"><span class="pre">set_window_title</span></span><a class="headerlink" href="#action-set_window_title" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_window_title</span></span><a class="headerlink" href="#action-set_window_title" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Change the title of the active window interactively, by typing in the new title.</p>
@@ -1753,13 +1818,13 @@ prompt should not be pre-filled. For example:</p>
 </div>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-close_other_windows_in_tab">
-<span class="sig-name descname"><span class="pre">close_other_windows_in_tab</span></span><a class="headerlink" href="#action-close_other_windows_in_tab" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">close_other_windows_in_tab</span></span><a class="headerlink" href="#action-close_other_windows_in_tab" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Close all windows in the tab other than the currently active window</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-eighth_window">
-<span class="sig-name descname"><span class="pre">eighth_window</span></span><a class="headerlink" href="#action-eighth_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">eighth_window</span></span><a class="headerlink" href="#action-eighth_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the eighth window</p>
@@ -1767,7 +1832,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Eighth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+8</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-fifth_window">
-<span class="sig-name descname"><span class="pre">fifth_window</span></span><a class="headerlink" href="#action-fifth_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fifth_window</span></span><a class="headerlink" href="#action-fifth_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the fifth window</p>
@@ -1775,7 +1840,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Fifth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+5</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-first_window">
-<span class="sig-name descname"><span class="pre">first_window</span></span><a class="headerlink" href="#action-first_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">first_window</span></span><a class="headerlink" href="#action-first_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the first window</p>
@@ -1783,7 +1848,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.First-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+1</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-focus_visible_window">
-<span class="sig-name descname"><span class="pre">focus_visible_window</span></span><a class="headerlink" href="#action-focus_visible_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">focus_visible_window</span></span><a class="headerlink" href="#action-focus_visible_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus a visible window by pressing the number of the window. Window numbers are displayed</p>
@@ -1792,7 +1857,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Visually-select-and-focus-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f7</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-fourth_window">
-<span class="sig-name descname"><span class="pre">fourth_window</span></span><a class="headerlink" href="#action-fourth_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fourth_window</span></span><a class="headerlink" href="#action-fourth_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the fourth window</p>
@@ -1800,7 +1865,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Fourth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+4</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-move_window">
-<span class="sig-name descname"><span class="pre">move_window</span></span><a class="headerlink" href="#action-move_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">move_window</span></span><a class="headerlink" href="#action-move_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Move the window in the specified direction</p>
@@ -1811,7 +1876,7 @@ prompt should not be pre-filled. For example:</p>
 </div>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-move_window_backward">
-<span class="sig-name descname"><span class="pre">move_window_backward</span></span><a class="headerlink" href="#action-move_window_backward" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">move_window_backward</span></span><a class="headerlink" href="#action-move_window_backward" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Move active window backward (swap it with the previous window)</p>
@@ -1819,7 +1884,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-window-backward"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+b</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-move_window_forward">
-<span class="sig-name descname"><span class="pre">move_window_forward</span></span><a class="headerlink" href="#action-move_window_forward" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">move_window_forward</span></span><a class="headerlink" href="#action-move_window_forward" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Move active window forward (swap it with the next window)</p>
@@ -1827,7 +1892,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-window-forward"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-move_window_to_top">
-<span class="sig-name descname"><span class="pre">move_window_to_top</span></span><a class="headerlink" href="#action-move_window_to_top" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">move_window_to_top</span></span><a class="headerlink" href="#action-move_window_to_top" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Move active window to the top (make it the first window)</p>
@@ -1835,7 +1900,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Move-window-to-top"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+`</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-neighboring_window">
-<span class="sig-name descname"><span class="pre">neighboring_window</span></span><a class="headerlink" href="#action-neighboring_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">neighboring_window</span></span><a class="headerlink" href="#action-neighboring_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the neighboring window in the current tab</p>
@@ -1846,7 +1911,7 @@ prompt should not be pre-filled. For example:</p>
 </div>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-next_window">
-<span class="sig-name descname"><span class="pre">next_window</span></span><a class="headerlink" href="#action-next_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">next_window</span></span><a class="headerlink" href="#action-next_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the next window in the current tab</p>
@@ -1854,7 +1919,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Next-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+]</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-ninth_window">
-<span class="sig-name descname"><span class="pre">ninth_window</span></span><a class="headerlink" href="#action-ninth_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">ninth_window</span></span><a class="headerlink" href="#action-ninth_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the ninth window</p>
@@ -1862,7 +1927,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Ninth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+9</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-nth_window">
-<span class="sig-name descname"><span class="pre">nth_window</span></span><a class="headerlink" href="#action-nth_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">nth_window</span></span><a class="headerlink" href="#action-nth_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the nth window if positive or the previously active windows if negative. When the number is larger</p>
@@ -1875,7 +1940,7 @@ prompt should not be pre-filled. For example:</p>
 </div>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-previous_window">
-<span class="sig-name descname"><span class="pre">previous_window</span></span><a class="headerlink" href="#action-previous_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">previous_window</span></span><a class="headerlink" href="#action-previous_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the previous window in the current tab</p>
@@ -1883,20 +1948,20 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Previous-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+[</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-reset_window_sizes">
-<span class="sig-name descname"><span class="pre">reset_window_sizes</span></span><a class="headerlink" href="#action-reset_window_sizes" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">reset_window_sizes</span></span><a class="headerlink" href="#action-reset_window_sizes" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Reset window sizes undoing any dynamic resizing of windows</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-resize_window">
-<span class="sig-name descname"><span class="pre">resize_window</span></span><a class="headerlink" href="#action-resize_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">resize_window</span></span><a class="headerlink" href="#action-resize_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Resize the active window by the specified amount</p>
 <p>See <a class="reference internal" href="../layouts/#window-resizing"><span class="std std-ref">Resizing windows</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-second_window">
-<span class="sig-name descname"><span class="pre">second_window</span></span><a class="headerlink" href="#action-second_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">second_window</span></span><a class="headerlink" href="#action-second_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the second window</p>
@@ -1904,7 +1969,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Second-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+2</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-seventh_window">
-<span class="sig-name descname"><span class="pre">seventh_window</span></span><a class="headerlink" href="#action-seventh_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">seventh_window</span></span><a class="headerlink" href="#action-seventh_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the seventh window</p>
@@ -1912,7 +1977,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Seventh-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+7</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-sixth_window">
-<span class="sig-name descname"><span class="pre">sixth_window</span></span><a class="headerlink" href="#action-sixth_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">sixth_window</span></span><a class="headerlink" href="#action-sixth_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the sixth window</p>
@@ -1920,7 +1985,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Sixth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+6</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-swap_with_window">
-<span class="sig-name descname"><span class="pre">swap_with_window</span></span><a class="headerlink" href="#action-swap_with_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">swap_with_window</span></span><a class="headerlink" href="#action-swap_with_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Swap the current window with another window in the current tab, selected visually. See <a class="reference internal" href="../conf/#opt-kitty.visual_window_select_characters"><code class="xref std std-opt docutils literal notranslate"><span class="pre">visual_window_select_characters</span></code></a></p>
@@ -1928,7 +1993,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Visually-swap-window-with-another"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f8</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-tenth_window">
-<span class="sig-name descname"><span class="pre">tenth_window</span></span><a class="headerlink" href="#action-tenth_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">tenth_window</span></span><a class="headerlink" href="#action-tenth_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the tenth window</p>
@@ -1936,7 +2001,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Tenth-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+0</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-third_window">
-<span class="sig-name descname"><span class="pre">third_window</span></span><a class="headerlink" href="#action-third_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">third_window</span></span><a class="headerlink" href="#action-third_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the third window</p>
@@ -1944,7 +2009,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Third-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+3</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-change_font_size">
-<span class="sig-name descname"><span class="pre">change_font_size</span></span><a class="headerlink" href="#action-change_font_size" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">change_font_size</span></span><a class="headerlink" href="#action-change_font_size" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Change the font size for the current or all OS Windows</p>
@@ -1953,7 +2018,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Decrease-font-size"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+minus</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Increase-font-size"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+equal</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Reset-font-size"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+backspace</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-close_os_window">
-<span class="sig-name descname"><span class="pre">close_os_window</span></span><a class="headerlink" href="#action-close_os_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">close_os_window</span></span><a class="headerlink" href="#action-close_os_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Close the currently active OS Window</p>
@@ -1961,13 +2026,13 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Close-OS-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">shift+cmd+w</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-close_other_os_windows">
-<span class="sig-name descname"><span class="pre">close_other_os_windows</span></span><a class="headerlink" href="#action-close_other_os_windows" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">close_other_os_windows</span></span><a class="headerlink" href="#action-close_other_os_windows" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Close all other OS Windows other than the OS Window containing the currently active window</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-close_window">
-<span class="sig-name descname"><span class="pre">close_window</span></span><a class="headerlink" href="#action-close_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">close_window</span></span><a class="headerlink" href="#action-close_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Close the currently active window</p>
@@ -1975,7 +2040,7 @@ prompt should not be pre-filled. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Close-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+w</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-close_window_with_confirmation">
-<span class="sig-name descname"><span class="pre">close_window_with_confirmation</span></span><a class="headerlink" href="#action-close_window_with_confirmation" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">close_window_with_confirmation</span></span><a class="headerlink" href="#action-close_window_with_confirmation" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Close window with confirmation</p>
@@ -1987,14 +2052,14 @@ confirmation when the window is sitting at a shell prompt
 </div>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-detach_window">
-<span class="sig-name descname"><span class="pre">detach_window</span></span><a class="headerlink" href="#action-detach_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">detach_window</span></span><a class="headerlink" href="#action-detach_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Detach a window, moving it to another tab or OS Window</p>
-<p>See <a class="reference internal" href="../overview/#detach-window"><span class="std std-ref">detaching windows</span></a> for details.</p>
+<p>See <a class="reference internal" href="../invocation/#detach-window"><span class="std std-ref">detaching windows</span></a> for details.</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-new_os_window">
-<span class="sig-name descname"><span class="pre">new_os_window</span></span><a class="headerlink" href="#action-new_os_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">new_os_window</span></span><a class="headerlink" href="#action-new_os_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>New OS Window</p>
@@ -2002,13 +2067,13 @@ confirmation when the window is sitting at a shell prompt
 <a class="reference internal" href="../conf/#shortcut-kitty.New-OS-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+n</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-new_os_window_with_cwd">
-<span class="sig-name descname"><span class="pre">new_os_window_with_cwd</span></span><a class="headerlink" href="#action-new_os_window_with_cwd" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">new_os_window_with_cwd</span></span><a class="headerlink" href="#action-new_os_window_with_cwd" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>New OS Window with the same working directory as the currently active window</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-new_window">
-<span class="sig-name descname"><span class="pre">new_window</span></span><a class="headerlink" href="#action-new_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">new_window</span></span><a class="headerlink" href="#action-new_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Create a new window</p>
@@ -2016,13 +2081,13 @@ confirmation when the window is sitting at a shell prompt
 <a class="reference internal" href="../conf/#shortcut-kitty.New-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+enter</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-new_window_with_cwd">
-<span class="sig-name descname"><span class="pre">new_window_with_cwd</span></span><a class="headerlink" href="#action-new_window_with_cwd" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">new_window_with_cwd</span></span><a class="headerlink" href="#action-new_window_with_cwd" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Create a new window with working directory same as that of the active window</p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-nth_os_window">
-<span class="sig-name descname"><span class="pre">nth_os_window</span></span><a class="headerlink" href="#action-nth_os_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">nth_os_window</span></span><a class="headerlink" href="#action-nth_os_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Focus the nth OS window if positive or the previously active OS windows if negative. When the number is larger</p>
@@ -2041,7 +2106,7 @@ allows applications to grab focus. For example:</p>
 </div>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-quit">
-<span class="sig-name descname"><span class="pre">quit</span></span><a class="headerlink" href="#action-quit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">quit</span></span><a class="headerlink" href="#action-quit" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Quit, closing all windows</p>
@@ -2049,7 +2114,7 @@ allows applications to grab focus. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Quit-kitty"><code class="xref std std-sc docutils literal notranslate"><span class="pre">cmd+q</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-set_background_opacity">
-<span class="sig-name descname"><span class="pre">set_background_opacity</span></span><a class="headerlink" href="#action-set_background_opacity" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_background_opacity</span></span><a class="headerlink" href="#action-set_background_opacity" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Set the background opacity for the active OS Window</p>
@@ -2063,7 +2128,7 @@ allows applications to grab focus. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Decrease-background-opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;l</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Make-background-fully-opaque"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;1</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Increase-background-opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;m</span></code></a>, <a class="reference internal" href="../conf/#shortcut-kitty.Reset-background-opacity"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+a&gt;d</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-start_resizing_window">
-<span class="sig-name descname"><span class="pre">start_resizing_window</span></span><a class="headerlink" href="#action-start_resizing_window" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">start_resizing_window</span></span><a class="headerlink" href="#action-start_resizing_window" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Resize the active window interactively</p>
@@ -2072,7 +2137,7 @@ allows applications to grab focus. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Start-resizing-window"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+r</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-toggle_fullscreen">
-<span class="sig-name descname"><span class="pre">toggle_fullscreen</span></span><a class="headerlink" href="#action-toggle_fullscreen" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">toggle_fullscreen</span></span><a class="headerlink" href="#action-toggle_fullscreen" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Toggle the fullscreen status of the active OS Window</p>
@@ -2080,7 +2145,7 @@ allows applications to grab focus. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Toggle-fullscreen"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f11</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-toggle_maximized">
-<span class="sig-name descname"><span class="pre">toggle_maximized</span></span><a class="headerlink" href="#action-toggle_maximized" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">toggle_maximized</span></span><a class="headerlink" href="#action-toggle_maximized" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Toggle the maximized status of the active OS Window</p>
@@ -2088,7 +2153,7 @@ allows applications to grab focus. For example:</p>
 <a class="reference internal" href="../conf/#shortcut-kitty.Toggle-maximized"><code class="xref std std-sc docutils literal notranslate"><span class="pre">ctrl+shift+f10</span></code></a></p>
 <dl class="std action">
 <dt class="sig sig-object std" id="action-toggle_tab">
-<span class="sig-name descname"><span class="pre">toggle_tab</span></span><a class="headerlink" href="#action-toggle_tab" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">toggle_tab</span></span><a class="headerlink" href="#action-toggle_tab" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Toggle to the tab matching the specified expression</p>
@@ -2157,10 +2222,10 @@ on the match expression. For example:</p>
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=dbd18dfb"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+</div><script src="../_static/documentation_options.js?v=5774f8e4"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/tabs.js?v=3ee01567"></script>

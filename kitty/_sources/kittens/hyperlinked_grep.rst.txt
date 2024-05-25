@@ -28,19 +28,19 @@ following contents:
 .. code:: conf
 
     # Open any file with a fragment in vim, fragments are generated
-    # by the hyperlink_grep kitten and nothing else so far.
+    # by the hyperlink-grep kitten and nothing else so far.
     protocol file
     fragment_matches [0-9]+
-    action launch --type=overlay --cwd=current vim +${FRAGMENT} ${FILE_PATH}
+    action launch --type=overlay --cwd=current vim +${FRAGMENT} -- ${FILE_PATH}
 
     # Open text files without fragments in the editor
     protocol file
     mime text/*
-    action launch --type=overlay --cwd=current ${EDITOR} ${FILE_PATH}
+    action launch --type=overlay --cwd=current -- ${EDITOR} -- ${FILE_PATH}
 
 Now, run a search with::
 
-    kitten hyperlinked_grep something
+    kitten hyperlinked-grep something
 
 Hold down the :kbd:`Ctrl+Shift` keys and click on any of the result lines, to
 open the file in :program:`vim` at the matching line. If you use some editor
@@ -51,7 +51,7 @@ accordingly. TO open links with the keyboard instead, use
 Finally, add an alias to your shell's rc files to invoke the kitten as
 :command:`hg`::
 
-    alias hg="kitten hyperlinked_grep"
+    alias hg="kitten hyperlinked-grep"
 
 
 You can now run searches with::
