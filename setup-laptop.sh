@@ -55,7 +55,10 @@ RouteMetric=20
 RouteMetric=20
 EOF
 
-cat << EOF > "/mnt/etc/wpa_supplicant/wpa_supplicant-$(ip a | grep -o ': wl.\+\?:' | cut -d' ' -f2 | cut -d: -f1).conf"
+interface=$(ip a | grep -o ': wl.\+\?:' | cut -d' ' -f2 | cut -d: -f1)
+network_config="/mnt/etc/wpa_supplicant/wpa_supplicant-$interface.conf"
+
+cat << EOF > "$network_config"
 ctrl_interface=/run/wpa_supplicant
 ctrl_interface_group=wheel
 ap_scan=1
@@ -65,7 +68,11 @@ fast_reauth=1
 EOF
 
 ln -sf /run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
-wpa_passphrase KovidTheGreat >> "/mnt/etc/wpa_supplicant/$(ip a | grep -o ': wl.\+\?:' | cut -d' ' -f2 | cut -d: -f1).conf"
+echo "Enter passphrase for KovidTheGreat"
+wpa_passphrase KovidTheGreat >> "$network_config"
+echo "Enter passphrase for Kphone"
+wpa_passphrase Kphone >> "$network_config"
+wpa_passphrase 'Westwood Villa' Westwoodvill@ >> "$network_config"
 genfstab -U /mnt >> /mnt/etc/fstab
 curl 'https://github.com/kovidgoyal/kovidgoyal.github.io/raw/master/setup-laptop2.sh' > /mnt/root/setup-laptop.sh
 arch-chroot /mnt
