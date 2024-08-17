@@ -9,6 +9,30 @@ To update |kitty|, :doc:`follow the instructions <binary>`.
 Recent major new features
 ---------------------------
 
+Variable font support [0.36]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Terminal aficionados spend all day staring at text, so getting text
+rendering just right is very important. In that spirit, kitty now supports
+`OpenType Variable fonts <https://en.wikipedia.org/wiki/Variable_font>`__.
+These allow precise customisation of font characteristics, such as weight and
+spacing. Not only that, kitty now has a new :doc:`choose-fonts
+<kittens/choose-fonts>` kitten that provides a UI for choosing fonts with
+support for font features, variable fonts and previews of how the font will
+look. This is in addition to its existing best-in-class font customization
+abilities, such as: :opt:`symbol_map`, :opt:`text_composition_strategy`,
+:opt:`font_features` and :opt:`modify_font`. kitty knows text rendering is
+important, and goes the extra mile for it.
+
+Desktop notifications [0.36]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|kitty| now has a :doc:`notify </kittens/notify>` kitten that can be used to
+display desktop notifications from the command line, even over SSH. It has
+support for icons, buttons, updating notifications, waiting till
+the notification is closed, etc. The underlying :doc:`desktop-notifications`
+protocol has been expanded to support all these features.
+
 Wayland goodies [0.34]
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -49,6 +73,73 @@ consumption to do the same tasks.
 
 Detailed list of changes
 -------------------------------------
+
+0.36.0 [2024-08-17]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Support `OpenType Variable fonts <https://en.wikipedia.org/wiki/Variable_font>`__ (:iss:`3711`)
+
+- A new :doc:`choose-fonts </kittens/choose-fonts>` kitten that provides a UI with font previews to ease selection of fonts. Also has support for font features and variable fonts
+
+- Allow animating the blinking of the cursor. See :opt:`cursor_blink_interval` for how to configure it
+
+- Add NERD fonts builtin so that users don't have to install them to use NERD symbols in kitty. The builtin font is used only if the symbols are not available in some system font
+
+- launch command: A new :option:`launch --bias` option to adjust the size of newly created windows declaratively (:iss:`7634`)
+
+- A new option :opt:`second_transparent_bg` to make a second background color semi-transparent via :opt:`background_opacity`. Useful for things like cursor line highlight in editors (:iss:`7646`)
+
+- A new :doc:`notify </kittens/notify>` kitten to show desktop notifications
+  from the command line with support for icons, buttons and more.
+
+- Desktop notifications protocol: Add support for icons, buttons, closing of notifications, expiry of notifications, updating of notifications and querying if the terminal emulator supports the protocol (:iss:`7657`, :iss:`7658`, :iss:`7659`)
+
+- A new option :opt:`filter_notification` to filter out or perform arbitrary actions on desktop notifications based on sophisticated criteria (:iss:`7670`)
+
+- A new protocol to allow terminal applications to change colors in the terminal more robustly than with the legacy XTerm protocol (:ref:`color_control`)
+
+- Sessions: A new command ``focus_matching_window`` to shift focus to a specific window, useful when creating complex layouts with splits (:disc:`7635`)
+
+- Speed up loading of large background images by caching the decoded image data. Also allow using images in JPEG/WEBP/TIFF/GIF/BMP formats in addition to PNG
+
+- Wayland: Allow fractional scales less than one (:pull:`7549`)
+
+- Wayland: Fix specifying the output name for the panel kitten not working (:iss:`7573`)
+
+- icat kitten: Add an option :option:`kitty +kitten icat --no-trailing-newline` to leave the cursor to the right of the image (:iss:`7574`)
+
+- Speed up ``kitty --version`` and ``kitty --single-instance`` (for all subsequent instances). They are now the fastest of all terminal emulators with similar functionality
+
+- macOS: Fix rendering of the unicode hyphen (U+2010) character when using a font that does not include a glyph for it (:iss:`7525`)
+
+- macOS 15: Handle Fn modifier when detecting global shortcuts (:iss:`7582`)
+
+- Dispatch any clicks waiting for :opt:`click_interval` on key events (:iss:`7601`)
+
+- ``kitten run-shell``: Automatically add the directory containing the kitten binary to PATH if needed. Controlled via the ``--inject-self-onto-path`` option (`disc`:7668`)
+
+- Wayland: Fix an issue with mouse selections not being stopped when there are multiple OS windows (:iss:`7381`)
+
+- Splits layout: Fix the ``move_to_screen_edge`` action breaking when only a single window is present (:iss:`7621`)
+
+- Add support for in-band window resize notifications (:iss:`7642`)
+
+- Allow controlling the easing curves used for :opt:`visual_bell_duration`
+
+- New special rendering for font symbols useful in drawing commit graphs (:pull:`7681`)
+
+- diff kitten: Add bindings to jump to next and previous file (:pull:`7683`)
+
+- Wayland GNOME: Fix the font size in the OS Window title bar changing with the size of the text in the window (:disc:`7677`)
+
+- Wayland GNOME: Fix a small rendering artifact when docking a window at a screen edge or maximizing it (:iss:`7701`)
+
+- When :opt:`shell` is set to ``.`` respect the SHELL environment variable in the environment in which kitty is launched (:pull:`7714`)
+
+- macOS: Bump the minimum required macOS version to Catalina released five years ago.
+
+- Fix a regression in :opt:`notify_on_cmd_finish` that caused notifications to appear for every command after the first (:iss:`7725`)
+
 
 0.35.2 [2024-06-22]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

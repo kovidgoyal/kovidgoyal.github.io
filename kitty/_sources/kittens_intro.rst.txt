@@ -11,6 +11,7 @@ Extend with kittens
    kittens/diff
    kittens/unicode_input
    kittens/themes
+   kittens/choose-fonts
    kittens/hints
    kittens/remote_file
    kittens/hyperlinked_grep
@@ -39,6 +40,10 @@ Some prominent kittens:
 
 :doc:`Themes <kittens/themes>`
     Preview and quick switch between over three hundred color themes.
+
+
+:doc:`Fonts <kittens/choose-fonts>`
+    Preview, fine-tune and quick switch the fonts used by kitty.
 
 
 :doc:`Hints <kittens/hints>`

@@ -258,24 +258,27 @@ fonts to be freely resizable, so it does not support bitmapped fonts.
    If you are trying to use a font patched with `Nerd Fonts
    <https://nerdfonts.com/>`__ symbols, don't do that as patching destroys
    fonts. There is no need, simply install the standalone ``Symbols Nerd Font Mono``
-   (the file :file:`NerdFontsSymbolsOnly.zip` from the `Nerd Fonts releases page
+   (the file :file:`NerdFontsSymbolsOnly.tar.xz` from the `Nerd Fonts releases page
    <https://github.com/ryanoasis/nerd-fonts/releases>`__). kitty should pick up
    symbols from it automatically, and you can tell it to do so explicitly in
    case it doesn't with the :opt:`symbol_map` directive::
 
-        # Nerd Fonts v3.1.0
+        # Nerd Fonts v3.2.0
 
-        symbol_map U+e000-U+e00a,U+ea60-U+ebeb,U+e0a0-U+e0c8,U+e0ca,U+e0cc-U+e0d4,U+e200-U+e2a9,U+e300-U+e3e3,U+e5fa-U+e6b1,U+e700-U+e7c5,U+f000-U+f2e0,U+f300-U+f372,U+f400-U+f532,U+f0001-U+f1af0 Symbols Nerd Font Mono
+        symbol_map U+e000-U+e00a,U+ea60-U+ebeb,U+e0a0-U+e0c8,U+e0ca,U+e0cc-U+e0d7,U+e200-U+e2a9,U+e300-U+e3e3,U+e5fa-U+e6b1,U+e700-U+e7c5,U+ed00-U+efc1,U+f000-U+f2ff,U+f000-U+f2e0,U+f300-U+f372,U+f400-U+f533,U+f0001-U+f1af0 Symbols Nerd Font Mono
 
    Those Unicode symbols not in the `Unicode private use areas
    <https://en.wikipedia.org/wiki/Private_Use_Areas>`__ are
    not included.
 
-If your font is not listed in ``kitty +list-fonts`` it means that it is not
+If your font is not listed in ``kitten choose-fonts`` it means that it is not
 monospace or is a bitmapped font. On Linux you can list all monospace fonts
 with::
 
     fc-list : family spacing outline scalable | grep -e spacing=100 -e spacing=90 | grep -e outline=True | grep -e scalable=True
+
+On macOS, you can open *Font Book* and look in the :guilabel:`Fixed width`
+collection to see all monospaced fonts on your system.
 
 Note that the spacing property is calculated by fontconfig based on actual glyph
 widths in the font. If for some reason fontconfig concludes your favorite
@@ -300,7 +303,7 @@ command to rebuild your fontconfig cache::
 
     fc-cache -r
 
-Then, the font will be available in ``kitty +list-fonts``.
+Then, the font will be available in ``kitten choose-fonts``.
 
 
 How can I assign a single global shortcut to bring up the kitty terminal?
@@ -315,8 +318,9 @@ see :iss:`here <45>`.
 I do not like the kitty icon!
 -------------------------------
 
-There are many alternate icons available, click on an icon to visit its
-homepage:
+The kitty icon was created as tribute to my cat of nine years who passed away,
+as such it is not going to change. However, if you do not like it, there are
+many alternate icons available, click on an icon to visit its homepage:
 
 .. image:: https://github.com/k0nserv/kitty-icon/raw/main/kitty.iconset/icon_256x256.png
    :target: https://github.com/k0nserv/kitty-icon

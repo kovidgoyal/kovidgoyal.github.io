@@ -19,14 +19,14 @@ kitty
 
 .. tab:: Fast
 
-   * Offloads rendering to the GPU for :doc:`lower system load <performance>`
+   * Uses GPU and SIMD vector CPU instructions for :doc:`best in class <performance>`
    * Uses threaded rendering for :iss:`absolutely minimal latency <2701#issuecomment-636497270>`
    * Performance tradeoffs can be :ref:`tuned <conf-kitty-performance>`
 
 .. tab:: Capable
 
    * Graphics, with :doc:`images and animations <graphics-protocol>`
-   * Ligatures and emoji, with :opt:`per glyph font substitution <symbol_map>`
+   * Ligatures, emoji with :opt:`per glyph font substitution <symbol_map>` and :doc:`variable fonts and font features </kittens/choose-fonts>`
    * :term:`Hyperlinks<hyperlinks>`, with :doc:`configurable actions <open_actions>`
 
 .. tab:: Scriptable
