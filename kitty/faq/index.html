@@ -792,6 +792,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input class="toctree-checkbox" id="toctree-checkbox-102" name="toctree-checkbox-102" role="switch" type="checkbox"/><label for="toctree-checkbox-102"><div class="visually-hidden">Toggle navigation of Detailed list of changes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#future">0.36.1 [future]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.36.0 [2024-08-17]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.35.2 [2024-06-22]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.35.1 [2024-05-31]</a></li>
@@ -1325,7 +1326,7 @@ with:</p>
 </div>
 <p>On macOS, you can open <em>Font Book</em> and look in the <span class="guilabel">Fixed width</span>
 collection to see all monospaced fonts on your system.</p>
-<p>Note that the spacing property is calculated by fontconfig based on actual glyph
+<p>Note that <strong>on Linux</strong>, the spacing property is calculated by fontconfig based on actual glyph
 widths in the font. If for some reason fontconfig concludes your favorite
 monospace font does not have <code class="docutils literal notranslate"><span class="pre">spacing=100</span></code> you can override it by using the
 following <code class="file docutils literal notranslate"><span class="pre">~/.config/fontconfig/fonts.conf</span></code>:</p>
@@ -1413,10 +1414,12 @@ kitty<span class="w"> </span>+runpy<span class="w"> </span><span class="s1">&#39
 <p>This is accomplished by using <code class="docutils literal notranslate"><span class="pre">map</span></code> with <a class="reference internal" href="../actions/#action-send_key"><code class="xref std std-ac docutils literal notranslate"><span class="pre">send_key</span></code></a> in <code class="file docutils literal notranslate"><span class="pre">kitty.conf</span></code>.
 For example:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>map<span class="w"> </span>alt+s<span class="w"> </span>send_key<span class="w"> </span>ctrl+s
+map<span class="w"> </span>ctrl+alt+2<span class="w"> </span>combine<span class="w"> </span>:<span class="w"> </span>send_key<span class="w"> </span>ctrl+c<span class="w"> </span>:<span class="w"> </span>send_key<span class="w"> </span>h<span class="w"> </span>:<span class="w"> </span>send_key<span class="w"> </span>a
 </pre></div>
 </div>
 <p>This causes the program running in kitty to receive the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd></kbd> key when
-you press the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd></kbd> key. To see this in action, run:</p>
+you press the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd></kbd> key and several keystrokes when you press
+<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>+<kbd class="kbd docutils literal notranslate">alt</kbd>+<kbd class="kbd docutils literal notranslate">2</kbd></kbd>. To see this in action, run:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kitten<span class="w"> </span>show-key<span class="w"> </span>-m<span class="w"> </span>kitty
 </pre></div>
 </div>

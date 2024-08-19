@@ -280,7 +280,7 @@ with::
 On macOS, you can open *Font Book* and look in the :guilabel:`Fixed width`
 collection to see all monospaced fonts on your system.
 
-Note that the spacing property is calculated by fontconfig based on actual glyph
+Note that **on Linux**, the spacing property is calculated by fontconfig based on actual glyph
 widths in the font. If for some reason fontconfig concludes your favorite
 monospace font does not have ``spacing=100`` you can override it by using the
 following :file:`~/.config/fontconfig/fonts.conf`::
@@ -399,9 +399,11 @@ This is accomplished by using ``map`` with :ac:`send_key` in :file:`kitty.conf`.
 For example::
 
     map alt+s send_key ctrl+s
+    map ctrl+alt+2 combine : send_key ctrl+c : send_key h : send_key a
 
 This causes the program running in kitty to receive the :kbd:`ctrl+s` key when
-you press the :kbd:`alt+s` key. To see this in action, run::
+you press the :kbd:`alt+s` key and several keystrokes when you press
+:kbd:`ctrl+alt+2`. To see this in action, run::
 
     kitten show-key -m kitty
 
