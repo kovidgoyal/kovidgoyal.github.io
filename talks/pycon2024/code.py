@@ -5,7 +5,7 @@ import gc
 import os
 from base64 import standard_b64encode
 from time import perf_counter_ns
-from multiprocessing import Pool, set_start_method, sharedctypes
+from multiprocessing import Pool, shared_memory
 
 from kitty.fast_data_types import base64_encode  # type: ignore
 
@@ -43,22 +43,6 @@ def noslice(input_bytes: bytes) -> bytes:
     return bytes(output)
 
 
-def do_chunk(func, i: int) -> None:
-    input_buffer = memoryview(input_data)
-    chunk_size = len(input_buffer) // num_workers
-    input_chunk = input_buffer[i * chunk_size:(i + 1) * chunk_size]
-    chunk_size = len(output) // num_workers
-    output_chunk = output[i * chunk_size:(i + 1) * chunk_size]
-    func(input_chunk, output_chunk)
-
-
-def parallel(input_bytes: bytes, func = noslice_part) -> bytes:
-    if len(input_bytes) < 3 * num_workers:
-        return func(input_bytes)
-    pool.starmap(do_chunk, ((func, i) for i in range(num_workers)))
-    return bytes(output)
-
-
 def memview(input_bytes: bytes) -> bytes:
     input_bytes = memoryview(input_bytes)
     o = memoryview(output)
@@ -74,8 +58,18 @@ def memview(input_bytes: bytes) -> bytes:
     return bytes(output)
 
 
-def parallel_noslice(input_bytes: bytes) -> bytes:
-    return parallel(input_bytes, noslice_part)
+def do_chunk(func, i: int, input_size: int) -> None:
+    chunk_size = input_size // num_workers
+    input_chunk = input_buf[i * chunk_size:(i + 1) * chunk_size]
+    chunk_size = 4 * chunk_size // 3
+    output_chunk = output[i * chunk_size:(i + 1) * chunk_size]
+    func(input_chunk, output_chunk)
+
+
+def parallel(pool, input_bytes: bytes, func = noslice_part) -> bytes:
+    input_size = len(input_bytes)
+    pool.starmap(do_chunk, ((func, i, input_size) for i in range(num_workers)))
+    return bytes(output[:4 * input_size // 3])
 
 
 def time_func(func, *args, number):
@@ -101,16 +95,54 @@ def rate_of(f, input_data, number=1024):
 
 
 gc.disable()
-set_start_method('fork')
 num_workers = os.cpu_count() or 1
-print(f'Number of workers: {num_workers}')
-input_data = os.urandom(3 * (4 * num_workers) * 1024)  # must be multiple of 3 as the python implementation assumes that for simplicity
-buffer = sharedctypes.RawArray('B', 4 * len(input_data) // 3)
-output = memoryview(buffer).cast('B')
-pool = Pool(num_workers)
-try:
-    for f in (base64_encode, standard_b64encode, parallel_noslice, noslice, memview, naive):
-        assert f(b'abcdef' * num_workers) == standard_b64encode(b'abcdef' * num_workers)
-        rate_of(f, input_data)
-except KeyboardInterrupt:
-    raise SystemExit(1)
+input_size = 3 * (4 * num_workers) * 1024  # must be multiple of 3 as the python implementation assumes that for simplicity
+output_size = 4 * input_size // 3
+shm = shared_memory.SharedMemory(create=True, size=input_size + output_size)
+input_buf = shm.buf[:input_size]
+input_data = os.urandom(input_size)
+output = shm.buf[input_size:]
+
+
+def init_worker():
+    global shm, output, input_buf
+    input_buf = output = None
+    shm.close()
+    shm = shared_memory.SharedMemory(shm.name)
+    input_buf = shm.buf[:input_size]
+    output = shm.buf[input_size:]
+
+
+
+def main():
+    global input_buf, output
+    print(f'Number of workers: {num_workers}')
+    test_input = b'abcdef' * num_workers
+    expected = standard_b64encode(test_input)
+    input_buf[:len(test_input)] = test_input
+    pool = Pool(num_workers, init_worker)
+    def parallel_noslice(input_bytes: bytes) -> bytes:
+        return parallel(pool, input_bytes, noslice_part)
+
+
+    functions = base64_encode, standard_b64encode, parallel_noslice, noslice, memview, naive
+    try:
+        for f in functions:
+            if (actual := f(test_input)[:len(expected)]) != expected:
+                raise SystemExit(f'{f.__name__} did not encode correctly: {expected} != {actual[:256]}')
+        input_buf[:] = input_data
+        try:
+            for f in functions:
+                rate_of(f, input_data)
+        except KeyboardInterrupt:
+            raise SystemExit(1)
+    finally:
+        input_buf = output = None
+        shm.close()
+        shm.unlink()
+        pool.close()
+        pool.join()
+
+
+if __name__ == '__main__':
+    main()
