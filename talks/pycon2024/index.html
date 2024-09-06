@@ -76,6 +76,15 @@ code { overflow: hidden !important; }
     <div class="fragment">Rate: 6.5 <em>MB/s</em> 5x faster</div>
 </section>
 
+<section id="memoryview">
+    <h3>Intermezzo: <em>memoryview</em></h3>
+    <div><pre><code data-trim class="python memoryview" data-line-numbers='2-3,6,12'></code></pre></div>
+    <div class="fragment">
+        <div>Rate: 6.0 <em>MB/s</em> same speed</div>
+        <div>Binary data ⇒  <em>use memoryview</em></div>
+    </div>
+</section>
+
 
 <script>
     const naive_implementation = `
@@ -107,6 +116,21 @@ def noslice(inp: bytes) -> bytes:
     return bytes(output)
 `
 
+const memoryview = `
+def memview(input_bytes: bytes) -> bytes:
+    input_bytes = memoryview(input_bytes)
+    o = memoryview(output)
+    while len(input_bytes) > 2:
+        triple = (input_bytes[0] << 16) + (input_bytes[1] << 8) + input_bytes[2]
+        input_bytes = input_bytes[3:]
+
+        o[0] = base64_chars[(triple >> 18) & 63]
+        o[1] = base64_chars[(triple >> 12) & 63]
+        o[2] = base64_chars[(triple >> 6) & 63]
+        o[3] = base64_chars[triple & 63]
+        o = o[4:]
+    return bytes(output)
+`
     function insert_code_block(code, classname) {
         for (const elem of document.getElementsByClassName(classname)) {
             elem.textContent = code;
@@ -114,6 +138,7 @@ def noslice(inp: bytes) -> bytes:
     }
     insert_code_block(naive_implementation, 'naive_implementation')
     insert_code_block(noslice, 'noslice')
+    insert_code_block(memoryview, 'memoryview')
 </script>
 
 <!-- plugins and configuration {{{ -->
