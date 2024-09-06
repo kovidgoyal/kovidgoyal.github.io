@@ -18,6 +18,7 @@
 
 <style>
 code { overflow: hidden !important; }
+.r-stack.code-blocks .fragment { width: 100%; }
 </style>
 
 <section id="title">
@@ -65,7 +66,7 @@ code { overflow: hidden !important; }
 
 <section id="fix-naive">
     <h3>Do not be naive</h3>
-    <div class="r-stack">
+    <div class="r-stack code-blocks">
         <div class="fragment fade-out" data-fragment-index="0">
             <pre><code data-trim data-line-numbers='5' class="python naive_implementation"></code></pre>
         </div>
@@ -85,9 +86,29 @@ code { overflow: hidden !important; }
     </div>
 </section>
 
+<section id="parallel">
+    <h3>Parallelism to the rescue?</h3>
+    <div class="r-stack code-blocks">
+        <div class="fragment fade-out" data-fragment-index="0">
+            <pre><code data-trim data-line-numbers='1' class="python parallel1"></code></pre>
+        </div>
+        <div class="fragment current-visible" data-fragment-index="0">
+            <pre><code data-trim data-line-numbers='1,6' class="python parallel2"></code></pre>
+        </div>
+        <div class="fragment">
+            <pre><code data-trim data-line-numbers class="python parallel3"></code></pre>
+        </div>
+    </div>
+    <div class="fragment">
+        <div>Rate: 22 <em>MB/s</em> 3x faster than noslice</div>
+        <div>20x faster than naive, but <em>50x slower</em> than native</div>
+    </div>
+</section>
+
 
 <script>
-    const naive_implementation = `
+const code_blocks = {
+    naive_implementation: `
 def naive_implementation(inp: bytes) -> bytes:
     i = 0
     while len(inp) > 2:
@@ -100,9 +121,9 @@ def naive_implementation(inp: bytes) -> bytes:
         output[i+3] = base64_chars[triple & 63]
         i += 4
     return bytes(output)
-`;
+`,
 
-const noslice = `
+noslice: `
 def noslice(inp: bytes) -> bytes:
     i = 0
     for j in range(0, len(inp), 3):
@@ -114,9 +135,9 @@ def noslice(inp: bytes) -> bytes:
         output[i+3] = base64_chars[triple & 63]
         i += 4
     return bytes(output)
-`
+`,
 
-const memoryview = `
+memoryview: `
 def memview(input_bytes: bytes) -> bytes:
     input_bytes = memoryview(input_bytes)
     o = memoryview(output)
@@ -130,15 +151,47 @@ def memview(input_bytes: bytes) -> bytes:
         o[3] = base64_chars[triple & 63]
         o = o[4:]
     return bytes(output)
-`
-    function insert_code_block(code, classname) {
+`,
+parallel1: `
+def parallel_part(inp: memoryview, out: memoryview) -> None:
+    while len(input_bytes) > 2:
+        triple = (input_bytes[0] << 16) + (input_bytes[1] << 8) + input_bytes[2]
+        input_bytes = input_bytes[3:]
+
+        out[0] = base64_chars[(triple >> 18) & 63]
+        out[1] = base64_chars[(triple >> 12) & 63]
+        out[2] = base64_chars[(triple >> 6) & 63]
+        out[3] = base64_chars[triple & 63]
+        out = out[4:]
+`,
+parallel2: `
+def chunk(i: int) -> None:
+    chunk_size = len(input_data) // num_workers
+    input_chunk = memoryview(input_buffer)[i * chunk_size:(i + 1) * chunk_size]
+    chunk_size = len(output) // num_workers
+    output_chunk = output[i * chunk_size:(i + 1) * chunk_size]
+    parallel_part(input_chunk, output_chunk)
+`,
+parallel3: `
+from multiprocessing import Pool, set_start_method
+from multiprocessing.sharedctypes import RawArray
+
+set_start_method('fork')
+buffer = RawArray('B', 4 * len(input_data) // 3)
+output = memoryview(buffer).cast('B')
+pool = Pool()
+
+def parallel_encode(input_bytes: bytes) -> bytes:
+    pool.map(chunk, range(os.cpu_count()))
+    return bytes(output)
+
+`,
+}
+Object.entries(code_blocks).forEach(([classname, code]) => {
         for (const elem of document.getElementsByClassName(classname)) {
             elem.textContent = code;
         }
-    }
-    insert_code_block(naive_implementation, 'naive_implementation')
-    insert_code_block(noslice, 'noslice')
-    insert_code_block(memoryview, 'memoryview')
+})
 </script>
 
 <!-- plugins and configuration {{{ -->
