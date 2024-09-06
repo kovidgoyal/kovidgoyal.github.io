@@ -16,6 +16,10 @@
 	<body> <div class="reveal"> <div class="slides">
 <!-- }}} -->
 
+<style>
+code { overflow: hidden !important; }
+</style>
+
 <section id="title">
   <h2>Making Python programs <em>fast</em></h2>
   <p>Kovid Goyal</p>
@@ -48,7 +52,69 @@
     </ul>
 </section>
 
+<section id="base64-baseline">
+    <h3>Case study: <em>base64</em></h3>
+    <pre style="text-align: center"><code data-trim class="sh">
+        head -c 1073741824 < /dev/urandom > /dev/shm/data
+        hyperfine 'base64 -w 0 < /dev/shm/data > /dev/null'
+    </code></pre>
+    Rate: 1.6 <em>GB/s</em>
+    <div class="fragment"><pre><code data-trim class="python naive_implementation"></code></pre></div>
+    <div class="fragment">Rate: 1.2 <em>MB/s</em> 1000x slower!!</div>
+</section>
 
+<section id="fix-naive">
+    <h3>Do not be naive</h3>
+    <div class="r-stack">
+        <div class="fragment fade-out" data-fragment-index="0">
+            <pre><code data-trim data-line-numbers='5' class="python naive_implementation"></code></pre>
+        </div>
+        <div class="fragment" data-fragment-index="0">
+            <pre><code data-trim data-line-numbers='3-4' class="python noslice"></code></pre>
+        </div>
+    </div>
+    <div class="fragment">Rate: 6.5 <em>MB/s</em> 5x faster</div>
+</section>
+
+
+<script>
+    const naive_implementation = `
+def naive_implementation(inp: bytes) -> bytes:
+    i = 0
+    while len(inp) > 2:
+        triple = (inp[0] << 16) + (inp[1] << 8) + inp[2]
+        inp = inp[3:]
+
+        output[i] = base64_chars[(triple >> 18) & 63]
+        output[i+1] = base64_chars[(triple >> 12) & 63]
+        output[i+2] = base64_chars[(triple >> 6) & 63]
+        output[i+3] = base64_chars[triple & 63]
+        i += 4
+    return bytes(output)
+`;
+
+const noslice = `
+def noslice(inp: bytes) -> bytes:
+    i = 0
+    for j in range(0, len(inp), 3):
+        triple = (inp[j] << 16) + (inp[j+1] << 8) + inp[j+2]
+
+        output[i] = base64_chars[(triple >> 18) & 63]
+        output[i+1] = base64_chars[(triple >> 12) & 63]
+        output[i+2] = base64_chars[(triple >> 6) & 63]
+        output[i+3] = base64_chars[triple & 63]
+        i += 4
+    return bytes(output)
+`
+
+    function insert_code_block(code, classname) {
+        for (const elem of document.getElementsByClassName(classname)) {
+            elem.textContent = code;
+        }
+    }
+    insert_code_block(naive_implementation, 'naive_implementation')
+    insert_code_block(noslice, 'noslice')
+</script>
 
 <!-- plugins and configuration {{{ -->
 </div></div>
@@ -65,6 +131,7 @@
     // - https://revealjs.com/config/
     Reveal.initialize({
         hash: true,
+        slideNumber: 'c/t',
 
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]

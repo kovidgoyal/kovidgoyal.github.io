@@ -27,11 +27,9 @@ def naive(input_bytes: bytes) -> bytes:
 
 
 def noslice_part(input_bytes: memoryview, output: memoryview) -> None:
-    i = j = 0
-    limit = len(input_bytes)
-    while j + 2 < limit:
+    i = 0
+    for j in range(0, len(input_bytes), 3):
         triple = (input_bytes[j] << 16) + (input_bytes[j+1] << 8) + input_bytes[j+2]
-        j += 3
 
         output[i] = base64_chars[(triple >> 18) & 63]
         output[i+1] = base64_chars[(triple >> 12) & 63]
@@ -62,7 +60,18 @@ def parallel(input_bytes: bytes, func = noslice_part) -> bytes:
 
 
 def memview(input_bytes: bytes) -> bytes:
-    return naive(memoryview(input_bytes))
+    input_bytes = memoryview(input_bytes)
+    o = memoryview(output)
+    while len(input_bytes) > 2:
+        triple = (input_bytes[0] << 16) + (input_bytes[1] << 8) + input_bytes[2]
+        input_bytes = input_bytes[3:]
+
+        o[0] = base64_chars[(triple >> 18) & 63]
+        o[1] = base64_chars[(triple >> 12) & 63]
+        o[2] = base64_chars[(triple >> 6) & 63]
+        o[3] = base64_chars[triple & 63]
+        o = o[4:]
+    return bytes(output)
 
 
 def parallel_noslice(input_bytes: bytes) -> bytes:
@@ -93,7 +102,8 @@ def rate_of(f, input_data, number=1024):
 
 gc.disable()
 set_start_method('fork')
-num_workers = 8
+num_workers = os.cpu_count() or 1
+print(f'Number of workers: {num_workers}')
 input_data = os.urandom(3 * (4 * num_workers) * 1024)  # must be multiple of 3 as the python implementation assumes that for simplicity
 buffer = sharedctypes.RawArray('B', 4 * len(input_data) // 3)
 output = memoryview(buffer).cast('B')
