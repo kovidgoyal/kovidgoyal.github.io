@@ -71,7 +71,19 @@ code { overflow: hidden !important; }
             <pre><code data-trim data-line-numbers='5' class="python naive_implementation"></code></pre>
         </div>
         <div class="fragment" data-fragment-index="0">
-            <pre><code data-trim data-line-numbers='3-4' class="python noslice"></code></pre>
+            <pre><code data-trim data-line-numbers='3-4' class="python"><script type="text/template">
+def noslice(inp: bytes) -> bytes:
+    i = 0
+    for j in range(0, len(inp), 3):
+        triple = (inp[j] << 16) + (inp[j+1] << 8) + inp[j+2]
+
+        output[i] = base64_chars[(triple >> 18) & 63]
+        output[i+1] = base64_chars[(triple >> 12) & 63]
+        output[i+2] = base64_chars[(triple >> 6) & 63]
+        output[i+3] = base64_chars[triple & 63]
+        i += 4
+    return bytes(output)
+            </script></code></pre>
         </div>
     </div>
     <div class="fragment">Rate: 7.0 <em>MB/s</em> 5x faster</div>
@@ -79,7 +91,21 @@ code { overflow: hidden !important; }
 
 <section id="memoryview">
     <h3>Intermezzo: <em>memoryview</em></h3>
-    <div><pre><code data-trim class="python memoryview" data-line-numbers='2-3,6,12'></code></pre></div>
+    <div><pre><code data-trim class="python" data-line-numbers='2-3,6,12'><script type="text/template">
+def memview(input_bytes: bytes) -> bytes:
+    input_bytes = memoryview(input_bytes)
+    o = memoryview(output)
+    while len(input_bytes) > 2:
+        triple = (input_bytes[0] << 16) + (input_bytes[1] << 8) + input_bytes[2]
+        input_bytes = input_bytes[3:]
+
+        o[0] = base64_chars[(triple >> 18) & 63]
+        o[1] = base64_chars[(triple >> 12) & 63]
+        o[2] = base64_chars[(triple >> 6) & 63]
+        o[3] = base64_chars[triple & 63]
+        o = o[4:]
+    return bytes(output)
+        </script></code></pre></div>
     <div class="fragment">
         <div>Rate: 6.1 <em>MB/s</em> almost same speed</div>
         <div>Binary data ⇒  <em>use memoryview</em></div>
@@ -90,13 +116,51 @@ code { overflow: hidden !important; }
     <h3>Parallelism to the rescue?</h3>
     <div class="r-stack code-blocks">
         <div class="fragment fade-out" data-fragment-index="0">
-            <pre><code data-trim data-line-numbers='1' class="python parallel1"></code></pre>
+            <pre><code data-trim data-line-numbers='1' class="python"><script type="text/template">
+def parallel_part(inp: memoryview, out: memoryview) -> None:
+    while len(input_bytes) > 2:
+        triple = (input_bytes[0] << 16) + (input_bytes[1] << 8) + input_bytes[2]
+        input_bytes = input_bytes[3:]
+
+        out[0] = base64_chars[(triple >> 18) & 63]
+        out[1] = base64_chars[(triple >> 12) & 63]
+        out[2] = base64_chars[(triple >> 6) & 63]
+        out[3] = base64_chars[triple & 63]
+        out = out[4:]
+            </script></code></pre>
         </div>
         <div class="fragment current-visible" data-fragment-index="0">
-            <pre><code data-trim data-line-numbers='1,6,9,10' class="python parallel2"></code></pre>
+            <pre><code data-trim data-line-numbers='1,6,9,10' class="python"><script type="text/template">
+def chunk(i: int) -> None:
+    chunk_size = len(input_buf) // num_workers
+    input_chunk = memoryview(input_buffer)[i * chunk_size:(i + 1) * chunk_size]
+    chunk_size = 4 * chunk_size // 3
+    output_chunk = output[i * chunk_size:(i + 1) * chunk_size]
+    parallel_part(input_chunk, output_chunk)
+
+
+def parallel_encode(input_bytes: bytes) -> bytes:
+    pool.map(chunk, range(os.cpu_count()))
+    return bytes(output)
+    </script></code></pre>
         </div>
         <div class="fragment">
-            <pre><code data-trim class="python parallel3"></code></pre>
+            <pre><code data-trim class="python"><script type="text/template">
+from multiprocessing import Pool, shared_memory
+
+shm = shared_memory.SharedMemory(create=True, size=input_size + output_size)
+input_buf = shm.buf[:input_size]
+output = shm.buf[input_size:]
+
+def connect_to_shm():
+    global input_buf, output
+    shm = shared_memory.SharedMemory(shm.name)
+    input_buf = shm.buf[:input_size]
+    output = shm.buf[input_size:]
+
+
+pool = Pool(num_workers, connect_to_shm)
+</script></code></pre>
         </div>
     </div>
     <div class="fragment">
@@ -152,7 +216,7 @@ py_base64(PyObject *self, PyObject *args, Py_ssize_t nargs) {
     return ans;
 }
     </script></code></pre>
-    <div class="fragment">Rate: 21.5 <em>GB/s</em> 20x base64!!</div>
+    <div class="fragment">Rate: 21.5 <em>GB/s</em> 20x native!!</div>
 </section>
 
 <script>
@@ -170,77 +234,6 @@ def naive_implementation(inp: bytes) -> bytes:
         output[i+3] = base64_chars[triple & 63]
         i += 4
     return bytes(output)
-`,
-
-noslice: `
-def noslice(inp: bytes) -> bytes:
-    i = 0
-    for j in range(0, len(inp), 3):
-        triple = (inp[j] << 16) + (inp[j+1] << 8) + inp[j+2]
-
-        output[i] = base64_chars[(triple >> 18) & 63]
-        output[i+1] = base64_chars[(triple >> 12) & 63]
-        output[i+2] = base64_chars[(triple >> 6) & 63]
-        output[i+3] = base64_chars[triple & 63]
-        i += 4
-    return bytes(output)
-`,
-
-memoryview: `
-def memview(input_bytes: bytes) -> bytes:
-    input_bytes = memoryview(input_bytes)
-    o = memoryview(output)
-    while len(input_bytes) > 2:
-        triple = (input_bytes[0] << 16) + (input_bytes[1] << 8) + input_bytes[2]
-        input_bytes = input_bytes[3:]
-
-        o[0] = base64_chars[(triple >> 18) & 63]
-        o[1] = base64_chars[(triple >> 12) & 63]
-        o[2] = base64_chars[(triple >> 6) & 63]
-        o[3] = base64_chars[triple & 63]
-        o = o[4:]
-    return bytes(output)
-`,
-parallel1: `
-def parallel_part(inp: memoryview, out: memoryview) -> None:
-    while len(input_bytes) > 2:
-        triple = (input_bytes[0] << 16) + (input_bytes[1] << 8) + input_bytes[2]
-        input_bytes = input_bytes[3:]
-
-        out[0] = base64_chars[(triple >> 18) & 63]
-        out[1] = base64_chars[(triple >> 12) & 63]
-        out[2] = base64_chars[(triple >> 6) & 63]
-        out[3] = base64_chars[triple & 63]
-        out = out[4:]
-`,
-parallel2: `
-def chunk(i: int) -> None:
-    chunk_size = len(input_buf) // num_workers
-    input_chunk = memoryview(input_buffer)[i * chunk_size:(i + 1) * chunk_size]
-    chunk_size = 4 * chunk_size // 3
-    output_chunk = output[i * chunk_size:(i + 1) * chunk_size]
-    parallel_part(input_chunk, output_chunk)
-
-
-def parallel_encode(input_bytes: bytes) -> bytes:
-    pool.map(chunk, range(os.cpu_count()))
-    return bytes(output)
-`,
-parallel3: `
-from multiprocessing import Pool, shared_memory
-
-shm = shared_memory.SharedMemory(create=True, size=input_size + output_size)
-input_buf = shm.buf[:input_size]
-output = shm.buf[input_size:]
-
-def connect_to_shm():
-    global input_buf, output
-    shm = shared_memory.SharedMemory(shm.name)
-    input_buf = shm.buf[:input_size]
-    output = shm.buf[input_size:]
-
-
-pool = Pool(num_workers, connect_to_shm)
 `,
 }
 Object.entries(code_blocks).forEach(([classname, code]) => {
