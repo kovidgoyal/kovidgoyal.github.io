@@ -12,7 +12,7 @@ from urllib.parse import urlparse, urlunparse
 from urllib.request import urlopen
 
 from html5_parser import parse  # type: ignore
-from lxml import etree
+from lxml.html import tostring
 
 self_path = os.path.abspath(__file__)
 
@@ -73,31 +73,26 @@ def newer(dest, *sources):
     return os.path.getmtime(self_path) > mtime
 
 
+def inline_attr(elem, attr, base):
+    href = elem.get(attr)
+    if href:
+        url = resolve_href(href, base)
+        data, mime_type = download_binary_resource(url)
+        b64 = base64.standard_b64encode(data).decode()
+        embedded = f'data:{mime_type};base64,{b64}'
+        elem.set(attr, embedded)
+        return True
+    return False
+
+
 def inline_resources(root, base):
     for link in root.xpath('//link[@href]'):
         if link.get('rel', '') in ('stylesheet', ''):
-            href = link.get('href')
-            if href:
-                url = resolve_href(href, base)
-                css, mime_type = download_text_resource(url)
-                link.attrib.clear()
-                link.tag = 'style'
-                link.text = css
+            inline_attr(link, 'href', base)
     for script in root.xpath('//script[@src]'):
-        src = script.get('src')
-        if src:
-            url = resolve_href(src, base)
-            js, mime_type = download_text_resource(url)
-            link.attrib.clear()
-            link.tag = 'script'
-            link.text = js
+        inline_attr(script, 'src', base)
     for img in root.xpath('//img[@src]'):
-        src = img.get('src')
-        if src:
-            data, mime_type = download_binary_resource(url)
-            b64 = base64.standard_b64encode(data).decode()
-            embedded = f'data:{mime_type};base64;{b64}'
-            img.set('src', embedded)
+        inline_attr(img, 'src', base)
 
 
 def main():
@@ -110,7 +105,7 @@ def main():
         if newer(dest, x):
             root = parse(raw)
             inline_resources(root, os.path.dirname(os.path.abspath(x)))
-            nraw = etree.tostring(root, encoding=str).encode('utf-8')
+            nraw = tostring(root, encoding=str, doctype='<!doctype html>').encode('utf-8')
             if nraw != raw:
                 with open(dest, 'wb') as f:
                     f.write(nraw)
