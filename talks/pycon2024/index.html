@@ -106,7 +106,7 @@ code { overflow: hidden !important; }
     </div>
 </section>
 
-<section id="python+c">
+<section id="python-and-c">
     <h3>Python + C</h3>
     <div>Python’s performance superpower: C code</div>
     <pre class="fragment"><code data-trim class="python">from base64 import standard_b64encode</code></pre>
@@ -116,9 +116,22 @@ code { overflow: hidden !important; }
         <div>Python’s Achilles heel: stdlib bitrot</div>
         <div>We can do <em>much better</em></div>
     </div>
-    </div>
 </section>
 
+<section id="simd">
+    <h3>Intermezzo: <em>SIMD</em></h3>
+    <ul>
+        <li><em>S</em>ingle <em>I</em>nstruction <em>M</em>ultiple <em>D</em>ata</li>
+        <li class="fragment">Upto 64 bytes at a time</li>
+        <li class="fragment">base64 encoding: 3 byte chunks</li>
+        <li class="fragment"><a href="https://github.com/aklomp/base64">aklomp/base64</a></li>
+    </ul>
+    <pre class="fragment"><code data-trim class="c">
+    void base64_encode(
+        const char *src, size_t srclen, char *out, size_t *outlen
+    )</code></pre>
+
+</section>
 
 <script>
 const code_blocks = {
