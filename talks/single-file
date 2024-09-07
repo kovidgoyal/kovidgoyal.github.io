@@ -1,0 +1,120 @@
+#!/usr/bin/env python
+# License: GPLv3 Copyright: 2024, Kovid Goyal <kovid at kovidgoyal.net>
+
+
+import base64
+import glob
+import os
+from email.message import Message
+from functools import lru_cache
+from typing import NamedTuple
+from urllib.parse import urlparse, urlunparse
+from urllib.request import urlopen
+
+from html5_parser import parse  # type: ignore
+from lxml import etree
+
+self_path = os.path.abspath(__file__)
+
+
+def resolve_href(href, base):
+    purl = urlparse(href)
+    if not purl.scheme:
+        path = os.path.join(base, purl.path)
+        purl = purl._replace(path=path, scheme='file')
+    return urlunparse(purl)
+
+
+def parse_content_type(raw):
+    email = Message()
+    email['content-type'] = raw
+    params = email.get_params()
+    # The first param is the mime-type the later ones are the attributes like "charset"
+    return params[0][0], dict(params[1:])
+
+
+class ContentType(NamedTuple):
+    mime_type: str = ''
+    charset: str = ''
+
+
+@lru_cache(1024)
+def download_resource(url):
+    with urlopen(url) as f:
+        raw = f.read()
+    ct = f.headers.get('Content-Type', '')
+    if ct:
+        mt, params = parse_content_type(ct)
+        return raw, ContentType(mt, params.get('charset', ''))
+    return raw, ContentType()
+
+
+@lru_cache(1024)
+def download_text_resource(url):
+    raw, ct = download_resource(url)
+    enc = ct.charset or 'utf-8'
+    text = raw.decode(enc)
+    return text, ct.mime_type
+
+
+def download_binary_resource(url):
+    raw, ct = download_resource(url)
+    return raw, ct.mime_type
+
+
+def newer(dest, *sources):
+    try:
+        mtime = os.path.getmtime(dest)
+    except FileNotFoundError:
+        return True
+    for s in sources:
+        if os.path.getmtime(s) > mtime:
+            return True
+    return os.path.getmtime(self_path) > mtime
+
+
+def inline_resources(root, base):
+    for link in root.xpath('//link[@href]'):
+        if link.get('rel', '') in ('stylesheet', ''):
+            href = link.get('href')
+            if href:
+                url = resolve_href(href, base)
+                css, mime_type = download_text_resource(url)
+                link.attrib.clear()
+                link.tag = 'style'
+                link.text = css
+    for script in root.xpath('//script[@src]'):
+        src = script.get('src')
+        if src:
+            url = resolve_href(src, base)
+            js, mime_type = download_text_resource(url)
+            link.attrib.clear()
+            link.tag = 'script'
+            link.text = js
+    for img in root.xpath('//img[@src]'):
+        src = img.get('src')
+        if src:
+            data, mime_type = download_binary_resource(url)
+            b64 = base64.standard_b64encode(data).decode()
+            embedded = f'data:{mime_type};base64;{b64}'
+            img.set('src', embedded)
+
+
+def main():
+    os.chdir(os.path.dirname(self_path))
+
+    for x in glob.glob('*/talk.html'):
+        with open(x, 'rb') as f:
+            raw = f.read()
+        dest = os.path.join(os.path.dirname(x), 'index.html')
+        if newer(dest, x):
+            root = parse(raw)
+            inline_resources(root, os.path.dirname(os.path.abspath(x)))
+            nraw = etree.tostring(root, encoding=str).encode('utf-8')
+            if nraw != raw:
+                with open(dest, 'wb') as f:
+                    f.write(nraw)
+
+
+if __name__ == '__main__':
+    main()
