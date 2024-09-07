@@ -65,7 +65,7 @@ code { overflow: hidden !important; }
 </section>
 
 <section id="fix-naive">
-    <h3>Do not be naive</h3>
+    <h3>Add some street smarts</h3>
     <div class="r-stack code-blocks">
         <div class="fragment fade-out" data-fragment-index="0">
             <pre><code data-trim="" data-line-numbers="5" class="python naive_implementation"></code></pre>
@@ -131,6 +131,28 @@ code { overflow: hidden !important; }
         const char *src, size_t srclen, char *out, size_t *outlen
     )</code></pre>
 
+</section>
+
+<section id="c-ext">
+    <h3>Python <em>C</em> API</h3>
+    <h6>Where strong men fear to tread</h6>
+    <pre><code data-trim="" data-line-numbers="2|4-6|7-8|10-11|12" class="c"><script type="text/template">
+static PyObject*
+py_base64(PyObject *self, PyObject *args, Py_ssize_t nargs) {
+    if (nargs != 1) { PyErr_SetString(PyExc_TypeError, "must supply one argument"); return NULL; }
+    RAII_PY_BUFFER(view);
+    if (PyObject_GetBuffer(args[0], // bytes, bytearray, etc.
+        &view, PyBUF_READ) != 0) return NULL;
+    size_t sz = required_buffer_size(view.len);
+    PyObject *ans = PyBytes_FromStringAndSize(NULL, sz);
+    if (!ans) return NULL;
+    base64_encode(view.buf, view.len,
+                  PyBytes_AS_STRING(ans), &sz);
+    if (_PyBytes_Resize(&ans, sz) != 0) return NULL;
+    return ans;
+}
+    </script></code></pre>
+    <div class="fragment">Rate: 21.5 <em>GB/s</em> 20x base64!!</div>
 </section>
 
 <script>
