@@ -202,11 +202,10 @@ pool = Pool(num_workers, connect_to_shm)
     <h6>Where strong men fear to tread</h6>
     <pre><code data-trim data-line-numbers="2|4-6|7-8|10-11|12" class="c"><script type="text/template">
 static PyObject*
-py_base64(PyObject *self, PyObject *args, Py_ssize_t nargs) {
-    if (nargs != 1) { PyErr_SetString(PyExc_TypeError, "must supply one argument"); return NULL; }
+py_base64(PyObject *self, PyObject *input_data) {
     RAII_PY_BUFFER(view);
-    if (PyObject_GetBuffer(args[0], // bytes, bytearray, etc.
-        &view, PyBUF_READ) != 0) return NULL;
+    if (PyObject_GetBuffer(input_data, // bytes, bytearray, etc.
+        &view, PyBUF_SIMPLE) != 0) return NULL;
     size_t sz = required_buffer_size(view.len);
     PyObject *ans = PyBytes_FromStringAndSize(NULL, sz);
     if (!ans) return NULL;
@@ -225,7 +224,7 @@ py_base64(PyObject *self, PyObject *args, Py_ssize_t nargs) {
     <pre><code data-trim data-line-numbers="2-3|11-12|14" class="c"><script type="text/template">
 PyMODINIT_FUNC PyInit_fast_base64(void) {
   static PyMethodDef module_methods[] = {
-      {"b64_enc", (PyCFunction)py_base64, METH_FASTCALL, ""},
+      {"b64_enc", py_base64, METH_O, ""},
       {0}
   };
   static PyModuleDef_Slot slots[] = { { 0 } };
@@ -240,6 +239,60 @@ PyMODINIT_FUNC PyInit_fast_base64(void) {
 }
     </script></code></pre>
 </section>
+
+<section id="streaming">
+    <h3>Streaming base64 encoding</h3>
+    <pre><code data-trim data-line-numbers="1,3|7,14|20,22,24|28-29|33,35-36|44,45" class="c"><script type="text/template">
+typedef struct StreamingEncoder {
+    PyObject_HEAD
+    struct base64_state state;
+} StreamingEncoder;
+
+static PyObject*
+encode(StreamingEncoder *self, PyObject *a) {
+    RAII_PY_BUFFER(data);
+    if (PyObject_GetBuffer(a, &data, PyBUF_SIMPLE) != 0) return NULL;
+    if (!data.buf || !data.len) return PyBytes_FromStringAndSize(NULL, 0);
+    size_t sz = required_buffer_size(data.len);
+    RAII_PyObject(ans, PyBytes_FromStringAndSize(NULL, sz));
+    if (!ans) return NULL;
+    base64_stream_encode(&self->state, data.buf, data.len, PyBytes_AS_STRING(ans), &sz);
+    if (_PyBytes_Resize(&ans, sz) != 0) return NULL;
+    return Py_NewRef(ans);
+}
+
+static PyObject*
+finish(StreamingEncoder *self, PyObject *args) {
+    char trailer[4]; size_t sz;
+    base64_stream_encode_final(&self->state, trailer, &sz);
+    base64_stream_encode_init(&self->state, 0);
+    return PyBytes_FromStringAndSize(trailer, sz);
+}
+
+static int
+exec_module(PyObject *mod) {
+    static PyTypeObject Encoder_Type = {
+        PyVarObject_HEAD_INIT(NULL, 0)
+        .tp_basicsize = sizeof(StreamingEncoder),
+        .tp_flags = Py_TPFLAGS_DEFAULT,
+        .tp_name = "fast_base64.StreamingEncoder",
+        .tp_methods = (PyMethodDef[]){
+            {"encode", (PyCFunction)encode, METH_O, ""},
+            {"finish", (PyCFunction)finish, METH_NOARGS, ""},
+            {0},
+        },
+    };
+    if (PyType_Ready(&Encoder_Type) < 0) return -1;
+    return 0;
+}
+
+static PyModuleDef_Slot slots[] = {
+    {Py_mod_exec, exec_module},
+    { 0 }
+};
+    </script></code></pre>
+</section>
+
 
 <script>
 const code_blocks = {
