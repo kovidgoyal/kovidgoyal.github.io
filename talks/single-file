@@ -4,13 +4,18 @@
 
 import base64
 import glob
+import json
 import os
 import re
+from contextlib import suppress
+from datetime import datetime
 from email.message import Message
 from functools import lru_cache
+from mimetypes import guess_type
 from typing import NamedTuple
+from urllib.error import HTTPError
 from urllib.parse import urlparse, urlunparse
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 
 from html5_parser import parse  # type: ignore
 from lxml.html import tostring
@@ -40,14 +45,55 @@ class ContentType(NamedTuple):
 
 
 @lru_cache(1024)
-def download_resource(url):
-    with urlopen(url, timeout=60) as f:
-        raw = f.read()
-    ct = f.headers.get('Content-Type', '')
-    if ct:
-        mt, params = parse_content_type(ct)
-        return raw, ContentType(mt, params.get('charset', ''))
-    return raw, ContentType()
+def download_resource(url, cache_dir=os.path.expanduser('~/.cache/talks-single-file')):
+    ct = ContentType()
+    purl = urlparse(url)
+    if purl.scheme in ('file', ''):
+        with open(purl.path, 'rb') as f:
+            mime_type = guess_type(purl.path)[0]
+            return f.read(), ContentType(mime_type)
+    os.makedirs(cache_dir, exist_ok=True)
+    fname = url.encode().hex()
+    cache_path = os.path.join(cache_dir, fname)
+    mtime, etag, cached_ct = 0, '', None
+    with suppress(FileNotFoundError):
+        with open(cache_path, 'rb') as f:
+            data = f.read()
+            mtime = os.path.getmtime(f.fileno())
+        with open(cache_path + '.content-type') as f:
+            ct = cached_ct = ContentType(*json.load(f))
+        with open(cache_path + '.etag') as f:
+            etag = f.read()
+    headers = {}
+    if etag:
+        headers['If-None-Match'] = etag
+    if mtime:
+        dt = datetime.fromtimestamp(mtime)
+        headers['If-Modified-Since'] = dt.strftime('%a, %d %b %Y %H:%M:%S GMT')
+
+    try:
+        with urlopen(Request(url, headers=headers), timeout=60) as f:
+            etag = f.headers.get('ETag', '')
+            cth = f.headers.get('Content-Type', '')
+            if cth:
+                mt, params = parse_content_type(cth)
+                ct = ContentType(mt, params.get('charset', ''))
+
+            if f.getcode() == 304 and cached_ct:
+                return data, cached_ct
+            data = f.read()
+    except HTTPError as e:
+        if e.code == 304:
+            return data, cached_ct or ct
+        raise
+    with open(cache_path, 'wb') as f:
+        f.write(data)
+    with open(cache_path + '.content-type', 'w') as f:
+        json.dump(list(ct), f)
+    if etag:
+        with open(cache_path + '.etag', 'w') as f:
+            f.write(etag)
+    return data, ct
 
 
 @lru_cache(1024)
