@@ -241,7 +241,7 @@ PyMODINIT_FUNC PyInit_fast_base64(void) {
 </section>
 
 <section id="streaming">
-    <h3>Streaming base64 encoding</h3>
+    <h3><em>Streaming</em> base64 encoding</h3>
     <pre><code data-trim data-line-numbers="1,3|7,14|20,22,24|28-29|33,35-36|44,45" class="c"><script type="text/template">
 typedef struct StreamingEncoder {
     PyObject_HEAD
@@ -293,6 +293,31 @@ static PyModuleDef_Slot slots[] = {
     </script></code></pre>
 </section>
 
+<section id="profile">
+    <h3>Premature optimization...</h3>
+    <ul>
+        <li>... is the root of all evil</li>
+        <li class="fragment">Use the <a href="https://docs.python.org/3/library/profile.html">cProfile</a> module
+        <pre><code data-trim class="python"><script type="text/template">
+        import cProfile
+        cProfile.run('my_main()')
+        </script></code></pre>
+        </li>
+        <li class="fragment">Code that is in the hot path</li>
+        <li class="fragment">Code that has a nice data boundary</li>
+    </ul>
+</section>
+
+<section id="takeaways">
+    <h3>Key takeaways</h3>
+    <ul>
+        <li>Profile and identify</li>
+        <li>Look for pure Python opportunities</li>
+        <li>Eliminate extra copies</li>
+        <li>Use <em>memoryview</em> for binary data</li>
+        <li>Don’t be afraid to use C when needed</li>
+    </ul>
+</section>
 
 <script>
 const code_blocks = {
