@@ -220,6 +220,27 @@ py_base64(PyObject *self, PyObject *args, Py_ssize_t nargs) {
         <img style="width: 2em; height: 2em; margin: 0; vertical-align: bottom" src="celebrate.gif"></div>
 </section>
 
+<section id="boilerplate">
+    <h3>Needed boilerplate</h3>
+    <pre><code data-trim data-line-numbers="2-3|11-12|14" class="c"><script type="text/template">
+PyMODINIT_FUNC PyInit_fast_base64(void) {
+  static PyMethodDef module_methods[] = {
+      {"b64_enc", (PyCFunction)py_base64, METH_FASTCALL, ""},
+      {0}
+  };
+  static PyModuleDef_Slot slots[] = { { 0 } };
+  static PyModuleDef mod = {
+      .m_base = PyModuleDef_HEAD_INIT,
+      .m_slots = slots,
+      .m_size = -1,
+      .m_name = "fast_base64",
+      .m_methods = module_methods,
+  };
+  return PyModuleDef_Init(&mod);
+}
+    </script></code></pre>
+</section>
+
 <script>
 const code_blocks = {
     naive_implementation: `
