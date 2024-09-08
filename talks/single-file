@@ -45,13 +45,14 @@ class ContentType(NamedTuple):
 
 
 @lru_cache(1024)
-def download_resource(url, cache_dir=os.path.expanduser('~/.cache/talks-single-file')):
+def download_resource(url):
     ct = ContentType()
     purl = urlparse(url)
     if purl.scheme in ('file', ''):
         with open(purl.path, 'rb') as f:
             mime_type = guess_type(purl.path)[0]
             return f.read(), ContentType(mime_type)
+    cache_dir = os.path.expanduser('~/.cache/talks-single-file')
     os.makedirs(cache_dir, exist_ok=True)
     fname = url.encode().hex()
     cache_path = os.path.join(cache_dir, fname)
