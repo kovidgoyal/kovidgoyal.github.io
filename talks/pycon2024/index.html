@@ -412,6 +412,55 @@ static PyModuleDef_Slot slots[] = {
     </ul>
 </section>
 
+<section id="profile-example">
+    <h3>An example of profiling</h3>
+    <ul>
+        <li>Users reported opening certain e-books in calibre was very slow</li>
+        <li class="fragment">Run function to preprocess book in profiler</li>
+    </ul>
+    <pre class="fragment"><code data-trim="" data-line-numbers="1|2|3|7|8|10,13" class="text"><script type="text/template">
+   1925486 function calls (1860600 primitive calls) in 5.759 seconds
+   ncalls  tottime  cumtime  percall function
+        1    0.000    5.762    5.762 render
+        1    0.001    4.776    4.776 process_exploded_book
+        1    0.004    4.392    4.392 process_book_files
+        2    0.000    2.923    1.461 transform_style_sheet
+      133    0.001    2.224    0.017 parse_file
+ 3029/387    0.024    1.329    0.003 _parse_css_token
+        3    0.000    1.303    0.434 parse_css
+        3    0.000    1.302    0.434 parseCSSString
+        3    0.000    1.302    0.434 _setCssTextWithEncodingOverride
+        3    0.000    1.302    0.434 _setCssText
+      163    0.002    1.288    0.008 css_ruleset
+    </script></code></pre>
+    <div class="fragment">CSS parsing is the culprit!</div>
+</section>
+
+<section id="css-in-c">
+    <h3>Do less work and do it in C++</h3>
+    <ul>
+        <li>Just need to transform a few properties</li>
+        <li><a href="https://www.phpied.com/css-railroad-diagrams/">Basic parsing</a> is easy</li>
+        <li class="fragment">~1200 lines of C++</li>
+    </ul>
+    <pre class="fragment"><code data-trim="" data-line-numbers="1|13" class="text"><script type="text/template">
+        838323 function calls (810518 primitive calls) in 2.638 seconds
+     ncalls  percall  cumtime  percall function
+        1    0.000    2.644    2.644 render
+        1    0.002    1.727    1.727 process_exploded_book
+        1    0.000    1.402    1.402 __call__
+        1    0.004    1.402    1.402 process_book_files
+      402    0.000    0.957    0.002 parsed
+      131    0.000    0.939    0.007 parse
+      129    0.000    0.920    0.007 parse_xhtml
+      129    0.000    0.919    0.007 parse
+      550    0.000    0.877    0.002 {method 'sub' of 're.Pattern' objects}
+      129    0.000    0.874    0.007 xml_replace_entities
+    44835    0.000    0.783    0.000 entity_to_unicode
+    </script></code></pre>
+    <div class="fragment">2x speedup here worst case <em>60x</em> speedup</div>
+</section>
+
 <section id="takeaways">
     <h3>Key takeaways</h3>
     <h6>Python programs can be <em>very fast</em></h6>
