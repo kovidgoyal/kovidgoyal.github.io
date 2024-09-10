@@ -98,12 +98,30 @@ code { overflow: hidden !important; }
     </ul>
 </section>
 
+<section id="kitty">
+    <h3>A little bit about kitty</h3>
+    <div style="display: flex; align-items: center">
+        <img style="display: block" src="kitty.svg">
+        <ul>
+            <li>A terminal emulator</li>
+            <li class="fragment">Make terminal emulators a powerful platform</li>
+            <li class="fragment">Uses Python for its UI and control</li>
+            <li class="fragment">Uses C and GPU for performance</li>
+        </ul>
+    </div>
+    <div class="fragment">
+    <pre style="text-align: center"><code data-trim><script type="text/template">
+    text … <ESC> control; data <terminator> … text …
+    </script></code></pre>
+    </div>
+</section>
+
 <section id="base64-baseline">
     <h3>Case study: <em>base64</em></h3>
-    <pre style="text-align: center"><code data-trim class="sh">
+    <pre style="text-align: center"><code data-trim class="sh"><script type="text/template">
         head -c 1073741824 < /dev/urandom > /dev/shm/data
         hyperfine 'base64 -w 0 < /dev/shm/data > /dev/null'
-    </code></pre>
+    </script></code></pre>
     Rate: <code>1.6</code> <em>GB/s</em>
     <div class="fragment"><pre><code data-trim class="python naive_implementation"></code></pre></div>
     <div class="fragment">Rate: <code>1.2</code> <em>MB/s</em> 1000x slower!!</div>
