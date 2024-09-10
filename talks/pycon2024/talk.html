@@ -372,10 +372,34 @@ static PyModuleDef_Slot slots[] = {
     </script></code></pre>
 </section>
 
-<section id="profile">
-    <h3>Premature optimization...</h3>
+<section id="html5">
+    <h3>HTML 5 Parsing</h3>
     <ul>
-        <li>... is the root of all evil</li>
+        <li>The <a href="https://html.spec.whatwg.org/">WHATWG HTML 5 spec</a> is some 1500 pages</li>
+        <li class="fragment"><a href="https://github.com/html5lib/html5lib-python">html5lib</a> is awesome!</li>
+        <li class="fragment">It parses the HTML 5 spec at <code>~1.1</code> MB/s</li>
+        <li class="fragment">How much better can we do?</li>
+        <li class="fragment">Not like base64, need object representation</li>
+    </ul>
+</section>
+
+<section id="lxml">
+    <h3>An efficient object representation</h3>
+    <ul>
+        <li class="fragment">The <a href="https://lxml.de/">lxml</a> package</li>
+        <li class="fragment">The <a href="https://github.com/google/gumbo-parser">Gumbo C HTML 5 parser</a></li>
+        <li class="fragment">A simple translation: <a href="https://github.com/kovidgoyal/html5-parser">kovidgoyal/html5-parser</a></li>
+        <li class="fragment">Under 1000 lines of C code</li>
+        <li class="fragment">Rate: <code>28.1</code> MB/s
+            <code><em>~28x</em></code></li>
+    </ul>
+</section>
+
+
+<section id="profile">
+    <h3>Premature optimization…</h3>
+    <ul>
+        <li>… is the root of all evil</li>
         <li class="fragment">Use the <a href="https://docs.python.org/3/library/profile.html">cProfile</a> module
         <pre><code data-trim class="python"><script type="text/template">
         import cProfile
