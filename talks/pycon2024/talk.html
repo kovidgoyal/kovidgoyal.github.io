@@ -116,8 +116,24 @@ code { overflow: hidden !important; }
     </div>
 </section>
 
-<section id="base64-baseline">
+<section id="base64-about">
     <h3>Case study: <em>base64</em></h3>
+    <ul>
+        <li>Encode binary data as text</li>
+        <li>3 input bytes → 4 letters</li>
+        <pre><code data-trim class='text'>
+        │Enc│  │ode│      │d  │
+        └─┬─┘  └─┬─┘  …   └─┬─┘
+          │      │          │
+          ↓      ↓          ↓
+         RW5j   b2Rl  …    ZA==
+        </code></pre>
+        <li class="fragment">Used widely in communication, escape codes in kitty</li>
+    </ul>
+</section>
+
+<section id="base64-baseline">
+    <h3>base64: A baseline</h3>
     <pre style="text-align: center"><code data-trim class="sh"><script type="text/template">
         head -c 1073741824 < /dev/urandom > /dev/shm/data
         hyperfine 'base64 -w 0 < /dev/shm/data > /dev/null'
