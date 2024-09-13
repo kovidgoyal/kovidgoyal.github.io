@@ -480,6 +480,45 @@ static PyModuleDef_Slot slots[] = {
     <div class="fragment">Further <em>30%</em> speedup for a total <em>3x</em> speedup</div>
 </section>
 
+<section id="about-simd">
+    <h3>A short tour of SIMD</h3>
+    <ul>
+        <li>Vector of input values → Vector of output values</li>
+        <li class="fragment">No control flow
+            <ul>
+                <li class="fragment">Masks</li>
+                <li class="fragment">Shifts and broadcasts</li>
+                <li class="fragment">Boolean operators</li>
+                <li class="fragment">Arithmetic operators</li>
+                <li class="fragment">Counting bits</li>
+            </ul>
+        </li>
+        <li class="fragment">Originally conceived for maths</li>
+    </ul>
+</section>
+
+<section id="find-byte">
+    <h3>Example: Let’s find Mr. X</h3>
+    <pre>│s│o│m│e│t│e│<strong>x</strong>│t│ … in SIMD register A
+└─┴─┴─┴─┴─┴─┴─┴─┘<!--
+--><div class="fragment">
+│x│x│x│x│x│x│x│x│ … in SIMD register B
+└─┴─┴─┴─┴─┴─┴─┴─┘
+</div><div class="fragment"><!--
+-->C = A <em>cmpeq</em> B</div><!--
+--><div class="fragment">
+│0│0│0│0│0│0│255│0│ … in SIMD register C
+└─┴─┴─┴─┴─┴─┴───┴─┘
+<div class="fragment">Number of leading zeroes is the answer</div><!--
+--><div class="fragment">
+│X│X│X│X│X│X│X│X│ … in SIMD register D
+└─┴─┴─┴─┴─┴─┴─┴─┘
+</div><div class="fragment">C = A <em>cmpeq</em> B | A <em>cmpeq</em> D</div>
+</div></pre>
+    <div class="fragment">4 CPU instructions to search up to 64 bytes with no branches!</div>
+</section>
+
+
 <section id="takeaways">
     <h3>Key takeaways</h3>
     <h6>Python programs can be <em>very fast</em></h6>
