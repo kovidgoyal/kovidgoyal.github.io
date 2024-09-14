@@ -524,17 +524,17 @@ static PyModuleDef_Slot slots[] = {
     <ul>
         <li>Recall: 3 bytes become 4
         <pre>
-3 * 8 == 24 == 4 * 6 bits
-2 ^ 6 == 64 (aka base<strong>64</strong>)
+  3 * 8 == 24 == 4 * 6 bits
+  2 ^ 6 == 64 (aka base<strong>64</strong>)
 </pre></li>
         <li class="fragment">
             SIMD: Multiple groups: 12 → 16
 <pre>
-[AAAB | BBCC | CDDD] → [AAA0 | BBB0 | CCC0 | DDD0 ]
-<span class="fragment">Focus on a single word: AAA0</span>
-<span class="fragment">Spread out its 24 bits into four groups of 6</span>
-<span class="fragment">AAA0 = [ aaaaaa | bbbbbb | cccccc | dddddd | 000000 ]</span>
-<span class="fragment">AAA0 = [ aaaaaa00 | bbbbbb00 | cccccc00 |  dddddd00 ]</span>
+  [AAAB | BBCC | CDDD] → [AAA0 | BBB0 | CCC0 | DDD0 ]
+  <span class="fragment">Focus on a single word: AAA0</span>
+  <span class="fragment">Spread out its 24 bits into four groups of 6</span>
+  <span class="fragment">AAA0 = [ aaaaaa | bbbbbb | cccccc | dddddd | 000000 ]</span>
+  <span class="fragment">AAA0 = [ aaaaaa00 | bbbbbb00 | cccccc00 |  dddddd00 ]</span>
 </pre>
         </li>
         <li class="fragment">Done in <em>parallel</em> on 16, 32 or 64 bytes at a time</li>
@@ -570,10 +570,11 @@ static PyModuleDef_Slot slots[] = {
 
         return shift + i;
     }
+    lookup(SIMD register) -> 16 bytes of base64
     </script></code></pre>
     <div class="fragment">
-        CPUs have SIMD instructions to do <em>one_when</em> efficiently
-        <div>Thanks to <a href="http://0x80.pl/notesen/2016-01-12-sse-base64-encoding.html">Wojciech Muła</a></div>
+        CPUs have SIMD instruction for <em>one_when</em>
+        <div>Thanks to <a href="http://0x80.pl/notesen/2016-01-12-sse-base64-encoding.html">Wojciech Muła</a> for this algorithm</div>
     </div>
 </section>
 
