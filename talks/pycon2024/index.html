@@ -507,7 +507,7 @@ static PyModuleDef_Slot slots[] = {
 </div><div class="fragment"><!--
 -->C = A <em>cmpeq</em> B</div><!--
 --><div class="fragment">
-│0│0│0│0│0│0│255│0│ … in SIMD register C
+│0│0│0│0│0│0│<strong>255</strong>│0│ … in SIMD register C
 └─┴─┴─┴─┴─┴─┴───┴─┘
 <div class="fragment">Number of leading zeroes is the answer</div><!--
 --><div class="fragment">
@@ -518,6 +518,61 @@ static PyModuleDef_Slot slots[] = {
     <div class="fragment">4 CPU instructions to search up to 64 bytes with no branches!</div>
 </section>
 
+<section id="base64-simd">
+    <h3>A bird’s eye view of base64</h3>
+    <ul>
+        <li>Recall: 3 bytes become 4
+        <pre>3 * 8 == 24 == 4 * 6 bits
+2 ^ 6 == 64 (aka base<strong>64</strong>)
+</pre></li>
+        <li class="fragment">
+            SIMD: Multiple groups: 12 → 16
+<pre>[AAAB | BBCC | CDDD] → [AAA0 | BBB0 | CCC0 | DDD0 ]
+<span class="fragment">Focus on a single word: AAA0</span>
+<span class="fragment">Spread out its 24 bits into four groups of 6</span>
+<span class="fragment">AAA0 = [ aaaaaa | bbbbbb | cccccc | dddddd | 000000 ]</span>
+<span class="fragment">AAA0 = [ aaaaaa00 | bbbbbb00 | cccccc00 |  dddddd00 ]</span>
+</pre>
+        </li>
+        <li class="fragment">Done in <em>parallel</em> on 16, 32 or 64 bytes at a time</li>
+    </ul>
+</section>
+
+<section id="base64-simd-lookup">
+    <h3>Branchless base64 lookup</h3>
+    <div>No control flow!</div>
+    <div class="fragment">
+    <code><table>
+        <tbody><tr><th><strong>i</strong></th><th><strong>range</strong></th><th><strong>shift</strong></th></tr>
+        <tr><td>0 … 25</td><td>A … Z</td><td>ord('A')</td></tr>
+        <tr><td>26 … 51</td><td>a … z</td><td>ord('a') - 26</td></tr>
+        <tr><td>52 … 61</td><td>0 … 9</td><td>ord('0') - 52</td></tr>
+        <tr><td>62</td><td>+</td><td>ord('+') - 62</td></tr>
+        <tr><td>63</td><td>/</td><td>ord('/') - 63</td></tr>
+    </tbody></table></code>
+    </div>
+</section>
+
+<section id="branchless">
+    <h3>Branchless lookup pseudo code</h3>
+    <pre><code data-trim="" class="c"><script type="text/template">
+    char branchless_lookup(char i) {
+        char shift = 'A';
+
+        // one_when returns a mask of all 1 bits when true
+        shift += one_when(i >= 26) & 6;
+        shift -= one_when(i >= 52) & 75;
+        shift -= one_when(i >= 62) & 15;
+        shift += one_when(i >= 63) & 3;
+
+        return shift + i;
+    }
+    </script></code></pre>
+    <div class="fragment">
+        CPUs have SIMD instructions to do <em>one_when</em> efficiently
+        <div>Thanks to <a href="http://0x80.pl/notesen/2016-01-12-sse-base64-encoding.html">Wojciech Muła</a></div>
+    </div>
+</section>
 
 <section id="takeaways">
     <h3>Key takeaways</h3>
@@ -528,6 +583,7 @@ static PyModuleDef_Slot slots[] = {
         <li class="fragment">Eliminate extra copies</li>
         <li class="fragment">Use <em>memoryview</em> for binary data</li>
         <li class="fragment">Don’t be afraid to use C when needed</li>
+        <li class="fragment">SIMD is fun 😜</li>
     </ul>
     <div class="fragment" style="margin-top: 1em"><small>Benchmark code available at:
         <a href="https://sw.kovidgoyal.net/talks/pycon2024/code.py">
