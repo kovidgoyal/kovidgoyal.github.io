@@ -338,11 +338,11 @@ encode(StreamingEncoder *self, PyObject *a) {
     if (PyObject_GetBuffer(a, &data, PyBUF_SIMPLE) != 0) return NULL;
     if (!data.buf || !data.len) return PyBytes_FromStringAndSize(NULL, 0);
     size_t sz = required_buffer_size(data.len);
-    RAII_PyObject(ans, PyBytes_FromStringAndSize(NULL, sz));
+    PyObject *ans = PyBytes_FromStringAndSize(NULL, sz);
     if (!ans) return NULL;
     base64_stream_encode(&self->state, data.buf, data.len, PyBytes_AS_STRING(ans), &sz);
     if (_PyBytes_Resize(&ans, sz) != 0) return NULL;
-    return Py_NewRef(ans);
+    return ans;
 }
 
 static PyObject*
