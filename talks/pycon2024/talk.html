@@ -471,16 +471,19 @@ static PyModuleDef_Slot slots[] = {
         <li class="fragment">Use perfect hashing (<a href="https://www.gnu.org/software/gperf/manual/gperf.html">gperf</a>)</li>
         <li class="fragment">~200 lines of C</li>
     </ul>
-    <pre class="fragment"><code data-trim data-line-numbers="1|7" class="text"><script type="text/template">
-     531019 function calls (503202 primitive calls) in 1.788 seconds
-     ncalls  percall  cumtime  percall function
-          1    0.000    1.794    1.794 render
-          1    0.002    0.865    0.865 process_exploded_book
-          1    0.000    0.574    0.574 get_metadata
-          1    0.004    0.529    0.529 process_book_files
-     24220/23  0.000    0.411    0.018 deepcopy
+    <pre class="fragment"><code data-trim data-line-numbers="1" class="text"><script type="text/template">
+    359819 function calls (358696 primitive calls) in 1.313 seconds
+    ncalls  percall  cumtime  percall function
+        1    0.000    1.317    1.317 render
+        1    0.002    0.833    0.833 process_exploded_book
+        1    0.004    0.532    0.532 process_book_files
+        1    0.002    0.305    0.305 convert
+      128    0.000    0.224    0.002 get_length
+     1798    0.000    0.220    0.000 href_to_name
+      128    0.000    0.213    0.002 transform_html
+    19681    0.000    0.192    0.000 count
     </script></code></pre>
-    <div class="fragment">Further <em>30%</em> speedup for a total <em>3x</em> speedup</div>
+    <div class="fragment">Further <em>50%</em> speedup for a total <em>4x</em> speedup</div>
 </section>
 
 <section id="about-simd">
