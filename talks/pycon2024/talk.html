@@ -107,8 +107,27 @@ code { overflow: hidden !important; }
         <img style="display: block" src="kitty.svg">
         <ul>
             <li>A terminal emulator</li>
-            <li class="fragment">Make terminal emulators a powerful platform</li>
-            <li class="fragment">Uses Python for its UI and control</li>
+            <li class="fragment">Make terminals a powerful platform</li>
+            <li class="fragment" id="animated-kitten-container">
+                Uses Python for its UI and control
+                <object type="image/svg+xml" data="kitten.svg" style="max-width: 4em;"></object>
+                <style>
+                #animated-kitten-container object { display: none; }
+                #animated-kitten-container.visible object {
+                    animation-duration: 10s;
+                    animation-name: left-to-right-walk;
+                    animation-fill-mode: forwards;
+                    animation-iteration-count: 1;
+                    position: relative;
+                    display: block;
+                }
+
+                @keyframes left-to-right-walk {
+                    0% { left: 0%; }
+                    100% { left: 100%; display: none; }
+                }
+                </style>
+            </li>
             <li class="fragment">Uses C and GPU for performance</li>
         </ul>
     </div>
@@ -116,8 +135,7 @@ code { overflow: hidden !important; }
     <pre style="text-align: center"><code data-trim><script type="text/template">
     text … <ESC> control; data <terminator> … text …
     </script></code></pre>
-    <div class="fragment">Started because I wanted to use vim in the terminal
-        with squiggly <span style="text-decoration: red underline wavy">underlines</span></div>
+    <div class="fragment">Because I wanted vim with squiggly <span style="text-decoration: red underline wavy">underlines</span></div>
     </div>
 </section>
 
@@ -648,5 +666,6 @@ Object.entries(code_blocks).forEach(([classname, code]) => {
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [ RevealHighlight ]
     });
-</script> </body> </html>
+</script>
 <!-- }}} --->
+</body> </html>

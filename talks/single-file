@@ -162,6 +162,8 @@ def inline_resources(root, base):
         inline_attr(script, 'src', base)
     for img in root.xpath('//img[@src]'):
         inline_attr(img, 'src', base)
+    for x in root.xpath('//object[@data]'):
+        inline_attr(x, 'data', base)
 
 def main():
     os.chdir(os.path.dirname(self_path))
