@@ -556,11 +556,11 @@ static PyModuleDef_Slot slots[] = {
         <li class="fragment">
             SIMD: Multiple groups: 12 → 16
 <pre>
-  [AAAB | BBCC | CDDD | 0000] → [AAA0 | BBB0 | CCC0 | DDD0 ]
-  <span class="fragment">Focus on a single word: AAA0</span>
+  [AAAB | BBCC | CDDD | 0000] → [0AAA | 0BBB | 0CCC | 0DDD ]
+  <span class="fragment">Focus on a single word: 0AAA</span>
   <span class="fragment">Spread out its 24 bits into four groups of 6</span>
-  <span class="fragment">AAA0 = [ aaaaaa | bbbbbb | cccccc | dddddd | 000000 ]</span>
-  <span class="fragment">AAA0 = [ aaaaaa00 | bbbbbb00 | cccccc00 |  dddddd00 ]</span>
+  <span class="fragment">0AAA = [ 000000 | aaaaaa | bbbbbb | cccccc | dddddd ]</span>
+  <span class="fragment">0AAA = [ 00aaaaaa | 00bbbbbb | 00cccccc |  00dddddd ]</span>
 </pre>
         </li>
         <li class="fragment">Done in <em>parallel</em> on 16, 32 or 64 bytes at a time</li>
