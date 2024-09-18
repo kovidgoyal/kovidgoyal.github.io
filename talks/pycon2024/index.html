@@ -324,7 +324,7 @@ py_base64(PyObject *self, PyObject *input_data) {
 
 <section id="boilerplate">
     <h3>Needed boilerplate</h3>
-    <pre><code data-trim="" data-line-numbers="1|3|11-12|14" class="c"><script type="text/template">
+    <pre><code data-trim="" data-line-numbers="1|3|11-12" class="c"><script type="text/template">
 PyMODINIT_FUNC PyInit_fast_base64(void) {
   static PyMethodDef module_methods[] = {
       {"b64_enc", py_base64, METH_O, ""},
@@ -340,6 +340,10 @@ PyMODINIT_FUNC PyInit_fast_base64(void) {
   };
   return PyModuleDef_Init(&mod);
 }
+    </script></code></pre>
+    <pre class="fragment"><code data-trim="" class="python"><script type="text/template">
+        from fast_base64 import b64_enc
+        output = b64_enc(input)
     </script></code></pre>
 </section>
 
@@ -556,8 +560,8 @@ static PyModuleDef_Slot slots[] = {
 <pre>  [AAAB | BBCC | CDDD | 0000] → [0AAA | 0BBB | 0CCC | 0DDD ]
   <span class="fragment">Focus on a single word: 0AAA</span>
   <span class="fragment">Spread out its 24 bits into four groups of 6</span>
-  <span class="fragment">0AAA = [ 000000 | aaaaaa | bbbbbb | cccccc | dddddd ]</span>
-  <span class="fragment">0AAA = [ 00aaaaaa | 00bbbbbb | 00cccccc |  00dddddd ]</span>
+  <span class="fragment">0AAA = [ 00000000 | aaaaaa | bbbbbb | cccccc | dddddd ]</span>
+  <span class="fragment">0AAA = [ 00aaaaaa | 00bbbbbb | 00cccccc | 00dddddd ]</span>
 </pre>
         </li>
         <li class="fragment">Done in <em>parallel</em> on 16, 32 or 64 bytes at a time</li>
@@ -610,7 +614,6 @@ static PyModuleDef_Slot slots[] = {
         <li class="fragment">Eliminate extra copies</li>
         <li class="fragment">Use <em>memoryview</em> for binary data</li>
         <li class="fragment">Don’t be afraid to use C when needed</li>
-        <li class="fragment">SIMD is fun 😜</li>
     </ul>
     <div class="fragment" style="margin-top: 1em"><small>
         <div>Slides at:
