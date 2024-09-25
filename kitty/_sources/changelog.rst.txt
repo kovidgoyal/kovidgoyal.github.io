@@ -74,6 +74,29 @@ consumption to do the same tasks.
 Detailed list of changes
 -------------------------------------
 
+0.36.3 [2024-09-25]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- The option ``second_transparent_bg`` has been removed and replaced by :opt:`transparent_background_colors` which allows setting up to seven additional colors that will be transparent, with individual opacities per color (:iss:`7646`)
+
+- Fix a regression in the previous release that broke use of the ``cd`` command in session files (:iss:`7829`)
+
+- macOS: Fix shortcuts that become entries in the global menubar being reported as removed shortcuts in the debug output
+
+- macOS: Fix :opt:`macos_option_as_alt` not working when :kbd:`caps lock` is engaged (:iss:`7836`)
+
+- Fix a regression when tinting of background images was introduced that caused window borders to have :opt:`background_opacity` applied to them (:iss:`7850`)
+
+- Fix a regression that broke writing to the clipboard using the OSC 5522 protocol (:iss:`7858`)
+
+- macOS: Fix a regression in the previous release that caused kitty to fail to run after an unclean shutdown/crash when using --single-instance (:iss:`7846`)
+
+- kitten @ ls: Fix the ``--self`` flag not working (:iss:`7864`)
+
+- Remote control: Fix ``--match state:self`` not working (:disc:`7886`)
+
+- Splits layout: Allow setting the ``split_axis`` option to ``auto`` so that all new windows have their split axis chosen automatically unless explicitly specified in the launch command (:iss:`7887`)
+
 0.36.2 [2024-09-06]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -115,7 +138,7 @@ Detailed list of changes
 
 - launch command: A new :option:`launch --bias` option to adjust the size of newly created windows declaratively (:iss:`7634`)
 
-- A new option :opt:`second_transparent_bg` to make a second background color semi-transparent via :opt:`background_opacity`. Useful for things like cursor line highlight in editors (:iss:`7646`)
+- A new option :opt:`transparent_background_colors` to make a second background color semi-transparent via :opt:`background_opacity`. Useful for things like cursor line highlight in editors (:iss:`7646`)
 
 - A new :doc:`notify </kittens/notify>` kitten to show desktop notifications
   from the command line with support for icons, buttons and more.
