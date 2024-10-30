@@ -38,12 +38,14 @@ In addition to kitty, this protocol is also implemented in:
 * The `WezTerm terminal <https://wezfurlong.org/wezterm/config/lua/config/enable_kitty_keyboard.html>`__
 * The `alacritty terminal <https://github.com/alacritty/alacritty/pull/7125>`__
 * The `rio terminal <https://github.com/raphamorim/rio/commit/cd463ca37677a0fc48daa8795ea46dadc92b1e95>`__
+* The `iTerm2 terminal <https://gitlab.com/gnachman/iterm2/-/issues/10017>`__
 
 Libraries implementing this protocol:
 
 * The `notcurses library <https://github.com/dankamongmen/notcurses/issues/2131>`__
 * The `crossterm library <https://github.com/crossterm-rs/crossterm/pull/688>`__
 * The `textual library <https://github.com/Textualize/textual/pull/4631>`__
+* The vaxis library `go <https://sr.ht/~rockorager/vaxis/>`__ and `zig <https://github.com/rockorager/libvaxis/>`__
 
 Programs implementing this protocol:
 
@@ -57,6 +59,7 @@ Programs implementing this protocol:
 * The `Yazi file manager <https://github.com/sxyazi/yazi>`__
 * The `awrit web browser <https://github.com/chase/awrit>`__
 * The `Turbo Vision <https://github.com/magiblot/tvision/commit/6e5a7b46c6634079feb2ac98f0b890bbed59f1ba>`__/`Free Vision <https://gitlab.com/freepascal.org/fpc/source/-/issues/40673#note_2061428120>`__ IDEs
+* The `aerc email client <https://git.sr.ht/~rjarry/aerc/commit/d73cf33c2c6c3e564ce8aff04acc329a06eafc54>`__
 
 Shells implementing this protocol:
 
