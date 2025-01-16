@@ -40,6 +40,7 @@ Some applications that use the kitty graphics protocol:
 * `timg <https://github.com/hzeller/timg>`_ - a terminal image and video viewer
 * `tpix <https://github.com/jesvedberg/tpix>`_ - a statically compiled binary that can be used to display images and easily installed on remote servers without root access
 * `twitch-tui <https://github.com/Xithrius/twitch-tui>`_ - Twitch chat in the terminal
+* `vat <https://github.com/jzbrooks/vat>`_ - a terminal image viewer for vector graphics, including Android Vector Drawables
 * `viu <https://github.com/atanunq/viu>`_ - a terminal image viewer
 * `Yazi <https://github.com/sxyazi/yazi>`_ - Blazing fast terminal file manager written in Rust, based on async I/O
 
@@ -57,6 +58,7 @@ Libraries:
 
 Other terminals that have implemented the graphics protocol:
 
+* `Ghostty <https://ghostty.org>`_
 * `Konsole <https://invent.kde.org/utilities/konsole/-/merge_requests/594>`_
 * `wayst <https://github.com/91861/wayst>`_
 * `WezTerm <https://github.com/wez/wezterm/issues/986>`_
@@ -415,9 +417,7 @@ use the *query action*, set ``a=q``. Then the terminal emulator will try to load
 the image and respond with either OK or an error, as above, but it will not
 replace an existing image with the same id, nor will it store the image.
 
-As of May 2023, kitty has a complete implementation of this protocol and
-WezTerm has a mostly complete implementation. Konsole and wayst have partial
-support. We intend that any terminal emulator that wishes to support it can do so. To
+We intend that any terminal emulator that wishes to support it can do so. To
 check if a terminal emulator supports the graphics protocol the best way is to
 send the above *query action* followed by a request for the `primary device
 attributes <https://vt100.net/docs/vt510-rm/DA1.html>`_. If you get back an

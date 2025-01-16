@@ -34,11 +34,12 @@ inside the kitty terminal to report key events.
 
 In addition to kitty, this protocol is also implemented in:
 
-* The `foot terminal <https://codeberg.org/dnkl/foot/issues/319>`__
-* The `WezTerm terminal <https://wezfurlong.org/wezterm/config/lua/config/enable_kitty_keyboard.html>`__
 * The `alacritty terminal <https://github.com/alacritty/alacritty/pull/7125>`__
-* The `rio terminal <https://github.com/raphamorim/rio/commit/cd463ca37677a0fc48daa8795ea46dadc92b1e95>`__
+* The `ghostty terminal <https://ghostty.org>`__
+* The `foot terminal <https://codeberg.org/dnkl/foot/issues/319>`__
 * The `iTerm2 terminal <https://gitlab.com/gnachman/iterm2/-/issues/10017>`__
+* The `rio terminal <https://github.com/raphamorim/rio/commit/cd463ca37677a0fc48daa8795ea46dadc92b1e95>`__
+* The `WezTerm terminal <https://wezfurlong.org/wezterm/config/lua/config/enable_kitty_keyboard.html>`__
 
 Libraries implementing this protocol:
 
@@ -399,17 +400,19 @@ Report associated text enhancement below.
 
 Additionally, with this mode, events for pressing modifier keys are reported.
 Note that *all* keys are reported as escape codes, including :kbd:`Enter`,
-:kbd:`Tab`, :kbd:`Backspace` etc.
+:kbd:`Tab`, :kbd:`Backspace` etc. Note that this enhancement implies all keys
+are automatically disambiguated as well, since they are represented in their
+canonical escape code form.
 
 .. _report_text:
 
 Report associated text
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This progressive enhancement (``0b10000``) causes key events that generate text
-to be reported as ``CSI u`` escape codes with the text embedded in the escape
-code. See :ref:`text_as_codepoints` above for details on the mechanism.
-
+This progressive enhancement (``0b10000``) additionally causes key events that
+generate text to be reported as ``CSI u`` escape codes with the text embedded
+in the escape code. See :ref:`text_as_codepoints` above for details on the
+mechanism.
 
 .. _detection:
 
