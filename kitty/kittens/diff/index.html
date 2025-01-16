@@ -1332,7 +1332,9 @@ Can be specified multiple times to use multiple patterns. For example:</p>
 </pre></div>
 </div>
 <p>Whether to use the light or dark colors. The default of <code class="code docutils literal notranslate"><span class="pre">auto</span></code> means
-to follow the parent terminal color scheme.</p>
+to follow the parent terminal color scheme. Note that the actual colors used
+for dark schemes are set by the <code class="code docutils literal notranslate"><span class="pre">dark_*</span></code> settings below and the non-prefixed
+settings are used for light colors.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-diff.pygments_style">
 <span class="sig-name descname"><span class="pre">pygments_style</span></span><a class="headerlink" href="#opt-kitten-diff.pygments_style" title="Link to this definition">¶</a></dt>
@@ -1361,19 +1363,11 @@ This sets the colors used for dark color schemes, use <a class="reference intern
 colors for light color schemes.</p>
 <dl class="std opt">
 <dt class="sig sig-object std" id="opt-kitten-diff.foreground">
-<span class="sig-name descname"><span class="pre">foreground</span></span><a class="headerlink" href="#opt-kitten-diff.foreground" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">foreground</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">dark_foreground</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">background</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">dark_background</span></span><a class="headerlink" href="#opt-kitten-diff.foreground" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">foreground</span><span class="w"> </span><span class="s">black</span>
-</pre></div>
-</div>
-<p>Basic colors</p>
-<dl class="std opt">
-<dt class="sig sig-object std" id="opt-kitten-diff.dark_foreground">
-<span class="sig-name descname"><span class="pre">dark_foreground</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">background</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">dark_background</span></span><a class="headerlink" href="#opt-kitten-diff.dark_foreground" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">dark_foreground</span><span class="w"> </span><span class="s">#f8f8f2</span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="nv">foreground</span><span class="w">      </span><span class="s">black</span>
+<span class="nv">dark_foreground</span><span class="w"> </span><span class="s">#f8f8f2</span>
 <span class="nv">background</span><span class="w">      </span><span class="s">white</span>
 <span class="nv">dark_background</span><span class="w"> </span><span class="s">#212830</span>
 </pre></div>
