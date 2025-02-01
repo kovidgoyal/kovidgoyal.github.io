@@ -337,7 +337,7 @@ the bytes used for CSI control codes.
 Turning on this flag will cause the terminal to report the :kbd:`Esc`, :kbd:`alt+key`,
 :kbd:`ctrl+key`, :kbd:`ctrl+alt+key`, :kbd:`shift+alt+key` keys using ``CSI u`` sequences instead
 of legacy ones. Here key is any ASCII key as described in :ref:`legacy_text`.
-Additionally, all keypad keys will be reported as separate keys with ``CSI u``
+Additionally, all non text keypad keys will be reported as separate keys with ``CSI u``
 encoding, using dedicated numbers from the :ref:`table below <functional>`.
 
 With this flag turned on, all key events that do not generate text are
@@ -380,8 +380,13 @@ Report alternate keys
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This progressive enhancement (``0b100``) causes the terminal to report
-alternate key values in addition to the main value, to aid in shortcut
-matching. See :ref:`key_codes` for details on how these are reported.
+alternate key values *in addition* to the main value, to aid in shortcut
+matching. See :ref:`key_codes` for details on how these are reported. Note that
+this flag is a pure enhancement to the form of the escape code used to
+represent key events, only key events represented as escape codes due to the
+other enhancements in effect will be affected by this enhancement. In other
+words, only if a key event was already going to be represented as an escape
+code due to one of the other enhancements will this enhancement affect it.
 
 .. _report_all_keys:
 
@@ -409,10 +414,11 @@ canonical escape code form.
 Report associated text
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This progressive enhancement (``0b10000``) additionally causes key events that
+This progressive enhancement (``0b10000``) *additionally* causes key events that
 generate text to be reported as ``CSI u`` escape codes with the text embedded
 in the escape code. See :ref:`text_as_codepoints` above for details on the
-mechanism.
+mechanism. Note that this flag is an enhancement to :ref:`report_all_keys`
+and is undefined if used without it.
 
 .. _detection:
 
