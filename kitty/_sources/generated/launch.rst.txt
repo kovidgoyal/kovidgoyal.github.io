@@ -10,13 +10,17 @@ if you specify a program-to-run you can use the special placeholder
 
 Options
 ______________________________
+.. option:: --source-window <SOURCE_WINDOW>
+
+    A match expression to select the window from which data such as title, colors, env vars, screen contents, etc. are copied. When not specified the currently active window is used. See :ref:`search_syntax` for the syntax used for specifying windows.
+
 .. option:: --title <WINDOW_TITLE>, --window-title <WINDOW_TITLE>
 
-    The title to set for the new window. By default, title is controlled by the child process. The special value :code:`current` will copy the title from the currently active window.
+    The title to set for the new window. By default, title is controlled by the child process. The special value :code:`current` will copy the title from the :option:`source window <launch --source-window>`.
 
 .. option:: --tab-title <TAB_TITLE>
 
-    The title for the new tab if launching in a new tab. By default, the title of the active window in the tab is used as the tab title. The special value :code:`current` will copy the title from the title of the currently active tab.
+    The title for the new tab if launching in a new tab. By default, the title of the active window in the tab is used as the tab title. The special value :code:`current` will copy the title from the tab containing the :option:`source window <launch --source-window>`.
 
 .. option:: --type <TYPE>
 
@@ -26,10 +30,10 @@ ______________________________
         A new :term:`kitty window <window>` in the current tab
 
     :code:`tab`
-        A new :term:`tab` in the current OS window
+        A new :term:`tab` in the current OS window. Not available when the :doc:`launch <launch>` command is used in :ref:`startup sessions <sessions>`.
 
     :code:`os-window`
-        A new :term:`operating system window <os_window>`
+        A new :term:`operating system window <os_window>`.  Not available when the :doc:`launch <launch>` command is used in :ref:`startup sessions <sessions>`.
 
     :code:`overlay`
         An :term:`overlay window <overlay>` covering the current active kitty window
@@ -53,7 +57,7 @@ ______________________________
 
 .. option:: --cwd <CWD>
 
-    The working directory for the newly launched child. Use the special value :code:`current` to use the working directory of the currently active window. The special value :code:`last_reported` uses the last working directory reported by the shell (needs :ref:`shell_integration` to work). The special value :code:`oldest` works like :code:`current` but uses the working directory of the oldest foreground process associated with the currently active window rather than the newest foreground process. Finally, the special value :code:`root` refers to the process that was originally started when the window was created.
+    The working directory for the newly launched child. Use the special value :code:`current` to use the working directory of the :option:`source window <launch --source-window>` The special value :code:`last_reported` uses the last working directory reported by the shell (needs :ref:`shell_integration` to work). The special value :code:`oldest` works like :code:`current` but uses the working directory of the oldest foreground process associated with the currently active window rather than the newest foreground process. Finally, the special value :code:`root` refers to the process that was originally started when the window was created.
 
 .. option:: --env <ENV>
 
@@ -69,21 +73,25 @@ ______________________________
 
 .. option:: --copy-colors
 
-    Set the colors of the newly created window to be the same as the colors in the currently active window.
+    Set the colors of the newly created window to be the same as the colors in the :option:`source window <launch --source-window>`.
 
 .. option:: --copy-cmdline
 
-    Ignore any specified command line and instead use the command line from the currently active window.
+    Ignore any specified command line and instead use the command line from the :option:`source window <launch --source-window>`.
 
 .. option:: --copy-env
 
-    Copy the environment variables from the currently active window into the newly launched child process. Note that this only copies the environment when the window was first created, as it is not possible to get updated environment variables from arbitrary processes. To copy that environment, use either the :ref:`clone-in-kitty <clone_shell>` feature or the kitty remote control feature with :option:`kitten @ launch --copy-env`.
+    Copy the environment variables from the :option:`source window <launch --source-window>` into the newly launched child process. Note that this only copies the environment when the window was first created, as it is not possible to get updated environment variables from arbitrary processes. To copy that environment, use either the :ref:`clone-in-kitty <clone_shell>` feature or the kitty remote control feature with :option:`kitten @ launch --copy-env`.
 
 .. option:: --location <LOCATION>
 
-    Where to place the newly created window when it is added to a tab which already has existing windows in it. :code:`after` and :code:`before` place the new window before or after the active window. :code:`neighbor` is a synonym for :code:`after`. Also applies to creating a new tab, where the value of :code:`after` will cause the new tab to be placed next to the current tab instead of at the end. The values of :code:`vsplit`, :code:`hsplit` and :code:`split` are only used by the :code:`splits` layout and control if the new window is placed in a vertical, horizontal or automatic split with the currently active window. The default is to place the window in a layout dependent manner, typically, after the currently active window.
+    Where to place the newly created window when it is added to a tab which already has existing windows in it. :code:`after` and :code:`before` place the new window before or after the active window. :code:`neighbor` is a synonym for :code:`after`. Also applies to creating a new tab, where the value of :code:`after` will cause the new tab to be placed next to the current tab instead of at the end. The values of :code:`vsplit`, :code:`hsplit` and :code:`split` are only used by the :code:`splits` layout and control if the new window is placed in a vertical, horizontal or automatic split with the currently active window. The default is to place the window in a layout dependent manner, typically, after the currently active window. See :option:`--next-to <launch --next-to>` to use a window other than the currently active window.
     Default: :code:`default`
     Choices: :code:`after`, :code:`before`, :code:`default`, :code:`first`, :code:`hsplit`, :code:`last`, :code:`neighbor`, :code:`split`, :code:`vsplit`
+
+.. option:: --next-to <NEXT_TO>
+
+    A match expression to select the window next to which the new window is created. See :ref:`search_syntax` for the syntax for specifying windows. If not specified defaults to the active window. When used via remote control and a target tab is specified this option is ignored unless the matched window is in the specified tab. When using :option:`--type <launch --type>` of :code:`tab`, the tab will be created in the OS Window containing the matched window.
 
 .. option:: --bias <BIAS>
 
@@ -123,16 +131,16 @@ ______________________________
     Pass the screen contents as :file:`STDIN` to the child process.
 
     :code:`@selection`
-        is the currently selected text.
+        is the currently selected text in the :option:`source window <launch --source-window>`.
 
     :code:`@screen`
-        is the contents of the currently active window.
+        is the contents of the :option:`source window <launch --source-window>`.
 
     :code:`@screen_scrollback`
         is the same as :code:`@screen`, but includes the scrollback buffer as well.
 
     :code:`@alternate`
-        is the secondary screen of the current active window. For example if you run a full screen terminal application, the secondary screen will be the screen you return to when quitting the application.
+        is the secondary screen of the :option:`source window <launch --source-window>`. For example if you run a full screen terminal application, the secondary screen will be the screen you return to when quitting the application.
 
     :code:`@first_cmd_output_on_screen`
         is the output from the first command run in the shell on screen.
@@ -169,7 +177,7 @@ ______________________________
 
 .. option:: --os-window-title <OS_WINDOW_TITLE>
 
-    Set the title for the newly created OS window. This title will override any titles set by programs running in kitty. The special value :code:`current` will use the title of the current OS window, if any.
+    Set the title for the newly created OS window. This title will override any titles set by programs running in kitty. The special value :code:`current` will copy the title from the OS Window containing the :option:`source window <launch --source-window>`.
 
 .. option:: --os-window-state <OS_WINDOW_STATE>
 

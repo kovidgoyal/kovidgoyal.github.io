@@ -9,6 +9,16 @@ To update |kitty|, :doc:`follow the instructions <binary>`.
 Recent major new features
 ---------------------------
 
+Multiple sized text [0.40]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+kitty is the first major terminal to introduce the concept of multiple sized
+text. Terminal programs running in kitty can now opt-in to use and display text
+in multiple font sizes both larger and smaller than the base font size. This is
+done in a backwards compatible, opt-in way that does not affect how traditional
+terminal programs work at all. For details on the new feature and how to use
+it, see :doc:`text-sizing-protocol`.
+
 Cursor trails [0.37]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -83,6 +93,61 @@ consumption to do the same tasks.
 
 Detailed list of changes
 -------------------------------------
+
+0.40.0 [2025-03-08]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- :doc:`Allow terminal programs to use text in different font sizes <text-sizing-protocol>` (:iss:`8226`)
+
+- When rendering underlines add gaps around text descenders (parts of the text
+  that overlap with the underline). Controlled by the new option :opt:`underline_exclusion` (:iss:`8226`)
+
+- Finally fix the issue of text-width mismatches that has been plaguing the
+  terminal ecosystem for decades by allowing terminal programs to specify how
+  many cells to render a piece of text in (:iss:`8226`)
+
+- **Behavior change**: The :opt:`notify_on_cmd_finish` option now uses OS
+  Window visibility instead of focus state when set to ``invisible`` on
+  platforms that support querying OS window visibility (:iss:`8320`)
+
+- launch: Add options :option:`launch --source-window` and :option:`launch --next-to` to allow
+  specifying which window is used as the data source and destination location independently of the
+  currently active window (:iss:`8295`)
+
+- Linux: Add support for `COLRv1 <https://nabla.typearture.com/whatisCOLRV1.html>`__ fonts. These are typically emoji fonts that use vector images for emoji
+
+- Add support for the octant box-drawing characters
+
+- Speed up rendering of box drawing characters by moving the implementation to native code
+
+- When confirming if a window should be closed consider it active if it has running background processes (:iss:`8358`)
+
+- Remote control: `kitten @ scroll-window`: Allow scrolling to previous/next prompt
+
+- macOS: Fix fallback font rendering for bold/italic text not working for some symbols that are present in the Menlo regular face but not the bold/italic faces (:iss:`8282`)
+
+- XTGETTCAP: Fix response invalid for empty string capabilities (:pull:`8304`)
+
+- ssh kitten: Fix incorrect copying of data files when using the python interpreter and also fix incorrect hard link detection (:disc:`8308`)
+
+- Fix a regression in the previous release that broke setting of nullable colors
+
+- Fix a regression in 0.39.0 that caused a crash on invalid Unicode with a
+  large number of combining characters in a single cell (:iss:`8318`)
+
+- Fix ``--hold`` always restoring cursor to block shape instead of respecting the value of :opt:`cursor_shape` (:disc:`8344`)
+
+- When dragging in rectangle select mode use a crosshair mouse cursor configurable via :opt:`pointer_shape_when_dragging`
+
+- macOS: notify kitten: Fix waiting for result from desktop notification not working (:disc:`8379`)
+
+- Wayland: Fix mouse pointer position update not being sent when focus regained (:iss`8397`, :iss:`8398`)
+
+- Fix cursor blink animation when :opt:`background_opacity` is less than one (:iss:`8401`)
+
+- Wayland: panel kitten: Add a :code:`center` mode for creating panels to ease
+  creation of centered popups in Wayland (:pull:`8411`)
+
 
 0.39.1 [2025-02-01]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

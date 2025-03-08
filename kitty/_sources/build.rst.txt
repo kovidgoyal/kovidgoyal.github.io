@@ -13,7 +13,8 @@ Build from source
 
 |kitty| is designed to run from source, for easy hack-ability. All you need to
 get started is a C compiler and the `go compiler
-<https://go.dev/doc/install>`__. After installing those, run the following commands::
+<https://go.dev/doc/install>`__ (on Linux, the :ref:`X11 development libraries <x11-dev-libs>` as well).
+After installing those, run the following commands::
 
     git clone https://github.com/kovidgoyal/kitty.git && cd kitty
     ./dev.sh build
@@ -24,9 +25,7 @@ That's it, kitty will be built from source, magically. You can run it as
 This works, because the :code:`./dev.sh build` command downloads all the major
 dependencies of kitty as pre-built binaries for your platform and builds kitty
 to use these rather than system libraries. The few required system libraries
-are mostly X11 and DBUS on Linux, as can be seen in the `linux-dev
-<https://github.com/kovidgoyal/kitty/blob/master/.github/workflows/ci.yml>`__
-CI job.
+are X11 and DBUS on Linux.
 
 If you make changes to kitty code, simply re-run :code:`./dev.sh build`
 to build kitty with your changes.
@@ -90,6 +89,8 @@ Run-time dependencies:
 * ``liblcms2``
 * ``libxxhash``
 * ``openssl``
+* ``pixman`` (not needed on macOS)
+* ``cairo`` (not needed on macOS)
 * ``freetype`` (not needed on macOS)
 * ``fontconfig`` (not needed on macOS)
 * ``libcanberra`` (not needed on macOS)
@@ -108,6 +109,18 @@ Build-time dependencies:
   need to install the following packages, if they are not already installed by
   your distro:
 
+  - ``liblcms2-dev``
+  - ``libfontconfig-dev``
+  - ``libssl-dev``
+  - ``libpython3-dev``
+  - ``libxxhash-dev``
+  - ``libsimde-dev``
+  - ``libcairo2-dev``
+
+  .. _x11-dev-libs:
+
+  Also, the X11 development libraries:
+
   - ``libdbus-1-dev``
   - ``libxcursor-dev``
   - ``libxrandr-dev``
@@ -117,11 +130,7 @@ Build-time dependencies:
   - ``libxkbcommon-x11-dev``
   - ``libfontconfig-dev``
   - ``libx11-xcb-dev``
-  - ``liblcms2-dev``
-  - ``libssl-dev``
-  - ``libpython3-dev``
-  - ``libxxhash-dev``
-  - ``libsimde-dev``
+
 
 
 Build and run from source with Nix

@@ -167,6 +167,8 @@ option in :file:`kitty.conf`. An example, showing all available commands:
     os_window_size 80c 24c
     # Set the --class for the new OS window
     os_window_class mywindow
+    # Set the --name for the new OS window
+    os_window_name myname
     # Change the OS window state to normal, fullscreen, maximized or minimized
     os_window_state normal
     launch sh
@@ -244,9 +246,7 @@ All these actions can be customized in :file:`kitty.conf` as described
 
 You can also customize what happens when clicking on :term:`hyperlinks` in
 kitty, having it open files in your editor, download remote files, open things
-in your browser, etc.
-
-For details, see :doc:`here <open_actions>`.
+in your browser, etc. For details, see :doc:`here <open_actions>`.
 
 .. toctree::
    :hidden:

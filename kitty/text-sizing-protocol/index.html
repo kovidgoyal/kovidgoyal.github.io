@@ -1,13 +1,24 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="../">
-  <head>
-<meta charset="utf-8"/>
+  <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="#" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="The text sizing protocol" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://sw.kovidgoyal.net/kitty/text-sizing-protocol/" />
+<meta property="og:site_name" content="kitty" />
+<meta property="og:description" content="Classically, because the terminal is a grid of equally sized characters, only a single text size was supported in terminals, with one minor exception, some characters were allowed to be rendered in..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://sw.kovidgoyal.net/kitty/_images/social_previews/summary_text-sizing-protocol_974e580e.png" />
+<meta property="og:image:alt" content="Classically, because the terminal is a grid of equally sized characters, only a single text size was supported in terminals, with one minor exception, some c..." />
+<meta name="description" content="Classically, because the terminal is a grid of equally sized characters, only a single text size was supported in terminals, with one minor exception, some characters were allowed to be rendered in..." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="File transfer over the TTY" href="../file-transfer-protocol/" /><link rel="prev" title="Comprehensive keyboard handling in terminals" href="../keyboard-protocol/" />
 
     <link rel="shortcut icon" href="../_static/kitty.svg"/><!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
-<meta name="robots" content="noindex" />
-<title>Search - kitty</title><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+        <title>The text sizing protocol - kitty</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
@@ -194,7 +205,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -210,13 +221,13 @@
   </div>
   
   
-</a><form class="sidebar-search-container" method="get" action="#" role="search">
+</a><form class="sidebar-search-container" method="get" action="../search/" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../quickstart/">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Quickstart</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../binary/">Install kitty</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Install kitty</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../binary/#binary-install">Binary install</a></li>
@@ -906,7 +917,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../integrations/#miscellaneous">Miscellaneous</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input class="toctree-checkbox" id="toctree-checkbox-104" name="toctree-checkbox-104" role="switch" type="checkbox"/><label for="toctree-checkbox-104"><div class="visually-hidden">Toggle navigation of Terminal protocol extensions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-104" name="toctree-checkbox-104" role="switch" type="checkbox"/><label for="toctree-checkbox-104"><div class="visually-hidden">Toggle navigation of Terminal protocol extensions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../underlines/">Colored and styled underlines</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../graphics-protocol/">Terminal graphics protocol</a><input class="toctree-checkbox" id="toctree-checkbox-105" name="toctree-checkbox-105" role="switch" type="checkbox"/><label for="toctree-checkbox-105"><div class="visually-hidden">Toggle navigation of Terminal graphics protocol</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#getting-the-window-size">Getting the window size</a></li>
@@ -974,19 +985,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#why-xterm-s-modifyotherkeys-should-not-be-used">Why xterm’s modifyOtherKeys should not be used</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../text-sizing-protocol/">The text sizing protocol</a><input class="toctree-checkbox" id="toctree-checkbox-114" name="toctree-checkbox-114" role="switch" type="checkbox"/><label for="toctree-checkbox-114"><div class="visually-hidden">Toggle navigation of The text sizing protocol</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../text-sizing-protocol/#quickstart">Quickstart</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../text-sizing-protocol/#the-escape-code">The escape code</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../text-sizing-protocol/#how-it-works">How it works</a><input class="toctree-checkbox" id="toctree-checkbox-115" name="toctree-checkbox-115" role="switch" type="checkbox"/><label for="toctree-checkbox-115"><div class="visually-hidden">Toggle navigation of How it works</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="../text-sizing-protocol/#fractional-scaling">Fractional scaling</a></li>
+<li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">The text sizing protocol</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-114" name="toctree-checkbox-114" role="switch" type="checkbox"/><label for="toctree-checkbox-114"><div class="visually-hidden">Toggle navigation of The text sizing protocol</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-escape-code">The escape code</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="#how-it-works">How it works</a><input class="toctree-checkbox" id="toctree-checkbox-115" name="toctree-checkbox-115" role="switch" type="checkbox"/><label for="toctree-checkbox-115"><div class="visually-hidden">Toggle navigation of How it works</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fractional-scaling">Fractional scaling</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../text-sizing-protocol/#fixing-the-character-width-issue-for-the-terminal-ecosystem">Fixing the character width issue for the terminal ecosystem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../text-sizing-protocol/#wrapping-and-overwriting-behavior">Wrapping and overwriting behavior</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../text-sizing-protocol/#detecting-if-the-terminal-supports-this-protocol">Detecting if the terminal supports this protocol</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../text-sizing-protocol/#interaction-with-other-terminal-controls">Interaction with other terminal controls</a><input class="toctree-checkbox" id="toctree-checkbox-116" name="toctree-checkbox-116" role="switch" type="checkbox"/><label for="toctree-checkbox-116"><div class="visually-hidden">Toggle navigation of Interaction with other terminal controls</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="../text-sizing-protocol/#cursor-movement">Cursor movement</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../text-sizing-protocol/#editing-controls">Editing controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fixing-the-character-width-issue-for-the-terminal-ecosystem">Fixing the character width issue for the terminal ecosystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wrapping-and-overwriting-behavior">Wrapping and overwriting behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detecting-if-the-terminal-supports-this-protocol">Detecting if the terminal supports this protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="#interaction-with-other-terminal-controls">Interaction with other terminal controls</a><input class="toctree-checkbox" id="toctree-checkbox-116" name="toctree-checkbox-116" role="switch" type="checkbox"/><label for="toctree-checkbox-116"><div class="visually-hidden">Toggle navigation of Interaction with other terminal controls</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cursor-movement">Cursor movement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-controls">Editing controls</a></li>
 </ul>
 </li>
 </ul>
@@ -1093,7 +1104,9 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -1102,31 +1115,397 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          
-<noscript>
-<div class="admonition error">
-  <p class="admonition-title">Error</p>
-  <p>
-    Please activate JavaScript to enable the search functionality.
-  </p>
+          <section id="the-text-sizing-protocol">
+<h1>The text sizing protocol<a class="headerlink" href="#the-text-sizing-protocol" title="Link to this heading">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.40.0.</span></p>
 </div>
-</noscript>
-
-<div id="search-results"></div>
+<p>Classically, because the terminal is a grid of equally sized characters, only
+a single text size was supported in terminals, with one minor exception, some
+characters were allowed to be rendered in two cells, to accommodate East Asian
+square aspect ratio characters and Emoji. Here, by single text size we mean the
+font size of all text on the screen is the same.</p>
+<p>This protocol allows text to be displayed in the terminal in different sizes
+both larger and smaller than the base text. It also solves the long standing
+problem of robustly determining the width (in cells) a character should have.
+Applications can interleave text of different sizes on the screen allowing for
+typographic niceties like headlines, superscripts, etc.</p>
+<p>Note that this protocol is fully backwards compatible, terminals that implement
+it will continue to work just the same with applications that do not use it.
+Because of this, it is not fully flexible in the font sizes it allows, as it
+still has to work with the character cell grid based fundamental nature of the
+terminal. Public discussion of this protocol is <a class="extlink-iss reference external" href="https://github.com/kovidgoyal/kitty/issues/8226">here</a>.</p>
+<section id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading">¶</a></h2>
+<p>Using this protocol to display different sized text is very simple, let’s
+illustrate with a few examples to give us a flavor:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;\e]66;s=2;Double sized text\a\n\n&quot;</span>
+<span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;\e]66;s=3;Triple sized text\a\n\n\n&quot;</span>
+<span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;\e]66;n=1:d=2;Half sized text\a\n&quot;</span>
+</pre></div>
+</div>
+<p>Note that the last example, of half sized text, has half height characters, but
+they still each take one cell, this can be fixed with a little more work:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;\e]66;n=1:d=2:w=1;Ha\a\e]66;n=1:d=2:w=1;lf\a\n&quot;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">w=1</span></code> mechanism allows the program to tell the terminal what width the text
+should take. This not only fixes using smaller text but also solves the long
+standing terminal ecosystem bugs caused by the client program not knowing how
+many cells the terminal will render some text in.</p>
+</section>
+<section id="the-escape-code">
+<h2>The escape code<a class="headerlink" href="#the-escape-code" title="Link to this heading">¶</a></h2>
+<p>There is a single escape code used by this protocol. It is sent by client
+programs to the terminal emulator to tell it to render the specified text
+at the specified size. It is an <code class="docutils literal notranslate"><span class="pre">OSC</span></code> code of the form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">OSC</span><span class="o">&gt;</span> <span class="mi">66</span> <span class="p">;</span> <span class="n">metadata</span> <span class="p">;</span> <span class="n">text</span> <span class="o">&lt;</span><span class="n">terminator</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">OSC</span></code> is the bytes <code class="docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">]</span> <span class="pre">(0x1b</span> <span class="pre">0x5b)</span></code>. The <code class="docutils literal notranslate"><span class="pre">metadata</span></code> is a colon
+separated list of <code class="docutils literal notranslate"><span class="pre">key=value</span></code> pairs. The final part of the escape code is the
+text which is simply plain text encoded as <a class="reference internal" href="../desktop-notifications/#safe-utf8"><span class="std std-ref">Escape code safe UTF-8</span></a>, the text must be
+no longer than <code class="docutils literal notranslate"><span class="pre">4096</span></code> bytes. Longer strings than that must be broken up into
+multiple escape codes. Spaces in this definition are for clarity only and
+should be ignored. The <code class="docutils literal notranslate"><span class="pre">terminator</span></code> is either the byte <code class="docutils literal notranslate"><span class="pre">BEL</span> <span class="pre">(0x7)</span></code> or the
+bytes <code class="docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">ST</span> <span class="pre">(0x1b</span> <span class="pre">0x5c)</span></code>.</p>
+<p>There are only a handful of metadata keys, defined in the table below:</p>
+<div class="table-wrapper docutils container" id="id1">
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">The text sizing metadata keys</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>s</p></td>
+<td><p>Integer from 1 to 7</p></td>
+<td><p>1</p></td>
+<td><p>The overall scale, the text will be rendered in a block of <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">*</span> <span class="pre">w</span></code> by <code class="docutils literal notranslate"><span class="pre">s</span></code> cells</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>w</p></td>
+<td><p>Integer from 0 to 7</p></td>
+<td><p>0</p></td>
+<td><p>The width, in cells, in which the text should be rendered. When zero, the terminal should calculate the width as it would for normal text, splitting it up into scaled cells.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>n</p></td>
+<td><p>Integer from 0 to 15</p></td>
+<td><p>0</p></td>
+<td><p>The numerator for the fractional scale.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>d</p></td>
+<td><p>Integer from 0 to 15</p></td>
+<td><p>0</p></td>
+<td><p>The denominator for the fractional scale. Must be <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">n</span></code> when non-zero.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>v</p></td>
+<td><p>Integer from 0 to 2</p></td>
+<td><p>0</p></td>
+<td><p>The vertical alignment to use for fractionally scaled text. <code class="docutils literal notranslate"><span class="pre">0</span></code> - top, <code class="docutils literal notranslate"><span class="pre">1</span></code> - bottom, <code class="docutils literal notranslate"><span class="pre">2</span></code> - centered</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>h</p></td>
+<td><p>Integer from 0 to 2</p></td>
+<td><p>0</p></td>
+<td><p>The horizontal alignment to use for fractionally scaled text. <code class="docutils literal notranslate"><span class="pre">0</span></code> - left, <code class="docutils literal notranslate"><span class="pre">1</span></code> - right, <code class="docutils literal notranslate"><span class="pre">2</span></code> - centered</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading">¶</a></h2>
+<p>This protocol works by allowing the client program to tell the terminal to
+render text in multiple cells. The terminal can then adjust the actual font
+size used to render the specified text as appropriate for the specified space.</p>
+<p>The space to render is controlled by four metadata keys, <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">(scale)</span></code>, <code class="docutils literal notranslate"><span class="pre">w</span> <span class="pre">(width)</span></code>, <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">(numerator)</span></code>
+and <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">(denominator)</span></code>. The most important are the <code class="docutils literal notranslate"><span class="pre">s</span></code> and <code class="docutils literal notranslate"><span class="pre">w</span></code> keys. The text
+will be rendered in a block of <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">*</span> <span class="pre">w</span></code> by <code class="docutils literal notranslate"><span class="pre">s</span></code> cells. A special case is <code class="docutils literal notranslate"><span class="pre">w=0</span></code>
+(the default), which means the terminal splits up the text into cells as it
+would normally without this protocol, but now each cell is an <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">by</span> <span class="pre">s</span></code> block of
+cells instead. So, for example, if the text is <code class="docutils literal notranslate"><span class="pre">abc</span></code> and <code class="docutils literal notranslate"><span class="pre">s=2</span></code> the terminal would normally
+split it into three cells:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>│a│b│c│
+</pre></div>
+</div>
+<p>But, because <code class="docutils literal notranslate"><span class="pre">s=2</span></code> it instead gets split as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>│a░│b░│c░│
+│░░│░░│░░│
+</pre></div>
+</div>
+<p>The terminal multiplies the font size by <code class="docutils literal notranslate"><span class="pre">s</span></code> when rendering these
+characters and thus ends up rendering text at twice the base size.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">w</span></code> is a non-zero value, it specifies the width in scaled cells of the
+following text. Note that <strong>all</strong> the text in that escape code must be rendered
+in <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">*</span> <span class="pre">w</span></code> cells. When both <code class="docutils literal notranslate"><span class="pre">s</span></code> and <code class="docutils literal notranslate"><span class="pre">w</span></code> are present, the resulting multicell
+contains all the text in the escape code rendered in a grid of <code class="docutils literal notranslate"><span class="pre">(s</span> <span class="pre">*</span> <span class="pre">w,</span> <span class="pre">s)</span></code>
+cells, i.e. the multicell is <code class="docutils literal notranslate"><span class="pre">s*w</span></code> cells wide and <code class="docutils literal notranslate"><span class="pre">s</span></code> cells high.</p>
+<p>If the text does not fit, the terminal is free to do whatever it
+feels is best, including truncating the text or downsizing the font size when
+rendering it. It is up to client applications to use the <code class="docutils literal notranslate"><span class="pre">w</span></code> key wisely and not
+try to render too much text in too few cells. When sending a string of text
+with non zero <code class="docutils literal notranslate"><span class="pre">w</span></code> to the terminal emulator, the way to do it is to split up the
+text into chunks that fit in <code class="docutils literal notranslate"><span class="pre">w</span></code> cells and send one escape code per chunk. So
+for the string: <code class="docutils literal notranslate"><span class="pre">cool-🐈</span></code> the actual escape codes would be (ignoring the header
+and trailers):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>w=1;c w=1;o w=1;o w=1;l w=1;- w=2:🐈
+</pre></div>
+</div>
+<p>Note, in particular, how the last character, the cat emoji, <code class="docutils literal notranslate"><span class="pre">🐈</span></code> has <code class="docutils literal notranslate"><span class="pre">w=2</span></code>.
+In practice client applications can assume that terminal emulators get the
+width of all ASCII characters correct and use the <code class="docutils literal notranslate"><span class="pre">w=0</span></code> form for efficient
+transmission, so that the above becomes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cool- w=2:🐈
+</pre></div>
+</div>
+<p>The use of non-zero <code class="docutils literal notranslate"><span class="pre">w</span></code> should mainly be restricted to non-ASCII characters and
+when using fractional scaling, as described below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Text sizes specified by scale are relative to the base font size,
+thus if the base font size is changed, these sizes are changed as well.
+So if the terminal emulator is using a base font size of <code class="docutils literal notranslate"><span class="pre">11pt</span></code>, then
+<code class="docutils literal notranslate"><span class="pre">s=2</span></code> will be rendered in approximately <code class="docutils literal notranslate"><span class="pre">22pt</span></code> (approx. because the
+terminal may need to slightly adjust font size to ensure it fits as not all
+fonts scale sizes linearly). If the user changes the base font size of the
+terminal emulator to <code class="docutils literal notranslate"><span class="pre">12pt</span></code> then the scaled font size becomes <code class="docutils literal notranslate"><span class="pre">~24pt</span></code>
+and so on.</p>
+</div>
+<section id="fractional-scaling">
+<h3>Fractional scaling<a class="headerlink" href="#fractional-scaling" title="Link to this heading">¶</a></h3>
+<p>Using the main scale parameter (<code class="docutils literal notranslate"><span class="pre">s</span></code>) gives us only 7 font sizes. Fortunately,
+this protocol allows specifying fractional scaling, fractional scaling is
+applied on top of the main scale specified by <code class="docutils literal notranslate"><span class="pre">s</span></code>. It allows niceties like:</p>
+<ul class="simple">
+<li><p>Normal sized text but with half a line of blank space above and half a line below (<code class="docutils literal notranslate"><span class="pre">s=2:n=1:d=2:v=2</span></code>)</p></li>
+<li><p>Superscripts (<code class="docutils literal notranslate"><span class="pre">n=1:d=2</span></code>)</p></li>
+<li><p>Subscripts (<code class="docutils literal notranslate"><span class="pre">n=1:d=2:v=1</span></code>)</p></li>
+<li><p>…</p></li>
+</ul>
+<p>The fractional scale <strong>does not</strong> affect the number of cells the text occupies,
+instead, it just adjusts the rendered font size within those cells.
+The fraction is specified using an integer numerator and denominator (<code class="docutils literal notranslate"><span class="pre">n</span></code> and
+<code class="docutils literal notranslate"><span class="pre">d</span></code>). In addition, by using the <code class="docutils literal notranslate"><span class="pre">v</span></code> key one can vertically align the
+fractionally scaled text at top, bottom or middle.</p>
+<p>When using fractional scaling one often wants to fit more than a single
+character per cell. To accommodate that, there is the <code class="docutils literal notranslate"><span class="pre">w</span></code> key. This specifies
+the number of cells in which to render the text. For example, for a superscript
+one would typically split the string into pairs of characters and use the
+following for each pair:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OSC</span> <span class="mi">66</span> <span class="p">;</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="p">:</span><span class="n">w</span><span class="o">=</span><span class="mi">1</span> <span class="p">;</span> <span class="n">ab</span> <span class="o">&lt;</span><span class="n">terminator</span><span class="o">&gt;</span>
+<span class="o">...</span> <span class="n">repeat</span> <span class="k">for</span> <span class="n">each</span> <span class="n">pair</span> <span class="n">of</span> <span class="n">characters</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="fixing-the-character-width-issue-for-the-terminal-ecosystem">
+<h2>Fixing the character width issue for the terminal ecosystem<a class="headerlink" href="#fixing-the-character-width-issue-for-the-terminal-ecosystem" title="Link to this heading">¶</a></h2>
+<p>Terminals create user interfaces using text displayed in a cell grid. For
+terminal software that creates sophisticated user interfaces it is particularly
+important that the client program running in the terminal and the terminal
+itself agree on how many cells a particular string should be rendered in. If
+the two disagree, then the entire user interface can be broken, leading to
+catastrophic failures.</p>
+<p>Fundamentally, this is a co-ordination problem. Both the client program and the
+terminal have to somehow share the same database of character properties and
+the same algorithm for computing string lengths in cells based on that shared
+database. Sadly, there is no such shared database in reality. The closest we
+have is the Unicode standard. Unfortunately, the Unicode standard has a new
+version almost every year and actually changes the width assigned to some
+characters in different versions. Furthermore, to actually get the “correct”
+width for a string using that standard one has to do grapheme segmentation,
+which is an <a class="reference external" href="https://www.unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries">extremely complex algorithm</a>.
+Expecting all terminals and all terminal programs to have both up-to-date
+character databases and a bug free implementation of this algorithm is not
+realistic.</p>
+<p>So instead, this protocol solves the issue robustly by removing the
+co-ordination problem and putting only one actor in charge of determining
+string width. The client becomes responsible for doing whatever level of
+grapheme segmentation it is comfortable with using whatever Unicode database is
+at its disposal and then it can transmit the segmented string to the terminal
+with the appropriate <code class="docutils literal notranslate"><span class="pre">w</span></code> values so that the terminal renders the text in the
+exact number of cells the client expects.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is possible for a terminal to implement only the width part of this spec
+and ignore the scale part. This escape code works with only the <cite>w</cite> key as
+well, as a means of specifying how many cells each piece of text occupies.
+In such cases <code class="docutils literal notranslate"><span class="pre">s</span></code> defaults to 1.
+See the section on <a class="reference internal" href="#detect-text-sizing"><span class="std std-ref">Detecting if the terminal supports this protocol</span></a> on how client applications can
+query for terminal emulator support.</p>
+</div>
+</section>
+<section id="wrapping-and-overwriting-behavior">
+<h2>Wrapping and overwriting behavior<a class="headerlink" href="#wrapping-and-overwriting-behavior" title="Link to this heading">¶</a></h2>
+<p>If the multicell block (<code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">*</span> <span class="pre">w</span> <span class="pre">by</span> <span class="pre">s</span></code> cells) is larger than the screen size in either
+dimension, the terminal must discard the character. Note that in particular
+this means that resizing a terminal screen so that it is too small to fit a
+multicell character can cause the character to be lost.</p>
+<p>When drawing a multicell character, if wrapping is enabled (DECAWM is set) and
+the character’s width (<code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">*</span> <span class="pre">w</span></code>) does not fit on the current line, the cursor is
+moved to the start of the next line and the character is drawn there.
+If wrapping is disabled and the character’s width does not fit on the current
+line, the cursor is moved back as far as needed to fit <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">*</span> <span class="pre">w</span></code> cells and then
+the character is drawn, following the overwriting rules described below.</p>
+<p>When drawing text either normal text or text specified via this escape code,
+and this text would overwrite an existing multicell character, the following
+rules must be followed, in decreasing order of precedence:</p>
+<ol class="arabic simple">
+<li><p>If the text is a combining character it is added to the existing multicell
+character</p></li>
+<li><p>If the text will overwrite the top-left cell of the multicell character, the
+entire multicell character must be erased</p></li>
+<li><p>If the text will overwrite any cell in the topmost row of the multicell
+character, the entire multicell character must be replaced by spaces (this
+rule is present for backwards compatibility with how overwriting works for
+wide characters)</p></li>
+<li><p>If the text will overwrite cells from a row after the first row, then cursor should be moved past the
+cells of the multicell character on that row and only then the text should be
+written. Note that this behavior is independent of the value of DECAWM. This
+is done for simplicity of implementation.</p></li>
+</ol>
+<p>The skipping behavior of the last rule can be complex requiring the terminal to
+skip over lots of cells, but it is needed to allow wrapping in the presence of
+multicell characters that extend over more than a single line.</p>
+</section>
+<section id="detecting-if-the-terminal-supports-this-protocol">
+<span id="detect-text-sizing"></span><h2>Detecting if the terminal supports this protocol<a class="headerlink" href="#detecting-if-the-terminal-supports-this-protocol" title="Link to this heading">¶</a></h2>
+<p>To detect support for this protocol use the <a class="reference external" href="https://vt100.net/docs/vt510-rm/CPR.html">CPR (Cursor Position Report)</a> escape code. Send a <code class="docutils literal notranslate"><span class="pre">CPR</span></code>
+followed by <code class="docutils literal notranslate"><span class="pre">\e]66;w=2;</span> <span class="pre">\a</span></code> which will draw a space character in
+two cells, followed by another <code class="docutils literal notranslate"><span class="pre">CPR</span></code>. Then send <code class="docutils literal notranslate"><span class="pre">\e]66;s=2;</span> <span class="pre">\a</span></code>
+which will draw a space in a <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">by</span> <span class="pre">2</span></code> block of cells, followed by another
+<code class="docutils literal notranslate"><span class="pre">CPR</span></code>.</p>
+<p>Then wait for the three responses from the terminal to the three CPR queries.
+If the cursor position in the three responses is the same, the terminal does
+not support this protocol at all, if the second response has a different cursor
+position then the width part is supported and if the third response has yet
+another position, the scale part is supported.</p>
+</section>
+<section id="interaction-with-other-terminal-controls">
+<h2>Interaction with other terminal controls<a class="headerlink" href="#interaction-with-other-terminal-controls" title="Link to this heading">¶</a></h2>
+<p>This protocol does not change the character grid based nature of the terminal.
+Most terminal controls assume one character per cell so it is important to
+specify how these controls interact with the multicell characters created by
+this protocol.</p>
+<section id="cursor-movement">
+<h3>Cursor movement<a class="headerlink" href="#cursor-movement" title="Link to this heading">¶</a></h3>
+<p>Cursor movement is unaffected by multicell characters, all cursor movement
+commands move the cursor position by single cell increments, as has always been
+the case for terminals. This means that the cursor can be placed at any
+individual single cell inside a larger multicell character.</p>
+<p>When a multicell character is created using this protocol, the cursor moves
+<cite>s * w</cite> cells to the right, in the same row it was in.</p>
+<p>Terminals <em>should</em> display a large cursor covering the entire multicell block
+when the actual cursor position is on any cell within the block. Block cursors
+cover all the cells of the multicell character, bar cursors appear in all the
+cells in the first column of the character and so on.</p>
+</section>
+<section id="editing-controls">
+<h3>Editing controls<a class="headerlink" href="#editing-controls" title="Link to this heading">¶</a></h3>
+<p>There are many controls used to edit existing screen content such as
+inserting characters, deleting characters and lines, etc. These were all
+originally specified for the one character per cell paradigm. Here we specify
+their interactions with multicell characters.</p>
+<dl class="simple">
+<dt><strong>Insert characters</strong> (<code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">&#64;</span></code> aka <code class="docutils literal notranslate"><span class="pre">ICH</span></code>)</dt><dd><p>When inserting <code class="docutils literal notranslate"><span class="pre">n</span></code> characters at cursor position <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> all characters
+after <code class="docutils literal notranslate"><span class="pre">x</span></code> on line <code class="docutils literal notranslate"><span class="pre">y</span></code> are supposed to be right shifted. This means
+that any multi-line character that intersects with the cells on line <code class="docutils literal notranslate"><span class="pre">y</span></code> at <code class="docutils literal notranslate"><span class="pre">x</span></code>
+and beyond must be erased. Any single line multicell character that is
+split by the cells at <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">n</span> <span class="pre">-</span> <span class="pre">1</span></code> must also be erased.</p>
+</dd>
+<dt><strong>Delete characters</strong> (<code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">P</span></code> aka <code class="docutils literal notranslate"><span class="pre">DCH</span></code>)</dt><dd><p>When deleting <code class="docutils literal notranslate"><span class="pre">n</span></code> characters at cursor position <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> all characters
+after <code class="docutils literal notranslate"><span class="pre">x</span></code> on line <code class="docutils literal notranslate"><span class="pre">y</span></code> are supposed to be left shifted. This means
+that any multi-line character that intersects with the cells on line <code class="docutils literal notranslate"><span class="pre">y</span></code> at <code class="docutils literal notranslate"><span class="pre">x</span></code>
+and beyond must be erased. Any single line multicell character that is
+split by the cells at <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">n</span> <span class="pre">-</span> <span class="pre">1</span></code> must also be erased.</p>
+</dd>
+<dt><strong>Erase characters</strong> (<code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">X</span></code> aka <code class="docutils literal notranslate"><span class="pre">ECH</span></code>)</dt><dd><p>When erasing <code class="docutils literal notranslate"><span class="pre">n</span></code> characters at cursor position <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> the <code class="docutils literal notranslate"><span class="pre">n</span></code> cells
+starting at <code class="docutils literal notranslate"><span class="pre">x</span></code> are supposed to be cleared. This means that any multicell
+character that intersects with the <code class="docutils literal notranslate"><span class="pre">n</span></code> cells starting at <code class="docutils literal notranslate"><span class="pre">x</span></code> must be
+erased.</p>
+</dd>
+<dt><strong>Erase display</strong> (<code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">J</span></code> aka <code class="docutils literal notranslate"><span class="pre">ED</span></code>)</dt><dd><p>Any multicell character intersecting with the erased region of the screen
+must be erased. When using mode <code class="docutils literal notranslate"><span class="pre">22</span></code> the contents of the screen are first
+copied into the history, including all multicell characters.</p>
+</dd>
+<dt><strong>Erase in line</strong> (<code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">K</span></code> aka <code class="docutils literal notranslate"><span class="pre">EL</span></code>)</dt><dd><p>Works just like erase characters above. Any multicell character
+intersecting with the erased cells in the line is erased.</p>
+</dd>
+<dt><strong>Insert lines</strong> (<code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">L</span></code> aka <code class="docutils literal notranslate"><span class="pre">IL</span></code>)</dt><dd><p>When inserting <code class="docutils literal notranslate"><span class="pre">n</span></code> lines at cursor position <code class="docutils literal notranslate"><span class="pre">y</span></code> any multi-line
+characters that are split at the line <code class="docutils literal notranslate"><span class="pre">y</span></code> must be erased. A split happens
+when the second or subsequent row of the multi-line character is on the line
+<code class="docutils literal notranslate"><span class="pre">y</span></code>. The insertion causes <code class="docutils literal notranslate"><span class="pre">n</span></code> lines to be removed from the bottom of
+the screen, any multi-line characters are split at the bottom of the screen
+must be erased. A split is when any row of the multi-line character except
+the last row is on the last line of the screen after the insertion of <code class="docutils literal notranslate"><span class="pre">n</span></code>
+lines.</p>
+</dd>
+<dt><strong>Delete lines</strong> (<code class="docutils literal notranslate"><span class="pre">CSI</span> <span class="pre">M</span></code> aka <code class="docutils literal notranslate"><span class="pre">DL</span></code>)</dt><dd><p>When deleting <code class="docutils literal notranslate"><span class="pre">n</span></code> lines at cursor position <code class="docutils literal notranslate"><span class="pre">y</span></code> any multicell character
+that intersects the deleted lines must be erased.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="../file-transfer-protocol/">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">File transfer over the TTY</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../keyboard-protocol/">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Comprehensive keyboard handling in terminals</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -1151,8 +1530,40 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">The text sizing protocol</a><ul>
+<li><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li><a class="reference internal" href="#the-escape-code">The escape code</a></li>
+<li><a class="reference internal" href="#how-it-works">How it works</a><ul>
+<li><a class="reference internal" href="#fractional-scaling">Fractional scaling</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fixing-the-character-width-issue-for-the-terminal-ecosystem">Fixing the character width issue for the terminal ecosystem</a></li>
+<li><a class="reference internal" href="#wrapping-and-overwriting-behavior">Wrapping and overwriting behavior</a></li>
+<li><a class="reference internal" href="#detecting-if-the-terminal-supports-this-protocol">Detecting if the terminal supports this protocol</a></li>
+<li><a class="reference internal" href="#interaction-with-other-terminal-controls">Interaction with other terminal controls</a><ul>
+<li><a class="reference internal" href="#cursor-movement">Cursor movement</a></li>
+<li><a class="reference internal" href="#editing-controls">Editing controls</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -1166,8 +1577,5 @@
     <script src="../_static/tabs.js?v=3ee01567"></script>
     <script src="../_static/custom.js?v=19d8e277"></script>
     <script src="../_static/timestamps.js?v=deda34ed"></script>
-    
-<script src="../_static/searchtools.js"></script>
-<script src="../_static/language_data.js"></script>
-<script src="../searchindex.js"></script></body>
+    </body>
 </html>

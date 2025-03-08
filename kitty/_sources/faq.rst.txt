@@ -23,6 +23,11 @@ these characters are followed by a space or en-space (U+2002) in which case
 kitty makes use of the extra cell to render them in two cells. This behavior
 can be turned off for specific symbols using :opt:`narrow_symbols`.
 
+As of version 0.40 kitty has innovated a :doc:`new protocol
+<text-sizing-protocol>` that allows programs running in the terminal to control
+how many cells a character is rendered in thereby solving the issue of
+character width once and for all.
+
 
 Using a color theme with a background color does not work well in vim?
 -----------------------------------------------------------------------
@@ -364,6 +369,10 @@ many alternate icons available, click on an icon to visit its homepage:
 
 .. image:: https://github.com/sodapopcan/kitty-icon/raw/main/kitty.app.png
    :target: https://github.com/sodapopcan/kitty-icon
+   :width: 256
+
+.. image:: https://github.com/sfsam/some_icons/raw/main/kitty.app.iconset/icon_128x128@2x.png
+   :target: https://github.com/sfsam/some_icons
    :width: 256
 
 On macOS and X11 you can put :file:`kitty.app.icns` (macOS only) or :file:`kitty.app.png` in the
