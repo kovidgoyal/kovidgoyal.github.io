@@ -239,6 +239,10 @@ workaround that limitation, |kitty| will read command line options from the file
 :file:`<kitty config dir>/macos-launch-services-cmdline` when it is launched
 from the GUI, i.e. by clicking the |kitty| application icon or using
 ``open -a kitty``. Note that this file is *only read* when running via the GUI.
+The contents of the file are assumed to be the command line to pass to kitty in
+shell syntax, for example::
+
+    --single-instance --override background=red
 
 You can, of course, also run |kitty| from a terminal with command line options,
 using: :file:`/Applications/kitty.app/Contents/MacOS/kitty`.
@@ -325,10 +329,9 @@ Then, the font will be available in ``kitten choose-fonts``.
 How can I assign a single global shortcut to bring up the kitty terminal?
 -----------------------------------------------------------------------------
 
-Bringing up applications on a single key press is the job of the window
-manager/desktop environment. For ways to do it with kitty (or indeed any
-terminal) in different environments,
-see :iss:`here <45>`.
+Use the :ref:`panel kitten <quake>`, this allows you to use kitty as a quick
+access Quake like terminal and even to use kitty as the desktop background, if
+so desired.
 
 
 I do not like the kitty icon!
@@ -467,7 +470,8 @@ You need to make sure that the environment variables you define in your shell's
 rc files are either also defined system wide or via the :opt:`env` directive in
 :file:`kitty.conf`. Common environment variables that cause issues are those
 related to localization, such as :envvar:`LANG`, ``LC_*`` and loading of
-configuration files such as ``XDG_*``, :envvar:`KITTY_CONFIG_DIRECTORY`.
+configuration files such as ``XDG_*``, :envvar:`KITTY_CONFIG_DIRECTORY` and,
+most importantly, ``PATH`` to locate binaries.
 
 To see the environment variables that kitty sees, you can add the following
 mapping to :file:`kitty.conf`::
@@ -481,8 +485,8 @@ setup environment variables system-wide, so people end up putting them in all
 sorts of places where they may or may not work.
 
 
-I am using tmux and have a problem
---------------------------------------
+I am using tmux/zellij and have a problem
+----------------------------------------------
 
 First, terminal multiplexers are :iss:`a bad idea <391#issuecomment-638320745>`,
 do not use them, if at all possible. kitty contains features that do all of what
@@ -504,9 +508,10 @@ for tmux refusing to support images.
 
 If you use any of the advanced features that kitty has innovated, such as
 :doc:`styled underlines </underlines>`, :doc:`desktop notifications
-</desktop-notifications>`, :doc:`extended keyboard support
-</keyboard-protocol>`, :doc:`file transfer </kittens/transfer>`, :doc:`the ssh
-kitten </kittens/ssh>`, :doc:`shell integration </shell-integration>` etc. they may or may not work,
+</desktop-notifications>`, :doc:`variable sized text </text-sizing-protocol>`,
+:doc:`extended keyboard support </keyboard-protocol>`,
+:doc:`file transfer </kittens/transfer>`, :doc:`the ssh kitten </kittens/ssh>`,
+:doc:`shell integration </shell-integration>` etc. they may or may not work,
 depending on the whims of tmux's maintainer, your version of tmux, etc.
 
 

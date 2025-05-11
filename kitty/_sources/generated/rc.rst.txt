@@ -258,6 +258,9 @@ Fields are:
 :code:`var (default: [])`
   List of user variables of the form NAME=VALUE
 
+:code:`os_panel (default: [])`
+  List of panel settings
+
 :code:`tab_title (default: None)`
   Title for the new tab
 
@@ -335,6 +338,9 @@ Fields are:
 
 :code:`bias (default: 0.0)`
   The bias with which to create the new window in the current layout
+
+:code:`wait_for_child_to_exit (default: False)`
+  Boolean indicating whether to wait and return child exit code
 
 
 
@@ -432,7 +438,7 @@ Fields are:
   Boolean indicating whether to adjust the size incrementally
 
 :code:`action (default: resize)`
-  One of :code:`resize, toggle-fullscreen` or :code:`toggle-maximized`
+  The action to perform
 
 :code:`unit (default: cells)`
   One of :code:`cells` or :code:`pixels`
@@ -442,6 +448,9 @@ Fields are:
 
 :code:`height (default: 0)`
   Integer indicating desired window height
+
+:code:`os_panel (optional)`
+  Settings for modifying the OS Panel
 
 
 
@@ -669,7 +678,7 @@ Fields are:
   Boolean whether to change font size in the current window or all windows
 
 :code:`increment_op (optional)`
-  The string ``+`` or ``-`` to interpret size as an increment
+  The string ``+``, ``-``, ``*`` or ``/`` to interpret size as an increment
 
 
 
