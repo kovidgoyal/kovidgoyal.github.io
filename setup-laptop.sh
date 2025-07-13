@@ -78,5 +78,5 @@ echo "Enter passphrase for Kphone"
 wpa_passphrase Kphone >> "$network_config"
 wpa_passphrase 'Westwood Villa' Westwoodvill@ >> "$network_config"
 genfstab -U /mnt >> /mnt/etc/fstab
-curl 'https://github.com/kovidgoyal/kovidgoyal.github.io/raw/master/setup-laptop2.sh' > /mnt/root/setup-laptop.sh
+curl 'https://raw.githubusercontent.com/kovidgoyal/kovidgoyal.github.io/refs/heads/master/setup-laptop2.sh' > /mnt/root/setup-laptop.sh
 arch-chroot /mnt
