@@ -6,9 +6,9 @@
 # Distributed under terms of the MIT license.
 #
 
-# To connect to wireless (the last line is a workaround for buggy ath12k wireless driver)
+# To connect to wireless in liveusb (the last line is a workaround for buggy ath12k wireless driver)
 # echo "[General]\nEnableNetworkConfiguration=true\nControlPortOverNL80211=false" > /etc/iwd/main.conf
-# iwctl --passphrase PASSPHRASE station wlan0 connect SSID
+# iwctl --passphrase PASSPHRASE station wlan0 connect KovidTheGreat
 
 set -o nounset
 set -o errexit
