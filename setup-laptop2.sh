@@ -39,7 +39,7 @@ pacman -S gnome-shell sway swayidle xdg-desktop-portal xdg-desktop-portal-gnome 
 pacman -S dolphin ark okteta okular kde-cli-tools ffmpegthumbs plasma-workspace kdegraphics-thumbnailers konsole plasma-wayland-session
 
 # Install yay
-sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && rm -rf yay
+pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && rm -rf yay
 
 # Install deps from AUR
 yay -S multitail tpacpi-bat python-lsp-isort python-pylsp-mypy python-lsp-ruff
