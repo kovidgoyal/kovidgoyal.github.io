@@ -62,6 +62,7 @@ EOF
 interface=$(ip a | grep -o ': wl.\+\?:' | cut -d' ' -f2 | cut -d: -f1)
 network_config="/mnt/etc/wpa_supplicant/wpa_supplicant-$interface.conf"
 
+mkdir -p /mnt/etc/wpa_supplicant
 cat << EOF > "$network_config"
 ctrl_interface=/run/wpa_supplicant
 ctrl_interface_group=wheel
