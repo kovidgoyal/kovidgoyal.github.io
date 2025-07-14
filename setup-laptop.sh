@@ -30,7 +30,6 @@ mkfs.ext4 "${DISK}p3"
 mount "${DISK}p3" /mnt
 mount --mkdir "${DISK}p1" /mnt/boot
 swapon "${DISK}p2"
-genfstab -U /mnt >> /mnt/etc/fstab
 
 # Install essential software
 pacstrap -K /mnt base linux linux-firmware iwd impala amd-ucode exfatprogs e2fsprogs nvim
@@ -67,5 +66,6 @@ chmod og-rw  "/mnt/var/lib/iwd/Westwood Villa.psk"
 
 # chroot into new system
 curl 'https://raw.githubusercontent.com/kovidgoyal/kovidgoyal.github.io/refs/heads/master/setup-laptop2.sh' > /mnt/root/setup-laptop.sh
+genfstab -U /mnt >> /mnt/etc/fstab
 echo "chrooting into newly installed system, run /root/setup-laptop.sh for next stage"
 arch-chroot /mnt
