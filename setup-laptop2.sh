@@ -16,7 +16,7 @@ timedatectl set-local-rtc 0
 echo "en_IN UTF-8" >> /etc/locale.gen
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
-localectl set-locale en_IN.UTF-8
+localectl set-locale en_IN
 systemctl enable systemd-resolved
 systemctl disable systemd-networkd
 systemctl enable iwd
