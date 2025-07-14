@@ -19,6 +19,7 @@ locale-gen
 localectl set-locale en_IN.UTF-8
 systemctl enable systemd-resolved
 systemctl disable systemd-networkd
+systemctl enable iwd
 
 # Setup pacman
 sed -i 's/#Color/Color/g' /etc/pacman.conf
@@ -61,7 +62,6 @@ elif echo "$gpu_info" | grep -iq "NVIDIA"; then
 else
     pacman -S libva-intel-driver vulkan-intel
 fi
-systemctl enable iwd
 systemctl enable bluetooth
 systemctl enable sshd
 echo FONT=ter-132b >> /etc/vconsole.conf
