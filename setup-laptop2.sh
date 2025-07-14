@@ -87,6 +87,11 @@ chown -R kovid:kovid /home/kovid /t
 # Allow passwordless sudo for all users in wheel group
 echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL"  >> /etc/sudoers
 
+echo "Set password for root"
+passwd
+echo "Set password for kovid"
+passwd kovid
+
 # Setup fingerprint login
 # sudo fprintd-enroll kovid
 # fprintd-verify kovid
