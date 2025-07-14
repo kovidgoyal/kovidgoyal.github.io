@@ -4,7 +4,7 @@
 # Copyright (C) 2022 Kovid Goyal <kovid at kovidgoyal.net>
 #
 # Distributed under terms of the MIT license.
-#
+# Available at: https://raw.githubusercontent.com/kovidgoyal/kovidgoyal.github.io/refs/heads/master/setup-laptop.sh
 
 # To connect to wireless in liveusb (the last line is a workaround for buggy ath12k wireless driver)
 # echo "[General]\nEnableNetworkConfiguration=true\nControlPortOverNL80211=false" > /etc/iwd/main.conf
