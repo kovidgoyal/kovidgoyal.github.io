@@ -7,7 +7,7 @@
 # Available at: https://raw.githubusercontent.com/kovidgoyal/kovidgoyal.github.io/refs/heads/master/setup-laptop.sh
 
 # To connect to wireless in liveusb (the last line is a workaround for buggy ath12k wireless driver)
-# echo "[General]\nEnableNetworkConfiguration=true\nControlPortOverNL80211=false" > /etc/iwd/main.conf
+# echo -e "[General]\nEnableNetworkConfiguration=true\nControlPortOverNL80211=false" > /etc/iwd/main.conf
 # iwctl --passphrase PASSPHRASE station wlan0 connect KovidTheGreat
 
 set -o nounset
@@ -46,9 +46,9 @@ EOF
 echo "ControlPortOverNL80211=false" >> /mnt/etc/iwd/main.conf
 echo -n "Enter passphrase for KovidTheGreat:"
 read -s password
-echo "[Security]\nPassphrase=$password" > "/mnt/var/lib/iwd/KovidTheGreat.psk"
-chmod og-rw  "/mnt/var/lib/iwd/KovidTheGreat.psk"
-cat <<EOF >> "/mnt/var/lib/iwd/KovidTheGreat.psk"
+cat <<EOF > "/mnt/var/lib/iwd/KovidTheGreat.psk"
+[Security]
+Passphrase=$password
 [IPv4]
 Address=192.168.1.5
 Netmask=255.255.255.0
@@ -56,11 +56,18 @@ Gateway=192.168.1.1
 Broadcast=192.168.1.255
 DNS=1.1.1.1
 EOF
+chmod og-rw  "/mnt/var/lib/iwd/KovidTheGreat.psk"
 
-echo "[Security]\nPassphrase=$password" > "/mnt/var/lib/iwd/Kphone.psk"
+cat <<EOF > "/mnt/var/lib/iwd/Kphone.psk"
+[Security]
+Passphrase=$password
+EOF
 chmod og-rw  "/mnt/var/lib/iwd/Kphone.psk"
 
-echo "[Security]\nPassphrase=Westwoodvill@" > "/mnt/var/lib/iwd/Westwood Villa.psk"
+cat <<EOF > "/mnt/var/lib/iwd/Westwood Villa.psk"
+[Security]
+Passphrase=Westwoodvill@
+EOF
 chmod og-rw  "/mnt/var/lib/iwd/Westwood Villa.psk"
 
 
