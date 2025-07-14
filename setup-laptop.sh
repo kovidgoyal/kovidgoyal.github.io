@@ -24,12 +24,12 @@ sgdisk --new=2:0:+32G --typecode=2:8200 --change-name=2:"Linux Swap" "$DISK"
 sgdisk --new=3:0:0 --typecode=3:8300 --change-name=3:"Linux Root" "$DISK"
 # Print the new partition table
 sgdisk -p "$DISK"
-mkfs.fat -F 32 "$DISKp1"
-mkswap "$DISKp2"
-mkfs.ext4 "$DISKp3"
-mount "$DISKp3" /mnt
-mount --mkdir "$DISKp1" /mnt/boot
-swapon "$DISKp2"
+mkfs.fat -F 32 "${DISK}p1"
+mkswap "${DISK}p2"
+mkfs.ext4 "${DISK}p3"
+mount "${DISK}p3" /mnt
+mount --mkdir "${DISK}p1" /mnt/boot
+swapon "${DISK}p2"
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # Install essential software
