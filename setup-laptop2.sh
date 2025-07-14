@@ -97,3 +97,22 @@ passwd kovid
 # fprintd-verify kovid
 # add the following line before any others in /etc/pam.d/system-local-login
 # auth      sufficient pam_fprintd.so
+
+
+# Install bootloader
+bootctl install
+cat <<EOF > "/boot/loader/loader.conf"
+default  arch.conf
+timeout  0
+console-mode max
+editor   no
+EOF
+root_partition_uuid=$(cat /etc/fstab | grep UUID | head -n1 | cut -f1 | cut -d= -f2)
+cat <<EOF > "/boot/loader/entries/arch.conf"
+title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /initramfs-linux.img
+options root=UUID=$root_partition_uuid rw
+EOF
+bootctl
+echo "Check the bootctl output above to verify it has found the entry"
