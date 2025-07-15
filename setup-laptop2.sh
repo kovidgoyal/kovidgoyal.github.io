@@ -91,7 +91,7 @@ passwd kovid
 
 # Allow passwordless sudo for all users in wheel group
 echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL"  >> /etc/sudoers
-sudo -u kovid yay -S tpacpi-bat python-lsp-isort python-pylsp-mypy python-lsp-ruff
+sudo -u kovid yay -S tpacpi-bat python-lsp-isort python-pylsp-mypy python-lsp-ruff python-launchpadlib
 
 set +e
 video=$(lspci | grep VGA | grep -o AMD)
