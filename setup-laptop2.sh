@@ -31,7 +31,44 @@ EOF
 pacman -Syu
 
 # Install needed software
-pacman -S --needed python-pynvim telegram-desktop zeal python-pyinotify mutt alsa-plugins mlocate gnome-themes-standard lynx wl-clipboard python-pexpect gvim offlineimap ipython python-feedparser libxkbcommon-x11 unison ttf-ubuntu-font-family ttf-fira-code firefox python-urwid breeze breeze-icons qt5ct python-yaml translate-toolkit usb_modeswitch hplip cups cups-pdf python-matplotlib bzr dos2unix irssi python-sphinx vim-spell-en gimp python-nose python-chardet mkvtoolnix-cli dnsmasq libmtp sshfs mosh samba ctags python-docs sigil python-pyenchant python-pyxattr unrar zsh-completions zsh-autosuggestions zsh-syntax-highlighting python-psutil python-flake8 python-pyflakes python-pycodestyle xautomation python-pytz tig htop xorg-server chromium xorg-xmodmap pavucontrol wvdial the_silver_searcher autossh xorg-xauth openssh pipewire pipewire-pulse pipewire-alsa lib32-pipewire winetricks xorg-xinit xorg-xsetroot xorg-xrdb ttf-liberation ttf-dejavu icoutils ntfs-3g efibootmgr cmake python-paramiko rsnapshot dnsutils mpv alsa-utils alsa-tools qt5-tools qt5-imageformats qt5-doc xorg-xdpyinfo python-pygit2 screen net-tools vde2 python-markdown libreoffice-fresh libreoffice-fresh-en-gb p7zip python-lxml python-lxml-html-clean xorg-xev wev python-dateutil python-dnspython python-css-parser python-cssselect podofo libwmf imagemagick poppler-qt5 chmlib python-pillow shared-mime-info libunrar icu python-apsw python-pycountry libvncserver freerdp lib32-alsa-plugins cloc texlive texlive-lang msmtp-mta openjpeg2 spice-gtk remmina xdotool pv wine-mono wine_gecko mpg123 lib32-mpg123 jshon python-virtualenv optipng python-requests smtp-forwarder base-devel rsync modemmanager inkscape xorg-xkill jnettop xorg-server-xwayland pax-utils python-pygments nodejs npm speedtest-cli httpie gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly python-jedi linux-headers python-xxhash simde vimpager libva-mesa-driver mesa-vdpau mesa-libgl python-gobject gdb socat noto-fonts noto-fonts-emoji noto-fonts-cjk gsimplecal pyqt-builder python-pyqt6-webengine qt6-tools qt6-imageformats qt6ct poppler-qt6 python-yaml python-apsw python-isort python-twine python-wheel python-msgpack python-unrardll python-pysocks clang llvm npm xorg-xinput python-html5-parser mailutils python-humanize jq jxrlib fd python-wheel python-pyqtwebengine xcursor-themes python-pydbus sip python-beautifulsoup4 python-html5-parser python-regex ripgrep python-certifi terminus-font python-mechanize python-dbus urlscan python-prompt_toolkit slurp grim xclip zip iw python-zeroconf python-html2text python-pychm bluez bluez-utils python-build mypy python-docutils-stubs python-sphinx-inline-tabs python-sphinxext-opengraph python-sphinx-furo python-sphinx-autobuild python-pip dash fish pciutils startup-notification yajl xcb-util-xrm autossh man man-pages fzf python-sphinx-copybutton librsync wayland wayland-protocols links python-pycryptodome ttf-nerd-fonts-symbols python-scipy python-py7zr speech-dispatcher python-cchardet inetutils wireless-regdb fprintd cdrtools usbutils kernel-modules-hook qemu qemu-user-static qemu-user-static-binfmt edk2-armvirt edk2-ovmf qemu-system-aarch64 swtpm upx gopls staticcheck python-black wireguard-tools aria2 wofi ruff lld yt-dlp python-lsp-server  python-rope lua-language-server wlr-randr python-jaconv python-pykakasi vulkan-swrast vulkan-icd-loader hyprland xdg-desktop-portal-hyprland hypridle hyprpicker swaync brightnessctl kitty
+pacman -S --needed python-pynvim telegram-desktop zeal python-pyinotify mutt alsa-plugins \
+    mlocate gnome-themes-standard lynx wl-clipboard python-netifaces python-pexpect gvim \
+    offlineimap ipython python-feedparser libxkbcommon-x11 unison ttf-ubuntu-font-family \
+    ttf-fira-code firefox python-urwid breeze breeze-icons qt5ct python-yaml translate-toolkit \
+    usb_modeswitch hplip cups cups-pdf python-matplotlib bzr dos2unix irssi python-sphinx vim-spell-en \
+    gimp python-nose python-chardet mkvtoolnix-cli dnsmasq libmtp sshfs mosh samba ctags \
+    python-docs sigil python-pyenchant python-pyxattr unrar zsh-completions zsh-autosuggestions \
+    zsh-syntax-highlighting python-psutil python-flake8 python-pyflakes python-pycodestyle \
+    xautomation python-pytz tig htop xorg-server chromium xorg-xmodmap pavucontrol wvdial autossh \
+    xorg-xauth openssh pipewire pipewire-pulse pipewire-alsa lib32-pipewire winetricks \
+    xorg-xinit xorg-xsetroot xorg-xrdb ttf-liberation ttf-dejavu icoutils ntfs-3g \
+    efibootmgr cmake python-paramiko rsnapshot dnsutils mpv alsa-utils alsa-tools qt5-tools \
+    qt5-imageformats qt5-doc xorg-xdpyinfo python-pygit2 screen net-tools vde2 python-markdown \
+    libreoffice-fresh libreoffice-fresh-en-gb p7zip python-lxml python-lxml-html-clean xorg-xev \
+    wev python-dateutil python-dnspython python-css-parser python-cssselect podofo libwmf \
+    imagemagick poppler-qt5 chmlib python-pillow shared-mime-info libunrar icu python-apsw \
+    python-pycountry libvncserver freerdp lib32-alsa-plugins cloc texlive texlive-lang msmtp-mta \
+    openjpeg2 spice-gtk remmina xdotool pv wine-mono wine_gecko mpg123 lib32-mpg123 jshon \
+    python-virtualenv optipng python-requests smtp-forwarder base-devel rsync modemmanager \
+    inkscape xorg-xkill jnettop xorg-server-xwayland pax-utils python-pygments nodejs npm \
+    speedtest-cli httpie gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly python-jedi \
+    linux-headers python-xxhash simde vimpager libva-mesa-driver mesa-vdpau mesa-libgl python-gobject \
+    gdb socat noto-fonts noto-fonts-emoji noto-fonts-cjk gsimplecal pyqt-builder python-pyqt6-webengine \
+    qt6-tools qt6-imageformats qt6ct poppler-qt6 python-yaml python-apsw python-isort python-twine \
+    python-wheel python-msgpack python-unrardll python-pysocks clang llvm npm xorg-xinput \
+    python-html5-parser mailutils python-humanize jq jxrlib fd python-wheel python-pyqtwebengine \
+    xcursor-themes python-pydbus sip python-beautifulsoup4 python-html5-parser python-regex ripgrep \
+    python-certifi terminus-font python-mechanize python-dbus urlscan python-prompt_toolkit slurp grim \
+    xclip zip iw python-zeroconf python-html2text python-pychm bluez bluez-utils python-build mypy \
+    python-docutils-stubs python-sphinx-inline-tabs python-sphinxext-opengraph python-sphinx-furo \
+    python-sphinx-autobuild python-pip dash fish pciutils startup-notification yajl xcb-util-xrm \
+    autossh man man-pages fzf python-sphinx-copybutton librsync wayland wayland-protocols links \
+    python-pycryptodome ttf-nerd-fonts-symbols python-scipy python-py7zr speech-dispatcher \
+    python-cchardet inetutils wireless-regdb fprintd cdrtools usbutils kernel-modules-hook \
+    qemu qemu-user-static qemu-user-static-binfmt edk2-armvirt edk2-ovmf qemu-system-aarch64 swtpm \
+    upx gopls staticcheck python-black wireguard-tools aria2 wofi ruff lld yt-dlp python-lsp-server \
+    python-rope lua-language-server wlr-randr python-jaconv python-pykakasi vulkan-swrast vulkan-icd-loader \
+    hyprland xdg-desktop-portal-hyprland hypridle hyprpicker swaync brightnessctl kitty
 
 # test environments
 pacman -S --needed gnome-shell sway swayidle xdg-desktop-portal xdg-desktop-portal-gnome xdg-desktop-portal-wlr gnome-session gnome-terminal
