@@ -6,8 +6,8 @@
 # Distributed under terms of the MIT license.
 # Available at: https://raw.githubusercontent.com/kovidgoyal/kovidgoyal.github.io/refs/heads/master/setup-laptop.sh
 
-# To connect to wireless in liveusb (the last line is a workaround for buggy ath12k wireless driver)
-# echo -e "[General]\nEnableNetworkConfiguration=true\nControlPortOverNL80211=false" > /etc/iwd/main.conf
+# To connect to wireless in liveusb
+# echo -e "[General]\nEnableNetworkConfiguration=true" > /etc/iwd/main.conf
 # iwctl --passphrase PASSPHRASE station wlan0 connect KovidTheGreat
 
 set -o nounset
@@ -42,8 +42,6 @@ cat <<EOF > /mnt/etc/iwd/main.conf
 [General]
 EnableNetworkConfiguration=true
 EOF
-# needed for buggy ath12k driver in current laptop (Qualcomm wifi 7)
-echo "ControlPortOverNL80211=false" >> /mnt/etc/iwd/main.conf
 echo -n "Enter passphrase for KovidTheGreat:"
 read -s password
 cat <<EOF > "/mnt/var/lib/iwd/KovidTheGreat.psk"
