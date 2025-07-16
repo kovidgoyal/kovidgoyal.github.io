@@ -457,6 +457,10 @@
 </ul>
 </li>
 <li class="toctree-l4 current has-children current-page"><a class="current reference internal" href="#">Selecting files, fast</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" role="switch" type="checkbox"/><label for="toctree-checkbox-40"><div class="visually-hidden">Toggle navigation of Selecting files, fast</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="#creating-shortcuts-to-favorite-frequently-used-directories">Creating shortcuts to favorite/frequently used directories</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#selecting-multiple-files">Selecting multiple files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#hidden-and-ignored-files">Hidden and ignored files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#selecting-non-existent-files-save-file-names">Selecting non-existent files (save file names)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#configuration">Configuration</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#filesystem-scanning">Filesystem scanning</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
@@ -475,7 +479,10 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l4 has-children"><a class="reference internal" href="../desktop-ui/">Using terminal programs to provide Linux desktop components</a><input class="toctree-checkbox" id="toctree-checkbox-44" name="toctree-checkbox-44" role="switch" type="checkbox"/><label for="toctree-checkbox-44"><div class="visually-hidden">Toggle navigation of Using terminal programs to provide Linux desktop components</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+<li class="toctree-l4 has-children"><a class="reference internal" href="../desktop-ui/">Using terminal programs to provide Linux desktop components</a><input class="toctree-checkbox" id="toctree-checkbox-44" name="toctree-checkbox-44" role="switch" type="checkbox"/><label for="toctree-checkbox-44"><div class="visually-hidden">Toggle navigation of Using terminal programs to provide Linux desktop components</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../desktop-ui/#how-to-install">How to install</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../desktop-ui/#how-it-works">How it works</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../desktop-ui/#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../developing-builtin-kittens/">Developing builtin kittens</a><input class="toctree-checkbox" id="toctree-checkbox-45" name="toctree-checkbox-45" role="switch" type="checkbox"/><label for="toctree-checkbox-45"><div class="visually-hidden">Toggle navigation of Developing builtin kittens</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -1182,7 +1189,51 @@ dialogs.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitten</span> <span class="n">choose</span><span class="o">-</span><span class="n">files</span>
 </pre></div>
 </div>
-<p>to select a single file from the tree rooted at the current working directory.</p>
+<p>to select a single file from the tree rooted at the current working directory.
+Type a few letters from the filename and once it becomes the top selection,
+press <kbd class="kbd docutils literal notranslate">Enter</kbd>. You can change the current directory by instead selecting a
+directory and pressing the <kbd class="kbd docutils literal notranslate">Tab</kbd> key. <kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">Tab</kbd> goes up one
+directory level.</p>
+<section id="creating-shortcuts-to-favorite-frequently-used-directories">
+<h2>Creating shortcuts to favorite/frequently used directories<a class="headerlink" href="#creating-shortcuts-to-favorite-frequently-used-directories" title="Link to this heading">¶</a></h2>
+<p>You can create keyboard shortcuts to quickly switch to any directory in
+<code class="file docutils literal notranslate"><span class="pre">choose-files.conf</span></code>. For example:</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="l">ctrl+t</span><span class="w"> </span><span class="nf">cd</span><span class="s"> /tmp</span>
+<span class="kd">map</span><span class="w"> </span><span class="l">alt+p</span><span class="w">  </span><span class="nf">cd</span><span class="s"> ~/my/project</span>
+</pre></div>
+</div>
+</section>
+<section id="selecting-multiple-files">
+<h2>Selecting multiple files<a class="headerlink" href="#selecting-multiple-files" title="Link to this heading">¶</a></h2>
+<p>When you wish to select multiple files, start the kitten with <a class="reference internal" href="#cmdoption-kitty-kitten-choose_files-mode"><code class="xref std std-option docutils literal notranslate"><span class="pre">--mode</span></code></a><code class="code docutils literal notranslate"><span class="pre">=files</span></code>. Then instead of pressing
+<kbd class="kbd docutils literal notranslate">Enter</kbd>, press <kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">Enter</kbd> instead and the file will be added to the list
+of selections. You can also hold the <kbd class="kbd docutils literal notranslate">Ctrl</kbd> key and click on files to add
+them to the selections. Similarly, you can hold the <kbd class="kbd docutils literal notranslate">Alt</kbd> key and click to
+select ranges of files (similar to using <kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">click</kbd> in a GUI app).
+Press <kbd class="kbd docutils literal notranslate">Enter</kbd> on the last selected file to finish. The list of selected
+files is displayed at the bottom of the kitten and you can click on them
+to deselect a file. Similarly, pressing <kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">Enter</kbd> will un-select a
+previously selected file.</p>
+</section>
+<section id="hidden-and-ignored-files">
+<h2>Hidden and ignored files<a class="headerlink" href="#hidden-and-ignored-files" title="Link to this heading">¶</a></h2>
+<p>By default, the kitten does not process hidden files and directories (whose
+names start with a period). This can be <a class="reference internal" href="#opt-kitten-choose_files.show_hidden"><code class="xref std std-opt docutils literal notranslate"><span class="pre">changed</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">configuration</span></code></a>
+and also at runtime via the clickable link to the right of the search input.</p>
+<p>Similarly, the kitten respects both <code class="file docutils literal notranslate"><span class="pre">.gitignore</span></code> and <code class="file docutils literal notranslate"><span class="pre">.ignore</span></code>
+files, by default. This can also be changed both <a class="reference internal" href="#opt-kitten-choose_files.respect_ignores"><code class="xref std std-opt docutils literal notranslate"><span class="pre">in</span> <span class="pre">configuration</span></code></a> or at runtime. Note that
+<code class="file docutils literal notranslate"><span class="pre">.gitignore</span></code> files are only respected if there is also a <code class="file docutils literal notranslate"><span class="pre">.git</span></code>
+directory present. The kitten also supports the global <code class="file docutils literal notranslate"><span class="pre">.gitignore</span></code> file,
+though it applies only inside git working trees. You can specify <a class="reference internal" href="#opt-kitten-choose_files.ignore"><code class="xref std std-opt docutils literal notranslate"><span class="pre">global</span> <span class="pre">ignore</span>
+<span class="pre">patterns</span></code></a>, that apply everywhere in <code class="file docutils literal notranslate"><span class="pre">choose-files.conf</span></code>.</p>
+</section>
+<section id="selecting-non-existent-files-save-file-names">
+<h2>Selecting non-existent files (save file names)<a class="headerlink" href="#selecting-non-existent-files-save-file-names" title="Link to this heading">¶</a></h2>
+<p>This kitten can also be used to select non-existent files, that is a new file
+for a <span class="guilabel">Save file</span> type of dialog using <a class="reference internal" href="#cmdoption-kitty-kitten-choose_files-mode"><code class="xref std std-option docutils literal notranslate"><span class="pre">--mode</span></code></a><code class="code docutils literal notranslate"><span class="pre">=save-file</span></code>. Once you have changed to the directory
+you want the file to be in (using the <kbd class="kbd docutils literal notranslate">Tab</kbd> key),
+press <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Enter</kbd> and you will be able to type in the file name.</p>
+</section>
 <section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">¶</a></h2>
 <p>You can configure various aspects of the kitten’s operation by creating a
@@ -1330,7 +1381,7 @@ Does not work when selecting files to open rather than to save.</p>
 <span class="sig-name descname"><span class="pre">Change</span> <span class="pre">to</span> <span class="pre">currently</span> <span class="pre">selected</span> <span class="pre">dir</span></span><a class="headerlink" href="#shortcut-kitten-choose_files.Change-to-currently-selected-dir" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="l">tab</span><span class="w"> </span><span class="nf">cd</span><span class="s"> current</span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="l">tab</span><span class="w"> </span><span class="nf">cd</span><span class="s"> .</span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -1338,7 +1389,7 @@ Does not work when selecting files to open rather than to save.</p>
 <span class="sig-name descname"><span class="pre">Change</span> <span class="pre">to</span> <span class="pre">parent</span> <span class="pre">directory</span></span><a class="headerlink" href="#shortcut-kitten-choose_files.Change-to-parent-directory" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="l">shift+tab</span><span class="w"> </span><span class="nf">cd</span><span class="s"> up</span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="l">shift+tab</span><span class="w"> </span><span class="nf">cd</span><span class="s"> ..</span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -1396,7 +1447,7 @@ Does not work when selecting files to open rather than to save.</p>
 <span class="sig-name descname"><span class="pre">Toggle</span> <span class="pre">showing</span> <span class="pre">ignored</span> <span class="pre">files</span></span><a class="headerlink" href="#shortcut-kitten-choose_files.Toggle-showing-ignored-files" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="l">alt+d</span><span class="w"> </span><span class="nf">toggle</span><span class="s"> ignorefiles</span>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span><span class="kd">map</span><span class="w"> </span><span class="l">alt+i</span><span class="w"> </span><span class="nf">toggle</span><span class="s"> ignorefiles</span>
 </pre></div>
 </div>
 <dl class="std shortcut">
@@ -1556,6 +1607,10 @@ Choices: <code class="code docutils literal notranslate"><span class="pre">json<
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Selecting files, fast</a><ul>
+<li><a class="reference internal" href="#creating-shortcuts-to-favorite-frequently-used-directories">Creating shortcuts to favorite/frequently used directories</a></li>
+<li><a class="reference internal" href="#selecting-multiple-files">Selecting multiple files</a></li>
+<li><a class="reference internal" href="#hidden-and-ignored-files">Hidden and ignored files</a></li>
+<li><a class="reference internal" href="#selecting-non-existent-files-save-file-names">Selecting non-existent files (save file names)</a></li>
 <li><a class="reference internal" href="#configuration">Configuration</a></li>
 <li><a class="reference internal" href="#filesystem-scanning">Filesystem scanning</a></li>
 <li><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>

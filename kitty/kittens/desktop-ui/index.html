@@ -205,7 +205,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -457,6 +457,10 @@
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../choose-files/">Selecting files, fast</a><input class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" role="switch" type="checkbox"/><label for="toctree-checkbox-40"><div class="visually-hidden">Toggle navigation of Selecting files, fast</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../choose-files/#creating-shortcuts-to-favorite-frequently-used-directories">Creating shortcuts to favorite/frequently used directories</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../choose-files/#selecting-multiple-files">Selecting multiple files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../choose-files/#hidden-and-ignored-files">Hidden and ignored files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../choose-files/#selecting-non-existent-files-save-file-names">Selecting non-existent files (save file names)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../choose-files/#configuration">Configuration</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../choose-files/#filesystem-scanning">Filesystem scanning</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../choose-files/#keyboard-shortcuts">Keyboard shortcuts</a></li>
@@ -475,7 +479,10 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l4 current has-children current-page"><a class="current reference internal" href="#">Using terminal programs to provide Linux desktop components</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-44" name="toctree-checkbox-44" role="switch" type="checkbox"/><label for="toctree-checkbox-44"><div class="visually-hidden">Toggle navigation of Using terminal programs to provide Linux desktop components</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+<li class="toctree-l4 current has-children current-page"><a class="current reference internal" href="#">Using terminal programs to provide Linux desktop components</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-44" name="toctree-checkbox-44" role="switch" type="checkbox"/><label for="toctree-checkbox-44"><div class="visually-hidden">Toggle navigation of Using terminal programs to provide Linux desktop components</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="#how-to-install">How to install</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../developing-builtin-kittens/">Developing builtin kittens</a><input class="toctree-checkbox" id="toctree-checkbox-45" name="toctree-checkbox-45" role="switch" type="checkbox"/><label for="toctree-checkbox-45"><div class="visually-hidden">Toggle navigation of Developing builtin kittens</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -1157,7 +1164,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -1173,14 +1180,105 @@ managers instead of full fledged desktop environments. This kitten helps
 provide parts of the desktop environment that are missing from such setups,
 and does so using keyboard friendly, terminal first UI components. Some of its
 features are:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>Replace the typical File Open/Save dialogs used in GUI programs with the
 fast and keyboard centric <a class="reference internal" href="../choose-files/"><span class="doc">choose-files</span></a> kitten
 running in a semi-transparent kitty overlay.</p></li>
 <li><p>Allow simple command line based management of the desktop light/dark modes.</p></li>
 </ul>
-</div></blockquote>
+<section id="how-to-install">
+<h2>How to install<a class="headerlink" href="#how-to-install" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This kitten relies on the <a class="reference internal" href="../panel/"><span class="doc">panel kitten</span></a>
+under the hood to supply UI components. Check <a class="reference internal" href="../panel/#panel-compat"><span class="std std-ref">the documentation</span></a>
+of that kitten to see if your window manager works with it.</p>
+</div>
+<p>First, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitten</span> <span class="n">desktop</span><span class="o">-</span><span class="n">ui</span> <span class="n">enable</span><span class="o">-</span><span class="n">portal</span>
+</pre></div>
+</div>
+<p>Then, set the following two environment variables, <em>system wide</em>, that means in
+<code class="file docutils literal notranslate"><span class="pre">/etc/environment</span></code> or the equivalent for your distribution:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QT_QPA_PLATFORMTHEME</span><span class="o">=</span><span class="n">xdgdesktopportal</span>
+<span class="n">GTK_USE_PORTAL</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Finally, reboot. Now, when you open a file dialog in most GUI applications, it
+should open the <a class="reference internal" href="../choose-files/"><span class="doc">choose-files kitten</span></a> instead
+of a normal file open dialog. You can change the current light/dark mode of
+your desktop by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kitten</span> <span class="n">desktop</span><span class="o">-</span><span class="n">ui</span> <span class="nb">set</span><span class="o">-</span><span class="n">color</span><span class="o">-</span><span class="n">scheme</span> <span class="n">dark</span>
+<span class="n">kitten</span> <span class="n">desktop</span><span class="o">-</span><span class="n">ui</span> <span class="nb">set</span><span class="o">-</span><span class="n">color</span><span class="o">-</span><span class="n">scheme</span> <span class="n">light</span>
+</pre></div>
+</div>
+<p>Check the current value using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dbus</span><span class="o">-</span><span class="n">send</span> <span class="o">--</span><span class="n">session</span> <span class="o">--</span><span class="nb">print</span><span class="o">-</span><span class="n">reply</span> <span class="o">--</span><span class="n">dest</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">freedesktop</span><span class="o">.</span><span class="n">portal</span><span class="o">.</span><span class="n">Desktop</span> <span class="o">/</span><span class="n">org</span><span class="o">/</span><span class="n">freedesktop</span><span class="o">/</span><span class="n">portal</span><span class="o">/</span><span class="n">desktop</span> <span class="n">org</span><span class="o">.</span><span class="n">freedesktop</span><span class="o">.</span><span class="n">portal</span><span class="o">.</span><span class="n">Settings</span><span class="o">.</span><span class="n">Read</span> <span class="n">string</span><span class="p">:</span><span class="n">org</span><span class="o">.</span><span class="n">freedesktop</span><span class="o">.</span><span class="n">appearance</span> <span class="n">string</span><span class="p">:</span><span class="n">color</span><span class="o">-</span><span class="n">scheme</span>
+</pre></div>
+</div>
+</section>
+<section id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading">¶</a></h2>
+<p>Modern Linux desktops have so called <a class="reference external" href="https://flatpak.github.io/xdg-desktop-portal/docs/index.html">portals</a> that were
+invented for sandboxed applications and provide various facilities to such
+applications over DBUS, including file open dialogs, common desktop settings,
+etc. This kitten works by implementing a backend for some of these services.</p>
+<p>Normal GUI applications can then be told to make use of these services, thereby
+allowing us to replace parts of the desktop experience as needed.</p>
+<p>There are multiple competing implementations of the backends. Each desktop
+environment like KDE or GNOME has it’s own backend and many window managers
+provide implementations for some backends as well. Service discovery and
+configuring which backend to use happens via the <code class="file docutils literal notranslate"><span class="pre">xdg-desktop-portal</span></code>
+program, usually found at <code class="file docutils literal notranslate"><span class="pre">/usr/lib/xdg-desktop-portal</span></code>.</p>
+<p>It can be configured by files in <code class="file docutils literal notranslate"><span class="pre">~/.local/share/xdg-desktop-portal</span></code>. See
+<a class="reference external" href="https://man.archlinux.org/man/portals.conf.5">man portals.conf</a>. The
+<code class="docutils literal notranslate"><span class="pre">kitten</span> <span class="pre">desktop-ui</span> <span class="pre">enable-portal</span></code> command takes care of the setup for you
+automatically. If you want to customize exactly which services to use this
+kitten for, run the command and then edit the conf file that the command says
+it has patched.</p>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
+<p>First, ensure that DBUS is able to auto-start the kitten when it is needed. If
+the kitten is not already running, try the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dbus</span><span class="o">-</span><span class="n">send</span> <span class="o">--</span><span class="n">session</span> <span class="o">--</span><span class="nb">print</span><span class="o">-</span><span class="n">reply</span> <span class="o">--</span><span class="n">dest</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">freedesktop</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="n">portal</span><span class="o">.</span><span class="n">desktop</span><span class="o">.</span><span class="n">kitty</span> \
+    <span class="o">/</span><span class="n">net</span><span class="o">/</span><span class="n">kovidgoyal</span><span class="o">/</span><span class="n">kitty</span><span class="o">/</span><span class="n">portal</span> <span class="n">org</span><span class="o">.</span><span class="n">freedesktop</span><span class="o">.</span><span class="n">DBus</span><span class="o">.</span><span class="n">Properties</span><span class="o">.</span><span class="n">GetAll</span> \
+    <span class="n">string</span><span class="p">:</span><span class="n">net</span><span class="o">.</span><span class="n">kovidgoyal</span><span class="o">.</span><span class="n">kitty</span><span class="o">.</span><span class="n">settings</span>
+</pre></div>
+</div>
+<p>If DBUS is able to start the kitten or if it is already running it will print
+out the version property, otherwise it will fail with an error. If it fails,
+check the file
+<code class="file docutils literal notranslate"><span class="pre">~/.local/share/dbus-1/services/org.freedesktop.impl.portal.desktop.kitty.service</span></code>
+that should have been created by the <code class="docutils literal notranslate"><span class="pre">enable-portal</span></code> command. It’s <code class="docutils literal notranslate"><span class="pre">Exec</span></code>
+key must point to the full path to the kitten executable.</p>
+<p>Next, check that the XDG portal system is actually using this kitten for its
+settings backend. Run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dbus</span><span class="o">-</span><span class="n">send</span> <span class="o">--</span><span class="n">session</span> <span class="o">--</span><span class="nb">print</span><span class="o">-</span><span class="n">reply</span> <span class="o">--</span><span class="n">dest</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">freedesktop</span><span class="o">.</span><span class="n">portal</span><span class="o">.</span><span class="n">Desktop</span> \
+    <span class="o">/</span><span class="n">org</span><span class="o">/</span><span class="n">freedesktop</span><span class="o">/</span><span class="n">portal</span><span class="o">/</span><span class="n">desktop</span> <span class="n">org</span><span class="o">.</span><span class="n">freedesktop</span><span class="o">.</span><span class="n">portal</span><span class="o">.</span><span class="n">Settings</span><span class="o">.</span><span class="n">Read</span> \
+    <span class="n">string</span><span class="p">:</span><span class="n">net</span><span class="o">.</span><span class="n">kovidgoyal</span><span class="o">.</span><span class="n">kitty</span> <span class="n">string</span><span class="p">:</span><span class="n">status</span>
+</pre></div>
+</div>
+<p>If this returns a reply then the kitten is being used, as expected. If it
+returns a not found error, then some other backend is being used for settings.</p>
+<p>Read the <code class="docutils literal notranslate"><span class="pre">portals.conf</span></code> man page and run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">xdg</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">portal</span> <span class="o">-</span><span class="n">r</span> <span class="n">v</span>
+</pre></div>
+</div>
+<p>this will output a lot of debug information, which should tell you which
+backend is chosen for which service. Read the debug output carefully to
+determine why the kitten is not being selected.</p>
+<p>If some GUI applications are not using the choose-files kitten for their file
+select dialogs, then make sure the environment variables mentioned above are
+set, you can also try running the the GUI application with them set explicitly,
+as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QT_QPA_PLATFORMTHEME</span><span class="o">=</span><span class="n">xdgdesktopportal</span> <span class="n">GTK_USE_PORTAL</span><span class="o">=</span><span class="mi">1</span> <span class="n">my</span><span class="o">-</span><span class="n">gui</span><span class="o">-</span><span class="n">app</span>
+</pre></div>
+</div>
+<p>Note that not all applications use portals, so if some particular application
+is failing to use the portal but others work, report the issue to that
+applications’ developers.</p>
+</section>
 </section>
 
         </article>
@@ -1232,8 +1330,29 @@ running in a semi-transparent kitty overlay.</p></li>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Using terminal programs to provide Linux desktop components</a><ul>
+<li><a class="reference internal" href="#how-to-install">How to install</a></li>
+<li><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
