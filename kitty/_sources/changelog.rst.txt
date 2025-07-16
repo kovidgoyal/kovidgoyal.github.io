@@ -106,6 +106,48 @@ consumption to do the same tasks.
 Detailed list of changes
 -------------------------------------
 
+0.42.2 [2025-07-16]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- A new :ref:`protocol extension <mouse_leave_window>` to notify terminal programs that have turned on SGR Pixel mouse reporting when the mouse leaves the window (:disc:`8808`)
+
+- clipboard kitten: Can now optionally take a password to avoid repeated
+  permission prompts when accessing the clipboard. Based on a
+  :ref:`protocol extension <clipboard_repeated_permission>`. (:iss:`8789`)
+
+- A new :option:`launch --hold-after-ssh` to not close a launched window
+  that connects directly to a remote host because of
+  :option:`launch --cwd`:code:`=current` when the connection ends (:pull:`8807`)
+
+- Fix :opt:`remember_window_position` not working because of a stupid typo (:iss:`8646`)
+
+- A new :option:`kitty --grab-keyboard` that can be used to grab the keyboard so that global shortcuts are sent to kitty instead
+
+- Remote control: Fix holding a remote control socket open causing the kitty I/O thread to go into a loop and not respond on other remote control sockets (:disc:`8670`)
+
+- hints kitten: Preserve line breaks when the hint is over a line break (:iss:`8674`)
+
+- Fix a segfault when using the :ac:`copy_ansi_to_clipboard` action (:iss:`8682`)
+
+- Fix a crash when using linear easing curves for animations (:iss:`8692`)
+
+- Graphics protocol: Add a note clarifying image update behavior on re-transmission (:iss:`8701`)
+
+- Wayland GNOME: Fix incorrect OS Window tracking because GNOME has started
+  activating windows on non-current workspaces (:iss:`8716`)
+
+- Fix a regression in 0.40.0 that broke rendering of VS15 variation selectors in some circumstances (:iss:`8731`, :iss:`8794`)
+
+- Fix a regression in 0.40.0 that broke serialization of tab characters as ANSI text (:iss:`8741`)
+
+- Fix a regression in 0.40.0 that broke erasing of characters in a line in the presence of wide characters (:iss:`8758`)
+
+- Fix a regression in 0.40.0 that broke hyperlinking of wide characters (:iss:`8796`)
+
+- Fix a regression that broke using :kbd:`esc` to exit visual select window mode (:iss:`8767`)
+
+- kitten run-shell: Fix SIGINT blocked when execing the shell (:iss:`8754`)
+
 0.42.1 [2025-05-17]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

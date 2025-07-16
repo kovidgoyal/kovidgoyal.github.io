@@ -29,6 +29,20 @@ there is only one number to reset these attributes, SGR 22, which resets both.
 There is no way to reset one and not the other. kitty uses 221 and 222 to reset
 bold and faint independently.
 
+.. _mouse_leave_window:
+
+Reporting when the mouse leaves the window
+----------------------------------------------
+
+kitty extends the SGR Pixel mouse reporting protocol created by xterm to
+also report when the mouse leaves the window. This is event is delivered
+encoded as a normal SGR pixel event except that the eight bit is set on the
+first number. Additionally, bit 5 is set to indicate this is a motion related event.
+The remaining bits 1-7 (except 5) are used to encode button and modifier information.
+When bit 8 is set it means the event is a mouse has left the window event,
+and all other bits should be ignored. The pixel position values must also
+be ignored as they may not be accurate.
+
 
 kitty specific private escape codes
 ---------------------------------------

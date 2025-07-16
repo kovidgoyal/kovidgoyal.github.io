@@ -62,6 +62,8 @@ ______________________________
 
     The working directory for the newly launched child. Use the special value :code:`current` to use the working directory of the :option:`source window <launch --source-window>` The special value :code:`last_reported` uses the last working directory reported by the shell (needs :ref:`shell_integration` to work). The special value :code:`oldest` works like :code:`current` but uses the working directory of the oldest foreground process associated with the currently active window rather than the newest foreground process. Finally, the special value :code:`root` refers to the process that was originally started when the window was created.
 
+    When opening in the same working directory as the current window causes the new window to connect to a remote host, you can use the :option:`--hold-after-ssh` flag to prevent the new window from closing when the connection is terminated.
+
 .. option:: --env <ENV>
 
     Environment variables to set in the child process. Can be specified multiple times to set different environment variables. Syntax: :code:`name=value`. Using :code:`name=` will set to empty string and just :code:`name` will remove the environment variable.
@@ -100,7 +102,7 @@ ______________________________
 
     The bias used to alter the size of the window. It controls what fraction of available space the window takes. The exact meaning of bias depends on the current layout.
 
-    * Splits layout: The bias is interpreted as a percentage between 0 and 100. When splitting a window into two, the new window will take up the specified fraction of the space alloted to the original window and the original window will take up the remainder of the space.
+    * Splits layout: The bias is interpreted as a percentage between 0 and 100. When splitting a window into two, the new window will take up the specified fraction of the space allotted to the original window and the original window will take up the remainder of the space.
 
     * Vertical/horizontal layout: The bias is interpreted as adding/subtracting from the normal size of the window. It should be a number between -90 and 90. This number is the percentage of the OS Window size that should be added to the window size. So for example, if a window would normally have been size 50 in the layout inside an OS Window that is size 80 high and --bias -10 is used it will become *approximately* size 42 high. Note that sizes are approximations, you cannot use this method to create windows of fixed sizes.
 
@@ -220,3 +222,7 @@ ______________________________
     Options to control the creation of desktop panels. Takes the same settings as the :doc:`panel kitten </kittens/panel>`, except for :option:`--override <kitty +kitten panel --override>` and :option:`--config <kitty +kitten panel --config>`. Can be specified multiple times. For example, to create a desktop panel at the bottom of the screen two lines high::
 
         launch --type os-panel --os-panel lines=2 --os-panel edge=bottom sh -c "echo; echo; echo hello; sleep 5s"
+
+.. option:: --hold-after-ssh [=no]
+
+    When using :option:`--cwd`:code:`=current` or similar from a window that is running the ssh kitten, the new window will run a local shell after disconnecting from the remote host, when this option is specified.
