@@ -41,7 +41,7 @@ pacman -S --needed python-pynvim telegram-desktop zeal python-pyinotify mutt als
     zsh-syntax-highlighting python-psutil python-flake8 python-pyflakes python-pycodestyle \
     xautomation python-pytz tig htop xorg-server chromium xorg-xmodmap pavucontrol wvdial autossh \
     xorg-xauth openssh pipewire pipewire-pulse pipewire-alsa lib32-pipewire winetricks \
-    xorg-xinit xorg-xsetroot xorg-xrdb ttf-liberation ttf-dejavu icoutils ntfs-3g \
+    xorg-xinit xorg-xsetroot xorg-xrdb ttf-liberation ttf-dejavu icoutils ntfs-3g python-polib \
     efibootmgr cmake python-paramiko rsnapshot dnsutils mpv alsa-utils alsa-tools qt5-tools \
     qt5-imageformats qt5-doc xorg-xdpyinfo python-pygit2 screen net-tools vde2 python-markdown \
     libreoffice-fresh libreoffice-fresh-en-gb p7zip python-lxml python-lxml-html-clean xorg-xev \
@@ -91,7 +91,7 @@ passwd kovid
 
 # Allow passwordless sudo for all users in wheel group
 echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL"  >> /etc/sudoers
-sudo -u kovid yay -S tpacpi-bat python-lsp-isort python-pylsp-mypy python-lsp-ruff python-launchpadlib
+sudo -u kovid yay -S tpacpi-bat python-lsp-isort python-pylsp-mypy python-lsp-ruff python-launchpadlib transifex-client ttf-symbola piper-tts-bin
 
 set +e
 video=$(lspci | grep VGA | grep -o AMD)
