@@ -68,7 +68,7 @@ pacman -S --needed python-pynvim telegram-desktop zeal python-pyinotify mutt als
     qemu qemu-user-static qemu-user-static-binfmt edk2-armvirt edk2-ovmf qemu-system-aarch64 swtpm \
     upx gopls staticcheck python-black wireguard-tools aria2 wofi ruff lld yt-dlp python-lsp-server \
     python-rope lua-language-server wlr-randr python-jaconv python-pykakasi vulkan-swrast vulkan-icd-loader \
-    hyprland xdg-desktop-portal-hyprland hypridle hyprpicker swaync brightnessctl kitty
+    hyprland xdg-desktop-portal-hyprland hypridle hyprpicker swaync brightnessctl onnxruntime espeak-ng kitty
 
 # test environments
 pacman -S --needed gnome-shell sway swayidle xdg-desktop-portal xdg-desktop-portal-gnome xdg-desktop-portal-wlr gnome-session gnome-terminal
@@ -91,7 +91,7 @@ passwd kovid
 
 # Allow passwordless sudo for all users in wheel group
 echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL"  >> /etc/sudoers
-sudo -u kovid yay -S python-lsp-isort python-pylsp-mypy python-lsp-ruff python-launchpadlib transifex-client ttf-symbola piper-tts-bin mu
+sudo -u kovid yay -S python-lsp-isort python-pylsp-mypy python-lsp-ruff python-launchpadlib transifex-cli ttf-symbola mu
 
 set +e
 video=$(lspci | grep VGA | grep -o AMD)
