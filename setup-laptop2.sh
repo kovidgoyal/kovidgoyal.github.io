@@ -57,7 +57,7 @@ pacman -S --needed python-pynvim telegram-desktop zeal python-pyinotify mutt als
     qt6-tools qt6-imageformats qt6ct poppler-qt6 python-yaml python-apsw python-isort python-twine \
     python-wheel python-msgpack python-unrardll python-pysocks clang llvm npm xorg-xinput \
     python-html5-parser mailutils python-humanize jq jxrlib fd python-wheel python-pyqtwebengine \
-    xcursor-themes python-pydbus sip python-beautifulsoup4 python-html5-parser python-regex ripgrep \
+    xcursor-themes libwebp-utils python-pydbus sip python-beautifulsoup4 python-html5-parser python-regex ripgrep \
     python-certifi terminus-font python-mechanize python-dbus urlscan python-prompt_toolkit slurp grim \
     xclip zip iw python-zeroconf python-html2text python-pychm bluez bluez-utils python-build mypy \
     python-docutils-stubs python-sphinx-inline-tabs python-sphinxext-opengraph python-sphinx-furo \
