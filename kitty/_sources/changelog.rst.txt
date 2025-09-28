@@ -9,6 +9,34 @@ To update |kitty|, :doc:`follow the instructions <binary>`.
 Recent major new features
 ---------------------------
 
+Sessions [0.43]
+~~~~~~~~~~~~~~~~
+
+kitty has long had support for :doc:`sessions`, aka simple text files where you
+can define what tabs, windows and programs you wish to run in kitty. Now in
+addition to that kitty has the ability to :ref:`create and switch between
+sessions <goto_session>` with a single keypress and also to manually setup some
+tabs/windows in kitty and :ref:`save it as a session file <complex_sessions>`,
+for seamless and intuitive session file creation.
+
+A scrollbar for the kitty scrollback [0.43]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A long requested feature, kitty has finally :pull:`gotten a scrollbar <8945>`
+that can be used with the mouse for browsing its scrollback. The bar appear
+automatically when you start scrolling backwards and is :opt:`extensively
+configurable <scrollbar>` in kitty.conf. Note that the old ``scrollback_indicator_opacity``
+option is deprecated.
+
+Multiple cursors [0.43]
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+kitty has pioneered a new :doc:`escape code protocol
+<multiple-cursors-protocol>` that allows terminal applications to use multiple
+cursors, rendered natively. These are typically used in editors to make the
+same edit at multiple locations. Now terminal based editors can use properly
+rendered native cursors, just like their GUI cousins, at last.
+
 Access kitty with a single keypress [0.42]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -105,6 +133,84 @@ consumption to do the same tasks.
 
 Detailed list of changes
 -------------------------------------
+
+0.43.0 [2025-09-28]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- New support for creating and switching to :doc:`sessions` easily, allowing
+  users to define and use sessions/projects efficiently (:iss:`8911`)
+
+- Add a configurable :opt:`scrollbar` for the kitty scrollback (:pull:`8945`)
+
+- A new protocol for :doc:`multiple cursors <multiple-cursors-protocol>` in the terminal (:iss:`8927`)
+
+- macOS: Allow the window title bar to be semi-transparent when
+  :opt:`background_opacity` is less than one and :opt:`macos_titlebar_color` is
+  set to ``background`` (:pull:`8906`)
+
+- A new :opt:`cursor_trail_color` setting to independently control the color of
+  cursor trails (:pull:`8830`)
+
+- macOS: Add the default :kbd:`Cmd+L` mapping from Terminal.app to erase the
+  last command and its output (:disc:`6040`)
+
+- Fix :opt:`background_opacity` being non-linear especially with light color themes.
+  Note that this might require you to adjust the value of this setting to get
+  back your current look. (:iss:`8869`)
+
+- Add support for blinking text. Text marked as blinking now blinks in exact
+  rhythm with the cursor. The blinking animation and max duration are
+  controlled by :opt:`cursor_blink_interval` and
+  :opt:`cursor_stop_blinking_after`. (:pull:`8551`)
+
+- Allow using a custom python function to draw tab titles in the tab bar, see
+  :opt:`tab_title_template`
+
+- Wayland: Fix incorrect window size calculation when transitioning from
+  full screen to non-full screen with client side decorations (:iss:`8826`)
+
+- macOS: Fix hiding quick access terminal window not restoring focus to
+  previously active application (:disc:`8840`)
+
+- macOS: Fix showing the quick access terminal on a space other than the space
+  it was last active on, after full screening some application causes the quick
+  access terminal to appear on the old space (:iss:`8740`)
+
+- macOS: When toggling open the quick access terminal move it to the currently
+  active monitor (the monitor with the mouse pointer on it) (:iss:`9003`)
+
+- macOS: Fix closing an OS Window when another OS Window is minimized causing
+  the minimized window to be un-minimized (:iss:`8913`)
+
+- Allow using backspace to move the cursor onto the previous line in cooked
+  mode. This is indicated by the `bw` property in kitty's terminfo
+  (:iss:`8841`)
+
+- Watchers: A new event for global watchers corresponding to the tab bar being changed (:disc:`8842`)
+
+- Fix a regression in 0.40.0 that broke handling of the VS16 variation selector
+  when it caused a character to flow to the next line (:iss:`8848`)
+
+- Fix rendering of underlines when using larger text sizes with the space and
+  en-space characters (:iss:`8950`)
+
+- Fix updating panel configuration on visibility toggle and via remote control
+  not working (:iss:`8984`)
+
+- Improve rendering of rounded rectangles (:pull:`9000`)
+
+- Wayland: Update bundled copy of libwayland to 1.24 from 1.23.1 because the
+  just released mesa 25.2.0 breaks with libwayland < 1.24 (:iss:`8884`)
+
+- macOS: Pass the :kbd:`Cmd+C` shortcut to the application running in the
+  terminal when no text is selected (:pull:`8946`)
+
+- macOS: Workaround for bug in macOS Tahoe that caused closed OS Windows to
+  remain as invisible rectangles that intercept mouse events (:iss:`8952`)
+
+- macOS: Workaround for bug in macOS Tahoe that caused OS Windows that are
+  fullscreen on a monitor that is disconnected while macOS is asleep to crash kitty (:iss:`8983`)
+
 
 0.42.2 [2025-07-16]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -600,7 +706,7 @@ Detailed list of changes
 
 - Wayland labwc: Fix kitty timing out waiting for compositor to quit fucking around with scales on labwc (:iss:`7540`)
 
-- Fix :opt:`scrollback_indicator_opacity` not actually controlling the opacity (:iss:`7557`)
+- Fix ``scrollback_indicator_opacity`` not actually controlling the opacity (:iss:`7557`)
 
 - URL detection: Fix IPv6 hostnames breaking URL detection (:iss:`7565`)
 
@@ -684,7 +790,7 @@ Detailed list of changes
   using the panel kitten for all compositors that support the `requisite Wayland
   protocol <https://wayland.app/protocols/wlr-layer-shell-unstable-v1>`__ which is practically speaking all of them but GNOME (:pull:`2590`)
 
-- Show a small :opt:`scrollback indicator <scrollback_indicator_opacity>` along the right window edge when viewing
+- Show a small scrollback indicator along the right window edge when viewing
   the scrollback to keep track of scroll position (:iss:`2502`)
 
 - Wayland: Support fractional scales so that there is no wasted drawing at larger scale followed by resizing in the compositor
@@ -2549,7 +2655,7 @@ Detailed list of changes
   do not display a box around active windows
 
 - Add a new extensible escape code to allow terminal programs to trigger
-  desktop notifications. See :ref:`desktop_notifications` (:iss:`1474`)
+  desktop notifications. See :ref:`notifications_on_the_desktop` (:iss:`1474`)
 
 - Implement special rendering for various characters from the set of "Symbols
   for Legacy Computing" from the Unicode 13 standard
