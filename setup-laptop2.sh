@@ -71,7 +71,7 @@ needed_software=(
     hyprland xdg-desktop-portal-hyprland hypridle hyprpicker swaync brightnessctl onnxruntime espeak-ng kitty
 
     # these alongwith sac-gui below are needed for managing autheticode signing via hardware token
-    libp11 pcsclite pkcs11-helper
+    libp11 pcsclite pkcs11-helper opensc
 )
 
 # Install needed software
