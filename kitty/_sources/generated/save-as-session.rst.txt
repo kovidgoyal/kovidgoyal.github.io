@@ -25,3 +25,7 @@ Options
 .. option:: --match <MATCH>
 
     If specified, only save all windows (and their parent tabs/OS Windows) that match the specified search expression. See :ref:`search_syntax` for details on the search language. In particular if you want to only save windows that are present in the currently active session, use :code:`--match=session:.`.
+
+.. option:: --base-dir <BASE_DIR>
+
+    When specified, relative session filenames will be saved to this directory instead of the current working directory. This is useful when kitty is launched from locations where the working directory is not your home directory, such as from system-wide shortcuts. Note that :code:`--relocatable` is typically not used with :code:`--base-dir`, since relocatable is meant for session files that are co-located with their project directories.

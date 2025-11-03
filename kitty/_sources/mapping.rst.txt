@@ -210,17 +210,25 @@ In order to make this work, you need to configure your editor as show below:
 
     .. code-block:: lua
 
-        vim.api.nvim_create_autocmd({ "VimEnter", "VimResume" }, {
+        vim.api.nvim_create_autocmd({ "VimEnter", "VimResume", "UIEnter" }, {
             group = vim.api.nvim_create_augroup("KittySetVarVimEnter", { clear = true }),
             callback = function()
-                io.stdout:write("\x1b]1337;SetUserVar=in_editor=MQo\007")
+                if vim.api.nvim_ui_send then
+                    vim.api.nvim_ui_send("\x1b]1337;SetUserVar=in_editor=MQo\007")
+                else
+                    io.stdout:write("\x1b]1337;SetUserVar=in_editor=MQo\007")
+                end
             end,
         })
 
         vim.api.nvim_create_autocmd({ "VimLeave", "VimSuspend" }, {
             group = vim.api.nvim_create_augroup("KittyUnsetVarVimLeave", { clear = true }),
             callback = function()
-                io.stdout:write("\x1b]1337;SetUserVar=in_editor\007")
+                if vim.api.nvim_ui_send then
+                    vim.api.nvim_ui_send("\x1b]1337;SetUserVar=in_editor=MQo\007")
+                else
+                    io.stdout:write("\x1b]1337;SetUserVar=in_editor\007")
+                end
             end,
         })
 
@@ -229,6 +237,15 @@ As a result, the :kbd:`ctrl+shift+c` key will be passed to the editor instead of
 copying to clipboard. In the editor, you can map it to copy to the clipboard,
 thereby allowing use of a common shortcut both inside and outside the editor
 for copying to clipboard.
+
+.. note::
+
+   When using multi-key mappings, of the form :kbd:`k1>k2` or similar, the
+   condition applies to the first key and you can have only one condition per
+   key, the last in kitty.conf wins. In particular, this means you cannot have
+   multiple conditions applying to multi-key mappings with the same first key
+   and you cannot have mappings with and without conditions applying to multi-keys
+   with the same first key.
 
 Sending arbitrary text or keys to the program running in kitty
 --------------------------------------------------------------------------------

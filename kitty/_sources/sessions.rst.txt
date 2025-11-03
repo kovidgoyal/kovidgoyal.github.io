@@ -102,6 +102,17 @@ for a path at which to save the session file. Specify the path and the session
 will be saved there with the exact setup you created. The saved file will even
 be opened in your editor for you to review, automatically.
 
+.. tip::
+   If you want session files to be saved to a specific directory regardless of
+   your current working directory, use the ``--base-dir`` option. For example::
+
+       map f7>s save_as_session --use-foreground-process --base-dir ~/.local/share/kitty/sessions
+
+   This is particularly useful when kitty is launched from system-wide shortcuts
+   where the working directory might not be your home directory. Note that
+   ``--relocatable`` is typically not used with ``--base-dir``, since relocatable
+   is meant for session files that are co-located with their project directories.
+
 If instead, you want to create these by hand, see the example below which shows
 all the major keywords you can use in kitty session files:
 
@@ -153,6 +164,14 @@ all the major keywords you can use in kitty session files:
     # Make the current OS Window the globally active window
     focus_os_window
     launch emacs
+
+    # Create another tab
+    new_tab logs
+    launch tail -f /var/log/syslog
+
+    # Focus the first tab (index 0) when the session loads
+    # You can also use a match expression like: focus_tab title:logs
+    focus_tab 0
 
     # Create a complex layout using multiple splits. Creates two columns of
     # windows with two windows in each column. The windows in the first column are
@@ -272,11 +291,20 @@ documentation for them.
     otherwise the window manager might block changing focus to prevent *focus
     stealing*.
 
+``focus_tab [tab specifier]``
+    Set which tab should be active (focused) in the current OS Window. The tab
+    specifier can be either a plain number (treated as a 0-based index) or a
+    match expression. For example, ``focus_tab 0`` will focus the first tab,
+    ``focus_tab 1`` the second tab, and ``focus_tab title:logs`` will focus the
+    tab whose title matches "logs". See :ref:`search_syntax` for the full syntax
+    of match expressions. This is useful for session files that create multiple
+    tabs and want to ensure a specific tab is active when the session is loaded.
+
 ``enabled_layouts comma separated list of layout names``
     Set the layouts allowed in the current tab. Same syntax as
     :opt:`enabled_layouts`.
 
-``launch```
+``launch``
     Create a new window running the specified command or the default shell if
     no command is specified. See :doc:`launch` for details. Note that creating
     tabs and OS Windows using launch is not supported in session files, use the

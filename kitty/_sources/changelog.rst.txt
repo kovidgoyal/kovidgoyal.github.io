@@ -134,6 +134,78 @@ consumption to do the same tasks.
 Detailed list of changes
 -------------------------------------
 
+0.44.0 [2025-11-03]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Allow kitty to read a specified set of environment variables from your
+  login shell at startup using the :opt:`env` directive in kitty.conf
+  (:iss:`9042`)
+
+- A new option :opt:`draw_window_borders_for_single_window` to force kitty to
+  always draw a window border even when only a single window is present
+  (:pull:`9112`)
+
+- Fix a regression in 0.43.0 that caused a black flicker when closing a tab in
+  the presence of a background image (:iss:`9060`)
+
+- Further improvements to rounded corner rendering, especially at low DPI
+  (:pull:`9091`)
+
+- Splits layout: Fix a bug that could cause a corrupted layout in some
+  circumstances (:iss:`9059`)
+
+- Fix a regression in the previous release that broke ``goto_session -1``
+
+- Fix rendering broken on ancient GPU drivers that do not support rendering to 16 bit textures (:iss:`9068`)
+
+- Fix tab bar sometimes showing incorrect tabs when it is filtered to show only
+  tabs from the current session (:iss:`9079`)
+
+- macOS: Workaround for bug in macOS Tahoe that caused OS Windows that are
+  fullscreen to crash kitty when returning from sleep on some machines (:iss:`8983`)
+
+- Graphics: Fix animated images sometimes not auto playing or auto playing at the wrong start frame if the same image id is used for a subsequent image
+
+- Fix a regression in 0.43.0 that caused high CPU usage when :opt:`disable_ligatures` was set to ``cursor`` and the tab bar was visible (:iss:`9071`)
+
+- macOS: Handle dropping of file promises into kitty in addition to file paths (:pull:`9084`)
+
+- macOS: Fix indeterminate progress bar displayed on dock icon increasing speed when indeterminate progress is set without being cleared first (:iss:`9114`)
+
+- macOS: Performance and power usage improvements of about 5-10% (:pull:`9131`)
+
+- macOS: Add an item to the global menu to Cycle through OS windows
+
+- macOS: Quick access terminal: Fix a crash when changing font size (:iss:`9178`)
+
+- Wayland: Fix ``center-sized`` panels not working on smithay based compositors (:pull:`9117`)
+
+- Wayland: Fix scrolling using some mouse wheels that produce "VALUE120" based
+  scroll events too fast on some compositors (:pull:`9128`)
+
+- Automatic color scheme switching: Fix title bar color not being updated (:iss:`9167`)
+
+- Add support for Unicode 17
+
+- Fix a regression in 0.43.0 that caused :opt:`tab_bar_margin_width` to be
+  doubled on the right edge of the tab bar (:iss:`9154`)
+
+- Session files: Add a new ``focus_tab`` command to specify which tab should be
+  active when a session is loaded. Accepts either a plain number (0-based index)
+  or a match expression for flexible tab selection, allowing sessions to preserve
+  the active tab state (:doc:`sessions`)
+
+- :ac:`save_as_session`: Add ``--base-dir`` option to specify a base directory
+  for saving session files with relative paths, useful when the current working
+  directory is not the desired location (:doc:`sessions`)
+
+- Add ``state:focused_os_window`` match query to select all windows in the
+  currently focused OS window (:ref:`search_syntax`)
+
+- Session saving now preserves visual tab order and active tab rather than tab
+  activation history as this is generally more important. In the future may
+  have it save tab history as well (:pull:`9163`)
+
 0.43.1 [2025-10-01]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
