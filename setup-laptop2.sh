@@ -81,7 +81,7 @@ pacman -S --needed "${args[@]}"
 pacman -S --needed gnome-shell sway swayidle xdg-desktop-portal xdg-desktop-portal-gnome xdg-desktop-portal-wlr gnome-session gnome-terminal
 
 # KDE Applications
-pacman -S --needed dolphin ark okteta okular kde-cli-tools ffmpegthumbs plasma-workspace kdegraphics-thumbnailers konsole plasma-wayland-protocols
+pacman -S --needed dolphin ark okteta okular kde-cli-tools ffmpegthumbs plasma-workspace kdegraphics-thumbnailers konsole plasma-wayland-protocols plasma-desktop wayland-utils
 
 # Install yay
 mkdir yay && chown nobody:nobody yay && cd yay && pacman -S --needed git base-devel
