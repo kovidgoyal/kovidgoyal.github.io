@@ -146,6 +146,18 @@ vt = 1
 command = "/home/kovid/work/env/session.py"
 user = "kovid"
 EOF
+# Setup automatic unlock for the execrable GNOME keyring used by Chromium
+cat << EOF > /etc/pam.d/greetd
+#%PAM-1.0
+
+auth       required     pam_securetty.so
+auth       requisite    pam_nologin.so
+auth       include      system-local-login
+auth       optional     pam_gnome_keyring.so
+account    include      system-local-login
+session    include      system-local-login
+session    optional     pam_gnome_keyring.so auto_start
+EOF
 
 # Setup fingerprint login
 # sudo fprintd-enroll kovid
