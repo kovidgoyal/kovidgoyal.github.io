@@ -43,7 +43,7 @@ needed_software=(
     xorg-xauth openssh pipewire pipewire-pulse pipewire-alsa lib32-pipewire winetricks
     xorg-xinit xorg-xsetroot xorg-xrdb ttf-liberation ttf-dejavu icoutils ntfs-3g python-polib
     efibootmgr cmake python-paramiko rsnapshot dnsutils mpv alsa-utils alsa-tools
-    xorg-xdpyinfo python-pygit2 screen net-tools vde2 python-markdown
+    xorg-xdpyinfo python-pygit2 screen net-tools vde2 python-markdown greetd
     libreoffice-fresh libreoffice-fresh-en-gb p7zip python-lxml python-lxml-html-clean xorg-xev
     wev python-dateutil python-dnspython python-css-parser python-cssselect podofo libwmf
     imagemagick poppler-qt6 chmlib python-pillow shared-mime-info libunrar icu python-apsw
@@ -137,6 +137,15 @@ cat << EOF > /home/kovid/.ssh/authorized_keys
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQD751ZMQy0/zf169hUZOphZ9fwjz6j4sl5l04zfErCK+sIV5y4V+B+20BWJU5kySRztUtTBSD6Av4V8dYmGOesE9KjMZ0d0P95q3vWlkhpxQV2z2npTO6PLx6kIxJxQwkGSUsLLXW+N4Do+/pPHlagcO94yNyAi4uJ1TRpF7vRMaas3frUdeYFp2KSD/61m0ue7WeFeEtUKuZejs3smBRDfNuQBo/NVLxZQLT7Z02039Hmh0Z27F8NVcbt8iBG9i/HLa5e/wH82gxn2ASPVqgeRlJa5UmCTw1p2E2qUCWH0PeIXQCXEszexKPaC3UuA9qWrkGIkigE1H7MDXxYS4uCSLFvO+swo4mt4Tw3UD1BdobD6EoeVnSPGApmwRIYGkLFjtL6RlGla6kpSH3OX8z2BQaUkOC/Jfihb83i+ltg4w9PXZ5hbe/iznOGUUhF5rQVSjz2E03Dy4s4gwJ2vIPdpqgAp6domFe1hJ7v3pbhwPeZBcyyxfAa+wQlST0rCj+YCYB7yANBJbm1HN4YnTw2L3rM55TrUdIudyE1GlQKh8fZxpB17HyKb6A3hZpeXLMSfrkA7fsRMrJ9lD+C2bnotFaIdrktNISl47wMR4lO32Ks5B29CVZaxOtw1nm+Q1yoInrg4qODpff5IV4pp8LO3e7WZzUqYthafFVtzn50zrw== kovid@kovidgoyal.net
 EOF
 chown -R kovid:kovid /home/kovid /t
+
+# Setup greetd for login with session.py
+cat << EOF > /etc/greetd/config.toml
+[terminal]
+vt = 1
+[default_session]
+command = "/home/kovid/work/env/session.py"
+user = "kovid"
+EOF
 
 # Setup fingerprint login
 # sudo fprintd-enroll kovid
