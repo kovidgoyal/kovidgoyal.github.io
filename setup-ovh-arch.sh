@@ -41,6 +41,7 @@ function main() {
     cd /
     /bootstrap/bin/arch-chroot /bootstrap /root/bootstrap.sh 'do_pacstrap'
     /bootstrap/bin/arch-chroot /bootstrap/mnt/ /root/bootstrap.sh 'finalize' "$ACTION"
+    rm /bootstrap/root/bootstrap.sh
     umount /bootstrap/mnt
     umount /bootstrap
     umount /bootstrap
