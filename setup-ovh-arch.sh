@@ -27,7 +27,7 @@ function main() {
     mkfs.ext4 "${DISK}2"
     sgdisk -p "$DISK"
 
-    mkdir /bootstrap
+    mkdir -p /bootstrap
     mount -t tmpfs tmpfs /bootstrap
     mount "${DISK}2" /bootstrap
     cd /bootstrap
