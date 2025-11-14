@@ -40,7 +40,7 @@ get_network_info() {
 
     # Get the gateway from the default route
     ipv4_gateway=$(ip -4 route | grep default | awk '{print $3}')
-    if [ -z "$gateway" ]; then
+    if [ -z "$ipv4_gateway" ]; then
         echo "Could not determine default IPv4 gateway." >&2
         exit 1
     fi
