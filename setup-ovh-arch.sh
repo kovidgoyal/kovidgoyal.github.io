@@ -13,10 +13,62 @@ set -o errexit
 
 ACTION="$1"
 SCRIPT_PATH="${BASH_SOURCE[0]}"
+ipv4_address=""
+ipv4_prefix=""
+ipv4_gateway=""
+ipv6_address=""
+ipv6_prefix="128"
+ipv6_gateway=""
+
+
+get_network_info() {
+    # Get the default route interface. This is typically the primary interface.
+    local iface=$(ip -4 route | grep default | sed -e "s/^.*dev \([^ ]*\) .*$/\1/")
+    if [ -z "$iface" ]; then
+        echo "Could not determine default IPv4 interface." >&2
+        return 1
+    fi
+
+    # Get the IP address and prefix for that interface
+    local ip_info=$(ip -4 addr show dev "$iface" | grep "inet " | awk '{print $2}')
+    if [ -z "$ip_info" ]; then
+        echo "Could not determine IPv4 address for interface $iface." >&2
+        return 1
+    fi
+    ipv4_address=$(echo "$ip_info" | cut -d'/' -f1)
+    ipv4_prefix=$(echo "$ip_info" | cut -d'/' -f2)
+
+    # Get the gateway from the default route
+    ipv4_gateway=$(ip -4 route | grep default | awk '{print $3}')
+    if [ -z "$gateway" ]; then
+        echo "Could not determine default IPv4 gateway." >&2
+        return 1
+    fi
+    echo "IPv4 Address: $ipv4_address"
+    echo "IPv4 Prefix: $ipv4_prefix"
+    echo "IPv4 Gateway: $ipv4_gateway"
+
+    # OVHCloud does not support DNS for IPv6 and thus their
+    # rescue environment (currently Debian 12) has only the IPv6 address but not gateway
+    ipv6_address=$(ip -6 route | head -n1 | cut -f1 -d" ")
+    # read the gateway from the cloud-init file
+    local ipv6_gateway_info=$(grep gw /etc/network/interfaces.d/50-cloud-init | head -n1 | tr -s ' ' | cut -d' ' -f7)
+    ipv6_gateway=$(echo "$ipv6_gateway_info" | cut -d'/' -f1)
+    ipv6_prefix=$(echo "$ipv6_gateway_info" | cut -d'/' -f2)
+    # alternately, assume the gateway is the address with last component replaced by 1
+    # ipv6_gateway=$(echo -n "$ipv6_address" | sed 's/\(.*\):[^:]*$/\1:1/' | sed 's/\(.*\)::$/\1::1/')
+    echo "IPv6 Address: $ipv6_address"
+    echo "IPv6 Prefix: $ipv6_prefix"
+    echo "IPv6 Gateway: $ipv6_gateway"
+}
 
 function main() {
     if [[ -z "$ACTION" ]]; then
         echo "Must provide hostname"
+        exit 1
+    fi
+    if [ ! get_network_info ]; then
+        echo "Failed to get network information"
         exit 1
     fi
     cd /tmp
@@ -41,6 +93,24 @@ function main() {
     cd /
     /bootstrap/bin/arch-chroot /bootstrap /root/bootstrap.sh 'do_pacstrap'
     /bootstrap/bin/arch-chroot /bootstrap/mnt/ /root/bootstrap.sh 'finalize' "$ACTION"
+
+    # Network configuration
+    cat << EOF > /bootstrap/etc/systemd/network/20-ovh.network
+[Match]
+Name=en*
+
+[Network]
+Address=${ipv4_address}/${ipv4_prefix}
+Gateway=${ipv4_gateway}
+Address=${ipv6_address}/${ipv6_prefix}
+Gateway=${ipv6_gateway}
+DNS=1.1.1.1
+DNS=8.8.8.8
+DNS=2606:4700:4700::1111
+DNS=2001:4860:4860::8888
+EOF
+
+
     rm /bootstrap/root/bootstrap.sh
     umount /bootstrap/mnt
     umount /bootstrap
@@ -67,14 +137,6 @@ function finalize() {
     # Network
     systemctl enable systemd-networkd
     systemctl enable sshd
-    cat << EOF > /etc/systemd/network/20-ovh.network
-[Match]
-Name=en*
-
-[Network]
-DHCP=true
-EOF
-    echo -e "nameserver 1.1.1.1\nnameserver 8.8.8.8" > /etc/resolv.conf
 
     pacman -Syu --noconfirm
 
