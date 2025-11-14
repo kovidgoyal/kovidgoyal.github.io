@@ -1,5 +1,6 @@
 #!/bin/bash
 # Reboot into rescue mode and ssh in and run this script
+# Edit the TZ and AUTHORIZED_KEYS variables first, if needed.
 # curl -fSsL https://raw.githubusercontent.com/kovidgoyal/kovidgoyal.github.io/refs/heads/master/setup-ovh-arch.sh > /tmp/bootstrap.sh && chmod +x /tmp/bootstrap.sh && /tmp/bootstrap.sh myhostname
 
 TZ="Asia/Kolkata"
