@@ -102,8 +102,9 @@ function main() {
 Name=en*
 
 [Network]
-Address=${ipv4_address}/${ipv4_prefix}
-Gateway=${ipv4_gateway}
+#Address=${ipv4_address}/${ipv4_prefix}
+#Gateway=${ipv4_gateway}
+DHCP=ipv4
 Address=${ipv6_address}/${ipv6_prefix}
 Gateway=${ipv6_gateway}
 DNS=1.1.1.1
