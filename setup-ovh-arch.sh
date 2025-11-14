@@ -1,6 +1,6 @@
 #!/bin/bash
 # Reboot into rescue mode and ssh in and run this script
-# curl -fSsL https://raw.githubusercontent.com/kovidgoyal/kovidgoyal.github.io/refs/heads/master/authorized_keys > /tmp/bootstrap.sh && chmod +x /tmp/bootstrap.sh && /tmp/bootstrap.sh myhostname
+# curl -fSsL https://raw.githubusercontent.com/kovidgoyal/kovidgoyal.github.io/refs/heads/master/setup-ovh-arch.sh > /tmp/bootstrap.sh && chmod +x /tmp/bootstrap.sh && /tmp/bootstrap.sh myhostname
 
 TZ="Asia/Kolkata"
 DISK="/dev/sdb"
@@ -19,7 +19,7 @@ function main() {
         exit 1
     fi
     cd /tmp
-    wget https://mirror.rackspace.com/archlinux/iso/latest/archlinux-bootstrap-x86_64.tar.zst
+    curl -fSsL https://mirror.rackspace.com/archlinux/iso/latest/archlinux-bootstrap-x86_64.tar.zst > /tmp/archlinux.tar.zst
 
     sgdisk --zap-all "$DISK"
     sgdisk -n 1:2048:+1M -c 1:"BIOS Boot Partition" -t 1:EF02 "$DISK"
@@ -31,7 +31,7 @@ function main() {
     mount -t tmpfs tmpfs /bootstrap
     mount "${DISK}2" /bootstrap
     cd /bootstrap
-    tar xf /tmp/archlinux-bootstrap-*x86_64.tar.zst --numeric-owner --strip-components=1
+    tar xf /tmp/archlinux.tar.zst --numeric-owner --strip-components=1
     mount "${DISK}2" /bootstrap/mnt
 
     sed -i -e 's@#Server = https://mirror.rackspace.com@Server = https://mirror.rackspace.com@' /bootstrap/etc/pacman.d/mirrorlist
