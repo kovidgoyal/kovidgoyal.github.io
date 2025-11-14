@@ -42,6 +42,7 @@ function main() {
     /bootstrap/bin/arch-chroot /bootstrap/mnt/ /root/bootstrap.sh 'finalize' "$ACTION"
     umount /bootstrap/mnt
     umount /bootstrap
+    umount /bootstrap
     echo
     echo "All done now reboot the VPS from the OVH control panel"
 }
