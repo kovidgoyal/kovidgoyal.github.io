@@ -26,14 +26,14 @@ get_network_info() {
     local iface=$(ip -4 route | grep default | sed -e "s/^.*dev \([^ ]*\) .*$/\1/")
     if [ -z "$iface" ]; then
         echo "Could not determine default IPv4 interface." >&2
-        return 1
+        exit 1
     fi
 
     # Get the IP address and prefix for that interface
     local ip_info=$(ip -4 addr show dev "$iface" | grep "inet " | awk '{print $2}')
     if [ -z "$ip_info" ]; then
         echo "Could not determine IPv4 address for interface $iface." >&2
-        return 1
+        exit 1
     fi
     ipv4_address=$(echo "$ip_info" | cut -d'/' -f1)
     ipv4_prefix=$(echo "$ip_info" | cut -d'/' -f2)
@@ -42,7 +42,7 @@ get_network_info() {
     ipv4_gateway=$(ip -4 route | grep default | awk '{print $3}')
     if [ -z "$gateway" ]; then
         echo "Could not determine default IPv4 gateway." >&2
-        return 1
+        exit 1
     fi
     echo "IPv4 Address: $ipv4_address"
     echo "IPv4 Prefix: $ipv4_prefix"
@@ -53,6 +53,11 @@ get_network_info() {
     ipv6_address=$(ip -6 route | head -n1 | cut -f1 -d" ")
     # read the gateway from the cloud-init file
     local ipv6_gateway_info=$(grep gw /etc/network/interfaces.d/50-cloud-init | head -n1 | tr -s ' ' | cut -d' ' -f7)
+    if [ -z "$ipv6_gateway_info" ]; then
+        echo "Could not determine IPv6 gateway"
+        exit 1
+    fi
+
     ipv6_gateway=$(echo "$ipv6_gateway_info" | cut -d'/' -f1)
     ipv6_prefix=$(echo "$ipv6_gateway_info" | cut -d'/' -f2)
     # alternately, assume the gateway is the address with last component replaced by 1
@@ -67,10 +72,7 @@ function main() {
         echo "Must provide hostname"
         exit 1
     fi
-    if [ ! get_network_info ]; then
-        echo "Failed to get network information"
-        exit 1
-    fi
+    get_network_info
     cd /tmp
     curl -fSsL https://mirror.rackspace.com/archlinux/iso/latest/archlinux-bootstrap-x86_64.tar.zst > /tmp/archlinux.tar.zst
 
