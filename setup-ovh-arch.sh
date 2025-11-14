@@ -24,7 +24,7 @@ function main() {
     sgdisk --zap-all "$DISK"
     sgdisk -n 1:2048:+1M -c 1:"BIOS Boot Partition" -t 1:EF02 "$DISK"
     sgdisk -n 2:0:0 --typecode=2:8300 --change-name=2:"Linux Root" "$DISK"
-    mkfs.ext4 "${DISK}2"
+    mkfs.ext4 -F "${DISK}2"
     sgdisk -p "$DISK"
 
     mkdir -p /bootstrap
@@ -37,6 +37,7 @@ function main() {
     sed -i -e 's@#Server = https://mirror.rackspace.com@Server = https://mirror.rackspace.com@' /bootstrap/etc/pacman.d/mirrorlist
     sed -i -e 's/#ParallelDownloads/ParallelDownloads/' /bootstrap/etc/pacman.conf
     cp "$SCRIPT_PATH" /bootstrap/root/bootstrap.sh
+    cd /
     /bootstrap/bin/arch-chroot /bootstrap /root/bootstrap.sh 'do_pacstrap'
     /bootstrap/bin/arch-chroot /bootstrap/mnt/ /root/bootstrap.sh 'finalize' "$ACTION"
     umount /bootstrap/mnt
