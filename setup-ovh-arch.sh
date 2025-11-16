@@ -48,18 +48,18 @@ get_network_info() {
     echo "IPv4 Prefix: $ipv4_prefix"
     echo "IPv4 Gateway: $ipv4_gateway"
 
-    # OVHCloud does not support DNS for IPv6 and thus their
-    # rescue environment (currently Debian 12) has only the IPv6 address but not gateway
+    # OVHCloud has very broken IPv6 networking. It doesnt have DHCP for IPv6
+    # and it doesnt support neighbor discovery protocol, so you have to set the
+    # prefix to 128 so that no nodes are treated as neighbors.
     ipv6_address=$(ip -6 route | head -n1 | cut -f1 -d" ")
-    # read the gateway from the cloud-init file
+    # read the gateway from the cloud-init file as the rescue env doesnt have IPv6
+    # routing enabled.
     local ipv6_gateway_info=$(grep gw /etc/network/interfaces.d/50-cloud-init | head -n1 | tr -s ' ' | cut -d' ' -f7)
     if [ -z "$ipv6_gateway_info" ]; then
         echo "Could not determine IPv6 gateway"
         exit 1
     fi
-
     ipv6_gateway=$(echo "$ipv6_gateway_info" | cut -d'/' -f1)
-    ipv6_prefix=$(echo "$ipv6_gateway_info" | cut -d'/' -f2)
     # alternately, assume the gateway is the address with last component replaced by 1
     # ipv6_gateway=$(echo -n "$ipv6_address" | sed 's/\(.*\):[^:]*$/\1:1/' | sed 's/\(.*\)::$/\1::1/')
     echo "IPv6 Address: $ipv6_address"
