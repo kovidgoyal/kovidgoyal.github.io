@@ -156,6 +156,8 @@ function finalize() {
     echo "$1" > /etc/hostname
     ln -sf "/usr/share/zoneinfo/$TZ" /etc/localtime
     systemctl enable systemd-timesyncd.service
+    systemctl enable systemd-resolved.service
+    ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
     # initramfs
     touch /etc/vconsole.conf
