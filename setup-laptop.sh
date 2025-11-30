@@ -116,7 +116,7 @@ EOF
         xorg-xauth openssh pipewire pipewire-pulse pipewire-alsa lib32-pipewire winetricks
         xorg-xinit xorg-xsetroot xorg-xrdb ttf-liberation ttf-dejavu icoutils ntfs-3g python-polib
         efibootmgr cmake python-paramiko rsnapshot dnsutils mpv alsa-utils alsa-tools
-        xorg-xdpyinfo python-pygit2 screen net-tools vde2 python-markdown greetd
+        xorg-xdpyinfo python-pygit2 screen net-tools vde2 python-markdown greetd python-tzdata python-tzlocal
         libreoffice-fresh libreoffice-fresh-en-gb p7zip python-lxml python-lxml-html-clean xorg-xev
         wev python-dateutil python-dnspython python-css-parser python-cssselect podofo libwmf
         imagemagick poppler-qt6 chmlib python-pillow shared-mime-info libunrar icu python-apsw
@@ -163,7 +163,7 @@ EOF
     cd .. && rm -rf yay
 
     # Install deps from AUR
-    useradd -m -G sys,users,video,lp,audio,wheel,input,disk,storage -s /bin/zsh kovid
+    useradd -m -G sys,users,video,lp,audio,wheel,input,disk,storage,kvm -s /bin/zsh kovid
     echo "Set password for root"
     passwd
     echo "Set password for kovid"
