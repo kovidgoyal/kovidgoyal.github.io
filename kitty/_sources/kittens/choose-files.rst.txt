@@ -6,7 +6,15 @@ Selecting files, fast
     Overview
     --------------
 
-.. versionadded:: 0.43.0
+.. versionadded:: 0.45.0
+
+.. only:: not man
+
+    .. figure:: /screenshots/choose-files.webp
+        :alt: The choose files kitten, showing metadata and title from an e-book file
+        :align: center
+        :width: 100%
+
 
 The choose-files kitten is designed to allow you to select files, very fast,
 with just a few key strokes. It operates like `fzf
@@ -25,10 +33,22 @@ Simply run it as::
     kitten choose-files
 
 to select a single file from the tree rooted at the current working directory.
+
 Type a few letters from the filename and once it becomes the top selection,
-press :kbd:`Enter`. You can change the current directory by instead selecting a
+press :kbd:`Enter`. You can change the current directory by selecting a
 directory and pressing the :kbd:`Tab` key. :kbd:`Shift+Tab` goes up one
 directory level.
+
+If you want to choose a file and insert it into your shell prompt at the
+current cursor position, press :sc:`insert_chosen_file` for files or
+:sc:`insert_chosen_directory` for directories. Similarly, to have a file
+chosen in a command line, use, for example::
+
+    some-command $(kitten choose-file)
+
+Note, that the above may not work in a complicated pipeline as it performs
+terminal I/O and needs exclusive access to the tty device while choosing a
+file.
 
 Creating shortcuts to favorite/frequently used directories
 ------------------------------------------------------------

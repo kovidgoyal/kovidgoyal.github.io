@@ -153,7 +153,7 @@ and human friendly name with ``type=write`` and ``type=read`` requests. The
 terminal can then ask the user to allow all future requests using that
 password. If the user agrees, future requests on the same tty will be
 automatically allowed by the terminal. The editor or other program using
-this facility should ideally use a password randomnly generated at startup,
+this facility should ideally use a password randomly generated at startup,
 such as a UUID4. However, terminals may implement permanent/stored passwords.
 Users can then configure terminal programs they trust to use these password.
 
@@ -162,6 +162,48 @@ in the metadata. The values are UTF-8 strings that are base64 encoded.
 Specifying a password without a human friendly name is equivalent to not
 specifying a password and the terminal must treat the request as though
 it had no password.
+
+Allowing terminal applications to respond to paste events
+--------------------------------------------------------------
+
+.. versionadded:: 0.44.1
+     paste events via the 5522 mode
+
+If a TUI application wants to handle paste events (like the user pressing the
+paste key shortcut used by the terminal or selecting paste from a terminal UI menu)
+it can enable the *paste events* private mode (5522), as described in this `ancillary
+specification <https://rockorager.dev/misc/bracketed-paste-mime/>`__. When that
+mode is set, the terminal will send the application a list of MIME types on the
+clipboard every time the user triggers a paste action. The application is then
+free to request whatever MIME data it wants from the list of types.
+
+The mode can be enabled using the standard DECSET or DECRST control sequences.
+``CSI ? 5522 h`` to enable the mode. ``CSI ? 5522 l`` to disable the mode.
+
+The terminal *should* send a one time password with the list of mime
+types, as the ``pw`` key (base64 encoded). The application can then use this
+password to request data from the clipboard without needing a permission
+prompt. The human name *should* be set to ``Paste event`` (base64 encoded) when
+the application uses this one time password.
+
+Detecting support for this protocol
+-----------------------------------------
+
+Applications can detect if a terminal supports this protocol with a standard
+DECRQM query:
+
+.. code::
+
+    CSI ? 5522 $ p
+
+To which the terminal will respond with a DECRPM response:
+
+.. code::
+
+    CSI ? 5522 ; Ps $ y
+
+A Ps value of 0 or 4 means the mode is not supported.
+
 
 Support for terminal multiplexers
 ------------------------------------
@@ -176,11 +218,15 @@ other characters must be stripped out from the id by the terminal emulator
 before retransmitting it.
 
 Note that when using a terminal multiplexer it is possible for two different
-programs to overwrite each others clipboard requests. This is fundamentally
+programs to overwrite each other's clipboard requests. This is fundamentally
 unavoidable since the system clipboard is a single global shared resource.
-However, there is an additional complication where responses form this protocol
+However, there is an additional complication where responses from this protocol
 could get lost if, for instance, multiple write requests are received
 simultaneously. It is up to well designed multiplexers to ensure that only a
 single request is in flight at a time. The multiplexer can abort requests by
 sending back the ``EBUSY`` error code indicating some other window is trying
 to access the clipboard.
+
+When the terminal sends an unsolicited paste event because the user triggered
+a paste and the 5522 mode is enabled, there will be no associated id. In this
+case, the multiplexer must forward the event to the currently active window.

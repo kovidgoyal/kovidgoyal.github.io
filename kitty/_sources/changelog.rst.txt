@@ -9,6 +9,21 @@ To update |kitty|, :doc:`follow the instructions <binary>`.
 Recent major new features
 ---------------------------
 
+Choose files, fast [0.45]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A new :doc:`kitten to select files at the speed of thought
+</kittens/choose-files>` with a keyboard first interface and support for
+content previews of text file with syntax highlighting, images, videos, e-books
+and more. Allows you to select files for use at the shell prompt or other
+terminal workflows with just a few keystrokes, similar to how fuzzy finders
+like `fzf <https://github.com/junegunn/fzf/>`__ operate, but with designed for
+files in particular.
+
+On Linux, it can even be used as a :doc:`drop in replacement </kittens/desktop-ui>`
+for the File Open/Save dialog boxes in GUI programs.
+
+
 Sessions [0.43]
 ~~~~~~~~~~~~~~~~
 
@@ -134,6 +149,72 @@ consumption to do the same tasks.
 Detailed list of changes
 -------------------------------------
 
+0.45.0 [2025-12-24]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- A new :doc:`kitten to select files at the speed of thought </kittens/choose-files>` with a keyboard first interface and support for content previews of text file with syntax highlighting, images, videos, e-books and more (:iss:`9263`)
+
+- Add support for the `paste events protocol <https://rockorager.dev/misc/bracketed-paste-mime/>`__ (:iss:`9183`)
+
+- icat kitten: Add support for animated PNG and animated WebP, netPBM images, ICC color profiles and CCIP color space metadata to the builtin engine
+
+- icat kitten: Add a new flag :option:`kitty +kitten icat --fit` to control how images are scaled to fit the screen (:iss:`9201`)
+
+- icat kitten: The :option:`kitty +kitten icat --scale-up` flag now takes effect when not using :option:`kitty +kitten icat --place` as well
+
+- Add a mappable action :ac:`copy_last_command_output` to copy the output of the last
+  command to the clipboard (:pull:`9185`)
+
+- ssh kitten: Fix a bug where automatic login was not working (:iss:`9187`)
+
+- Graphics: Fix overwrite composition mode for animation frames not being honored
+
+- Automatic color scheme switching: Fix title bar and scroll bar colors not being updated (:iss:`9167`)
+
+- macOS: Fix cycle through OS windows only swapping between the two most recent
+  OS Windows. Also add a cycle through OS Windows backwards action.
+  (:iss:`9215`)
+
+- :ac:`goto_session`: allow specifying a directory to select a session file
+  from the directory (:pull:`9219`)
+
+- Have reloading config also reload the custom tab bar python modules (:disc:`9221`)
+
+- kitten @ ls: Also output the neighbors for every window (:disc:`9225`)
+
+- Have the :option:`kitty --start-as` flag be respected when used with
+  :option:`kitty --single-instance` (:iss:`9228`)
+
+- When expanding environment variables in :opt:`listen_on` allow the :opt:`env`
+  directive to take effect
+
+- macOS: Fix closing an OS Window when another OS Window is minimized causing
+  the minimized window to be un-minimized (:iss:`8913`)
+
+- Do not rewrap the text in the alternate screen buffer. Avoids flicker during
+  live resize with no :opt:`resize_debounce_time` (:disc:`9142`)
+
+- Add a default mapping :ac:`search_scrollback` to open the scrollback in a
+  pager in search mode. If any text is currently selected it is automatically
+  searched for.
+
+- Wayland: Fix spurious key repeat events when some user defined callback takes
+  a long time to execute (:iss:`9224`)
+
+- When moving windows to a new tab/OS Window fix overlay windows not being
+  grouped with their parent windows (:iss:`9266`)
+
+- Linux: Fix a bug causing colors to occasionally all go black when using mesa
+  >= 25.3.0 with nouveau GPU driver (:iss:`9235`)
+
+- Fix :opt:`tab_bar_min_tabs` not respecting :opt:`tab_bar_filter` (:iss:`9278`)
+
+- macOS: Workaround for regression in Tahoe 26.2 that breaks :option:`kitty --detach`
+  (:iss:`9288`)
+
+- macOS: Workaround for yet another Tahoe regression causing macOS to start an
+  AutoFill helper process and not shut it down on application exit (:iss:`9299`)
+
 0.44.0 [2025-11-03]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -183,8 +264,6 @@ Detailed list of changes
 - Wayland: Fix scrolling using some mouse wheels that produce "VALUE120" based
   scroll events too fast on some compositors (:pull:`9128`)
 
-- Automatic color scheme switching: Fix title bar color not being updated (:iss:`9167`)
-
 - Add support for Unicode 17
 
 - Fix a regression in 0.43.0 that caused :opt:`tab_bar_margin_width` to be
@@ -205,6 +284,8 @@ Detailed list of changes
 - Session saving now preserves visual tab order and active tab rather than tab
   activation history as this is generally more important. In the future may
   have it save tab history as well (:pull:`9163`)
+
+- The :sc:`reset_terminal` shortcut to reset the terminal now also resets termios state
 
 0.43.1 [2025-10-01]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -264,6 +345,9 @@ Detailed list of changes
 - Fix :opt:`background_opacity` being non-linear especially with light color themes.
   Note that this might require you to adjust the value of this setting to get
   back your current look. (:iss:`8869`)
+
+- **backward incompatibility**: :opt:`background_opacity` no longer applies to
+  :opt:`background_image` instead add an alpha channel to the image itself
 
 - Add support for blinking text. Text marked as blinking now blinks in exact
   rhythm with the cursor. The blinking animation and max duration are

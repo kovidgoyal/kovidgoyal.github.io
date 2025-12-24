@@ -44,47 +44,23 @@ A terminal PDF viewer with GUI-like usage and Vim-like keybindings written in Ru
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Display various types of files nicely formatted with images in the terminal
 
-.. _tool_ranger:
-
-`ranger <https://github.com/ranger/ranger>`_
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-A terminal file manager, with previews of file contents powered by kitty's
-graphics protocol.
-
-.. _tool_nnn:
-
-`nnn <https://github.com/jarun/nnn/>`_
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Another terminal file manager, with previews of file contents powered by kitty's
-graphics protocol.
-
-.. _tool_yazi:
-
-`Yazi <https://github.com/sxyazi/yazi>`_
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Blazing fast terminal file manager, with built-in kitty graphics protocol support
-(implemented both Classic protocol and Unicode placeholders).
-
-.. _tool_clifm:
-
-`clifm <https://github.com/leo-arch/clifm>`__
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The shell-like, command line terminal file manager, uses the kitty graphics and
-keyboard protocols.
-
-.. _tool_hunter:
-
-`hunter <https://github.com/rabite0/hunter>`_
+`dawn <https://github.com/andrewmd5/dawn>`__
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Another terminal file manager, with previews of file contents powered by kitty's
-graphics protocol.
 
-.. _tool_presentterm:
+A markdown editor that uses the text-sizing protocol for large headings and
+the graphics protocol for images.
 
 `presenterm <https://github.com/mfontanini/presenterm>`_
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Show markdown based slides with images in your terminal, powered by the
 kitty graphics protocol.
+
+.. _tool_mdfried:
+
+`mdfried <https://github.com/benjajaja/mdfried>`_
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Markdown viewer that can render big headers with the text-sizing-protocol, and
+also render images with the kitty graphics protocol.
 
 .. _tool_term_image:
 
@@ -152,6 +128,46 @@ plays videos. Fast multi-threaded loading, JPEG exif rotation, grid view and
 connecting to the webcam make it a versatile terminal utility.
 
 
+File managers
+-------------------
+.. _tool_ranger:
+
+`ranger <https://github.com/ranger/ranger>`_
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A terminal file manager, with previews of file contents powered by kitty's
+graphics protocol.
+
+.. _tool_nnn:
+
+`nnn <https://github.com/jarun/nnn/>`_
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Another terminal file manager, with previews of file contents powered by kitty's
+graphics protocol.
+
+.. _tool_yazi:
+
+`Yazi <https://github.com/sxyazi/yazi>`_
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Blazing fast terminal file manager, with built-in kitty graphics protocol support
+(implemented both Classic protocol and Unicode placeholders).
+
+.. _tool_clifm:
+
+`clifm <https://github.com/leo-arch/clifm>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The shell-like, command line terminal file manager, uses the kitty graphics and
+keyboard protocols.
+
+.. _tool_hunter:
+
+`hunter <https://github.com/rabite0/hunter>`_
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Another terminal file manager, with previews of file contents powered by kitty's
+graphics protocol.
+
+.. _tool_presentterm:
+
+
 System and data visualisation tools
 ---------------------------------------
 
@@ -190,28 +206,8 @@ by kitty's graphics protocol for displaying plots
 `gnuplot <http://www.gnuplot.info/>`_
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A graphing and data visualization tool that can be made to display its output in
-kitty with the following bash snippet:
-
-.. code-block:: sh
-
-    function iplot {
-        cat <<EOF | gnuplot
-        set terminal pngcairo enhanced font 'Fira Sans,10'
-        set autoscale
-        set samples 1000
-        set output '|kitten icat --stdin yes'
-        set object 1 rectangle from screen 0,0 to screen 1,1 fillcolor rgb"#fdf6e3" behind
-        plot $@
-        set output '/dev/null'
-    EOF
-    }
-
-Add this to bashrc and then to plot a function, simply do:
-
-.. code-block:: sh
-
-    iplot 'sin(x*3)*exp(x*.2)'
+A graphing and data visualization tool that has support for the kitty graphics
+protocol, with its ``kittygd`` and ``kittycairo`` backends.
 
 .. _tool_k-nine:
 
@@ -344,7 +340,7 @@ Allow injecting passwords from 1Password into kitty.
 `BitWarden <https://github.com/dnanhkhoa/kitty-password-manager>`__
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Inject passwords from ButWarden into kitty
+Inject passwords from BitWarden into kitty
 
 Miscellaneous
 ------------------

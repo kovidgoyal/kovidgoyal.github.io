@@ -65,6 +65,7 @@ Other terminals that have implemented the graphics protocol:
 * `Warp <https://docs.warp.dev/getting-started/changelog#id-2025.03.26-v0.2025.03.26.08.10>`_
 * `wayst <https://github.com/91861/wayst>`_
 * `WezTerm <https://github.com/wez/wezterm/issues/986>`_
+* `iTerm2 <https://github.com/gnachman/iTerm2/commit/4fe5b2173193b6c3e45234b6b2ab7a144a5cfa01>`_
 
 
 Getting the window size
@@ -132,19 +133,30 @@ code to demonstrate its use
         }
 
 
-.. tab:: Bash
+.. tab:: POSIX sh
 
     .. code-block:: sh
 
-        #!/bin/bash
+        #!/bin/sh
 
-        # This uses the kitten standalone binary from kitty to get the pixel sizes
-        # since we can't do IOCTLs directly. Fortunately, kitten is a static exe
-        # pre-built for every Unix like OS under the sun.
+        read rows cols <<EOF
+        $(command stty size)
+        EOF
 
-        builtin read -r rows cols < <(command stty size)
-        IFS=x builtin read -r width height < <(command kitten icat --print-window-size); builtin unset IFS
-        builtin echo "number of rows: $rows number of columns: $cols screen width: $width screen height: $height"
+        oldstty=$(command stty -g)
+        command stty raw -echo
+        printf "\033[14t"
+        response=""
+        while : ; do
+            char=$(command dd bs=1 count=1 2>/dev/null)
+            [ "$char" = "t" ] && break
+            response="${response}${char}"
+        done
+        command stty "$oldstty"
+        h=$(echo "$response" | cut -d';' -f2)
+        w=$(echo "$response" | cut -d';' -f3)
+        printf "number of rows: %d number of columns: %d" "$rows" "$cols"
+        printf " screen width: %d screen height: %d\n" "$w" "$h"
 
 
 Note that some terminals return ``0`` for the width and height values. Such
@@ -165,61 +177,55 @@ A minimal example
 Some minimal code to display PNG images in kitty, using the most basic
 features of the graphics protocol:
 
-.. tab:: Bash
+.. tab:: POSIX sh
 
     .. code-block:: sh
 
-        #!/bin/bash
-        transmit_png() {
-            data=$(base64 "$1")
-            data="${data//[[:space:]]}"
-            builtin local pos=0
-            builtin local chunk_size=4096
-            while [ $pos -lt ${#data} ]; do
-                builtin printf "\e_G"
-                [ $pos = "0" ] && printf "a=T,f=100,"
-                builtin local chunk="${data:$pos:$chunk_size}"
-                pos=$(($pos+$chunk_size))
-                [ $pos -lt ${#data} ] && builtin printf "m=1"
-                [ ${#chunk} -gt 0 ] && builtin printf ";%s" "${chunk}"
-                builtin printf "\e\\"
+        #!/bin/sh
+
+        send_chunked() {
+            first="y"
+            while IFS= read -r chunk; do
+                metadata=""; [ "$first" = "y" ] && { metadata="a=T,f=100,"; first="n"; }
+                printf "\033_G%sm=1;%s\033\\" "${metadata}" "${chunk}"
             done
+            [ "$first" = "n" ] && { printf "\033_Gm=0;\033\\"; return 0; }
+            return 1
+        }
+
+        transmit_png() {
+            # Different systems have different or missing base64 executables.
+            # The sed command below adds a trailing newline which openssl
+            # base64 does not produce and is needed for reading via read -r
+            { command base64 -w 4096 "$1" 2>/dev/null | send_chunked; } || \
+            { command base64 -b 4096 "$1" 2>/dev/null | send_chunked; } || \
+            { command openssl base64 -e -A -in "$1" | command sed '$a\' | command fold -b -w 4096 | send_chunked; }
         }
 
         transmit_png "$1"
+
 
 .. tab:: Python
 
     .. code-block:: python
 
-        #!/usr/bin/python
+        #!/usr/bin/env python
         import sys
         from base64 import standard_b64encode
 
-        def serialize_gr_command(**cmd):
-            payload = cmd.pop('payload', None)
-            cmd = ','.join(f'{k}={v}' for k, v in cmd.items())
-            ans = []
-            w = ans.append
-            w(b'\033_G'), w(cmd.encode('ascii'))
-            if payload:
-                w(b';')
-                w(payload)
-            w(b'\033\\')
-            return b''.join(ans)
-
-        def write_chunked(**cmd):
-            data = standard_b64encode(cmd.pop('data'))
-            while data:
-                chunk, data = data[:4096], data[4096:]
-                m = 1 if data else 0
-                sys.stdout.buffer.write(serialize_gr_command(payload=chunk, m=m,
-                                                            **cmd))
-                sys.stdout.flush()
-                cmd.clear()
-
+        first, eof, buf = True, False, memoryview(bytearray(3 * 4096 // 4))
+        w = sys.stdout.buffer.write
         with open(sys.argv[-1], 'rb') as f:
-            write_chunked(a='T', f=100, data=f.read())
+            while not eof:
+                p = buf[:]
+                while p and not eof:
+                    n = f.readinto1(p)
+                    p, eof = p[n:], n == 0
+                encoded = standard_b64encode(buf[:len(buf)-len(p)])
+                metadata, first = "a=T,f=100," if first else "", False
+                w(f'\x1b_G{metadata}m={0 if eof else 1};'.encode('ascii'))
+                w(encoded)
+                w(b'\x1b\\')
 
 
 Save this script as :file:`send-png`, then you can use it to display any PNG
@@ -358,7 +364,7 @@ Here we tell the terminal emulator to read compressed image data from
 the specified shared memory object.
 
 The client can also specify a size and offset to tell the terminal emulator
-to only read a part of the specified file. The is done using the ``S`` and ``O``
+to only read a part of the specified file. This is done using the ``S`` and ``O``
 keys respectively. For example::
 
     <ESC>_Gs=10,v=2,t=s,S=80,O=10;<encoded /some-shared-memory-name><ESC>\
