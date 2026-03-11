@@ -167,6 +167,33 @@ the program running in the terminal, map it to :ac:`discard_event`::
 
 .. _conditional_mappings:
 
+Configuring a timeout
+----------------------
+
+You can also set a timeout for keyboard modes and multi-key mappings. If a
+timeout is set and you don't complete the key sequence or exit the mode within
+the specified time, the mode will be automatically cancelled. This is useful
+for multi-key mappings where you might accidentally press the first key and
+then change your mind. The timeout is specified in seconds and can be set
+globally using the :opt:`map_timeout` option or per-mode using ``--timeout``::
+
+    # Set a global 2 second timeout for all multi-key and modal mappings
+    map_timeout 2.0
+
+    # This mode will have a 5 second timeout (overrides global setting)
+    map --new-mode resize --timeout 5.0 kitty_mod+r
+    map --mode resize h resize_window narrower
+    map --mode resize l resize_window wider
+    # ... more mappings
+
+    # Multi-key mapping with the global timeout
+    map ctrl+a>h new_window
+
+When a timeout occurs, the mode is exited and any buffered keys are discarded.
+A timeout value of zero disables the timeout. For multi-key sequences, the
+timeout is restarted after each valid key press in the sequence.
+
+
 Conditional mappings depending on the state of the focused window
 ----------------------------------------------------------------------
 
@@ -201,7 +228,7 @@ In order to make this work, you need to configure your editor as shown below:
    In :file:`~/.vimrc` add:
     .. code-block:: vim
 
-        let &t_ti = &t_ti . "\033]1337;SetUserVar=in_editor=MQo\007"
+        let &t_ti = &t_ti . "\033]1337;SetUserVar=in_editor=MQ==\007"
         let &t_te = &t_te . "\033]1337;SetUserVar=in_editor\007"
 
 .. tab:: neovim
@@ -214,9 +241,9 @@ In order to make this work, you need to configure your editor as shown below:
             group = vim.api.nvim_create_augroup("KittySetVarVimEnter", { clear = true }),
             callback = function()
                 if vim.api.nvim_ui_send then
-                    vim.api.nvim_ui_send("\x1b]1337;SetUserVar=in_editor=MQo\007")
+                    vim.api.nvim_ui_send("\x1b]1337;SetUserVar=in_editor=MQ==\007")
                 else
-                    io.stdout:write("\x1b]1337;SetUserVar=in_editor=MQo\007")
+                    io.stdout:write("\x1b]1337;SetUserVar=in_editor=MQ==\007")
                 end
             end,
         })
@@ -225,7 +252,7 @@ In order to make this work, you need to configure your editor as shown below:
             group = vim.api.nvim_create_augroup("KittyUnsetVarVimLeave", { clear = true }),
             callback = function()
                 if vim.api.nvim_ui_send then
-                    vim.api.nvim_ui_send("\x1b]1337;SetUserVar=in_editor=MQo\007")
+                    vim.api.nvim_ui_send("\x1b]1337;SetUserVar=in_editor\007")
                 else
                     io.stdout:write("\x1b]1337;SetUserVar=in_editor\007")
                 end

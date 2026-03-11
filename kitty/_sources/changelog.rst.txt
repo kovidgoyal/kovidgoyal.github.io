@@ -150,6 +150,132 @@ consumption to do the same tasks.
 Detailed list of changes
 -------------------------------------
 
+0.46.0 [2026-03-11]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Pixel scrolling for the kitty scrollback buffer controlled via :opt:`pixel_scroll` (:pull:`9330`)
+
+- Linux: momentum scrolling in the kitty scrollback buffer for touchpads and touchscreens, see :opt:`momentum_scroll`
+
+- X11: support high resolution scroll events from touchpads, etc
+
+- macOS: Implement support for Apple dictation to input text in kitty (:iss:`3732`)
+
+- Allow dragging tabs in the tab bar to re-order, move to another OS Window or
+  detach (:pull:`9296`)
+
+- Allow dragging window borders to resize kitty windows in all the different
+  layouts, controlled by :opt:`window_drag_tolerance` (:pull:`9447`)
+
+- Allow showing :opt:`configurable window titles <window_title_bar>` for individual kitty
+  windows via a window title bar (:pull:`9450`)
+
+- A command palette to browse and trigger all mapped and unmapped actions
+  (:pull:`9545`)
+
+- choose-files kitten: Fix JXL image preview not working (:iss:`9323`)
+
+- Fix tab bar rendering glitches when using :opt:`tab_bar_filter` in some
+  circumstances (:iss:`9328`)
+
+- Add support for specifying colors in :file:`kitty.conf` in OKLCH and LAB
+  color spaces (:pull:`9325`)
+
+- Fix a regression that broke using line numbers with the edit-in-kitty command
+  (:pull:`9346`)
+
+- Key maps: Allow specifying a timeout for multi key mappings and keyboard modes (:pull:`9551`)
+
+- macOS: Fix changes to :opt:`macos_titlebar_color` while in full screen not being applied after exiting fullscreen (:iss:`9350`)
+
+- ncurses: Fix ncurses not using dim because it is missing from the sgr property
+  in terminfo even though it is present in the dim property.
+
+- Fix a regression in the previous release that caused moving between neighbors
+  in the vertical and horizontal layouts to go in the opposite direction (:iss:`9355`)
+
+- Fix :ac:`goto_session` not respecting the focus_tab session directive when
+  creating a session in an existing OS window (:iss:`9366`)
+
+- Wayland: Fix a regression in the previous release that caused doubled key
+  repeats on compositors that implement compositor side key repeat events
+  (:iss:`9374`)
+
+- icat: Fix a regression in the previous release when rendering GIF animations
+  with frames that dispose onto background with non-zero delay using the native
+  engine (:iss:`9376`)
+
+- Wayland: Remove usage of the Wayland color management protocol to inform
+  compositors of the color space used by kitty (:iss:`9341`)
+
+- Linux: Fix a regression in 0.40 that caused horizontal alignment for emoji to
+  be incorrect in some cases (:iss:`9395`)
+
+- icat kitten: When catting multiple images display the images in input order (:iss:`9413`)
+
+- kitten @: Fix relative paths for --password-file being resolved relative to
+  CWD instead of the kitty config directory
+
+- kitten choose-files: Add a new binding of :kbd:`Alt+Enter` to modify the name
+  of an existing file when choosing a save file name (:iss:`9387`)
+
+- kitten choose-files: Fix TAB completion in the choose save file name prompt
+  not working with respect to the current working directory (:iss:`9387`)
+
+- Fix line-at-once selection not extending wrapped lines into scrollback (:iss:`9437`)
+
+- ssh kitten: Restore keyboard mode even if the ssh connection drops
+
+- edit-in-kitty: Handle connection drop more gracefully (:pull:`9480`)
+
+- macOS: Fix changing window title with global menubar menu open causes menu to
+  get stuck (:pull:`9490`)
+
+- Fix :opt:`focus_follows_mouse` not working during a drag and drop (:iss:`9497`)
+
+- :ac:`goto_session`: Add a ``--active-only`` option to select from only active
+  sessions (:pull:`9503`)
+
+- Shell integration: Allow sending click events to shells using y co-ordinates
+  relative to prompts (:iss:`9500`)
+
+- A new action :ac:`copy_selection_or_last_command_output` (:pull:`9512`)
+
+- Wayland: Add support for the background blur extension (:iss:`9534`)
+
+- macOS: A new option :opt:`macos_dock_badge_on_bell` to show a badge on the
+  kitty dock icon when a bell occurs (:pull:`9529`)
+
+- macOS: Workaround for yet another Tahoe bug causing rendering to fail
+  (:pull:`9520`)
+
+- URL detection: Allow trailing asterisks in URLs (:iss:`9543`)
+
+- Wayland: Add support for :code:`titlebar-only` in :opt:`hide_window_decorations`
+  to hide the titlebar while keeping shadows for window resizing. (:pull:`9486`)
+
+- Text sizing protocol: Fix alignment/cropping issues when rendering text with
+  a fractional scale (:iss:`9471`)
+
+- macOS: Fix a crash when using :opt:`macos_traditional_fullscreen` with split
+  view (:pull:`9573`)
+
+- macOS: Fix flickering during OS Window resize (:disc:`9582`)
+
+- Cursor trail: Show a cursor trail when switching tabs (:pull:`9588`)
+
+- Make shift+left click extend the current selection instead of starting a new
+  selection when the mouse is not grabbed by the TUI application (:disc:`9608`)
+
+- Allow double clicking on a tab to rename it (:pull:`9609`)
+
+- :ac:`remote_control_script` resolve relative paths with respect to kitty
+  config directory (:iss:`9625`)
+
+- Splits layout: Add new mappable actions to maximize a window in the splits
+  layout (:iss:`9629`)
+
+
 0.45.0 [2025-12-24]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

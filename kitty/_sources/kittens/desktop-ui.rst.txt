@@ -11,7 +11,7 @@ Using terminal programs to provide Linux desktop components
 Power users of terminals on Linux also often like to use bare bones window
 managers instead of full fledged desktop environments. This kitten helps
 provide parts of the desktop environment that are missing from such setups,
-and does so using keyboard friendly, terminal first UI components. Some of its
+and does so using keyboard friendly, terminal first, UI components. Some of its
 features are:
 
 * Replace the typical File Open/Save dialogs used in GUI programs with the
@@ -116,7 +116,7 @@ determine why the kitten is not being selected.
 
 If some GUI applications are not using the choose-files kitten for their file
 select dialogs, then make sure the environment variables mentioned above are
-set, you can also try running the the GUI application with them set explicitly,
+set, you can also try running the GUI application with them set explicitly,
 as::
 
     QT_QPA_PLATFORMTHEME=xdgdesktopportal GTK_USE_PORTAL=1 my-gui-app
@@ -124,3 +124,13 @@ as::
 Note that not all applications use portals, so if some particular application
 is failing to use the portal but others work, report the issue to that
 applications' developers.
+
+Configuration
+------------------------
+
+You can configure various aspects of the kitten's operation by creating a
+:file:`desktop-ui-portal.conf` in your :ref:`kitty config folder <confloc>`.
+See below for the supported configuration directives.
+
+
+.. include:: /generated/conf-kitten-desktop_ui.rst

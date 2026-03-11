@@ -62,10 +62,6 @@ by running a program using :code:`geninclude`. For example::
      geninclude dynamic.py
 
 
-.. note:: Syntax highlighting for :file:`kitty.conf` in vim is available via
-   `vim-kitty <https://github.com/fladson/vim-kitty>`__.
-
-
 .. include:: /generated/conf-kitty.rst
 
 
@@ -101,3 +97,4 @@ See the :doc:`list of all the things you can make |kitty| can do </actions>`.
    :hidden:
 
    actions
+   wide-gamut-colors
