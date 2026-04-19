@@ -106,11 +106,14 @@ Name=en*
 #Gateway=${ipv4_gateway}
 DHCP=ipv4
 Address=${ipv6_address}/${ipv6_prefix}
-Gateway=${ipv6_gateway}
 DNS=1.1.1.1
 DNS=8.8.8.8
 DNS=2606:4700:4700::1111
 DNS=2001:4860:4860::8888
+
+[Route]
+Gateway=${ipv6_gateway}
+GatewayOnLink=yes
 EOF
 
 
