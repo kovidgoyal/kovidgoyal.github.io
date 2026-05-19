@@ -6,7 +6,7 @@ clipboard
     Overview
     --------------
 
-*Copy/paste to the system clipboard from shell scripts*
+    *Copy/paste to the system clipboard from shell scripts*
 
 .. highlight:: sh
 

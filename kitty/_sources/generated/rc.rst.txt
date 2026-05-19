@@ -333,6 +333,9 @@ Fields are:
 :code:`os_window_state (default: normal)`
   The initial state for OS Window
 
+:code:`os_window_position (default: None)`
+  The position for OS Window
+
 :code:`color (default: [])`
   list of color specifications such as foreground=red
 
@@ -596,7 +599,7 @@ set-background-image
 Fields are:
 
 :code:`data (required)`
-  Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value - to indicate image must be removed.
+  Chunk of at most 512 bytes of PNG data, base64 encoded. Must send an empty chunk to indicate end of image.     Or the special value - to indicate image must be removed. Or the value index:idx to change image.
 
 :code:`match (default: None)`
   Window to change opacity in

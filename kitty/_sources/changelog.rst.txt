@@ -9,6 +9,14 @@ To update |kitty|, :doc:`follow the instructions <binary>`.
 Recent major new features
 ---------------------------
 
+Drag and drop for terminal programs [0.47]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+kitty now has a new :doc:`/kittens/dnd` kitten that allows you to seamlessly
+drag and drop files between kitty and any GUI program like the OS file manager
+or a webapp. It even works over SSH! It is powered by a new :doc:`protocol
+</dnd-protocol>` allowing the use of drag and drop from any TUI program.
+
 Mousing [0.46]
 ~~~~~~~~~~~~~~~
 
@@ -17,7 +25,7 @@ level. The kitty scrollback buffer grew support for :opt:`smooth scrolling
 <pixel_scroll>` and :opt:`momentum based scrolling <momentum_scroll>`
 for a natural, smooth and kinetic scrolling experience.
 
-Additionally, you can now :opt:`drag kitty tabs around <tab_bar_drag_threshold>` with the mouse
+Additionally, you can now :opt:`drag kitty tabs around <drag_threshold>` with the mouse
 to re-order them, move them to another kitty OS Window or even detach them into
 their own OS Window.
 
@@ -165,6 +173,112 @@ consumption to do the same tasks.
 Detailed list of changes
 -------------------------------------
 
+0.47.0 [2026-05-19]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- A new :doc:`Drag and drop kitten </kittens/dnd>` to allow drag and drop of files from your shell to any GUI program even across SSH (:iss:`9984`)
+
+- A new option :opt:`palette_generate` to automatically generate the 256 color palette from the first 16 colors (:pull:`9426`)
+
+- For builtin key mappings automatically :ref:`fallback <mapping-fallback>` to matching the US-PC layout key when the pressed key has no matches and is a non-English character (:pull:`9671`)
+
+- Allow drag and drop of windows to re-arrange them, move them to another tab/OS Window or detach them into a new OS Window. See :ac:`toggle_window_title_bars` to temporarily show window title bars to drag them around (:pull:`9626`)
+
+- Have :ac:`scroll_line_up` and :ac:`scroll_line_down` smooth scroll by default. Can be restored to old behavior by re-mapping without the ``smooth`` argument (:iss:`9689`)
+
+- Draw a progress bar at the top of the window when a program reports progress using the OSC 9;4 escape sequence, controlled by :opt:`progress_bar` (:iss:`9777`)
+
+- Automatically reload configuration on changes, controlled by :opt:`auto_reload_config`
+
+- Allow specifying multiple background images for :opt:`background_image` that are stored on GPU to allow fast image switching (:pull:`9836`)
+
+- :doc:`Remote control <remote-control>`: Expose :code:`session_name` and :code:`last_focused_at` in the output of ``kitten @ ls`` for each window (:iss:`9732`, :iss:`9799`)
+
+- Allow optionally dragging URLs with the mouse, see :sc:`start_simple_selection` (:pull:`9804`)
+
+- Change :opt:`focus_follows_mouse` to switch the active window only when the mouse crosses into a different window, instead of on every mouse motion event. Prevents accidental mouse bumps from undoing a keyboard-driven window switch.
+
+- Wayland: Use hold gestures to cancel momentum scrolling when fingers are placed on the trackpad, for a more natural kinetic scrolling experience (:iss:`9863`)
+
+- macOS: Switch to new Tahoe style application icon with different background in light and dark modes
+
+- Fix thickness of diagonal lines in box drawing characters not the same as horizontal/vertical lines (:iss:`9719`)
+
+- Graphics protocol: Fix crash when handling invalid PNG image with direct transmission (:cve:`2026-33633`)
+
+- Graphics protocol: Fix crash when handling invalid offset values in graphics compose commands (:cve:`2026-33642`)
+
+- X11: Fix a regression in the previous release that caused an occasional crash on input device removal (:iss:`9723`)
+
+- XWayland: Fix a regression where some wheel mice were not scrolling properly (:pull:`9770`)
+
+- Command palette: Improve searching to use word level matching (:pull:`9727`)
+
+- hints kitten: A new option to set the background color of matched text (:pull:`9745`)
+
+- The :opt:`show_hyperlink_targets` option now allows specifying a keyboard modifier so that target URLs are only shown on hover when the modifier is pressed (:pull:`9741`)
+
+- Fix a spurious mouse button release event being sent when dragging out of an OS window causes focus loss
+
+- Fix scrollbar hover/interaction not working when the scrollbar is drawn in the window margin area (:iss:`9756`)
+
+- Fix completion for ``edit-in-kitty`` not including some common text file types
+
+- Allow holding the :kbd:`Alt` key and triple-clicking to select from the first cell even if it is empty (:pull:`9758`)
+
+- Fix double click to rename tab being triggered too easily (:iss:`9774`)
+
+- Fix a crash when user tries to select while the client program is using synchronised rendering and generating large amounts of output (:iss:`9778`)
+
+- macOS: Add Copy and Paste menu items to the Edit menu in the global menu bar (:iss:`9780`)
+
+- Fix dragging of splits layout borders sometimes moving in the wrong direction or having no effect (:pull:`9447`)
+
+- Fix triple-click line selection and double-click word selection not extending wrapped lines beyond the edges of the viewport
+
+- Password input in kittens: hide the cursor and display a blinking 🔒 at the end of typed characters to make it visually clear the user is entering a password
+
+- edit-in-kitty: Ignore environment variables as some editors execute code present in env vars. Similarly ignore conf file specifications for colors (:cve:`2026-42851`)
+
+- Command palette :sc:`command_palette`: nicer grouping of aliases and combined actions (:pull:`9819`)
+
+- hints kitten: Fix trailing punctuation not being removed from URLs (:pull:`9828`)
+
+- Fix copy/paste dropping spaces at soft-wrap boundaries when :opt:`strip_trailing_spaces` is set (:iss:`9834`)
+
+- Allow setting negative values for :opt:`inactive_text_alpha` to control
+  whether to only fade inactive windows or unfocused windows (:pull:`9837`)
+
+- A new option :opt:`macos_fullscreen_ignore_safe_area_insets` to control
+  whether to ignore the notch space when using :opt:`macos_traditional_fullscreen` (:pull:`9841`)
+
+- Fix some responses from terminal sometimes leaking into shell after kitten exit (:iss:`9839`)
+
+- Render block elements from the Unicode Symbols for Legacy Computing Supplement block (U+1CC00–U+1CEBF): separated block quadrants, separated block sextants, one sixteenth blocks, and one quarter block partial fills (:disc:`9849`)
+
+- Improve performance of using active process data when rendering the tab bar by only scanning processes once per second (:iss:`9862`)
+
+- macOS: Fix occasional phantom cursors being drawn on screen (:iss:`9725`)
+
+- diff kitten: Keep the current (topmost) filename visible when scrolling, controlled by a new option :opt:`kitten-diff.sticky_header` (:pull:`9891`)
+
+- Add an option to :opt:`focus_follows_mouse` to only switch focus on drops rather than movement (:pull:`9896`)
+
+- Fix setting :opt:`momentum_scroll` to zero not *fully* disabling momentum scrolling (:iss:`9904`)
+
+- macOS: Fix args passed via ``open --args`` being ignored when :file:`macos-launch-services-cmdline` is present (:iss:`9910`)
+
+- :ac:`save_as_session`: when the filename input by the user has no extension, automatically add the ``.kitty-session`` extension (:pull:`9919`)
+
+- Linux: Workaround bug in Nvidia drivers that caused color corruption when resuming after suspend (:iss:`9844`)
+
+- choose-files kitten: Output a trailing newline when writing to a tty in text format (:iss:`9982`)
+
+- ssh kitten: Sanitize user controlled data in error messages that might leak to shell (:cve:`2026-42850`)
+
+- Linux: Respect the fontconfig matrix setting commonly used for fake slant with fonts that do not have italic variants (:pull:`9990`)
+
+
 0.46.2 [2026-03-21]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -225,7 +339,7 @@ Detailed list of changes
 
 - macOS: Implement support for Apple dictation to input text in kitty (:iss:`3732`)
 
-- Allow dragging tabs (opt:`tab_bar_drag_threshold`) in the tab bar to re-order, move to another OS Window or
+- Allow dragging tabs (opt:`drag_threshold`) in the tab bar to re-order, move to another OS Window or
   detach (:pull:`9296`)
 
 - Allow dragging window borders to resize kitty windows in all the different
@@ -1932,7 +2046,7 @@ Detailed list of changes
   window resize (:iss:`5162`)
 
 - Remote control: Fix commands with large or asynchronous payloads like
-  :command:`kitty @ set-backround-image`, :command:`kitty @ set-window-logo`
+  :command:`kitty @ set-background-image`, :command:`kitty @ set-window-logo`
   and :command:`kitty @ select-window` not working correctly
   when using a socket (:iss:`5165`)
 
