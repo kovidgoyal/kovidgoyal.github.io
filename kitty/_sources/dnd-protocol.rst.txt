@@ -465,7 +465,7 @@ terminal does not support this protocol.
 Multiplexers
 -----------------
 
-To support multiplexers, the ``i`` key exists. When the terminal receives and
+To support multiplexers, the ``i`` key exists. When the terminal receives a
 ``t=a`` or ``t=o`` escape code that has the ``i`` key set, all escape codes it
 sends to the terminal program must include the ``i`` key with the same value.
 This allows terminal multiplexers to direct the response codes to the correct
@@ -552,3 +552,12 @@ changed. If the terminal sees a version it does not understand, it must assume
 that the machine id does not match, aka the source and destination machines are
 different. This assumption means that remote drag and drop will still work, just with
 reduced performance in case of version mismatch.
+
+
+Support in other software
+------------------------------
+
+Currently this protocol is supported in:
+
+  * The kitty terminal emulator and the :doc:`dnd kitten </kittens/dnd>`
+  * The `yazi <https://github.com/sxyazi/yazi/pull/4005>`__ terminal file manager
