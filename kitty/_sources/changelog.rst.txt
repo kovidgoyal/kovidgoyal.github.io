@@ -173,6 +173,26 @@ consumption to do the same tasks.
 Detailed list of changes
 -------------------------------------
 
+0.47.2 [2026-06-07]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Allow dragging to move scrollbar after clicking on track when :opt:`scrollbar_jump_on_click` is enabled (:pull:`10085`)
+
+- macOS: Fix regression in 0.47.0 that broke passing :kbd:`Cmd+C` on to terminal applications when no text is selected (:iss:`10087`)
+
+- ``kitten @ set-background-image``: Fix ``--layout=configured`` changing layout to centered instead (:iss:`10089`)
+
+- Splits layout: add an ``equalize`` action and an ``equalize_on_close`` option to redistribute split space proportionally (:iss:`3489`)
+
+- Fix matching var/env on tabs not working as expected (:iss:`10095`)
+
+- When watching for changed config files do not recursively watch all sub directories of the directory containing the config file (:iss:`10102`)
+
+- File transfer protocol: use O_NOFOLLOW when opening regular files
+
+- dnd kitten: Protect against drops from malicious sources
+
+
 0.47.1 [2026-05-28]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
