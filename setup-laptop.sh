@@ -132,7 +132,7 @@ EOF
         python-html5-parser mailutils python-humanize jq jxrlib fd python-wheel python-pyqtwebengine
         xcursor-themes libwebp-utils python-pydbus sip python-beautifulsoup4 python-html5-parser python-regex ripgrep
         python-certifi terminus-font python-mechanize python-dbus urlscan python-prompt_toolkit slurp grim
-        xclip zip iw python-zeroconf python-html2text python-pychm bluez bluez-utils python-build mypy
+        xclip zip iw python-zeroconf python-html2text python-pychm bluez bluez-utils python-build ty
         python-docutils-stubs python-sphinx-inline-tabs python-sphinxext-opengraph python-sphinx-furo
         python-sphinx-autobuild python-pip dash fish pciutils startup-notification yajl xcb-util-xrm
         autossh man man-pages fzf python-sphinx-copybutton librsync wayland wayland-protocols links
@@ -171,7 +171,7 @@ EOF
 
     # Allow passwordless sudo for all users in wheel group
     echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL"  >> /etc/sudoers
-    sudo -u kovid yay -S python-lsp-isort python-pylsp-mypy python-lsp-ruff python-launchpadlib python-types-docutils python-types-pygments transifex-cli ttf-symbola mu sac-gui
+    sudo -u kovid yay -S python-launchpadlib python-types-docutils python-types-pygments transifex-cli ttf-symbola mu sac-gui
 
     set +e
     video=$(lspci | grep VGA | grep -o AMD)
