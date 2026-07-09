@@ -191,6 +191,7 @@ EOF
     systemctl enable pcscd.service
     echo FONT=ter-132b >> /etc/vconsole.conf
     echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.d/99-sysctl.conf
+    echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.d/99-sysctl.conf
     echo loop >> /etc/modules-load.d/loopback.conf
     echo SystemMaxUse=100M >> /etc/systemd/journald.conf
     echo "KillUserProcesses=yes" >> /etc/systemd/logind.conf
