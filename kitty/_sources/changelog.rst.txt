@@ -9,6 +9,12 @@ To update |kitty|, :doc:`follow the instructions <binary>`.
 Recent major new features
 ---------------------------
 
+Vertical tabs [0.48]
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+kitty now has support for :pull:`vertical tabs <9855>` along the left or right edge of the OS
+Window. Useful for people that have wide aspect ratio windows.
+
 Drag and drop for terminal programs [0.47]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -172,6 +178,65 @@ consumption to do the same tasks.
 
 Detailed list of changes
 -------------------------------------
+
+0.48.0 [2026-07-18]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Implement vertical tabs by setting :opt:`tab_bar_edge` to ``left`` or ``right`` (:pull:`9855`)
+
+- Graphics protocol: Add a new :ref:`transient usage hint <image_usage_hints>` that clients can send to terminals to indicate an image is meant for only short duration use (:pull:`10092`)
+
+- On first press in an unfocused OS Window/kitty window give it focus and pass the mouse event through to the clicked element. This is a behavior change but aligns with platform defaults on macOS. Linux has no platform defaults here as far as I can tell, so it gets to follow along. (:pull:`10233`)
+
+- kitten @ get-text: Add support for :code:`alternate` and :code:`alternate_scrollback` extents to fetch text from the alternate screen buffer (:iss:`10165`)
+
+- Wayland: Fix first OS window being a few cells too small when ``initial_window_width/initial_window_height`` are set in cells and a fractional display scale is in use (:iss:`10146`)
+
+- macOS: New option :opt:`macos_ns_window_layer` to more precisely control what
+  layer panel OS windows are placed on (:pull:`10116`)
+
+- macOS: New option :opt:`macos_use_physical_screen_frame` to allow panel OS
+  Windows to cover the macOS global dock bar (:pull:`10116`)
+
+- kitty binary builds are now built on Ubuntu 22 upgraded from Ubuntu 18 for improved performance from better compilers
+
+- macOS: Fix incorrect horizontal alignment when using text sizing protocol (:iss:`10179`)
+
+- ``edit-in-kitty``: Return exit code from underlying editor process on exit (:iss:`10198`)
+
+- Make erasing last command robust against commands with no output and commands in the scrollback (:pull:`10201`)
+
+- Fix superfluous margin visible to the left and right of the tab bar when :opt:`background_opacity` is less than one and the window width is not a multiple of the cell width (:iss:`10212`)
+
+- hints kitten: Add a new flag :option:`kitty +kitten hints --prefix-free` to generate hints without a shared prefix (:pull:`10210`)
+
+- Wayland GNOME: Fix dragging a window title bar to the "+" button failing to create a new tab when there is only a single tab (:iss:`10222`)
+
+- choose-files kitten: Add a ``--mode=all`` to select either an existing file or directory (:iss:`10208`)
+
+- Add support for editing files in sublime text and zed at specified line number (:pull:`10224`)
+
+- choose-file kitten: Use a full readline editor for the search box. Also allow remapping the up/down/home/end keys to use for editing instead of navigating the file list (:pull:`10225`)
+
+- Fix :ac:`remote_control_script` not working in a kitty instance run from inside another kitty instance
+
+- quick-access-terminal kitten: Allow configuring the layer on which to display the terminal (:pull:`10242`)
+
+- :opt:`cursor_trail_start_threshold` now optionally accepts two values to set x (horizontal) and y (vertical) thresholds independently (:iss:`10246`)
+
+- scroll-window remote control command: Fix a regression that broke scrolling by pages (:iss:`10253`)
+
+- Bypass libc malloc for history buffer to avoid libc pool policies causing apparent memory leak (:pull:`10254`)
+
+- Cursor trail: Do not run the trail shader when the cursor is hidden, saving resources (:pull:`10255`)
+
+- Graphics: Fix incorrect calculated cursor position when placing images with X/Y cell offsets (:pull:`10256`)
+
+- macOS: Disable macOS one time code autofill popups (:pull:`10250`)
+
+- Add support for DECSTR soft screen reset escape code (:iss:`10263`)
+
+- macOS: Fix quick-access-terminal appearing on the wrong space (the fullscreen app's space) when triggered from a different space on macOS Tahoe (:iss:`8740`)
 
 0.47.4 [2026-06-15]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

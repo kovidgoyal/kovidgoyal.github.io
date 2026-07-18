@@ -48,7 +48,7 @@ ______________________________
         These two are meant to work with :option:`--stdin-source <launch --stdin-source>` to copy data to the :italic:`system clipboard` or :italic:`primary selection`.
 
     :code:`os-panel`
-        Similar to :code:`os-window`, except that it creates the new OS Window as a desktop panel. Only works on platforms that support this, such as Wayand compositors that support the layer shell protocol. Use the :option:`kitten @ launch --os-panel` option to configure the panel.
+        Similar to :code:`os-window`, except that it creates the new OS Window as a desktop panel. Only works on platforms that support this, such as Wayland compositors that support the layer shell protocol. Use the :option:`kitten @ launch --os-panel` option to configure the panel.
 
 
     Default: :code:`window`
@@ -66,7 +66,7 @@ ______________________________
 
 .. option:: --add-to-session <ADD_TO_SESSION>
 
-    Add the newly created window/tab to the specified session. Use :code:`.` to add to the session of the :option:`source window <launch --source-window>`, if any. See :ref:`sessions` for what a session is and how to use one. By default, the window is added to the session of the :option:`source window <launch --source-window>` when :option:`launch --cwd` is set to use the the working directory from that window, otherwise the newly created window does not belong to any session. To force adding to no session, use the value :code:`!`. Adding a newly created window to a session is purely temporary, it does not change the actual session file, for that you have to resave the session. Note that using this flag in a launch command within a session file has no effect as the window is always added to the session belonging to that file.
+    Add the newly created window/tab to the specified session. Use :code:`.` to add to the session of the :option:`source window <launch --source-window>`, if any. See :ref:`sessions` for what a session is and how to use one. By default, the window is added to the session of the :option:`source window <launch --source-window>` when :option:`launch --cwd` is set to use the working directory from that window, otherwise the newly created window does not belong to any session. To force adding to no session, use the value :code:`!`. Adding a newly created window to a session is purely temporary, it does not change the actual session file, for that you have to resave the session. Note that using this flag in a launch command within a session file has no effect as the window is always added to the session belonging to that file.
 
 .. option:: --env <ENV>
 
