@@ -142,6 +142,7 @@ EOF
         upx gopls staticcheck python-black wireguard-tools aria2 wofi ruff lld yt-dlp python-lsp-server
         python-rope lua-language-server wlr-randr python-jaconv python-pykakasi vulkan-swrast vulkan-icd-loader
         hyprland xdg-desktop-portal-hyprland hypridle hyprpicker swaync brightnessctl onnxruntime espeak-ng kitty
+        tree-sitter-cli
 
         # these alongwith sac-gui below are needed for managing autheticode signing via hardware token
         libp11 pcsclite pkcs11-helper opensc python-pykcs11
