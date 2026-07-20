@@ -2,14 +2,16 @@
 # vim:fileencoding=utf-8
 # License: GPLv3 Copyright: 2016, Kovid Goyal <kovid at kovidgoyal.net>
 
-import os, subprocess, glob
+import glob
+import os
+import subprocess
 
 base = os.path.dirname(os.path.abspath(__file__))
 os.chdir(base)
 repl_dir = os.path.join(base, 'rapydscript', 'repl')
 rapyd_path = os.path.join(os.path.dirname(base), 'rapydscript')
 tuple(map(os.remove, glob.glob(os.path.join(repl_dir, '*'))))
-subprocess.check_call([os.path.join(rapyd_path, 'bin', 'web-repl-export'), repl_dir])
+subprocess.check_call([os.path.join(rapyd_path, 'bin', 'rapydscript'), 'web-repl-export', repl_dir])
 if subprocess.check_output(['git', 'status', '--porcelain', repl_dir]):
     subprocess.check_call(['git', 'add', repl_dir])
     subprocess.check_call(['git', 'commit', '-m', 'Update RapydScript REPL'])
