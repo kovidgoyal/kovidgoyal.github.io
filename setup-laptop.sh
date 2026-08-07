@@ -139,7 +139,7 @@ EOF
         python-pycryptodome ttf-nerd-fonts-symbols python-scipy python-py7zr speech-dispatcher
         python-cchardet inetutils wireless-regdb fprintd cdrtools usbutils kernel-modules-hook
         qemu qemu-user-static qemu-user-static-binfmt edk2-armvirt edk2-ovmf qemu-system-aarch64 swtpm
-        upx gopls staticcheck python-black wireguard-tools aria2 wofi ruff lld yt-dlp
+        upx gopls staticcheck python-black wireguard-tools aria2 wofi ruff lld yt-dlp deno
         python-rope lua-language-server wlr-randr python-jaconv python-pykakasi vulkan-swrast vulkan-icd-loader
         hyprland xdg-desktop-portal-hyprland hypridle hyprpicker swaync brightnessctl onnxruntime espeak-ng kitty
         tree-sitter-cli
