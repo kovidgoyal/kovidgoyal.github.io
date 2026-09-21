@@ -168,7 +168,7 @@ Fields are:
   The window to get text from
 
 :code:`extent (default: screen)`
-  One of :code:`screen`, :code:`first_cmd_output_on_screen`, :code:`last_cmd_output`,         :code:`last_visited_cmd_output`, :code:`all`, :code:`selection`, :code:`alternate`,         or :code:`alternate_scrollback`
+  One of :code:`screen`, :code:`first_cmd_output_on_screen`, :code:`last_cmd_output`,         :code:`last_visited_cmd_output`, :code:`last_non_empty_output`, :code:`all`,         :code:`selection`, :code:`alternate`, or :code:`alternate_scrollback`
 
 :code:`ansi (default: False)`
   Boolean, if True send ANSI formatting codes
@@ -507,6 +507,22 @@ Fields are:
 
 
 
+screenshot
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`match (default: None)`
+  The window to screenshot
+
+:code:`match_tab (default: None)`
+  The tab to screenshot
+
+:code:`output_path (optional)`
+  Path to save the PNG image to, on the computer kitty is running on. Empty to return the image data instead.
+
+
+
 scroll-window
 --------------------------------------------------------------------------------
              for unscrolling by lines, or 'r' for scrolling to prompt.
@@ -691,6 +707,19 @@ Fields are:
 
 :code:`increment_op (optional)`
   The string ``+``, ``-``, ``*`` or ``/`` to interpret size as an increment
+
+
+
+set-os-window-title
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`title (optional)`
+  The new title
+
+:code:`match (default: None)`
+  Which OS windows to change, matched via their contained windows
 
 
 

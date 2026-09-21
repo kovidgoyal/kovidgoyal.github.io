@@ -104,6 +104,15 @@ mandatory, terminals must send the full list of MIME types available in
 the drop. The client program can now request data for the MIME types
 it is interested in.
 
+Data may only be requested after a drop has actually occurred, receiving
+movement events is not sufficient. Terminals must reject any data request
+received before the drop event with an ``EPERM`` error. Since no drop is in
+progress, this particular error does not terminate anything. Additionally,
+when a drag leaves the window without a drop having occurred, terminals must
+discard all data and resources associated with the drag session, such as
+previously fetched URI lists, in-progress file transfers and directory
+handles. Requests referring to them must fail.
+
 Requesting data is done by sending an escape code of the form::
 
     OSC _dnd_code ; t=r:x=idx ST
@@ -134,6 +143,14 @@ terminal emulator must then inform the OS that the drop is completed. Any
 queued data requests must be discarded by the terminal. The ``operation``
 is required and must specify the final action the client took with the data.
 If unset (aka ``0``) the terminal must assume the drop was canceled.
+
+.. note::
+
+    On some platforms, such as macOS, there is no :code:`text/uri-list`
+    MIME type. It gets synthesized from underlying structures such as file
+    promises. In such cases, the files pointed to by the URLs are only
+    guaranteed to exist while the drop is active, clients should copy out the
+    files before closing the drop, to ensure continued access to them.
 
 Dropping from remote machines
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -495,7 +512,7 @@ Key      Value                 Default    Description
 
 ``m``    Chunking indicator    ``0``      ``0`` or ``1``
 
-``i``    Postive integer       ``0``      This id is for use by multiplexers.
+``i``    Positive integer       ``0``     This id is for use by multiplexers.
                                           When it is set, all responses from
                                           the terminal in that session will
                                           have it set to the same value.
@@ -524,18 +541,20 @@ chars``. The leading ``version`` field allows for changing the format or
 semantics of this field in the future. The actual id is the machine id which
 is:
 
-.. tab:: macOS
+.. tab-set::
 
-   The value returned by the ``IOPlatformUUID`` system function.
+   .. tab-item:: macOS
 
-.. tab:: Windows
+      The value returned by the ``IOPlatformUUID`` system function.
 
-   The contents of the :file:`HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography\\MachineGuid`
-   registry key.
+   .. tab-item:: Windows
 
-.. tab:: Other
+      The contents of the :file:`HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography\\MachineGuid`
+      registry key.
 
-   The contents of the :file:`/etc/machine-id` file with trailing whitespace removed
+   .. tab-item:: Other
+
+      The contents of the :file:`/etc/machine-id` file with trailing whitespace removed
 
 This machine id is then hashed using a :rfc:`HMAC <2104>` with :rfc:`SHA-256
 <6234>` as the digest algorithm and the key being the ASCII bytes:
@@ -559,3 +578,4 @@ Currently this protocol is supported in:
 
   * The kitty terminal emulator and the :doc:`dnd kitten </kittens/dnd>`
   * The `yazi <https://github.com/sxyazi/yazi/pull/4005>`__ terminal file manager
+  * The `elio <https://github.com/elio-fm/elio>`__ terminal file manager

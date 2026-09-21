@@ -18,6 +18,32 @@ Here, *metadata* is a colon separated list of key-value pairs and payload is
 base64 encoded data. :code:`OSC` is :code:`<ESC>]`.
 :code:`ST` is the string terminator, :code:`<ESC>\\`.
 
+.. _clipboard_base64:
+
+Encoding of payloads
+-------------------------
+
+All payloads in this protocol, in both directions, as well as the values of the
+metadata keys that are documented below as being base64 encoded (``mime``,
+``name`` and ``pw``), use the standard encoding with the standard alphabet from
+section 4 of :rfc:`base64 <4648>`. Padding is required, that is, every encoded
+value must be a multiple of four bytes long.
+
+Terminals *should* reject data that is not valid base64, that is, data
+containing characters outside the base64 alphabet (this includes whitespace and
+line breaks) or data that is not correctly padded, as prescribed by section 3
+of :rfc:`4648`. Terminals *must not* silently discard invalid characters, since
+that turns corrupted data into apparently valid data. A terminal that rejects a
+write request because of invalid base64 must abort it with the ``EINVAL``
+status, described below. There is no error status for read requests, so a
+terminal that rejects a read request must simply ignore it.
+
+Note that when the data for a single MIME type is split over multiple ``wdata``
+packets, the terminal decodes the concatenation of the payloads of all these
+packets, so an individual packet payload need not be a multiple of four bytes
+long. It is only the concatenation of all the payloads for a given MIME type
+that must be correctly padded.
+
 Reading data from the system clipboard
 ----------------------------------------
 
@@ -109,7 +135,9 @@ Here ``ERRORCODE`` must be one of:
 ``status=EIO``
     An I/O error occurred while processing the data
 ``status=EINVAL``
-    One of the packets was invalid, usually because of invalid base64 encoding.
+    One of the packets was invalid, usually because of invalid base64 encoding
+    (see :ref:`clipboard_base64`) or a missing MIME type. The terminal must
+    discard all data received for the current write request.
 ``status=ENOSYS``
     The client asked to write to the primary selection with (``loc=primary``) and that is not
     available on the system
@@ -119,6 +147,11 @@ Here ``ERRORCODE`` must be one of:
 ``status=EBUSY``
     Sent if there is some temporary problem, such as multiple clients in a
     multiplexer trying to access the clipboard simultaneously.
+``status=EFBIG``
+    Sent if the amount of data being written is larger than the maximum size
+    the terminal is willing to store for the clipboard. Terminals are free to
+    impose such a limit to avoid Denial-of-service attacks, however, they must
+    accept at least 64MB of data.
 
 Once an error occurs, the terminal must ignore all further OSC 5522 write related packets until it
 sees the start of a new write with a ``type=write`` packet.
@@ -130,7 +163,7 @@ Finally, clients have the ability to *alias* MIME types when sending data to
 the clipboard. To do that, the client must send a ``type=walias`` packet of the
 form::
 
-    <OSC>5522;type=walias;mime=<base64 encoded target MIME type>;<base64 encoded, space separated list of aliases><ST>
+    <OSC>5522;type=walias:mime=<base64 encoded target MIME type>;<base64 encoded, space separated list of aliases><ST>
 
 The effect of an alias is that the system clipboard will make available all the
 aliased MIME types, with the same data as was transmitted for the target MIME

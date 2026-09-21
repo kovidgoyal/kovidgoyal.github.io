@@ -21,25 +21,27 @@ To see a quick demo, inside a |kitty| terminal run::
 You can also see a screenshot with more sophisticated features such as
 alpha-blending and text over graphics.
 
-.. image:: https://user-images.githubusercontent.com/1308621/31647475-1188ab66-b326-11e7-8d26-24b937f1c3e8.png
+.. image:: https://github.com/user-attachments/assets/78caad22-1798-4ec5-a6ee-2722c51ce875
     :alt: Demo of graphics rendering in kitty
     :align: center
 
 Some applications that use the kitty graphics protocol:
 
-* `awrit <https://github.com/chase/awrit>`_ - Chromium-based web browser rendered in Kitty with mouse and keyboard support
 * `blackcat <https://github.com/j-c-m/blackcat>`_ - a modern compatible cat with image support
 * `bicat <https://github.com/stevenxxiu/bicat>`_ - a terminal image viewer that also works in the Vifm file manager, with nested Tmux support
 * `broot <https://dystroy.org/broot/>`_ - a terminal file explorer and manager, with preview of images, SVG, PDF, etc.
 * `chafa <https://github.com/hpjansson/chafa>`_  - a terminal image viewer
+* `chawan <https://chawan.net>`_ - TUI web browser
 * `desktui <https://github.com/mishushakov/desktui>`_ - a VNC client that draws a remote desktop in the terminal, one remote pixel per terminal pixel
 * :doc:`kitty-diff <kittens/diff>` - a side-by-side terminal diff program with support for images
+* `elio <https://github.com/elio-fm/elio>`_ - Batteries-included terminal file manager with rich previews
 * `fzf <https://github.com/junegunn/fzf/commit/d8188fce7b7bea982e7f9050c35e488e49fb8fd0>`_ - A command line fuzzy finder
 * `mpv <https://github.com/mpv-player/mpv/commit/874e28f4a41a916bb567a882063dd2589e9234e1>`_ - A video player that can play videos in the terminal
 * `neofetch <https://github.com/dylanaraps/neofetch>`_ - A command line system information tool
 * `nvim <https://github.com/neovim/neovim/issues/30889>`__ - A TUI editor that can display images in the terminal
 * `pixcat <https://github.com/mirukana/pixcat>`_ - a third party CLI and python library that wraps the graphics protocol
 * `ranger <https://github.com/ranger/ranger>`_ - a terminal file manager, with image previews
+* `terminal-browser <https://terminal-browser.com/>`_ - Chromium-based web browser rendered in Kitty with mouse and keyboard support
 * `termpdf.py <https://github.com/dsanson/termpdf.py>`_ - a terminal PDF/DJVU/CBR viewer
 * `timg <https://github.com/hzeller/timg>`_ - a terminal image and video viewer
 * `tpix <https://github.com/jesvedberg/tpix>`_ - a statically compiled binary that can be used to display images and easily installed on remote servers without root access
@@ -60,11 +62,14 @@ Libraries:
 * `kitty-graphics.el <https://github.com/cashmeredev/kitty-graphics.el>`_ - Images in emacs
 * `term-image <https://github.com/AnonymouX47/term-image>`_  - A Python library, CLI and TUI to display and browse images in the terminal
 * `glkitty <https://github.com/michaeljclark/glkitty>`_ - C library to draw OpenGL shaders in the terminal with a glgears demo
+* `malevich <https://github.com/shergin/malevich>`_ - Rust library for terminal plotting that can draw charts with the graphics protocol
 
 Other terminals that have implemented the graphics protocol:
 
+* `AbsoluteTelnet/SSH <https://www.celestialsoftware.net/kitty-graphics-protocol>`_
 * `Ghostty <https://ghostty.org>`_
 * `Konsole <https://invent.kde.org/utilities/konsole/-/merge_requests/594>`_
+* `Mobile SSH <https://mobile-ssh.github.io/docs/terminal/>`_
 * `st (with a patch) <https://st.suckless.org/patches/kitty-graphics-protocol>`_
 * `Warp <https://docs.warp.dev/getting-started/changelog#id-2025.03.26-v0.2025.03.26.08.10>`_
 * `wayst <https://github.com/91861/wayst>`_
@@ -82,86 +87,86 @@ per row and column. The cell width is then simply the window size divided by the
 number of rows. This can be done by using the ``TIOCGWINSZ`` ioctl. Some
 code to demonstrate its use
 
-.. tab:: C
+.. tab-set::
 
-    .. code-block:: c
+   .. tab-item:: C
 
-        #include <stdio.h>
-        #include <sys/ioctl.h>
+      .. code-block:: c
 
-        int main(int argc, char **argv) {
-            struct winsize sz;
-            ioctl(0, TIOCGWINSZ, &sz);
-            printf(
-                "number of rows: %i, number of columns: %i, screen width: %i, screen height: %i\n",
-                sz.ws_row, sz.ws_col, sz.ws_xpixel, sz.ws_ypixel);
-            return 0;
-        }
+         #include <stdio.h>
+         #include <sys/ioctl.h>
 
+         int main(int argc, char **argv) {
+             struct winsize sz;
+             ioctl(0, TIOCGWINSZ, &sz);
+             printf(
+                 "number of rows: %i, number of columns: %i, screen width: %i, screen height: %i\n",
+                 sz.ws_row, sz.ws_col, sz.ws_xpixel, sz.ws_ypixel);
+             return 0;
+         }
 
-.. tab:: Python
+   .. tab-item:: Python
 
-    .. code-block:: python
+      .. code-block:: python
 
-        import array, fcntl, sys, termios
-        buf = array.array('H', [0, 0, 0, 0])
-        fcntl.ioctl(sys.stdout, termios.TIOCGWINSZ, buf)
-        print((
-            'number of rows: {} number of columns: {} '
-            'screen width: {} screen height: {}').format(*buf))
+         import array, fcntl, sys, termios
+         buf = array.array('H', [0, 0, 0, 0])
+         fcntl.ioctl(sys.stdout, termios.TIOCGWINSZ, buf)
+         print((
+             'number of rows: {} number of columns: {} '
+             'screen width: {} screen height: {}').format(*buf))
 
-.. tab:: Go
+   .. tab-item:: Go
 
-    .. code-block:: go
+      .. code-block:: go
 
-        package main
+         package main
 
-        import (
-            "fmt"
-            "os"
+         import (
+             "fmt"
+             "os"
 
-            "golang.org/x/sys/unix"
-        )
+             "golang.org/x/sys/unix"
+         )
 
-        func main() {
-            var err error
-            var f *os.File
-            if f, err = os.OpenFile("/dev/tty", unix.O_NOCTTY|unix.O_CLOEXEC|unix.O_NDELAY|unix.O_RDWR, 0666); err == nil {
-                var sz *unix.Winsize
-                if sz, err = unix.IoctlGetWinsize(int(f.Fd()), unix.TIOCGWINSZ); err == nil {
-                    fmt.Printf("rows: %v columns: %v width: %v height %v\n", sz.Row, sz.Col, sz.Xpixel, sz.Ypixel)
-                    return
-                }
-            }
-            fmt.Fprintln(os.Stderr, err)
-            os.Exit(1)
-        }
+         func main() {
+             var err error
+             var f *os.File
+             if f, err = os.OpenFile("/dev/tty", unix.O_NOCTTY|unix.O_CLOEXEC|unix.O_NDELAY|unix.O_RDWR, 0666); err == nil {
+                 var sz *unix.Winsize
+                 if sz, err = unix.IoctlGetWinsize(int(f.Fd()), unix.TIOCGWINSZ); err == nil {
+                     fmt.Printf("rows: %v columns: %v width: %v height %v\n", sz.Row, sz.Col, sz.Xpixel, sz.Ypixel)
+                     return
+                 }
+             }
+             fmt.Fprintln(os.Stderr, err)
+             os.Exit(1)
+         }
 
+   .. tab-item:: POSIX sh
 
-.. tab:: POSIX sh
+      .. code-block:: sh
 
-    .. code-block:: sh
+         #!/bin/sh
 
-        #!/bin/sh
+         read rows cols <<EOF
+         $(command stty size)
+         EOF
 
-        read rows cols <<EOF
-        $(command stty size)
-        EOF
-
-        oldstty=$(command stty -g)
-        command stty raw -echo
-        printf "\033[14t"
-        response=""
-        while : ; do
-            char=$(command dd bs=1 count=1 2>/dev/null)
-            [ "$char" = "t" ] && break
-            response="${response}${char}"
-        done
-        command stty "$oldstty"
-        h=$(echo "$response" | cut -d';' -f2)
-        w=$(echo "$response" | cut -d';' -f3)
-        printf "number of rows: %d number of columns: %d" "$rows" "$cols"
-        printf " screen width: %d screen height: %d\n" "$w" "$h"
+         oldstty=$(command stty -g)
+         command stty raw -echo
+         printf "\033[14t"
+         response=""
+         while : ; do
+             char=$(command dd bs=1 count=1 2>/dev/null)
+             [ "$char" = "t" ] && break
+             response="${response}${char}"
+         done
+         command stty "$oldstty"
+         h=$(echo "$response" | cut -d';' -f2)
+         w=$(echo "$response" | cut -d';' -f3)
+         printf "number of rows: %d number of columns: %d" "$rows" "$cols"
+         printf " screen width: %d screen height: %d\n" "$w" "$h"
 
 
 Note that some terminals return ``0`` for the width and height values. Such
@@ -182,55 +187,56 @@ A minimal example
 Some minimal code to display PNG images in kitty, using the most basic
 features of the graphics protocol:
 
-.. tab:: POSIX sh
+.. tab-set::
 
-    .. code-block:: sh
+   .. tab-item:: POSIX sh
 
-        #!/bin/sh
+      .. code-block:: sh
 
-        send_chunked() {
-            first="y"
-            while IFS= read -r chunk; do
-                metadata=""; [ "$first" = "y" ] && { metadata="a=T,f=100,"; first="n"; }
-                printf "\033_G%sm=1;%s\033\\" "${metadata}" "${chunk}"
-            done
-            [ "$first" = "n" ] && { printf "\033_Gm=0;\033\\"; return 0; }
-            return 1
-        }
+         #!/bin/sh
 
-        transmit_png() {
-            # Different systems have different or missing base64 executables.
-            # The sed command below adds a trailing newline which openssl
-            # base64 does not produce and is needed for reading via read -r
-            { command base64 -w 4096 "$1" 2>/dev/null | send_chunked; } || \
-            { command base64 -b 4096 "$1" 2>/dev/null | send_chunked; } || \
-            { command openssl base64 -e -A -in "$1" | command sed '$a\' | command fold -b -w 4096 | send_chunked; }
-        }
+         send_chunked() {
+             first="y"
+             while IFS= read -r chunk; do
+                 metadata=""; [ "$first" = "y" ] && { metadata="a=T,f=100,"; first="n"; }
+                 printf "\033_G%sm=1;%s\033\\" "${metadata}" "${chunk}"
+             done
+             [ "$first" = "n" ] && { printf "\033_Gm=0;\033\\"; return 0; }
+             return 1
+         }
 
-        transmit_png "$1"
+         transmit_png() {
+             # Different systems have different or missing base64 executables.
+             # The sed command below adds a trailing newline which openssl
+             # base64 does not produce and is needed for reading via read -r
+             { command base64 -w 4096 "$1" 2>/dev/null | send_chunked; } || \
+             { command base64 -b 4096 "$1" 2>/dev/null | send_chunked; } || \
+             { command openssl base64 -e -A -in "$1" | command sed '$a\' | command fold -b -w 4096 | send_chunked; }
+         }
 
+         transmit_png "$1"
 
-.. tab:: Python
+   .. tab-item:: Python
 
-    .. code-block:: python
+      .. code-block:: python
 
-        #!/usr/bin/env python
-        import sys
-        from base64 import standard_b64encode
+         #!/usr/bin/env python
+         import sys
+         from base64 import standard_b64encode
 
-        first, eof, buf = True, False, memoryview(bytearray(3 * 4096 // 4))
-        w = sys.stdout.buffer.write
-        with open(sys.argv[-1], 'rb') as f:
-            while not eof:
-                p = buf[:]
-                while p and not eof:
-                    n = f.readinto1(p)
-                    p, eof = p[n:], n == 0
-                encoded = standard_b64encode(buf[:len(buf)-len(p)])
-                metadata, first = "a=T,f=100," if first else "", False
-                w(f'\x1b_G{metadata}m={0 if eof else 1};'.encode('ascii'))
-                w(encoded)
-                w(b'\x1b\\')
+         first, eof, buf = True, False, memoryview(bytearray(3 * 4096 // 4))
+         w = sys.stdout.buffer.write
+         with open(sys.argv[-1], 'rb') as f:
+             while not eof:
+                 p = buf[:]
+                 while p and not eof:
+                     n = f.readinto1(p)
+                     p, eof = p[n:], n == 0
+                 encoded = standard_b64encode(buf[:len(buf)-len(p)])
+                 metadata, first = "a=T,f=100," if first else "", False
+                 w(f'\x1b_G{metadata}m={0 if eof else 1};'.encode('ascii'))
+                 w(encoded)
+                 w(b'\x1b\\')
 
 
 Save this script as :file:`send-png`, then you can use it to display any PNG
@@ -250,10 +256,12 @@ All graphics escape codes are of the form::
 This is a so-called *Application Programming Command (APC)*. Most terminal
 emulators ignore APC codes, making it safe to use.
 
-The control data is a comma-separated list of ``key=value`` pairs.  The payload
-is arbitrary binary data, :rfc:`base64 <4648>` encoded to prevent interoperation problems
-with legacy terminals that get confused by control codes within an APC code.
-The meaning of the payload is interpreted based on the control data.
+The control data is a comma-separated list of ``key=value`` pairs, trailing or
+leading commas are undefined implementations may ignore them or reject the
+escape code entirely. The payload is arbitrary binary data, :rfc:`base64
+<4648>` encoded to prevent interoperation problems with legacy terminals that
+get confused by control codes within an APC code. The meaning of the payload is
+interpreted based on the control data.
 
 The first step is to transmit the actual image data.
 
@@ -339,7 +347,7 @@ Value of `t`          Meaning
 ``s``                 A *shared memory object*, which on POSIX systems is a
                       `POSIX shared memory object <https://pubs.opengroup.org/onlinepubs/9699919799/functions/shm_open.html>`_
                       and on Windows is a
-                      `Named shared memory object <https://docs.microsoft.com/en-us/windows/win32/memory/creating-named-shared-memory>`_.
+                      `Named shared memory object <https://docs.microsoft.com/en-us/windows/win32/memory/creating-named-shared-memory>`_. On POSIX SHM names **must** start with a :file:`/` and have no other :file:`/` characters and must be no longer than the maximum SHM name size supported by the OS
                       The terminal emulator must read the data from the memory
                       object and then unlink and close it on POSIX and just
                       close it on Windows.
@@ -352,6 +360,18 @@ from potentially untrusted sources, terminal emulators **must** refuse to read
 any device/socket/etc. special files. Only regular files are allowed.
 Additionally, terminal emulators may refuse to read files in *sensitive*
 parts of the filesystem, such as :file:`/proc`, :file:`/sys`, :file:`/dev`, etc.
+These checks should be made on the path *before* the file is opened, since
+merely opening a file can have side-effects.
+
+Because the escape codes can be emitted by a program running on a remote
+machine over SSH or by a sandboxed process, the terminal emulator **must not**
+allow such a program to use the responses to these commands to learn anything
+about files it cannot read itself. In particular, all failures to read an
+image file, be it because the file does not exist, is not readable, is not a
+regular file, lies in a sensitive location or is smaller than the client
+claimed, must be reported with a single, identical, error response. kitty
+answers with ``EBADF:Failed to read image file`` for all of these and writes
+the actual reason to its log, which only the local user can see.
 
 Local client
 ^^^^^^^^^^^^^^
@@ -528,7 +548,8 @@ and `r` the number of rows. The image will be scaled (enlarged/shrunk) as needed
 the specified area. Note that if you specify a start cell offset via the ``X,Y`` keys, it is not
 added to the number of rows/columns. If only one of either ``r`` or ``c`` is
 specified, the other one is computed based on the source image aspect ratio, so
-that the image is displayed without distortion.
+that the image is displayed without distortion. When both are specified the
+image is letterboxed/pillarboxed to prevent distortion.
 
 Finally, you can specify the image *z-index*, i.e. the vertical stacking order. Images
 placed in the same location with different z-index values will be blended if
@@ -1000,8 +1021,8 @@ To achieve this use the ``a=c`` key. The source frame is specified with
 ``r=frame number`` and the destination frame as ``c=frame number``. The size of
 the rectangle is specified as ``w=width,h=height`` pixels. If unspecified, the
 full image width and height are used. The offset of the rectangle from the
-top-left corner for the source frame is specified by the ``x,y`` keys and the
-destination frame by the ``X,Y`` keys. The composition operation is specified
+top-left corner for the source frame is specified by the ``X,Y`` keys and the
+destination frame by the ``x,y`` keys. The composition operation is specified
 by the ``C`` key with the default being to alpha blend the source rectangle
 onto the destination rectangle. With ``C=1`` it will be a simple replacement
 of pixels. For example::
@@ -1113,8 +1134,8 @@ Key      Value                 Default    Description
 **Keys for animation frame composition**
 -----------------------------------------------------------
 
-``c``    Positive integer      ``0``      The 1-based frame number of the frame whose image data serves as the overlaid data
-``r``    Positive integer      ``0``      The 1-based frame number of the frame that is being edited.
+``c``    Positive integer      ``0``      The 1-based frame number of the frame that is being edited
+``r``    Positive integer      ``0``      The 1-based frame number of the frame whose image data serves as the overlaid data
 ``x``    Positive integer      ``0``      The left edge (in pixels) of the destination rectangle
 ``y``    Positive integer      ``0``      The top edge (in pixels) of the destination rectangle
 ``w``    Positive integer      ``0``      The width (in pixels) of the source and destination rectangles. By default, the entire width is used

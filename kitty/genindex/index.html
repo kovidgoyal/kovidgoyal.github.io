@@ -9,9 +9,9 @@
 <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=65a74789" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=9a3b90ca" />
     <link rel="stylesheet" type="text/css" href="../_static/timestamps.css?v=2a8e5d57" />
     
     
@@ -568,6 +568,7 @@
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#resize-os-window">resize-os-window</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#resize-window">resize-window</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#run">run</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#screenshot">screenshot</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#scroll-window">scroll-window</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#select-window">select-window</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#send-key">send-key</a></li>
@@ -577,6 +578,7 @@
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#set-colors">set-colors</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#set-enabled-layouts">set-enabled-layouts</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#set-font-size">set-font-size</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#set-os-window-title">set-os-window-title</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#set-spacing">set-spacing</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#set-tab-color">set-tab-color</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../rc_protocol/#set-tab-title">set-tab-title</a></li>
@@ -683,87 +685,95 @@
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id22">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-scroll-window">kitten @ scroll-window</a><input aria-label="Toggle navigation of kitten @ scroll-window" class="toctree-checkbox" id="toctree-checkbox-83" name="toctree-checkbox-83" role="switch" type="checkbox"/><label for="toctree-checkbox-83"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-screenshot">kitten @ screenshot</a><input aria-label="Toggle navigation of kitten @ screenshot" class="toctree-checkbox" id="toctree-checkbox-83" name="toctree-checkbox-83" role="switch" type="checkbox"/><label for="toctree-checkbox-83"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id23">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-select-window">kitten @ select-window</a><input aria-label="Toggle navigation of kitten @ select-window" class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-scroll-window">kitten @ scroll-window</a><input aria-label="Toggle navigation of kitten @ scroll-window" class="toctree-checkbox" id="toctree-checkbox-84" name="toctree-checkbox-84" role="switch" type="checkbox"/><label for="toctree-checkbox-84"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id24">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-send-key">kitten @ send-key</a><input aria-label="Toggle navigation of kitten @ send-key" class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" role="switch" type="checkbox"/><label for="toctree-checkbox-85"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-select-window">kitten @ select-window</a><input aria-label="Toggle navigation of kitten @ select-window" class="toctree-checkbox" id="toctree-checkbox-85" name="toctree-checkbox-85" role="switch" type="checkbox"/><label for="toctree-checkbox-85"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id25">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-send-text">kitten @ send-text</a><input aria-label="Toggle navigation of kitten @ send-text" class="toctree-checkbox" id="toctree-checkbox-86" name="toctree-checkbox-86" role="switch" type="checkbox"/><label for="toctree-checkbox-86"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-send-key">kitten @ send-key</a><input aria-label="Toggle navigation of kitten @ send-key" class="toctree-checkbox" id="toctree-checkbox-86" name="toctree-checkbox-86" role="switch" type="checkbox"/><label for="toctree-checkbox-86"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id26">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-background-image">kitten @ set-background-image</a><input aria-label="Toggle navigation of kitten @ set-background-image" class="toctree-checkbox" id="toctree-checkbox-87" name="toctree-checkbox-87" role="switch" type="checkbox"/><label for="toctree-checkbox-87"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-send-text">kitten @ send-text</a><input aria-label="Toggle navigation of kitten @ send-text" class="toctree-checkbox" id="toctree-checkbox-87" name="toctree-checkbox-87" role="switch" type="checkbox"/><label for="toctree-checkbox-87"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id27">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-background-opacity">kitten @ set-background-opacity</a><input aria-label="Toggle navigation of kitten @ set-background-opacity" class="toctree-checkbox" id="toctree-checkbox-88" name="toctree-checkbox-88" role="switch" type="checkbox"/><label for="toctree-checkbox-88"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-background-image">kitten @ set-background-image</a><input aria-label="Toggle navigation of kitten @ set-background-image" class="toctree-checkbox" id="toctree-checkbox-88" name="toctree-checkbox-88" role="switch" type="checkbox"/><label for="toctree-checkbox-88"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id28">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-colors">kitten @ set-colors</a><input aria-label="Toggle navigation of kitten @ set-colors" class="toctree-checkbox" id="toctree-checkbox-89" name="toctree-checkbox-89" role="switch" type="checkbox"/><label for="toctree-checkbox-89"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-background-opacity">kitten @ set-background-opacity</a><input aria-label="Toggle navigation of kitten @ set-background-opacity" class="toctree-checkbox" id="toctree-checkbox-89" name="toctree-checkbox-89" role="switch" type="checkbox"/><label for="toctree-checkbox-89"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id29">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-enabled-layouts">kitten @ set-enabled-layouts</a><input aria-label="Toggle navigation of kitten @ set-enabled-layouts" class="toctree-checkbox" id="toctree-checkbox-90" name="toctree-checkbox-90" role="switch" type="checkbox"/><label for="toctree-checkbox-90"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-colors">kitten @ set-colors</a><input aria-label="Toggle navigation of kitten @ set-colors" class="toctree-checkbox" id="toctree-checkbox-90" name="toctree-checkbox-90" role="switch" type="checkbox"/><label for="toctree-checkbox-90"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id30">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-font-size">kitten @ set-font-size</a><input aria-label="Toggle navigation of kitten @ set-font-size" class="toctree-checkbox" id="toctree-checkbox-91" name="toctree-checkbox-91" role="switch" type="checkbox"/><label for="toctree-checkbox-91"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-enabled-layouts">kitten @ set-enabled-layouts</a><input aria-label="Toggle navigation of kitten @ set-enabled-layouts" class="toctree-checkbox" id="toctree-checkbox-91" name="toctree-checkbox-91" role="switch" type="checkbox"/><label for="toctree-checkbox-91"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id31">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-spacing">kitten @ set-spacing</a><input aria-label="Toggle navigation of kitten @ set-spacing" class="toctree-checkbox" id="toctree-checkbox-92" name="toctree-checkbox-92" role="switch" type="checkbox"/><label for="toctree-checkbox-92"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-font-size">kitten @ set-font-size</a><input aria-label="Toggle navigation of kitten @ set-font-size" class="toctree-checkbox" id="toctree-checkbox-92" name="toctree-checkbox-92" role="switch" type="checkbox"/><label for="toctree-checkbox-92"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id32">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-tab-color">kitten @ set-tab-color</a><input aria-label="Toggle navigation of kitten @ set-tab-color" class="toctree-checkbox" id="toctree-checkbox-93" name="toctree-checkbox-93" role="switch" type="checkbox"/><label for="toctree-checkbox-93"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-os-window-title">kitten @ set-os-window-title</a><input aria-label="Toggle navigation of kitten @ set-os-window-title" class="toctree-checkbox" id="toctree-checkbox-93" name="toctree-checkbox-93" role="switch" type="checkbox"/><label for="toctree-checkbox-93"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id33">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-tab-title">kitten @ set-tab-title</a><input aria-label="Toggle navigation of kitten @ set-tab-title" class="toctree-checkbox" id="toctree-checkbox-94" name="toctree-checkbox-94" role="switch" type="checkbox"/><label for="toctree-checkbox-94"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-spacing">kitten @ set-spacing</a><input aria-label="Toggle navigation of kitten @ set-spacing" class="toctree-checkbox" id="toctree-checkbox-94" name="toctree-checkbox-94" role="switch" type="checkbox"/><label for="toctree-checkbox-94"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id34">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-user-vars">kitten @ set-user-vars</a><input aria-label="Toggle navigation of kitten @ set-user-vars" class="toctree-checkbox" id="toctree-checkbox-95" name="toctree-checkbox-95" role="switch" type="checkbox"/><label for="toctree-checkbox-95"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-tab-color">kitten @ set-tab-color</a><input aria-label="Toggle navigation of kitten @ set-tab-color" class="toctree-checkbox" id="toctree-checkbox-95" name="toctree-checkbox-95" role="switch" type="checkbox"/><label for="toctree-checkbox-95"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id35">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-window-logo">kitten @ set-window-logo</a><input aria-label="Toggle navigation of kitten @ set-window-logo" class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-tab-title">kitten @ set-tab-title</a><input aria-label="Toggle navigation of kitten @ set-tab-title" class="toctree-checkbox" id="toctree-checkbox-96" name="toctree-checkbox-96" role="switch" type="checkbox"/><label for="toctree-checkbox-96"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id36">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-window-title">kitten @ set-window-title</a><input aria-label="Toggle navigation of kitten @ set-window-title" class="toctree-checkbox" id="toctree-checkbox-97" name="toctree-checkbox-97" role="switch" type="checkbox"/><label for="toctree-checkbox-97"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-user-vars">kitten @ set-user-vars</a><input aria-label="Toggle navigation of kitten @ set-user-vars" class="toctree-checkbox" id="toctree-checkbox-97" name="toctree-checkbox-97" role="switch" type="checkbox"/><label for="toctree-checkbox-97"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id37">Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-signal-child">kitten @ signal-child</a><input aria-label="Toggle navigation of kitten @ signal-child" class="toctree-checkbox" id="toctree-checkbox-98" name="toctree-checkbox-98" role="switch" type="checkbox"/><label for="toctree-checkbox-98"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-window-logo">kitten @ set-window-logo</a><input aria-label="Toggle navigation of kitten @ set-window-logo" class="toctree-checkbox" id="toctree-checkbox-98" name="toctree-checkbox-98" role="switch" type="checkbox"/><label for="toctree-checkbox-98"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../remote-control/#id38">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-set-window-title">kitten @ set-window-title</a><input aria-label="Toggle navigation of kitten @ set-window-title" class="toctree-checkbox" id="toctree-checkbox-99" name="toctree-checkbox-99" role="switch" type="checkbox"/><label for="toctree-checkbox-99"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id39">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../remote-control/#kitten-signal-child">kitten @ signal-child</a><input aria-label="Toggle navigation of kitten @ signal-child" class="toctree-checkbox" id="toctree-checkbox-100" name="toctree-checkbox-100" role="switch" type="checkbox"/><label for="toctree-checkbox-100"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remote-control/#id40">Options</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/#sessions">Sessions</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#creating-tabs-windows">Creating tabs/windows</a><input aria-label="Toggle navigation of Creating tabs/windows" class="toctree-checkbox" id="toctree-checkbox-99" name="toctree-checkbox-99" role="switch" type="checkbox"/><label for="toctree-checkbox-99"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#creating-tabs-windows">Creating tabs/windows</a><input aria-label="Toggle navigation of Creating tabs/windows" class="toctree-checkbox" id="toctree-checkbox-101" name="toctree-checkbox-101" role="switch" type="checkbox"/><label for="toctree-checkbox-101"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../launch/">The <strong class="command">launch</strong> command</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../launch/#the-piping-environment">The piping environment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../launch/#special-arguments">Special arguments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../launch/#watching-launched-windows">Watching launched windows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../launch/#finding-executables">Finding executables</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../launch/#syntax-reference">Syntax reference</a><input aria-label="Toggle navigation of Syntax reference" class="toctree-checkbox" id="toctree-checkbox-100" name="toctree-checkbox-100" role="switch" type="checkbox"/><label for="toctree-checkbox-100"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../launch/#syntax-reference">Syntax reference</a><input aria-label="Toggle navigation of Syntax reference" class="toctree-checkbox" id="toctree-checkbox-102" name="toctree-checkbox-102" role="switch" type="checkbox"/><label for="toctree-checkbox-102"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../launch/#options">Options</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#mouse-features">Mouse features</a><input aria-label="Toggle navigation of Mouse features" class="toctree-checkbox" id="toctree-checkbox-101" name="toctree-checkbox-101" role="switch" type="checkbox"/><label for="toctree-checkbox-101"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a><input aria-label="Toggle navigation of Scripting the mouse click" class="toctree-checkbox" id="toctree-checkbox-102" name="toctree-checkbox-102" role="switch" type="checkbox"/><label for="toctree-checkbox-102"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#mouse-features">Mouse features</a><input aria-label="Toggle navigation of Mouse features" class="toctree-checkbox" id="toctree-checkbox-103" name="toctree-checkbox-103" role="switch" type="checkbox"/><label for="toctree-checkbox-103"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../open_actions/">Scripting the mouse click</a><input aria-label="Toggle navigation of Scripting the mouse click" class="toctree-checkbox" id="toctree-checkbox-104" name="toctree-checkbox-104" role="switch" type="checkbox"/><label for="toctree-checkbox-104"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../open_actions/#matching-criteria">Matching criteria</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../open_actions/#scripting-the-opening-of-files-with-kitty">Scripting the opening of files with kitty</a></li>
 </ul>
@@ -772,10 +782,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/#font-control">Font control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/#the-scrollback-buffer">The scrollback buffer</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#integration-with-shells">Integration with shells</a><input aria-label="Toggle navigation of Integration with shells" class="toctree-checkbox" id="toctree-checkbox-103" name="toctree-checkbox-103" role="switch" type="checkbox"/><label for="toctree-checkbox-103"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#integration-with-shells">Integration with shells</a><input aria-label="Toggle navigation of Integration with shells" class="toctree-checkbox" id="toctree-checkbox-105" name="toctree-checkbox-105" role="switch" type="checkbox"/><label for="toctree-checkbox-105"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/">Shell integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../shell-integration/#features">Features</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../shell-integration/#configuration">Configuration</a><input aria-label="Toggle navigation of Configuration" class="toctree-checkbox" id="toctree-checkbox-104" name="toctree-checkbox-104" role="switch" type="checkbox"/><label for="toctree-checkbox-104"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../shell-integration/#configuration">Configuration</a><input aria-label="Toggle navigation of Configuration" class="toctree-checkbox" id="toctree-checkbox-106" name="toctree-checkbox-106" role="switch" type="checkbox"/><label for="toctree-checkbox-106"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../shell-integration/#more-ways-to-browse-command-output">More ways to browse command output</a></li>
 </ul>
 </li>
@@ -791,7 +801,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/#multiple-copy-paste-buffers">Multiple copy/paste buffers</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#marks">Marks</a><input aria-label="Toggle navigation of Marks" class="toctree-checkbox" id="toctree-checkbox-105" name="toctree-checkbox-105" role="switch" type="checkbox"/><label for="toctree-checkbox-105"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/#marks">Marks</a><input aria-label="Toggle navigation of Marks" class="toctree-checkbox" id="toctree-checkbox-107" name="toctree-checkbox-107" role="switch" type="checkbox"/><label for="toctree-checkbox-107"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../marks/">Mark text on screen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../marks/#examples">Examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../marks/#creating-markers-dynamically">Creating markers dynamically</a></li>
@@ -802,7 +812,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../faq/">Frequently Asked Questions</a><input aria-label="Toggle navigation of Frequently Asked Questions" class="toctree-checkbox" id="toctree-checkbox-106" name="toctree-checkbox-106" role="switch" type="checkbox"/><label for="toctree-checkbox-106"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../faq/">Frequently Asked Questions</a><input aria-label="Toggle navigation of Frequently Asked Questions" class="toctree-checkbox" id="toctree-checkbox-108" name="toctree-checkbox-108" role="switch" type="checkbox"/><label for="toctree-checkbox-108"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../faq/#some-special-symbols-are-rendered-small-truncated-in-kitty">Some special symbols are rendered small/truncated in kitty?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../faq/#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-or-functional-keys-like-arrow-keys-don-t-work">I get errors about the terminal being unknown or opening the terminal failing or functional keys like arrow keys don’t work?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../faq/#i-cannot-use-the-key-combination-x-in-program-y">I cannot use the key combination X in program Y?</a></li>
@@ -823,7 +833,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../support/">Support kitty development ❤️</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../sessions/">Sessions</a><input aria-label="Toggle navigation of Sessions" class="toctree-checkbox" id="toctree-checkbox-107" name="toctree-checkbox-107" role="switch" type="checkbox"/><label for="toctree-checkbox-107"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sessions/">Sessions</a><input aria-label="Toggle navigation of Sessions" class="toctree-checkbox" id="toctree-checkbox-109" name="toctree-checkbox-109" role="switch" type="checkbox"/><label for="toctree-checkbox-109"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sessions/#creating-switching-to-sessions-with-a-keypress">Creating/Switching to sessions with a keypress</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sessions/#displaying-the-currently-active-session-name">Displaying the currently active session name</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sessions/#more-complex-sessions">More complex sessions</a></li>
@@ -831,14 +841,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../sessions/#sessions-with-remote-connections">Sessions with remote connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sessions/#managing-multi-tab-sessions-in-a-single-os-window">Managing multi tab sessions in a single OS Window</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sessions/#keyword-reference">Keyword reference</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../sessions/#the-save-as-session-action">The save_as_session action</a><input aria-label="Toggle navigation of The save_as_session action" class="toctree-checkbox" id="toctree-checkbox-108" name="toctree-checkbox-108" role="switch" type="checkbox"/><label for="toctree-checkbox-108"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../sessions/#the-save-as-session-action">The save_as_session action</a><input aria-label="Toggle navigation of The save_as_session action" class="toctree-checkbox" id="toctree-checkbox-110" name="toctree-checkbox-110" role="switch" type="checkbox"/><label for="toctree-checkbox-110"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../sessions/#options">Options</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../performance/">Performance</a><input aria-label="Toggle navigation of Performance" class="toctree-checkbox" id="toctree-checkbox-109" name="toctree-checkbox-109" role="switch" type="checkbox"/><label for="toctree-checkbox-109"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../performance/#benchmarks">Benchmarks</a><input aria-label="Toggle navigation of Benchmarks" class="toctree-checkbox" id="toctree-checkbox-110" name="toctree-checkbox-110" role="switch" type="checkbox"/><label for="toctree-checkbox-110"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../performance/">Performance</a><input aria-label="Toggle navigation of Performance" class="toctree-checkbox" id="toctree-checkbox-111" name="toctree-checkbox-111" role="switch" type="checkbox"/><label for="toctree-checkbox-111"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../performance/#benchmarks">Benchmarks</a><input aria-label="Toggle navigation of Benchmarks" class="toctree-checkbox" id="toctree-checkbox-112" name="toctree-checkbox-112" role="switch" type="checkbox"/><label for="toctree-checkbox-112"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../performance/#keyboard-to-screen-latency">Keyboard to screen latency</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../performance/#throughput">Throughput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../performance/#energy-usage">Energy usage</a></li>
@@ -847,8 +857,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../performance/#instrumenting-kitty">Instrumenting kitty</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../changelog/">Changelog</a><input aria-label="Toggle navigation of Changelog" class="toctree-checkbox" id="toctree-checkbox-111" name="toctree-checkbox-111" role="switch" type="checkbox"/><label for="toctree-checkbox-111"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#recent-major-new-features">Recent major new features</a><input aria-label="Toggle navigation of Recent major new features" class="toctree-checkbox" id="toctree-checkbox-112" name="toctree-checkbox-112" role="switch" type="checkbox"/><label for="toctree-checkbox-112"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../changelog/">Changelog</a><input aria-label="Toggle navigation of Changelog" class="toctree-checkbox" id="toctree-checkbox-113" name="toctree-checkbox-113" role="switch" type="checkbox"/><label for="toctree-checkbox-113"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#recent-major-new-features">Recent major new features</a><input aria-label="Toggle navigation of Recent major new features" class="toctree-checkbox" id="toctree-checkbox-114" name="toctree-checkbox-114" role="switch" type="checkbox"/><label for="toctree-checkbox-114"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#custom-shaders-0-49">Custom shaders [0.49]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#performance-improvements-0-49">Performance improvements [0.49]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#vertical-tabs-0-48">Vertical tabs [0.48]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#drag-and-drop-for-terminal-programs-0-47">Drag and drop for terminal programs [0.47]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#mousing-0-46">Mousing [0.46]</a></li>
@@ -862,145 +874,145 @@
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#variable-font-support-0-36">Variable font support [0.36]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#desktop-notifications-0-36">Desktop notifications [0.36]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#wayland-goodies-0-34">Wayland goodies [0.34]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#cheetah-speed-0-33">Cheetah speed 🐆 [0.33]</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input aria-label="Toggle navigation of Detailed list of changes" class="toctree-checkbox" id="toctree-checkbox-113" name="toctree-checkbox-113" role="switch" type="checkbox"/><label for="toctree-checkbox-113"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.48.2 [2026-07-30]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.48.1 [2026-07-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.48.0 [2026-07-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.47.4 [2026-06-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.47.3 [2026-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.47.2 [2026-06-07]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.47.1 [2026-05-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.47.0 [2026-05-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.46.2 [2026-03-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.46.1 [2026-03-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.46.0 [2026-03-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.45.0 [2025-12-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.44.0 [2025-11-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.43.1 [2025-10-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.43.0 [2025-09-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.42.2 [2025-07-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.42.1 [2025-05-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.42.0 [2025-05-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.41.1 [2025-04-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.41.0 [2025-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.40.1 [2025-03-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.40.0 [2025-03-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.39.1 [2025-02-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.39.0 [2025-01-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.38.1 [2024-12-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.38.0 [2024-12-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.37.0 [2024-10-30]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.36.4 [2024-09-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.36.3 [2024-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.36.2 [2024-09-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.36.1 [2024-08-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.36.0 [2024-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.35.2 [2024-06-22]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.35.1 [2024-05-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.35.0 [2024-05-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.34.1 [2024-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.34.0 [2024-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.33.1 [2024-03-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.33.0 [2024-03-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.32.2 [2024-02-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.32.1 [2024-01-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.32.0 [2024-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.31.0 [2023-11-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.30.1 [2023-10-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.30.0 [2023-09-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.29.2 [2023-07-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.29.1 [2023-07-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.29.0 [2023-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.28.1 [2023-04-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.28.0 [2023-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.27.1 [2023-02-07]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.27.0 [2023-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.26.5 [2022-11-07]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.26.4 [2022-10-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.26.3 [2022-09-22]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.26.2 [2022-09-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.26.1 [2022-08-30]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.26.0 [2022-08-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.25.2 [2022-06-07]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.25.1 [2022-05-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.25.0 [2022-04-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.24.4 [2022-03-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.24.3 [2022-02-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.24.2 [2022-02-03]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.24.1 [2022-01-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.24.0 [2022-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.23.1 [2021-08-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.23.0 [2021-08-16]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.22.2 [2021-08-02]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.22.1 [2021-07-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.22.0 [2021-07-26]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.21.2 [2021-06-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id73">0.21.1 [2021-06-14]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id74">0.21.0 [2021-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id75">0.20.3 [2021-05-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id76">0.20.2 [2021-04-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id77">0.20.1 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id78">0.20.0 [2021-04-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id79">0.19.3 [2020-12-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id80">0.19.2 [2020-11-13]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id81">0.19.1 [2020-10-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id82">0.19.0 [2020-10-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id83">0.18.3 [2020-08-11]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id84">0.18.2 [2020-07-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id85">0.18.1 [2020-06-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id86">0.18.0 [2020-06-20]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id87">0.17.4 [2020-05-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id88">0.17.3 [2020-04-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id89">0.17.2 [2020-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id90">0.17.1 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id91">0.17.0 [2020-03-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id92">0.16.0 [2020-01-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id93">0.15.1 [2019-12-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id94">0.15.0 [2019-11-27]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id95">0.14.6 [2019-09-25]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id96">0.14.5 [2019-09-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id97">0.14.4 [2019-08-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id98">0.14.3 [2019-07-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id99">0.14.2 [2019-06-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id100">0.14.1 [2019-05-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id101">0.14.0 [2019-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id102">0.13.3 [2019-01-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id103">0.13.2 [2019-01-04]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id104">0.13.1 [2018-12-06]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id105">0.13.0 [2018-12-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id106">0.12.3 [2018-09-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id107">0.12.2 [2018-09-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id108">0.12.1 [2018-09-08]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id109">0.12.0 [2018-09-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id110">0.11.3 [2018-07-10]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id111">0.11.2 [2018-07-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id112">0.11.1 [2018-06-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id113">0.11.0 [2018-06-12]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id114">0.10.1 [2018-05-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id115">0.10.0 [2018-05-21]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id116">0.9.1 [2018-05-05]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id117">0.9.0 [2018-04-15]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id118">0.8.4 [2018-03-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id119">0.8.3 [2018-03-29]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id120">0.8.2 [2018-03-17]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id121">0.8.1 [2018-03-09]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id122">0.8.0 [2018-02-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id123">0.7.1 [2018-01-31]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id124">0.7.0 [2018-01-24]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id125">0.6.1 [2017-12-28]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id126">0.6.0 [2017-12-18]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id127">0.5.1 [2017-12-01]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id128">0.5.0 [2017-11-19]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id129">0.4.2 [2017-10-23]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#id130">0.4.0 [2017-10-22]</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#detailed-list-of-changes">Detailed list of changes</a><input aria-label="Toggle navigation of Detailed list of changes" class="toctree-checkbox" id="toctree-checkbox-115" name="toctree-checkbox-115" role="switch" type="checkbox"/><label for="toctree-checkbox-115"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id1">0.49.0 [2026-09-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id2">0.48.2 [2026-07-30]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id3">0.48.1 [2026-07-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id4">0.48.0 [2026-07-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id5">0.47.4 [2026-06-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id6">0.47.3 [2026-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id7">0.47.2 [2026-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id8">0.47.1 [2026-05-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id9">0.47.0 [2026-05-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id10">0.46.2 [2026-03-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id11">0.46.1 [2026-03-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id12">0.46.0 [2026-03-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id13">0.45.0 [2025-12-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id14">0.44.0 [2025-11-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id15">0.43.1 [2025-10-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id16">0.43.0 [2025-09-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id17">0.42.2 [2025-07-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id18">0.42.1 [2025-05-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id19">0.42.0 [2025-05-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id20">0.41.1 [2025-04-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id21">0.41.0 [2025-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id22">0.40.1 [2025-03-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id23">0.40.0 [2025-03-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id24">0.39.1 [2025-02-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id25">0.39.0 [2025-01-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id26">0.38.1 [2024-12-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id27">0.38.0 [2024-12-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id28">0.37.0 [2024-10-30]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id29">0.36.4 [2024-09-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id30">0.36.3 [2024-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id31">0.36.2 [2024-09-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id32">0.36.1 [2024-08-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id33">0.36.0 [2024-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id34">0.35.2 [2024-06-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id35">0.35.1 [2024-05-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id36">0.35.0 [2024-05-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id37">0.34.1 [2024-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id38">0.34.0 [2024-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id39">0.33.1 [2024-03-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id40">0.33.0 [2024-03-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id41">0.32.2 [2024-02-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id42">0.32.1 [2024-01-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id43">0.32.0 [2024-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id44">0.31.0 [2023-11-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id45">0.30.1 [2023-10-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id46">0.30.0 [2023-09-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id47">0.29.2 [2023-07-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id48">0.29.1 [2023-07-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id49">0.29.0 [2023-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id50">0.28.1 [2023-04-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id51">0.28.0 [2023-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id52">0.27.1 [2023-02-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id53">0.27.0 [2023-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id54">0.26.5 [2022-11-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id55">0.26.4 [2022-10-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id56">0.26.3 [2022-09-22]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id57">0.26.2 [2022-09-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id58">0.26.1 [2022-08-30]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id59">0.26.0 [2022-08-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id60">0.25.2 [2022-06-07]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id61">0.25.1 [2022-05-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id62">0.25.0 [2022-04-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id63">0.24.4 [2022-03-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id64">0.24.3 [2022-02-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id65">0.24.2 [2022-02-03]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id66">0.24.1 [2022-01-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id67">0.24.0 [2022-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id68">0.23.1 [2021-08-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id69">0.23.0 [2021-08-16]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id70">0.22.2 [2021-08-02]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id71">0.22.1 [2021-07-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id72">0.22.0 [2021-07-26]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id73">0.21.2 [2021-06-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id74">0.21.1 [2021-06-14]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id75">0.21.0 [2021-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id76">0.20.3 [2021-05-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id77">0.20.2 [2021-04-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id78">0.20.1 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id79">0.20.0 [2021-04-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id80">0.19.3 [2020-12-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id81">0.19.2 [2020-11-13]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id82">0.19.1 [2020-10-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id83">0.19.0 [2020-10-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id84">0.18.3 [2020-08-11]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id85">0.18.2 [2020-07-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id86">0.18.1 [2020-06-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id87">0.18.0 [2020-06-20]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id88">0.17.4 [2020-05-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id89">0.17.3 [2020-04-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id90">0.17.2 [2020-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id91">0.17.1 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id92">0.17.0 [2020-03-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id93">0.16.0 [2020-01-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id94">0.15.1 [2019-12-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id95">0.15.0 [2019-11-27]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id96">0.14.6 [2019-09-25]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id97">0.14.5 [2019-09-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id98">0.14.4 [2019-08-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id99">0.14.3 [2019-07-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id100">0.14.2 [2019-06-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id101">0.14.1 [2019-05-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id102">0.14.0 [2019-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id103">0.13.3 [2019-01-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id104">0.13.2 [2019-01-04]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id105">0.13.1 [2018-12-06]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id106">0.13.0 [2018-12-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id107">0.12.3 [2018-09-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id108">0.12.2 [2018-09-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id109">0.12.1 [2018-09-08]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id110">0.12.0 [2018-09-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id111">0.11.3 [2018-07-10]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id112">0.11.2 [2018-07-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id113">0.11.1 [2018-06-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id114">0.11.0 [2018-06-12]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id115">0.10.1 [2018-05-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id116">0.10.0 [2018-05-21]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id117">0.9.1 [2018-05-05]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id118">0.9.0 [2018-04-15]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id119">0.8.4 [2018-03-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id120">0.8.3 [2018-03-29]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id121">0.8.2 [2018-03-17]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id122">0.8.1 [2018-03-09]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id123">0.8.0 [2018-02-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id124">0.7.1 [2018-01-31]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id125">0.7.0 [2018-01-24]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id126">0.6.1 [2017-12-28]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id127">0.6.0 [2017-12-18]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id128">0.5.1 [2017-12-01]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id129">0.5.0 [2017-11-19]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id130">0.4.2 [2017-10-23]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#id131">0.4.0 [2017-10-22]</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../integrations/">Integrations with other tools</a><input aria-label="Toggle navigation of Integrations with other tools" class="toctree-checkbox" id="toctree-checkbox-114" name="toctree-checkbox-114" role="switch" type="checkbox"/><label for="toctree-checkbox-114"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../integrations/">Integrations with other tools</a><input aria-label="Toggle navigation of Integrations with other tools" class="toctree-checkbox" id="toctree-checkbox-116" name="toctree-checkbox-116" role="switch" type="checkbox"/><label for="toctree-checkbox-116"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../integrations/#image-and-document-viewers">Image and document viewers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../integrations/#file-managers">File managers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../integrations/#system-and-data-visualisation-tools">System and data visualisation tools</a></li>
@@ -1008,20 +1020,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../integrations/#scrollback-manipulation">Scrollback manipulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../integrations/#desktop-panels">Desktop panels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../integrations/#password-managers">Password managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/#ai">AI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../integrations/#miscellaneous">Miscellaneous</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input aria-label="Toggle navigation of Terminal protocol extensions" class="toctree-checkbox" id="toctree-checkbox-115" name="toctree-checkbox-115" role="switch" type="checkbox"/><label for="toctree-checkbox-115"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../protocol-extensions/">Terminal protocol extensions</a><input aria-label="Toggle navigation of Terminal protocol extensions" class="toctree-checkbox" id="toctree-checkbox-117" name="toctree-checkbox-117" role="switch" type="checkbox"/><label for="toctree-checkbox-117"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../underlines/">Colored and styled underlines</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../graphics-protocol/">Terminal graphics protocol</a><input aria-label="Toggle navigation of Terminal graphics protocol" class="toctree-checkbox" id="toctree-checkbox-116" name="toctree-checkbox-116" role="switch" type="checkbox"/><label for="toctree-checkbox-116"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../graphics-protocol/">Terminal graphics protocol</a><input aria-label="Toggle navigation of Terminal graphics protocol" class="toctree-checkbox" id="toctree-checkbox-118" name="toctree-checkbox-118" role="switch" type="checkbox"/><label for="toctree-checkbox-118"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#getting-the-window-size">Getting the window size</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#a-minimal-example">A minimal example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#the-graphics-escape-code">The graphics escape code</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#transferring-pixel-data">Transferring pixel data</a><input aria-label="Toggle navigation of Transferring pixel data" class="toctree-checkbox" id="toctree-checkbox-117" name="toctree-checkbox-117" role="switch" type="checkbox"/><label for="toctree-checkbox-117"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#transferring-pixel-data">Transferring pixel data</a><input aria-label="Toggle navigation of Transferring pixel data" class="toctree-checkbox" id="toctree-checkbox-119" name="toctree-checkbox-119" role="switch" type="checkbox"/><label for="toctree-checkbox-119"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#rgb-and-rgba-data">RGB and RGBA data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#png-data">PNG data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#compression">Compression</a></li>
-<li class="toctree-l4 has-children"><a class="reference internal" href="../graphics-protocol/#the-transmission-medium">The transmission medium</a><input aria-label="Toggle navigation of The transmission medium" class="toctree-checkbox" id="toctree-checkbox-118" name="toctree-checkbox-118" role="switch" type="checkbox"/><label for="toctree-checkbox-118"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../graphics-protocol/#the-transmission-medium">The transmission medium</a><input aria-label="Toggle navigation of The transmission medium" class="toctree-checkbox" id="toctree-checkbox-120" name="toctree-checkbox-120" role="switch" type="checkbox"/><label for="toctree-checkbox-120"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../graphics-protocol/#local-client">Local client</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../graphics-protocol/#remote-client">Remote client</a></li>
 </ul>
@@ -1029,7 +1042,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#querying-support-and-available-transmission-mediums">Querying support and available transmission mediums</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#display-images-on-screen">Display images on screen</a><input aria-label="Toggle navigation of Display images on screen" class="toctree-checkbox" id="toctree-checkbox-119" name="toctree-checkbox-119" role="switch" type="checkbox"/><label for="toctree-checkbox-119"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#display-images-on-screen">Display images on screen</a><input aria-label="Toggle navigation of Display images on screen" class="toctree-checkbox" id="toctree-checkbox-121" name="toctree-checkbox-121" role="switch" type="checkbox"/><label for="toctree-checkbox-121"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#controlling-displayed-image-layout">Controlling displayed image layout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#unicode-placeholders">Unicode placeholders</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#relative-placements">Relative placements</a></li>
@@ -1039,7 +1052,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#suppressing-responses-from-the-terminal">Suppressing responses from the terminal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#requesting-image-ids-from-the-terminal">Requesting image ids from the terminal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#usage-hints">Usage hints</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#animation">Animation</a><input aria-label="Toggle navigation of Animation" class="toctree-checkbox" id="toctree-checkbox-120" name="toctree-checkbox-120" role="switch" type="checkbox"/><label for="toctree-checkbox-120"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../graphics-protocol/#animation">Animation</a><input aria-label="Toggle navigation of Animation" class="toctree-checkbox" id="toctree-checkbox-122" name="toctree-checkbox-122" role="switch" type="checkbox"/><label for="toctree-checkbox-122"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#transferring-animation-frame-data">Transferring animation frame data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#controlling-animations">Controlling animations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../graphics-protocol/#composing-animation-frames">Composing animation frames</a></li>
@@ -1050,9 +1063,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../graphics-protocol/#interaction-with-other-terminal-actions">Interaction with other terminal actions</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../keyboard-protocol/">Comprehensive keyboard handling in terminals</a><input aria-label="Toggle navigation of Comprehensive keyboard handling in terminals" class="toctree-checkbox" id="toctree-checkbox-121" name="toctree-checkbox-121" role="switch" type="checkbox"/><label for="toctree-checkbox-121"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../keyboard-protocol/">Comprehensive keyboard handling in terminals</a><input aria-label="Toggle navigation of Comprehensive keyboard handling in terminals" class="toctree-checkbox" id="toctree-checkbox-123" name="toctree-checkbox-123" role="switch" type="checkbox"/><label for="toctree-checkbox-123"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#quickstart">Quickstart</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#an-overview">An overview</a><input aria-label="Toggle navigation of An overview" class="toctree-checkbox" id="toctree-checkbox-122" name="toctree-checkbox-122" role="switch" type="checkbox"/><label for="toctree-checkbox-122"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#an-overview">An overview</a><input aria-label="Toggle navigation of An overview" class="toctree-checkbox" id="toctree-checkbox-124" name="toctree-checkbox-124" role="switch" type="checkbox"/><label for="toctree-checkbox-124"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#key-codes">Key codes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#modifiers">Modifiers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#event-types">Event types</a></li>
@@ -1060,7 +1073,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#non-unicode-keys">Non-Unicode keys</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#progressive-enhancement">Progressive enhancement</a><input aria-label="Toggle navigation of Progressive enhancement" class="toctree-checkbox" id="toctree-checkbox-123" name="toctree-checkbox-123" role="switch" type="checkbox"/><label for="toctree-checkbox-123"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#progressive-enhancement">Progressive enhancement</a><input aria-label="Toggle navigation of Progressive enhancement" class="toctree-checkbox" id="toctree-checkbox-125" name="toctree-checkbox-125" role="switch" type="checkbox"/><label for="toctree-checkbox-125"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#disambiguate-escape-codes">Disambiguate escape codes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#report-event-types">Report event types</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#report-alternate-keys">Report alternate keys</a></li>
@@ -1069,7 +1082,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#detection-of-support-for-this-protocol">Detection of support for this protocol</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#legacy-key-event-encoding">Legacy key event encoding</a><input aria-label="Toggle navigation of Legacy key event encoding" class="toctree-checkbox" id="toctree-checkbox-124" name="toctree-checkbox-124" role="switch" type="checkbox"/><label for="toctree-checkbox-124"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../keyboard-protocol/#legacy-key-event-encoding">Legacy key event encoding</a><input aria-label="Toggle navigation of Legacy key event encoding" class="toctree-checkbox" id="toctree-checkbox-126" name="toctree-checkbox-126" role="switch" type="checkbox"/><label for="toctree-checkbox-126"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#legacy-functional-keys">Legacy functional keys</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../keyboard-protocol/#legacy-text-keys">Legacy text keys</a></li>
 </ul>
@@ -1080,36 +1093,36 @@
 <li class="toctree-l3"><a class="reference internal" href="../keyboard-protocol/#why-xterm-s-modifyotherkeys-should-not-be-used">Why xterm’s modifyOtherKeys should not be used</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../text-sizing-protocol/">The text sizing protocol</a><input aria-label="Toggle navigation of The text sizing protocol" class="toctree-checkbox" id="toctree-checkbox-125" name="toctree-checkbox-125" role="switch" type="checkbox"/><label for="toctree-checkbox-125"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../text-sizing-protocol/">The text sizing protocol</a><input aria-label="Toggle navigation of The text sizing protocol" class="toctree-checkbox" id="toctree-checkbox-127" name="toctree-checkbox-127" role="switch" type="checkbox"/><label for="toctree-checkbox-127"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../text-sizing-protocol/#quickstart">Quickstart</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../text-sizing-protocol/#the-escape-code">The escape code</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../text-sizing-protocol/#how-it-works">How it works</a><input aria-label="Toggle navigation of How it works" class="toctree-checkbox" id="toctree-checkbox-126" name="toctree-checkbox-126" role="switch" type="checkbox"/><label for="toctree-checkbox-126"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../text-sizing-protocol/#how-it-works">How it works</a><input aria-label="Toggle navigation of How it works" class="toctree-checkbox" id="toctree-checkbox-128" name="toctree-checkbox-128" role="switch" type="checkbox"/><label for="toctree-checkbox-128"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../text-sizing-protocol/#fractional-scaling">Fractional scaling</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../text-sizing-protocol/#fixing-the-character-width-issue-for-the-terminal-ecosystem">Fixing the character width issue for the terminal ecosystem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../text-sizing-protocol/#wrapping-and-overwriting-behavior">Wrapping and overwriting behavior</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../text-sizing-protocol/#detecting-if-the-terminal-supports-this-protocol">Detecting if the terminal supports this protocol</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../text-sizing-protocol/#interaction-with-other-terminal-controls">Interaction with other terminal controls</a><input aria-label="Toggle navigation of Interaction with other terminal controls" class="toctree-checkbox" id="toctree-checkbox-127" name="toctree-checkbox-127" role="switch" type="checkbox"/><label for="toctree-checkbox-127"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../text-sizing-protocol/#interaction-with-other-terminal-controls">Interaction with other terminal controls</a><input aria-label="Toggle navigation of Interaction with other terminal controls" class="toctree-checkbox" id="toctree-checkbox-129" name="toctree-checkbox-129" role="switch" type="checkbox"/><label for="toctree-checkbox-129"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../text-sizing-protocol/#cursor-movement">Cursor movement</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../text-sizing-protocol/#editing-controls">Editing controls</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../text-sizing-protocol/#the-algorithm-for-splitting-text-into-cells">The algorithm for splitting text into cells</a><input aria-label="Toggle navigation of The algorithm for splitting text into cells" class="toctree-checkbox" id="toctree-checkbox-128" name="toctree-checkbox-128" role="switch" type="checkbox"/><label for="toctree-checkbox-128"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../text-sizing-protocol/#the-algorithm-for-splitting-text-into-cells">The algorithm for splitting text into cells</a><input aria-label="Toggle navigation of The algorithm for splitting text into cells" class="toctree-checkbox" id="toctree-checkbox-130" name="toctree-checkbox-130" role="switch" type="checkbox"/><label for="toctree-checkbox-130"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../text-sizing-protocol/#unicode-variation-selectors">Unicode variation selectors</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../dnd-protocol/">The Drag and Drop protocol</a><input aria-label="Toggle navigation of The Drag and Drop protocol" class="toctree-checkbox" id="toctree-checkbox-129" name="toctree-checkbox-129" role="switch" type="checkbox"/><label for="toctree-checkbox-129"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../dnd-protocol/#accepting-drops">Accepting drops</a><input aria-label="Toggle navigation of Accepting drops" class="toctree-checkbox" id="toctree-checkbox-130" name="toctree-checkbox-130" role="switch" type="checkbox"/><label for="toctree-checkbox-130"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l4 has-children"><a class="reference internal" href="../dnd-protocol/#dropping-from-remote-machines">Dropping from remote machines</a><input aria-label="Toggle navigation of Dropping from remote machines" class="toctree-checkbox" id="toctree-checkbox-131" name="toctree-checkbox-131" role="switch" type="checkbox"/><label for="toctree-checkbox-131"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dnd-protocol/">The Drag and Drop protocol</a><input aria-label="Toggle navigation of The Drag and Drop protocol" class="toctree-checkbox" id="toctree-checkbox-131" name="toctree-checkbox-131" role="switch" type="checkbox"/><label for="toctree-checkbox-131"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../dnd-protocol/#accepting-drops">Accepting drops</a><input aria-label="Toggle navigation of Accepting drops" class="toctree-checkbox" id="toctree-checkbox-132" name="toctree-checkbox-132" role="switch" type="checkbox"/><label for="toctree-checkbox-132"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../dnd-protocol/#dropping-from-remote-machines">Dropping from remote machines</a><input aria-label="Toggle navigation of Dropping from remote machines" class="toctree-checkbox" id="toctree-checkbox-133" name="toctree-checkbox-133" role="switch" type="checkbox"/><label for="toctree-checkbox-133"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../dnd-protocol/#reading-remote-directories">Reading remote directories</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../dnd-protocol/#starting-drags">Starting drags</a><input aria-label="Toggle navigation of Starting drags" class="toctree-checkbox" id="toctree-checkbox-132" name="toctree-checkbox-132" role="switch" type="checkbox"/><label for="toctree-checkbox-132"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../dnd-protocol/#starting-drags">Starting drags</a><input aria-label="Toggle navigation of Starting drags" class="toctree-checkbox" id="toctree-checkbox-134" name="toctree-checkbox-134" role="switch" type="checkbox"/><label for="toctree-checkbox-134"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../dnd-protocol/#dragging-to-remote-machines">Dragging to remote machines</a></li>
 </ul>
 </li>
@@ -1120,7 +1133,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../dnd-protocol/#support-in-other-software">Support in other software</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../multiple-cursors-protocol/">The multiple cursors protocol</a><input aria-label="Toggle navigation of The multiple cursors protocol" class="toctree-checkbox" id="toctree-checkbox-133" name="toctree-checkbox-133" role="switch" type="checkbox"/><label for="toctree-checkbox-133"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../multiple-cursors-protocol/">The multiple cursors protocol</a><input aria-label="Toggle navigation of The multiple cursors protocol" class="toctree-checkbox" id="toctree-checkbox-135" name="toctree-checkbox-135" role="switch" type="checkbox"/><label for="toctree-checkbox-135"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../multiple-cursors-protocol/#quickstart">Quickstart</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../multiple-cursors-protocol/#querying-for-support">Querying for support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../multiple-cursors-protocol/#clearing-previously-set-multi-cursors">Clearing previously set multi-cursors</a></li>
@@ -1131,8 +1144,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../multiple-cursors-protocol/#footnotes">Footnotes</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../file-transfer-protocol/">File transfer over the TTY</a><input aria-label="Toggle navigation of File transfer over the TTY" class="toctree-checkbox" id="toctree-checkbox-134" name="toctree-checkbox-134" role="switch" type="checkbox"/><label for="toctree-checkbox-134"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#overall-design">Overall design</a><input aria-label="Toggle navigation of Overall design" class="toctree-checkbox" id="toctree-checkbox-135" name="toctree-checkbox-135" role="switch" type="checkbox"/><label for="toctree-checkbox-135"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../file-transfer-protocol/">File transfer over the TTY</a><input aria-label="Toggle navigation of File transfer over the TTY" class="toctree-checkbox" id="toctree-checkbox-136" name="toctree-checkbox-136" role="switch" type="checkbox"/><label for="toctree-checkbox-136"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#overall-design">Overall design</a><input aria-label="Toggle navigation of Overall design" class="toctree-checkbox" id="toctree-checkbox-137" name="toctree-checkbox-137" role="switch" type="checkbox"/><label for="toctree-checkbox-137"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#sending-files-to-the-computer-running-the-terminal-emulator">Sending files to the computer running the terminal emulator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#receiving-files-from-the-computer-running-terminal-emulator">Receiving files from the computer running terminal emulator</a></li>
 </ul>
@@ -1140,12 +1153,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../file-transfer-protocol/#canceling-a-session">Canceling a session</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../file-transfer-protocol/#quieting-responses-from-the-terminal">Quieting responses from the terminal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../file-transfer-protocol/#file-metadata">File metadata</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#symbolic-and-hard-links">Symbolic and hard links</a><input aria-label="Toggle navigation of Symbolic and hard links" class="toctree-checkbox" id="toctree-checkbox-136" name="toctree-checkbox-136" role="switch" type="checkbox"/><label for="toctree-checkbox-136"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#symbolic-and-hard-links">Symbolic and hard links</a><input aria-label="Toggle navigation of Symbolic and hard links" class="toctree-checkbox" id="toctree-checkbox-138" name="toctree-checkbox-138" role="switch" type="checkbox"/><label for="toctree-checkbox-138"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#sending-links-to-the-terminal-emulator">Sending links to the terminal emulator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#receiving-links-from-the-terminal-emulator">Receiving links from the terminal emulator</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#transmitting-binary-deltas">Transmitting binary deltas</a><input aria-label="Toggle navigation of Transmitting binary deltas" class="toctree-checkbox" id="toctree-checkbox-137" name="toctree-checkbox-137" role="switch" type="checkbox"/><label for="toctree-checkbox-137"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../file-transfer-protocol/#transmitting-binary-deltas">Transmitting binary deltas</a><input aria-label="Toggle navigation of Transmitting binary deltas" class="toctree-checkbox" id="toctree-checkbox-139" name="toctree-checkbox-139" role="switch" type="checkbox"/><label for="toctree-checkbox-139"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#sending-to-the-terminal-emulator">Sending to the terminal emulator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#receiving-from-the-terminal-emulator">Receiving from the terminal emulator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../file-transfer-protocol/#the-format-of-signatures-and-deltas">The format of signatures and deltas</a></li>
@@ -1156,13 +1169,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../file-transfer-protocol/#encoding-of-transfer-commands-as-escape-codes">Encoding of transfer commands as escape codes</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../desktop-notifications/">Desktop notifications</a><input aria-label="Toggle navigation of Desktop notifications" class="toctree-checkbox" id="toctree-checkbox-138" name="toctree-checkbox-138" role="switch" type="checkbox"/><label for="toctree-checkbox-138"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../desktop-notifications/">Desktop notifications</a><input aria-label="Toggle navigation of Desktop notifications" class="toctree-checkbox" id="toctree-checkbox-140" name="toctree-checkbox-140" role="switch" type="checkbox"/><label for="toctree-checkbox-140"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../desktop-notifications/#allowing-users-to-filter-notifications">Allowing users to filter notifications</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../desktop-notifications/#being-informed-when-user-activates-the-notification">Being informed when user activates the notification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../desktop-notifications/#being-informed-when-a-notification-is-closed">Being informed when a notification is closed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../desktop-notifications/#updating-or-closing-an-existing-notification">Updating or closing an existing notification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../desktop-notifications/#automatically-expiring-notifications">Automatically expiring notifications</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../desktop-notifications/#adding-icons-to-notifications">Adding icons to notifications</a><input aria-label="Toggle navigation of Adding icons to notifications" class="toctree-checkbox" id="toctree-checkbox-139" name="toctree-checkbox-139" role="switch" type="checkbox"/><label for="toctree-checkbox-139"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../desktop-notifications/#adding-icons-to-notifications">Adding icons to notifications</a><input aria-label="Toggle navigation of Adding icons to notifications" class="toctree-checkbox" id="toctree-checkbox-141" name="toctree-checkbox-141" role="switch" type="checkbox"/><label for="toctree-checkbox-141"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../desktop-notifications/#adding-icons-by-transmitting-icon-data">Adding icons by transmitting icon data</a></li>
 </ul>
 </li>
@@ -1175,7 +1188,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../desktop-notifications/#identifier">Identifier</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../pointer-shapes/">Mouse pointer shapes</a><input aria-label="Toggle navigation of Mouse pointer shapes" class="toctree-checkbox" id="toctree-checkbox-140" name="toctree-checkbox-140" role="switch" type="checkbox"/><label for="toctree-checkbox-140"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pointer-shapes/">Mouse pointer shapes</a><input aria-label="Toggle navigation of Mouse pointer shapes" class="toctree-checkbox" id="toctree-checkbox-142" name="toctree-checkbox-142" role="switch" type="checkbox"/><label for="toctree-checkbox-142"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../pointer-shapes/#setting-the-pointer-shape">Setting the pointer shape</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pointer-shapes/#pushing-and-popping-shapes-onto-the-stack">Pushing and popping shapes onto the stack</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pointer-shapes/#querying-support">Querying support</a></li>
@@ -1185,9 +1198,9 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../unscroll/">Unscrolling the screen</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../color-stack/">Color control</a><input aria-label="Toggle navigation of Color control" class="toctree-checkbox" id="toctree-checkbox-141" name="toctree-checkbox-141" role="switch" type="checkbox"/><label for="toctree-checkbox-141"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../color-stack/">Color control</a><input aria-label="Toggle navigation of Color control" class="toctree-checkbox" id="toctree-checkbox-143" name="toctree-checkbox-143" role="switch" type="checkbox"/><label for="toctree-checkbox-143"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../color-stack/#saving-and-restoring-colors">Saving and restoring colors</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../color-stack/#setting-and-querying-colors">Setting and querying colors</a><input aria-label="Toggle navigation of Setting and querying colors" class="toctree-checkbox" id="toctree-checkbox-142" name="toctree-checkbox-142" role="switch" type="checkbox"/><label for="toctree-checkbox-142"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../color-stack/#setting-and-querying-colors">Setting and querying colors</a><input aria-label="Toggle navigation of Setting and querying colors" class="toctree-checkbox" id="toctree-checkbox-144" name="toctree-checkbox-144" role="switch" type="checkbox"/><label for="toctree-checkbox-144"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../color-stack/#querying-current-color-values">Querying current color values</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../color-stack/#setting-color-values">Setting color values</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../color-stack/#color-value-encoding">Color value encoding</a></li>
@@ -1196,7 +1209,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../deccara/">Setting text styles/colors in arbitrary regions of the screen</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../clipboard/">Copying all data types to the clipboard</a><input aria-label="Toggle navigation of Copying all data types to the clipboard" class="toctree-checkbox" id="toctree-checkbox-143" name="toctree-checkbox-143" role="switch" type="checkbox"/><label for="toctree-checkbox-143"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../clipboard/">Copying all data types to the clipboard</a><input aria-label="Toggle navigation of Copying all data types to the clipboard" class="toctree-checkbox" id="toctree-checkbox-145" name="toctree-checkbox-145" role="switch" type="checkbox"/><label for="toctree-checkbox-145"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../clipboard/#encoding-of-payloads">Encoding of payloads</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../clipboard/#reading-data-from-the-system-clipboard">Reading data from the system clipboard</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../clipboard/#writing-data-to-the-system-clipboard">Writing data to the system clipboard</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../clipboard/#avoiding-repeated-permission-prompts">Avoiding repeated permission prompts</a></li>
@@ -1205,7 +1219,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../clipboard/#support-for-terminal-multiplexers">Support for terminal multiplexers</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../misc-protocol/">Miscellaneous protocol extensions</a><input aria-label="Toggle navigation of Miscellaneous protocol extensions" class="toctree-checkbox" id="toctree-checkbox-144" name="toctree-checkbox-144" role="switch" type="checkbox"/><label for="toctree-checkbox-144"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../misc-protocol/">Miscellaneous protocol extensions</a><input aria-label="Toggle navigation of Miscellaneous protocol extensions" class="toctree-checkbox" id="toctree-checkbox-146" name="toctree-checkbox-146" role="switch" type="checkbox"/><label for="toctree-checkbox-146"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../misc-protocol/#simple-save-restore-of-all-terminal-modes">Simple save/restore of all terminal modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../misc-protocol/#independent-control-of-bold-and-faint-sgr-properties">Independent control of bold and faint SGR properties</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../misc-protocol/#reporting-when-the-mouse-leaves-the-window">Reporting when the mouse leaves the window</a></li>
@@ -1215,7 +1229,27 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../press-mentions/">Press mentions of kitty</a><input aria-label="Toggle navigation of Press mentions of kitty" class="toctree-checkbox" id="toctree-checkbox-145" name="toctree-checkbox-145" role="switch" type="checkbox"/><label for="toctree-checkbox-145"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../custom-shaders/">Custom Shaders</a><input aria-label="Toggle navigation of Custom Shaders" class="toctree-checkbox" id="toctree-checkbox-147" name="toctree-checkbox-147" role="switch" type="checkbox"/><label for="toctree-checkbox-147"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../custom-shaders/#cursor-trails">Cursor trails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../custom-shaders/#animated-backgrounds">Animated backgrounds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../custom-shaders/#mouse-effects">Mouse effects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../custom-shaders/#navigation">Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../custom-shaders/#retro-terminals">Retro Terminals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../custom-shaders/#customising-and-composing-shaders">Customising and composing shaders</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../custom-shaders/#anatomy-of-a-custom-shader">Anatomy of a custom shader</a><input aria-label="Toggle navigation of Anatomy of a custom shader" class="toctree-checkbox" id="toctree-checkbox-148" name="toctree-checkbox-148" role="switch" type="checkbox"/><label for="toctree-checkbox-148"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../custom-shaders/#how-shaders-are-loaded">How shaders are loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../custom-shaders/#the-shader-part">The shader part</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../custom-shaders/#the-pipeline-part">The pipeline part</a><input aria-label="Toggle navigation of The pipeline part" class="toctree-checkbox" id="toctree-checkbox-149" name="toctree-checkbox-149" role="switch" type="checkbox"/><label for="toctree-checkbox-149"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../custom-shaders/#groups">Groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../custom-shaders/#named-textures">Named textures</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../custom-shaders/#animation-events">Animation events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../press-mentions/">Press mentions of kitty</a><input aria-label="Toggle navigation of Press mentions of kitty" class="toctree-checkbox" id="toctree-checkbox-150" name="toctree-checkbox-150" role="switch" type="checkbox"/><label for="toctree-checkbox-150"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../press-mentions/#video-reviews">Video reviews</a></li>
 </ul>
 </li>
@@ -1604,6 +1638,13 @@
           <li><a href="../remote-control/#cmdoption-kitten-launch-copy-env">kitten-@-launch command line option</a>
 </li>
           <li><a href="../launch/#cmdoption-launch-copy-env">launch command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --copy-mode
+
+        <ul>
+          <li><a href="../kittens/dnd/#cmdoption-kitty-kitten-dnd-copy-mode">kitty-+kitten-dnd command line option</a>
 </li>
         </ul></li>
         <li>
@@ -2298,6 +2339,8 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitten-resize-window-match">kitten-@-resize-window command line option</a>
 </li>
+          <li><a href="../remote-control/#cmdoption-kitten-screenshot-match">kitten-@-screenshot command line option</a>
+</li>
           <li><a href="../remote-control/#cmdoption-kitten-scroll-window-match">kitten-@-scroll-window command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitten-select-window-match">kitten-@-select-window command line option</a>
@@ -2313,6 +2356,8 @@
           <li><a href="../remote-control/#cmdoption-kitten-set-colors-match">kitten-@-set-colors command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitten-set-enabled-layouts-match">kitten-@-set-enabled-layouts command line option</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitten-set-os-window-title-match">kitten-@-set-os-window-title command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitten-set-spacing-match">kitten-@-set-spacing command line option</a>
 </li>
@@ -2338,6 +2383,8 @@
           <li><a href="../remote-control/#cmdoption-kitten-disable-ligatures-match-tab">kitten-@-disable-ligatures command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitten-ls-match-tab">kitten-@-ls command line option</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitten-screenshot-match-tab">kitten-@-screenshot command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitten-send-key-match-tab">kitten-@-send-key command line option</a>
 </li>
@@ -3371,6 +3418,8 @@
 </li>
           <li><a href="../remote-control/#cmdoption-kitten-resize-window-match">kitten-@-resize-window command line option</a>
 </li>
+          <li><a href="../remote-control/#cmdoption-kitten-screenshot-match">kitten-@-screenshot command line option</a>
+</li>
           <li><a href="../remote-control/#cmdoption-kitten-scroll-window-match">kitten-@-scroll-window command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitten-select-window-match">kitten-@-select-window command line option</a>
@@ -3386,6 +3435,8 @@
           <li><a href="../remote-control/#cmdoption-kitten-set-colors-match">kitten-@-set-colors command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitten-set-enabled-layouts-match">kitten-@-set-enabled-layouts command line option</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitten-set-os-window-title-match">kitten-@-set-os-window-title command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitten-set-spacing-match">kitten-@-set-spacing command line option</a>
 </li>
@@ -3477,6 +3528,8 @@
           <li><a href="../remote-control/#cmdoption-kitten-disable-ligatures-match-tab">kitten-@-disable-ligatures command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitten-ls-match-tab">kitten-@-ls command line option</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitten-screenshot-match-tab">kitten-@-screenshot command line option</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitten-send-key-match-tab">kitten-@-send-key command line option</a>
 </li>
@@ -4040,19 +4093,27 @@
     Common Vulnerabilities and Exposures
 
         <ul>
-          <li><a href="../changelog/#index-3">CVE 2026-33633</a>
+          <li><a href="../changelog/#index-7">CVE 2026-33633</a>
 </li>
-          <li><a href="../changelog/#index-4">CVE 2026-33642</a>
+          <li><a href="../changelog/#index-8">CVE 2026-33642</a>
 </li>
-          <li><a href="../changelog/#index-6">CVE 2026-42850</a>
+          <li><a href="../changelog/#index-10">CVE 2026-42850</a>
 </li>
-          <li><a href="../changelog/#index-5">CVE 2026-42851</a>
+          <li><a href="../changelog/#index-9">CVE 2026-42851</a>
 </li>
-          <li><a href="../changelog/#index-1">CVE 2026-54055</a>
+          <li><a href="../changelog/#index-5">CVE 2026-54055</a>
 </li>
-          <li><a href="../changelog/#index-2">CVE 2026-54056</a>
+          <li><a href="../changelog/#index-6">CVE 2026-54056</a>
 </li>
-          <li><a href="../changelog/#index-0">CVE 2026-54057</a>
+          <li><a href="../changelog/#index-4">CVE 2026-54057</a>
+</li>
+          <li><a href="../changelog/#index-3">CVE 2026-72913</a>
+</li>
+          <li><a href="../changelog/#index-1">CVE 2026-80430</a>
+</li>
+          <li><a href="../changelog/#index-2">CVE 2026-80431</a>
+</li>
+          <li><a href="../changelog/#index-0">CVE 2026-80432</a>
 </li>
         </ul></li>
         <li>
@@ -4309,6 +4370,8 @@
 </li>
           <li><a href="../conf/#opt-kitty.cursor_underline_thickness">kitty.cursor_underline_thickness</a>
 </li>
+          <li><a href="../conf/#opt-kitty.custom_shaders">kitty.custom_shaders</a>
+</li>
           <li><a href="../conf/#opt-kitty.default_pointer_shape">kitty.default_pointer_shape</a>
 </li>
           <li><a href="../conf/#opt-kitty.detect_urls">kitty.detect_urls</a>
@@ -4429,6 +4492,8 @@
 </li>
           <li><a href="../conf/#opt-kitty.open_url_with">kitty.open_url_with</a>
 </li>
+          <li><a href="../conf/#opt-kitty.padding_fill_strategy">kitty.padding_fill_strategy</a>
+</li>
           <li><a href="../conf/#opt-kitty.palette_generate">kitty.palette_generate</a>
 </li>
           <li><a href="../conf/#opt-kitty.paste_actions">kitty.paste_actions</a>
@@ -4442,6 +4507,8 @@
           <li><a href="../conf/#opt-kitty.pointer_shape_when_grabbed">kitty.pointer_shape_when_grabbed</a>
 </li>
           <li><a href="../conf/#opt-kitty.progress_bar">kitty.progress_bar</a>
+</li>
+          <li><a href="../conf/#opt-kitty.remap_modifiers">kitty.remap_modifiers</a>
 </li>
           <li><a href="../conf/#opt-kitty.remember_window_position">kitty.remember_window_position</a>
 </li>
@@ -4547,7 +4614,11 @@
 </li>
           <li><a href="../conf/#opt-kitty.tab_title_max_length">kitty.tab_title_max_length</a>
 </li>
+          <li><a href="../conf/#opt-kitty.tab_title_max_lines">kitty.tab_title_max_lines</a>
+</li>
           <li><a href="../conf/#opt-kitty.tab_title_template">kitty.tab_title_template</a>
+</li>
+          <li><a href="../conf/#opt-kitty.tab_title_wrap">kitty.tab_title_wrap</a>
 </li>
           <li><a href="../conf/#opt-kitty.term">kitty.term</a>
 </li>
@@ -4592,6 +4663,8 @@
           <li><a href="../conf/#opt-kitty.wheel_scroll_multiplier">kitty.wheel_scroll_multiplier</a>
 </li>
           <li><a href="../conf/#opt-kitty.window_alert_on_bell">kitty.window_alert_on_bell</a>
+</li>
+          <li><a href="../conf/#opt-kitty.window_border_radius">kitty.window_border_radius</a>
 </li>
           <li><a href="../conf/#opt-kitty.window_border_width">kitty.window_border_width</a>
 </li>
@@ -4805,13 +4878,13 @@
 </li>
           <li><a href="../generated/launch/#index-0">KITTY_LISTEN_ON</a>, <a href="../glossary/#envvar-KITTY_LISTEN_ON">[1]</a>, <a href="../kittens/ssh/#index-3">[2]</a>, <a href="../launch/#index-4">[3]</a>, <a href="../remote-control/#index-14">[4]</a>, <a href="../remote-control/#index-3">[5]</a>
 </li>
-          <li><a href="../changelog/#index-9">KITTY_OS</a>, <a href="../conf/#index-1">[1]</a>, <a href="../glossary/#envvar-KITTY_OS">[2]</a>
+          <li><a href="../changelog/#index-13">KITTY_OS</a>, <a href="../conf/#index-1">[1]</a>, <a href="../glossary/#envvar-KITTY_OS">[2]</a>
 </li>
           <li><a href="../glossary/#envvar-KITTY_PID">KITTY_PID</a>, <a href="../kittens/ssh/#index-0">[1]</a>
 </li>
           <li><a href="../glossary/#envvar-KITTY_PIPE_DATA">KITTY_PIPE_DATA</a>, <a href="../launch/#index-0">[1]</a>
 </li>
-          <li><a href="../changelog/#index-10">KITTY_PUBLIC_KEY</a>, <a href="../file-transfer-protocol/#index-1">[1]</a>, <a href="../glossary/#envvar-KITTY_PUBLIC_KEY">[2]</a>, <a href="../rc_protocol/#index-0">[3]</a>, <a href="../rc_protocol/#index-1">[4]</a>, <a href="../remote-control/#index-1">[5]</a>
+          <li><a href="../changelog/#index-14">KITTY_PUBLIC_KEY</a>, <a href="../file-transfer-protocol/#index-1">[1]</a>, <a href="../glossary/#envvar-KITTY_PUBLIC_KEY">[2]</a>, <a href="../rc_protocol/#index-0">[3]</a>, <a href="../rc_protocol/#index-1">[4]</a>, <a href="../remote-control/#index-1">[5]</a>
 </li>
           <li><a href="../glossary/#envvar-KITTY_RC_PASSWORD">KITTY_RC_PASSWORD</a>, <a href="../remote-control/#index-0">[1]</a>, <a href="../remote-control/#index-4">[2]</a>
 </li>
@@ -4823,11 +4896,11 @@
 </li>
           <li><a href="../glossary/#envvar-KITTY_SIMD">KITTY_SIMD</a>
 </li>
-          <li><a href="../glossary/#envvar-KITTY_WAYLAND_DETECT_MODIFIERS">KITTY_WAYLAND_DETECT_MODIFIERS</a>
+          <li><a href="../conf/#index-13">KITTY_WAYLAND_DETECT_MODIFIERS</a>, <a href="../glossary/#envvar-KITTY_WAYLAND_DETECT_MODIFIERS">[1]</a>
 </li>
-          <li><a href="../changelog/#index-7">KITTY_WINDOW_ID</a>, <a href="../generated/matching/#index-0">[1]</a>, <a href="../glossary/#envvar-KITTY_WINDOW_ID">[2]</a>, <a href="../kittens/broadcast/#index-0">[3]</a>, <a href="../kittens/ssh/#index-1">[4]</a>, <a href="../remote-control/#index-10">[5]</a>, <a href="../remote-control/#index-11">[6]</a>, <a href="../remote-control/#index-12">[7]</a>, <a href="../remote-control/#index-13">[8]</a>, <a href="../remote-control/#index-15">[9]</a>, <a href="../remote-control/#index-16">[10]</a>, <a href="../remote-control/#index-17">[11]</a>, <a href="../remote-control/#index-18">[12]</a>, <a href="../remote-control/#index-19">[13]</a>, <a href="../remote-control/#index-2">[14]</a>, <a href="../remote-control/#index-20">[15]</a>, <a href="../remote-control/#index-21">[16]</a>, <a href="../remote-control/#index-22">[17]</a>, <a href="../remote-control/#index-23">[18]</a>, <a href="../remote-control/#index-24">[19]</a>, <a href="../remote-control/#index-25">[20]</a>, <a href="../remote-control/#index-26">[21]</a>, <a href="../remote-control/#index-27">[22]</a>, <a href="../remote-control/#index-28">[23]</a>, <a href="../remote-control/#index-29">[24]</a>, <a href="../remote-control/#index-5">[25]</a>, <a href="../remote-control/#index-6">[26]</a>, <a href="../remote-control/#index-7">[27]</a>, <a href="../remote-control/#index-8">[28]</a>, <a href="../remote-control/#index-9">[29]</a>
+          <li><a href="../changelog/#index-11">KITTY_WINDOW_ID</a>, <a href="../generated/matching/#index-0">[1]</a>, <a href="../glossary/#envvar-KITTY_WINDOW_ID">[2]</a>, <a href="../kittens/broadcast/#index-0">[3]</a>, <a href="../kittens/ssh/#index-1">[4]</a>, <a href="../remote-control/#index-10">[5]</a>, <a href="../remote-control/#index-11">[6]</a>, <a href="../remote-control/#index-12">[7]</a>, <a href="../remote-control/#index-13">[8]</a>, <a href="../remote-control/#index-15">[9]</a>, <a href="../remote-control/#index-16">[10]</a>, <a href="../remote-control/#index-17">[11]</a>, <a href="../remote-control/#index-18">[12]</a>, <a href="../remote-control/#index-19">[13]</a>, <a href="../remote-control/#index-2">[14]</a>, <a href="../remote-control/#index-20">[15]</a>, <a href="../remote-control/#index-21">[16]</a>, <a href="../remote-control/#index-22">[17]</a>, <a href="../remote-control/#index-23">[18]</a>, <a href="../remote-control/#index-24">[19]</a>, <a href="../remote-control/#index-25">[20]</a>, <a href="../remote-control/#index-26">[21]</a>, <a href="../remote-control/#index-27">[22]</a>, <a href="../remote-control/#index-28">[23]</a>, <a href="../remote-control/#index-29">[24]</a>, <a href="../remote-control/#index-30">[25]</a>, <a href="../remote-control/#index-31">[26]</a>, <a href="../remote-control/#index-5">[27]</a>, <a href="../remote-control/#index-6">[28]</a>, <a href="../remote-control/#index-7">[29]</a>, <a href="../remote-control/#index-8">[30]</a>, <a href="../remote-control/#index-9">[31]</a>
 </li>
-          <li><a href="../changelog/#index-11">LANG</a>, <a href="../faq/#index-5">[1]</a>, <a href="../glossary/#envvar-LANG">[2]</a>
+          <li><a href="../changelog/#index-15">LANG</a>, <a href="../faq/#index-5">[1]</a>, <a href="../glossary/#envvar-LANG">[2]</a>
 </li>
           <li><a href="../binary/#index-0">PATH</a>, <a href="../faq/#index-4">[1]</a>, <a href="../glossary/#envvar-PATH">[2]</a>, <a href="../launch/#index-1">[3]</a>, <a href="../launch/#index-2">[4]</a>, <a href="../launch/#index-3">[5]</a>
 </li>
@@ -4837,7 +4910,7 @@
 </li>
           <li><a href="../conf/#index-10">TERM</a>, <a href="../conf/#index-11">[1]</a>, <a href="../faq/#index-1">[2]</a>, <a href="../faq/#index-7">[3]</a>, <a href="../glossary/#envvar-TERM">[4]</a>
 </li>
-          <li><a href="../changelog/#index-8">TERMINFO</a>, <a href="../conf/#index-12">[1]</a>, <a href="../faq/#index-0">[2]</a>, <a href="../faq/#index-2">[3]</a>, <a href="../faq/#index-3">[4]</a>, <a href="../glossary/#envvar-TERMINFO">[5]</a>
+          <li><a href="../changelog/#index-12">TERMINFO</a>, <a href="../conf/#index-12">[1]</a>, <a href="../faq/#index-0">[2]</a>, <a href="../faq/#index-2">[3]</a>, <a href="../faq/#index-3">[4]</a>, <a href="../glossary/#envvar-TERMINFO">[5]</a>
 </li>
           <li><a href="../conf/#index-4">VISUAL</a>, <a href="../conf/#index-6">[1]</a>, <a href="../glossary/#envvar-VISUAL">[2]</a>, <a href="../glossary/#index-0">[3]</a>, <a href="../glossary/#index-1">[4]</a>
 </li>
@@ -5717,6 +5790,19 @@
 </li>
         </ul></li>
         <li>
+    kitten-@-screenshot command line option
+
+        <ul>
+          <li><a href="../remote-control/#cmdoption-kitten-screenshot-match">--match</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitten-screenshot-match-tab">--match-tab</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitten-screenshot-match">-m</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitten-screenshot-match-tab">-t</a>
+</li>
+        </ul></li>
+        <li>
     kitten-@-scroll-window command line option
 
         <ul>
@@ -5867,6 +5953,15 @@
           <li><a href="../remote-control/#cmdoption-kitten-set-font-size-all">--all</a>
 </li>
           <li><a href="../remote-control/#cmdoption-kitten-set-font-size-all">-a</a>
+</li>
+        </ul></li>
+        <li>
+    kitten-@-set-os-window-title command line option
+
+        <ul>
+          <li><a href="../remote-control/#cmdoption-kitten-set-os-window-title-match">--match</a>
+</li>
+          <li><a href="../remote-control/#cmdoption-kitten-set-os-window-title-match">-m</a>
 </li>
         </ul></li>
         <li>
@@ -6978,6 +7073,8 @@
         <ul>
           <li><a href="../kittens/dnd/#cmdoption-kitty-kitten-dnd-confirm-drop-overwrite">--confirm-drop-overwrite</a>
 </li>
+          <li><a href="../kittens/dnd/#cmdoption-kitty-kitten-dnd-copy-mode">--copy-mode</a>
+</li>
           <li><a href="../kittens/dnd/#cmdoption-kitty-kitten-dnd-drag">--drag</a>
 </li>
           <li><a href="../kittens/dnd/#cmdoption-kitty-kitten-dnd-drag-thumbnail">--drag-thumbnail</a>
@@ -7771,6 +7868,13 @@
 </li>
         </ul></li>
         <li>
+    kitty.custom_shaders
+
+        <ul>
+          <li><a href="../conf/#opt-kitty.custom_shaders">Config Setting</a>
+</li>
+        </ul></li>
+        <li>
     kitty.Debug kitty configuration
 
         <ul>
@@ -8499,6 +8603,13 @@
 </li>
         </ul></li>
         <li>
+    kitty.padding_fill_strategy
+
+        <ul>
+          <li><a href="../conf/#opt-kitty.padding_fill_strategy">Config Setting</a>
+</li>
+        </ul></li>
+        <li>
     kitty.palette_generate
 
         <ul>
@@ -8608,6 +8719,13 @@
 
         <ul>
           <li><a href="../conf/#shortcut-kitty.Reload-kitty.conf">Keyboard Shortcut</a>
+</li>
+        </ul></li>
+        <li>
+    kitty.remap_modifiers
+
+        <ul>
+          <li><a href="../conf/#opt-kitty.remap_modifiers">Config Setting</a>
 </li>
         </ul></li>
         <li>
@@ -9199,10 +9317,24 @@
 </li>
         </ul></li>
         <li>
+    kitty.tab_title_max_lines
+
+        <ul>
+          <li><a href="../conf/#opt-kitty.tab_title_max_lines">Config Setting</a>
+</li>
+        </ul></li>
+        <li>
     kitty.tab_title_template
 
         <ul>
           <li><a href="../conf/#opt-kitty.tab_title_template">Config Setting</a>
+</li>
+        </ul></li>
+        <li>
+    kitty.tab_title_wrap
+
+        <ul>
+          <li><a href="../conf/#opt-kitty.tab_title_wrap">Config Setting</a>
 </li>
         </ul></li>
         <li>
@@ -9416,6 +9548,13 @@
 </li>
         </ul></li>
         <li>
+    kitty.window_border_radius
+
+        <ul>
+          <li><a href="../conf/#opt-kitty.window_border_radius">Config Setting</a>
+</li>
+        </ul></li>
+        <li>
     kitty.window_border_width
 
         <ul>
@@ -9546,13 +9685,13 @@
 </li>
         <li><a href="../generated/launch/#index-0">KITTY_LISTEN_ON</a>, <a href="../kittens/ssh/#index-3">[1]</a>, <a href="../launch/#index-4">[2]</a>, <a href="../remote-control/#index-14">[3]</a>, <a href="../remote-control/#index-3">[4]</a>
 </li>
-        <li><a href="../changelog/#index-9">KITTY_OS</a>, <a href="../conf/#index-1">[1]</a>
+        <li><a href="../changelog/#index-13">KITTY_OS</a>, <a href="../conf/#index-1">[1]</a>
 </li>
         <li><a href="../kittens/ssh/#index-0">KITTY_PID</a>
 </li>
         <li><a href="../launch/#index-0">KITTY_PIPE_DATA</a>
 </li>
-        <li><a href="../changelog/#index-10">KITTY_PUBLIC_KEY</a>, <a href="../file-transfer-protocol/#index-1">[1]</a>, <a href="../rc_protocol/#index-0">[2]</a>, <a href="../rc_protocol/#index-1">[3]</a>, <a href="../remote-control/#index-1">[4]</a>
+        <li><a href="../changelog/#index-14">KITTY_PUBLIC_KEY</a>, <a href="../file-transfer-protocol/#index-1">[1]</a>, <a href="../rc_protocol/#index-0">[2]</a>, <a href="../rc_protocol/#index-1">[3]</a>, <a href="../remote-control/#index-1">[4]</a>
 </li>
         <li><a href="../remote-control/#index-0">KITTY_RC_PASSWORD</a>, <a href="../remote-control/#index-4">[1]</a>
 </li>
@@ -9565,7 +9704,9 @@
         </ul></li>
         <li><a href="../shell-integration/#index-0">KITTY_SHELL_INTEGRATION</a>, <a href="../shell-integration/#index-1">[1]</a>, <a href="../shell-integration/#index-10">[2]</a>, <a href="../shell-integration/#index-6">[3]</a>, <a href="../shell-integration/#index-9">[4]</a>
 </li>
-        <li><a href="../changelog/#index-7">KITTY_WINDOW_ID</a>, <a href="../generated/matching/#index-0">[1]</a>, <a href="../kittens/broadcast/#index-0">[2]</a>, <a href="../kittens/ssh/#index-1">[3]</a>, <a href="../remote-control/#index-10">[4]</a>, <a href="../remote-control/#index-11">[5]</a>, <a href="../remote-control/#index-12">[6]</a>, <a href="../remote-control/#index-13">[7]</a>, <a href="../remote-control/#index-15">[8]</a>, <a href="../remote-control/#index-16">[9]</a>, <a href="../remote-control/#index-17">[10]</a>, <a href="../remote-control/#index-18">[11]</a>, <a href="../remote-control/#index-19">[12]</a>, <a href="../remote-control/#index-2">[13]</a>, <a href="../remote-control/#index-20">[14]</a>, <a href="../remote-control/#index-21">[15]</a>, <a href="../remote-control/#index-22">[16]</a>, <a href="../remote-control/#index-23">[17]</a>, <a href="../remote-control/#index-24">[18]</a>, <a href="../remote-control/#index-25">[19]</a>, <a href="../remote-control/#index-26">[20]</a>, <a href="../remote-control/#index-27">[21]</a>, <a href="../remote-control/#index-28">[22]</a>, <a href="../remote-control/#index-29">[23]</a>, <a href="../remote-control/#index-5">[24]</a>, <a href="../remote-control/#index-6">[25]</a>, <a href="../remote-control/#index-7">[26]</a>, <a href="../remote-control/#index-8">[27]</a>, <a href="../remote-control/#index-9">[28]</a>
+        <li><a href="../conf/#index-13">KITTY_WAYLAND_DETECT_MODIFIERS</a>
+</li>
+        <li><a href="../changelog/#index-11">KITTY_WINDOW_ID</a>, <a href="../generated/matching/#index-0">[1]</a>, <a href="../kittens/broadcast/#index-0">[2]</a>, <a href="../kittens/ssh/#index-1">[3]</a>, <a href="../remote-control/#index-10">[4]</a>, <a href="../remote-control/#index-11">[5]</a>, <a href="../remote-control/#index-12">[6]</a>, <a href="../remote-control/#index-13">[7]</a>, <a href="../remote-control/#index-15">[8]</a>, <a href="../remote-control/#index-16">[9]</a>, <a href="../remote-control/#index-17">[10]</a>, <a href="../remote-control/#index-18">[11]</a>, <a href="../remote-control/#index-19">[12]</a>, <a href="../remote-control/#index-2">[13]</a>, <a href="../remote-control/#index-20">[14]</a>, <a href="../remote-control/#index-21">[15]</a>, <a href="../remote-control/#index-22">[16]</a>, <a href="../remote-control/#index-23">[17]</a>, <a href="../remote-control/#index-24">[18]</a>, <a href="../remote-control/#index-25">[19]</a>, <a href="../remote-control/#index-26">[20]</a>, <a href="../remote-control/#index-27">[21]</a>, <a href="../remote-control/#index-28">[22]</a>, <a href="../remote-control/#index-29">[23]</a>, <a href="../remote-control/#index-30">[24]</a>, <a href="../remote-control/#index-31">[25]</a>, <a href="../remote-control/#index-5">[26]</a>, <a href="../remote-control/#index-6">[27]</a>, <a href="../remote-control/#index-7">[28]</a>, <a href="../remote-control/#index-8">[29]</a>, <a href="../remote-control/#index-9">[30]</a>
 </li>
     </ul></td>
   </tr></table>
@@ -9575,7 +9716,7 @@
   <h2>L</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../changelog/#index-11">LANG</a>, <a href="../faq/#index-5">[1]</a>
+        <li><a href="../changelog/#index-15">LANG</a>, <a href="../faq/#index-5">[1]</a>
 </li>
         <li>
     last_used_layout
@@ -10104,7 +10245,7 @@
 </li>
           <li><a href="../desktop-notifications/#index-1">RFC 3629</a>
 </li>
-          <li><a href="../clipboard/#index-0">RFC 4648</a>, <a href="../clipboard/#index-1">[1]</a>, <a href="../desktop-notifications/#index-0">[2]</a>, <a href="../dnd-protocol/#index-0">[3]</a>, <a href="../graphics-protocol/#index-0">[4]</a>, <a href="../graphics-protocol/#index-2">[5]</a>, <a href="../graphics-protocol/#index-3">[6]</a>
+          <li><a href="../clipboard/#index-0">RFC 4648</a>, <a href="../clipboard/#index-1">[1]</a>, <a href="../clipboard/#index-2">[2]</a>, <a href="../clipboard/#index-3">[3]</a>, <a href="../color-stack/#index-0">[4]</a>, <a href="../desktop-notifications/#index-0">[5]</a>, <a href="../dnd-protocol/#index-0">[6]</a>, <a href="../graphics-protocol/#index-0">[7]</a>, <a href="../graphics-protocol/#index-2">[8]</a>, <a href="../graphics-protocol/#index-3">[9]</a>
 </li>
           <li><a href="../dnd-protocol/#index-3">RFC 6234</a>
 </li>
@@ -10331,6 +10472,8 @@
           <li><a href="../actions/#action-signal_child">Action</a>
 </li>
         </ul></li>
+        <li><a href="../glossary/#term-SIMD"><strong>SIMD</strong></a>
+</li>
         <li>
     simulate_color_scheme_preference_change
 
@@ -10387,7 +10530,7 @@
         </ul></li>
         <li><a href="../conf/#index-10">TERM</a>, <a href="../conf/#index-11">[1]</a>, <a href="../faq/#index-1">[2]</a>, <a href="../faq/#index-7">[3]</a>
 </li>
-        <li><a href="../changelog/#index-8">TERMINFO</a>, <a href="../conf/#index-12">[1]</a>, <a href="../faq/#index-0">[2]</a>, <a href="../faq/#index-2">[3]</a>, <a href="../faq/#index-3">[4]</a>
+        <li><a href="../changelog/#index-12">TERMINFO</a>, <a href="../conf/#index-12">[1]</a>, <a href="../faq/#index-0">[2]</a>, <a href="../faq/#index-2">[3]</a>, <a href="../faq/#index-3">[4]</a>
 </li>
         <li>
     test_dragging
@@ -10551,14 +10694,14 @@
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=e6e6a2fa"></script>
+</div><script src="../_static/documentation_options.js?v=f83c090e"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/tabs.js?v=3ee01567"></script>
-    <script src="../_static/custom.js?v=19d8e277"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/custom.js?v=9a76e07e"></script>
     <script src="../_static/timestamps.js?v=deda34ed"></script>
     </body>
 </html>
