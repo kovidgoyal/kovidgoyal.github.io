@@ -37,6 +37,12 @@ is moving, and it also smooths the trail's jagged edges. Enable it with
 explained at the top of the :repo_file:`shader file
 <kitty/shaders/custom/cursor-trail-motion-blur.slang>`.
 
+The ``cursor-trail-railgun``, ``cursor-trail-torpedo`` and
+``cursor-trail-pixiedust`` shaders make particles fly off the cursor as it
+moves, in the style of `neovide <https://neovide.dev>`__. You can change the
+size, speed, color, lifetime, etc. of the particles, as explained at the top of
+the :repo_file:`shader file <kitty/shaders/custom/cursor-trail-particles.slang>`.
+
 .. include:: generated/custom-shaders-cursor-trails.rst
 
 Animated backgrounds
@@ -86,6 +92,43 @@ This pipeline combines two shaders, the ``crt`` shader and the ``spotlight`` on
 mouse shader. In the first group we have the crt shader and its color has been
 customised. The second group defines the spotlight shader and specifies exactly
 when the spotlight animation should start and stop.
+
+.. _custom_shader_mappings:
+
+Controlling shaders with key presses
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Groups can respond to events you send from a mapping in :file:`kitty.conf`
+using the :ac:`shader_event` action. Such events are named in the pipeline
+with a ``user:`` prefix. For example, to show the spotlight for a couple of
+seconds when you press :kbd:`F1`, so that you can find the mouse pointer,
+create the pipeline file :file:`shaders/find-pointer.pipeline` in the kitty config
+directory with::
+
+    startgroup
+        animation_start user:find-pointer
+        animation_stop 2000
+        shaders spotlight
+    endgroup
+
+and in :file:`kitty.conf`::
+
+    custom_shaders find-pointer
+    map f1 shader_event find-pointer
+
+Use ``animation_toggle`` to turn an effect on with one press and off with the
+next::
+
+    startgroup
+        animation_toggle user:crt
+        shaders crt
+    endgroup
+
+Here ``map f2 shader_event crt`` toggles the ``crt`` effect. Events are sent to
+the active OS window, use ``map f2 shader_event crt all`` to send them to all OS
+windows. You can also send them from scripts with remote control, for example:
+``kitten @ action shader_event crt``. Groups that are not active are not drawn
+at all, so an effect that is turned off costs nothing.
 
 As another example, to blend inactive windows toward gray instead of black, save the
 following as :file:`shaders/dim-gray.pipeline` in your kitty config directory and
@@ -140,15 +183,21 @@ tries to load a pipeline file with that name and if no pipeline file is found
 but a shader with that name is found instead, it is loaded with a default
 pipeline file. Loading of pipeline files takes place in the following order:
 
-#. If the specified pipeline file is an absolute path, it is loaded directly
+#. If the specified pipeline file is an absolute path, it is loaded directly.
+   A leading :file:`~` and environment variables are expanded.
 #. If a relative path it is loaded from the :file:`shaders` sub-directory
    inside the kitty config directory
 #. It is looked for amongst the custom shaders shipped with kitty
 #. A default pipeline file is constructed
 
+The :file:`.pipeline` extension is added automatically if not present. If the
+name ends with :file:`.slang`, no pipeline file is looked for and the shader is
+loaded directly, which is useful when a pipeline and a shader have the same name.
+
 The shaders that a pipeline references are first looked for in the directory
 from which the pipeline file is loaded, then they follow the same order as for
-pipeline files.
+pipeline files. For shaders, the name is first tried exactly as specified and
+then with the :file:`.slang` extension added.
 
 The shader part
 ^^^^^^^^^^^^^^^^^
@@ -168,6 +217,42 @@ The two structs passed into this function have the definition shown below:
 
 Shaders take their inputs and use them to transform the color as they see fit.
 
+.. _custom_shader_pointer_map:
+
+Shaders that move content
+__________________________
+
+A shader that draws content somewhere other than where kitty put it, such as
+the ``crt`` shader curving the screen, makes the mouse pointer and the text
+under it disagree, so that clicks and selections land on the wrong cells. To
+fix that, the shader can also define a function that tells kitty where the
+content shown at a given position actually is::
+
+    public float2
+    pointer_map(float2 pos, KittyCustomShaderData d) {
+        return warp(pos);  // the same function fragment_main() uses to sample the backbuffer
+    }
+
+``pos`` and the return value are in the same UV co-ordinates as ``t.pos``.
+The function must be ``public`` and return ``float2``. kitty evaluates it on a
+grid only when the pipeline is loaded and when the OS Window is resized, and
+uses it to move all pointer events, so the only field of ``d`` it may use is
+``d.viewport_size_pixels``. Only shaders in groups that draw to the whole
+screen, that is, without ``attach``, ``output_texture``, ``viewport_pos`` or
+``viewport_size``, and that are either always active or active until an event
+turns them off, that is, without an ``animation_stop`` duration, are used,
+since only they move content for any length of time. For a group that is
+turned on and off by events, such as one using ``animation_toggle``, the
+function is used only while the group is active, so a shader that moves
+content can be turned on and off with a :ref:`key press
+<custom_shader_mappings>`. When several shaders define it, they are applied
+starting from the last one to run.
+
+Note that :code:`d.mouse_pos` then contains the mapped position, that is, the
+position of the content under the mouse before it was moved. Effects that draw
+at the mouse position line up with the pointer when they run before the shader
+that moves content, not after it.
+
 .. _custom_shader_pipeline:
 
 The pipeline part
@@ -175,7 +260,8 @@ The pipeline part
 
 A pipeline file (:file:`.pipeline`) is a plain text file that controls how
 one or more shaders are assembled into a rendering pipeline. Lines starting
-with ``#`` are comments; blank lines are ignored.
+with ``#`` are comments, as is everything after a ``#`` that is preceded by
+whitespace; blank lines are ignored.
 
 **Top-level directives** (outside any group):
 
@@ -221,8 +307,10 @@ Directives inside a group:
 
 ``shaders <name> [name …]``
     One or more shader names to run in order. Shaders are searched for first
-    in the :file:`shaders/` subdirectory of the kitty config directory, then
-    among the shaders shipped with kitty.
+    in the directory containing the pipeline file, then in the :file:`shaders/`
+    subdirectory of the kitty config directory, then among the shaders shipped
+    with kitty. Absolute paths, including ones starting with :file:`~`, are
+    loaded directly.
 
 ``var <type> <name> <value>``
     Same as the top-level ``var`` but scoped to this group. Merged with
@@ -231,12 +319,12 @@ Directives inside a group:
 ``viewport_pos <x> <y>``
     The bottom-left corner of this group's rendering region, expressed as
     unit floats in UV coordinates (0,0 = bottom-left of the screen, 1,1 =
-    top-right). Defaults to ``0 0``. Ignored for the final group, which
-    always covers the full screen.
+    top-right). Defaults to ``0 0``. The final group must use this default,
+    since it always covers the full screen. Non-default values are rejected.
 
 ``viewport_size <w> <h>``
     The width and height of the rendering region as unit floats. Defaults to
-    ``1 1``. Ignored for the final group.
+    ``1 1``. The final group must use this default; non-default values are rejected.
 
 ``output_texture <name>``
     Where the group writes its output. The default (``default``) ping-pongs
@@ -248,16 +336,17 @@ Directives inside a group:
 
 ``animation_start <event>[|<event> …]``
     Events that trigger the start of this group's animation. Multiple events
-    are separated by ``|``. If omitted the group runs on every frame
-    unconditionally. See *Animation events* below for the full list.
+    are separated by ``|``. A group with neither this nor ``animation_toggle``
+    nor ``attach`` runs on every frame unconditionally. See *Animation events*
+    below for the full list.
 
 ``animation_stop <token>[|<token> …]``
     When to stop the animation. Tokens are separated by ``|`` and may be:
 
     * An event name — the animation stops when that event fires.
     * An integer — a duration in **milliseconds** after which the animation
-      automatically stops. The ``animation_progress`` value will smoothly
-      reach ``1.0`` at that point.
+      automatically stops. Unless ``animation_duration`` is set, the
+      ``animation_progress`` value will smoothly reach ``1.0`` at that point.
     * ``never`` — the animation runs indefinitely until an explicit stop event.
 
     When ``animation_stop`` is omitted kitty uses
@@ -275,6 +364,60 @@ Directives inside a group:
 
     Defaults to a linear mapping (no easing).
 
+``animation_duration <ms>``
+    How many milliseconds the ``animation_progress`` value takes to go from
+    ``0.0`` to ``1.0`` after the animation starts. It then stays at ``1.0``
+    until the animation stops. This is useful for effects that should fade in
+    and then stay on, for example ones turned on by ``animation_toggle``.
+    Defaults to the ``animation_stop`` duration. Note that groups with no stop
+    duration, such as those using ``animation_stop never`` or only
+    ``animation_toggle``, always have an ``animation_progress`` of ``0.0``
+    unless this is set.
+
+``animation_reverse yes|no|<ms>``
+    Whether to play the animation in reverse when it stops, for any reason,
+    instead of turning the group off immediately. The group then stays active
+    while ``animation_progress`` goes back down to ``0.0``, using the same
+    ``animation_curve``, and turns off once it gets there. With ``yes`` this
+    takes as long as ``animation_duration``, a number sets the time in
+    milliseconds instead. If the animation is stopped before
+    ``animation_progress`` reaches ``1.0`` it goes back down from wherever it
+    was, and if it is started again while going back down, it goes up again
+    from wherever it was. Stop events are ignored while playing in reverse.
+    Defaults to ``no``. For example, to fade the ``crt`` effect in and out
+    over half a second when toggling it::
+
+        startgroup
+            animation_toggle user:crt
+            animation_duration 500
+            animation_reverse yes
+            shaders crt
+        endgroup
+
+    Note that the ``crt`` shader does not actually use ``animation_progress``,
+    you would need to modify it to do so.
+
+``animation_loops <n>``
+    How many times to play the animation forwards and in reverse when it
+    stops. Can only be used together with ``animation_reverse``. After the
+    first reverse finishes, ``animation_progress`` goes from ``0.0`` to
+    ``1.0`` over ``animation_duration`` and immediately back down again,
+    without staying at ``1.0``, until it has gone up and down ``n`` times in
+    all, after which the group turns off. Stop events are ignored while
+    looping, start and toggle events turn the group back on, continuing from
+    the current progress. Defaults to ``1``. For example, to blink three times
+    when a key is pressed, with an animation that stops as soon as it has
+    risen to ``1.0``::
+
+        startgroup
+            animation_start user:blink
+            animation_duration 150
+            animation_stop 150
+            animation_reverse yes
+            animation_loops 3
+            shaders my-blink-shader
+        endgroup
+
 ``animation_step <ms>``
     How many milliseconds between animation frames. Lower values produce
     smoother animation at the cost of more GPU draws. Defaults to ``50`` ms
@@ -283,6 +426,15 @@ Directives inside a group:
     redraw only when content or shader events change, without periodic frames.
     Animation stop events and duration limits still apply.
 
+``animation_toggle <event>[|<event> …]``
+    Events that start this group's animation when it is not running and stop
+    it when it is. This is mostly useful with ``user:`` events sent by the
+    :ac:`shader_event` action to turn effects on and off from a mapping. A
+    toggle takes precedence over start and stop events in the same frame. A
+    group that has ``animation_toggle`` but neither ``animation_start`` nor
+    ``animation_stop`` keeps running until it is toggled off, rather than
+    stopping after :opt:`cursor_stop_blinking_after`.
+
 ``attach``
     Mark this group as *attached* to the preceding group. An attached group
     is automatically active whenever its preceding group is active, without
@@ -290,13 +442,15 @@ Directives inside a group:
     directives. This is the primary way to build multi-pass effects where
     several groups must activate and deactivate together. The first group in
     a pipeline cannot use ``attach``. An attached group may also carry its
-    own ``animation_start`` — in that case it becomes active when *either*
-    condition is true (its own events or the preceding group being active).
-    If an attached group has no ``animation_start`` of its own, it mirrors
-    the preceding group exactly: it activates when that group activates and
-    deactivates when that group deactivates. ``animation_progress`` for
-    an attached group is computed from the same ``started_at`` timestamp as
-    the preceding group, so both groups animate in perfect sync.
+    own ``animation_start`` or ``animation_toggle`` — in that case it becomes
+    active when *either* condition is true (its own events or the preceding
+    group being active). If an attached group has neither ``animation_start``
+    nor ``animation_toggle`` of its own, it mirrors the preceding group
+    exactly: it activates when that group activates and
+    deactivates when that group deactivates, and has the same
+    ``animation_progress`` as that group, so both groups animate in perfect
+    sync. Its own ``animation_curve``, ``animation_duration`` and
+    ``animation_reverse`` are ignored.
 
 .. _named_textures:
 
@@ -340,9 +494,9 @@ reads from ``t.backbuffer`` and writes somewhere:
 * ``output_texture a|b|persist``: the group writes into the named texture
   instead, leaving the backbuffer intact for the next group.
 
-Groups that have ``animation_start`` set are skipped entirely when their
-animation is not active, saving GPU work. Groups without any
-``animation_start`` run on every frame.
+Groups with ``animation_start``, ``animation_toggle`` or ``attach`` are skipped
+entirely when their animation is not active, saving GPU work. Groups without
+any of these directives run on every frame.
 
 **A minimal pipeline** — one shader, event-driven animation::
 
@@ -400,7 +554,7 @@ Animation events
 ^^^^^^^^^^^^^^^^^^^
 
 Animation events drive when groups start and stop animating. They are used in
-the ``animation_start`` and ``animation_stop`` directives. Multiple events can
+the ``animation_start``, ``animation_stop`` and ``animation_toggle`` directives. Multiple events can
 be combined with ``|`` — any one of them will trigger the action.
 
 .. list-table::
@@ -457,6 +611,12 @@ be combined with ``|`` — any one of them will trigger the action.
    * - ``cursor-trail-stop``
      - The cursor trail stops moving. Typically used as an ``animation_stop``
        event paired with ``cursor-trail-move`` as the start event.
+
+   * - ``user:<name>``
+     - Sent by the :ac:`shader_event` action, typically from a mapping, see
+       :ref:`custom_shader_mappings`. ``<name>`` can be any combination of
+       letters, digits, underscores, hyphens and periods, up to 63 characters.
+       A pipeline can use up to 48 different user events.
 
 Note that if both a start event and a focus-out event fire in the same frame
 (for example, a mouse click that simultaneously moves focus away), the

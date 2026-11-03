@@ -63,6 +63,7 @@ Libraries:
 * `term-image <https://github.com/AnonymouX47/term-image>`_  - A Python library, CLI and TUI to display and browse images in the terminal
 * `glkitty <https://github.com/michaeljclark/glkitty>`_ - C library to draw OpenGL shaders in the terminal with a glgears demo
 * `malevich <https://github.com/shergin/malevich>`_ - Rust library for terminal plotting that can draw charts with the graphics protocol
+* `kmp-terminal <https://github.com/JohNan/kmp-terminal-emulator>`_ - Kotlin Multiplatform terminal emulator library and Compose Multiplatform renderer supporting the graphics protocol and Unicode placeholders
 
 Other terminals that have implemented the graphics protocol:
 
@@ -71,6 +72,7 @@ Other terminals that have implemented the graphics protocol:
 * `Konsole <https://invent.kde.org/utilities/konsole/-/merge_requests/594>`_
 * `Mobile SSH <https://mobile-ssh.github.io/docs/terminal/>`_
 * `st (with a patch) <https://st.suckless.org/patches/kitty-graphics-protocol>`_
+* `SSH Client for Android <https://ssh-client.nanzen.se/features>`_
 * `Warp <https://docs.warp.dev/getting-started/changelog#id-2025.03.26-v0.2025.03.26.08.10>`_
 * `wayst <https://github.com/91861/wayst>`_
 * `WezTerm <https://github.com/wez/wezterm/issues/986>`_
@@ -281,7 +283,9 @@ emulator must understand pixel data in three formats, 24-bit RGB, 32-bit RGBA an
 PNG. This is specified using the ``f`` key in the control data. ``f=32`` (which is the
 default) indicates 32-bit RGBA data and ``f=24`` indicates 24-bit RGB data and ``f=100``
 indicates PNG data. The PNG format is supported both for convenience, and as a compact way
-of transmitting paletted images.
+of transmitting paletted images. Additionally, ``f=8`` and ``f=16`` indicate
+:ref:`indexed color data <indexed_color_data>`, whose colors come from the
+terminal color scheme.
 
 RGB and RGBA data
 ~~~~~~~~~~~~~~~~~~~
@@ -296,6 +300,60 @@ control data. For example::
 Here the width and height are specified using the ``s`` and ``v`` keys respectively. Since
 ``f=24`` there are three bytes per pixel and therefore the pixel data must be ``3 * 10 * 20 = 600``
 bytes.
+
+.. _indexed_color_data:
+
+Indexed color data
+~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 0.50.0
+
+In these formats every pixel is an index into the terminal's color palette,
+rather than an actual color. The image is drawn using the current colors of
+the terminal and is automatically redrawn when they change, for example, when
+the user switches from a dark to a light color theme. This is useful for
+graphics such as charts and diagrams that should match the colors of the text
+around them. As with RGB data, the image dimensions **must** be sent in the
+control data. For example::
+
+    <ESC>_Gf=16,s=10,v=20;<payload><ESC>\
+
+With ``f=8`` every pixel is a single byte, the palette index, and the image is
+fully opaque, so the data must be ``10 * 20 = 200`` bytes. With ``f=16`` every
+pixel is two bytes, the palette index followed by the alpha (opacity) of the
+pixel, from ``0`` (fully transparent) to ``255`` (fully opaque), so the data
+must be ``2 * 10 * 20 = 400`` bytes. Use a transparent pixel when you want
+whatever is below the image, such as the terminal background, to show through,
+and partially transparent pixels to anti-alias edges.
+
+The palette index maps to colors as follows:
+
+=========== ====================================================================
+Index        Color
+=========== ====================================================================
+0 - 247      The same colors as in the SGR 256 color table, that is the 16
+             ANSI colors, the 6x6x6 color cube and the first sixteen shades
+             of the grayscale ramp
+248          The default background color
+249          The default foreground color
+250          The selection background color
+251          The selection foreground color
+252          The cursor color
+253          The cursor text color
+254          The color used to highlight URLs on mouse hover
+255          Reserved for future use, currently the default foreground color
+=========== ====================================================================
+
+When a terminal setting means one of the special colors at ``250 - 253`` is
+taken from the cell it is drawn over, the default foreground color is used
+for ``250`` and ``252`` and the default background color for ``251`` and
+``253``. Note that ``248`` is always drawn as an opaque color, ignoring any
+background opacity of the terminal window, use transparent pixels instead to
+let the actual window background show through.
+
+Animation and frame composition are not supported for images in these formats.
+Clients can check for support by sending a :ref:`query <querying>` with
+``f=8`` and checking for an ``OK`` response.
 
 PNG data
 ~~~~~~~~~~~~~~~
@@ -347,7 +405,18 @@ Value of `t`          Meaning
 ``s``                 A *shared memory object*, which on POSIX systems is a
                       `POSIX shared memory object <https://pubs.opengroup.org/onlinepubs/9699919799/functions/shm_open.html>`_
                       and on Windows is a
-                      `Named shared memory object <https://docs.microsoft.com/en-us/windows/win32/memory/creating-named-shared-memory>`_. On POSIX SHM names **must** start with a :file:`/` and have no other :file:`/` characters and must be no longer than the maximum SHM name size supported by the OS
+                      `Named shared memory object <https://docs.microsoft.com/en-us/windows/win32/memory/creating-named-shared-memory>`_.
+                      On POSIX, clients *should* use SHM names that start with
+                      a :file:`/` and have no other :file:`/` characters,
+                      whenever possible. However, some platforms require
+                      other forms, for example, sandboxed applications on
+                      macOS can only use names of the form
+                      :file:`app-group-id/name`, with no leading slash. So
+                      terminal emulators **must** accept names without a
+                      leading slash and pass the name unmodified to
+                      :code:`shm_open()` and :code:`shm_unlink()`. Names must
+                      be no longer than the maximum SHM name size supported
+                      by the OS.
                       The terminal emulator must read the data from the memory
                       object and then unlink and close it on POSIX and just
                       close it on Windows.
@@ -426,6 +495,8 @@ position when the final chunk is received. Finally, terminals must not display
 anything, until the entire sequence is received and validated.
 
 
+.. _querying:
+
 Querying support and available transmission mediums
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -471,6 +542,71 @@ So for example, you could send::
 If you get back a response to the graphics query, the terminal emulator supports
 the protocol, if you get back a response to the device attributes query without
 a response to the graphics query, it does not.
+
+.. _graphics_query_features:
+
+Querying support for protocol features
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 0.50.0
+   Support for querying protocol features with the ``e`` key
+
+Some terminal emulators implement only part of this protocol, while still
+replying ``OK`` to the *query action*. To find out which features a terminal
+supports, send a *feature query*: a *query action* with the ``e`` key set to
+the action you are interested in. For example, ``e=T`` to ask about
+transmitting and displaying images or ``e=f`` to ask about loading animation
+frames. Since the meaning of many keys differs between actions, the other keys
+in the feature query are interpreted as they would be for that action. The
+terminal emulator will include in its reply every key from the feature query
+that has a non-default value which it supports for that action, with that
+value, as well as ``e`` itself, to indicate that it supports the action. For
+example, to check for support for :ref:`Unicode placeholders
+<graphics_unicode_placeholders>` and the cursor movement policy::
+
+    <ESC>_Ga=q,i=31,e=T,U=1,C=1<ESC>\
+
+to which a terminal that supports both will reply::
+
+    <ESC>_Gi=31,e=T,C=1,U=1;OK<ESC>\
+
+And to check for support for :ref:`animation <animation_protocol>`, including
+editing existing frames and the overwrite composition mode::
+
+    <ESC>_Ga=q,i=31,e=f,r=1,X=1<ESC>\
+
+to which a terminal that supports animation frames but not the overwrite
+composition mode will reply::
+
+    <ESC>_Gi=31,e=f,r=1;OK<ESC>\
+
+Keys can appear in the reply in any order. A key that is missing from the reply
+is not supported, at least not with the value specified in the query. If ``e``
+is missing from the reply, the action is not supported, and no other keys are
+reported. Keys with default values, as well as the ``a``, ``i``, ``I``, ``m``
+and ``q`` keys, are not included in the reply. A feature query transmits no
+image data, any payload is ignored, and it has no effect on images or on any
+chunked transmission in progress. The ``e`` key is only allowed in
+*query actions*, and the feature query must have the ``i`` key set, as for any
+other *query action*.
+
+Note that a feature query never performs any action, it only checks whether
+the specified keys and values are understood. For example, a terminal emulator
+replying with ``t=f`` might still fail to read a particular file. Use a normal
+*query action* to check that.
+
+Terminal emulators that do not support feature queries will either ignore the
+``e`` key and reply to a normal *query action*, without ``e`` in the reply, or
+consider the command malformed and not reply at all. A client can handle all
+cases by sending feature queries after the query used to detect support for the
+protocol, followed by the request for the primary device attributes::
+
+    <ESC>_Gi=31,s=1,v=1,a=q,t=d,f=24;AAAA<ESC>\<ESC>_Ga=q,i=32,e=T,U=1<ESC>\<ESC>_Ga=q,i=33,e=f<ESC>\<ESC>[c
+
+If no reply to a feature query is received before the reply to the device
+attributes query, or the reply does not contain ``e``, the terminal emulator
+does not support the queried action, or does not support feature queries at
+all, and the client has to fall back to other means of detecting features.
 
 
 Display images on screen
@@ -586,6 +722,10 @@ You can also use a special Unicode character ``U+10EEEE`` as a placeholder for
 an image. This approach is less flexible, but it allows using images inside
 any host application that supports Unicode, foreground colors (tmux, vim, weechat, etc.),
 and a way to pass escape codes through to the underlying terminal.
+
+Clients can detect support for Unicode placeholders by sending a :ref:`feature
+query <graphics_query_features>` with ``e=T`` and ``U=1`` and checking that
+``U=1`` is present in the reply.
 
 The central idea is that we use a single *Private Use* Unicode character as a
 *placeholder* to indicate to the terminal that an image is supposed to be
@@ -885,6 +1025,10 @@ Animation
 .. versionadded:: 0.20.0
    Animation support (see :doc:`kittens/query_terminal` to query kitty version)
 
+Clients can detect support for animation by sending :ref:`feature queries
+<graphics_query_features>` with ``e=f``, ``e=a`` and ``e=c`` for loading
+frames, controlling animations and composing frames, respectively.
+
 When designing support for animation, the two main considerations were:
 
 #. There should be a way for both client and terminal driven animations.
@@ -1075,10 +1219,13 @@ Key      Value                 Default    Description
 
 ``q``    ``0, 1, 2``           ``0``      Suppress responses from the terminal to this graphics command.
 
+``e``    Single character.     ``null``   When set in a query, report the supported keys from the query, interpreted
+         ``(a, c, d, f,                   as for the specified action, in the response, see
+         p, q, t, T)``                    :ref:`graphics_query_features`.
+
 **Keys for image transmission**
 -----------------------------------------------------------
-``f``    Positive integer.     ``32``     The format in which the image data is sent.
-         ``(24, 32, 100)``.
+``f``    Positive integer.     ``32``     The format in which the image data is sent ``(8, 16, 24, 32, 100)``.
 ``t``    Single character.     ``d``      The transmission medium used.
          ``(d, f, t, s)``.
 ``s``    Positive integer.     ``0``      The width of the image being sent.
@@ -1162,9 +1309,10 @@ Key      Value                 Default    Description
 -----------------------------------------------------------
 ``d``    Single character.     ``a``      What to delete.
          ``(
-         a, A, c, C, n, N,
-         i, I, p, P, q, Q, r,
-         R, x, X, y, Y, z, Z
+         a, A, c, C, f, F,
+         n, N, i, I, p, P,
+         q, Q, r, R, x, X,
+         y, Y, z, Z
          )``.
 =======  ====================  =========  =================
 

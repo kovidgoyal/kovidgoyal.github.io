@@ -29,6 +29,12 @@ ______________________________
     :code:`window`
         A new :term:`kitty window <window>` in the current tab
 
+    :code:`window-dock`
+        A new :term:`kitty window <window>` docked to an edge of the active window in the current tab. It is shown whenever that window is shown and is closed when that window is closed. Use :option:`launch --dock-edge` and :option:`launch --dock-size` to control where it is placed. See :ref:`docks`.
+
+    :code:`tab-dock`
+        A new :term:`kitty window <window>` docked to an edge of the current tab, the layout arranges the other windows in the remaining space. It is closed when the last non-docked window in the tab is closed. See :ref:`docks`.
+
     :code:`tab`
         A new :term:`tab` in the current OS window. Not available when the :doc:`launch <launch>` command is used in :ref:`startup sessions <sessions>`.
 
@@ -52,15 +58,36 @@ ______________________________
 
 
     Default: :code:`window`
-    Choices: :code:`background`, :code:`clipboard`, :code:`os-panel`, :code:`os-window`, :code:`overlay`, :code:`overlay-main`, :code:`primary`, :code:`tab`, :code:`window`
+    Choices: :code:`background`, :code:`clipboard`, :code:`os-panel`, :code:`os-window`, :code:`overlay`, :code:`overlay-main`, :code:`primary`, :code:`tab`, :code:`tab-dock`, :code:`window`, :code:`window-dock`
+
+.. option:: --dock-edge <DOCK_EDGE>
+
+    The edge at which to place a :code:`window-dock` or :code:`tab-dock` window. When there are multiple docks at an edge, later docks are placed inside earlier ones.
+    Default: :code:`bottom`
+    Choices: :code:`bottom`, :code:`left`, :code:`right`, :code:`top`
+
+.. option:: --dock-size <DOCK_SIZE>
+
+    The size of a :code:`window-dock` or :code:`tab-dock` window. For docks at the top or bottom edge this is a number of rows, for docks at the left or right edge a number of columns. The space for the window's margin, border and padding is added to it. Alternately, add a :code:`%` suffix to specify the size as a percentage of the window or tab being docked to, including the window's decorations, for example: :code:`25%`.
+    Default: :code:`1`
+
+.. option:: --dock-skip-focus [=no]
+
+    Prevent a :code:`window-dock` or :code:`tab-dock` window from ever getting keyboard focus. Useful for docks that only display information, such as status bars.
 
 .. option:: --dont-take-focus [=no], --keep-focus [=no]
 
     Keep the focus on the currently active window instead of switching to the newly opened window.
 
+.. option:: --focus-existing <FOCUS_EXISTING>
+
+    A match expression to select an existing window or tab. If a match is found, it is focused and nothing new is launched, otherwise the launch proceeds as normal. When :option:`--type <launch --type>` is :code:`tab` the expression selects tabs, otherwise it selects windows, in all OS Windows. See :ref:`search_syntax` for the syntax for specifying windows and tabs. The special value :code:`@title` matches the tab whose title is exactly the value of :option:`--tab-title <launch --tab-title>` or, for other types, the window whose title is exactly the value of :option:`--window-title <launch --window-title>`. Unlike a match expression, :code:`@title` only considers the tabs shown in the tab bar of the OS Window in which the new tab/window would be created, so tabs hidden by :opt:`tab_bar_filter` are ignored. For the :code:`os-window` and :code:`os-panel` types, it considers windows in all OS Windows. If :option:`--keep-focus <launch --keep-focus>` is also specified, the matched window/tab is not focused. Has no effect for the :code:`background`, :code:`clipboard` and :code:`primary` types and in :ref:`startup sessions <sessions>`. Useful for mapping a key to switch to a window or tab, creating it if it does not exist, for example::
+
+        map ctrl+1 launch --type=tab --tab-title=1 --location=by-title --focus-existing=@title
+
 .. option:: --cwd <CWD>
 
-    The working directory for the newly launched child. Use the special value :code:`current` to use the working directory of the :option:`source window <launch --source-window>`. The special value :code:`last_reported` uses the last working directory reported by the shell (needs :ref:`shell_integration` to work). The special value :code:`oldest` works like :code:`current` but uses the working directory of the oldest foreground process associated with the currently active window rather than the newest foreground process. Finally, the special value :code:`root` refers to the process that was originally started when the window was created.
+    The working directory for the newly launched child. Use the special value :code:`current` to use the working directory of the :option:`source window <launch --source-window>`. The special value :code:`last_reported` uses the last working directory reported by the shell (needs :ref:`shell_integration` to work). The special value :code:`oldest` works like :code:`current` but uses the working directory of the oldest foreground process associated with the currently active window rather than the newest foreground process. Finally, the special value :code:`root` refers to the process that was originally started when the window was created. If kitty itself started that process via a wrapper, such as :file:`/usr/bin/login` on macOS, the wrapper is ignored and its first child is used instead. The working directory reported by the shell is used only when the root process is in the foreground.
 
     When opening in the same working directory as the current window causes the new window to connect to a remote host, you can use the :option:`--hold-after-ssh` flag to prevent the new window from closing when the connection is terminated.
 
@@ -94,9 +121,9 @@ ______________________________
 
 .. option:: --location <LOCATION>
 
-    Where to place the newly created window when it is added to a tab which already has existing windows in it. :code:`after` and :code:`before` place the new window before or after the active window. :code:`neighbor` is a synonym for :code:`after`. Also applies to creating a new tab, where the value of :code:`after` will cause the new tab to be placed next to the current tab instead of at the end. The values of :code:`vsplit`, :code:`hsplit` and :code:`split` are only used by the :code:`splits` layout and control if the new window is placed in a vertical, horizontal or automatic split with the currently active window. The default is to place the window in a layout dependent manner, typically, after the currently active window. See :option:`--next-to <launch --next-to>` to use a window other than the currently active window.
+    Where to place the newly created window when it is added to a tab which already has existing windows in it. :code:`after` and :code:`before` place the new window before or after the active window. :code:`neighbor` is a synonym for :code:`after`. Also applies to creating a new tab, where the value of :code:`after` will cause the new tab to be placed next to the current tab instead of at the end. The value :code:`by-title` applies only to new tabs, it places the new tab before the first tab whose title sorts after the title of the new tab, as specified by :option:`--tab-title <launch --tab-title>`. This keeps tabs in alphabetical order, if they already are. The values of :code:`vsplit`, :code:`hsplit` and :code:`split` are only used by the :code:`splits` layout and control if the new window is placed in a vertical, horizontal or automatic split with the currently active window. The default is to place the window in a layout dependent manner, typically, after the currently active window. See :option:`--next-to <launch --next-to>` to use a window other than the currently active window.
     Default: :code:`default`
-    Choices: :code:`after`, :code:`before`, :code:`default`, :code:`first`, :code:`hsplit`, :code:`last`, :code:`neighbor`, :code:`split`, :code:`vsplit`
+    Choices: :code:`after`, :code:`before`, :code:`by-title`, :code:`default`, :code:`first`, :code:`hsplit`, :code:`last`, :code:`neighbor`, :code:`split`, :code:`vsplit`
 
 .. option:: --next-to <NEXT_TO>
 
@@ -219,7 +246,7 @@ ______________________________
 
 .. option:: --spacing <SPACING>
 
-    Set the margin and padding for the newly created window. For example: :code:`margin=20` or :code:`padding-left=10` or :code:`margin-h=30`. The shorthand form sets all values, the :code:`*-h` and :code:`*-v` variants set horizontal and vertical values. Can be specified multiple times. Note that this is ignored for overlay windows as these use the settings from the base window.
+    Set the margin and padding for the newly created window. For example: :code:`margin=20` or :code:`padding-left=10` or :code:`margin-h=30`. The shorthand form sets all values, the :code:`*-h` (or :code:`*-horizontal`) and :code:`*-v` (or :code:`*-vertical`) variants set horizontal and vertical values. The special value :code:`default` resets to using the default value. Can be specified multiple times. Note that this is ignored for overlay windows as these use the settings from the base window.
 
 .. option:: --watcher <WATCHER>, -w <WATCHER>
 

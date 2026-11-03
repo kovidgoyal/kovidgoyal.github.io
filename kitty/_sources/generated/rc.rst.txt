@@ -95,6 +95,15 @@ Fields are:
 :code:`stay_in_tab (default: False)`
   Boolean indicating focus should remain in the active tab after windows are moved
 
+:code:`tab_title (default: None)`
+  Title for a newly created tab
+
+:code:`location (default: default)`
+  Where to place a newly created tab
+
+:code:`create_if_missing (default: False)`
+  Boolean indicating a new tab should be created if no tab matches target_tab
+
 
 
 disable-ligatures
@@ -270,8 +279,20 @@ Fields are:
 :code:`type (default: window)`
   The type of window to open
 
+:code:`dock_edge (default: bottom)`
+  The edge at which to place a docked window
+
+:code:`dock_size (default: 1)`
+  The size of a docked window as a number of cells or a percentage
+
+:code:`dock_skip_focus (default: False)`
+  Boolean indicating whether the docked window should never get keyboard focus
+
 :code:`keep_focus (default: False)`
   Boolean indicating whether the current window should retain focus or not
+
+:code:`focus_existing (default: None)`
+  Match expression for an existing window/tab to focus instead of launching
 
 :code:`copy_colors (default: False)`
   Boolean indicating whether to copy the colors from the current window
@@ -480,8 +501,42 @@ Fields are:
 :code:`increment (default: 2)`
   Integer specifying the resize increment
 
+:code:`fraction (default: 0.0)`
+  Fraction of the remaining resize steps to take, or zero for ordinary resizing
+
 :code:`axis (default: horizontal)`
   One of :code:`horizontal, vertical` or :code:`reset`
+
+:code:`restore_entry_layout (default: False)`
+  Restore an existing interactive Splits resize session on reset
+
+
+
+resize-window-edge
+--------------------------------------------------------------------------------
+
+Fields are:
+
+:code:`match (default: None)`
+  Which pane or resize overlay to use
+
+:code:`self (default: False)`
+  Use the window in which this command is run
+
+:code:`operation (default: move)`
+  The resize session operation
+
+:code:`edge (default: none)`
+  The edge to select or move
+
+:code:`increment (default: 2)`
+  Number of cells to move, positive rightwards or downwards
+
+:code:`fraction (default: 0.0)`
+  Fraction of remaining steps, or zero for ordinary steps
+
+:code:`divider (default: None)`
+  Optional divider identity returned by selection
 
 
 
@@ -659,7 +714,7 @@ set-colors
 Fields are:
 
 :code:`colors (required)`
-  An object mapping names to colors as 24-bit RGB integers or null for nullable colors. Or a string for transparent_background_colors.
+  Map of names to 24-bit RGB ints or null for nullable colors. transparent_background_colors is a string, empty to clear, absent to keep.
 
 :code:`match_window (optional)`
   Window to change colors in

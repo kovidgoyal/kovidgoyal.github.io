@@ -56,7 +56,7 @@ easily swap between them, kitty has you covered. You can use the
    # Browse and select from the list of known projects defined via goto_session commands
    map f7>/ goto_session
    # Browse and select from the list of active projects defined via goto_session commands
-   map f7>/ goto_session --active-only [=no]
+   map f7>/ goto_session --active-only
    # Same as above, but the sessions are listed alphabetically instead of by most recent
    map f7>/ goto_session --sort-by=alphabetical
    # Browse session files inside a directory and pick one
@@ -157,6 +157,8 @@ all the major keywords you can use in kitty session files:
     new_os_window
     # Set new window size to 80x24 cells
     os_window_size 80c 24c
+    # Place the new window at x=100, y=50 on the screen
+    os_window_position 100x50
     # Set the --title for the new OS window
     os_window_title my fancy os window
     # Set the --class for the new OS window
@@ -248,7 +250,7 @@ If you use the :doc:`ssh kitten </kittens/ssh>` to connect to remote computers,
 session file, preserving the remote working directory and even the currently
 running program on the remote host! Try it, run kitty with::
 
-    kitty -o 'map f1 save_as_session --use-foreground-process --relocatable' --session <(echo "layout vertical\nlaunch\nlaunch")
+    kitty -o 'map f1 save_as_session --use-foreground-process --relocatable' --session <(printf '%s\n' 'layout vertical' launch launch)
 
 Now in both windows, run::
 
@@ -260,6 +262,61 @@ other start some program. Then press :kbd:`F1` to save the session file.
 When you run the session file in another kitty instance you will see both
 windows re-created, as expected with the correct working directories and
 running programs.
+
+.. _restore_after_logout:
+
+Restoring kitty after logging out
+------------------------------------
+
+kitty can save its state when you log out, restart or shut down the computer
+and restore it the next time it is started, just like other applications. To
+enable this, set :opt:`restore_session_after_logout` in :file:`kitty.conf`::
+
+    restore_session_after_logout yes
+
+This works on macOS and on Linux, where it needs a desktop portal that supports
+monitoring the session state (version 3 of the Inhibit portal), such as the one
+used by GNOME. The state of every kitty instance is saved as a session file,
+including the size, position and state of every OS Window, and the scrollback
+of every window. The next time kitty is started, it restores
+the state of the instance that had the same command line arguments, and starts
+a separate kitty instance for each of the others, with the command line
+arguments, working directory and environment variables they originally had.
+
+The scrollback of every window is restored before the shell starts, followed by
+a line showing when it was saved. Only text and its formatting and hyperlinks
+are restored. Programs that were running in windows, other than the shell, are
+not started again, since they could have been run for their effects, like
+:file:`rm`. To save OS Window geometry in your own session files, use the
+``--os-window-geometry`` option of :ac:`save_as_session`.
+
+On macOS, the saved state, which includes the scrollback and the environment
+variables of every kitty instance, is encrypted, with a separate random key for
+every kitty instance, stored in your login keychain. Note that despite the
+encryption any process that runs as you can read the saved session data. The
+keys are deleted when the state is restored, so any copies of it left on disk or
+in backups cannot be read. kitty never shows any keychain prompts for this. If the keychain needs
+user interaction, the state is not saved or not restored. This happens if:
+
+* your login keychain is locked, for example, because it has a different
+  password from your login password or because it is set to lock itself after
+  a period of inactivity
+* the kitty you are running is not signed by the same developer as the kitty
+  that saved the state, for example, because you build kitty yourself, in
+  which case every new build counts as a different application
+
+On Linux, the saved state is not encrypted, as there is no way to store the key
+securely without asking you for a password. It is stored in the kitty cache
+directory and is readable only by you, like your shell history. It is saved when
+the desktop says that the session is about to end, and deleted again if the
+logout is cancelled, for example, by another application.
+
+If your session is not restored on macOS, any errors are written to the system
+log, where you can see them with::
+
+    /usr/bin/log show --last 1d --predicate 'processImagePath contains "kitty" and messageType == error'
+
+On Linux, they are written to the standard error of kitty.
 
 Managing multi tab sessions in a single OS Window
 ----------------------------------------------------
@@ -275,6 +332,14 @@ This will restrict the tab bar to only showing tabs from the currently active
 session as well tabs that do not belong to any session. Furthermore, when you
 are in a window or tab that does not belong to any session, the tab bar will
 show the tabs from the most recent active session, to maintain context.
+
+If you use :option:`launch --focus-existing` with the special value :code:`@title`
+to switch to named tabs, only the tabs visible in the tab bar are considered, so
+you won't jump into a tab from another session. Add :option:`launch --add-to-session`
+to give each session its own set of named tabs, otherwise the created tabs belong to
+no session and are shown in all sessions::
+
+    map ctrl+1 launch --type=tab --tab-title=1 --location=by-title --focus-existing=@title --add-to-session=.
 
 Keyword reference
 ---------------------
@@ -342,6 +407,12 @@ documentation for them.
 
 ``os_window_name``
     Set the name part of WM_CLASS or Wayland Window tag for the current OS Window
+
+``os_window_position``
+    Set the position of the current OS Window on the screen. For example:
+    ``100x50``. This may or may not work depending on the policies of the
+    desktop environment/window manager. It never works on Wayland. If the
+    position is not on any connected monitor, it is ignored.
 
 ``os_window_size``
     Set the size of the current OS Window, can be specified in pixels or cells.

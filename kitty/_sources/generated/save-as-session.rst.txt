@@ -16,7 +16,7 @@ Options
 
 .. option:: --use-foreground-process [=no]
 
-    When saving windows that were started with the default shell but are currently running some other process inside that shell, save that process so that when the session is used both the shell **and** the process running inside it are re-started. This is most useful when you have opened programs like editors or similar inside windows that started out running the shell and you want to preserve that. WARNING: Be careful when using this option, if you are running some dangerous command like :file:`rm` or :file:`mv` or similar in a shell, it will be re-run when the session is executed if you use this option. Note that this option requires :ref:`shell_integration` to work.
+    When saving windows that were started with the default shell but are currently running some other process inside that shell, save that process so that when the session is used both the shell **and** the process running inside it are re-started. This is most useful when you have opened programs like editors or similar inside windows that started out running the shell and you want to preserve that. WARNING: Be careful when using this option, if you are running some dangerous command like :file:`rm` or :file:`mv` or similar in a shell, it will be re-run when the session is executed if you use this option and it is unsafe to use if you are connected to untrusted hosts. Note that this option requires :ref:`shell_integration` to work.
 
 .. option:: --relocatable [=no]
 
@@ -29,3 +29,7 @@ Options
 .. option:: --base-dir <BASE_DIR>
 
     When specified, relative session filenames will be saved to this directory instead of the current working directory. This is useful when kitty is launched from locations where the working directory is not your home directory, such as from system-wide shortcuts. Note that :code:`--relocatable` is typically not used with :code:`--base-dir`, since relocatable is meant for session files that are co-located with their project directories.
+
+.. option:: --os-window-geometry [=no]
+
+    Save the size, position and state (maximized, fullscreen, etc.) of OS Windows, so that they are restored as they are now when the session is loaded. Note that positions are not saved on Wayland as it does not allow applications to position their windows.
