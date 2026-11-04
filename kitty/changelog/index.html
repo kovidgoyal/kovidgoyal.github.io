@@ -7,12 +7,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://sw.kovidgoyal.net/kitty/changelog/" />
 <meta property="og:site_name" content="kitty" />
-<meta property="og:description" content="kitty is a feature-rich, cross-platform, fast, GPU based terminal. To update kitty, follow the instructions. Recent major new features: Choose an edge when resizing [unreleased]: The resize page no..." />
+<meta property="og:description" content="kitty is a feature-rich, cross-platform, fast, GPU based terminal. To update kitty, follow the instructions. Recent major new features: Docked windows [0.50]: kitty windows can now be docked to an ..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="https://sw.kovidgoyal.net/kitty/_images/social_previews/summary_changelog_ebdebeba.png" />
-<meta property="og:image:alt" content="kitty is a feature-rich, cross-platform, fast, GPU based terminal. To update kitty, follow the instructions. Recent major new features: Choose an edge when resizing [unreleased]: The resize page no..." />
-<meta name="description" content="kitty is a feature-rich, cross-platform, fast, GPU based terminal. To update kitty, follow the instructions. Recent major new features: Choose an edge when resizing [unreleased]: The resize page no..." />
+<meta property="og:image" content="https://sw.kovidgoyal.net/kitty/_images/social_previews/summary_changelog_3a0c7623.png" />
+<meta property="og:image:alt" content="kitty is a feature-rich, cross-platform, fast, GPU based terminal. To update kitty, follow the instructions. Recent major new features: Docked windows [0.50]: kitty windows can now be docked to an ..." />
+<meta name="description" content="kitty is a feature-rich, cross-platform, fast, GPU based terminal. To update kitty, follow the instructions. Recent major new features: Docked windows [0.50]: kitty windows can now be docked to an ..." />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="Index" href="../genindex/"><link rel="search" title="Search" href="../search/"><link rel="next" title="Integrations with other tools" href="../integrations/"><link rel="prev" title="Performance" href="../performance/">
         <link rel="prefetch" href="../_static/kitty.svg" as="image">
@@ -880,7 +880,8 @@
 </li>
 <li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Changelog</a><input aria-label="Toggle navigation of Changelog" checked="" class="toctree-checkbox" id="toctree-checkbox-114" name="toctree-checkbox-114" role="switch" type="checkbox"/><label for="toctree-checkbox-114"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="#recent-major-new-features">Recent major new features</a><input aria-label="Toggle navigation of Recent major new features" class="toctree-checkbox" id="toctree-checkbox-115" name="toctree-checkbox-115" role="switch" type="checkbox"/><label for="toctree-checkbox-115"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="#choose-an-edge-when-resizing-unreleased">Choose an edge when resizing [unreleased]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docked-windows-0-50">Docked windows [0.50]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restore-after-logout-0-50">Restore after logout [0.50]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#custom-shaders-0-49">Custom shaders [0.49]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#performance-improvements-0-49">Performance improvements [0.49]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vertical-tabs-0-48">Vertical tabs [0.48]</a></li>
@@ -1329,32 +1330,23 @@
 To update <em>kitty</em>, <a class="reference internal" href="../binary/"><span class="doc">follow the instructions</span></a>.</p>
 <section id="recent-major-new-features">
 <h2>Recent major new features<a class="headerlink" href="#recent-major-new-features" title="Link to this heading">¶</a></h2>
-<section id="choose-an-edge-when-resizing-unreleased">
-<h3>Choose an edge when resizing [unreleased]<a class="headerlink" href="#choose-an-edge-when-resizing-unreleased" title="Link to this heading">¶</a></h3>
-<p>The resize page now offers two strategies: Window retains the usual
-width/height controls, while Edge lets you choose an internal pane edge in
-the Splits layout and move its divider in a physical direction.</p>
-<figure class="align-center" id="id135">
-<a class="reference internal image-reference" href="../_images/resize-edge-select.png"><img alt="Resize mode showing a middle pane's selectable left and right edges" src="../_images/resize-edge-select.png" style="width: 100%;" />
-</a>
-<figcaption>
-<p><span class="caption-text">Press H to select the middle pane’s left edge. Gray edges are outside
-the layout and cannot be selected.</span><a class="headerlink" href="#id135" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id136">
-<a class="reference internal image-reference" href="../_images/resize-edge-move.png"><img alt="The selected left divider moved left while the right divider stays in place" src="../_images/resize-edge-move.png" style="width: 100%;" />
-</a>
-<figcaption>
-<p><span class="caption-text">After selecting H, Alt+H moves the left divider by one third of the
-remaining resize steps. The right divider stays in place.</span><a class="headerlink" href="#id136" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
-<p>Switch strategies with 1/2 inside the page. Each strategy remembers its own
-Alt/Shift modifier and fraction, configurable with M and F. A sole internal
-edge is selected automatically. In Splits, either strategy uses R to restore
-the proportions saved when resize mode opened. See <a class="reference internal" href="../layouts/#window-resizing"><span class="std std-ref">Resizing windows</span></a> for
-the controls and configuration options.</p>
+<section id="docked-windows-0-50">
+<h3>Docked windows [0.50]<a class="headerlink" href="#docked-windows-0-50" title="Link to this heading">¶</a></h3>
+<p>kitty windows can now be <a class="reference internal" href="../layouts/#docks"><span class="std std-ref">docked</span></a> to an edge of another window or
+of the tab. Docked windows are placed outside the layout, making them perfect
+for status bars, file trees or a shell kept next to your editor. A dock
+attached to a window follows it around, moving with it to other tabs and closing
+when it closes. Create docks with <code class="code docutils literal notranslate"><span class="pre">launch</span> <span class="pre">--type=window-dock</span></code> or
+<code class="code docutils literal notranslate"><span class="pre">launch</span> <span class="pre">--type=tab-dock</span></code>. Docks are saved in <a class="reference internal" href="../sessions/"><span class="doc">sessions</span></a> too.</p>
+</section>
+<section id="restore-after-logout-0-50">
+<h3>Restore after logout [0.50]<a class="headerlink" href="#restore-after-logout-0-50" title="Link to this heading">¶</a></h3>
+<p>Like other applications, kitty can now save its state when you log out, restart or
+shut down your computer, and restore it the next time it starts. Simply set
+<a class="reference internal" href="../conf/#opt-kitty.restore_session_after_logout"><code class="xref std std-opt docutils literal notranslate"><span class="pre">restore_session_after_logout</span></code></a> and every kitty instance comes back with all
+its OS Windows, tabs and windows in place, including their scrollback. On
+macOS, the saved state is encrypted using a key stored in your keychain. See
+<a class="reference internal" href="../sessions/#restore-after-logout"><span class="std std-ref">Restoring kitty after logging out</span></a> for details.</p>
 </section>
 <section id="custom-shaders-0-49">
 <h3>Custom shaders [0.49]<a class="headerlink" href="#custom-shaders-0-49" title="Link to this heading">¶</a></h3>
@@ -1441,25 +1433,25 @@ rendered native cursors, just like their GUI cousins, at last.</p>
 <h3>Access kitty with a single keypress [0.42]<a class="headerlink" href="#access-kitty-with-a-single-keypress-0-42" title="Link to this heading">¶</a></h3>
 <aside class="sidebar">
 <p><strong>Screenshots</strong></p>
-<figure class="align-center" id="id137">
+<figure class="align-center" id="id135">
 <a class="reference internal image-reference" href="../_images/quake-macos.webp"><img alt="Screenshot, showing the kitty floating quick access terminal above the background which is the program btop, running inside kitty, on macOS" src="../_images/quake-macos.webp" style="width: 100%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">macOS</span><a class="headerlink" href="#id137" title="Link to this image">¶</a></p>
+<p><span class="caption-text">macOS</span><a class="headerlink" href="#id135" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id138">
+<figure class="align-center" id="id136">
 <a class="reference internal image-reference" href="../_images/quake-hypr.webp"><img alt="Screenshot, showing the kitty floating quick access terminal above the background which is the program btop, running inside kitty, on Hyprland in Linux" src="../_images/quake-hypr.webp" style="width: 100%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Linux</span><a class="headerlink" href="#id138" title="Link to this image">¶</a></p>
+<p><span class="caption-text">Linux</span><a class="headerlink" href="#id136" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id139">
+<figure class="align-center" id="id137">
 <a class="reference internal image-reference" href="../_images/panel.png"><img alt="Screenshot, showing a sample panel" src="../_images/panel.png" style="width: 100%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">A sample panel on Linux</span><a class="headerlink" href="#id139" title="Link to this image">¶</a></p>
+<p><span class="caption-text">A sample panel on Linux</span><a class="headerlink" href="#id137" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>How the screenshots <a class="reference internal" href="../kittens/panel/#quake-ss"><span class="std std-ref">were generated</span></a>.</p>
@@ -5528,7 +5520,8 @@ contents of the screen + scrollback buffer as stdin to the command.</p></li>
             <ul>
 <li><a class="reference internal" href="#">Changelog</a><ul>
 <li><a class="reference internal" href="#recent-major-new-features">Recent major new features</a><ul>
-<li><a class="reference internal" href="#choose-an-edge-when-resizing-unreleased">Choose an edge when resizing [unreleased]</a></li>
+<li><a class="reference internal" href="#docked-windows-0-50">Docked windows [0.50]</a></li>
+<li><a class="reference internal" href="#restore-after-logout-0-50">Restore after logout [0.50]</a></li>
 <li><a class="reference internal" href="#custom-shaders-0-49">Custom shaders [0.49]</a></li>
 <li><a class="reference internal" href="#performance-improvements-0-49">Performance improvements [0.49]</a></li>
 <li><a class="reference internal" href="#vertical-tabs-0-48">Vertical tabs [0.48]</a></li>

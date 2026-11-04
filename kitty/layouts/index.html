@@ -880,7 +880,8 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../changelog/">Changelog</a><input aria-label="Toggle navigation of Changelog" class="toctree-checkbox" id="toctree-checkbox-114" name="toctree-checkbox-114" role="switch" type="checkbox"/><label for="toctree-checkbox-114"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../changelog/#recent-major-new-features">Recent major new features</a><input aria-label="Toggle navigation of Recent major new features" class="toctree-checkbox" id="toctree-checkbox-115" name="toctree-checkbox-115" role="switch" type="checkbox"/><label for="toctree-checkbox-115"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../changelog/#choose-an-edge-when-resizing-unreleased">Choose an edge when resizing [unreleased]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#docked-windows-0-50">Docked windows [0.50]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog/#restore-after-logout-0-50">Restore after logout [0.50]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#custom-shaders-0-49">Custom shaders [0.49]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#performance-improvements-0-49">Performance improvements [0.49]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../changelog/#vertical-tabs-0-48">Vertical tabs [0.48]</a></li>
@@ -1690,10 +1691,27 @@ ratio or decimal. The other strategy’s saved settings are kept separately.</sp
 bottom, top, or right edge of the current pane. Arrow keys also work.
 This first key only selects the edge. Outside edges have no internal divider
 and cannot be selected. If there is exactly one internal edge, it is selected
-automatically on entering this strategy. Then use <kbd class="kbd docutils literal notranslate">H</kbd>/<kbd class="kbd docutils literal notranslate">L</kbd> for a left or right edge,
+automatically on entering this strategy.</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/resize-edge-select.png"><img alt="Resize mode showing a middle pane's selectable left and right edges" src="../_images/resize-edge-select.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Press H to select the middle pane’s left edge. Gray edges are outside
+the layout and cannot be selected.</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Then use <kbd class="kbd docutils literal notranslate">H</kbd>/<kbd class="kbd docutils literal notranslate">L</kbd> for a left or right edge,
 or <kbd class="kbd docutils literal notranslate">J</kbd>/<kbd class="kbd docutils literal notranslate">K</kbd> for a top or bottom edge, to move the selected divider
 in the direction of the key. Neighboring parallel dividers stay in place;
 perpendicular subtrees resize as units.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/resize-edge-move.png"><img alt="The selected left divider moved left while the right divider stays in place" src="../_images/resize-edge-move.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">After selecting H, Alt+H moves the left divider by one third of the
+remaining resize steps. The right divider stays in place.</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The chosen Alt/Shift modifier takes the configured fraction of the remaining
 steps; <kbd class="kbd docutils literal notranslate">Ctrl</kbd> doubles the normal step. The other modifier retains the
 normal step size. <kbd class="kbd docutils literal notranslate">Esc</kbd> returns to edge selection; press it again to exit.
