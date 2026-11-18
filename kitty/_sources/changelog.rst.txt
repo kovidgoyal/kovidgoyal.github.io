@@ -117,107 +117,122 @@ sessions <goto_session>` with a single keypress and also to manually setup some
 tabs/windows in kitty and :ref:`save it as a session file <complex_sessions>`,
 for seamless and intuitive session file creation.
 
-A scrollbar for the kitty scrollback [0.43]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-A long requested feature, kitty has finally :pull:`gotten a scrollbar <8945>`
-that can be used with the mouse for browsing its scrollback. The bar appear
-automatically when you start scrolling backwards and is :opt:`extensively
-configurable <scrollbar>` in kitty.conf. Note that the old ``scrollback_indicator_opacity``
-option is deprecated.
-
-Multiple cursors [0.43]
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-kitty has pioneered a new :doc:`escape code protocol
-<multiple-cursors-protocol>` that allows terminal applications to use multiple
-cursors, rendered natively. These are typically used in editors to make the
-same edit at multiple locations. Now terminal based editors can use properly
-rendered native cursors, just like their GUI cousins, at last.
-
-Access kitty with a single keypress [0.42]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. include:: quake-screenshots.rst
-
-kitty now has a Quake like floating, translucent terminal window, so you can access
-all that kitty goodness instantly with a single keypress.
-
-See the screenshots on the side and head over to the :doc:`kitten page for details
-on how to set it up </kittens/quick-access-terminal>`.
-
-
-Multiple sized text [0.40]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-kitty is the first major terminal to introduce the concept of multiple sized
-text. Terminal programs running in kitty can now opt-in to use and display text
-in multiple font sizes both larger and smaller than the base font size. This is
-done in a backwards compatible, opt-in way that does not affect how traditional
-terminal programs work at all. For details on the new feature and how to use
-it, see :doc:`text-sizing-protocol`.
-
-Cursor trails [0.37]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Show an animated trail when the text cursor makes large jumps making it easy
-to follow cursor movements. Inspired by the similar feature in neovide, but
-works with terminal multiplexers and kitty windows as well. See :pull:`the pull
-request <7970>` for a demonstration video. This feature is optional and must be
-turned on by the :opt:`cursor_trail` option in :file:`kitty.conf`.
-
-
-Variable font support [0.36]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Terminal aficionados spend all day staring at text, so getting text
-rendering just right is very important. In that spirit, kitty now supports
-`OpenType Variable fonts <https://en.wikipedia.org/wiki/Variable_font>`__.
-These allow precise customisation of font characteristics, such as weight and
-spacing. Not only that, kitty now has a new :doc:`choose-fonts
-<kittens/choose-fonts>` kitten that provides a UI for choosing fonts with
-support for font features, variable fonts and previews of how the font will
-look. This is in addition to its existing best-in-class font customization
-abilities, such as: :opt:`symbol_map`, :opt:`text_composition_strategy`,
-:opt:`font_features` and :opt:`modify_font`. kitty knows text rendering is
-important, and goes the extra mile for it.
-
-Desktop notifications [0.36]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-|kitty| now has a :doc:`notify </kittens/notify>` kitten that can be used to
-display desktop notifications from the command line, even over SSH. It has
-support for icons, buttons, updating notifications, waiting till
-the notification is closed, etc. The underlying :doc:`desktop-notifications`
-protocol has been expanded to support all these features.
-
-Wayland goodies [0.34]
-~~~~~~~~~~~~~~~~~~~~~~~
-
-Wayland users should rejoice as kitty now comes with major Wayland
-quality-of-life improvements:
-
-* Draw GPU accelerated :doc:`desktop panels and background </kittens/panel>`
-  running arbitrary terminal programs. For example, run `btop
-  <https://github.com/aristocratos/btop/>`__ as your desktop background
-
-* Background blur for transparent windows is now supported under KDE
-  using a custom KDE specific protocol
-
-* The kitty window decorations in GNOME are now fully functional with buttons
-  and they follow system dark/light mode automatically
-
-* kitty now supports fractional scaling in Wayland which means pixel perfect
-  rendering when you use a fractional scale with no wasted performance on
-  resizing an overdrawn pixmap in the compositor
-
-With this release kitty's Wayland support is now on par with X11, provided
-you use a decent Wayland compositor.
-
 .. }}}
 
 Detailed list of changes
 -------------------------------------
+
+0.51.0 [2026-11-18]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Allow docking kitty windows to an edge of the OS window, below the tab bar,
+  with :code:`launch --type=os-window-dock`. The dock is shown in every tab of
+  the OS window and can be resized by dragging its inner border or with the
+  :ac:`resize_window` action and :code:`kitten @ resize-window`, see
+  :ref:`docks` (:iss:`10854`, :iss:`10857`)
+
+- :doc:`Custom shaders <custom-shaders>`: Add ``screen-shake`` shaders that shake
+  a window on bell and new events and uniforms for command start/finish and
+  alternate screen enter/exit (:iss:`10871`)
+
+- Allow running the programs in new windows via a wrapper command, such as to
+  open new windows inside the same container as the window they are opened
+  from, using a :file:`launch_wrapper.py` file in the kitty config directory,
+  see :ref:`launch_wrapper` (:iss:`10858`)
+
+- :ref:`Watchers <watchers>`: ``on_close`` now reports why the window was
+  closed, a new ``on_cwd_change`` event fires when the working directory changes
+  and ``on_resize``/``on_focus_change`` calls are no longer dropped when many
+  windows are created at once (:disc:`10828`, :iss:`10853`)
+
+- Tab bar: Allow selecting and copying text drawn outside the tabs, for example
+  by a custom :file:`tab_bar.py`, by dragging the mouse over it. Fix the bell
+  indicator not being shown for the active window when the OS window is not
+  focused and clicking the blank line below a tab in the vertical tab bar not
+  activating it (:iss:`10869`, :iss:`10880`, :iss:`10810`)
+
+- Sessions: Fix tabs and windows moved with :ac:`detach_tab`,
+  :ac:`detach_window` or drag and drop losing their session.
+  :ac:`save_as_session` no longer opens saved sessions in the wrong OS Window
+  or tab or overwrites the session file with an empty one, and its file name
+  prompt now shows and completes relative to the directory the session will be
+  saved in (:pull:`10851`, :pull:`10852`, :disc:`10867`)
+
+- Security: Fix a program running in the terminal being able to hang kitty by
+  using :doc:`edit-in-kitty </shell-integration>` to set a window logo that is
+  a special file such as :file:`/dev/zero`, window logos and background images
+  must now be regular files. Fix the ssh kitten creating remote directories
+  such as :file:`~/.terminfo` world writable (:iss:`10834`)
+
+- :doc:`choose-files <kittens/choose-files>`: Sanitize file names, archive
+  member names, ebook metadata and previewer output so they cannot inject
+  escape codes into the terminal. Fix hangs previewing special files and
+  various preview caching bugs (:pull:`10843`, :pull:`10850`)
+
+- kittens: Fix a crash and changed colors when wrapping text that contains
+  extended SGR colors, such as the output of custom preview commands in
+  :doc:`choose-files <kittens/choose-files>`
+
+- Fix the display sometimes not being updated, for example after changes made
+  from timers or mouse actions while the OS window is idle, or for newly
+  displayed images until something else causes a redraw (:pull:`10878`,
+  :iss:`10875`)
+
+- Fix the scrolled back view jumping, and images, the cursor and the scrollbar
+  getting out of sync with the text, when new output arrives
+  (:pull:`10841`, :pull:`10847`)
+
+- Fix crashes and memory errors with multi-line characters from the
+  :doc:`text sizing protocol <text-sizing-protocol>` being partially scrolled
+  off screen or resized, and with the VS15 variation selector after a soft
+  wrapped wide emoji
+
+- Fix ``clear_terminal last_command``, jumping to the last visited prompt and
+  :ac:`show_last_visited_command_output` using the wrong lines in various
+  situations
+
+- Treat the ConEmu OSC 9;9 escape code as a report of the current working
+  directory, like OSC 7, instead of showing it as a desktop notification. A
+  hard reset (:code:`RIS`) now clears the alternate screen as well
+
+- Fix glyphs that are slightly wider than their cell, such as the texture
+  healing alternates of the Monaspace and 0xProto fonts, being rendered
+  smaller than surrounding text and accents that hang to the left of wide
+  glyphs, such as polytonic Greek capitals, being cut off
+
+- Fix an invalid value for :opt:`shell`, such as one with an unterminated
+  quote, causing errors when opening or saving windows, instead fall back to
+  the login shell and report the error (:pull:`10888`)
+
+- IME: Move cursor position within pre-edit text (:iss:`10807`)
+
+- Bash integration: Find system wide startup files by scanning the bash
+  executable instead of guessing their location (:iss:`10819`)
+
+- Fix minor issues in various kittens: Unicode input not finding some
+  characters such as the pound sign when searching by name, dnd failing to
+  start in a non-writable directory and ask selecting the wrong choice on mouse
+  click when the dialog does not fit in the window (:iss:`10862`,
+  :iss:`10855`, :pull:`10883`)
+
+- :doc:`Pointer shapes <pointer-shapes>`: Fix animated pointers restarting
+  unnecessarily and the shape not updating on alternate screen switches
+  (:iss:`10838`)
+
+- Remote control: Fix ``set-colors`` and ``get-colors`` handling of
+  ``cursor_text_color`` (:iss:`10832`)
+
+- Wayland: Allow using touchscreens with the client side window decorations.
+  Fix the decorations sometimes showing the wrong focus state and a hang
+  creating OS windows after an output is quickly plugged and unplugged
+  (:pull:`10859`, :pull:`10873`)
+
+- X11: Report X errors instead of exiting, fixing exits when clipboard
+  requestors destroy their window early (:iss:`9248`)
+
+- macOS: Workaround for clicking notifications not focusing the correct OS
+  Window with multiple kitty instances (:iss:`10805`)
+
 
 0.50.0 [2026-11-03]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -404,6 +419,11 @@ Detailed list of changes
 
 - Fix render jitter when scrolled back with a partial line and the client is
   using the synchronised rendering escape code (:iss:`10794`)
+
+- IME: Show the cursor at the position reported by the input method inside the
+  pre-edit text, instead of always at its end, so that one can see which
+  character is being edited, and size the cursor correctly over wide pre-edit
+  characters (:iss:`10807`)
 
 - Fix bold or italic Nerd Font icons sometimes being rendered using glyphs
   from an unrelated font, the cursor trail not always being shown when focus

@@ -35,6 +35,9 @@ ______________________________
     :code:`tab-dock`
         A new :term:`kitty window <window>` docked to an edge of the current tab, the layout arranges the other windows in the remaining space. It is closed when the last non-docked window in the tab is closed. See :ref:`docks`.
 
+    :code:`os-window-dock`
+        A new :term:`kitty window <window>` docked to an edge of the current :term:`OS window <os_window>`, below the tab bar. It is shown in every tab of the OS window, outside the docks of the tab, and is closed when the OS window is closed. See :ref:`docks`.
+
     :code:`tab`
         A new :term:`tab` in the current OS window. Not available when the :doc:`launch <launch>` command is used in :ref:`startup sessions <sessions>`.
 
@@ -58,22 +61,22 @@ ______________________________
 
 
     Default: :code:`window`
-    Choices: :code:`background`, :code:`clipboard`, :code:`os-panel`, :code:`os-window`, :code:`overlay`, :code:`overlay-main`, :code:`primary`, :code:`tab`, :code:`tab-dock`, :code:`window`, :code:`window-dock`
+    Choices: :code:`background`, :code:`clipboard`, :code:`os-panel`, :code:`os-window`, :code:`os-window-dock`, :code:`overlay`, :code:`overlay-main`, :code:`primary`, :code:`tab`, :code:`tab-dock`, :code:`window`, :code:`window-dock`
 
 .. option:: --dock-edge <DOCK_EDGE>
 
-    The edge at which to place a :code:`window-dock` or :code:`tab-dock` window. When there are multiple docks at an edge, later docks are placed inside earlier ones.
+    The edge at which to place a :code:`window-dock`, :code:`tab-dock` or :code:`os-window-dock` window. When there are multiple docks at an edge, later docks are placed inside earlier ones.
     Default: :code:`bottom`
     Choices: :code:`bottom`, :code:`left`, :code:`right`, :code:`top`
 
 .. option:: --dock-size <DOCK_SIZE>
 
-    The size of a :code:`window-dock` or :code:`tab-dock` window. For docks at the top or bottom edge this is a number of rows, for docks at the left or right edge a number of columns. The space for the window's margin, border and padding is added to it. Alternately, add a :code:`%` suffix to specify the size as a percentage of the window or tab being docked to, including the window's decorations, for example: :code:`25%`.
+    The size of a :code:`window-dock`, :code:`tab-dock` or :code:`os-window-dock` window. For docks at the top or bottom edge this is a number of rows, for docks at the left or right edge a number of columns. The space for the window's margin, border and padding is added to it. Alternately, add a :code:`%` suffix to specify the size as a percentage of the window, tab or OS window being docked to, including the window's decorations, for example: :code:`25%`.
     Default: :code:`1`
 
 .. option:: --dock-skip-focus [=no]
 
-    Prevent a :code:`window-dock` or :code:`tab-dock` window from ever getting keyboard focus. Useful for docks that only display information, such as status bars.
+    Prevent a :code:`window-dock`, :code:`tab-dock` or :code:`os-window-dock` window from ever getting keyboard focus. Useful for docks that only display information, such as status bars.
 
 .. option:: --dont-take-focus [=no], --keep-focus [=no]
 
