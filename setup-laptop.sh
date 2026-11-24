@@ -173,7 +173,7 @@ EOF
 
     # Allow passwordless sudo for all users in wheel group
     echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL"  >> /etc/sudoers
-    sudo -u kovid yay -S python-launchpadlib python-types-docutils python-types-pygments transifex-cli ttf-symbola mu sac-gui
+    sudo -u kovid yay -S python-types-docutils python-types-pygments transifex-cli ttf-symbola mu sac-gui
 
     set +e
     video=$(lspci | grep VGA | grep -o AMD)
