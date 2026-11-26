@@ -137,7 +137,7 @@ EOF
         python-sphinx-autobuild python-pip dash fish pciutils startup-notification yajl xcb-util-xrm
         autossh man man-pages fzf python-sphinx-copybutton librsync wayland wayland-protocols links
         python-pycryptodome ttf-nerd-fonts-symbols python-scipy python-py7zr speech-dispatcher
-        python-cchardet inetutils wireless-regdb fprintd cdrtools usbutils kernel-modules-hook
+        python-cchardet python-langtool inetutils wireless-regdb fprintd cdrtools usbutils kernel-modules-hook
         qemu qemu-user-static qemu-user-static-binfmt edk2-armvirt edk2-ovmf qemu-system-aarch64 swtpm
         upx gopls staticcheck python-black wireguard-tools aria2 wofi ruff lld yt-dlp deno
         python-rope lua-language-server wlr-randr python-jaconv python-pykakasi
