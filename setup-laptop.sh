@@ -143,7 +143,7 @@ EOF
         python-rope lua-language-server wlr-randr python-jaconv python-pykakasi
         vulkan-swrast vulkan-icd-loader vulkan-validation-layers
         hyprland xdg-desktop-portal-hyprland hypridle hyprpicker swaync brightnessctl onnxruntime espeak-ng kitty
-        tree-sitter-cli
+        tree-sitter-cli bc tesseract tesseract-data-eng
 
         # these alongwith sac-gui below are needed for managing autheticode signing via hardware token
         libp11 pcsclite pkcs11-helper opensc python-pykcs11
